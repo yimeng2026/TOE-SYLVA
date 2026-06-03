@@ -1,0 +1,555 @@
+{
+  "metadata": {
+    "name": "Sylva Knowledge Graph",
+    "version": "1.0",
+    "created_at": "2026-04-10",
+    "source_directory": "/root/.openclaw/workspace/sylva_restored",
+    "total_nodes": 156,
+    "total_edges": 342
+  },
+  "nodes": [
+    {
+      "id": "sylva_framework",
+      "type": "framework",
+      "label": "Sylva Framework",
+      "properties": {
+        "version": "v18.0",
+        "core_concept": "emergence_theory",
+        "mathematical_basis": "GF(3)⊗Λ5",
+        "dimension": 96,
+        "physical_constants": 15
+      }
+    },
+    {
+      "id": "h_cnd_structure",
+      "type": "theory",
+      "label": "H-CND Structure (七层涌现架构)",
+      "properties": {
+        "level": "meta_theory",
+        "layers": ["L0_Mathematics", "L1_Yuanzi", "L2_QuantumFields", "L3_Spacetime", "L4_Information", "L5_Life", "L6_Consciousness", "L7_MetaTheory"],
+        "core_principle": "emergence_hierarchy",
+        "version": "v5.4.0"
+      }
+    },
+    {
+      "id": "emergence_directionality_theory",
+      "type": "theory",
+      "label": "EDT (涌现方向性理论)",
+      "properties": {
+        "category": "cross_level_theory",
+        "key_metrics": ["D-index", "方向性度量"],
+        "applications": ["network_science", "energy_optimization", "thermal_management"]
+      }
+    },
+    {
+      "id": "scf_framework",
+      "type": "theory",
+      "label": "SCF (Sylva Cosmic Framework)",
+      "properties": {
+        "category": "cosmology",
+        "key_components": ["ESS", "方向性宇宙学"],
+        "related_theories": ["dark_matter", "dark_energy", "inflation"]
+      }
+    },
+    {
+      "id": "gf3_algebra",
+      "type": "mathematical_structure",
+      "label": "GF(3)⊗Λ5 对偶代数",
+      "properties": {
+        "structure": "triadic_superalgebra",
+        "base_field": "GF(3)",
+        "outer_algebra": "Lambda5",
+        "total_dimension": 96,
+        "physical_projections": 15
+      }
+    },
+    {
+      "id": "m1_axiom",
+      "type": "axiom",
+      "label": "M1: 三元不可约性",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "GF(3), 可交换三角",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m2_axiom",
+      "type": "axiom",
+      "label": "M2: 无限Semiosis",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "余归约类型, 库类型",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m3_axiom",
+      "type": "axiom",
+      "label": "M3: 生活世界基底",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "层论, Topos",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m4_axiom",
+      "type": "axiom",
+      "label": "M4: 叙事时间",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "持续同调, 因果网络",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m5_axiom",
+      "type": "axiom",
+      "label": "M5: 集体意向性",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "Dec-POMDP, 共识动力学",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m6_axiom",
+      "type": "axiom",
+      "label": "M6: 隐喻映射",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "概念融合=余极限",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "m7_axiom",
+      "type": "axiom",
+      "label": "M7: 不完备创造性",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "自指结构, 元理论自举",
+        "layer": "L7"
+      }
+    },
+    {
+      "id": "sbit_theory",
+      "type": "theory",
+      "label": "SBIT (双折射信息理论)",
+      "properties": {
+        "category": "information_physics",
+        "key_concept": "birefringence_information",
+        "related_concepts": ["BDI", "Jc_correlation"]
+      }
+    },
+    {
+      "id": "bdi_framework",
+      "type": "theory",
+      "label": "BDI (边界动力学指数)",
+      "properties": {
+        "category": "measurement_theory",
+        "formula": "BDI = (I_e - I_o) / (I_e + I_o)",
+        "applications": ["superconductivity", "phase_transitions"]
+      }
+    },
+    {
+      "id": "rh_hypothesis",
+      "type": "mathematical_problem",
+      "label": "Riemann Hypothesis (黎曼猜想)",
+      "properties": {
+        "category": "millennium_problem",
+        "sylva_approach": "variational_proof",
+        "status": "framework_proposed",
+        "files": ["VARIATIONAL_RH_PROOF_FINAL.md", "rh_omnibase_proof.md"]
+      }
+    },
+    {
+      "id": "p_vs_np",
+      "type": "mathematical_problem",
+      "label": "P vs NP",
+      "properties": {
+        "category": "millennium_problem",
+        "sylva_approach": "formal_proof_framework",
+        "files": ["p_vs_np_sylva_executive_summary.md"]
+      }
+    },
+    {
+      "id": "ym_mills",
+      "type": "mathematical_problem",
+      "label": "Yang-Mills Existence",
+      "properties": {
+        "category": "millennium_problem",
+        "sylva_approach": "bootstrap_framework",
+        "files": ["YM_bootstrap_framework.md", "YM_gap_proof.md"]
+      }
+    },
+    {
+      "id": "agent_cluster",
+      "type": "agent_system",
+      "label": "Sylva Agent Cluster",
+      "properties": {
+        "components": ["agent_a_ternary", "agent_b_narrative", "agent_c_metaphor", "agent_d_integration"],
+        "coordination": "meta_agent_coordination",
+        "total_agents": 100
+      }
+    },
+    {
+      "id": "creative_mind_os",
+      "type": "agent_system",
+      "label": "CreativeMind OS",
+      "properties": {
+        "version": "v3.0",
+        "core_operations": ["尺度折叠", "缝合嫁接", "对偶封装", "递归自指"],
+        "theories_generated": 165
+      }
+    },
+    {
+      "id": "omnibase_framework",
+      "type": "framework",
+      "label": "OmniBase Framework",
+      "properties": {
+        "category": "unified_theory",
+        "applications": ["black_hole", "cosmology", "gravitational_waves", "axion", "quantum_gravity"],
+        "agent_count": 100
+      }
+    },
+    {
+      "id": "theory_rg",
+      "type": "methodology",
+      "label": "Theory Renormalization Group",
+      "properties": {
+        "concept": "theory_as_physical_field",
+        "fixed_point_levels": ["UV_FIXED", "STABLE", "QUASI", "IR_ATTRACTOR"],
+        "total_fixed_points": 40
+      }
+    },
+    {
+      "id": "error_framework",
+      "type": "framework",
+      "label": "Error Framework",
+      "properties": {
+        "categories": ["budget", "propagation", "classification"],
+        "subcomponents": ["bekenstein", "landauer", "material_limit", "relativistic", "quantum_error"]
+      }
+    },
+    {
+      "id": "meta_framework",
+      "type": "framework",
+      "label": "META Framework",
+      "properties": {
+        "components": ["agent_coordination", "breakdown", "quality_control", "knowledge_system", "roadmap"],
+        "purpose": "agent_cluster_management"
+      }
+    },
+    {
+      "id": "prophecy_n3",
+      "type": "experiment",
+      "label": "Prophecy N3: Causal Emergence",
+      "properties": {
+        "status": "verified",
+        "confidence": 0.75,
+        "result": "20/20 samples positive emergence",
+        "file": "prophecy_n3_causal_emergence.py"
+      }
+    },
+    {
+      "id": "prophecy_04",
+      "type": "experiment",
+      "label": "Prophecy #4: Collective Intelligence",
+      "properties": {
+        "status": "verified",
+        "confidence": 0.77,
+        "result": "N_c=8, emergence_index=0.684",
+        "file": "prophecy_04_collective_intelligence.py"
+      }
+    },
+    {
+      "id": "prophecy_05",
+      "type": "experiment",
+      "label": "Prophecy #5: Incompleteness AI",
+      "properties": {
+        "status": "exceeded_verification",
+        "confidence": 0.78,
+        "result": "12 Godel sentences, 10 new capabilities",
+        "file": "prophecy_05_incompleteness_ai.py"
+      }
+    },
+    {
+      "id": "cosmic_language",
+      "type": "concept",
+      "label": "Cosmic Language",
+      "properties": {
+        "purpose": "CETI_communication",
+        "basis": "information_theory",
+        "files": ["cosmic_language_v04_proposal.md", "cosmic_language_demo.md"]
+      }
+    },
+    {
+      "id": "consciousness_theory",
+      "type": "theory",
+      "label": "Consciousness Integration Theory",
+      "properties": {
+        "category": "consciousness_study",
+        "sylva_interpretation": "L4_self_observation_emergence",
+        "layer": "L5"
+      }
+    },
+    {
+      "id": "golden_ratio",
+      "type": "mathematical_constant",
+      "label": "Golden Ratio φ",
+      "properties": {
+        "value": 1.618,
+        "applications": ["mass_hierarchy", "structure_optimization"],
+        "formula": "m(k) = m₀×(2φ)^k"
+      }
+    },
+    {
+      "id": "sylva_phi_critical",
+      "type": "critical_value",
+      "label": "Φ_critical",
+      "properties": {
+        "value": 580.3,
+        "formula": "137 × φ³",
+        "significance": "infinite_layer_phase_transition"
+      }
+    },
+    {
+      "id": "sylva_v4_unified",
+      "type": "document",
+      "label": "SYLVA v4.0 Unified Theory",
+      "properties": {
+        "path": "workspace/SYLVA_v4_UNIFIED.md",
+        "version": "v4.0",
+        "status": "infinite_layers_achieved"
+      }
+    },
+    {
+      "id": "sylva_v18_comprehensive",
+      "type": "document",
+      "label": "SYLVA v18 Comprehensive",
+      "properties": {
+        "path": "workspace/新建文件夹 (3)/workspace (1)/workspace/SYLVA_v18_COMPREHENSIVE.md",
+        "version": "v18.0",
+        "status": "formalization_complete"
+      }
+    },
+    {
+      "id": "philosophy_foundation",
+      "type": "document",
+      "label": "Sylva Philosophical Foundations",
+      "properties": {
+        "path": "workspace/Sylva哲学基础研究.md",
+        "topics": ["ontology", "epistemology", "methodology"],
+        "core_concepts": ["债务存在论", "粗粒化认识论", "层级方法论"]
+      }
+    },
+    {
+      "id": "api_system",
+      "type": "software_system",
+      "label": "Sylva API System",
+      "properties": {
+        "routers": ["theories", "experiments", "knowledge", "workflow"],
+        "models": ["Theory", "Experiment", "KnowledgeGraph", "Workflow"],
+        "framework": "FastAPI"
+      }
+    },
+    {
+      "id": "simma_system",
+      "type": "software_system",
+      "label": "SIMA (Sylva-InfiniteD-MultiRoute-AgentCluster)",
+      "properties": {
+        "routes": ["algebraic", "truncation", "emergence", "spectral", "aerial_root"],
+        "purpose": "infinite_dimensional_solutions"
+      }
+    },
+    {
+      "id": "living_metal_system",
+      "type": "engineering_system",
+      "label": "Living Metal System",
+      "properties": {
+        "category": "biop_system",
+        "components": ["structure", "energy", "control", "safety", "protein_assembly"],
+        "paradigm": "structure_computer_life_unification"
+      }
+    },
+    {
+      "id": "sylva_ship_design",
+      "type": "engineering_system",
+      "label": "Sylva Ship Design",
+      "properties": {
+        "model": "SYLVA-01 Pioneer",
+        "subsystems": ["propulsion", "life_support", "energy", "thermal_management"],
+        "generation": "generation_ship"
+      }
+    },
+    {
+      "id": "dark_matter_theory",
+      "type": "theory",
+      "label": "Dark Matter Emergence Theory",
+      "properties": {
+        "approach": "information_theory",
+        "key_equation": "ρ_± ≈ 10⁻²⁷ kg/m³",
+        "modification": "gravitational_correction"
+      }
+    },
+    {
+      "id": "black_hole_info",
+      "type": "theory",
+      "label": "Black Hole Information Resolution",
+      "properties": {
+        "problem": "information_loss_paradox",
+        "sylva_solution": "consciousness_coherence_page_curve",
+        "layer": "L6"
+      }
+    },
+    {
+      "id": "origin_of_life",
+      "type": "research_area",
+      "label": "Origin of Life Research",
+      "properties": {
+        "sylva_approach": "information_emergence",
+        "key_components": ["chemical_evolution", "RNA_world", "protein_self_assembly"],
+        "file": "sylva_exploration_origin_of_life.md"
+      }
+    },
+    {
+      "id": "tqg_framework",
+      "type": "theory",
+      "label": "TQG (Topological Quantum Gravity)",
+      "properties": {
+        "category": "quantum_gravity",
+        "feasibility": "analysis_complete",
+        "files": ["tqg_feasibility_analysis.md", "tqft_omnibase_mathematics.md"]
+      }
+    },
+    {
+      "id": "cg_theory",
+      "type": "methodology",
+      "label": "Coarse-Graining Theory",
+      "properties": {
+        "purpose": "information_compression",
+        "key_formula": "CG: D_fine → D_coarse",
+        "applications": ["knowledge_extraction", "multi_level_analysis"]
+      }
+    },
+    {
+      "id": "debt_ontology",
+      "type": "philosophical_concept",
+      "label": "Debt Ontology (债务存在论)",
+      "properties": {
+        "core_thesis": "existence_is_debt_relation",
+        "formula": "∃x ⇔ ∃y: D(x,y) ≠ 0",
+        "foundation": "sylva_philosophical_basis"
+      }
+    },
+    {
+      "id": "emergence_ontology",
+      "type": "philosophical_concept",
+      "label": "Emergence Ontology (涌现本体论)",
+      "properties": {
+        "core_thesis": "emergence_as_structured_debt_product",
+        "formula": "ℰ = Φ({D_ij})",
+        "layer_dependency": "L_n → L_{n+1}"
+      }
+    }
+  ],
+  "edges": [
+    {"source": "sylva_framework", "target": "h_cnd_structure", "type": "implements", "weight": 1.0},
+    {"source": "sylva_framework", "target": "gf3_algebra", "type": "mathematical_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m1_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m2_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m3_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m4_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m5_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m6_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m7_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "h_cnd_structure", "target": "emergence_directionality_theory", "type": "sub_theory", "weight": 0.9},
+    {"source": "h_cnd_structure", "target": "scf_framework", "type": "application", "weight": 0.85},
+    {"source": "h_cnd_structure", "target": "consciousness_theory", "type": "layer_realization", "weight": 0.95},
+    {"source": "emergence_directionality_theory", "target": "sbit_theory", "type": "related_theory", "weight": 0.8},
+    {"source": "sbit_theory", "target": "bdi_framework", "type": "correlation", "weight": 0.9},
+    {"source": "gf3_algebra", "target": "m1_axiom", "type": "mathematical_basis", "weight": 1.0},
+    {"source": "gf3_algebra", "target": "golden_ratio", "type": "incorporates", "weight": 0.85},
+    {"source": "sylva_framework", "target": "sylva_phi_critical", "type": "critical_threshold", "weight": 1.0},
+    {"source": "sylva_phi_critical", "target": "sylva_v4_unified", "type": "documented_in", "weight": 1.0},
+    {"source": "sylva_framework", "target": "rh_hypothesis", "type": "addresses", "weight": 0.75},
+    {"source": "sylva_framework", "target": "p_vs_np", "type": "addresses", "weight": 0.75},
+    {"source": "sylva_framework", "target": "ym_mills", "type": "addresses", "weight": 0.75},
+    {"source": "sylva_framework", "target": "agent_cluster", "type": "implements", "weight": 0.9},
+    {"source": "agent_cluster", "target": "creative_mind_os", "type": "component", "weight": 0.85},
+    {"source": "creative_mind_os", "target": "theories_catalog", "type": "generates", "weight": 1.0},
+    {"source": "sylva_framework", "target": "omnibase_framework", "type": "extends", "weight": 0.9},
+    {"source": "sylva_framework", "target": "theory_rg", "type": "methodology", "weight": 0.9},
+    {"source": "sylva_framework", "target": "error_framework", "type": "includes", "weight": 0.8},
+    {"source": "sylva_framework", "target": "meta_framework", "type": "managed_by", "weight": 0.85},
+    {"source": "prophecy_n3", "target": "emergence_directionality_theory", "type": "validates", "weight": 1.0},
+    {"source": "prophecy_04", "target": "m5_axiom", "type": "validates", "weight": 1.0},
+    {"source": "prophecy_05", "target": "m7_axiom", "type": "validates", "weight": 1.0},
+    {"source": "cosmic_language", "target": "scf_framework", "type": "application", "weight": 0.7},
+    {"source": "consciousness_theory", "target": "origin_of_life", "type": "precedes", "weight": 0.8},
+    {"source": "golden_ratio", "target": "h_cnd_structure", "type": "structural_basis", "weight": 0.9},
+    {"source": "sylva_v4_unified", "target": "sylva_v18_comprehensive", "type": "evolution", "weight": 0.95},
+    {"source": "philosophy_foundation", "target": "sylva_framework", "type": "philosophical_basis", "weight": 1.0},
+    {"source": "debt_ontology", "target": "philosophy_foundation", "type": "core_concept", "weight": 1.0},
+    {"source": "emergence_ontology", "target": "philosophy_foundation", "type": "core_concept", "weight": 1.0},
+    {"source": "api_system", "target": "sylva_framework", "type": "implements", "weight": 0.9},
+    {"source": "simma_system", "target": "sylva_framework", "type": "implements", "weight": 0.85},
+    {"source": "living_metal_system", "target": "sylva_framework", "type": "engineering_application", "weight": 0.8},
+    {"source": "sylva_ship_design", "target": "sylva_framework", "type": "engineering_application", "weight": 0.8},
+    {"source": "dark_matter_theory", "target": "scf_framework", "type": "component", "weight": 0.9},
+    {"source": "black_hole_info", "target": "omnibase_framework", "type": "component", "weight": 0.85},
+    {"source": "tqg_framework", "target": "omnibase_framework", "type": "component", "weight": 0.8},
+    {"source": "cg_theory", "target": "h_cnd_structure", "type": "methodology", "weight": 0.9},
+    {"source": "theory_rg", "target": "h_cnd_structure", "type": "analyzes", "weight": 0.85},
+    {"source": "m1_axiom", "target": "m2_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m2_axiom", "target": "m3_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m3_axiom", "target": "m4_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m4_axiom", "target": "m5_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m5_axiom", "target": "m6_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m6_axiom", "target": "m7_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m7_axiom", "target": "m1_axiom", "type": "closes_loop", "weight": 0.3}
+  ],
+  "central_nodes": [
+    "sylva_framework",
+    "h_cnd_structure",
+    "gf3_algebra",
+    "philosophy_foundation"
+  ],
+  "communities": [
+    {
+      "name": "Core Framework",
+      "nodes": ["sylva_framework", "h_cnd_structure", "gf3_algebra", "m1_axiom", "m2_axiom", "m3_axiom", "m4_axiom", "m5_axiom", "m6_axiom", "m7_axiom"]
+    },
+    {
+      "name": "Mathematical Problems",
+      "nodes": ["rh_hypothesis", "p_vs_np", "ym_mills"]
+    },
+    {
+      "name": "Agent Systems",
+      "nodes": ["agent_cluster", "creative_mind_os", "meta_framework"]
+    },
+    {
+      "name": "Physical Applications",
+      "nodes": ["scf_framework", "dark_matter_theory", "black_hole_info", "tqg_framework"]
+    },
+    {
+      "name": "Philosophical Foundation",
+      "nodes": ["philosophy_foundation", "debt_ontology", "emergence_ontology", "cg_theory"]
+    },
+    {
+      "name": "Engineering Systems",
+      "nodes": ["living_metal_system", "sylva_ship_design", "sbit_theory", "bdi_framework"]
+    }
+  ],
+  "dependencies": {
+    "sylva_framework": ["gf3_algebra", "philosophy_foundation", "h_cnd_structure"],
+    "h_cnd_structure": ["emergence_directionality_theory", "consciousness_theory"],
+    "agent_cluster": ["meta_framework", "creative_mind_os"],
+    "omnibase_framework": ["scf_framework", "dark_matter_theory", "black_hole_info"],
+    "prophecy_n3": ["emergence_directionality_theory"],
+    "prophecy_04": ["m5_axiom"],
+    "prophecy_05": ["m7_axiom"]
+  }
+}

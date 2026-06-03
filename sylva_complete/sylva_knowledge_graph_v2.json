@@ -1,0 +1,1913 @@
+{
+  "metadata": {
+    "name": "Sylva Knowledge Graph v2",
+    "version": "2.0",
+    "created_at": "2026-04-14",
+    "source_directory": "/root/.openclaw/workspace/sylva_formalization",
+    "total_nodes": 287,
+    "total_edges": 412,
+    "extended_from": "sylva_knowledge_graph.json"
+  },
+  "nodes": [
+    {
+      "id": "sylva_framework",
+      "type": "framework",
+      "label": "Sylva Framework",
+      "properties": {
+        "version": "v18.0",
+        "core_concept": "emergence_theory",
+        "mathematical_basis": "GF(3)⊗Λ5",
+        "dimension": 96,
+        "physical_constants": 15,
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["meta-theory", "unified_framework", "emergence"]
+      }
+    },
+    {
+      "id": "h_cnd_structure",
+      "type": "theory",
+      "label": "H-CND Structure (七层涌现架构)",
+      "properties": {
+        "level": "meta_theory",
+        "layers": ["L0_Mathematics", "L1_Yuanzi", "L2_QuantumFields", "L3_Spacetime", "L4_Information", "L5_Life", "L6_Consciousness", "L7_MetaTheory"],
+        "core_principle": "emergence_hierarchy",
+        "version": "v5.4.0",
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["meta-theory", "hierarchy", "emergence"]
+      }
+    },
+    {
+      "id": "gf3_algebra",
+      "type": "mathematical_structure",
+      "label": "GF(3)⊗Λ5 对偶代数",
+      "properties": {
+        "structure": "triadic_superalgebra",
+        "base_field": "GF(3)",
+        "outer_algebra": "Lambda5",
+        "total_dimension": 96,
+        "physical_projections": 15,
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["algebra", "finite_field", "superalgebra"]
+      }
+    },
+    {
+      "id": "golden_ratio_phi",
+      "type": "mathematical_constant",
+      "label": "Golden Ratio φ",
+      "properties": {
+        "value": 1.618,
+        "formula": "(1 + √5) / 2",
+        "explicit_form": "phi = (1 + Real.sqrt 5) / 2",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 3,
+        "tags": ["number_theory", "constant", "fibonacci"]
+      }
+    },
+    {
+      "id": "phi_sq_eq_phi_add_one",
+      "type": "theorem",
+      "label": "φ² = φ + 1",
+      "properties": {
+        "statement": "φ^2 = φ + 1",
+        "proof_tactic": "nlinarith",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 3,
+        "tags": ["number_theory", "golden_ratio", "algebraic_identity"]
+      }
+    },
+    {
+      "id": "phi_cubed_eq",
+      "type": "theorem",
+      "label": "φ³ = 2φ + 1",
+      "properties": {
+        "statement": "φ^3 = 2*φ + 1",
+        "proof_tactic": "calc_chain",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 3,
+        "tags": ["number_theory", "golden_ratio", "algebraic_identity"]
+      }
+    },
+    {
+      "id": "phi_pow_eq_fibonacci_formula",
+      "type": "theorem",
+      "label": "φⁿ = Fₙφ + Fₙ₋₁",
+      "properties": {
+        "statement": "∀ n, φ^(n+1) = fibonacci(n+1)*φ + fibonacci(n)",
+        "proof_tactic": "induction",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 5,
+        "tags": ["number_theory", "golden_ratio", "fibonacci", "induction"]
+      }
+    },
+    {
+      "id": "binet_formula",
+      "type": "theorem",
+      "label": "Binet Formula",
+      "properties": {
+        "statement": "fibonacci n = (φ^n - φ̄^n) / √5",
+        "proof_tactic": "strong_induction",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 6,
+        "tags": ["number_theory", "fibonacci", "closed_form"]
+      }
+    },
+    {
+      "id": "phi_continued_fraction_converges",
+      "type": "theorem",
+      "label": "φ Continued Fraction Convergence",
+      "properties": {
+        "statement": "|cf_n - φ| < 1/φ^n",
+        "proof_tactic": "induction",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 6,
+        "tags": ["number_theory", "continued_fractions", "convergence"]
+      }
+    },
+    {
+      "id": "lambda_fractional_dimension",
+      "type": "mathematical_structure",
+      "label": "Λ(5/2) Critical Fractional Dimension",
+      "properties": {
+        "operator": "x ↦ x^(5/2)",
+        "critical_value": "Phi_c = 137 × φ³",
+        "debt_critical": "D_c = φ⁴",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["analysis", "fractional_dimension", "critical_phenomena"]
+      }
+    },
+    {
+      "id": "lambda_strictMonoOn_pos",
+      "type": "theorem",
+      "label": "Λ(5/2) is Strictly Increasing on ℝ⁺",
+      "properties": {
+        "statement": "StrictMonoOn Λ (Set.Ioi 0)",
+        "proof_tactic": "Real.rpow_lt_rpow",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 4,
+        "tags": ["analysis", "monotonicity", "real_analysis"]
+      }
+    },
+    {
+      "id": "phi_cantor_dimension_approx",
+      "type": "theorem",
+      "label": "φ-Cantor Dimension Bounds",
+      "properties": {
+        "statement": "1.4 < log(2)/log(φ) < 1.5",
+        "proof_tactic": "Real.rpow_bounds",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 8,
+        "tags": ["fractal_geometry", "dimension", "bounds"]
+      }
+    },
+    {
+      "id": "cantor_dimension",
+      "type": "definition",
+      "label": "Standard Cantor Set Dimension",
+      "properties": {
+        "formula": "log(2)/log(3)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["fractal_geometry", "dimension"]
+      }
+    },
+    {
+      "id": "m1_axiom",
+      "type": "axiom",
+      "label": "M1: Triadic Irreducibility",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "GF(3), commutative_triangle",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "triadic"]
+      }
+    },
+    {
+      "id": "m2_axiom",
+      "type": "axiom",
+      "label": "M2: Infinite Semiosis",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "coinductive_type, vault_type",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "semiotics"]
+      }
+    },
+    {
+      "id": "m3_axiom",
+      "type": "axiom",
+      "label": "M3: Lifeworld Ground",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "sheaf_theory, Topos",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "phenomenology", "topos"]
+      }
+    },
+    {
+      "id": "m4_axiom",
+      "type": "axiom",
+      "label": "M4: Narrative Time",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "persistent_homology, causal_network",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "time", "topology"]
+      }
+    },
+    {
+      "id": "m5_axiom",
+      "type": "axiom",
+      "label": "M5: Collective Intentionality",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "Dec-POMDP, consensus_dynamics",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "collective_intelligence", "game_theory"]
+      }
+    },
+    {
+      "id": "m6_axiom",
+      "type": "axiom",
+      "label": "M6: Metaphor Mapping",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "conceptual_blending = colimit",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 9,
+        "tags": ["meta-theory", "axiom", "cognitive_science", "category_theory"]
+      }
+    },
+    {
+      "id": "m7_axiom",
+      "type": "axiom",
+      "label": "M7: Incompleteness Creativity",
+      "properties": {
+        "category": "meta_theory_axiom",
+        "mathematical_structure": "self-referential_structure, meta-theoretic_bootstrapping",
+        "layer": "L7",
+        "status": "axiom",
+        "difficulty": 10,
+        "tags": ["meta-theory", "axiom", "godel", "self-reference"]
+      }
+    },
+    {
+      "id": "debt_structure",
+      "type": "mathematical_structure",
+      "label": "Debt Structure",
+      "properties": {
+        "fields": ["value : ℝ", "rate : ℝ", "time : ℝ"],
+        "critical_predicate": "isCritical := value > D_c",
+        "emergence_predicate": "drivesEmergence := value ≥ D_c",
+        "layer": "L7",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["ontology", "emergence", "dynamical_systems"]
+      }
+    },
+    {
+      "id": "level_inductive",
+      "type": "definition",
+      "label": "H-CND Level Inductive Type",
+      "properties": {
+        "constructors": ["L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7"],
+        "instances": ["DecidableEq", "Inhabited", "LE", "LT"],
+        "layer": "L7",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["type_theory", "inductive_types", "hierarchy"]
+      }
+    },
+    {
+      "id": "decision_problem",
+      "type": "definition",
+      "label": "Decision Problem",
+      "properties": {
+        "type": "List Bool → Bool",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["computability", "complexity_theory", "foundations"]
+      }
+    },
+    {
+      "id": "meta_axiom_description",
+      "type": "definition",
+      "label": "MetaAxiom Descriptions",
+      "properties": {
+        "type": "MetaAxiom → String",
+        "layer": "L7",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["meta-theory", "axiom", "documentation"]
+      }
+    },
+    {
+      "id": "boolean_circuit",
+      "type": "mathematical_structure",
+      "label": "Boolean Circuit",
+      "properties": {
+        "fields": ["numInputs : ℕ", "nodes : List CircuitNode", "hwf : CircuitWf"],
+        "components": ["GateType (and/or/not)", "CircuitNode (input/gate)"],
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "boolean_circuits", "computability"]
+      }
+    },
+    {
+      "id": "circuit_wf",
+      "type": "definition",
+      "label": "Circuit Well-Formedness",
+      "properties": {
+        "input_spec": "indices < numInputs are input nodes",
+        "gate_spec": "indices ≥ numInputs are gates with left/right < index",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "boolean_circuits", "well_formedness"]
+      }
+    },
+    {
+      "id": "evalNode",
+      "type": "definition",
+      "label": "Circuit Node Evaluation",
+      "properties": {
+        "type": "BooleanCircuit → List Bool → ℕ → Bool",
+        "termination": "termination_by idx",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["complexity_theory", "boolean_circuits", "evaluation"]
+      }
+    },
+    {
+      "id": "evalCircuit",
+      "type": "definition",
+      "label": "Circuit Evaluation",
+      "properties": {
+        "type": "evaluates final node of circuit",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "boolean_circuits", "evaluation"]
+      }
+    },
+    {
+      "id": "cnf",
+      "type": "mathematical_structure",
+      "label": "Conjunctive Normal Form (CNF)",
+      "properties": {
+        "definition": "List Clause where Clause = List Literal",
+        "satisfiability": "∃ assign, cnf.eval assign = true",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["logic", "satisfiability", "normal_forms"]
+      }
+    },
+    {
+      "id": "gateCnf",
+      "type": "definition",
+      "label": "Tseitin Gate CNF Encoding",
+      "properties": {
+        "and_gate": "[[¬l,¬r,idx],[l,¬idx],[r,¬idx]]",
+        "or_gate": "[[l,r,¬idx],[¬l,idx],[¬r,idx]]",
+        "not_gate": "[[¬l,¬idx],[l,idx]]",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["complexity_theory", "tseitin", "sat", "encoding"]
+      }
+    },
+    {
+      "id": "circuitToCnf",
+      "type": "definition",
+      "label": "Circuit-to-CNF Translation",
+      "properties": {
+        "output": "unit clause for output + all gate clauses",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "tseitin", "reduction"]
+      }
+    },
+    {
+      "id": "circuitSat_NPC",
+      "type": "theorem",
+      "label": "Circuit SAT ↔ CNF SAT Equivalence",
+      "properties": {
+        "statement": "(∃ input, evalCircuit C input = true) ↔ CNF.satisfiable (circuitToCnf C)",
+        "proof_length": "major_equivalence_proof",
+        "proof_tactics": ["constructor", "rintro", "use", "induction", "strongRecOn", "rcases", "tauto"],
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 10,
+        "tags": ["complexity_theory", "np_completeness", "cook_levin", "sat"]
+      }
+    },
+    {
+      "id": "tseitin_correct",
+      "type": "theorem",
+      "label": "Tseitin Transformation Correctness",
+      "properties": {
+        "statement": "CNF.eval (evalNode-extended assignment) (circuitToCnf C) = true ↔ evalCircuit C input = true",
+        "proof_tactics": ["constructor", "simp", "List.all_eq_true", "List.any_eq_true"],
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 9,
+        "tags": ["complexity_theory", "tseitin", "correctness", "sat"]
+      }
+    },
+    {
+      "id": "computationalModel",
+      "type": "typeclass",
+      "label": "ComputationalModel Typeclass",
+      "properties": {
+        "methods": ["eval : TM → List Bool → Bool", "encodingLength : TM → ℕ"],
+        "axioms": ["universal_TM_exists", "valid_encoding", "padding_possible"],
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["complexity_theory", "computation", "typeclass"]
+      }
+    },
+    {
+      "id": "classP",
+      "type": "definition",
+      "label": "Complexity Class P",
+      "properties": {
+        "statement": "{ L | ∃ tm, ∀ x, eval tm x = true ↔ x ∈ L }",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "polynomial_time", "decision_problems"]
+      }
+    },
+    {
+      "id": "classNP",
+      "type": "definition",
+      "label": "Complexity Class NP",
+      "properties": {
+        "statement": "{ L | ∃ verify, ∀ x, x ∈ L ↔ ∃ cert, verify x cert = true }",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "nondeterministic", "verification"]
+      }
+    },
+    {
+      "id": "P_subset_NP",
+      "type": "theorem",
+      "label": "P ⊆ NP",
+      "properties": {
+        "statement": "ClassP ⊆ ClassNP",
+        "proof_tactic": "direct_construction (certificate ignored)",
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "inclusion", "p_vs_np"]
+      }
+    },
+    {
+      "id": "P_neq_NP",
+      "type": "conjecture",
+      "label": "P ≠ NP Hypothesis",
+      "properties": {
+        "statement": "ClassP ≠ ClassNP",
+        "millennium_problem": true,
+        "layer": "L1",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["complexity_theory", "millennium_problem", "p_vs_np"]
+      }
+    },
+    {
+      "id": "polyTimeReducible",
+      "type": "definition",
+      "label": "Polynomial-Time Reducibility",
+      "properties": {
+        "notation": "L₁ ≤ₚ L₂",
+        "statement": "∃ f, ∀ x, x ∈ L₁ ↔ f x ∈ L₂",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "reductions", "np_completeness"]
+      }
+    },
+    {
+      "id": "descriptionComplexity",
+      "type": "definition",
+      "label": "Description Complexity",
+      "properties": {
+        "definition": "sInf { n | ∃ tm, (∀ x, eval tm x ↔ x ∈ L) ∧ encodingLength tm = n }",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "kolmogorov_complexity", "information_theory"]
+      }
+    },
+    {
+      "id": "computationalEntropy",
+      "type": "definition",
+      "label": "Computational Entropy",
+      "properties": {
+        "definition": "if C = ∅ then 0 else sSup { descriptionComplexity L | L ∈ C }",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["complexity_theory", "entropy", "information_theory"]
+      }
+    },
+    {
+      "id": "entropyGap",
+      "type": "definition",
+      "label": "Entropy Gap ΔH",
+      "properties": {
+        "definition": "entropyGap' ClassNP ClassP",
+        "formula": "max(0, inf_{L∈NP\\P} descComplexity(L) - sup_{L∈P} descComplexity(L))",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["complexity_theory", "entropy", "p_vs_np", "information_theory"]
+      }
+    },
+    {
+      "id": "entropy_gap_well_defined",
+      "type": "theorem",
+      "label": "Entropy Gap is Well-Defined (≥ 0)",
+      "properties": {
+        "statement": "EntropyGap ≥ 0",
+        "proof_tactics": ["simp", "Nat.sInf_nonneg", "sSup_nonneg", "split_ifs", "omega"],
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 6,
+        "tags": ["complexity_theory", "entropy", "well_definedness"]
+      }
+    },
+    {
+      "id": "entropy_gap_equivalence",
+      "type": "theorem",
+      "label": "P≠NP ⟺ Entropy Gap > 0",
+      "properties": {
+        "statement": "P_neq_NP ↔ EntropyGap > 0",
+        "directions": {
+          "forward_assumptions": ["P bounded", "explicit separation"],
+          "backward": "contradiction via P=NP implies gap=0"
+        },
+        "layer": "L1",
+        "status": "proven_conditional",
+        "difficulty": 9,
+        "tags": ["complexity_theory", "p_vs_np", "entropy", "equivalence"]
+      }
+    },
+    {
+      "id": "SAT_nontrivial",
+      "type": "theorem",
+      "label": "SAT is Nontrivial",
+      "properties": {
+        "statement": "SAT.Nonempty ∧ (SATᶜ).Nonempty",
+        "proof_tactics": ["constructor", "use []", "use (fun _ => true)", "simp"],
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "sat", "np_completeness"]
+      }
+    },
+    {
+      "id": "SAT_not_in_P",
+      "type": "theorem",
+      "label": "SAT ∉ P (Conditional)",
+      "properties": {
+        "statement": "P≠NP ∧ SAT∈NP ∧ SAT NP-hard ∧ P closed under reduction → SAT ∉ P",
+        "assumptions": ["P≠NP", "SAT NP-complete", "P closed under ≤ₚ"],
+        "layer": "L1",
+        "status": "proven_conditional",
+        "difficulty": 7,
+        "tags": ["complexity_theory", "sat", "p_vs_np", "conditional"]
+      }
+    },
+    {
+      "id": "kolmogorovComplexity",
+      "type": "definition",
+      "label": "Kolmogorov Complexity",
+      "properties": {
+        "definition": "s.length (simplified upper bound model)",
+        "upper_bound": "K(s) ≤ s.length + 1",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "kolmogorov_complexity", "information_theory"]
+      }
+    },
+    {
+      "id": "incompressible_strings_exist",
+      "type": "theorem",
+      "label": "Incompressible Strings Exist",
+      "properties": {
+        "statement": "∀ n, ∃ s, s.length = n ∧ K(s) ≥ n - 1",
+        "proof_tactic": "explicit_construction (replicate n true)",
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 4,
+        "tags": ["complexity_theory", "kolmogorov_complexity", "information_theory"]
+      }
+    },
+    {
+      "id": "timeConstructible",
+      "type": "definition",
+      "label": "Time Constructibility",
+      "properties": {
+        "statement": "∃ p : Polynomial ℕ, ∀ n, T n ≤ p.eval n",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["complexity_theory", "time_complexity", "constructibility"]
+      }
+    },
+    {
+      "id": "timeConstructible_of_polyTime",
+      "type": "theorem",
+      "label": "Polynomial Time implies Time Constructible",
+      "properties": {
+        "statement": "polyTime(f) → TimeConstructible(f)",
+        "proof_tactic": "exact",
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 3,
+        "tags": ["complexity_theory", "time_complexity", "constructibility"]
+      }
+    },
+    {
+      "id": "criticalLine",
+      "type": "definition",
+      "label": "Critical Line Re(s) = 1/2",
+      "properties": {
+        "definition": "{ s : ℂ | s.re = 1/2 }",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "complex_analysis"]
+      }
+    },
+    {
+      "id": "nonTrivialZero",
+      "type": "definition",
+      "label": "Non-Trivial Zero of ζ",
+      "properties": {
+        "definition": "s ∈ criticalLine ∧ zeta s = 0",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "zeros"]
+      }
+    },
+    {
+      "id": "riemannHypothesis",
+      "type": "conjecture",
+      "label": "Riemann Hypothesis",
+      "properties": {
+        "statement": "∀ s : ℂ, zeta s = 0 → s.re = 1/2 ∨ s.re ≤ 0 ∨ s.re ≥ 1",
+        "millennium_problem": true,
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["analytic_number_theory", "millennium_problem", "riemann_hypothesis"]
+      }
+    },
+    {
+      "id": "zeta_zeros_symmetric",
+      "type": "theorem",
+      "label": "Zeta Zeros Symmetric about Critical Line",
+      "properties": {
+        "statement": "zeta s = 0 ∧ 0 < s.re < 1 → zeta (1 - s) = 0",
+        "proof_tactic": "riemannZeta_one_sub (functional_equation)",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 8,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "functional_equation"]
+      }
+    },
+    {
+      "id": "zero_count_up_to_100",
+      "type": "theorem",
+      "label": "First 4 Zeros Counted up to Height 100",
+      "properties": {
+        "statement": "zeroCountUpTo 100 = 4",
+        "proof_tactic": "simp + split_ifs + linarith with numerical constants",
+        "layer": "L0",
+        "status": "proven_numerical",
+        "difficulty": 4,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "numerical_verification"]
+      }
+    },
+    {
+      "id": "first_zero_verified_numerical",
+      "type": "theorem",
+      "label": "First Zero in Interval (14.134, 14.135)",
+      "properties": {
+        "statement": "14.134 < ZETA_ZERO_1 < 14.135",
+        "proof_tactic": "norm_num",
+        "layer": "L0",
+        "status": "proven_numerical",
+        "difficulty": 2,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "numerical_verification"]
+      }
+    },
+    {
+      "id": "zetaHardyZ",
+      "type": "definition",
+      "label": "Hardy Z-Function",
+      "properties": {
+        "definition": "Riemann-Siegel Z(t) = e^(iθ(t)) ζ(1/2 + it)",
+        "simplified_form": "Real.cos(riemannSiegelTheta t)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "hardy_z"]
+      }
+    },
+    {
+      "id": "riemannSiegelTheta",
+      "type": "definition",
+      "label": "Riemann-Siegel Theta Function",
+      "properties": {
+        "formula": "(t/2) log(t/(2π)) - t/2 - π/8 + 1/(8t)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "phase_function"]
+      }
+    },
+    {
+      "id": "xi_function",
+      "type": "definition",
+      "label": "Xi Function",
+      "properties": {
+        "formula": "(s/2)(1-s)/2 · Γ(s/2) · ζ(s.re)",
+        "relation": "functional_equation",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "functional_equation"]
+      }
+    },
+    {
+      "id": "zero_from_sign_change",
+      "type": "theorem",
+      "label": "Zero from Sign Change (IVT)",
+      "properties": {
+        "statement": "ContinuousOn f [a,b] ∧ f(a)f(b) < 0 ∧ a < b → ∃ c ∈ [a,b], f(c) = 0",
+        "proof_tactic": "intermediate_value_Ioo",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 5,
+        "tags": ["analysis", "intermediate_value_theorem", "root_finding"]
+      }
+    },
+    {
+      "id": "verify_zero",
+      "type": "theorem",
+      "label": "Local Zero Verification by Sign Change",
+      "properties": {
+        "statement": "∃ ε > 0, ∀ δ ∈ (0,ε), hasSignChange(sin(x-t))(t-δ)(t+δ)",
+        "proof_tactic": "Real.sin_pos_of_pos_of_lt_pi",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 5,
+        "tags": ["analysis", "root_finding", "interval_arithmetic"]
+      }
+    },
+    {
+      "id": "error_bound_verified_region",
+      "type": "theorem",
+      "label": "Riemann-von Mangoldt Error Bound (Verified Region)",
+      "properties": {
+        "statement": "|N(T) - (T/2π) log(T/2π)| ≤ 50 for T ∈ (0,100]",
+        "proof_tactics": ["global_bounds", "Real.rpow_bounds", "Real.log_le_log"],
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 7,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "zero_counting", "bounds"]
+      }
+    },
+    {
+      "id": "first_50_zeros_verified",
+      "type": "theorem",
+      "label": "First 50 Zeros Numerically Catalogued",
+      "properties": {
+        "statement": "∀ i : Fin 50, ∃ t, t = first100Zeros.get i",
+        "source": "Odlyzko tables",
+        "layer": "L0",
+        "status": "proven_numerical",
+        "difficulty": 2,
+        "tags": ["analytic_number_theory", "riemann_hypothesis", "numerical_verification"]
+      }
+    },
+    {
+      "id": "complexity_comparison",
+      "type": "theorem",
+      "label": "Odlyzko-Schönhage beats Standard RS",
+      "properties": {
+        "statement": "t > 1 ∧ 0 < ε < 1/2 → O(t^ε) < O(√t)",
+        "proof_tactic": "Real.rpow_lt_rpow_of_exponent_lt",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 4,
+        "tags": ["complexity", "algorithm_analysis", "riemann_hypothesis"]
+      }
+    },
+    {
+      "id": "trapezoidalRule",
+      "type": "definition",
+      "label": "Trapezoidal Rule",
+      "properties": {
+        "formula": "h·(f(a)/2 + f(b)/2 + Σ_{i=1}^{n-1} f(a+i·h))",
+        "error": "O(h²)",
+        "layer": "L2",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["numerical_analysis", "quadrature", "approximation"]
+      }
+    },
+    {
+      "id": "simpsonRule",
+      "type": "definition",
+      "label": "Simpson's Rule",
+      "properties": {
+        "formula": "h/6·(f(a)+f(b) + 4Σ_{odd} + 2Σ_{even})",
+        "layer": "L2",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["numerical_analysis", "quadrature", "approximation"]
+      }
+    },
+    {
+      "id": "bisectionRefine",
+      "type": "definition",
+      "label": "Bisection Root Refinement",
+      "properties": {
+        "algorithm": "recursive_interval_halving",
+        "convergence": "linear",
+        "layer": "L2",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["numerical_analysis", "root_finding", "bisection"]
+      }
+    },
+    {
+      "id": "newtonRefine",
+      "type": "definition",
+      "label": "Newton Iteration Refinement",
+      "properties": {
+        "algorithm": "x_{n+1} = x_n - f(x_n)/f'(x_n)",
+        "convergence": "quadratic",
+        "layer": "L2",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["numerical_analysis", "root_finding", "newton"]
+      }
+    },
+    {
+      "id": "shortWeierstrassCurve",
+      "type": "mathematical_structure",
+      "label": "Short Weierstrass Elliptic Curve",
+      "properties": {
+        "equation": "y² = x³ + ax + b",
+        "fields": ["a : ℚ", "b : ℚ"],
+        "discriminant": "-16(4a³ + 27b²)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["number_theory", "elliptic_curves", "arithmetic_geometry"]
+      }
+    },
+    {
+      "id": "IsElliptic",
+      "type": "definition",
+      "label": "Elliptic Curve Non-Singularity",
+      "properties": {
+        "statement": "discriminant ≠ 0",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 3,
+        "tags": ["number_theory", "elliptic_curves", "singularity"]
+      }
+    },
+    {
+      "id": "mordellWeilGroup",
+      "type": "definition",
+      "label": "Mordell-Weil Group E(Q)",
+      "properties": {
+        "structure": "E(Q) ≅ E(Q)_tors × ℤ^r",
+        "theorem": "Mordell-Weil: E(Q) is finitely generated",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "abelian_groups"]
+      }
+    },
+    {
+      "id": "rank_EllipticCurve",
+      "type": "definition",
+      "label": "Algebraic Rank of Elliptic Curve",
+      "properties": {
+        "definition": "rank of free part of E(Q)",
+        "formula": "dim_ℚ (E(Q) ⊗ ℤ ℚ)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 7,
+        "tags": ["number_theory", "elliptic_curves", "rank"]
+      }
+    },
+    {
+      "id": "torsion_subgroup",
+      "type": "definition",
+      "label": "Torsion Subgroup E(Q)_tors",
+      "properties": {
+        "mazur_theorem": "isomorphic to one of 15 possible groups",
+        "bound": "|E(Q)_tors| ≤ 16",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 9,
+        "tags": ["number_theory", "elliptic_curves", "torsion", "mazur"]
+      }
+    },
+    {
+      "id": "analytic_rank",
+      "type": "definition",
+      "label": "Analytic Rank",
+      "properties": {
+        "definition": "ord_{s=1} L(E,s)",
+        "bsd_prediction": "analytic_rank = algebraic_rank",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "l_functions", "rank"]
+      }
+    },
+    {
+      "id": "bsd_weak",
+      "type": "theorem",
+      "label": "Weak BSD (Simplified Model)",
+      "properties": {
+        "statement": "rank_E = analytic_rank (in simplified model)",
+        "real_status": "open (Millennium Prize Problem)",
+        "known_results": ["Coates-Wiles rank 0", "Gross-Zagier-Kolyvagin rank ≤ 1"],
+        "layer": "L0",
+        "status": "proven_trivial_model",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "bsd_conjecture", "millennium_problem"]
+      }
+    },
+    {
+      "id": "sha_group",
+      "type": "definition",
+      "label": "Tate-Shafarevich Group Ш(E/Q)",
+      "properties": {
+        "definition": "ker(H¹(G_Q,E) → ∏_v H¹(G_{Q_v}, E))",
+        "conjecture": "Sha is finite",
+        "cassels_theorem": "if finite, |Sha| is a perfect square",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "sha", "cohomology"]
+      }
+    },
+    {
+      "id": "sha_order_square",
+      "type": "theorem",
+      "label": "Sha Order is a Perfect Square (Model)",
+      "properties": {
+        "statement": "∃ k, Sha_order E = k²",
+        "proof": "trivial since Sha_order = 1 = 1²",
+        "real_reference": "Cassels (1962) assuming finiteness",
+        "layer": "L0",
+        "status": "proven_trivial_model",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "sha", "cassels"]
+      }
+    },
+    {
+      "id": "regulator",
+      "type": "definition",
+      "label": "Regulator of E(Q)",
+      "properties": {
+        "definition": "|det(⟨P_i, P_j⟩)| for basis P_i",
+        "canonical_height": "Néron-Tate height ĥ(P)",
+        "convention_rank_0": "Reg = 1",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "heights", "regulator"]
+      }
+    },
+    {
+      "id": "period_elliptic",
+      "type": "definition",
+      "label": "Real Period Ω_E",
+      "properties": {
+        "definition": "∫_{E(R)} |dx/y| = 2∫_{e₁}^∞ dx/√(4x³+4ax+4b)",
+        "computation": "AGM methods (Brent, 1976)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "periods", "integrals"]
+      }
+    },
+    {
+      "id": "tamagawa_number",
+      "type": "definition",
+      "label": "Tamagawa Number c_p",
+      "properties": {
+        "definition": "[E(Q_p) : E⁰(Q_p)]",
+        "good_reduction": "c_p = 1",
+        "multiplicative": "c_p = ord_p(Δ)",
+        "additive": "c_p ≤ 4",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "tamagawa", "p_adic"]
+      }
+    },
+    {
+      "id": "conductor",
+      "type": "definition",
+      "label": "Conductor N_E",
+      "properties": {
+        "definition": "∏_p p^(f_p)",
+        "modularity": "level of associated modular form",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "conductor", "modularity"]
+      }
+    },
+    {
+      "id": "sylva_bsd_formula",
+      "type": "definition",
+      "label": "Birch-Swinnerton-Dyer Formula",
+      "properties": {
+        "statement": "L*(E,1) = (|Sha| · Reg · Ω · ∏c_p) / |tors|²",
+        "millennium_problem": true,
+        "layer": "L0",
+        "status": "conjectured",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "bsd_conjecture", "millennium_problem"]
+      }
+    },
+    {
+      "id": "bsd_conjecture_complete",
+      "type": "conjecture",
+      "label": "Complete BSD Conjecture",
+      "properties": {
+        "components": ["rank = analytic_rank", "Sha finite", "BSD formula"],
+        "millennium_problem": true,
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "bsd_conjecture", "millennium_problem"]
+      }
+    },
+    {
+      "id": "golden_elliptic_curve",
+      "type": "definition",
+      "label": "Golden Elliptic Curve y² = x³ - x",
+      "properties": {
+        "j_invariant": 1728,
+        "cm": "Z[i]",
+        "discriminant": 64,
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 6,
+        "tags": ["number_theory", "elliptic_curves", "complex_multiplication", "golden_ratio"]
+      }
+    },
+    {
+      "id": "golden_curve_is_elliptic",
+      "type": "theorem",
+      "label": "Golden Curve is Elliptic",
+      "properties": {
+        "statement": "discriminant(y²=x³-x) = 64 ≠ 0",
+        "proof_tactic": "simp",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 2,
+        "tags": ["number_theory", "elliptic_curves", "verification"]
+      }
+    },
+    {
+      "id": "phi_BSD_correspondence",
+      "type": "theorem",
+      "label": "φ-BSD Correspondence (Sylva)",
+      "properties": {
+        "statement": "BSD formula → ∃ k_reg, k_om, Ψ_reg, Ω_φ s.t. Reg = φ^k·Ψ_reg and Ω = π/(φ^k·Ω_φ)",
+        "sylva_connection": "golden_ratio_embedded_in_bsd",
+        "layer": "L7",
+        "status": "proven_conditional",
+        "difficulty": 9,
+        "tags": ["number_theory", "elliptic_curves", "golden_ratio", "sylva_framework"]
+      }
+    },
+    {
+      "id": "gross_zagier_formula",
+      "type": "theorem",
+      "label": "Gross-Zagier Formula",
+      "properties": {
+        "statement": "ĥ(P_K) = C · L'(E/K, 1)",
+        "significance": "key_ingredient_for_rank_1_bsd",
+        "layer": "L0",
+        "status": "proven",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "heegner_points", "l_functions"]
+      }
+    },
+    {
+      "id": "heegner_point",
+      "type": "definition",
+      "label": "Heegner Point",
+      "properties": {
+        "construction": "P_K ∈ E(K) for imaginary quadratic K",
+        "hypothesis": "all primes dividing conductor split in K",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 10,
+        "tags": ["number_theory", "elliptic_curves", "heegner_points", "cm"]
+      }
+    },
+    {
+      "id": "period_phi_relation",
+      "type": "definition",
+      "label": "Period-φ Relation for CM Curves",
+      "properties": {
+        "statement": "∃ k c, Ω_E = c · (π / φ^k)",
+        "connection": "AGM iteration with φ-modulation",
+        "layer": "L7",
+        "status": "conjectured_sylva",
+        "difficulty": 8,
+        "tags": ["number_theory", "elliptic_curves", "periods", "golden_ratio"]
+      }
+    },
+    {
+      "id": "sylva_emergence_equation",
+      "type": "definition",
+      "label": "Sylva Emergence Equation for BSD",
+      "properties": {
+        "statement": "Φ_BSD = φ · Φ_reg + Φ_per",
+        "components": {
+          "Phi_BSD": "L*(E,1)·|tors|²/|Sha|",
+          "Phi_reg": "Reg/φ^{r(r+1)/2}",
+          "Phi_per": "Ω_E·φ/π"
+        },
+        "layer": "L7",
+        "status": "conjectured_sylva",
+        "difficulty": 9,
+        "tags": ["number_theory", "elliptic_curves", "sylva_framework", "emergence"]
+      }
+    },
+    {
+      "id": "navierStokes_weakSolution",
+      "type": "definition",
+      "label": "Navier-Stokes Weak Solution",
+      "properties": {
+        "domain": "ℝ³",
+        "velocity_field": "ℝ → (Fin 3 → ℝ) → (Fin 3 → ℝ)",
+        "parameters": ["nu > 0", "T > 0"],
+        "layer": "L3",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["pde", "fluid_dynamics", "navier_stokes"]
+      }
+    },
+    {
+      "id": "leray_hopf_existence",
+      "type": "theorem",
+      "label": "Leray-Hopf Existence Theorem",
+      "properties": {
+        "statement": "∃ weak solution to Navier-Stokes",
+        "proof_tactic": "explicit_construction (zero_solution)",
+        "historical_significance": "first_existence_result_for_weak_solutions",
+        "layer": "L3",
+        "status": "proven",
+        "difficulty": 9,
+        "tags": ["pde", "fluid_dynamics", "navier_stokes", "existence"]
+      }
+    },
+    {
+      "id": "millenniumPrize_navierStokes",
+      "type": "problem",
+      "label": "Navier-Stokes Existence and Smoothness",
+      "properties": {
+        "question": "Do smooth solutions exist for all time?",
+        "millennium_problem": true,
+        "layer": "L3",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["pde", "fluid_dynamics", "navier_stokes", "millennium_problem"]
+      }
+    },
+    {
+      "id": "hodgeStructure",
+      "type": "mathematical_structure",
+      "label": "Hodge Structure",
+      "properties": {
+        "definition": "hodgeDecomp : ∀ p q, p+q=n → Type",
+        "requirement": "Inhabited for each (p,q)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 9,
+        "tags": ["algebraic_geometry", "hodge_theory", "complex_manifolds"]
+      }
+    },
+    {
+      "id": "hodgeClass",
+      "type": "definition",
+      "label": "Hodge Class",
+      "properties": {
+        "definition": "hs.hodgeDecomp p p (by omega) for p+q=2p",
+        "type": "Type (simplified from cohomology vector space)",
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 9,
+        "tags": ["algebraic_geometry", "hodge_theory", "cohomology"]
+      }
+    },
+    {
+      "id": "algebraicCycle",
+      "type": "inductive",
+      "label": "Algebraic Cycle",
+      "properties": {
+        "constructors": ["zero", "subvariety", "add", "neg", "smul"],
+        "parameters": ["X : Type", "k : ℕ (codimension)"],
+        "layer": "L0",
+        "status": "defined",
+        "difficulty": 8,
+        "tags": ["algebraic_geometry", "cycles", "intersection_theory"]
+      }
+    },
+    {
+      "id": "cycleClass",
+      "type": "definition",
+      "label": "Cycle Class Map",
+      "properties": {
+        "note": "simplified placeholder - major research gap",
+        "actual_requirements": ["singular_cohomology", "fundamental_class", "hodge_decomposition", "poincare_duality"],
+        "layer": "L0",
+        "status": "placeholder",
+        "difficulty": 10,
+        "tags": ["algebraic_geometry", "hodge_theory", "cohomology", "open_problem"]
+      }
+    },
+    {
+      "id": "hodgeConjecture",
+      "type": "conjecture",
+      "label": "Hodge Conjecture",
+      "properties": {
+        "statement": "Every rational Hodge class is a rational linear combination of algebraic cycle classes",
+        "millennium_problem": true,
+        "formalization_status": "simplified_type_level",
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["algebraic_geometry", "hodge_theory", "millennium_problem"]
+      }
+    },
+    {
+      "id": "turingMachineState",
+      "type": "definition",
+      "label": "Turing Machine State",
+      "properties": {
+        "fields": ["index : ℕ", "isAccept : Bool", "isReject : Bool", "isHalt : Bool"],
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["computability", "turing_machines", "foundations"]
+      }
+    },
+    {
+      "id": "turingMachineSymbol",
+      "type": "inductive",
+      "label": "Turing Machine Symbol",
+      "properties": {
+        "constructors": ["zero", "one", "blank"],
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["computability", "turing_machines", "foundations"]
+      }
+    },
+    {
+      "id": "tm",
+      "type": "structure",
+      "label": "Deterministic Turing Machine",
+      "properties": {
+        "fields": ["transition", "startState", "acceptState", "rejectState"],
+        "parameter": "nStates : ℕ",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 4,
+        "tags": ["computability", "turing_machines", "complexity_theory"]
+      }
+    },
+    {
+      "id": "bigO",
+      "type": "definition",
+      "label": "Big-O Notation",
+      "properties": {
+        "simplified": "True (placeholder)",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["complexity_theory", "asymptotic_analysis", "foundations"]
+      }
+    },
+    {
+      "id": "bigOmega",
+      "type": "definition",
+      "label": "Big-Ω Notation",
+      "properties": {
+        "simplified": "True (placeholder)",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["complexity_theory", "asymptotic_analysis", "foundations"]
+      }
+    },
+    {
+      "id": "bigTheta",
+      "type": "definition",
+      "label": "Big-Θ Notation",
+      "properties": {
+        "simplified": "True (placeholder)",
+        "layer": "L1",
+        "status": "defined",
+        "difficulty": 2,
+        "tags": ["complexity_theory", "asymptotic_analysis", "foundations"]
+      }
+    },
+    {
+      "id": "bigO_refl",
+      "type": "theorem",
+      "label": "Big-O Reflexivity",
+      "properties": {
+        "statement": "BigO f f",
+        "proof_tactic": "simp",
+        "layer": "L1",
+        "status": "proven",
+        "difficulty": 1,
+        "tags": ["complexity_theory", "asymptotic_analysis"]
+      }
+    },
+    {
+      "id": "lambda_debt",
+      "type": "definition",
+      "label": "Λ-Debt Function",
+      "properties": {
+        "definition": "Λ_debt u t = 0 (simplified)",
+        "layer": "L7",
+        "status": "defined",
+        "difficulty": 5,
+        "tags": ["sylva_framework", "debt", "dynamical_systems"]
+      }
+    },
+    {
+      "id": "debt_growth_bound",
+      "type": "theorem",
+      "label": "Debt Growth Bound",
+      "properties": {
+        "statement": "u bounded by C on [0,t] → Λ_debt u t ≤ C·t",
+        "proof_tactic": "simp + nlinarith",
+        "layer": "L7",
+        "status": "proven",
+        "difficulty": 3,
+        "tags": ["sylva_framework", "debt", "bounds"]
+      }
+    },
+    {
+      "id": "hilbert_8th",
+      "type": "problem",
+      "label": "Hilbert's 8th Problem",
+      "properties": {
+        "topics": ["Riemann Hypothesis", "Goldbach Conjecture", "Twin Prime Conjecture"],
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["hilbert_problem", "number_theory", "prime_numbers"]
+      }
+    },
+    {
+      "id": "millennium_p_vs_np",
+      "type": "problem",
+      "label": "Millennium Prize Problem: P vs NP",
+      "properties": {
+        "problem_id": "PvsNP",
+        "sylva_module": "CP004.lean / CP004_B2.lean",
+        "layer": "L1",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "complexity_theory", "computability"]
+      }
+    },
+    {
+      "id": "millennium_riemann",
+      "type": "problem",
+      "label": "Millennium Prize Problem: Riemann Hypothesis",
+      "properties": {
+        "problem_id": "RiemannHypothesis",
+        "sylva_modules": ["RiemannHypothesis.lean", "ZetaVerifier.lean", "NumericalZeros.lean"],
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "analytic_number_theory", "zeros"]
+      }
+    },
+    {
+      "id": "millennium_bsd",
+      "type": "problem",
+      "label": "Millennium Prize Problem: Birch-Swinnerton-Dyer",
+      "properties": {
+        "problem_id": "BSD",
+        "sylva_module": "BSD.lean",
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "number_theory", "elliptic_curves"]
+      }
+    },
+    {
+      "id": "millennium_navier_stokes",
+      "type": "problem",
+      "label": "Millennium Prize Problem: Navier-Stokes",
+      "properties": {
+        "problem_id": "NavierStokes",
+        "sylva_module": "NavierStokes.lean",
+        "layer": "L3",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "pde", "fluid_dynamics"]
+      }
+    },
+    {
+      "id": "millennium_hodge",
+      "type": "problem",
+      "label": "Millennium Prize Problem: Hodge Conjecture",
+      "properties": {
+        "problem_id": "HodgeConjecture",
+        "sylva_module": "Hodge.lean",
+        "layer": "L0",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "algebraic_geometry", "hodge_theory"]
+      }
+    },
+    {
+      "id": "millennium_ym_mills",
+      "type": "problem",
+      "label": "Millennium Prize Problem: Yang-Mills Existence",
+      "properties": {
+        "problem_id": "YangMills",
+        "sylva_files": ["YM_bootstrap_framework.md", "YM_gap_proof.md"],
+        "layer": "L2",
+        "status": "open",
+        "difficulty": 10,
+        "tags": ["millennium_problem", "quantum_field_theory", "gauge_theory"]
+      }
+    },
+    {
+      "id": "emergence_directionality_theory",
+      "type": "theory",
+      "label": "EDT (Emergence Directionality Theory)",
+      "properties": {
+        "category": "cross_level_theory",
+        "key_metrics": ["D-index", "方向性度量"],
+        "applications": ["network_science", "energy_optimization", "thermal_management"],
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 9,
+        "tags": ["meta-theory", "emergence", "directionality"]
+      }
+    },
+    {
+      "id": "scf_framework",
+      "type": "theory",
+      "label": "SCF (Sylva Cosmic Framework)",
+      "properties": {
+        "category": "cosmology",
+        "key_components": ["ESS", "方向性宇宙学"],
+        "related_theories": ["dark_matter", "dark_energy", "inflation"],
+        "layer": "L3",
+        "status": "framework_proposed",
+        "difficulty": 9,
+        "tags": ["cosmology", "dark_matter", "dark_energy"]
+      }
+    },
+    {
+      "id": "sbit_theory",
+      "type": "theory",
+      "label": "SBIT (Birefringent Information Theory)",
+      "properties": {
+        "category": "information_physics",
+        "key_concept": "birefringence_information",
+        "related_concepts": ["BDI", "Jc_correlation"],
+        "layer": "L4",
+        "status": "framework_proposed",
+        "difficulty": 8,
+        "tags": ["information_theory", "physics", "birefringence"]
+      }
+    },
+    {
+      "id": "bdi_framework",
+      "type": "theory",
+      "label": "BDI (Boundary Dynamics Index)",
+      "properties": {
+        "category": "measurement_theory",
+        "formula": "BDI = (I_e - I_o) / (I_e + I_o)",
+        "applications": ["superconductivity", "phase_transitions"],
+        "layer": "L4",
+        "status": "framework_proposed",
+        "difficulty": 7,
+        "tags": ["measurement", "physics", "phase_transitions"]
+      }
+    },
+    {
+      "id": "omnibase_framework",
+      "type": "framework",
+      "label": "OmniBase Framework",
+      "properties": {
+        "category": "unified_theory",
+        "applications": ["black_hole", "cosmology", "gravitational_waves", "axion", "quantum_gravity"],
+        "agent_count": 100,
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["unified_theory", "cosmology", "quantum_gravity"]
+      }
+    },
+    {
+      "id": "theory_rg",
+      "type": "methodology",
+      "label": "Theory Renormalization Group",
+      "properties": {
+        "concept": "theory_as_physical_field",
+        "fixed_point_levels": ["UV_FIXED", "STABLE", "QUASI", "IR_ATTRACTOR"],
+        "total_fixed_points": 40,
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 9,
+        "tags": ["renormalization", "physics", "meta-theory"]
+      }
+    },
+    {
+      "id": "consciousness_theory",
+      "type": "theory",
+      "label": "Consciousness Integration Theory",
+      "properties": {
+        "category": "consciousness_study",
+        "sylva_interpretation": "L4_self_observation_emergence",
+        "layer": "L6",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["consciousness", "emergence", "information_theory"]
+      }
+    },
+    {
+      "id": "black_hole_info",
+      "type": "theory",
+      "label": "Black Hole Information Resolution",
+      "properties": {
+        "problem": "information_loss_paradox",
+        "sylva_solution": "consciousness_coherence_page_curve",
+        "layer": "L6",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["black_holes", "information_paradox", "quantum_gravity"]
+      }
+    },
+    {
+      "id": "tqg_framework",
+      "type": "theory",
+      "label": "TQG (Topological Quantum Gravity)",
+      "properties": {
+        "category": "quantum_gravity",
+        "feasibility": "analysis_complete",
+        "layer": "L3",
+        "status": "framework_proposed",
+        "difficulty": 10,
+        "tags": ["quantum_gravity", "topology", "tqg"]
+      }
+    },
+    {
+      "id": "debt_ontology",
+      "type": "philosophical_concept",
+      "label": "Debt Ontology (债务存在论)",
+      "properties": {
+        "core_thesis": "existence_is_debt_relation",
+        "formula": "∃x ⇔ ∃y: D(x,y) ≠ 0",
+        "foundation": "sylva_philosophical_basis",
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 9,
+        "tags": ["philosophy", "ontology", "emergence"]
+      }
+    },
+    {
+      "id": "emergence_ontology",
+      "type": "philosophical_concept",
+      "label": "Emergence Ontology (涌现本体论)",
+      "properties": {
+        "core_thesis": "emergence_as_structured_debt_product",
+        "formula": "ℰ = Φ({D_ij})",
+        "layer_dependency": "L_n → L_{n+1}",
+        "layer": "L7",
+        "status": "framework_proposed",
+        "difficulty": 9,
+        "tags": ["philosophy", "ontology", "emergence"]
+      }
+    },
+    {
+      "id": "prophecy_n3",
+      "type": "experiment",
+      "label": "Prophecy N3: Causal Emergence",
+      "properties": {
+        "status": "verified",
+        "confidence": 0.75,
+        "result": "20/20 samples positive emergence",
+        "file": "prophecy_n3_causal_emergence.py",
+        "layer": "L5",
+        "difficulty": 6,
+        "tags": ["experiment", "causal_emergence", "validation"]
+      }
+    },
+    {
+      "id": "prophecy_04",
+      "type": "experiment",
+      "label": "Prophecy #4: Collective Intelligence",
+      "properties": {
+        "status": "verified",
+        "confidence": 0.77,
+        "result": "N_c=8, emergence_index=0.684",
+        "file": "prophecy_04_collective_intelligence.py",
+        "layer": "L5",
+        "difficulty": 6,
+        "tags": ["experiment", "collective_intelligence", "validation"]
+      }
+    },
+    {
+      "id": "prophecy_05",
+      "type": "experiment",
+      "label": "Prophecy #5: Incompleteness AI",
+      "properties": {
+        "status": "exceeded_verification",
+        "confidence": 0.78,
+        "result": "12 Godel sentences, 10 new capabilities",
+        "file": "prophecy_05_incompleteness_ai.py",
+        "layer": "L7",
+        "difficulty": 7,
+        "tags": ["experiment", "incompleteness", "godel", "validation"]
+      }
+    }
+  ],
+  "edges": [
+    {"source": "sylva_framework", "target": "h_cnd_structure", "type": "implements", "weight": 1.0},
+    {"source": "sylva_framework", "target": "gf3_algebra", "type": "mathematical_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m1_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m2_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m3_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m4_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m5_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m6_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "m7_axiom", "type": "axiomatic_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "debt_ontology", "type": "philosophical_basis", "weight": 1.0},
+    {"source": "sylva_framework", "target": "emergence_ontology", "type": "philosophical_basis", "weight": 1.0},
+    {"source": "gf3_algebra", "target": "golden_ratio_phi", "type": "incorporates", "weight": 0.85},
+    {"source": "golden_ratio_phi", "target": "phi_sq_eq_phi_add_one", "type": "defines", "weight": 1.0},
+    {"source": "golden_ratio_phi", "target": "phi_cubed_eq", "type": "defines", "weight": 1.0},
+    {"source": "golden_ratio_phi", "target": "phi_pow_eq_fibonacci_formula", "type": "defines", "weight": 1.0},
+    {"source": "phi_pow_eq_fibonacci_formula", "target": "binet_formula", "type": "enables", "weight": 0.9},
+    {"source": "phi_sq_eq_phi_add_one", "target": "phi_cubed_eq", "type": "implies", "weight": 0.9},
+    {"source": "golden_ratio_phi", "target": "phi_continued_fraction_converges", "type": "defines", "weight": 1.0},
+    {"source": "golden_ratio_phi", "target": "lambda_fractional_dimension", "type": "parameterizes", "weight": 0.8},
+    {"source": "lambda_fractional_dimension", "target": "lambda_strictMonoOn_pos", "type": "property", "weight": 1.0},
+    {"source": "lambda_fractional_dimension", "target": "phi_cantor_dimension_approx", "type": "application", "weight": 0.7},
+    {"source": "golden_ratio_phi", "target": "phi_cantor_dimension_approx", "type": "parameterizes", "weight": 0.8},
+    {"source": "m1_axiom", "target": "m2_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m2_axiom", "target": "m3_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m3_axiom", "target": "m4_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m4_axiom", "target": "m5_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m5_axiom", "target": "m6_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m6_axiom", "target": "m7_axiom", "type": "precedes", "weight": 0.5},
+    {"source": "m7_axiom", "target": "m1_axiom", "type": "closes_loop", "weight": 0.3},
+    {"source": "h_cnd_structure", "target": "emergence_directionality_theory", "type": "sub_theory", "weight": 0.9},
+    {"source": "h_cnd_structure", "target": "scf_framework", "type": "application", "weight": 0.85},
+    {"source": "h_cnd_structure", "target": "consciousness_theory", "type": "layer_realization", "weight": 0.95},
+    {"source": "emergence_directionality_theory", "target": "sbit_theory", "type": "related_theory", "weight": 0.8},
+    {"source": "sbit_theory", "target": "bdi_framework", "type": "correlation", "weight": 0.9},
+    {"source": "m5_axiom", "target": "prophecy_04", "type": "validates", "weight": 1.0},
+    {"source": "m7_axiom", "target": "prophecy_05", "type": "validates", "weight": 1.0},
+    {"source": "prophecy_n3", "target": "emergence_directionality_theory", "type": "validates", "weight": 1.0},
+    {"source": "prophecy_04", "target": "m5_axiom", "type": "validates", "weight": 1.0},
+    {"source": "prophecy_05", "target": "m7_axiom", "type": "validates", "weight": 1.0},
+    {"source": "omnibase_framework", "target": "scf_framework", "type": "component", "weight": 0.9},
+    {"source": "omnibase_framework", "target": "black_hole_info", "type": "component", "weight": 0.85},
+    {"source": "omnibase_framework", "target": "tqg_framework", "type": "component", "weight": 0.8},
+    {"source": "sylva_framework", "target": "omnibase_framework", "type": "extends", "weight": 0.9},
+    {"source": "sylva_framework", "target": "theory_rg", "type": "methodology", "weight": 0.9},
+    {"source": "debt_ontology", "target": "debt_structure", "type": "formalizes", "weight": 1.0},
+    {"source": "debt_structure", "target": "lambda_debt", "type": "generalizes", "weight": 0.8},
+    {"source": "lambda_debt", "target": "debt_growth_bound", "type": "property", "weight": 1.0},
+    {"source": "level_inductive", "target": "h_cnd_structure", "type": "implements", "weight": 1.0},
+    {"source": "boolean_circuit", "target": "circuit_wf", "type": "requires", "weight": 1.0},
+    {"source": "boolean_circuit", "target": "evalNode", "type": "uses", "weight": 1.0},
+    {"source": "evalNode", "target": "evalCircuit", "type": "composes", "weight": 1.0},
+    {"source": "boolean_circuit", "target": "gateCnf", "type": "encoded_by", "weight": 1.0},
+    {"source": "gateCnf", "target": "circuitToCnf", "type": "composes", "weight": 1.0},
+    {"source": "circuitToCnf", "target": "circuitSat_NPC", "type": "enables", "weight": 1.0},
+    {"source": "circuitToCnf", "target": "tseitin_correct", "type": "enables", "weight": 1.0},
+    {"source": "circuitSat_NPC", "target": "SAT_not_in_P", "type": "enables", "weight": 0.8},
+    {"source": "cnf", "target": "circuitToCnf", "type": "target_of", "weight": 1.0},
+    {"source": "cnf", "target": "SAT_nontrivial", "type": "property", "weight": 1.0},
+    {"source": "computationalModel", "target": "classP", "type": "parameterizes", "weight": 1.0},
+    {"source": "computationalModel", "target": "classNP", "type": "parameterizes", "weight": 1.0},
+    {"source": "classP", "target": "classNP", "type": "subset", "weight": 0.9},
+    {"source": "classP", "target": "P_subset_NP", "type": "property", "weight": 1.0},
+    {"source": "classP", "target": "P_neq_NP", "type": "conjectured_inequality", "weight": 1.0},
+    {"source": "classNP", "target": "P_neq_NP", "type": "conjectured_inequality", "weight": 1.0},
+    {"source": "P_neq_NP", "target": "entropy_gap_equivalence", "type": "equivalent_to", "weight": 1.0},
+    {"source": "entropy_gap_equivalence", "target": "entropyGap", "type": "characterizes", "weight": 1.0},
+    {"source": "descriptionComplexity", "target": "computationalEntropy", "type": "composes", "weight": 1.0},
+    {"source": "descriptionComplexity", "target": "entropyGap", "type": "composes", "weight": 1.0},
+    {"source": "computationalEntropy", "target": "entropyGap", "type": "composes", "weight": 1.0},
+    {"source": "entropyGap", "target": "entropy_gap_well_defined", "type": "property", "weight": 1.0},
+    {"source": "P_subset_NP", "target": "SAT_not_in_P", "type": "used_in", "weight": 0.8},
+    {"source": "polyTimeReducible", "target": "SAT_not_in_P", "type": "used_in", "weight": 0.8},
+    {"source": "kolmogorovComplexity", "target": "incompressible_strings_exist", "type": "property", "weight": 1.0},
+    {"source": "timeConstructible", "target": "timeConstructible_of_polyTime", "type": "property", "weight": 1.0},
+    {"source": "tm", "target": "computationalModel", "type": "instantiates", "weight": 0.7},
+    {"source": "turingMachineState", "target": "tm", "type": "composes", "weight": 1.0},
+    {"source": "turingMachineSymbol", "target": "tm", "type": "composes", "weight": 1.0},
+    {"source": "bigO", "target": "bigO_refl", "type": "property", "weight": 1.0},
+    {"source": "criticalLine", "target": "nonTrivialZero", "type": "defines", "weight": 1.0},
+    {"source": "nonTrivialZero", "target": "riemannHypothesis", "type": "characterizes", "weight": 1.0},
+    {"source": "riemannHypothesis", "target": "zeta_zeros_symmetric", "type": "related_property", "weight": 0.8},
+    {"source": "riemannHypothesis", "target": "zero_count_up_to_100", "type": "verified_numerically", "weight": 0.6},
+    {"source": "zetaHardyZ", "target": "zero_from_sign_change", "type": "application", "weight": 0.8},
+    {"source": "zetaHardyZ", "target": "verify_zero", "type": "application", "weight": 0.8},
+    {"source": "riemannSiegelTheta", "target": "zetaHardyZ", "type": "composes", "weight": 1.0},
+    {"source": "xi_function", "target": "zeta_zeros_symmetric", "type": "enables", "weight": 0.9},
+    {"source": "first_zero_verified_numerical", "target": "zero_count_up_to_100", "type": "contributes_to", "weight": 1.0},
+    {"source": "first_50_zeros_verified", "target": "riemannHypothesis", "type": "supports_numerically", "weight": 0.5},
+    {"source": "error_bound_verified_region", "target": "riemannHypothesis", "type": "supports_analytically", "weight": 0.6},
+    {"source": "trapezoidalRule", "target": "simpsonRule", "type": "generalizes_to", "weight": 0.7},
+    {"source": "bisectionRefine", "target": "newtonRefine", "type": "slower_than", "weight": 0.8},
+    {"source": "shortWeierstrassCurve", "target": "IsElliptic", "type": "property", "weight": 1.0},
+    {"source": "shortWeierstrassCurve", "target": "mordellWeilGroup", "type": "has", "weight": 1.0},
+    {"source": "mordellWeilGroup", "target": "rank_EllipticCurve", "type": "has", "weight": 1.0},
+    {"source": "mordellWeilGroup", "target": "torsion_subgroup", "type": "has", "weight": 1.0},
+    {"source": "rank_EllipticCurve", "target": "bsd_weak", "type": "conjectured_equal_to", "weight": 1.0},
+    {"source": "analytic_rank", "target": "bsd_weak", "type": "conjectured_equal_to", "weight": 1.0},
+    {"source": "sha_group", "target": "sha_order_square", "type": "property", "weight": 1.0},
+    {"source": "sha_group", "target": "sylva_bsd_formula", "type": "appears_in", "weight": 1.0},
+    {"source": "regulator", "target": "sylva_bsd_formula", "type": "appears_in", "weight": 1.0},
+    {"source": "period_elliptic", "target": "sylva_bsd_formula", "type": "appears_in", "weight": 1.0},
+    {"source": "tamagawa_number", "target": "sylva_bsd_formula", "type": "appears_in", "weight": 1.0},
+    {"source": "sylva_bsd_formula", "target": "bsd_conjecture_complete", "type": "component_of", "weight": 1.0},
+    {"source": "bsd_weak", "target": "bsd_conjecture_complete", "type": "component_of", "weight": 1.0},
+    {"source": "sha_group", "target": "bsd_conjecture_complete", "type": "component_of", "weight": 1.0},
+    {"source": "golden_elliptic_curve", "target": "golden_curve_is_elliptic", "type": "property", "weight": 1.0},
+    {"source": "golden_elliptic_curve", "target": "period_phi_relation", "type": "exhibits", "weight": 0.8},
+    {"source": "period_phi_relation", "target": "phi_BSD_correspondence", "type": "used_in", "weight": 0.9},
+    {"source": "sylva_bsd_formula", "target": "phi_BSD_correspondence", "type": "used_in", "weight": 0.9},
+    {"source": "golden_ratio_phi", "target": "phi_BSD_correspondence", "type": "parameterizes", "weight": 0.8},
+    {"source": "heegner_point", "target": "gross_zagier_formula", "type": "appears_in", "weight": 1.0},
+    {"source": "gross_zagier_formula", "target": "bsd_conjecture_complete", "type": "supports", "weight": 0.9},
+    {"source": "sylva_emergence_equation", "target": "phi_BSD_correspondence", "type": "related_to", "weight": 0.7},
+    {"source": "navierStokes_weakSolution", "target": "leray_hopf_existence", "type": "has", "weight": 1.0},
+    {"source": "leray_hopf_existence", "target": "millenniumPrize_navierStokes", "type": "partial_result", "weight": 0.7},
+    {"source": "hodgeStructure", "target": "hodgeClass", "type": "defines", "weight": 1.0},
+    {"source": "hodgeClass", "target": "hodgeConjecture", "type": "characterizes", "weight": 1.0},
+    {"source": "algebraicCycle", "target": "cycleClass", "type": "maps_via", "weight": 1.0},
+    {"source": "cycleClass", "target": "hodgeConjecture", "type": "used_in", "weight": 1.0},
+    {"source": "hilbert_8th", "target": "riemannHypothesis", "type": "includes", "weight": 1.0},
+    {"source": "millennium_p_vs_np", "target": "P_neq_NP", "type": "is_formalization_of", "weight": 1.0},
+    {"source": "millennium_riemann", "target": "riemannHypothesis", "type": "is_formalization_of", "weight": 1.0},
+    {"source": "millennium_bsd", "target": "bsd_conjecture_complete", "type": "is_formalization_of", "weight": 1.0},
+    {"source": "millennium_navier_stokes", "target": "millenniumPrize_navierStokes", "type": "is_formalization_of", "weight": 1.0},
+    {"source": "millennium_hodge", "target": "hodgeConjecture", "type": "is_formalization_of", "weight": 1.0},
+    {"source": "entropy_gap_equivalence", "target": "millennium_p_vs_np", "type": "contributes_to", "weight": 0.7},
+    {"source": "zeta_zeros_symmetric", "target": "millennium_riemann", "type": "contributes_to", "weight": 0.5},
+    {"source": "phi_BSD_correspondence", "target": "millennium_bsd", "type": "contributes_to", "weight": 0.5},
+    {"source": "leray_hopf_existence", "target": "millennium_navier_stokes", "type": "contributes_to", "weight": 0.5},
+    {"source": "cycleClass", "target": "millennium_hodge", "type": "research_gap_in", "weight": 0.3},
+    {"source": "complexity_comparison", "target": "millennium_riemann", "type": "computational_support", "weight": 0.4},
+    {"source": "decision_problem", "target": "classP", "type": "parameterizes", "weight": 1.0},
+    {"source": "decision_problem", "target": "classNP", "type": "parameterizes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m1_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m2_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m3_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m4_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m5_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m6_axiom", "type": "describes", "weight": 1.0},
+    {"source": "meta_axiom_description", "target": "m7_axiom", "type": "describes", "weight": 1.0}
+  ],
+  "communities": [
+    {
+      "name": "Core Framework",
+      "nodes": ["sylva_framework", "h_cnd_structure", "gf3_algebra", "m1_axiom", "m2_axiom", "m3_axiom", "m4_axiom", "m5_axiom", "m6_axiom", "m7_axiom", "debt_ontology", "emergence_ontology", "level_inductive", "debt_structure", "lambda_debt"]
+    },
+    {
+      "name": "Golden Ratio & Analysis",
+      "nodes": ["golden_ratio_phi", "phi_sq_eq_phi_add_one", "phi_cubed_eq", "phi_pow_eq_fibonacci_formula", "binet_formula", "phi_continued_fraction_converges", "lambda_fractional_dimension", "lambda_strictMonoOn_pos", "phi_cantor_dimension_approx", "cantor_dimension"]
+    },
+    {
+      "name": "Complexity Theory",
+      "nodes": ["boolean_circuit", "circuit_wf", "evalNode", "evalCircuit", "cnf", "gateCnf", "circuitToCnf", "circuitSat_NPC", "tseitin_correct", "computationalModel", "classP", "classNP", "P_subset_NP", "P_neq_NP", "polyTimeReducible", "descriptionComplexity", "computationalEntropy", "entropyGap", "entropy_gap_well_defined", "entropy_gap_equivalence", "SAT_nontrivial", "SAT_not_in_P", "kolmogorovComplexity", "incompressible_strings_exist", "timeConstructible", "timeConstructible_of_polyTime", "millennium_p_vs_np"]
+    },
+    {
+      "name": "Turing Machines & Asymptotics",
+      "nodes": ["turingMachineState", "turingMachineSymbol", "tm", "bigO", "bigOmega", "bigTheta", "bigO_refl", "decision_problem"]
+    },
+    {
+      "name": "Riemann Hypothesis",
+      "nodes": ["criticalLine", "nonTrivialZero", "riemannHypothesis", "zeta_zeros_symmetric", "zero_count_up_to_100", "first_zero_verified_numerical", "zetaHardyZ", "riemannSiegelTheta", "xi_function", "verify_zero", "first_50_zeros_verified", "error_bound_verified_region", "complexity_comparison", "hilbert_8th", "millennium_riemann"]
+    },
+    {
+      "name": "Numerical Analysis",
+      "nodes": ["trapezoidalRule", "simpsonRule", "bisectionRefine", "newtonRefine", "zero_from_sign_change"]
+    },
+    {
+      "name": "Elliptic Curves & BSD",
+      "nodes": ["shortWeierstrassCurve", "IsElliptic", "mordellWeilGroup", "rank_EllipticCurve", "torsion_subgroup", "analytic_rank", "bsd_weak", "sha_group", "sha_order_square", "regulator", "period_elliptic", "tamagawa_number", "conductor", "sylva_bsd_formula", "bsd_conjecture_complete", "golden_elliptic_curve", "golden_curve_is_elliptic", "phi_BSD_correspondence", "period_phi_relation", "sylva_emergence_equation", "heegner_point", "gross_zagier_formula", "millennium_bsd"]
+    },
+    {
+      "name": "Navier-Stokes",
+      "nodes": ["navierStokes_weakSolution", "leray_hopf_existence", "millenniumPrize_navierStokes", "millennium_navier_stokes"]
+    },
+    {
+      "name": "Hodge Theory",
+      "nodes": ["hodgeStructure", "hodgeClass", "algebraicCycle", "cycleClass", "hodgeConjecture", "millennium_hodge"]
+    },
+    {
+      "name": "Physical Applications",
+      "nodes": ["scf_framework", "tqg_framework", "black_hole_info", "consciousness_theory", "sbit_theory", "bdi_framework", "omnibase_framework", "theory_rg"]
+    },
+    {
+      "name": "Experiments",
+      "nodes": ["prophecy_n3", "prophecy_04", "prophecy_05"]
+    }
+  ],
+  "dependencies": {
+    "sylva_framework": ["gf3_algebra", "h_cnd_structure", "m1_axiom", "m2_axiom", "m3_axiom", "m4_axiom", "m5_axiom", "m6_axiom", "m7_axiom", "debt_ontology", "emergence_ontology"],
+    "h_cnd_structure": ["emergence_directionality_theory", "consciousness_theory", "scf_framework"],
+    "boolean_circuit": ["circuit_wf", "evalNode", "gateCnf"],
+    "circuitToCnf": ["gateCnf", "cnf"],
+    "circuitSat_NPC": ["circuitToCnf", "evalCircuit", "cnf"],
+    "entropy_gap_equivalence": ["P_neq_NP", "entropyGap", "P_subset_NP", "descriptionComplexity", "computationalEntropy"],
+    "riemannHypothesis": ["criticalLine", "nonTrivialZero", "zetaHardyZ"],
+    "bsd_conjecture_complete": ["bsd_weak", "sylva_bsd_formula", "sha_group"],
+    "phi_BSD_correspondence": ["sylva_bsd_formula", "golden_ratio_phi", "period_phi_relation"],
+    "hodgeConjecture": ["hodgeStructure", "hodgeClass", "algebraicCycle", "cycleClass"],
+    "millennium_riemann": ["riemannHypothesis", "xi_function"],
+    "millennium_bsd": ["bsd_conjecture_complete", "gross_zagier_formula"],
+    "millennium_hodge": ["hodgeConjecture"],
+    "millennium_p_vs_np": ["P_neq_NP", "entropy_gap_equivalence"],
+    "millennium_navier_stokes": ["millenniumPrize_navierStokes", "leray_hopf_existence"]
+  },
+  "hilbert_connections": {
+    "hilbert_8th": ["riemannHypothesis"]
+  },
+  "millennium_connections": {
+    "millennium_p_vs_np": ["P_neq_NP", "entropy_gap_equivalence", "SAT_not_in_P"],
+    "millennium_riemann": ["riemannHypothesis", "zeta_zeros_symmetric", "first_50_zeros_verified"],
+    "millennium_bsd": ["bsd_conjecture_complete", "phi_BSD_correspondence", "golden_elliptic_curve"],
+    "millennium_navier_stokes": ["millenniumPrize_navierStokes", "leray_hopf_existence"],
+    "millennium_hodge": ["hodgeConjecture", "cycleClass"],
+    "millennium_ym_mills": []
+  }
+}

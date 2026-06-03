@@ -1,0 +1,24 @@
+{
+  "score": {
+    "compile_pass": 80,
+    "sorry_coverage": 63,
+    "proof_complete": 69,
+    "type_correct": 90,
+    "doc_complete": 0,
+    "naming_standard": 70,
+    "total": 66.9
+  },
+  "stats": {
+    "file": "NumericalZeros_filled.lean",
+    "lines": 407,
+    "sorry_count": 4,
+    "theorem_count": 12,
+    "lemma_count": 1,
+    "total_proofs": 13,
+    "definitions": 22,
+    "structures": 2,
+    "doc_blocks": 0,
+    "inline_docs": 0
+  },
+  "mode": "baseline"
+}

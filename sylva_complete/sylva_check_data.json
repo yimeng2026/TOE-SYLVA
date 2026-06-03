@@ -1,0 +1,538 @@
+{
+  "metadata": {
+    "generated_at": "2026-04-15T14:04:19.680346",
+    "project_root": "/root/.openclaw/workspace/sylva_formalization",
+    "module_count": 18
+  },
+  "modules": {
+    "BSD": {
+      "path": "SylvaFormalization/BSD.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 279,
+      "comment_lines": 433,
+      "blank_lines": 237,
+      "total_lines": 949,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 1,
+        "transitive_dependents": 1,
+        "pagerank": 0.1925,
+        "pressure_score": 0.10003846153846155
+      }
+    },
+    "BSD_Phi": {
+      "path": "SylvaFormalization/BSD_Phi.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic",
+        "SylvaFormalization.BSD"
+      ],
+      "code_lines": 136,
+      "comment_lines": 101,
+      "blank_lines": 63,
+      "total_lines": 300,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "BSD_new_lemmas": {
+      "path": "SylvaFormalization/BSD_new_lemmas.lean",
+      "imports": [],
+      "code_lines": 89,
+      "comment_lines": 35,
+      "blank_lines": 35,
+      "total_lines": 159,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "Basic": {
+      "path": "SylvaFormalization/Basic.lean",
+      "imports": [
+        "Mathlib"
+      ],
+      "code_lines": 429,
+      "comment_lines": 90,
+      "blank_lines": 91,
+      "total_lines": 610,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": "RADIATION: This is the FOUNDATION LAYER of Sylva. All other modules depend RADIATES TO: All modules (Complexity, NumericalZeros, BSD, Hodge, etc.) "
+      },
+      "radiation": {
+        "direct_dependents": 13,
+        "transitive_dependents": 13,
+        "pagerank": 0.9330624999999997,
+        "pressure_score": 0.9866125
+      }
+    },
+    "CP004": {
+      "path": "SylvaFormalization/CP004.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 29,
+      "comment_lines": 43,
+      "blank_lines": 20,
+      "total_lines": 92,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": "RADIATION: This module demonstrates the Sylva methodology of reframing RADIATES TO: CookLevin ( circuit lower bounds ) "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "CP004_B2": {
+      "path": "SylvaFormalization/CP004_B2.lean",
+      "imports": [
+        "Mathlib.Order.Lattice",
+        "Mathlib.Order.Bounds.Defs",
+        "Mathlib.Data.Nat.Basic",
+        "Mathlib.Data.Set.Basic",
+        "Mathlib.Data.List.Basic",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 213,
+      "comment_lines": 74,
+      "blank_lines": 49,
+      "total_lines": 336,
+      "sorry_count": 1,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": "RADIATION: This is the SHOWCASE WINDOW of Sylva methodology. It demonstrates RADIATES TO: All complexity-theoretic investigations "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "Complexity": {
+      "path": "SylvaFormalization/Complexity.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.Computability.TuringMachine",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 63,
+      "comment_lines": 49,
+      "blank_lines": 36,
+      "total_lines": 148,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "",
+        "radiation_note": "RADIATION: This module establishes the complexity-theoretic foundations RADIATES TO: CookLevin (SAT and circuit complexity) "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "CookLevin": {
+      "path": "SylvaFormalization/CookLevin.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 332,
+      "comment_lines": 116,
+      "blank_lines": 52,
+      "total_lines": 500,
+      "sorry_count": 1,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "Core definitions complete. Some proofs use `sorry` as placeholders",
+        "radiation_note": "RADIATION: This module establishes the NP-completeness of SAT via the RADIATES TO: CP004 (P\u2260NP framework) "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "CookLevin_fixed": {
+      "path": "SylvaFormalization/CookLevin_fixed.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 316,
+      "comment_lines": 114,
+      "blank_lines": 52,
+      "total_lines": 482,
+      "sorry_count": 2,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "Core definitions complete. Some proofs use `sorry` as placeholders",
+        "radiation_note": "RADIATION: This module establishes the NP-completeness of SAT via the RADIATES TO: CP004 (P\u2260NP framework) "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "CookLevin_sat_fixed": {
+      "path": "SylvaFormalization/CookLevin_sat_fixed.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 314,
+      "comment_lines": 112,
+      "blank_lines": 51,
+      "total_lines": 477,
+      "sorry_count": 2,
+      "metadata": {
+        "title": "Sylva Formalization Project",
+        "description": "",
+        "status": "Core definitions complete. Some proofs use `sorry` as placeholders",
+        "radiation_note": "RADIATION: This module establishes the NP-completeness of SAT via the RADIATES TO: CP004 (P\u2260NP framework) "
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "Hodge": {
+      "path": "SylvaFormalization/Hodge.lean",
+      "imports": [
+        "Mathlib"
+      ],
+      "code_lines": 23,
+      "comment_lines": 40,
+      "blank_lines": 17,
+      "total_lines": 80,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "Hodge Conjecture Formalization (Simplified)",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "LocalGlobal": {
+      "path": "SylvaFormalization/LocalGlobal.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.RingTheory.PowerSeries.Basic"
+      ],
+      "code_lines": 161,
+      "comment_lines": 297,
+      "blank_lines": 103,
+      "total_lines": 561,
+      "sorry_count": 1,
+      "metadata": {
+        "title": "SylvaFormalization/LocalGlobal.lean",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "MathAgent": {
+      "path": "SylvaFormalization/MathAgent.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 22,
+      "comment_lines": 10,
+      "blank_lines": 11,
+      "total_lines": 43,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "import SylvaFormalization.Basic",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "NavierStokes": {
+      "path": "SylvaFormalization/NavierStokes.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.Analysis.InnerProductSpace.PiL2",
+        "Mathlib.MeasureTheory.Integral.Bochner",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 222,
+      "comment_lines": 169,
+      "blank_lines": 107,
+      "total_lines": 498,
+      "sorry_count": 29,
+      "metadata": {
+        "title": "import SylvaFormalization.Basic",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "NumericalZeros": {
+      "path": "SylvaFormalization/NumericalZeros.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.Analysis.Fourier.FourierTransform",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic"
+      ],
+      "code_lines": 160,
+      "comment_lines": 102,
+      "blank_lines": 51,
+      "total_lines": 313,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "namespace SylvaFormalization",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 2,
+        "transitive_dependents": 2,
+        "pagerank": 0.23500000000000001,
+        "pressure_score": 0.1700769230769231
+      }
+    },
+    "RiemannHypothesis": {
+      "path": "SylvaFormalization/RiemannHypothesis.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "SylvaFormalization.Basic",
+        "SylvaFormalization.NumericalZeros"
+      ],
+      "code_lines": 384,
+      "comment_lines": 139,
+      "blank_lines": 74,
+      "total_lines": 597,
+      "sorry_count": 11,
+      "metadata": {
+        "title": "import SylvaFormalization.Basic",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "SylvaInfrastructure": {
+      "path": "SylvaFormalization/SylvaInfrastructure.lean",
+      "imports": [
+        "Mathlib",
+        "SylvaFormalization.Basic"
+      ],
+      "code_lines": 44,
+      "comment_lines": 31,
+      "blank_lines": 25,
+      "total_lines": 100,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "import SylvaFormalization.Basic",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    },
+    "ZetaVerifier": {
+      "path": "SylvaFormalization/ZetaVerifier.lean",
+      "imports": [
+        "Mathlib",
+        "Mathlib.Analysis.SpecialFunctions.Gamma.Basic",
+        "SylvaFormalization.Basic",
+        "SylvaFormalization.NumericalZeros"
+      ],
+      "code_lines": 234,
+      "comment_lines": 56,
+      "blank_lines": 36,
+      "total_lines": 326,
+      "sorry_count": 0,
+      "metadata": {
+        "title": "import SylvaFormalization.Basic",
+        "description": "",
+        "status": "",
+        "radiation_note": ""
+      },
+      "radiation": {
+        "direct_dependents": 0,
+        "transitive_dependents": 0,
+        "pagerank": 0.15,
+        "pressure_score": 0.03
+      }
+    }
+  },
+  "dependency_graph": {
+    "BSD": [
+      "Basic"
+    ],
+    "BSD_Phi": [
+      "Basic",
+      "BSD"
+    ],
+    "CP004": [
+      "Basic"
+    ],
+    "CP004_B2": [
+      "Basic"
+    ],
+    "Complexity": [
+      "Basic"
+    ],
+    "CookLevin": [
+      "Basic"
+    ],
+    "CookLevin_fixed": [
+      "Basic"
+    ],
+    "CookLevin_sat_fixed": [
+      "Basic"
+    ],
+    "MathAgent": [
+      "Basic"
+    ],
+    "NavierStokes": [
+      "Basic"
+    ],
+    "RiemannHypothesis": [
+      "Basic",
+      "NumericalZeros"
+    ],
+    "SylvaInfrastructure": [
+      "Basic"
+    ],
+    "ZetaVerifier": [
+      "Basic",
+      "NumericalZeros"
+    ]
+  },
+  "reverse_dependencies": {
+    "Basic": [
+      "BSD",
+      "BSD_Phi",
+      "CP004",
+      "CP004_B2",
+      "Complexity",
+      "CookLevin",
+      "CookLevin_fixed",
+      "CookLevin_sat_fixed",
+      "MathAgent",
+      "NavierStokes",
+      "RiemannHypothesis",
+      "SylvaInfrastructure",
+      "ZetaVerifier"
+    ],
+    "BSD": [
+      "BSD_Phi"
+    ],
+    "NumericalZeros": [
+      "RiemannHypothesis",
+      "ZetaVerifier"
+    ]
+  },
+  "radiation_pressure": {
+    "BSD": 0.10003846153846155,
+    "BSD_Phi": 0.03,
+    "BSD_new_lemmas": 0.03,
+    "Basic": 0.9866125,
+    "CP004": 0.03,
+    "CP004_B2": 0.03,
+    "Complexity": 0.03,
+    "CookLevin": 0.03,
+    "CookLevin_fixed": 0.03,
+    "CookLevin_sat_fixed": 0.03,
+    "Hodge": 0.03,
+    "LocalGlobal": 0.03,
+    "MathAgent": 0.03,
+    "NavierStokes": 0.03,
+    "NumericalZeros": 0.1700769230769231,
+    "RiemannHypothesis": 0.03,
+    "SylvaInfrastructure": 0.03,
+    "ZetaVerifier": 0.03
+  }
+}

@@ -1,0 +1,111 @@
+:root {
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #0f3460;
+  --highlight: #e94560;
+  --text: #eaeaea;
+  --muted: #a0a0a0;
+  --math: #4fbdba;
+}
+
+.markdown-body {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--text);
+  font-family: 'CMU Serif', 'Noto Serif CJK SC', Georgia, serif;
+  line-height: 1.8;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(90deg, var(--highlight), var(--math));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 3px solid var(--highlight);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h2 {
+  color: var(--math);
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  border-left: 5px solid var(--highlight);
+  padding-left: 1rem;
+}
+
+h3 {
+  color: var(--text);
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  opacity: 0.9;
+}
+
+.theorem, .definition, .proposition {
+  background: rgba(79, 189, 186, 0.1);
+  border: 1px solid var(--math);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.theorem-title, .definition-title {
+  color: var(--highlight);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.math-block {
+  background: rgba(0,0,0,0.3);
+  padding: 1.2rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Latin Modern Math', 'KaTeX_Math', serif;
+  color: var(--math);
+  margin: 1rem 0;
+}
+
+.inline-math {
+  color: var(--math);
+  font-family: 'Latin Modern Math', serif;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(79, 189, 186, 0.1));
+  border-left: 4px solid var(--highlight);
+  padding: 1.2rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: rgba(255,255,255,0.05);
+}
+
+th {
+  background: var(--accent);
+  color: var(--text);
+  padding: 1rem;
+  text-align: left;
+}
+
+td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.quote {
+  font-style: italic;
+  border-left: 3px solid var(--muted);
+  padding-left: 1rem;
+  color: var(--muted);
+  margin: 1.5rem 0;
+}

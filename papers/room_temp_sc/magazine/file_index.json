@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-04-19T19:30:28.787898",
+  "magazine_name": "Sʏʟᴠᴀ Magazine",
+  "version": "1.0",
+  "files": [
+    {
+      "name": "vi_design.md",
+      "size_bytes": 27396,
+      "size_human": "26.8 KB",
+      "modified": "2026-04-19T18:56:10.379345"
+    },
+    {
+      "name": "layout_system.md",
+      "size_bytes": 33068,
+      "size_human": "32.3 KB",
+      "modified": "2026-04-19T18:55:21.666143"
+    },
+    {
+      "name": "content_architecture.md",
+      "size_bytes": 11660,
+      "size_human": "11.4 KB",
+      "modified": "2026-04-19T18:53:35.723878"
+    },
+    {
+      "name": "chat_culture_integration.md",
+      "size_bytes": 25199,
+      "size_human": "24.6 KB",
+      "modified": "2026-04-19T18:53:50.165642"
+    },
+    {
+      "name": "BLACK_WHITE_PIXEL_SYSTEM.md",
+      "size_bytes": 6987,
+      "size_human": "6.8 KB",
+      "modified": "2026-04-19T18:54:56.151561"
+    },
+    {
+      "name": "web_style_layout.md",
+      "size_bytes": 14248,
+      "size_human": "13.9 KB",
+      "modified": "2026-04-19T19:16:14.761315"
+    },
+    {
+      "name": "page_designs.md",
+      "size_bytes": 23704,
+      "size_human": "23.1 KB",
+      "modified": "2026-04-19T19:19:22.001828"
+    }
+  ]
+}

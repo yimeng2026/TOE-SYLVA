@@ -1,0 +1,24 @@
+{
+  "score": {
+    "compile_pass": 80,
+    "sorry_coverage": 0,
+    "proof_complete": 0,
+    "type_correct": 90,
+    "doc_complete": 19,
+    "naming_standard": 70,
+    "total": 42.4
+  },
+  "stats": {
+    "file": "LocalGlobal.lean",
+    "lines": 303,
+    "sorry_count": 3,
+    "theorem_count": 0,
+    "lemma_count": 1,
+    "total_proofs": 1,
+    "definitions": 17,
+    "structures": 9,
+    "doc_blocks": 0,
+    "inline_docs": 10
+  },
+  "mode": "baseline"
+}

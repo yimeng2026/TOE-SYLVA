@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-19T00:40:00+08:00",
+  "source": "32_integrable_systems_REVIEW.md",
+  "priority_issues": [
+    {
+      "level": "P0",
+      "issue": "未定义参数 ν",
+      "location": "32A_integrable_systems_foundation.md:102",
+      "fix": "在参数说明段落添加 ν 定义"
+    },
+    {
+      "level": "P0", 
+      "issue": "占位符引用未替换",
+      "location": "32A/32B/32C多处",
+      "fix": "将第X/Y/Z章替换为实际章节编号"
+    },
+    {
+      "level": "P0",
+      "issue": "版本间无交叉引用",
+      "fix": "在32A添加对32B应用实例的引用，在32B添加对32A理论基础的引用"
+    }
+  ],
+  "missing_content": [
+    "Sine-Gordon方程",
+    "Toda链", 
+    "NLSE逆散射详细推导"
+  ],
+  "status": "awaiting_fix_agent"
+}

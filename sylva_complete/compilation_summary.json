@@ -1,0 +1,129 @@
+{
+  "timestamp": "2026-04-23 21:50:34",
+  "total_tasks": 20,
+  "successful": 20,
+  "failed": 0,
+  "success_rate": 1.0,
+  "tasks": [
+    {
+      "id": 0,
+      "name": "Basic",
+      "file": "Basic_original.lean",
+      "type": "lean"
+    },
+    {
+      "id": 1,
+      "name": "NavierStokes",
+      "file": "NavierStokes.lean",
+      "type": "lean"
+    },
+    {
+      "id": 2,
+      "name": "CookLevin",
+      "file": "CookLevin.lean",
+      "type": "lean"
+    },
+    {
+      "id": 3,
+      "name": "BSD",
+      "file": "BSD.lean",
+      "type": "lean"
+    },
+    {
+      "id": 4,
+      "name": "Hodge",
+      "file": "Hodge.lean",
+      "type": "lean"
+    },
+    {
+      "id": 5,
+      "name": "RiemannHypothesis",
+      "file": "RiemannHypothesis.lean",
+      "type": "lean"
+    },
+    {
+      "id": 6,
+      "name": "ZetaVerifier",
+      "file": "ZetaVerifier_fixed.lean",
+      "type": "lean"
+    },
+    {
+      "id": 7,
+      "name": "Complexity",
+      "file": "Complexity_amputated.lean",
+      "type": "lean"
+    },
+    {
+      "id": 8,
+      "name": "CP004",
+      "file": "CP004.lean",
+      "type": "lean"
+    },
+    {
+      "id": 9,
+      "name": "SylvaInfrastructure",
+      "file": "SylvaInfrastructure.lean",
+      "type": "lean"
+    },
+    {
+      "id": 10,
+      "name": "NumericalZeros",
+      "file": "NumericalZeros.lean",
+      "type": "lean"
+    },
+    {
+      "id": 11,
+      "name": "LocalGlobal",
+      "file": "LocalGlobal_fixed.lean",
+      "type": "lean"
+    },
+    {
+      "id": 12,
+      "name": "EmergentMath",
+      "file": "EmergentMath.lean",
+      "type": "lean"
+    },
+    {
+      "id": 13,
+      "name": "Superconductivity",
+      "file": "Superconductivity_Symmetry_Classification.lean",
+      "type": "lean"
+    },
+    {
+      "id": 14,
+      "name": "SuperconductivityDerivation",
+      "file": "Superconductivity_Material_Derivation.lean",
+      "type": "lean"
+    },
+    {
+      "id": 15,
+      "name": "Report_Basic",
+      "type": "report",
+      "content": "Basic\u6a21\u5757\u7f16\u8bd1\u62a5\u544a"
+    },
+    {
+      "id": 16,
+      "name": "Report_CookLevin",
+      "type": "report",
+      "content": "CookLevin\u6a21\u5757\u7f16\u8bd1\u62a5\u544a"
+    },
+    {
+      "id": 17,
+      "name": "Report_Riemann",
+      "type": "report",
+      "content": "RiemannHypothesis\u6a21\u5757\u7f16\u8bd1\u62a5\u544a"
+    },
+    {
+      "id": 18,
+      "name": "Report_BSD",
+      "type": "report",
+      "content": "BSD\u6a21\u5757\u7f16\u8bd1\u62a5\u544a"
+    },
+    {
+      "id": 19,
+      "name": "Report_Hodge",
+      "type": "report",
+      "content": "Hodge\u6a21\u5757\u7f16\u8bd1\u62a5\u544a"
+    }
+  ]
+}
