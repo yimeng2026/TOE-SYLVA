@@ -128,6 +128,8 @@ $$\alpha = \frac{1}{n_{CS} + \delta_{QED}}$$
 
 ### 4.2 137的拓扑起源
 
+**AUDIT WARNING (2026-06-10)**: Algebraic error: 49/3 != 137. Author admitted this. Downgrade to heuristic conjecture.
+
 **定理 4.2** (137的必然性). 对于满足因果层化条件的GF(3)⊗Λ⁵结构，陈-西蒙斯级别必须是137：
 
 $$n_{CS} = \frac{\dim(\Lambda^5_{even}) \cdot \dim(GF(3)) + 1}{\dim(GF(3))} = \frac{16 \times 3 + 1}{3} = \frac{49}{3} \neq 137$$
@@ -154,6 +156,8 @@ $$n_{CS} = \frac{\dim(\Lambda^5_{even}) \cdot \dim(GF(3)) + 1}{\dim(GF(3))} = \f
 $$C_2 = \frac{G_N}{\hbar c} = \frac{1}{m_P^2} = \frac{\alpha}{137} \cdot \frac{\ell_P^2}{\lambda_C^2} \approx 10^{-38}$$
 
 ### 5.2 弱混合角C₃
+
+**AUDIT WARNING (2026-06-10)**: Numerical error detected. Formula claims sin²θ_W = (1/3)*(1/137) ≈ 0.231, but (1/3)*(1/137) = 1/411 ≈ 0.00243, off by ~100x. This "theorem" should be downgraded to conjecture or removed.
 
 **定理 5.2** (弱混合角的涌现). 
 

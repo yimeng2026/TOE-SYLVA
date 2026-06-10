@@ -6,12 +6,12 @@ Sylva Causal Network Framework (CNF)
 
 This module formalizes the mathematical core of the Four Forces Unification
 Theory within the Sylva Causal Network Framework. All four fundamental
-interactions éˆ¥?gravitational, electromagnetic, weak, and strong éˆ¥?emerge from
+interactions "gravitational, electromagnetic, weak, and strong "emerge from
 the same discrete causal network through dimensional projection and topological
 constraints at different energy layers.
 
 Reference: four_forces_unification_complete.md (Sylva-TOE-v20.0)
-Style: Amputation-ready éˆ¥?all proofs marked with `sorry` for incremental fill.
+Style: Amputation-ready "all proofs marked with `sorry` for incremental fill.
 
 MODULE STRUCTURE:
   Section 1: Causal Network Foundations (Nodes, Edges, Weights, Partial Order)
@@ -63,15 +63,15 @@ structure CausalNetwork where
 
 namespace CausalNetwork
 
-/-- Past light cone Jéˆ¦?v): all nodes that can causally influence v -/
+/-- Past light cone Jéˆ?v): all nodes that can causally influence v -/
 def pastLightCone (G : CausalNetwork) (v : CausalNode) : Set CausalNode :=
   {u | exists e in G.edges, e.source = u /\ e.target = v}
 
-/-- Future light cone Jéˆ¦?v): all nodes that v can causally influence -/
+/-- Future light cone Jéˆ?v): all nodes that v can causally influence -/
 def futureLightCone (G : CausalNetwork) (v : CausalNode) : Set CausalNode :=
   {u | exists e in G.edges, e.source = v /\ e.target = u}
 
-/-- Causal precedence relation: u éˆ®?v iff u is in the past light cone of v -/
+/-- Causal precedence relation: u â‰ˆv iff u is in the past light cone of v -/
 def precedes (G : CausalNetwork) (u v : CausalNode) : Prop :=
   u in G.pastLightCone v
 
@@ -79,13 +79,13 @@ def precedes (G : CausalNetwork) (u v : CausalNode) : Prop :=
 lemma precedes_irrefl (G : CausalNetwork) (v : CausalNode) :
   not G.precedes v v := by
   intro h
-  rcases h with é‰„â•¡, he, hsrc, htgté‰„?  have : e.source = e.target := by rw [hsrc, htgt]
+  rcases h with é‰„â•¡, he, hsrc, htgté‰?  have : e.source = e.target := by rw [hsrc, htgt]
   have hne := G.acyclic e
   contradiction
 
 lemma precedes_trans (G : CausalNetwork) (u v w : CausalNode)
   (huv : G.precedes u v) (hvw : G.precedes v w) : G.precedes u w := by
-  rcases huv with é‰„â•¡1, he1, hsrc1, htgt1é‰„?  rcases hvw with é‰„â•¡2, he2, hsrc2, htgt2é‰„?  have : e1.target = e2.source := by rw [htgt1, hsrc2]
+  rcases huv with é‰„â•¡1, he1, hsrc1, htgt1é‰?  rcases hvw with é‰„â•¡2, he2, hsrc2, htgt2é‰?  have : e1.target = e2.source := by rw [htgt1, hsrc2]
   -- Transitivity follows from path composition in acyclic graph.
   -- Full proof requires path induction; amputated for compilation.
   -- TODO: precedes_trans requires reachability definition, not direct adjacency.
@@ -95,11 +95,11 @@ lemma precedes_trans (G : CausalNetwork) (u v w : CausalNode)
 def degree (G : CausalNetwork) (v : CausalNode) : Nat :=
   {e in G.edges | e.source = v \/ e.target = v}.ncard
 
-/-- Power-law degree distribution P(k) éˆ­?k^(-gamma) -/
+/-- Power-law degree distribution P(k) âˆ‘k^(-gamma) -/
 def powerLawDegreeDist (gamma k : Real) (hgamma : gamma > 2 /\ gamma < 3) (hk : k > 0) : Real :=
   k ^ (-gamma)
 
-/-- The Sylva critical exponent gamma éˆ®?2.2 -/
+/-- The Sylva critical exponent gamma ¡Ö.2 -/
 noncomputable def sylvaGamma : Real := 2.2
 
 lemma sylvaGamma_in_range : sylvaGamma > 2 /\ sylvaGamma < 3 := by
@@ -124,9 +124,9 @@ structure InterLayerTransition where
 namespace InterLayerTransition
 
 /-- The tunneling factor decays exponentially with layer distance:
-    éˆ©ç›»tunnel = exp(-é­ * èž–z), where é­ éˆ®?ln(10) per decade -/
-noncomputable def tunnelingFactorFormula (èž–z : Real) (é­ : Real := Real.log 10) : Real :=
-  Real.exp (-é­ * èž–z)
+    éˆ©ç›»tunnel = exp(-é­?* èž–z), where é­?â‰ˆln(10) per decade -/
+noncomputable def tunnelingFactorFormula (èž–z : Real) (é­?: Real := Real.log 10) : Real :=
+  Real.exp (-é­?* èž–z)
 
 /-- Layer distance èž–z = |target - source| as natural number -/
 def layerDistance (T : InterLayerTransition) : Nat :=
@@ -136,21 +136,21 @@ def layerDistance (T : InterLayerTransition) : Nat :=
 noncomputable def standardTunneling (T : InterLayerTransition) : Real :=
   tunnelingFactorFormula (T.layerDistance.toFloat : Real)
 
-/-- Layer 1 -> Layer 2: éˆ©ç›»tunnel éˆ®?0.01 -/
+/-- Layer 1 -> Layer 2: éˆ©ç›»tunnel ¡Ö.01 -/
 lemma tunneling_L1_to_L2 :
   standardTunneling {sourceLayer := .L1, targetLayer := .L2, tunnelingFactor := 0} =
   Real.exp (-Real.log 10) := by
   simp [standardTunneling, tunnelingFactorFormula, layerDistance, Nat.dist]
   all_goals norm_num
 
-/-- Layer 1 -> Layer 3: éˆ©ç›»tunnel éˆ®?0.0001 -/
+/-- Layer 1 -> Layer 3: éˆ©ç›»tunnel ¡Ö.0001 -/
 lemma tunneling_L1_to_L3 :
   standardTunneling {sourceLayer := .L1, targetLayer := .L3, tunnelingFactor := 0} =
   Real.exp (-2 * Real.log 10) := by
   simp [standardTunneling, tunnelingFactorFormula, layerDistance, Nat.dist]
   all_goals norm_num
 
-/-- Layer 1 -> Layer 7: éˆ©ç›»tunnel éˆ®?10^(-12) -/
+/-- Layer 1 -> Layer 7: éˆ©ç›»tunnel ¡Ö0^(-12) -/
 lemma tunneling_L1_to_L7 :
   standardTunneling {sourceLayer := .L1, targetLayer := .L7, tunnelingFactor := 0} =
   Real.exp (-6 * Real.log 10) := by
@@ -222,20 +222,20 @@ def total (C : ConnectivityMeasure) : Real :=
 
 /-- Temporal connectivity: sum of edge weights to past and future nodes -/
 def temporalConnectivity (G : CausalNetwork) (v : CausalNode) : Real :=
-  éˆ­?e in {e in G.edges | e.source = v \/ e.target = v}, e.weight
+  âˆ‘e in {e in G.edges | e.source = v \/ e.target = v}, e.weight
 
 /-- Spatial connectivity: sum of edge weights within same time slice -/
 def spatialConnectivity (G : CausalNetwork) (v : CausalNode) (timeSlice : CausalNode -> Real) : Real :=
-  éˆ­?e in {e in G.edges | e.source /= e.target /\ timeSlice e.source = timeSlice e.target},
+  âˆ‘e in {e in G.edges | e.source /= e.target /\ timeSlice e.source = timeSlice e.target},
     if e.source = v \/ e.target = v then e.weight else 0
 
 /-- Metric tensor component g_00 from connectivity fluctuation:
-    g_00 = -(1 - 2æ¡…) where æ¡… ~ connectivity fluctuation -/
+    g_00 = -(1 - 2æ¡? where æ¡?~ connectivity fluctuation -/
 noncomputable def metricTimeComponent (C_total : Real) (ref : Real) : Real :=
   -(1 - 2 * (C_total / ref))
 
 /-- Metric tensor spatial components g_ij from connectivity fluctuation:
-    g_ij = delta_ij(1 + 2æ¡…) -/
+    g_ij = delta_ij(1 + 2æ¡? -/
 noncomputable def metricSpaceComponent (C_total : Real) (ref : Real) : Real :=
   1 + 2 * (C_total / ref)
 
@@ -260,27 +260,27 @@ end ConnectivityMeasure
 -- 4.1 Newton's Gravitational Constant G
 -- -----------------------------------------------------------------------------
 
-/-- Planck length éˆ©æ°P éˆ®?1.616 * 10^(-35) m -/
+/-- Planck length éˆ©æ°P ¡Ö.616 * 10^(-35) m -/
 noncomputable def planckLength : Real := 1.616e-35
 
-/-- Electron Compton wavelength lambda_C éˆ®?2.426 * 10^(-12) m -/
+/-- Electron Compton wavelength lambda_C ¡Ö.426 * 10^(-12) m -/
 noncomputable def comptonWavelength : Real := 2.426e-12
 
-/-- Effective node count: N_eff = (lambda_C / éˆ©æ°P)^3 éˆ®?10^69 -/
+/-- Effective node count: N_eff = (lambda_C / éˆ©æ°P)^3 ¡Ö0^69 -/
 noncomputable def effectiveNodeCount3D : Real :=
   (comptonWavelength / planckLength) ^ 3
 
-/-- Effective node count for 2D projection: N_eff éˆ®?10^46 -/
+/-- Effective node count for 2D projection: N_eff ¡Ö0^46 -/
 noncomputable def effectiveNodeCount2D : Real :=
   (comptonWavelength / planckLength) ^ 2
 
-/-- Layer coupling factor for gravity: f_G éˆ®?0.01 (tunneling from L7 to low layers) -/
+/-- Layer coupling factor for gravity: f_G ¡Ö.01 (tunneling from L7 to low layers) -/
 noncomputable def gravityLayerFactor : Real := 0.01
 
 /-- Newton's gravitational constant G emerges from network topology:
-    G = éˆ©æ°Pè™ / lambda_Cè™ * f_G
-    Framework value: ~6.674 * 10^(-11) mé²/(kg*sè™)
-    CODATA 2018: 6.67430(15) * 10^(-11) mé²/(kg*sè™) -/
+    G = éˆ©æ°Pè™?/ lambda_Cè™?* f_G
+    Framework value: ~6.674 * 10^(-11) mé²?(kg*sè™?
+    CODATA 2018: 6.67430(15) * 10^(-11) mé²?(kg*sè™? -/
 noncomputable def emergentG : Real :=
   (planckLength ^ 2 / comptonWavelength ^ 2) * gravityLayerFactor
 
@@ -293,21 +293,21 @@ lemma emergentG_pos : emergentG > 0 := by
 -- 4.2 Fine Structure Constant alpha
 -- -----------------------------------------------------------------------------
 
-/-- Chirality asymmetry parameter p éˆ®?0.52 (cosmologically determined) -/
+/-- Chirality asymmetry parameter p ¡Ö.52 (cosmologically determined) -/
 noncomputable def chiralityAsymmetry : Real := 0.52
 
-/-- Average degree k éˆ®?12 (from power-law gamma = 2.2) -/
+/-- Average degree k ¡Ö2 (from power-law gamma = 2.2) -/
 noncomputable def averageDegree : Real := 12
 
 /-- Average chiral connectivity: C = (2p - 1) * éˆ­æ­¬ -/
 noncomputable def chiralConnectivity : Real :=
   (2 * chiralityAsymmetry - 1) * Real.sqrt averageDegree
 
-/-- Topological correction factor f_topo éˆ®?10 (from Sé² solid angle 4pi) -/
+/-- Topological correction factor f_topo ¡Ö0 (from Sé²?solid angle 4pi) -/
 noncomputable def topoCorrectionFactor : Real := 10
 
 /-- Fine structure constant alpha emerges from network topology:
-    alpha = Cè™ / (4pi * N_eff) * f_topo
+    alpha = Cè™?/ (4pi * N_eff) * f_topo
     Framework value: ~1/136.99
     Experimental: 1/137.036 -/
 noncomputable def emergentAlpha : Real :=
@@ -323,14 +323,14 @@ lemma emergentAlpha_pos : emergentAlpha > 0 := by
 -- 4.3 Fermi Coupling Constant G_F
 -- -----------------------------------------------------------------------------
 
-/-- Higgs VEV v éˆ®?246 GeV -/
+/-- Higgs VEV v ¡Ö46 GeV -/
 noncomputable def higgsVEV : Real := 246  -- in GeV
 
-/-- Weak coupling constant g éˆ®?0.65 (from SU(2) structure) -/
+/-- Weak coupling constant g ¡Ö.65 (from SU(2) structure) -/
 noncomputable def weakCouplingG : Real := 0.65
 
 /-- Fermi coupling constant G_F emerges from inter-layer tunneling:
-    G_F/éˆ­? = gè™ / (8 * M_Wè™) = éˆ©ç›»tunnelè™ / E_charè™
+    G_F/¡Æ= gè™?/ (8 * M_Wè™? = éˆ©ç›»tunnelè™?/ E_charè™?
     Framework value: ~1.166 * 10^(-5) GeV^(-2)
     Experimental: 1.1663787(6) * 10^(-5) GeV^(-2) -/
 noncomputable def emergentFermiConstant : Real :=
@@ -344,7 +344,7 @@ noncomputable def emergentFermiConstant : Real :=
 /-- Strong coupling alpha_s at M_Z scale (~91 GeV):
     alpha_s = (3/4pi) * éˆ©ç›»tunnel^(-1), running with energy
     Framework value: ~0.1179
-    Experimental: 0.1179 å¤ 0.0010 -/
+    Experimental: 0.1179 å?0.0010 -/
 noncomputable def emergentStrongCoupling (energyScale : Real) : Real :=
   let tunneling := InterLayerTransition.tunnelingFactorFormula
     ((Real.log energyScale - Real.log 1e3) / Real.log 10)
@@ -359,7 +359,7 @@ noncomputable def alpha_s_at_MZ : Real :=
 -- SECTION 5: Unified Field Equation (Lean Formulation)
 -- ==============================================================================
 
-/-- Unified field å”¯: stratified field operator acting across all layers -/
+/-- Unified field å”? stratified field operator acting across all layers -/
 structure UnifiedField where
   -- Field components per layer
   electromagnetic : Level -> Real  -- U(1) field at L1
@@ -372,41 +372,41 @@ structure UnifiedField where
 namespace UnifiedField
 
 /-- Layer-internal term: electromagnetic at L1, strong at L3 -/
-def intraLayerTerm (å”¯ : UnifiedField) (l : Level) : Real :=
+def intraLayerTerm (å”?: UnifiedField) (l : Level) : Real :=
   match l with
-  | .L1 => å”¯.electromagnetic l
-  | .L3 => å”¯.strong l
+  | .L1 => å”?electromagnetic l
+  | .L3 => å”?strong l
   | _ => 0
 
 /-- Inter-layer coupling term: weak force at L1-L2 transitions -/
-def interLayerTerm (å”¯ : UnifiedField) (T : InterLayerTransition) : Real :=
+def interLayerTerm (å”?: UnifiedField) (T : InterLayerTransition) : Real :=
   if T.sourceLayer = .L1 /\ T.targetLayer = .L2 then
-    å”¯.weak T.sourceLayer * T.tunnelingFactor
+    å”?weak T.sourceLayer * T.tunnelingFactor
   else
     0
 
 /-- Geometric curvature term: gravitational (all layers) -/
-def curvatureTerm (å”¯ : UnifiedField) (l : Level) : Real :=
-  å”¯.gravitational l
+def curvatureTerm (å”?: UnifiedField) (l : Level) : Real :=
+  å”?gravitational l
 
 /-- The unified Lagrangian density:
     L = L_QED + L_Weak + L_QCD + L_Einstein + L_mix -/
-noncomputable def unifiedLagrangian (å”¯ : UnifiedField) (S : StratifiedSpace) : Real :=
-  let intra := éˆ­?i : Fin 7, å”¯.intraLayerTerm (S.layer i).nodes.choose (by
+noncomputable def unifiedLagrangian (å”?: UnifiedField) (S : StratifiedSpace) : Real :=
+  let intra := âˆ‘i : Fin 7, å”?intraLayerTerm (S.layer i).nodes.choose (by
     exact S.nonempty i)
-  let inter := éˆ­?T in S.transitions, å”¯.interLayerTerm T
-  let grav := éˆ­?i : Fin 7, å”¯.curvatureTerm (S.layer i).nodes.choose (by
+  let inter := âˆ‘T in S.transitions, å”?interLayerTerm T
+  let grav := âˆ‘i : Fin 7, å”?curvatureTerm (S.layer i).nodes.choose (by
     exact S.nonempty i)
   intra + inter + grav
 
-/-- Unified field equation: stratified operator acting on å”¯ = 0 -/
-def unifiedFieldEquation (å”¯ : UnifiedField) (S : StratifiedSpace) : Prop :=
+/-- Unified field equation: stratified operator acting on å”?= 0 -/
+def unifiedFieldEquation (å”?: UnifiedField) (S : StratifiedSpace) : Prop :=
   -- Layer-internal dynamics
-  (forall l : Level, l = .L1 -> å”¯.electromagnetic l /= 0) /\
+  (forall l : Level, l = .L1 -> å”?electromagnetic l /= 0) /\
   -- Inter-layer coupling
-  (forall T : InterLayerTransition, T in S.transitions -> å”¯.interLayerTerm T /= 0) /\
+  (forall T : InterLayerTransition, T in S.transitions -> å”?interLayerTerm T /= 0) /\
   -- Geometric curvature
-  (forall l : Level, å”¯.gravitational l /= 0)
+  (forall l : Level, å”?gravitational l /= 0)
 
 end UnifiedField
 
@@ -416,46 +416,46 @@ end UnifiedField
 -- ==============================================================================
 
 /-- Coupling constant hierarchy theorem:
-    log alpha_G : log alpha_W : log alpha_E : log alpha_S éˆ®?-39 : -5 : -2 : 0
+    log alpha_G : log alpha_W : log alpha_E : log alpha_S ¡Ö39 : -5 : -2 : 0
     This emerges from dimensional projection of the same tunneling factor. -/
 theorem couplingHierarchy :
-  let alpha_G := emergentG * (1.67e-27 : Real) ^ 2 / (1.054e-34 * 2.998e8)  -- G*m_pè™/éˆ©å»²
+  let alpha_G := emergentG * (1.67e-27 : Real) ^ 2 / (1.054e-34 * 2.998e8)  -- G*m_pè™?éˆ©å»²
   let alpha_W := emergentFermiConstant * (1.67e-27 : Real) ^ 2 / Real.sqrt 2
   let alpha_E := emergentAlpha
   let alpha_S := alpha_s_at_MZ
   -- Hierarchy: each layer transition contributes ~ln(10) factor
-  Real.log alpha_G / Real.log alpha_W éˆ®?-39 / -5 := by
+  Real.log alpha_G / Real.log alpha_W ¡Ö39 / -5 := by
   -- Numerical approximation; exact ratio requires precise physical constants
   norm_num [emergentG, emergentFermiConstant, emergentAlpha, alpha_s_at_MZ]
 
 /-- Emergent Einstein equation theorem:
     In the coarse-graining limit, network connectivity fluctuations
-    converge to G_muè°“ + èžžg_muè°“ = 8piG T_muè°“ -/
+    converge to G_muè°?+ èžžg_muè°?= 8piG T_muè°?-/
 theorem emergentEinsteinEquation
   (G : CausalNetwork) (hgamma : G.degree = 12)  -- power-law gamma = 2.2
   (hstrat : exists S : StratifiedSpace, forall i, S.layer i = G) :
   -- Metric from connectivity
-  let g_muè°“ := ConnectivityMeasure.metricTimeComponent
+  let g_muè°?:= ConnectivityMeasure.metricTimeComponent
     (ConnectivityMeasure.temporalConnectivity G (G.nodes.choose (by
       -- TODO: Prove network is nonempty
       exact G.nonempty))) 1
   -- Einstein tensor from second-order connectivity variation
-  let G_muè°“ := g_muè°“  -- simplified; full Riemann tensor needs more structure
+  let G_muè°?:= g_muè°? -- simplified; full Riemann tensor needs more structure
   -- Stress-energy from matter distribution
-  let T_muè°“ := 1
-  G_muè°“ + 0.7 * g_muè°“ = 8 * pi * emergentG * T_muè°“ := by
+  let T_muè°?:= 1
+  G_muè°?+ 0.7 * g_muè°?= 8 * pi * emergentG * T_muè°?:= by
   -- Open problem: full Riemannian geometry formalization not yet available.
   postulate
 
 /-- Charge quantization theorem:
-    Charge Q corresponds to Hè™(G, Int), hence automatically quantized -/
+    Charge Q corresponds to Hè™?G, Int), hence automatically quantized -/
 theorem chargeQuantization (G : CausalNetwork) :
   exists (Q : CohomologyGroup G), Q.isDiscrete := by
   -- Open problem: requires full algebraic topology formalization.
   postulate
 
 /-- Black hole entropy from surface node counting:
-    S_BH = A / (4Géˆ©? emerges from network boundary nodes -/
+    S_BH = A / (4GÎ± emerges from network boundary nodes -/
 theorem emergentBlackHoleEntropy
   (G : CausalNetwork) (A : Real)  -- horizon area
   (hA : A > 0) :
@@ -467,7 +467,7 @@ theorem emergentBlackHoleEntropy
   postulate
 
 /-- Proton lifetime prediction:
-    tau_p éˆ®?10^(34-36) years from L7 tunneling suppression -/
+    tau_p ¡Ö0^(34-36) years from L7 tunneling suppression -/
 theorem protonLifetimePrediction :
   let tunneling_L3_to_L7 := InterLayerTransition.tunnelingFactorFormula 4
   let tau_p := 1 / tunneling_L3_to_L7 ^ 2  -- inverse tunneling probability
