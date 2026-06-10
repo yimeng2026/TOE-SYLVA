@@ -44,7 +44,7 @@
 
 ### 2.1 完备性定理
 
-**定理 2.1** (Sylva完备性定理). 设 𝒫 是物理理论的参数空间，𝒜 = GF(3) ⊗ Λ⁵ 是Sylva代数结构。存在映射：
+**定理 2.1** (Sylva完备性定理 — 工作假设). 设 𝒫 是物理理论的参数空间，𝒜 = GF(3) ⊗ Λ⁵ 是Sylva代数结构。假设存在映射：
 
 $$\Phi: \mathcal{P} \to \mathcal{A}$$
 
@@ -130,7 +130,7 @@ $$\alpha = \frac{1}{n_{CS} + \delta_{QED}}$$
 
 **AUDIT WARNING (2026-06-10)**: Algebraic error: 49/3 != 137. Author admitted this. Downgrade to heuristic conjecture.
 
-**定理 4.2** (137的必然性). 对于满足因果层化条件的GF(3)⊗Λ⁵结构，陈-西蒙斯级别必须是137：
+**定理 4.2** (137的必然性 — 启发性猜想). 对于满足因果层化条件的GF(3)⊗Λ⁵结构，陈-西蒙斯级别必须是137：
 
 $$n_{CS} = \frac{\dim(\Lambda^5_{even}) \cdot \dim(GF(3)) + 1}{\dim(GF(3))} = \frac{16 \times 3 + 1}{3} = \frac{49}{3} \neq 137$$
 
@@ -159,7 +159,7 @@ $$C_2 = \frac{G_N}{\hbar c} = \frac{1}{m_P^2} = \frac{\alpha}{137} \cdot \frac{\
 
 **AUDIT WARNING (2026-06-10)**: Numerical error detected. Formula claims sin²θ_W = (1/3)*(1/137) ≈ 0.231, but (1/3)*(1/137) = 1/411 ≈ 0.00243, off by ~100x. This "theorem" should be downgraded to conjecture or removed.
 
-**定理 5.2** (弱混合角的涌现). 
+**定理 5.2** (弱混合角的涌现 — 数值错误, 待修正). 
 
 $$\sin^2\theta_W = \frac{\dim(U(1))}{\dim(SU(2))} \cdot \alpha = \frac{1}{3} \cdot \frac{1}{137} \approx 0.231$$
 
