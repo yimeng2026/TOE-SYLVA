@@ -14,6 +14,9 @@ require mathlib from git
 lean_lib SylvaFormalization where
   roots := #[
     `BCSTherory,
+    `BerryConnection,
+    `BerryCurvature,
+    `BlochTheorem,
     `ChernNumber,
     `ChernSimons,
     `CondensedMatter,
@@ -30,6 +33,7 @@ lean_lib SylvaFormalization where
     `Hodge,
     `InformationGeometry,
     `LowDepthLowerBound,
+    `NumericalVerification,
     `NPClass,
     `QuantumGravity,
     `Renormalization,
