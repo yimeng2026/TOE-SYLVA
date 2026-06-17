@@ -17,18 +17,28 @@ We propose a novel framework in which the fine-structure constant $\alpha$ emerg
 
 This work is part of the TOE-SYLVA formalization program, which aims to express physical theories in the Lean 4 proof assistant. Below we indicate the formalization status of each component:
 
-| Component | Status | Lean Module |
-|-----------|--------|-------------|
-| Fine-structure constant definition | ✅ Formalized | `SylvaInfrastructure.Constants.alpha` |
-| Alpha positivity / boundedness | ✅ Formalized | `SylvaInfrastructure.Constants.alpha_positive`, `alpha_lt_one` |
-| 15-constant algebraic relations | ✅ Formalized | `FifteenConstants` |
-| Graph-theoretic charge (Layer 1) | ❌ Not formalized | — |
-| Spectral bound (Theorem 3.1) | ❌ Not formalized | — |
-| Continuum limit (§3.4) | ❌ Not formalized | — |
-| Emergent stress tensor | ❌ Not formalized | — |
-| Curvature-torsion equations (Layer 2) | 🟡 Partial | `GaugeTheory` (principal bundles, connections) |
-| Chern-Simons invariant (Layer 3) | 🟡 Partial | `ChernNumber`, `TopologicalInsulator.ChernNumber` |
-| Numerical simulation results | ❌ Not formalizable in principle | — |
+| Component | Status | Lean Module | Key Definitions / Theorems (line no.) |
+|-----------|--------|-------------|---------------------------------------|
+| Fine-structure constant definition | ✅ Formalized | `SylvaInfrastructure.Constants` | `alpha` (L87), `alphaDef` (L89), `alphaSource` (L91) |
+| Alpha positivity / boundedness | ✅ Formalized | `SylvaInfrastructure.Constants` | `alpha_positive` (L98), `alpha_lt_one` (L103), `alpha_ne_zero` (L111) |
+| Alpha QED relation | ✅ Formalized | `SylvaInfrastructure.Constants` | `alpha_QED_relation` (L108), `FineStructureConstant_QED` (L584) |
+| 15-constant algebraic relations | ✅ Formalized | `FifteenConstants` | `alpha_def` (L97), `alpha_expand` (L122), `alpha_planck` (L248) |
+| Rydberg / Klitzing / Josephson relations | ✅ Formalized | `FifteenConstants` | `R_infty_def` (L101), `von_klitzing_def` (L113), `josephson_def` (L109) |
+| Alpha–conductance relation | ✅ Formalized | `FifteenConstants` | `R_K_alpha_relation` (L141), `K_J_R_K_product` (L278) |
+| Principal bundle (gauge theory base) | 🟡 Partial | `GaugeTheory.Basic` | `Fiber` (L45), `FreeAction` (L50), `TrivialPrincipalBundle` (L64) |
+| Connection / covariant derivative | 🟡 Partial | `GaugeTheory.Connection` | — (file exists, details pending compilation) |
+| Yang–Mills action | 🟡 Partial | `GaugeTheory.YangMills` | — (file exists, details pending compilation) |
+| Instanton number | 🟡 Partial | `GaugeTheory.Instanton` | — (file exists, details pending compilation) |
+| TKNN formula (Chern number) | 🟡 Partial | `ChernNumber` | `quantizedHallConductivity` (L273), `tknnFromBerryCurvature` (L282) |
+| Chern class expansion | 🟡 Partial | `ChernNumber` | `chernClassExpansion` (L433), `chernEulerRelation` (L454) |
+| Kitaev periodic table | 🟡 Partial | `ChernNumber` | `chernNumberInKitaevTable` (L326), `classA_2D_topological` (L338) |
+| Graph-theoretic charge (Layer 1) | ❌ Not formalized | — | — |
+| Spectral bound (Theorem 3.1) | ❌ Not formalized | — | — |
+| Continuum limit (§3.4) | ❌ Not formalized | — | — |
+| Emergent stress tensor | ❌ Not formalized | — | — |
+| Curvature-torsion equations (Layer 2) | ❌ Not formalized | — | — |
+| Chern-Simons invariant (Layer 3) | ❌ Not formalized | — | — |
+| Numerical simulation results | ❌ Not formalizable | — | — |
 
 **Legend:** ✅ = machine-checked proof; 🟡 = definitions / partial results; ❌ = not yet formalized.
 
