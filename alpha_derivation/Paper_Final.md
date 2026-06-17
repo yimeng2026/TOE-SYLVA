@@ -50,7 +50,7 @@ The gap between the causal network framework (Layers 1–2) and existing formali
 
 The fine-structure constant $\alpha = e^2 / (4\pi\varepsilon_0\hbar c) \approx 1/137.036$ is one of the most precisely measured quantities in physics, yet its theoretical origin remains unexplained. In the Standard Model, $\alpha$ is a free parameter fixed by measurement; no derivation from deeper principles is known. This absence constitutes the core of what we call the **"large-number puzzle"**: why do dimensionless constants take the specific values they do?
 
-Recent developments in emergent gravity and quantum information suggest that spacetime geometry itself may be a macroscopic approximation of microscopic quantum degrees of freedom. Causal set theory [1], ER=EPR [2], and Verlinde's entropic gravity [3] all point toward a common theme: fundamental physics may be a large-scale pattern emerging from combinatorial or information-theoretic substrata.
+Recent developments in emergent gravity and quantum information suggest that spacetime geometry itself may be a macroscopic approximation of microscopic quantum degrees of freedom. Causal set theory [1], network geometry [26], and quantum graphity [28] all point toward a common theme: fundamental physics may be a large-scale pattern emerging from combinatorial or information-theoretic substrata.
 
 In this work, we push this program to its logical extreme by proposing that **charge itself**—and therefore the electromagnetic coupling—emerges from the connectivity structure of a causal network. The fine-structure constant is then not a fundamental parameter but a **statistical-mechanical invariant** of the network's topological phase.
 
@@ -75,15 +75,14 @@ under the equilibrium distribution of the network.
 | Theory | Core Idea | Our Framework |
 |--------|-----------|---------------|
 | Causal set theory (Sorkin, Dowker) | Discrete spacetime as a poset | Our causal network is a concrete realization with power-law degree statistics [1, 11, 25] |
-| Benincasa–Dowker | Scalar curvature from local order counts | Precedent for emergent stress tensor from graph combinatorics [26] |
-| Rideout–Sorkin | Stochastic growth of causal sets | Mathematical model for network evolution [27] |
-| Network geometry (Bianconi–Rahmede) | Simplicial complexes → hyperbolic manifolds | Layer-2 embedding shares the same coarse-graining logic [28] |
-| Network cosmology (Krioukov et al.) | Power-law causal networks = de Sitter | Direct correspondence with our DAG model [29] |
-| Quantum graphity (Konopka–Markopoulou–Severini) | Graph → spacetime emergence | Highly analogous to our Layer 1→2 transition [30] |
+| Benincasa–Dowker | Scalar curvature from local order counts | Precedent for emergent stress tensor from graph combinatorics [24] |
+| Rideout–Sorkin | Stochastic growth of causal sets | Mathematical model for network evolution [25] |
+| Network geometry (Bianconi–Rahmede) | Simplicial complexes → hyperbolic manifolds | Layer-2 embedding shares the same coarse-graining logic [26] |
+| Network cosmology (Krioukov et al.) | Power-law causal networks = de Sitter | Direct correspondence with our DAG model [27] |
+| Quantum graphity (Konopka–Markopoulou–Severini) | Graph → spacetime emergence | Highly analogous to our Layer 1→2 transition [28] |
 | String-net condensation (Wen) | Charge as string endpoint | Charge as network node endpoint |
-| ER=EPR (Maldacena–Susskind) | Entanglement = geometry | Causal edge ↔ quantum entanglement |
 
-Our framework is positioned at the intersection of causal set theory [1, 11, 25–27], network geometry [28, 29], and quantum graphity [30]. The key distinction is that we identify a *specific topological invariant* ($n_{CS}$) with a measured fundamental constant ($\alpha$), going beyond the generic "emergence" claims of these predecessors.
+Our framework is positioned at the intersection of causal set theory [1, 11, 23–25], network geometry [26, 27], and quantum graphity [28]. The key distinction is that we identify a *specific topological invariant* ($n_{CS}$) with a measured fundamental constant ($\alpha$), going beyond the generic "emergence" claims of these predecessors.
 
 ---
 
@@ -111,7 +110,7 @@ where $R_{\mu\nu}$ is the Ricci tensor, $R = g^{\mu\nu} R_{\mu\nu}$ is the scala
 
 $$T^{\text{(emergent)}}_{\mu\nu} = \frac{1}{4\pi} \left( F_{\mu\lambda} F_{\nu}^{\;\lambda} - \frac{1}{4} g_{\mu\nu} F_{\lambda\sigma} F^{\lambda\sigma} \right) + \frac{\kappa^2}{16\pi G} \left( T_{\mu\lambda\sigma} T_{\nu}^{\;\lambda\sigma} - \frac{1}{2} g_{\mu\nu} T_{\lambda\sigma\rho} T^{\lambda\sigma\rho} \right),$$
 
-where the first term is the standard electromagnetic stress tensor and the second term is the torsion contribution [24].
+where the first term is the standard electromagnetic stress tensor and the second term is the torsion contribution [22].
 
 **Cartan torsion equation:**
 
@@ -165,7 +164,7 @@ $$g_{\mu\nu}(x) = \lim_{N \to \infty} \sum_{v: x_v \to x} \partial_\mu \Phi(v) \
 
 **Assumption 3.3** (Spectral convergence). The eigenvalues $\{\lambda_i\}$ of $L$ converge to the eigenvalues of the Laplace-Beltrami operator $\Delta_g$ on $M$ as $N \to \infty$, with $\lambda_i \sim N^{-2/d} \mu_i$ where $\mu_i$ are the continuum eigenvalues.
 
-This assumption is supported by results in spectral graph theory [21, 22] and has been verified numerically for random geometric graphs [23]. A rigorous proof for causal networks with power-law degree distributions remains open.
+This assumption is supported by results in spectral graph theory [21, 22] and has been verified numerically for random geometric graphs [21]. A rigorous proof for causal networks with power-law degree distributions remains open.
 
 ### Emergent Gauge Potential
 
@@ -293,63 +292,61 @@ We have presented a framework in which the fine-structure constant $\alpha$ emer
 
 [1] Sorkin, R. D. *Causal Sets: Discrete Gravity*. In *Lectures on Quantum Gravity*, edited by A. Gomberoff and D. Marolf, 305–327. Springer, 2005. arXiv:gr-qc/0309009.
 
-[2] Maldacena, J., and L. Susskind. "Cool Horizons for Entangled Black Holes." *Fortschr. Phys.* **61**, 781–811 (2013). arXiv:1306.0533 [hep-th].
 
-[3] Verlinde, E. P. "On the Origin of Gravity and the Laws of Newton." *JHEP* **1104**, 029 (2011). arXiv:1001.0785 [hep-th].
 
-[4] Wen, X.-G. *Quantum Field Theory of Many-Body Systems: From the Origin of Sound to an Origin of Light and Electrons*. Oxford University Press, 2004.
+[2] Wen, X.-G. *Quantum Field Theory of Many-Body Systems: From the Origin of Sound to an Origin of Light and Electrons*. Oxford University Press, 2004.
 
-[5] Aliberti, M., et al. (Muon g−2 Theory Initiative). "The Muon g−2 Theory White Paper 2025." arXiv:2505.21476 [hep-ph] (2025).
+[3] Aliberti, M., et al. (Muon g−2 Theory Initiative). "The Muon g−2 Theory White Paper 2025." arXiv:2505.21476 [hep-ph] (2025).
 
-[6] Muon g−2 Collaboration. "Final Measurement of the Positive-Muon Anomalous Magnetic Moment to 0.20 ppm Precision." *Phys. Rev. D* **111**, 052007 (2025). arXiv:2506.03069 [hep-ex].
+[4] Muon g−2 Collaboration. "Final Measurement of the Positive-Muon Anomalous Magnetic Moment to 0.20 ppm Precision." *Phys. Rev. D* **111**, 052007 (2025). arXiv:2506.03069 [hep-ex].
 
-[7] Witten, E. "Quantum Field Theory and the Jones Polynomial." *Commun. Math. Phys.* **121**, 351–399 (1989).
+[5] Witten, E. "Quantum Field Theory and the Jones Polynomial." *Commun. Math. Phys.* **121**, 351–399 (1989).
 
-[8] Hanneke, D., S. Fogwell, and G. Gabrielse. "New Measurement of the Electron Magnetic Moment and the Fine Structure Constant." *Phys. Rev. Lett.* **100**, 120801 (2008). arXiv:0801.1134 [physics.atom-ph].
+[6] Hanneke, D., S. Fogwell, and G. Gabrielse. "New Measurement of the Electron Magnetic Moment and the Fine Structure Constant." *Phys. Rev. Lett.* **100**, 120801 (2008). arXiv:0801.1134 [physics.atom-ph].
 
-[9] Parker, R. H., et al. "Measurement of the Fine-Structure Constant as a Test of the Standard Model." *Science* **360**, 191–195 (2018). arXiv:1812.04130 [physics.atom-ph].
+[7] Parker, R. H., et al. "Measurement of the Fine-Structure Constant as a Test of the Standard Model." *Science* **360**, 191–195 (2018). arXiv:1812.04130 [physics.atom-ph].
 
-[10] Morel, L., et al. "Determination of the Fine-Structure Constant with an Accuracy of 81 Parts per Trillion." *Nature* **588**, 61–65 (2020). arXiv:2011.01265 [physics.atom-ph].
+[8] Morel, L., et al. "Determination of the Fine-Structure Constant with an Accuracy of 81 Parts per Trillion." *Nature* **588**, 61–65 (2020). arXiv:2011.01265 [physics.atom-ph].
 
-[11] Dowker, F. "Causal Sets and the Deep Structure of Spacetime." arXiv:gr-qc/0508109 (2005).
+[9] Dowker, F. "Causal Sets and the Deep Structure of Spacetime." arXiv:gr-qc/0508109 (2005).
 
-[12] Rovelli, C. *Quantum Gravity*. Cambridge University Press, 2004.
+[10] Rovelli, C. *Quantum Gravity*. Cambridge University Press, 2004.
 
-[13] Jacobson, T. "Thermodynamics of Spacetime: The Einstein Equation of State." *Phys. Rev. Lett.* **75**, 1260–1263 (1995). arXiv:gr-qc/9504004.
+[11] Jacobson, T. "Thermodynamics of Spacetime: The Einstein Equation of State." *Phys. Rev. Lett.* **75**, 1260–1263 (1995). arXiv:gr-qc/9504004.
 
-[14] Van Raamsdonk, M. "Building Up Spacetime with Quantum Entanglement." *Gen. Relativ. Gravit.* **42**, 2323–2329 (2010). arXiv:1005.3035 [hep-th].
+[12] Van Raamsdonk, M. "Building Up Spacetime with Quantum Entanglement." *Gen. Relativ. Gravit.* **42**, 2323–2329 (2010). arXiv:1005.3035 [hep-th].
 
-[15] Seiberg, N. "Emergent Spacetime." arXiv:hep-th/0601234 (2006).
+[13] Seiberg, N. "Emergent Spacetime." arXiv:hep-th/0601234 (2006).
 
-[16] Ambjørn, J., J. Jurkiewicz, and R. Loll. "Quantum Gravity, or the Art of Building Spacetime." arXiv:hep-th/0604212 (2006).
+[14] Ambjørn, J., J. Jurkiewicz, and R. Loll. "Quantum Gravity, or the Art of Building Spacetime." arXiv:hep-th/0604212 (2006).
 
-[17] Cao, C., S. M. Carroll, and S. Michalakis. "Space from Hilbert Space: Recovering Geometry from Bulk Entanglement." *Phys. Rev. D* **95**, 024031 (2017). arXiv:1606.08444 [hep-th].
+[15] Cao, C., S. M. Carroll, and S. Michalakis. "Space from Hilbert Space: Recovering Geometry from Bulk Entanglement." *Phys. Rev. D* **95**, 024031 (2017). arXiv:1606.08444 [hep-th].
 
-[18] Swingle, B. "Entanglement Renormalization and Holography." *Phys. Rev. D* **86**, 065007 (2012). arXiv:0905.1317 [cond-mat.str-el].
+[16] Swingle, B. "Entanglement Renormalization and Holography." *Phys. Rev. D* **86**, 065007 (2012). arXiv:0905.1317 [cond-mat.str-el].
 
-[19] Preskill, J. "Quantum Computing in the NISQ Era and Beyond." *Quantum* **2**, 79 (2018). arXiv:1801.00862 [quant-ph].
+[17] Preskill, J. "Quantum Computing in the NISQ Era and Beyond." *Quantum* **2**, 79 (2018). arXiv:1801.00862 [quant-ph].
 
-[20] Wilczek, F. "On the Origin of the Fine-Structure Constant." *Physics Today* **68**, 12 (2015).
+[18] Wilczek, F. "On the Origin of the Fine-Structure Constant." *Physics Today* **68**, 12 (2015).
 
-[21] Belkin, M., and P. Niyogi. "Convergence of Laplacian Eigenmaps." *NeurIPS* (2006).
+[19] Belkin, M., and P. Niyogi. "Convergence of Laplacian Eigenmaps." *NeurIPS* (2006).
 
-[22] Singer, A. "From Graph to Manifold Laplacian: The Convergence Rate." *Appl. Comput. Harmon. Anal.* **21**, 128–134 (2006).
+[20] Singer, A. "From Graph to Manifold Laplacian: The Convergence Rate." *Appl. Comput. Harmon. Anal.* **21**, 128–134 (2006).
 
-[23] Coifman, R. R., and S. Lafon. "Diffusion Maps." *Appl. Comput. Harmon. Anal.* **21**, 5–30 (2006).
+[21] Coifman, R. R., and S. Lafon. "Diffusion Maps." *Appl. Comput. Harmon. Anal.* **21**, 5–30 (2006).
 
-[24] Hehl, F. W., P. Von Der Heyde, G. D. Kerlick, and J. M. Nester. "General Relativity with Spin and Torsion: Foundations and Prospects." *Rev. Mod. Phys.* **48**, 393–416 (1976).
+[22] Hehl, F. W., P. Von Der Heyde, G. D. Kerlick, and J. M. Nester. "General Relativity with Spin and Torsion: Foundations and Prospects." *Rev. Mod. Phys.* **48**, 393–416 (1976).
 
-[25] Surya, S. "The Causal Set Approach to Quantum Gravity." *Living Rev. Relativ.* **22**, 5 (2019). arXiv:1903.11544 [gr-qc].
+[23] Surya, S. "The Causal Set Approach to Quantum Gravity." *Living Rev. Relativ.* **22**, 5 (2019). arXiv:1903.11544 [gr-qc].
 
-[26] Benincasa, D. M. T., and F. Dowker. "The Scalar Curvature of a Causal Set." *Phys. Rev. Lett.* **104**, 181301 (2010). arXiv:1001.2725 [gr-qc].
+[24] Benincasa, D. M. T., and F. Dowker. "The Scalar Curvature of a Causal Set." *Phys. Rev. Lett.* **104**, 181301 (2010). arXiv:1001.2725 [gr-qc].
 
-[27] Rideout, D. P., and R. D. Sorkin. "A Classical Sequential Growth Dynamics for Causal Sets." *Phys. Rev. D* **61**, 024002 (1999). arXiv:gr-qc/9904062.
+[25] Rideout, D. P., and R. D. Sorkin. "A Classical Sequential Growth Dynamics for Causal Sets." *Phys. Rev. D* **61**, 024002 (1999). arXiv:gr-qc/9904062.
 
-[28] Bianconi, G., and C. Rahmede. "Network Geometry with Flavor: From Complexity to Quantum Geometry." *Phys. Rev. E* **93**, 032315 (2016); "Emergent Hyperbolic Network Geometry from Simplicial Complexes." *Sci. Rep.* **7**, 41974 (2017).
+[26] Bianconi, G., and C. Rahmede. "Network Geometry with Flavor: From Complexity to Quantum Geometry." *Phys. Rev. E* **93**, 032315 (2016); "Emergent Hyperbolic Network Geometry from Simplicial Complexes." *Sci. Rep.* **7**, 41974 (2017).
 
-[29] Krioukov, D., et al. "Network Cosmology." *Sci. Rep.* **2**, 793 (2012). arXiv:1203.2109 [cs.SI].
+[27] Krioukov, D., et al. "Network Cosmology." *Sci. Rep.* **2**, 793 (2012). arXiv:1203.2109 [cs.SI].
 
-[30] Konopka, T., F. Markopoulou, and S. Severini. "Quantum Graphity: A Model of Emergent Locality." *Phys. Rev. D* **77**, 104029 (2008). arXiv:0801.0861 [hep-th].
+[28] Konopka, T., F. Markopoulou, and S. Severini. "Quantum Graphity: A Model of Emergent Locality." *Phys. Rev. D* **77**, 104029 (2008). arXiv:0801.0861 [hep-th].
 
 ---
 
@@ -397,6 +394,58 @@ $$Q(v) = \sum_{u \in \mathcal{N}(v)} w(u,v) \cdot \delta(u,v) \leq \lambda_{\max
 
 ---
 
+# Appendix D: Toolchain Specification
+
+The TOE-SYLVA formalization program uses the following toolchain and conventions.
+
+## D.1 Lean 4 Environment
+
+- **Lean version**: 4.30.0 (via `lean-toolchain`)
+- **Package manager**: `lake` (Lean 4's built-in package manager)
+- **Math library**: `mathlib4` (leanprover-community/mathlib4), pinned to a specific commit via `lake-manifest.json`
+- **Pre-build cache**: `lake exe cache get` downloads compiled mathlib artifacts to avoid recompiling 8000+ files
+
+## D.2 Code Conventions
+
+- **Encoding**: All `.lean` files are UTF-8. Use Python or `lake` CLI for file operations; do not use PowerShell `Set-Content` on `.lean` files (may corrupt encoding).
+- **Import style**: Prefer `import Mathlib.Submodule` over `import Mathlib`. Full `import Mathlib` is used only in stub modules during active development; target modules must use precise imports.
+- **Linting**: Use `lake exe check_file_imports` (mathlib tool) to detect unused/redundant imports after compilation.
+- **File structure**: Parent module (`Foo.lean`) exports child modules (`Foo/Bar.lean`, `Foo/Baz.lean`) via `export` declarations.
+
+## D.3 Compilation Workflow
+
+```
+lake update          # update dependencies from git
+lake exe cache get  # download pre-built mathlib cache
+lake build          # compile all modules
+```
+
+## D.4 Dependency Audit
+
+| Module | External Imports | Internal Dependencies |
+|--------|------------------|----------------------|
+| `Basic` | `Mathlib.Tactic` | — |
+| `SylvaInfrastructure.Constants` | `Mathlib.Data.Real`, `Mathlib.Data.Complex`, ... | `Basic` |
+| `FifteenConstants` | `Mathlib.Analysis.SpecialFunctions` | `SylvaInfrastructure.Constants` |
+| `GaugeTheory` | `Mathlib.Geometry.Manifold`, `Mathlib.Topology.FiberBundle` | `SylvaInfrastructure` |
+| `ChernNumber` | `Mathlib.LinearAlgebra.Matrix`, `Mathlib.Topology.VectorBundle` | `GaugeTheory` |
+| `CookLevin` | `Mathlib.Data.Finset`, `Mathlib.Computability` | `Basic` |
+
+## D.5 Git Workflow
+
+- Repository: `github.com/yimeng2026/TOE-SYLVA`
+- SSH over port 443 (bypasses VPN restrictions on port 22)
+- Commit messages: English, prefixed with module name (`Paper_Final: ...`, `SylvaInfrastructure: ...`)
+- Branch: `main` for all current work
+
+## D.6 Known Issues
+
+1. **mathlib cache mismatch**: Local snapshot of mathlib (without git history) cannot match `lake exe cache get` commit hashes. Resolution: point `lakefile.lean` to official git URL and re-run `lake update`.
+2. **Import errors**: 5 files currently report `bad import 'Mathlib'` due to encoding corruption or missing submodules. Resolution: fix file encoding, replace `import Mathlib` with specific imports, or restore missing submodules.
+3. **Windows encoding**: `lake` and `elan` assume UTF-8; Windows PowerShell default encoding may corrupt `.lean` files. Resolution: use `python -c` for file operations or set `$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'`.
+
+---
+
 # Cover Letter
 
 **To the Editors of Physical Review D**
@@ -409,7 +458,7 @@ We submit for your consideration the manuscript entitled *"Emergent Fine-Structu
 
 **Why Physical Review D?** This work sits at the intersection of quantum gravity, emergent spacetime, and high-precision particle physics—the core scope of PRD. The framework makes falsifiable predictions about the high-energy running of $\alpha$, dark energy, and quantum Hall conductance, all of which fall within the journal's purview.
 
-**Related Work.** Our approach builds on causal set theory (Sorkin), ER=EPR (Maldacena-Susskind), and entropic gravity (Verlinde), but goes beyond these by proposing a concrete mechanism for the emergence of $\alpha$ from network topology. We distinguish our work from:
+**Related Work.** Our approach builds on causal set theory (Sorkin), network geometry (Bianconi–Rahmede), and quantum graphity (Konopka–Markopoulou–Severini), but goes beyond these by proposing a concrete mechanism for the emergence of $\alpha$ from network topology. We distinguish our work from:
 - *Anthropic/multiverse arguments* (which do not explain $\alpha$ but merely observe it)
 - *String theory compactifications* (which introduce additional free parameters)
 - *Numerological relations* (which lack a dynamical mechanism)
@@ -419,7 +468,7 @@ Our framework provides a dynamical, graph-theoretic mechanism with explicit nume
 **Suggested Reviewers.**
 1. Prof. Fay Dowker (Imperial College London) — causal set theory
 2. Prof. Xiao-Gang Wen (MIT) — topological order and emergent gauge theory
-3. Prof. Erik Verlinde (University of Amsterdam) — entropic gravity
+3. Prof. Dmitri Krioukov (Northeastern University) — network geometry and emergent cosmology
 4. Prof. Carlo Rovelli (Aix-Marseille University) — loop quantum gravity and emergence
 
 **Conflicts of Interest.** The authors declare no conflicts of interest.
