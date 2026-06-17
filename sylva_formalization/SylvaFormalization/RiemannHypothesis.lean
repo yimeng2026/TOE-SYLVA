@@ -29,7 +29,7 @@ Formalization strategy:
   `sorry`). A postulate is an unproven axiom that we take as given for the
   purpose of formalization. This is the correct approach in proof assistants
   for unproven conjectures that we wish to use as hypotheses in other proofs.
--/]
+-/
 
 import Mathlib
 import Mathlib.NumberTheory.LSeries.RiemannZeta

@@ -1,13 +1,14 @@
-/-
-Sylva Formalization - Placeholder Module (Amputated for compilation)
-Original content contained encoding issues. Will be restored incrementally.
--/
+import Mathlib.Order.Basic
+import Mathlib.Order.Lattice
+import Mathlib.Order.Bounds.Defs
+import Mathlib.Data.Nat.Basic
+import Mathlib.Data.Set.Basic
 
-import Mathlib
+open Set Classical
 
 namespace Sylva
 
--- Placeholder: Original definitions removed due to encoding corruption
--- TODO: Restore from backup or rewrite
+lemma test_sInf_empty : sInf (∅ : Set ℕ) = 0 := by
+  simp [sInf_eq]
 
 end Sylva

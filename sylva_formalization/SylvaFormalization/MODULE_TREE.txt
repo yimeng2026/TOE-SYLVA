@@ -1,0 +1,53 @@
+﻿- Basic.lean (0.3 KB)
+- BCSTherory.lean (9.5 KB)
+- ChernNumber.lean (17.7 KB)
+- CondensedMatter.lean (6.4 KB)
+- CookLevin.lean (0.8 KB)
+- Cosmology.lean (6.5 KB)
+- EllipticCurveReduction.lean (17.4 KB)
+- FifteenConstants.lean (12.9 KB)
+- FourForcesUnification.lean (21.4 KB)
+- GaugeTheory.lean (16.8 KB)
+- Hodge.lean (13.8 KB)
+- InformationGeometry.lean (6.5 KB)
+- lakefile.lean (0.7 KB)
+- NPClass.lean (0.6 KB)
+- QuantumGravity.lean (6.9 KB)
+- Renormalization.lean (0.8 KB)
+- RiemannHypothesis.lean (3.1 KB)
+- SAT.lean (16.9 KB)
+- StandardModel.lean (0.8 KB)
+- StratifiedGeometry.lean (6.9 KB)
+- StringTheory.lean (6.4 KB)
+- SylvaInfrastructure.lean (2.7 KB)
+- TestSInf.lean (0.3 KB)
+- TopologicalInsulator.lean (17.2 KB)
+- ZetaVerifier_backup.lean (11.6 KB)
+
+[GaugeTheory/]
+  - Basic.lean (3.3 KB)
+  - Connection.lean (4.6 KB)
+  - Instanton.lean (4.8 KB)
+  - YangMills.lean (4.1 KB)
+
+[CookLevin/]
+  - Encoding.lean (15.2 KB)
+  - Reduction.lean (8.9 KB)
+  - SAT.lean (7.7 KB)
+
+[TopologicalInsulator/]
+  - Basic.lean (3.8 KB)
+  - ChernNumber.lean (3.5 KB)
+  - KTheory.lean (5 KB)
+  - Z2Invariant.lean (4.7 KB)
+
+[NPClass/]
+  - Basic.lean (5.9 KB)
+  - PolynomialTime.lean (5.5 KB)
+  - PSubNP.lean (4.4 KB)
+
+[StandardModel/]
+  - Basic.lean (5.5 KB)
+  - Interactions.lean (1.5 KB)
+  - Lagrangian.lean (2 KB)
+  - Symmetries.lean (0.6 KB)
