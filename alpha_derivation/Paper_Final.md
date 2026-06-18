@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Emergent Fine-Structure Constant from Causal Network Dynamics: A Topological Field Theory Approach"
 author: "SYLVA Research Group"
 affiliation: "TOE-SYLVA Project"
@@ -454,7 +454,7 @@ $$Q(v) = \sum_{u \in \mathcal{N}(v)} w(u,v) \cdot \delta(u,v) \leq \lambda_{\max
 
 ---
 
-## Appendix C: Parameter Scan Data
+# Appendix C: Parameter Scan Data
 
 | $\gamma$ | $C$ | $\kappa$ | $\alpha_{\text{sim}}$ | Error (%) | $n_{CS}$ |
 |----------|-----|----------|------------------------|-----------|----------|

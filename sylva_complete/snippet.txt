@@ -1,1 +1,0 @@
-'Beale-Kato-Majda criterion)\n-/\\n\\ndef BlowUpCriterion (u : VelocityField) (T_star : ℝ) : Prop :=\n  -- The Beale-Kato-Majda criterion: blow-up if vorticity integral diverges\n  -- ∫₀^{T*} ‖ω(t)‖_{L^∞} d'

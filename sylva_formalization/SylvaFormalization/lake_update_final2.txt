@@ -1,0 +1,8 @@
+﻿lake : info: SylvaFormalization: no previous manifest, creating one from scratch
+所在位置 行:1 字符: 93
++ ... ace\sylva_formalization\SylvaFormalization'; lake update 2>&1 | Out-F ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (info: SylvaForm...ne from scratch:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git

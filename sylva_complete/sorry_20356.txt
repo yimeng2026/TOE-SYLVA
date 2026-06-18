@@ -1,6 +1,0 @@
-classical existence theorem
-  -- The proof uses Galerkin approximations and compactness arguments
-  sorry
-
--- ============================================================
--- SECTION 12: SUMMARY THEORE

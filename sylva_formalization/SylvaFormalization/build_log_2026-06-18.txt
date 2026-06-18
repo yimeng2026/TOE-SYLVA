@@ -1,0 +1,155 @@
+=== SYLVA FORMALIZATION BUILD LOG - 2026-06-18 ===
+
+Summary: lake build FAILED
+Total targets: 8604
+Built successfully: ~940
+Failed: 24
+
+=== LAKE UPDATE STATUS ===
+Skipped - network unavailable (GitHub access blocked)
+Instead: used existing local dependencies in lake/packages/
+
+=== MODIFICATIONS MADE TO PROJECT ===
+1. Modified lakefile.lean: changed mathlib dependency from git to path
+   Original: require mathlib from git "https://github.com/leanprover-community/mathlib4" @ "main"
+   Modified: require mathlib from "lake/packages/mathlib"
+
+2. Rewrote lake-manifest.json to include all transitive dependencies as path dependencies:
+   - mathlib, plausible, LeanSearchClient, importGraph, proofwidgets, aesop, Qq, batteries, Cli
+
+=== BUILD ERRORS (categorized) ===
+
+--- CATEGORY A: Mathlib Version Incompatibility (Lean v4.30.0-rc2) ---
+
+1. [A1] Mathlib.Tactic.Linter.Header
+   File: Mathlib/Tactic/Linter/Header.lean:423:25
+   Error: Unknown constant `Lean.Parser.Command.deprecated_module`
+   This constant does not exist in Lean v4.30.0-rc2
+
+2. [A2] Mathlib.Data.List.SplitOn
+   File: Mathlib/Data/List/SplitOn.lean:8:0
+   Error: unexpected identifier; expected command
+   Likely syntax/API mismatch with this Lean version
+
+--- CATEGORY B: Missing Mathlib Files (Local mathlib package incomplete) ---
+
+3. [B1] Mathlib.Analysis.Calculus.Deriv - file not found
+4. [B2] Mathlib.Analysis.SpecialFunctions.Gamma - file not found
+5. [B3] Mathlib.Geometry.Manifold.SmoothManifoldWithCorners - file not found
+6. [B4] Mathlib.Geometry.Manifold.Basic - file not found
+7. [B5] Mathlib.Analysis.Convergence.Basic - file not found
+8. [B6] Mathlib.LinearAlgebra.TensorProduct - file not found
+
+--- CATEGORY C: CRLF Line Ending Issues (Windows-style \r\n) ---
+
+9. [C1] FourForcesUnification.lean
+   Multiple errors: "isolated carriage returns are not allowed"
+   Lines affected: 13,14,15,16,19,20,31,32,33,34,35,36,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,63,64,65,66,71,72,73,74,75,76,77,78,79,80,83,84,93,94
+
+10. [C2] EllipticCurveReduction.lean
+    Error: unexpected token '\'; expected command
+    Line: 28:2
+
+11. [C3] LowDepthLowerBound.lean
+    Error: invalid 'import' command, it must be used in the beginning of the file
+    Line: 61:0
+
+12. [C4] SymmetricFunctions.lean
+    Error: invalid 'import' command, it must be used in the beginning of the file
+    Line: 21:0
+
+--- CATEGORY D: Module Name Resolution ("SylvaFormalization" namespace) ---
+
+13. [D1] Renormalization.lean:18:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+14. [D2] InformationGeometry.lean:17:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+15. [D3] CondensedMatter.lean:17:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+16. [D4] Cosmology.lean:17:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+17. [D5] StandardModel.lean:18:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+18. [D6] StringTheory.lean:17:0
+    Error: unknown module prefix 'SylvaFormalization'
+
+--- CATEGORY E: Cascade Failures (depend on B or D failures) ---
+
+19. [E1] ContinuumLimit - depends on SmoothManifoldWithCorners
+20. [E2] GaugeTheory - depends on Manifold.Basic
+21. [E3] NumericalVerification - depends on Convergence.Basic
+22. [E4] SpectralAction - depends on Deriv + Gamma
+23. [E5] StratifiedGeometry - depends on TensorProduct
+24. [E6] StratifiedTopologicalInsulator - depends on StratifiedGeometry
+
+=== FIRST 20 UNIQUE ERROR SUMMARIES ===
+
+1. Mathlib.Tactic.Linter.Header:423:25 - Unknown constant `Lean.Parser.Command.deprecated_module`
+2. Mathlib.Data.List.SplitOn:8:0 - unexpected identifier; expected command
+3. Mathlib.Analysis.Calculus.Deriv - no such file or directory
+4. Mathlib.Analysis.SpecialFunctions.Gamma - no such file or directory
+5. ContinuumLimit.lean - bad import 'Mathlib.Geometry.Manifold.SmoothManifoldWithCorners'
+6. CondensedMatter.lean:17:0 - unknown module prefix 'SylvaFormalization'
+7. Cosmology.lean:17:0 - unknown module prefix 'SylvaFormalization'
+8. Mathlib.Geometry.Manifold.Basic - no such file or directory
+9. GaugeTheory.lean - bad import 'Mathlib.Geometry.Manifold.Basic'
+10. EllipticCurveReduction.lean:28:2 - unexpected token '\'; expected command
+11. Mathlib.Analysis.Convergence.Basic - no such file or directory
+12. NumericalVerification.lean - bad import 'Mathlib.Analysis.Convergence.Basic'
+13. FourForcesUnification.lean:13:1215 - isolated carriage returns not allowed
+14. Mathlib.LinearAlgebra.TensorProduct - no such file or directory
+15. StratifiedGeometry.lean - bad import 'Mathlib.LinearAlgebra.TensorProduct'
+16. StratifiedTopologicalInsulator.lean - bad import 'StratifiedGeometry'
+17. Renormalization.lean:18:0 - unknown module prefix 'SylvaFormalization'
+18. InformationGeometry.lean:17:0 - unknown module prefix 'SylvaFormalization'
+19. LowDepthLowerBound.lean:61:0 - invalid 'import' command, must be at beginning
+20. StandardModel.lean:18:0 - unknown module prefix 'SylvaFormalization'
+
+=== SUGGESTED FIXES ===
+
+1. CRLF LINE ENDINGS (High Priority - Easy Fix)
+   Convert all .lean files from Windows CRLF to Unix LF line endings:
+   - FourForcesUnification.lean
+   - EllipticCurveReduction.lean
+   - LowDepthLowerBound.lean
+   - SymmetricFunctions.lean
+   (and possibly others)
+   Command: `dos2unix *.lean` or PowerShell equivalent
+
+2. MISSING MATHLIB FILES (High Priority - Requires git update)
+   The local mathlib package in lake/packages/mathlib is incomplete.
+   Files missing: Deriv.lean, Gamma.lean, SmoothManifoldWithCorners.lean, Basic.lean, Convergence/Basic.lean, TensorProduct.lean
+   Fix: Run `lake update` with network access, or clone mathlib4 completely.
+
+3. "SylvaFormalization" MODULE PREFIX (Medium Priority)
+   Project files import `SylvaFormalization.X` but this module is not in the build path.
+   This usually means:
+   a) The lakefile should declare the package name as "SylvaFormalization", or
+   b) The imports should be relative (e.g., `import .GaugeTheory` instead of `import SylvaFormalization.GaugeTheory`)
+   c) There might be a missing `SylvaFormalization.lean` top-level module file
+
+4. MATHLIB VERSION MISMATCH (Medium Priority)
+   The local mathlib is incompatible with Lean v4.30.0-rc2.
+   `Lean.Parser.Command.deprecated_module` doesn't exist in this version.
+   Fix: Update mathlib to a version compatible with v4.30.0-rc2, or downgrade Lean to a version compatible with the local mathlib (e.g., v4.17.0 or whatever the mathlib commit was built for).
+
+5. LAKE UPDATE NETWORK ISSUE (Root Cause)
+   `lake update` fails because GitHub is not accessible.
+   Diagnosis: `curl -I https://github.com/leanprover-community/mathlib4/` returns 000
+   Fix: Configure a git mirror or proxy, or ensure the local mathlib copy is complete and compatible.
+
+=== CONCLUSION ===
+
+Compilation FAILED due to a combination of:
+- Network isolation preventing `lake update` from fetching the correct mathlib version
+- Incomplete local mathlib copy (missing files)
+- Version mismatch between local mathlib and Lean v4.30.0-rc2
+- Windows CRLF line endings in project source files
+- Module namespace resolution issues for `SylvaFormalization` prefix
+
+To fix, first resolve the CRLF issues, then ensure a complete and compatible mathlib is available (either via network or a fully prepared local copy).

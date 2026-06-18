@@ -1,8 +1,0 @@
-een Navier-Stokes energy bounds and
-    the Sylva Phi_c critical value. A formal proof would require
----
-ution u p 1 f u0 T) :
-    KineticEnergy u t ≤ Phi.Phi_c
-
-/-- Regularity criterion: if bootstrap resi
----

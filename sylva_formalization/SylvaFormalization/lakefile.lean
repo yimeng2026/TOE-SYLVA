@@ -7,7 +7,8 @@ package «SylvaFormalization» where
     ⟨`pp.proofs.withType, false⟩
   ]
 
-require mathlib from "./.lake/packages/mathlib"
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4.git" @ "v4.29.0"
 
 @[default_target]
 lean_lib «SylvaFormalization» where
