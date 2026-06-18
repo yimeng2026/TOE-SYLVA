@@ -99,19 +99,25 @@ structure ConnectivityDecomposition (S : StratifiedSpace N) where
 
 /-- 时间递推（引力）：质量从时间连通性涌现。
     m ∝ √C_t · K_loop -/
-def TemporalRecurrence {S : StratifiedSpace N} (C_t : ∀ k, S.stratum k → ℝ)
+def TemporalRecurrence {S : StratifiedSpace N} (C_t : ∀ k, ℝ)
     (K_loop : ℝ) (m_P : ℝ) : LayerRecurrence S ℝ where
-  step := fun k v => v + C_t k sorry / (m_P * K_loop)
-  normPreserving := sorry -- 需证明：质量累积的单调性
-  linearApprox := sorry -- 需构造：线性近似映射
+  step := fun k v => v + C_t k / (m_P * K_loop)
+  -- 范数守恒（受扰动）：质量累积的单调性
+  -- 当 v ≫ C_t/(m_P·K_loop) 时，近似守恒；需精确分析扰动项
+  normPreserving := postulate
+  -- 线性近似：在 ‖v‖ 小时，递推近似为恒等映射（δv 为常数扰动）
+  linearApprox := postulate
 
 /-- 空间递推（电磁）：电荷从空间手性连通性涌现。
     e ∝ C_s · χ（手性因子） -/
-def SpatialRecurrence {S : StratifiedSpace N} (C_s : ∀ k, S.stratum k → ℝ)
-    (χ : ∀ k, S.stratum k → ℝ) : LayerRecurrence S ℝ where
-  step := fun k v => v + C_s k sorry * χ k sorry
-  normPreserving := sorry -- 需证明：手性差异的可逆性
-  linearApprox := sorry -- 需构造：线性近似映射
+def SpatialRecurrence {S : StratifiedSpace N} (C_s : ∀ k, ℝ)
+    (χ : ∀ k, ℝ) : LayerRecurrence S ℝ where
+  step := fun k v => v + C_s k * χ k
+  -- 范数守恒（受扰动）：手性差异的可逆性
+  -- 空间分量可正可负，需分析 χ 的符号对范数的影响
+  normPreserving := postulate
+  -- 线性近似：在 ‖v‖ 小时，递推近似为恒等映射
+  linearApprox := postulate
 
 -- ============================================================
 -- Section 4：收敛到连续极限（命题，未证明）

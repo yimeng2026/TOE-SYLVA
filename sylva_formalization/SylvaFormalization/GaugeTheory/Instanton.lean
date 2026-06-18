@@ -80,8 +80,7 @@ postulate ModuliSpace {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalS
     where η_{μν}^a is the 't Hooft symbol and σ_a are Pauli matrices.
     This is a self-dual connection with charge k = 1. -/
 postulate tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (x₀ : ℝ⁴) :
-  ∃ (inst : Instanton (Connection.mk sorry) (Curvature.mk sorry)),
-    TopologicalCharge (FieldStrength.mk sorry) = 1
+  ∃ (F : FieldStrength P), TopologicalCharge F = 1
   -- 't Hooft instanton: explicit self-dual solution, requires differential geometry
 
 /-- BPST instanton: Belavin-Polyakov-Schwarz-Tyupkin solution.
@@ -89,9 +88,9 @@ postulate tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (
     The first explicit instanton solution on S⁴ (conformally compactified ℝ⁴).
     Topological charge k = 1, action S = 8π²/g². -/
 postulate BPSTInstanton {P : PrincipalBundle S⁴ (SpecialUnitaryGroup 2)} :
-  ∃ (inst : Instanton (Connection.mk sorry) (Curvature.mk sorry)),
-    TopologicalCharge (FieldStrength.mk sorry) = 1 ∧
-    YangMillsAction (FieldStrength.mk sorry) = 8 * Real.pi^2
+  ∃ (F : FieldStrength P),
+    TopologicalCharge F = 1 ∧
+    YangMillsAction F = 8 * Real.pi^2
   -- BPST instanton: first explicit solution, requires conformal geometry
 
 end GaugeTheory

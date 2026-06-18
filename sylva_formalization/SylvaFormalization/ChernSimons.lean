@@ -175,6 +175,10 @@ postulate alphaInverseIsChernSimonsLevel
     (alpha : ℝ) (h_alpha : alpha = 1 / 137.035999084) :
     alpha⁻¹ = chernSimonsLevel A (by trivial)
 
+instance : GaugeGroup U1 where
+  group := by infer_instance
+  smooth := True
+
 -- ============================================================
 -- Section 5: Connection to Causal Network (Bridge)
 -- ============================================================
@@ -197,7 +201,7 @@ postulate causalNetworkChernSimonsLevel {V} [Fintype V] [DecidableEq V]
     (G : GraphTheoreticCharge.CausalNetwork V)
     (gamma : ℝ) (h_gamma : gamma = 2.9)
     (C : ℝ) (h_C : C = 0.4) :
-    ∃ (A : Connection (Fin 4 → ℝ) U1 (by sorry)),
+    ∃ (M : Type) (P : PrincipalBundle M U1) (A : Connection M U1 P),
       chernSimonsLevel A (by trivial) = 137
 
 -- ============================================================
