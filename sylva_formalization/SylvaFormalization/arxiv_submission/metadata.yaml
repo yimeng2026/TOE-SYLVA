@@ -1,0 +1,18 @@
+---
+title: "Emergent Fine-Structure Constant from Causal Network Dynamics: A Topological Field Theory Approach"
+authors:
+  - name: "SYLVA Research Group"
+    affiliation: "TOE-SYLVA Project"
+primary_class: hep-th
+secondary_classes:
+  - gr-qc
+  - math-ph
+  - quant-ph
+comments: |
+  22 pages, 4 figures. Companion formalization in Lean 4 available at
+  https://github.com/yimeng2026/TOE-SYLVA. Submitted concurrently to
+  Physical Review D.
+acm_class: "A.0; J.2"
+msc_class: "81T45; 83C27; 05C82; 81Q70"
+report_number: "SYLVA-2026-001"
+---
