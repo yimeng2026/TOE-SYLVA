@@ -25,7 +25,7 @@ MODULE STRUCTURE:
 
 import Mathlib
 
-import Basic
+import GaugeTheory.Basic
 
 namespace Sylva
 
