@@ -25,7 +25,7 @@ MODULE STRUCTURE:
 
 import Mathlib
 
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 

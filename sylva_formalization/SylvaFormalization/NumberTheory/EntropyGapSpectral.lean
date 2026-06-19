@@ -20,7 +20,7 @@ Entropy Gap Spectral Theorem - Core Formalization
 ================================================================================
 -/\n\nimport Mathlib
 
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 

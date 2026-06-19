@@ -10,7 +10,7 @@ References: Thouless et al. (1982); Kohmoto (1985)
 
 import Mathlib
 import Mathlib.Analysis.InnerProductSpace.Basic
-import SylvaFormalization.TopologicalInsulator.Basic
+import TopologicalInsulator.Basic
 
 namespace Sylva
 namespace TopologicalInsulator
@@ -60,7 +60,7 @@ noncomputable def ChernNumber (H : BlochHamiltonian 2) (bands : BandStructure 2 
     The quantized Hall conductance is proportional to the total Chern number
     of all occupied bands. This is a topological invariant, robust against
     perturbations that preserve the gap. -/
-postulate TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins : Insulator 2 H bands) :
+axiom TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins : Insulator 2 H bands) :
   let σ_xy := (1 / (2 * Real.pi)) * ChernNumber H bands
   ∃ (n : ℤ), σ_xy = n
   -- TKNN formula: topological quantization of Hall conductance, requires index theory
@@ -69,7 +69,7 @@ postulate TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins
 
     This follows from the fact that the Berry connection is a U(1) gauge field
     on the torus, and the first Chern class is an element of H²(T², ℤ) ≅ ℤ. -/
-postulate ChernNumberInteger (H : BlochHamiltonian 2) (bands : BandStructure 2 H) :
+axiom ChernNumberInteger (H : BlochHamiltonian 2) (bands : BandStructure 2 H) :
   ∃ (n : ℤ), ChernNumber H bands = n
   -- Chern number integrality: Berry curvature integral over torus is integer, requires index theory
 

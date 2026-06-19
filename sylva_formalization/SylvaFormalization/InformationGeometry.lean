@@ -14,7 +14,7 @@ Submodules:
 - InformationGeometry.Divergence        — KL and Jeffreys divergence
 -/
 
-import SylvaFormalization.InformationGeometry.FisherMetric
-import SylvaFormalization.InformationGeometry.NaturalGradient
-import SylvaFormalization.InformationGeometry.StatMech
-import SylvaFormalization.InformationGeometry.Divergence
+import InformationGeometry.FisherMetric
+import InformationGeometry.NaturalGradient
+import InformationGeometry.StatMech
+import InformationGeometry.Divergence

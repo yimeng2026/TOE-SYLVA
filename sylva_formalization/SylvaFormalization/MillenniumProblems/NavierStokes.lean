@@ -19,7 +19,7 @@ import Mathlib.Analysis.Calculus.Deriv.Pi
 import Mathlib.Analysis.InnerProductSpace.EuclideanDist
 import Mathlib.Analysis.InnerProductSpace.NormPow
 import Mathlib.MeasureTheory.Integral.IntegralEqImproper
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 namespace NavierStokes

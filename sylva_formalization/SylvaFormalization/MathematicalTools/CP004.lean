@@ -29,7 +29,7 @@ import Mathlib.Order.Bounds.Defs
 import Mathlib.Data.Nat.Basic
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.Real.Basic
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 namespace CP004

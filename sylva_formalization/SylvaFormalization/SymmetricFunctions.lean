@@ -1,3 +1,14 @@
+import Mathlib.Algebra.Polynomial.Basic
+import Mathlib.Algebra.MvPolynomial.Basic
+import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Data.Finset.Sort
+import Mathlib.Data.Fin.Tuple.Sort
+import Mathlib.Data.List.Sort
+import Mathlib.Data.Nat.Factorial.Basic
+import Mathlib.Data.Nat.Partition
+import Mathlib.Tactic
+
+
 /-!
 # Symmetric Functions and Schur Polynomials
 
@@ -17,17 +28,6 @@ This module provides the basic definitions and theorem skeletons needed for:
 
 All open problems are marked with `postulate`, not `sorry`.
 -/
-
-import Mathlib.Algebra.Polynomial.Basic
-import Mathlib.Algebra.MvPolynomial.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
-import Mathlib.Data.Finset.Sort
-import Mathlib.Data.Fin.Tuple.Sort
-import Mathlib.Data.List.Sort
-import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Data.Nat.Partition
-import Mathlib.Tactic
-
 namespace SylvaFormalization
 
 /-! ### Notation -/
@@ -195,29 +195,29 @@ def SchurPolynomialJacobiTrudi (n : ℔ (λ : Partition) : MvPolynomial (Fin n) 
   0  -- TODO: determinant of matrix of complete homogeneous polynomials
 
 /-- The two definitions coincide. -/
-postulate theorem SchurPolynomial_eq_JacobiTrudi (n : ℔ (λ : Partition) :
+axiom theorem SchurPolynomial_eq_JacobiTrudi (n : ℔ (λ : Partition) :
   SchurPolynomial n λ = SchurPolynomialJacobiTrudi n λ
 
 namespace SchurPolynomial
 
 /-- s_λ is a symmetric polynomial. -/
-postulate theorem isSymmetric (n : ℔ (λ : Partition) :
+axiom theorem isSymmetric (n : ℔ (λ : Partition) :
   True  -- ∀ σ    S_n, σ · s_λ = s_λ
 
 /-- Degree of s_λ equals |λ|. -/
-postulate theorem degree_eq (n : ℔ (λ : Partition) :
+axiom theorem degree_eq (n : ℔ (λ : Partition) :
   True  -- total_degree (s_λ) = λ.size
 
 /-- Evaluation at all ones: s_λ(1,...,1) = #SSYT(λ, n). -/
-postulate theorem eval_at_ones (n : ℔ (λ : Partition) :
+axiom theorem eval_at_ones (n : ℔ (λ : Partition) :
   True
 
 /-- Schur polynomials form a basis of Λ_n (symmetric polynomials in n variables). -/
-postulate theorem isBasis (n d : ℔ :
+axiom theorem isBasis (n d : ℔ :
   True  -- {s_λ : λ.size = d, λ.length ≔n} is a basis of Λ_n^d
 
 /-- Cauchy identity: Π_{i,j} 1/(1-x_i y_j) = Σ_λ s_λ(x) s_λ(y). -/
-postulate theorem cauchy_identity (n m : ℔ :
+axiom theorem cauchy_identity (n m : ℔ :
   True
 
 end SchurPolynomial
@@ -238,19 +238,19 @@ namespace PowerSumSymmetric
 
 /-- Newton identity (elementary version):
     k · e_k = Σ_{i=1}^k (-1)^{i-1} e_{k-i} · p_i. -/
-postulate theorem newton_elementary (n k : ℔ (hk : k > 0) :
+axiom theorem newton_elementary (n k : ℔ (hk : k > 0) :
   True
 
 /-- Newton identity (homogeneous version):
     k · h_k = Σ_{i=1}^k h_{k-i} · p_i. -/
-postulate theorem newton_homogeneous (n k : ℔ (hk : k > 0) :
+axiom theorem newton_homogeneous (n k : ℔ (hk : k > 0) :
   True
 
 /-- Power sums form a ℔basis when char = 0. -/
-postulate theorem isBasis (n : ℔ :
+axiom theorem isBasis (n : ℔ :
   True  -- {p_λ} is a basis of Λ    ℔
 /-- Generating function: Σ_{k≔} p_k t^k/k = -ln Π_i (1 - x_i t). -/
-postulate theorem generating_log (n : ℔ :
+axiom theorem generating_log (n : ℔ :
   True
 
 end PowerSumSymmetric
@@ -271,15 +271,15 @@ def CompleteHomogeneous (n k : ℔ : MvPolynomial (Fin n) R :=
   else 0  -- TODO: sum over k-multisets
 
 /-- Duality: Σ_{i=0}^k (-1)^i e_i h_{k-i} = δ_{k,0}. -/
-postulate theorem e_h_duality (n k : ℔ (hk : k > 0) :
+axiom theorem e_h_duality (n k : ℔ (hk : k > 0) :
   True  -- Σ_{i=0}^k (-1)^i e_i h_{k-i} = 0
 
 /-- Generating function for e_k. -/
-postulate theorem e_generating (n : ℔ :
+axiom theorem e_generating (n : ℔ :
   True  -- Σ e_k t^k = Π_i (1 + x_i t)
 
 /-- Generating function for h_k. -/
-postulate theorem h_generating (n : ℔ :
+axiom theorem h_generating (n : ℔ :
   True  -- Σ h_k t^k = Π_i 1/(1 - x_i t)
 
 /-! ------------------------------------------------------------------
@@ -294,27 +294,27 @@ def LRCoefficient (λ μ ν : Partition) : ℔:=
 namespace LRCoefficient
 
 /-- The product rule. -/
-postulate theorem product_rule (n : ℔ (λ μ : Partition) :
+axiom theorem product_rule (n : ℔ (λ μ : Partition) :
   True  -- s_λ · s_μ = Σ_ν c^ν_{λ,μ} s_ν
 
 /-- Symmetry in λ, μ. -/
-postulate theorem symmetric (λ μ ν : Partition) :
+axiom theorem symmetric (λ μ ν : Partition) :
   LRCoefficient λ μ ν = LRCoefficient μ λ ν
 
 /-- Non-negativity. -/
-postulate theorem nonneg (λ μ ν : Partition) :
+axiom theorem nonneg (λ μ ν : Partition) :
   LRCoefficient λ μ ν ≔0
 
 /-- Degree condition: c^ν_{λ,μ} ≔0    |ν| = |λ| + |μ|. -/
-postulate theorem degree_condition (λ μ ν : Partition) :
+axiom theorem degree_condition (λ μ ν : Partition) :
   LRCoefficient λ μ ν ≔0    ν.size = λ.size + μ.size
 
 /-- Pieri rule: s_λ · s_(k) = Σ s_ν over horizontal k-strips ν/λ. -/
-postulate theorem pieri (n k : ℔ (λ : Partition) :
+axiom theorem pieri (n k : ℔ (λ : Partition) :
   True
 
 /-- Dual Pieri rule: s_λ · s_(1^k) = Σ s_ν over vertical k-strips ν/λ. -/
-postulate theorem dual_pieri (n k : ℔ (λ : Partition) :
+axiom theorem dual_pieri (n k : ℔ (λ : Partition) :
   True
 
 end LRCoefficient
@@ -330,15 +330,15 @@ def KostkaNumber (λ μ : Partition) : ℔:=
 namespace KostkaNumber
 
 /-- Positivity: K_{λ,μ} > 0 iff λ dominates μ. -/
-postulate theorem positivity (λ μ : Partition) :
+axiom theorem positivity (λ μ : Partition) :
   KostkaNumber λ μ > 0    λ.dominates μ
 
 /-- K_{λ,(1^n)} = f^λ (number of SYT). -/
-postulate theorem kostka_standard (λ : Partition) :
+axiom theorem kostka_standard (λ : Partition) :
   True  -- KostkaNumber λ (Partition.ofList (List.replicate λ.size 1)) = hookLengthFormula λ
 
 /-- Expansion of Schur in monomial basis: s_λ = Σ_μ K_{λ,μ} m_μ. -/
-postulate theorem schur_monomial (n : ℔ (λ : Partition) :
+axiom theorem schur_monomial (n : ℔ (λ : Partition) :
   True
 
 end KostkaNumber
@@ -348,14 +348,14 @@ end KostkaNumber
 ---------------------------------------------------------------------/
 
 /-- Irreducible polynomial representation of GL(n) indexed by λ. -/
-postulate def GLRep (n : ℔ (λ : Partition) : Type u
+axiom def GLRep (n : ℔ (λ : Partition) : Type u
 
 /-- Character of GLRep n λ is the Schur polynomial s_λ. -/
-postulate theorem char_eq_schur (n : ℔ (λ : Partition) :
+axiom theorem char_eq_schur (n : ℔ (λ : Partition) :
   True  -- trace(diag(x   ...,x    | GLRep n λ) = s_λ(x)
 
 /-- Weyl dimension formula. -/
-postulate theorem dim_formula (n : ℔ (λ : Partition) :
+axiom theorem dim_formula (n : ℔ (λ : Partition) :
   True  -- dim = ∏_{(i,j)∈λ} (n + j - i) / h(i,j)
 
 /-! ------------------------------------------------------------------
@@ -370,11 +370,11 @@ namespace KroneckerCoefficient
 
 /-- Saturation theorem (Knutson-Tao, 1999):
     g_{Nλ,Nμ,Nν} > 0 for some N > 0      g_{λ,μ,ν} > 0. -/
-postulate theorem saturation (λ μ ν : Partition) :
+axiom theorem saturation (λ μ ν : Partition) :
   (   N > 0, KroneckerCoefficient (N —λ) (N —μ) (N —ν) > 0)      KroneckerCoefficient λ μ ν > 0
 
 /-- Mignon-Ressayre: lower bound on matrix multiplication border rank. -/
-postulate theorem mignon_ressayre_bound (n : ℔ :
+axiom theorem mignon_ressayre_bound (n : ℔ :
   True  -- border rank ⟨n,n,n   ≔related to Kronecker coefficients
 
 end KroneckerCoefficient

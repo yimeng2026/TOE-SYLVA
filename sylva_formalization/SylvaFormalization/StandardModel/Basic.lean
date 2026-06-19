@@ -10,8 +10,8 @@ References: Peskin & Schroeder (1995); Weinberg (1996)
 import Mathlib
 import Mathlib.Algebra.Lie.Basic
 import Mathlib.LinearAlgebra.CliffordAlgebra.Basic
-import SylvaFormalization.GaugeTheory.Basic
-import SylvaFormalization.GaugeTheory.Connection
+import GaugeTheory.Basic
+import GaugeTheory.Connection
 
 namespace Sylva
 namespace StandardModel
@@ -59,13 +59,13 @@ structure GaugeBosons where
     G_{μν}^a = ∂_μ G_ν^a - ∂_ν G_μ^a + g_s f^{abc} G_μ^b G_ν^c
     W_{μν}^i = ∂_μ W_ν^i - ∂_ν W_μ^i + g ε^{ijk} W_μ^j W_ν^k
     B_{μν} = ∂_μ B_ν - ∂_ν B_μ. -/
-postulate GluonFieldStrength (G : GaugeBosons) (g_s : ℝ) :
+axiom GluonFieldStrength (G : GaugeBosons) (g_s : ℝ) :
   ∀ (x : ℝ^3) (μ ν : Fin 4) (a : Fin 8),
     let f := fun b c => 0  -- SU(3) structure constants f^{abc}
     deriv (G x a) ν μ - deriv (G x a) μ ν + g_s * ∑ b c : Fin 8, f b c * (G x b μ) * (G x c ν) = 0
   -- Gluon field strength: requires SU(3) Lie algebra, postulated as SM axiom
 
-postulate WFieldStrength (W : GaugeBosons) (g : ℝ) :
+axiom WFieldStrength (W : GaugeBosons) (g : ℝ) :
   ∀ (x : ℝ^3) (μ ν : Fin 4) (i : Fin 3),
     let ε := fun j k => 0  -- SU(2) structure constants ε^{ijk}
     deriv (W x i) ν μ - deriv (W x i) μ ν + g * ∑ j k : Fin 3, ε j k * (W x j μ) * (W x k ν) = 0
@@ -104,7 +104,7 @@ structure FermionFields where
     T^a: SU(3)_C generators (Gell-Mann matrices λ^a/2).
     τ^i: SU(2)_L generators (Pauli matrices σ^i/2).
     Y: hypercharge generator. -/
-postulate CovariantDerivativeFermion (ψ : FermionFields) (G : GaugeBosons) (gauges : SMGaugeGroup) :
+axiom CovariantDerivativeFermion (ψ : FermionFields) (G : GaugeBosons) (gauges : SMGaugeGroup) :
   ∀ (x : ℝ^3) (μ : Fin 4) (I : Fin 3),
     let D_μ := deriv (ψ.Q_L I) μ - i * gauges.g_s * sum_GellMann (G x μ) * (ψ.Q_L I x) -
       i * gauges.g * sum_Pauli (W x μ) * (ψ.Q_L I x) -
@@ -138,13 +138,13 @@ structure HiggsDoublet where
 
     Minimum at |Φ|² = v²/2 = μ²/(2λ).
     Mass of Higgs boson: m_h = √(2λ) v ≈ 125 GeV. -/
-postulate HiggsPotential (Φ : HiggsDoublet) :
+axiom HiggsPotential (Φ : HiggsDoublet) :
   ∀ (x : ℝ^3), let V := -Φ.μ² * ‖Φ.Φ x‖^2 + Φ.λ * ‖Φ.Φ x‖^4
   V ≥ -Φ.μ²^2 / (4 * Φ.λ)
   -- Higgs potential bounded below: requires λ > 0, postulated as SM axiom
 
 /-- Higgs mass: m_h = √(2λ) v ≈ 125.1 GeV. -/
-postulate HiggsMass (Φ : HiggsDoublet) :
+axiom HiggsMass (Φ : HiggsDoublet) :
   let m_h := Real.sqrt (2 * Φ.λ) * Φ.v
   m_h ≈ 125.1e9  -- 125.1 GeV in eV
   -- Higgs mass: experimental value, postulated as SM axiom

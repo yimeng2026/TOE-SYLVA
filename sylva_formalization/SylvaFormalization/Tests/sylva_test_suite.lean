@@ -2,10 +2,10 @@
 Sylva Formalization Project - Complete Test Suite
 Tests all SylvaFormalization modules for correctness
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
-import SylvaFormalization.RiemannHypothesis
-import SylvaFormalization.NumericalZeros
-import SylvaFormalization.Complexity
+import Basic
+import RiemannHypothesis
+import NumericalZeros
+import Complexity
 
 namespace Sylva
 namespace TestSuite

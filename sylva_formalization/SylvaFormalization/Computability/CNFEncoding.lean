@@ -35,9 +35,9 @@
 -/
 
 import Mathlib
-import SylvaFormalization.Computability.TM1Extended
-import SylvaFormalization.Computability.PolynomialTime
-import SylvaFormalization.CookLevin.SAT
+import Computability.TM1Extended
+import Computability.PolynomialTime
+import CookLevin.SAT
 
 namespace SylvaFormalization.Computability.CNFEncoding
 
@@ -86,7 +86,7 @@ deriving Repr
 
   给定 `TM1PolyTime M`，存在多项式 `p` 使得 `M` 在 `p(|input|)` 步内停机。
   取 `T = p(|input|)`, `S = T` 即可。 -/
-postulate params_of_polytime
+axiom params_of_polytime
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (input : List Γ)
     (hM : TM1PolyTime M) :
@@ -160,7 +160,7 @@ def toNat [Fintype Λ] [Fintype Γ]
 
   开放引理：需证明不同 `(t, q)` / `(t, i, j)` / `(t, i, j, a)`
   组合不会映射到同一个自然数。证明利用混合进制编码的单射性。 -/
-postulate toNat_injective
+axiom toNat_injective
     {t : ℕ} {q₁ q₂ : Λ} :
     (state t q₁).toNat = (state t q₂).toNat → q₁ = q₂
   -- 证明思路：在固定时间 `t` 下，state 变量的编码是 `t * cardΛ + q.index`。
@@ -208,7 +208,7 @@ def allVariables
 
   当 `T` 和 `S` 都是 `input.length` 的多项式时，变量总数也是多项式
   （因为 `|Λ|`, `|Γ|`, `n_tapes` 是与输入无关的常数）。 -/
-postulate numVars_polynomial
+axiom numVars_polynomial
     (params : EncodingParams) :
   (allVariables params).length ≤
     (params.T + 1) * (Fintype.card Λ) +
@@ -545,7 +545,7 @@ def extractConfig (assign : Var → Bool) (t : ℕ) : Option (Config Γ Λ σ n_
 
   从满足赋值提取的配置序列是一个合法的 tableau，
   因此 `M` 在 `input` 上于 `T` 步内停机。 -/
-postulate CNFEncoding_soundness :
+axiom CNFEncoding_soundness :
   CNF.Satisfiable (TMConfigToCNF M params input) →
   accepts_in M params.T input
   -- 证明思路：
@@ -561,7 +561,7 @@ postulate CNFEncoding_soundness :
 /-- Completeness：若 TM 接受，则 CNF 可满足。
 
   从接受运行的配置序列构造满足赋值。 -/
-postulate CNFEncoding_completeness :
+axiom CNFEncoding_completeness :
   accepts_in M params.T input →
   CNF.Satisfiable (TMConfigToCNF M params input)
   -- 证明思路：
@@ -581,7 +581,7 @@ postulate CNFEncoding_completeness :
   --    - E（唯一）：每个配置有唯一状态、位置、符号。
 
 /-- 编码正确性：CNF 可满足 ⟺ TM 接受。 -/
-postulate CNFEncodingCorrect :
+axiom CNFEncodingCorrect :
   CNF.Satisfiable (TMConfigToCNF M params input) ↔ accepts_in M params.T input
   -- 证明思路：`↔` 由 `soundness`（→）和 `completeness`（←）组合得到。
 
@@ -610,12 +610,12 @@ variable {Γ Λ σ : Type*}
   由于 `T = poly(|input|)` 且 `S ≤ T`，总数也是 `poly(|input|)`。 -/
 
 -- 初始配置子句数 = O(|Λ| + n_tapes + |input| + n_tapes · S)
-postulate initialConfigClauses_bound :
+axiom initialConfigClauses_bound :
   (initialConfigCNF M params input).length ≤
     Fintype.card Λ + n_tapes + input.length + n_tapes * params.S + 1
 
 -- 接受配置子句数 = O(|Λ|)
-postulate acceptingClauses_bound :
+axiom acceptingClauses_bound :
   (acceptingClauses params).length ≤ Fintype.card Λ
 
 -- 转移约束子句数：
@@ -623,12 +623,12 @@ postulate acceptingClauses_bound :
 -- 每个转移规则，生成 O(n_tapes) 个子句。
 -- 总数 = O(T · S^{n_tapes} · |Λ| · |Γ|^{n_tapes} · n_tapes)
 -- 由于 n_tapes 是常数，S^{n_tapes} = poly(S) = poly(T)
-postulate transitionClauses_bound :
+axiom transitionClauses_bound :
   (transitionClauses M params).length ≤
     params.T * (params.S ^ n_tapes) * (Fintype.card Λ) * (Fintype.card Γ ^ n_tapes) * (n_tapes + 3)
 
 -- 带不变子句数 = O(T · n_tapes · S · |Γ|)
-postulate cellInvarianceClauses_bound :
+axiom cellInvarianceClauses_bound :
   (cellInvarianceClauses params).length ≤
     params.T * n_tapes * params.S * Fintype.card Γ
 
@@ -636,7 +636,7 @@ postulate cellInvarianceClauses_bound :
 -- 状态唯一：O(T · |Λ|²)
 -- 带头唯一：O(T · n_tapes · S²)
 -- 单元唯一：O(T · n_tapes · S · |Γ|²)
-postulate uniquenessClauses_bound :
+axiom uniquenessClauses_bound :
   (uniquenessClauses params).length ≤
     (params.T + 1) * (Fintype.card Λ) ^ 2 +
     (params.T + 1) * n_tapes * params.S ^ 2 +
@@ -648,7 +648,7 @@ postulate uniquenessClauses_bound :
   因此所有上界中的 `|Λ|^k`, `|Γ|^k`, `n_tapes^k` 项都是常数因子。
   唯一依赖于输入的是 `T = poly(|input|)` 和 `S ≤ T`。
   因此总子句数 = O(T · S^{n_tapes}) = O(poly(n) · poly(n)^{常数}) = poly(n)。 -/
-postulate CNFEncodingPolynomialClauses :
+axiom CNFEncodingPolynomialClauses :
   ∃ (p : ℕ → ℕ), IsPolynomial p ∧
     (TMConfigToCNF M params input).length ≤ p input.length
   -- 证明思路：
@@ -665,7 +665,7 @@ postulate CNFEncodingPolynomialClauses :
   每个子句最多有 `O(n_tapes)` 个文字（转移约束的前件最多含
   `1 + n_tapes + n_tapes = O(n_tapes)` 个文字），因此总文字数
   = 子句数 × O(n_tapes) = poly(n) × 常数 = poly(n)。 -/
-postulate CNFEncodingPolynomialSize :
+axiom CNFEncodingPolynomialSize :
   ∃ (p : ℕ → ℕ), IsPolynomial p ∧
     CNF.size (TMConfigToCNF M params input) ≤ p input.length
   -- 证明思路：
@@ -688,7 +688,7 @@ def CNFEncodingPolynomial : Prop :=
     CNF.size (TMConfigToCNF M params input) ≤ p input.length
 
 /-- `CNFEncodingPolynomial` 成立：所有编码指标都是多项式有界。 -/
-postulate CNFEncodingPolynomial_holds :
+axiom CNFEncodingPolynomial_holds :
   CNFEncodingPolynomial M input params
   -- 证明思路：综合以下三个结果：
   -- 1. `numVars_polynomial`：变量数是 `O(T · |Λ| + T · n_tapes · S · |Γ|) = poly(n)`
@@ -720,7 +720,7 @@ variable {Γ Λ σ : Type*}
   使得该 CNF 可满足当且仅当 `M` 在 `input` 上接受。
 
   这是 Cook-Levin 定理的核心构造——tableau 编码。 -/
-postulate cook_levin_phase2
+axiom cook_levin_phase2
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (input : List Γ)
     (hM : TM1PolyTime M) :

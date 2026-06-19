@@ -109,7 +109,7 @@ structure GaugePotential {M G : Type*} [TopologicalSpace M] [Group G] [Topologic
     (1) ODE existence on manifolds, (2) smooth dependence on initial conditions,
     (3) Frobenius theorem for horizontal distributions. Replaceable once
     Mathlib develops these foundations (estimated 2026—028). -/
-postulate ParallelTransport {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom ParallelTransport {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
     [LieAlgebra ℔G] {P : PrincipalBundle M G} (conn : Connection P)
     (γ : ℔   M) (t₀ t   : ℔ : Fiber P (γ t₀)    Fiber P (γ t   
   -- Parallel transport requires solving ODEs on manifolds: given a curve
@@ -132,7 +132,7 @@ postulate ParallelTransport {M G : Type*} [TopologicalSpace M] [Group G] [Topolo
   -- Postulated as a gauge theory axiom. Will be replaceable once Mathlib
   -- develops manifold ODE theory (estimated: 2026—028).
 
-postulate ParallelTransport_horizontal_lift : ∀ {M G} [TopologicalSpace M] [Group G]
+axiom ParallelTransport_horizontal_lift : ∀ {M G} [TopologicalSpace M] [Group G]
   [TopologicalSpace G] [LieAlgebra ℔G] {P : PrincipalBundle M G} (conn : Connection P)
   (γ : ℔   M) (t₀ t   : ℔,
   -- Horizontal lift of γ exists uniquely given initial point in fiber
@@ -165,7 +165,7 @@ structure Curvature {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpa
 
     This is the non-abelian generalization of the homogeneous Maxwell equations.
     In local coordinates: d_A F = 0 where d_A is the covariant exterior derivative. -/
-postulate BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℔G] {P : PrincipalBundle M G} {conn : Connection P} (curv : Curvature conn) :
   ∀ (p : P.totalSpace) (X Y Z : G),
     -- dΩ(X,Y,Z) + cyclic permutations = 0
@@ -209,7 +209,7 @@ noncomputable def YangMillsAction {M G : Type*} [TopologicalSpace M] [Group G] [
     - d_A *F = 0 (equations of motion) —from action principle
 
     With sources: d_A *F = *J where J is the current 3-form. -/
-postulate YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℔G] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∀ (x : M) (X Y Z : G), -- Covariant divergence of field strength vanishes
     -- d_A *F = 0 (source-free Yang-Mills)
@@ -220,7 +220,7 @@ postulate YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [Topol
 
     T_{μν} = tr(F_{μα} F_ν^α) - ¼ g_{μν} tr(F_{αβ} F^{αβ}).
     Conserved: ∇^μ T_{μν} = 0 (follows from YM equations + Bianchi). -/
-postulate YMEnergyMomentum {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom YMEnergyMomentum {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℔G] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∀ (x : M), -- Divergence-free
     deriv (fun z => energyDensity F z) x = 0
@@ -272,7 +272,7 @@ noncomputable def ChernSimonsAction {M G : Type*} [TopologicalSpace M] [Group G]
     index(D_A) = dim ker D_A - dim ker D_A—= n_+ - n_- = 8k - 3
     for SU(2) instanton of charge k on S   
     This gives the dimension of the instanton moduli space. -/
-postulate InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℔G] [RiemannianMetric M] [Oriented M] [CompactSpace M]
   {P : PrincipalBundle M G} (inst : Instanton conn curv) :
   -- Dimension of instanton moduli space
@@ -308,7 +308,7 @@ def g1 : ℔:= 0.36  -- Hypercharge coupling α   = g₁ ?4π ≔0.010
 
     For SU(N): b₀ = (11N - 2n_f)/3 where n_f = number of fermion flavors.
     The couplings approach at GUT scale: g   ≔g   ≔g   ≔0.7. -/
-postulate GaugeCouplingUnification :
+axiom GaugeCouplingUnification :
      (M_GUT : ℔, M_GUT > 0    g3 = g2    g2 = g1
   -- Gauge coupling unification at GUT scale: requires renormalization group analysis, postulated
 
@@ -317,7 +317,7 @@ postulate GaugeCouplingUnification :
     Higgs mechanism: φ acquires VEV ⟨φ⟩ = v/    ≔246 GeV.
     W±, Z acquire mass: m_W = g₂v/2, m_Z =    g₂ ?g₁ ?v/2.
     Photon remains massless: Q = T   + Y/2. -/
-postulate ElectroweakSymmetryBreaking :
+axiom ElectroweakSymmetryBreaking :
      (v : ℔, v > 0        -- Higgs VEV
     v = 246.0e9  -- 246 GeV in eV
     -- Masses from Higgs mechanism

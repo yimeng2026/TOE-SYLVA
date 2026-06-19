@@ -8,7 +8,7 @@ References: Polchinski (1998); Becker, Becker, Schwarz (2007)
 -/
 
 import Mathlib
-import SylvaFormalization.StringTheory.Basic
+import StringTheory.Basic
 
 namespace Sylva
 namespace StringTheory
@@ -34,7 +34,7 @@ structure DBrane (p : ℕ) where
 
     The charge is quantized: μ_p = (2π)^{-p} α'^{-(p+1)/2}.
     D-branes are sources for RR fields. -/
-postulate DBraneCharge (p : ℕ) (alpha' : ℝ) :
+axiom DBraneCharge (p : ℕ) (alpha' : ℝ) :
   let μ_p := 1 / (2 * Real.pi)^p * alpha'^(-(p+1)/2)
   μ_p > 0
   -- D-brane charge quantization: postulated as string theory axiom
@@ -43,7 +43,7 @@ postulate DBraneCharge (p : ℕ) (alpha' : ℝ) :
 
     Compactification on a circle: M-theory on S¹(R) = IIA string on circle of radius R = g_s α'^{1/2}.
     The strong coupling limit of IIA is M-theory. -/
-postulate MTheoryCompactification (R11 : ℝ) (g_s : ℝ) (alpha' : ℝ) :
+axiom MTheoryCompactification (R11 : ℝ) (g_s : ℝ) (alpha' : ℝ) :
   R11 = g_s * Real.sqrt alpha'
   -- M-theory / IIA relation: postulated as string theory axiom
 

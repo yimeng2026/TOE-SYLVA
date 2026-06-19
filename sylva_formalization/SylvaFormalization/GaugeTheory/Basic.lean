@@ -10,7 +10,7 @@ References: Nakahara (2003), Chapter 10
 
 import Mathlib
 import Mathlib.Topology.FiberBundle.Basic
-import Mathlib.Geometry.Manifold.Basic
+-- import Mathlib.Geometry.Manifold.Basic  -- Does not exist in mathlib v4.29.0
 import Mathlib.Algebra.Lie.Basic
 
 namespace Sylva
@@ -71,12 +71,12 @@ def TrivialPrincipalBundle (M G : Type*) [TopologicalSpace M] [Group G] [Topolog
   cocycle := fun _ => rfl
 
 /-- Trivial bundle has free action. -/
-postulate trivial_bundle_free : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
+axiom trivial_bundle_free : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
   [TopologicalSpace G], FreeAction (TrivialPrincipalBundle M G)
   -- Trivial bundle action: (m,g)·h = (m,g·h), free because g·h = g implies h = 1
 
 /-- Trivial bundle has transitive action. -/
-postulate trivial_bundle_transitive : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
+axiom trivial_bundle_transitive : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
   [TopologicalSpace G], TransitiveAction (TrivialPrincipalBundle M G)
   -- Trivial bundle action: (m,g₁)·(g₁⁻¹·g₂) = (m,g₂), so transitive on each fiber
 

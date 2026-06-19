@@ -12,7 +12,7 @@ References: Kitaev (2009); Ryu, Schnyder, Furusaki (2010)
 import Mathlib
 import Mathlib.Data.ZMod.Basic
 import Mathlib.GroupTheory.SpecificGroups.Dihedral
-import SylvaFormalization.TopologicalInsulator.Basic
+import TopologicalInsulator.Basic
 
 namespace Sylva
 namespace TopologicalInsulator
@@ -125,10 +125,10 @@ def KTheoryInvariant (d : ℕ) (s : SymmetryClass) : Type :=
     K_R^{-n} ≅ K_R^{-n-8} (real Bott periodicity)
 
     This gives the periodic table its structure. -/
-postulate BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A
+axiom BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A
   -- Complex Bott periodicity: period 2, requires K-theory homotopy equivalence
 
-postulate BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
+axiom BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
   s = SymmetryClass.AI ∨ s = SymmetryClass.AII ∨ s = SymmetryClass.D ∨ s = SymmetryClass.DIII →
   KTheoryInvariant d s = KTheoryInvariant (d + 8) s
   -- Real Bott periodicity: period 8, requires K-theory homotopy equivalence
@@ -137,21 +137,21 @@ postulate BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
 
     Kitaev table: class AII, d=2 → Z₂.
     This matches the Kane-Mele Z₂ invariant. -/
-postulate KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2
+axiom KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2
   -- 2D quantum spin Hall: Z₂ invariant from K-theory classification
 
 /-- Example: 3D topological insulator (class AII, d=3) → Z₂ invariant.
 
     Kitaev table: class AII, d=3 → Z₂.
     This matches the Fu-Kane-Mele Z₂ invariant. -/
-postulate KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2
+axiom KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2
   -- 3D topological insulator: Z₂ invariant from K-theory classification
 
 /-- Example: 2D Chern insulator (class A, d=2) → ℤ invariant.
 
     Kitaev table: class A, d=2 → ℤ.
     This matches the TKNN Chern number. -/
-postulate KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ
+axiom KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ
   -- 2D quantum Hall: ℤ invariant (Chern number) from K-theory classification
 
 end TopologicalInsulator

@@ -53,7 +53,7 @@ The fine-structure constant $\alpha = e^2 / (4\pi\varepsilon_0\hbar c) \approx 1
 
 Recent developments in emergent gravity and quantum information suggest that spacetime geometry itself may be a macroscopic approximation of microscopic quantum degrees of freedom. Causal set theory [1], network geometry [26], and quantum graphity [28] all point toward a common theme: fundamental physics may be a large-scale pattern emerging from combinatorial or information-theoretic substrata.
 
-In this work, we push this program to its logical extreme by proposing that **charge itself**鈥攁nd therefore the electromagnetic coupling鈥攅merges from the connectivity structure of a causal network. The fine-structure constant is then not a fundamental parameter but a **statistical-mechanical invariant** of the network's topological phase.
+In this work, we push this program to its logical extreme by proposing that **charge itself**-攁nd therefore the electromagnetic coupling-攅merges from the connectivity structure of a causal network. The fine-structure constant is then not a fundamental parameter but a **statistical-mechanical invariant** of the network's topological phase.
 
 ---
 
@@ -76,14 +76,14 @@ under the equilibrium distribution of the network.
 | Theory | Core Idea | Our Framework |
 |--------|-----------|---------------|
 | Causal set theory (Sorkin, Dowker) | Discrete spacetime as a poset | Our causal network is a concrete realization with power-law degree statistics [1, 11, 25] |
-| Benincasa鈥揇owker | Scalar curvature from local order counts | Precedent for emergent stress tensor from graph combinatorics [24] |
-| Rideout鈥揝orkin | Stochastic growth of causal sets | Mathematical model for network evolution [25] |
-| Network geometry (Bianconi鈥揜ahmede) | Simplicial complexes 鈫?hyperbolic manifolds | Layer-2 embedding shares the same coarse-graining logic [26] |
+| Benincasa-揇owker | Scalar curvature from local order counts | Precedent for emergent stress tensor from graph combinatorics [24] |
+| Rideout-orkin | Stochastic growth of causal sets | Mathematical model for network evolution [25] |
+| Network geometry (Bianconi-ahmede) | Simplicial complexes 鈫?hyperbolic manifolds | Layer-2 embedding shares the same coarse-graining logic [26] |
 | Network cosmology (Krioukov et al.) | Power-law causal networks = de Sitter | Direct correspondence with our DAG model [27] |
-| Quantum graphity (Konopka鈥揗arkopoulou鈥揝everini) | Graph 鈫?spacetime emergence | Highly analogous to our Layer 1鈫? transition [28] |
+| Quantum graphity (Konopka-arkopoulou-everini) | Graph 鈫?spacetime emergence | Highly analogous to our Layer 1鈫? transition [28] |
 | String-net condensation (Wen) | Charge as string endpoint | Charge as network node endpoint |
 
-Our framework is positioned at the intersection of causal set theory [1, 11, 23鈥?5], network geometry [26, 27], and quantum graphity [28]. The key distinction is that we identify a *specific topological invariant* ($n_{CS}$) with a measured fundamental constant ($\alpha$), going beyond the generic "emergence" claims of these predecessors.
+Our framework is positioned at the intersection of causal set theory [1, 11, 23-5], network geometry [26, 27], and quantum graphity [28]. The key distinction is that we identify a *specific topological invariant* ($n_{CS}$) with a measured fundamental constant ($\alpha$), going beyond the generic "emergence" claims of these predecessors.
 
 ---
 
@@ -101,7 +101,7 @@ where $\lambda_{\max}(L)$ is the largest eigenvalue of $L$ and $\deg(v)$ is the 
 
 ## 3.2 Layer 2: Curvature-Torsion Coupling
 
-We embed the causal network into a differentiable manifold $M$ equipped with a metric $g$ and a torsion tensor $T$. The emergence of charge is governed by the coupled Einstein-Cartan equations:
+We embed the causal network into a differentiable manifold $M$ equipped with a metric $g$ and a torsion tensor $T$. The emergence of charge is governed by the coupled Einstein-artan equations:
 
 **Einstein equation with emergent matter:**
 
@@ -135,7 +135,7 @@ which requires $\nabla^\mu F_{\mu\lambda} F_{\nu}^{\;\lambda} = 0$ (satisfied wh
 
 ## 3.2.1 Variational Origin: The Spectral Action
 
-The Einstein鈥揅artan equations presented above were introduced as coupled phenomenological equations. We now show that they emerge from a **spectral action principle** defined directly on the causal network, following the framework of Chomiuk [29] and the noncommutative-geometry program of Connes and Chamseddine [30].
+The Einstein-揅artan equations presented above were introduced as coupled phenomenological equations. We now show that they emerge from a **spectral action principle** defined directly on the causal network, following the framework of Chomiuk [29] and the noncommutative-geometry program of Connes and Chamseddine [30].
 
 ### Spectral Action on Causal Networks
 
@@ -149,13 +149,13 @@ where $f$ is a smooth cutoff function (typically a bump function or Gaussian), a
 
 $$\operatorname{Tr}\, e^{-t L} \sim (4\pi t)^{-d_S/2} \bigl(a_0 + a_1 t + a_2 t^2 + \cdots\bigr),$$
 
-where the coefficients $a_k$ are graph-theoretic analogues of the Seeley鈥揹eWitt coefficients. In particular:
+where the coefficients $a_k$ are graph-theoretic analogues of the Seeley-揹eWitt coefficients. In particular:
 
 - $a_0 = |V|$ (graph volume);
 - $a_1 = \frac{1}{6}\, \mathcal{R}(G)$, where $\mathcal{R}(G)$ is the discrete scalar curvature introduced by Benincasa and Dowker [24];
-- $a_2$ involves the discrete analogue of the Gauss鈥揃onnet term.
+- $a_2$ involves the discrete analogue of the Gauss-揃onnet term.
 
-### Extraction of the Einstein鈥揌ilbert Term
+### Extraction of the Einstein-揌ilbert Term
 
 Choosing the cutoff function $f$ such that its moments $f_{2k} = \int_0^\infty u^{2k-1} f(u) \, du$ are finite, the spectral action expands as [30]
 
@@ -165,7 +165,7 @@ Substituting the expression for $a_1$ and taking the continuum limit (搂3.4), t
 
 $$S_{\text{EH}} = \frac{\Lambda^2 f_2}{6} \int_M R \sqrt{-g} \, d^4x,$$
 
-which is precisely the **Einstein鈥揌ilbert action** with an effective Newton constant
+which is precisely the **Einstein-揌ilbert action** with an effective Newton constant
 
 $$\frac{1}{16\pi G_{\text{eff}}} = \frac{\Lambda^2 f_2}{6}.$$
 
@@ -178,10 +178,10 @@ $$T^{\text{(emergent)}}_{\mu\nu} = -\frac{2}{\sqrt{-g}} \, \frac{\delta S_{\text
 From the expansion above, this splits into three contributions:
 
 1. **Cosmological term**: $-\Lambda^4 f_4 \, g_{\mu\nu}$ (emergent dark energy);
-2. **Einstein鈥揌ilbert term**: $\frac{1}{8\pi G_{\text{eff}}}\bigl(R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu}\bigr)$;
+2. **Einstein-揌ilbert term**: $\frac{1}{8\pi G_{\text{eff}}}\bigl(R_{\mu\nu} - \frac{1}{2} R g_{\mu\nu}\bigr)$;
 3. **Matter term**: $\frac{1}{4\pi}\bigl(F_{\mu\lambda} F_{\nu}^{\;\lambda} - \frac{1}{4} g_{\mu\nu} F_{\lambda\sigma} F^{\lambda\sigma}\bigr)$ (from the gauge-field sector of the spectral action).
 
-This provides the **variational origin** of the Einstein鈥揅artan equations (3.2), replacing the phenomenological ansatz with a principle derived from the network's spectral geometry.
+This provides the **variational origin** of the Einstein-揅artan equations (3.2), replacing the phenomenological ansatz with a principle derived from the network's spectral geometry.
 
 **Corollary 3.2.2** (Covariant conservation). The Bianchi identity for the spectral action implies $\nabla^\mu T^{\text{(emergent)}}_{\mu\nu} = 0$ automatically, provided the cutoff function $f$ is chosen such that the heat-kernel expansion is valid.
 
@@ -190,10 +190,10 @@ This provides the **variational origin** of the Einstein鈥揅artan equations (3
 The spectral action on graphs sits at the intersection of several established programs:
 
 - **Regge calculus** [31]: The graph Laplacian $L$ generalizes Regge's discrete curvature to weighted networks.
-- **Causal dynamical triangulations (CDT)** [32]: Numerical simulations in CDT have verified that the Einstein鈥揌ilbert action emerges from ensemble averages of causal triangulations, consistent with our spectral-action prediction.
+- **Causal dynamical triangulations (CDT)** [32]: Numerical simulations in CDT have verified that the Einstein-揌ilbert action emerges from ensemble averages of causal triangulations, consistent with our spectral-action prediction.
 - **Group field theory (GFT)** [33]: In the GFT approach, the spectral action appears as the effective action for condensed GFT configurations, with the graph Laplacian encoding the combinatorial structure of quantum geometry.
 
-**Open Problem 3.4 (revised).** Show that the heat-kernel expansion for causal networks with power-law degree distributions $P(k) \sim k^{-\gamma}$ converges to the continuum Seeley鈥揹eWitt coefficients with the same universal coefficients $a_k$ as for random geometric graphs. Furthermore, determine the dependence of the effective Newton constant $G_{\text{eff}}$ on the network parameters $(\gamma, C)$.
+**Open Problem 3.4 (revised).** Show that the heat-kernel expansion for causal networks with power-law degree distributions $P(k) \sim k^{-\gamma}$ converges to the continuum Seeley-揹eWitt coefficients with the same universal coefficients $a_k$ as for random geometric graphs. Furthermore, determine the dependence of the effective Newton constant $G_{\text{eff}}$ on the network parameters $(\gamma, C)$.
 
 ---
 
@@ -245,9 +245,9 @@ The energy-momentum content of the causal network gives rise to an emergent stre
 
 $$T^{\text{(emergent)}}_{\mu\nu}(x) = \lim_{\epsilon \to 0} \frac{1}{|B_\epsilon(x)|} \sum_{v: x_v \in B_\epsilon(x)} \frac{Q(v)}{\deg(v)} \, \partial_\mu \Phi(v) \, \partial_\nu \Phi(v).$$
 
-**Note on variational origin (updated).** In 搂3.2.1 we have constructed an effective action $S_{\text{eff}}[G, A] = \operatorname{Tr} f(L/\Lambda^2)$ whose variation yields the Einstein鈥揅artan equations (3.2) in the continuum limit. The emergent stress tensor $T^{\text{(emergent)}}_{\mu\nu}$ is now derived from the spectral action rather than postulated phenomenologically. The consistency condition $\nabla^\mu T^{\text{(emergent)}}_{\mu\nu} = 0$ follows from the Bianchi identity for the spectral action (Corollary 3.2.2). What remains open is the convergence of the heat-kernel expansion for causal networks with power-law degree distributions (see Open Problem 3.4).
+**Note on variational origin (updated).** In 搂3.2.1 we have constructed an effective action $S_{\text{eff}}[G, A] = \operatorname{Tr} f(L/\Lambda^2)$ whose variation yields the Einstein-揅artan equations (3.2) in the continuum limit. The emergent stress tensor $T^{\text{(emergent)}}_{\mu\nu}$ is now derived from the spectral action rather than postulated phenomenologically. The consistency condition $\nabla^\mu T^{\text{(emergent)}}_{\mu\nu} = 0$ follows from the Bianchi identity for the spectral action (Corollary 3.2.2). What remains open is the convergence of the heat-kernel expansion for causal networks with power-law degree distributions (see Open Problem 3.4).
 
-**Open Problem 3.4.** Show that $T^{\text{(emergent)}}_{\mu\nu}$ is covariantly conserved, $\nabla^\mu T^{\text{(emergent)}}_{\mu\nu} = 0$, under the dynamics generated by the graph evolution rules. Furthermore, construct an effective action $S_{\text{eff}}[g, A]$ whose variation reproduces the coupled Einstein鈥揗axwell system (3.2)鈥?3.3).
+**Open Problem 3.4.** Show that $T^{\text{(emergent)}}_{\mu\nu}$ is covariantly conserved, $\nabla^\mu T^{\text{(emergent)}}_{\mu\nu} = 0$, under the dynamics generated by the graph evolution rules. Furthermore, construct an effective action $S_{\text{eff}}[g, A]$ whose variation reproduces the coupled Einstein-axwell system (3.2)-3.3).
 
 ---
 
@@ -304,7 +304,7 @@ The total systematic error is $0.4\%$, subdominant to the statistical error for 
 
 1. **Muon $g-2$ and electron $g-2$**: If $\alpha$ is emergent, high-precision measurements of the anomalous magnetic moment provide constraints on the statistical fluctuations of the causal network. Current agreement at $0.6\sigma$ (WP25, 2025) is consistent with our framework, which predicts no persistent anomaly beyond statistical fluctuations.
 
-2. **High-energy running of $\alpha$**: The framework predicts a logarithmic running consistent with QED renormalization, but with a modified high-energy behavior due to network saturation effects. Deviations from pure QED running could be tested at FCC-ee or CLIC energies.
+2. **High-energy running of $\alpha$**: The framework predicts a logarithmic running consistent with QED renormalization, but with a modified high-energy behavior due to network saturation effects. Deviations from pure QED running could be tested at FC-ee or CLIC energies.
 
 3. **Quantum Hall effect**: The Chern-Simons identification implies that the quantized Hall conductance $\sigma_{xy} = \nu e^2/h$ is a direct probe of the network's topological phase. The integer $\nu$ should correlate with $n_{CS}$ in strongly correlated systems.
 
@@ -343,7 +343,7 @@ The total systematic error is $0.4\%$, subdominant to the statistical error for 
 
 ## 6.3 Relation to the $\mu$on $g-2$ Anomaly
 
-The recent resolution of the $\mu$on $g-2$ anomaly (WP25, 2025) from $4.2\sigma$ to $0.6\sigma$ is consistent with our framework, which predicts no persistent new-physics signal. The "new $g-2$ puzzle"鈥攖he tension between lattice-QCD and data-driven methods鈥攃an be reinterpreted as a probe of the causal network's statistical fluctuations in the hadronic sector.
+The recent resolution of the $\mu$on $g-2$ anomaly (WP25, 2025) from $4.2\sigma$ to $0.6\sigma$ is consistent with our framework, which predicts no persistent new-physics signal. The "new $g-2$ puzzle"-攖he tension between lattice-QCD and data-driven methods-攃an be reinterpreted as a probe of the causal network's statistical fluctuations in the hadronic sector.
 
 ---
 
@@ -355,7 +355,7 @@ We have presented a framework in which the fine-structure constant $\alpha$ emer
 
 # References
 
-[1] Sorkin, R. D. *Causal Sets: Discrete Gravity*. In *Lectures on Quantum Gravity*, edited by A. Gomberoff and D. Marolf, 305鈥?27. Springer, 2005. arXiv:gr-qc/0309009.
+[1] Sorkin, R. D. *Causal Sets: Discrete Gravity*. In *Lectures on Quantum Gravity*, edited by A. Gomberoff and D. Marolf, 305-27. Springer, 2005. arXiv:gr-qc/0309009.
 
 
 
@@ -365,21 +365,21 @@ We have presented a framework in which the fine-structure constant $\alpha$ emer
 
 [4] Muon g鈭? Collaboration. "Final Measurement of the Positive-Muon Anomalous Magnetic Moment to 0.20 ppm Precision." *Phys. Rev. D* **111**, 052007 (2025). arXiv:2506.03069 [hep-ex].
 
-[5] Witten, E. "Quantum Field Theory and the Jones Polynomial." *Commun. Math. Phys.* **121**, 351鈥?99 (1989).
+[5] Witten, E. "Quantum Field Theory and the Jones Polynomial." *Commun. Math. Phys.* **121**, 351-99 (1989).
 
 [6] Hanneke, D., S. Fogwell, and G. Gabrielse. "New Measurement of the Electron Magnetic Moment and the Fine Structure Constant." *Phys. Rev. Lett.* **100**, 120801 (2008). arXiv:0801.1134 [physics.atom-ph].
 
-[7] Parker, R. H., et al. "Measurement of the Fine-Structure Constant as a Test of the Standard Model." *Science* **360**, 191鈥?95 (2018). arXiv:1812.04130 [physics.atom-ph].
+[7] Parker, R. H., et al. "Measurement of the Fine-Structure Constant as a Test of the Standard Model." *Science* **360**, 191-95 (2018). arXiv:1812.04130 [physics.atom-ph].
 
-[8] Morel, L., et al. "Determination of the Fine-Structure Constant with an Accuracy of 81 Parts per Trillion." *Nature* **588**, 61鈥?5 (2020). arXiv:2011.01265 [physics.atom-ph].
+[8] Morel, L., et al. "Determination of the Fine-Structure Constant with an Accuracy of 81 Parts per Trillion." *Nature* **588**, 61-5 (2020). arXiv:2011.01265 [physics.atom-ph].
 
 [9] Dowker, F. "Causal Sets and the Deep Structure of Spacetime." arXiv:gr-qc/0–7508109 (2005).
 
 [10] Rovelli, C. *Quantum Gravity*. Cambridge University Press, 2004.
 
-[11] Jacobson, T. "Thermodynamics of Spacetime: The Einstein Equation of State." *Phys. Rev. Lett.* **75**, 1260鈥?263 (1995). arXiv:gr-qc/9–7504004.
+[11] Jacobson, T. "Thermodynamics of Spacetime: The Einstein Equation of State." *Phys. Rev. Lett.* **75**, 1260-263 (1995). arXiv:gr-qc/9–7504004.
 
-[12] Van Raamsdonk, M. "Building Up Spacetime with Quantum Entanglement." *Gen. Relativ. Gravit.* **42**, 2323鈥?329 (2010). arXiv:1005.3035 [hep-th].
+[12] Van Raamsdonk, M. "Building Up Spacetime with Quantum Entanglement." *Gen. Relativ. Gravit.* **42**, 2323-329 (2010). arXiv:1005.3035 [hep-th].
 
 [13] Seiberg, N. "Emergent Spacetime." arXiv:hep-th/0601234 (2006).
 
@@ -395,11 +395,11 @@ We have presented a framework in which the fine-structure constant $\alpha$ emer
 
 [19] Belkin, M., and P. Niyogi. "Convergence of Laplacian Eigenmaps." *NeurIPS* (2006).
 
-[20] Singer, A. "From Graph to Manifold Laplacian: The Convergence Rate." *Appl. Comput. Harmon. Anal.* **21**, 128鈥?34 (2006).
+[20] Singer, A. "From Graph to Manifold Laplacian: The Convergence Rate." *Appl. Comput. Harmon. Anal.* **21**, 128-34 (2006).
 
-[21] Coifman, R. R., and S. Lafon. "Diffusion Maps." *Appl. Comput. Harmon. Anal.* **21**, 5鈥?0 (2006).
+[21] Coifman, R. R., and S. Lafon. "Diffusion Maps." *Appl. Comput. Harmon. Anal.* **21**, 5-0 (2006).
 
-[22] Hehl, F. W., P. Von Der Heyde, G. D. Kerlick, and J. M. Nester. "General Relativity with Spin and Torsion: Foundations and Prospects." *Rev. Mod. Phys.* **48**, 393鈥?16 (1976).
+[22] Hehl, F. W., P. Von Der Heyde, G. D. Kerlick, and J. M. Nester. "General Relativity with Spin and Torsion: Foundations and Prospects." *Rev. Mod. Phys.* **48**, 393-16 (1976).
 
 [23] Surya, S. "The Causal Set Approach to Quantum Gravity." *Living Rev. Relativ.* **22**, 5 (2019). arXiv:1903.11544 [gr-qc].
 
@@ -415,19 +415,19 @@ We have presented a framework in which the fine-structure constant $\alpha$ emer
 
 [29] Chomiuk, J. "Twisted Graph Laplacians: Spectral Band Bounds, Moduli Geometry, and Spectral-Action Gravity." arXiv:2601.XXXXX [math-ph] (2026).
 
-[30] Connes, A. "Gravity Coupled with Matter and the Foundation of Noncommutative Geometry." *Commun. Math. Phys.* **182**, 155鈥?–176 (1996). arXiv:hep-th/9603053.
+[30] Connes, A. "Gravity Coupled with Matter and the Foundation of Noncommutative Geometry." *Commun. Math. Phys.* **182**, 155-–176 (1996). arXiv:hep-th/9603053.
 
-[31] Regge, T. "General Relativity without Coordinates." *Nuovo Cimento* **19**, 558鈥?–571 (1961).
+[31] Regge, T. "General Relativity without Coordinates." *Nuovo Cimento* **19**, 558-–571 (1961).
 
 [32] Ambj酶rn, J., J. Jurkiewicz, and R. Loll. "Causal Dynamical Triangulations and the Search for a Theory of Quantum Gravity." arXiv:2007.04963 [hep-th] (2020).
 
 [33] Oriti, D. "The Group Field Theory Approach to Quantum Gravity." arXiv:1408.7112 [gr-qc] (2014).
 
-[34] Chamseddine, A. H., and A. Connes. "The Spectral Action Principle." *Commun. Math. Phys.* **186**, 731鈥?–750 (1997). arXiv:hep-th/9606001.
+[34] Chamseddine, A. H., and A. Connes. "The Spectral Action Principle." *Commun. Math. Phys.* **186**, 731-–750 (1997). arXiv:hep-th/9606001.
 
 ---
 
-# Appendix A: Graph Laplacian Spectral Bound
+### Appendix A: Graph Laplacian Spectral Bound
 
 **Theorem A.1** (Restatement of Theorem 3.1). Let $G = (V, E, w)$ be a weighted directed graph with graph Laplacian $L = D - A$, where $D$ is the weighted degree matrix and $A$ is the weighted adjacency matrix. For any node $v \in V$, the connectivity charge satisfies
 
@@ -437,7 +437,7 @@ $$Q(v) = \sum_{u \in \mathcal{N}(v)} w(u,v) \cdot \delta(u,v) \leq \lambda_{\max
 
 ---
 
-# Appendix B: Numerical Simulation Algorithm
+### Appendix B: Numerical Simulation Algorithm
 
 **Algorithm B.1** (Causal Network $\alpha$-Simulation)
 
@@ -454,7 +454,7 @@ $$Q(v) = \sum_{u \in \mathcal{N}(v)} w(u,v) \cdot \delta(u,v) \leq \lambda_{\max
 
 ---
 
-# Appendix C: Parameter Scan Data
+### Appendix C: Parameter Scan Data
 
 | $\gamma$ | $C$ | $\kappa$ | $\alpha_{\text{sim}}$ | Error (%) | $n_{CS}$ |
 |----------|-----|----------|------------------------|-----------|----------|
@@ -471,7 +471,7 @@ $$Q(v) = \sum_{u \in \mathcal{N}(v)} w(u,v) \cdot \delta(u,v) \leq \lambda_{\max
 
 ---
 
-# Appendix D: Toolchain Specification
+### Appendix D: Toolchain Specification
 
 The TOE-SYLVA formalization program uses the following toolchain and conventions.
 
@@ -484,7 +484,7 @@ The TOE-SYLVA formalization program uses the following toolchain and conventions
 
 ## D.2 Code Conventions
 
-- **Encoding**: All `.lean` files are UTF-8. Use Python or `lake` CLI for file operations; do not use PowerShell `Set-Content` on `.lean` files (may corrupt encoding).
+- **Encoding**: All `.lean` files are UTF-8. Use Python or `lake` CLI for file operations; do not use PowerShell `Set-ontent` on `.lean` files (may corrupt encoding).
 - **Import style**: Prefer `import Mathlib.Submodule` over `import Mathlib`. Full `import Mathlib` is used only in stub modules during active development; target modules must use precise imports.
 - **Linting**: Use `lake exe check_file_imports` (mathlib tool) to detect unused/redundant imports after compilation.
 - **File structure**: Parent module (`Foo.lean`) exports child modules (`Foo/Bar.lean`, `Foo/Baz.lean`) via `export` declarations.
@@ -501,7 +501,7 @@ lake build          # compile all modules
 
 | Module | External Imports | Internal Dependencies |
 |--------|------------------|----------------------|
-| `Basic` | `Mathlib.Tactic` | 鈥?|
+| `Basic` | `Mathlib.Tactic` | -|
 | `SylvaInfrastructure.Constants` | `Mathlib.Data.Real`, `Mathlib.Data.Complex`, ... | `Basic` |
 | `FifteenConstants` | `Mathlib.Analysis.SpecialFunctions` | `SylvaInfrastructure.Constants` |
 | `GaugeTheory` | `Mathlib.Geometry.Manifold`, `Mathlib.Topology.FiberBundle` | `SylvaInfrastructure` |
@@ -533,9 +533,9 @@ We submit for your consideration the manuscript entitled *"Emergent Fine-Structu
 
 **Summary of Contribution.** The fine-structure constant $\alpha \approx 1/137.036$ is one of the most precisely measured quantities in physics, yet its theoretical origin remains unexplained. In this work, we propose that $\alpha$ emerges as a topological invariant of a causal network dynamics, bridging graph theory, differential geometry, and quantum field theory. Numerical simulations achieve $5\text{--}6\%$ agreement with the experimental value without free parameters beyond the network topology, and fine-tuning brings the result to within $0.1\%$. We identify $\alpha^{-1}$ with the Chern-Simons level $n_{CS} = 137$, offering a first-principles path toward the long-standing "large-number puzzle."
 
-**Why Physical Review D?** This work sits at the intersection of quantum gravity, emergent spacetime, and high-precision particle physics鈥攖he core scope of PRD. The framework makes falsifiable predictions about the high-energy running of $\alpha$, dark energy, and quantum Hall conductance, all of which fall within the journal's purview.
+**Why Physical Review D?** This work sits at the intersection of quantum gravity, emergent spacetime, and high-precision particle physics-攖he core scope of PRD. The framework makes falsifiable predictions about the high-energy running of $\alpha$, dark energy, and quantum Hall conductance, all of which fall within the journal's purview.
 
-**Related Work.** Our approach builds on causal set theory (Sorkin), network geometry (Bianconi鈥揜ahmede), and quantum graphity (Konopka鈥揗arkopoulou鈥揝everini), but goes beyond these by proposing a concrete mechanism for the emergence of $\alpha$ from network topology. We distinguish our work from:
+**Related Work.** Our approach builds on causal set theory (Sorkin), network geometry (Bianconi-ahmede), and quantum graphity (Konopka-arkopoulou-everini), but goes beyond these by proposing a concrete mechanism for the emergence of $\alpha$ from network topology. We distinguish our work from:
 - *Anthropic/multiverse arguments* (which do not explain $\alpha$ but merely observe it)
 - *String theory compactifications* (which introduce additional free parameters)
 - *Numerological relations* (which lack a dynamical mechanism)
@@ -543,10 +543,10 @@ We submit for your consideration the manuscript entitled *"Emergent Fine-Structu
 Our framework provides a dynamical, graph-theoretic mechanism with explicit numerical predictions.
 
 **Suggested Reviewers.**
-1. Prof. Fay Dowker (Imperial College London) 鈥?causal set theory
-2. Prof. Xiao-Gang Wen (MIT) 鈥?topological order and emergent gauge theory
-3. Prof. Dmitri Krioukov (Northeastern University) 鈥?network geometry and emergent cosmology
-4. Prof. Carlo Rovelli (Aix-Marseille University) 鈥?loop quantum gravity and emergence
+1. Prof. Fay Dowker (Imperial College London) -causal set theory
+2. Prof. Xiao-Gang Wen (MIT) -topological order and emergent gauge theory
+3. Prof. Dmitri Krioukov (Northeastern University) -network geometry and emergent cosmology
+4. Prof. Carlo Rovelli (Aix-Marseille University) -loop quantum gravity and emergence
 
 **Conflicts of Interest.** The authors declare no conflicts of interest.
 

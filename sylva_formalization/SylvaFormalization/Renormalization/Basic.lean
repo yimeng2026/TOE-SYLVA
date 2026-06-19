@@ -11,8 +11,8 @@ References: Peskin & Schroeder (1995), Ch. 10; Weinberg (1996), Vol. 2
 
 import Mathlib
 import Mathlib.Analysis.Calculus.FDeriv.Basic
-import Mathlib.MeasureTheory.Integral.IntervalIntegral
-import SylvaFormalization.StandardModel
+-- import Mathlib.MeasureTheory.Integral.IntervalIntegral  -- Does not exist in mathlib v4.29.0
+import StandardModel
 
 namespace Sylva
 namespace Renormalization

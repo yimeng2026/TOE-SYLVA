@@ -34,9 +34,9 @@ Status: Framework with postulates. Full formalization requires:
 
 import Mathlib
 
-import SylvaFormalization.GraphTheoreticCharge
-import SylvaFormalization.ContinuumLimit
-import SylvaFormalization.EinsteinCartan
+import GraphTheoreticCharge
+import ContinuumLimit
+import EinsteinCartan
 
 namespace Sylva
 namespace SpectralAction
@@ -71,9 +71,9 @@ def graphLaplacianSpectrum (G : CausalNetwork V) : List ℔:=
     Status: POSTULATE. Rigorous computation requires heat-kernel asymptotics
     for power-law graphs, which is an active research area.
 -/
-postulate spectralDimension (G : CausalNetwork V) : ℔
+axiom spectralDimension (G : CausalNetwork V) : ℔
 /-- For the SYLVA causal networks, the spectral dimension is 4. -/
-postulate spectralDimensionIsFour (G : CausalNetwork V) :
+axiom spectralDimensionIsFour (G : CausalNetwork V) :
   spectralDimension G = 4
 
 -- ============================================================
@@ -153,7 +153,7 @@ structure HeatKernelCoefficients (G : CausalNetwork V) where
     - Heat-kernel estimates for random graphs
     - Discrete analogue of the Minakshisundaram-Pleijel expansion
 -/
-postulate heatKernelExpansion {G : CausalNetwork V} {t : ℝ} (h_t : t > 0)
+axiom heatKernelExpansion {G : CausalNetwork V} {t : ℝ} (h_t : t > 0)
     (coeffs : HeatKernelCoefficients G) :
     Tendsto (fun t => (4 * π * t) ^ 2 * heatKernelTrace G t h_t)
       (nhds 0) (nhds (coeffs.a0 + coeffs.a1 * t + coeffs.a2 * t ^ 2))
@@ -229,7 +229,7 @@ structure SpectralActionStressTensor (M : Spacetime) where
     - Noether's second theorem for diffeomorphism invariance
     - Ward identities for the emergent gauge theory
 -/
-postulate spectralActionConservation {M : Spacetime}
+axiom spectralActionConservation {M : Spacetime}
     (T : SpectralActionStressTensor M) (g : MetricTensor M) :
     ∀ (x : M) (ν : Fin 4),
          μ : Fin 4, (T.cosmologicalTerm x μ ν + T.einsteinTerm x μ ν + T.matterTerm x μ ν) = 0

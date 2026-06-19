@@ -13,10 +13,10 @@ Sylva 代码示例集
 作者: Sylva Tutorial
 版本: 0.1.0
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
-import SylvaFormalization.RiemannHypothesis
-import SylvaFormalization.Complexity
-import SylvaFormalization.NumericalZeros
+import Basic
+import RiemannHypothesis
+import Complexity
+import NumericalZeros
 
 namespace SylvaExamples
 

@@ -10,7 +10,7 @@ References: Weinberg (2008)
 import Mathlib
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.MeasureTheory.Measure.Haar.Basic
-import SylvaFormalization.SylvaInfrastructure.Constants
+import SylvaInfrastructure.Constants
 
 namespace Sylva
 namespace Cosmology
@@ -44,7 +44,7 @@ structure FLRW where
   p : ℝ → ℝ
 
 /-- Friedmann equation (first): H² = (8πG/3)ρ - k/a². -/
-postulate FriedmannEquation1 (flrw : FLRW) :
+axiom FriedmannEquation1 (flrw : FLRW) :
   ∀ (t : ℝ), flrw.H t ^ 2 = (8 * Real.pi * G / 3) * flrw.rho t - flrw.k / (flrw.a t)^2
   -- Friedmann 1st equation: energy conservation, postulated as cosmology axiom
 
@@ -53,7 +53,7 @@ postulate FriedmannEquation1 (flrw : FLRW) :
     ä/a = -(4πG/3)(ρ + 3p).
     If ρ + 3p > 0: deceleration (ordinary matter).
     If ρ + 3p < 0: acceleration (dark energy, inflation). -/
-postulate FriedmannEquation2 (flrw : FLRW) :
+axiom FriedmannEquation2 (flrw : FLRW) :
   ∀ (t : ℝ), deriv (deriv flrw.a) t / flrw.a t = -(4 * Real.pi * G / 3) * (flrw.rho t + 3 * flrw.p t)
   -- Friedmann 2nd equation: acceleration, postulated as cosmology axiom
 
@@ -63,7 +63,7 @@ postulate FriedmannEquation2 (flrw : FLRW) :
     Ω = 1: flat universe (k = 0).
     Ω > 1: closed (k = +1).
     Ω < 1: open (k = -1). -/
-postulate CriticalDensityCosmology (flrw : FLRW) :
+axiom CriticalDensityCosmology (flrw : FLRW) :
   ∀ (t : ℝ), let rho_c := 3 * flrw.H t^2 / (8 * Real.pi * G)
     flrw.rho t / rho_c > 0
   -- Critical density: positive, postulated as cosmology axiom

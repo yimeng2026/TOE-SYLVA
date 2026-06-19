@@ -146,7 +146,7 @@ noncomputable def gaugeTransformedWavefunction
     3. 使用乘积法则和 ⟨u|u⟩ = 1 化简
     
     开放问题：需要形式化 ∂_μ θ(k) 作为导数。 -/
-postulate BerryConnection_GaugeTransformationLaw
+axiom BerryConnection_GaugeTransformationLaw
     (L : BlochTheorem.Lattice2D) (A : BerryConnection L)
     (gauge : GaugeTransformation L) (k : BlochTheorem.CrystalMomentum2D)
     (μ : Fin 2) :
@@ -189,7 +189,7 @@ structure BerryConnection1Form (L : BlochTheorem.Lattice2D) where
     
     开放问题：需要形式化外微分和外积 ∧。
     Mathlib 中有 `ExteriorAlgebra` 和微分形式的相关定义。 -/
-postulate exteriorDerivativeOfBerryConnection
+axiom exteriorDerivativeOfBerryConnection
     (L : BlochTheorem.Lattice2D) (A : BerryConnection1Form L) :
     -- dA = Ω_{xy} dk_x ∧ dk_y
     -- 其中 Ω_{xy} = ∂_x A_y - ∂_y A_x
@@ -232,7 +232,7 @@ structure BerryPhase (L : BlochTheorem.Lattice2D) where
     
     但如果 θ 有分支切割（例如在 Dirac 弦上），则 ∮_C dθ 可能
     非零（等于 2π × 环绕数）。这对应于磁单极子的 Dirac 量子化。 -/
-postulate BerryPhase_GaugeInvariance
+axiom BerryPhase_GaugeInvariance
     (L : BlochTheorem.Lattice2D) (γ : BerryPhase L) :
     -- 在单值规范变换下，Berry 相位不变
     True
@@ -255,7 +255,7 @@ postulate BerryPhase_GaugeInvariance
     
     开放问题：需要在 Lean 中形式化主丛的完整理论。
     Mathlib 的 `FiberBundle` 和 `VectorBundle` 提供了基础。 -/
-postulate BerryConnection_AsPrincipalBundleConnection
+axiom BerryConnection_AsPrincipalBundleConnection
     (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
     -- Berry 联络是 U(1) 主丛上的联络
     True
@@ -286,7 +286,7 @@ structure NonAbelBerryConnection (L : BlochTheorem.Lattice2D) (N : ℕ) where
 
 /-- Abel 极限：当 N = 1 时，非 Abel Berry 联络退化为单带 Berry 联络。
     A_μ^{00} = ⟨u_0| i ∂_μ |u_0⟩ = A_μ。 -/
-postulate NonAbelBerryConnection_AbelLimit
+axiom NonAbelBerryConnection_AbelLimit
     (L : BlochTheorem.Lattice2D) (A_abel : BerryConnection L) :
     -- 当 N = 1 时，非 Abel 联络退化为 Abel 联络
     True

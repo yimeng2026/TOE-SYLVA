@@ -138,7 +138,7 @@ noncomputable def chernSimonsLevel {M G} [GaugeGroup G] {P : PrincipalBundle M G
 
     Status: POSTULATE in the current framework. A rigorous proof requires
     characteristic class theory (Chern-Weil homomorphism). -/
-postulate chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
+axiom chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
     (A : Connection M G P) :
     ∃ (n : ℤ), chernSimonsLevel A (by trivial) = (n : ℝ)
 
@@ -169,7 +169,7 @@ postulate chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
     2. Proof that the continuum limit preserves the topological quantization
     3. Explanation of the specific integer 137 (number-theoretic origin?)
 -/
-postulate alphaInverseIsChernSimonsLevel
+axiom alphaInverseIsChernSimonsLevel
     {M G} [GaugeGroup G] {P : PrincipalBundle M G}
     (A : Connection M G P)
     (alpha : ℝ) (h_alpha : alpha = 1 / 137.035999084) :
@@ -197,7 +197,7 @@ instance : GaugeGroup U1 where
     2. Convergence of graph characteristic classes to manifold characteristic classes
     3. Index theorem for graph Dirac operators
 -/
-postulate causalNetworkChernSimonsLevel {V} [Fintype V] [DecidableEq V]
+axiom causalNetworkChernSimonsLevel {V} [Fintype V] [DecidableEq V]
     (G : GraphTheoreticCharge.CausalNetwork V)
     (gamma : ℝ) (h_gamma : gamma = 2.9)
     (C : ℝ) (h_C : C = 0.4) :

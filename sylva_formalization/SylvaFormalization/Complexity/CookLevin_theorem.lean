@@ -19,8 +19,8 @@ DEPENDENCIES: Basic (foundational structures), CP004 (P≠NP framework)
 import Mathlib.Computability.TuringMachine
 import Mathlib.Computability.ComplexityClasses
 import Mathlib.Data.List.Basic
-import SylvaFormalization.Basic
-import SylvaFormalization.CP004
+import Basic
+import CP004
 
 namespace SylvaFormalization
 

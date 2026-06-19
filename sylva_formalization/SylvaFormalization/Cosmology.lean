@@ -14,7 +14,7 @@ Submodules:
 - Cosmology.DarkEnergy     — Dark energy and ΛCDM
 -/
 
-import SylvaFormalization.Cosmology.FLRW
-import SylvaFormalization.Cosmology.Inflation
-import SylvaFormalization.Cosmology.Perturbations
-import SylvaFormalization.Cosmology.DarkEnergy
+import Cosmology.FLRW
+import Cosmology.Inflation
+import Cosmology.Perturbations
+import Cosmology.DarkEnergy

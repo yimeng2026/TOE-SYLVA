@@ -8,8 +8,8 @@ Basic tests for:
 4. CNF formulas
 ================================================================================
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
-import SylvaFormalization.CookLevin
+import Basic
+import CookLevin
 
 namespace Sylva
 namespace TestSuite

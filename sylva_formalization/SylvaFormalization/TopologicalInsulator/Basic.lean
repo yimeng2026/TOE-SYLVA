@@ -9,7 +9,7 @@ References: Kittel (2005); Ashcroft & Mermin (1976)
 -/
 
 import Mathlib
-import Mathlib.LinearAlgebra.Matrix
+-- import Mathlib.LinearAlgebra.Matrix  -- Does not exist in mathlib v4.29.0
 import Mathlib.Analysis.InnerProductSpace.Basic
 
 namespace Sylva

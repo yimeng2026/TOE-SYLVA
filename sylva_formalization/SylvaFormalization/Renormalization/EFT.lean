@@ -10,8 +10,8 @@ References: Peskin & Schroeder (1995), Ch. 12; Weinberg (1996), Vol. 2
 
 import Mathlib
 import Mathlib.Analysis.Calculus.FDeriv.Basic
-import SylvaFormalization.StandardModel
-import SylvaFormalization.Renormalization.Basic
+import StandardModel
+import Renormalization.Basic
 
 namespace Sylva
 namespace Renormalization
@@ -45,7 +45,7 @@ structure EffectiveFieldTheory where
     The effects of heavy particles are suppressed by (E/M)^2 and appear only
     in higher-dimension operators. The low-energy theory is independent of
     the heavy sector to leading order. -/
-postulate DecouplingTheorem (M : ℝ) (E : ℝ) (hM : E < M) :
+axiom DecouplingTheorem (M : ℝ) (E : ℝ) (hM : E < M) :
   let suppression := (E/M)^2
   suppression < 1
   -- Decoupling: heavy particle effects suppressed by (E/M)^2, postulated as EFT axiom
@@ -54,7 +54,7 @@ postulate DecouplingTheorem (M : ℝ) (E : ℝ) (hM : E < M) :
 
     The Wilson coefficients at μ = M are determined by matching the amplitudes
     in the full theory and the EFT. C_i(M) = tree-level + loop corrections. -/
-postulate MatchingConditions (eft : EffectiveFieldTheory) :
+axiom MatchingConditions (eft : EffectiveFieldTheory) :
   ∀ (i : ℕ), eft.C i = eft.C i + sum_LoopCorrections eft.M i
   -- Matching: Wilson coefficients from full theory matching, postulated as EFT axiom
 

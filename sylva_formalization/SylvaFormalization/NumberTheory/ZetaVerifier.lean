@@ -15,7 +15,7 @@ Status: 已修复所有SORRY
 -/\n\nimport Mathlib
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.Topology.Order.IntermediateValue
-import SylvaFormalization.Basic
+import Basic
 
 namespace SylvaFormalization
 
@@ -316,7 +316,7 @@ noncomputable instance : DecidableEq ZeroVerification :=
 -- Hardy Z函数零点与黎曼ζ函数零点的关系（框架声明）
 -- 这是一个理论框架声明，完整证明需要实现Hardy Z函数的完整定义
 -- 使用postulate标记为开放问题（需要Riemann-Siegel公式和Hardy Z函数的完整形式化）
-postulate hardyZ_zero_implies_zeta_zero {t : ℝ} (_ht : zetaHardyZ t = 0) (_ht_pos : t > 0) :
+axiom hardyZ_zero_implies_zeta_zero {t : ℝ} (_ht : zetaHardyZ t = 0) (_ht_pos : t > 0) :
     ∃ s : ℂ, s.re = 1 / 2 ∧ s.im = t ∧ riemannZeta s = 0
 
 -- Gram点处的函数值性质

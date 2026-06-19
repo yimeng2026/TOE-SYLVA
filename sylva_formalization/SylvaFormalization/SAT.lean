@@ -21,7 +21,7 @@ Sylva Formalization Project
 -/
 
 import Mathlib
-import SylvaFormalization.CookLevin.SAT
+import CookLevin.SAT
 
 namespace SylvaFormalization.SAT
 
@@ -102,7 +102,7 @@ namespace TseitinResult
 
 /-- The Tseitin CNF is satisfiable iff the original formula is satisfiable.
     This is the core correctness property of the Tseitin transformation. -/
-postulate equisatisfiable (f : BoolFormula) (result : TseitinResult) :
+axiom equisatisfiable (f : BoolFormula) (result : TseitinResult) :
   (∃ (assign : Var → Bool), f.eval assign = true) ↔
   (∃ (assign : Var → Bool), result.cnf.eval assign = true)
   -- Equisatisfiability: the CNF preserves the satisfiability status of
@@ -117,7 +117,7 @@ postulate equisatisfiable (f : BoolFormula) (result : TseitinResult) :
 
 /-- Tseitin transformation preserves unsatisfiability.
     If the original formula is UNSAT, so is the CNF. -/
-postulate unsatPreserved (f : BoolFormula) (result : TseitinResult) :
+axiom unsatPreserved (f : BoolFormula) (result : TseitinResult) :
   (∀ (assign : Var → Bool), f.eval assign = false) →
   (∀ (assign : Var → Bool), result.cnf.eval assign = false)
   -- Corollary of equisatisfiability: the contrapositive of the forward
@@ -125,7 +125,7 @@ postulate unsatPreserved (f : BoolFormula) (result : TseitinResult) :
 
 /-- Tseitin transformation produces a linear-size CNF.
     The number of auxiliary variables and clauses is O(|f|). -/
-postulate linearSize (f : BoolFormula) (result : TseitinResult) :
+axiom linearSize (f : BoolFormula) (result : TseitinResult) :
   result.numAuxVars ≤ f.size + 1 ∧ result.numClauses ≤ 4 * f.size + 1
   -- Linear bound: each subformula node introduces at most 1 new variable
   -- and at most 4 clauses. The total is linear in formula size.
@@ -147,7 +147,7 @@ end TseitinResult
     Mathematical Logic, Part II.
 
     Complexity: O(|f|) time, O(|f|) space (variables + clauses). -/
-postulate tseitinTransform (f : BoolFormula) : TseitinResult
+axiom tseitinTransform (f : BoolFormula) : TseitinResult
   -- Postulated as the full definition requires a stateful traversal
   -- (fresh variable generation + CNF accumulation) which is implementable
   -- but would be ~100 lines of monadic code. The correctness proofs
@@ -254,7 +254,7 @@ structure CircuitSATResult where
 namespace CircuitSATResult
 
 /-- The reduced CNF is satisfiable iff the original circuit is satisfiable. -/
-postulate equisatisfiable (c : Circuit) (result : CircuitSATResult) :
+axiom equisatisfiable (c : Circuit) (result : CircuitSATResult) :
   Circuit.CircuitSAT c ↔ CNF.Satisfiable result.cnf
   -- Equisatisfiability: the circuit is satisfiable iff the reduced CNF is.
   -- Proof: by structural induction on the circuit DAG, using Tseitin gate
@@ -266,7 +266,7 @@ postulate equisatisfiable (c : Circuit) (result : CircuitSATResult) :
   -- is a standard textbook result (Arora & Barak 2009, Theorem 6.1).
 
 /-- Circuit-to-SAT reduction is linear in circuit size. -/
-postulate linearSize (c : Circuit) (result : CircuitSATResult) :
+axiom linearSize (c : Circuit) (result : CircuitSATResult) :
   result.numGateVars ≤ c.size ∧ result.numClauses ≤ 4 * c.size + 1
   -- Linear bound: each gate introduces at most 1 new variable and at most
   -- 4 clauses. The total encoding size is O(|circuit|). Postulated as
@@ -281,7 +281,7 @@ end CircuitSATResult
     Finally, assert the output gate variable is true.
 
     Complexity: O(|circuit|) time and space. -/
-postulate circuitToSAT (c : Circuit) : CircuitSATResult
+axiom circuitToSAT (c : Circuit) : CircuitSATResult
   -- Postulated as the definition requires a DAG traversal with stateful
   -- variable generation and CNF accumulation. The implementation is
   -- routine but the correctness proofs (equisatisfiability, linear size)
@@ -305,7 +305,7 @@ postulate circuitToSAT (c : Circuit) : CircuitSATResult
 
 /-- SAT (CNF satisfiability) is NP-complete.
     This is the Cook-Levin theorem (1971). -/
-postulate SAT_is_NPComplete :
+axiom SAT_is_NPComplete :
   -- SAT is NP-complete by the Cook-Levin theorem.
   -- Proof sketch: (1) SAT is in NP (certificate = satisfying assignment),
   -- (2) any language in NP reduces to SAT via tableau encoding.
@@ -316,7 +316,7 @@ postulate SAT_is_NPComplete :
 
 /-- 3-SAT (each clause has at most 3 literals) is NP-complete.
     Reduction from SAT by expanding long clauses with auxiliary variables. -/
-postulate ThreeSAT_is_NPComplete :
+axiom ThreeSAT_is_NPComplete :
   -- 3-SAT is NP-complete by reduction from SAT:
   -- each clause of length k > 3 is replaced by k-2 clauses of length 3
   -- using Tseitin-style auxiliary variables (introduce y₁,...,y_{k-3}
@@ -328,7 +328,7 @@ postulate ThreeSAT_is_NPComplete :
 /-- 2-SAT (each clause has at most 2 literals) is in P.
     Solvable in O(n+m) time via strongly connected components in the
     implication graph (Aspvall, Plass, Tarjan 1979). -/
-postulate TwoSAT_in_P :
+axiom TwoSAT_in_P :
   -- 2-SAT is in P: the implication graph has 2n vertices (literal nodes)
   -- and 2m edges (implication edges). A formula is satisfiable iff no
   -- variable and its negation are in the same SCC.
@@ -340,7 +340,7 @@ postulate TwoSAT_in_P :
 
 /-- Horn-SAT (each clause has at most one positive literal) is in P.
     Solvable in linear time via unit propagation (forward chaining). -/
-postulate HornSAT_in_P :
+axiom HornSAT_in_P :
   -- Horn-SAT is in P: the unit propagation algorithm runs in linear time.
   -- A Horn formula is satisfiable iff unit propagation does not derive
   -- the empty clause. The algorithm is a fixpoint computation on the set
@@ -353,7 +353,7 @@ postulate HornSAT_in_P :
 /-- CircuitSAT is NP-complete.
     By composition: (1) SAT is NP-complete, (2) SAT → CircuitSAT is trivial
     (CNF is a circuit), (3) CircuitSAT → SAT is linear (Tseitin). -/
-postulate CircuitSAT_is_NPComplete :
+axiom CircuitSAT_is_NPComplete :
   -- CircuitSAT is NP-complete by composition:
   -- 1. SAT is NP-complete (Cook-Levin theorem, SAT_is_NPComplete)
   -- 2. Any problem in NP reduces to SAT
@@ -366,7 +366,7 @@ postulate CircuitSAT_is_NPComplete :
 
 /-- Equivalence of SAT and CircuitSAT complexity.
     Both are NP-complete; they are polynomial-time equivalent. -/
-postulate SAT_CircuitSAT_equivalent :
+axiom SAT_CircuitSAT_equivalent :
   -- SAT and CircuitSAT are polynomial-time equivalent:
   -- SAT ≤ₚ CircuitSAT (trivial, CNF is a circuit)
   -- CircuitSAT ≤ₚ SAT (Tseitin, linear time)

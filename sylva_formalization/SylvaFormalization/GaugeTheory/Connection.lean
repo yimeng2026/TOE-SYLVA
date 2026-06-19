@@ -12,7 +12,7 @@ References: Nakahara (2003), Chapter 10; Donaldson & Kronheimer (1990)
 import Mathlib
 import Mathlib.Algebra.Lie.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
-import SylvaFormalization.GaugeTheory.Basic
+import GaugeTheory.Basic
 
 namespace Sylva
 namespace GaugeTheory
@@ -68,7 +68,7 @@ structure Curvature {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpa
 
     This is the non-abelian generalization of the homogeneous Maxwell equations.
     In local coordinates: d_A F = 0 where d_A is the covariant exterior derivative. -/
-postulate BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} {conn : Connection P} (curv : Curvature conn) :
   ∀ (p : P.totalSpace) (X Y Z : G),
     curv.omega2 p X Y + curv.omega2 p Y Z + curv.omega2 p Z X = 0
@@ -90,7 +90,7 @@ structure FieldStrength {M G : Type*} [TopologicalSpace M] [Group G] [Topologica
 
     For a scalar field φ in a representation ρ of G:
     D_μ φ = ∂_μ φ + ρ(A_μ) φ. -/
-postulate CovariantDerivative {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom CovariantDerivative {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (A : GaugePotential P) (φ : M → ℂ) :
   ∀ (x : M), deriv φ x = deriv φ x + A.potential x 0 * φ x
   -- Covariant derivative: D = d + A, requires representation theory of Lie algebra

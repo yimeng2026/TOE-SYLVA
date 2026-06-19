@@ -149,7 +149,7 @@ structure EmergentStressTensor (M : Spacetime) where
     Key insight: There is NO fundamental matter field. The stress tensor
     emerges entirely from the causal network's connectivity structure.
 -/
-postulate einsteinEquation {M : Spacetime} (g : MetricTensor M)
+axiom einsteinEquation {M : Spacetime} (g : MetricTensor M)
     (Ric : RicciTensor M) (R : M → ℝ)
     (T : EmergentStressTensor M)
     (Λ G : ℝ) :
@@ -167,7 +167,7 @@ postulate einsteinEquation {M : Spacetime} (g : MetricTensor M)
     sources spacetime torsion, analogous to how spin sources torsion in
     Einstein-Cartan theory.
 -/
-postulate cartanTorsionEquation {M : Spacetime} (T : TorsionTensor M)
+axiom cartanTorsionEquation {M : Spacetime} (T : TorsionTensor M)
     (A : EmergentGaugePotential M) (κ : ℝ) :
     ∀ (x : M) (λ μ ν : Fin 4),
       T.components x λ μ ν = κ * (A.components x ν - A.components x μ) / 2
@@ -179,7 +179,7 @@ postulate cartanTorsionEquation {M : Spacetime} (T : TorsionTensor M)
     The torsion term modifies the standard Maxwell equations.
     In the absence of torsion (κ = 0), these reduce to standard Maxwell.
 -/
-postulate emergentMaxwellEquations {M : Spacetime} (F : EmergentFieldStrength M)
+axiom emergentMaxwellEquations {M : Spacetime} (F : EmergentFieldStrength M)
     (A : EmergentGaugePotential M) (T : TorsionTensor M) (J : EmergentCurrent M) :
     ∀ (x : M) (ν : Fin 4),
       -- ∇_μ F^{μν} = J^ν
@@ -205,7 +205,7 @@ postulate emergentMaxwellEquations {M : Spacetime} (F : EmergentFieldStrength M)
     2. Noether theorem for the spectral action
     3. Ward identities for the emergent gauge theory
 -/
-postulate covariantConservation {M : Spacetime} (T : EmergentStressTensor M)
+axiom covariantConservation {M : Spacetime} (T : EmergentStressTensor M)
     (g : MetricTensor M) (conn : ConnectionWithTorsion M) :
     ∀ (x : M) (ν : Fin 4),
       ∑ μ : Fin 4, T.components x μ ν = 0 -- Simplified: ∇^μ T_{μν} = 0
@@ -214,7 +214,7 @@ postulate covariantConservation {M : Spacetime} (T : EmergentStressTensor M)
     ∇_ν J^ν = 0 (continuity equation)
 
     This follows from the antisymmetry of F_{μν} and the definition of J. -/
-postulate chargeConservation {M : Spacetime} (J : EmergentCurrent M) :
+axiom chargeConservation {M : Spacetime} (J : EmergentCurrent M) :
     ∀ (x : M), ∑ ν : Fin 4, J.components x ν = 0
 
 -- ============================================================
@@ -227,7 +227,7 @@ postulate chargeConservation {M : Spacetime} (J : EmergentCurrent M) :
     This predicts a natural scale for dark energy consistent with observations.
     The specific value depends on the network parameters (γ, C, κ).
 -/
-postulate cosmologicalConstantFromNetwork {M : Spacetime} (Λ : ℝ)
+axiom cosmologicalConstantFromNetwork {M : Spacetime} (Λ : ℝ)
     (avgDegree : ℝ) (h_pos : avgDegree > 0) :
     Λ = 1 / (avgDegree ^ 2)
 

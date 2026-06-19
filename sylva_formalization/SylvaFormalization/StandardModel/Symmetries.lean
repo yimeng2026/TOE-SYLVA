@@ -8,8 +8,8 @@ in the Standard Model.
 References: Peskin & Schroeder (1995); Weinberg (1996)
 -/
 
-import SylvaFormalization.StandardModel.Basic
-import SylvaFormalization.StandardModel.Interactions
+import StandardModel.Basic
+import StandardModel.Interactions
 
 namespace Sylva
 namespace StandardModel

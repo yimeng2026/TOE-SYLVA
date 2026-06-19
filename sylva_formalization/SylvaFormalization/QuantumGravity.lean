@@ -68,7 +68,7 @@ structure AdSCFT (d : ℕ) (L : ℝ) where
     the area of the minimal surface γ_A in the bulk that is homologous to A.
 
     Ryu-Takayanagi formula (2006): S_A = min_{γ_A ~ A} Area(γ_A) / 4G_N. -/
-postulate HolographicEntanglementEntropy (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L)) :
+axiom HolographicEntanglementEntropy (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L)) :
   ∃ (γ_A : Set (AdS (d + 1) L)),
     -- γ_A is homologous to A
     -- Area(γ_A) is minimal among all such surfaces
@@ -80,7 +80,7 @@ postulate HolographicEntanglementEntropy (d : ℕ) (L : ℝ) (A : Set (AdSBounda
 
     S_A = min_{QES} [Area(QES) / 4G_N + S_bulk(QES)]
     where S_bulk is the von Neumann entropy of bulk fields in the entanglement wedge. -/
-postulate QuantumExtremalSurface (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L)) :
+axiom QuantumExtremalSurface (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L)) :
   ∃ (QES : Set (AdS (d + 1) L)),
     let S_A := Area QES / (4 * G) + vonNeumannEntropy (bulkRegion QES)
     S_A > 0
@@ -95,7 +95,7 @@ postulate QuantumExtremalSurface (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L))
     For a Schwarzschild black hole: S_BH = 4πG M².
     For a Kerr black hole: S_BH = 2πG M (M + √(M² - J²)).
     For AdS black holes: S_BH = πr_+² / G_N where r_+ is the horizon radius. -/
-postulate BekensteinHawkingEntropy (d : ℕ) (L : ℝ) (M : ℝ) :
+axiom BekensteinHawkingEntropy (d : ℕ) (L : ℝ) (M : ℝ) :
   let S_BH := Area (Horizon M) / (4 * G)
   S_BH > 0
   -- Bekenstein-Hawking entropy: requires black hole geometry, postulated as quantum gravity axiom
@@ -104,7 +104,7 @@ postulate BekensteinHawkingEntropy (d : ℕ) (L : ℝ) (M : ℝ) :
 
     For Schwarzschild: T_H = 1 / 8πGM.
     For AdS black holes: T_H = (d-1)r_+ / 4πL². -/
-postulate HawkingTemperature (d : ℕ) (L : ℝ) (M : ℝ) :
+axiom HawkingTemperature (d : ℕ) (L : ℝ) (M : ℝ) :
   let T_H := SurfaceGravity M / (2 * Real.pi)
   T_H > 0
   -- Hawking temperature: requires black hole thermodynamics, postulated as quantum gravity axiom
@@ -114,7 +114,7 @@ postulate HawkingTemperature (d : ℕ) (L : ℝ) (M : ℝ) :
     The paradox: pure state → mixed state (Hawking radiation is thermal).
     Resolution: information is encoded in subtle correlations (Page curve).
     Holographic principle suggests information is preserved (CFT is unitary). -/
-postulate BlackHoleInformation (d : ℕ) (L : ℝ) (M : ℝ) :
+axiom BlackHoleInformation (d : ℕ) (L : ℝ) (M : ℝ) :
   -- Page curve: entanglement entropy increases then decreases
   ∃ (t_Page : ℝ), t_Page > 0 ∧
     vonNeumannEntropy (HawkingRadiation M t_Page) =
@@ -129,7 +129,7 @@ postulate BlackHoleInformation (d : ℕ) (L : ℝ) (M : ℝ) :
 
     ER=EPR conjecture: an Einstein-Rosen bridge is equivalent to an EPR pair
     (entangled black holes). The wormhole geometry encodes the entanglement. -/
-postulate ER_EPR (d : ℕ) (L : ℝ) (M1 M2 : ℝ) :
+axiom ER_EPR (d : ℕ) (L : ℝ) (M1 M2 : ℝ) :
   -- Two black holes are entangled iff they are connected by a wormhole
   entangled (BlackHole M1) (BlackHole M2) ↔
     ∃ (wormhole : AdS (d + 1) L), connects wormhole (BlackHole M1) (BlackHole M2)
@@ -144,7 +144,7 @@ postulate ER_EPR (d : ℕ) (L : ℝ) (M1 M2 : ℝ) :
     JT gravity is a toy model of quantum gravity with a tractable path integral.
     It is dual to the SYK model (Sachdev-Ye-Kitaev) — a 0+1 dimensional quantum mechanics
     with N Majorana fermions and random interactions. -/
-postulate JTGravitySYK (N : ℕ) (J : ℝ) :
+axiom JTGravitySYK (N : ℕ) (J : ℝ) :
   -- SYK model: N Majorana fermions with random q-body interactions
   -- JT gravity dual: 2D dilaton gravity with AdS_2 boundary
   ∃ (G_SYK : ℝ), G_SYK > 0 ∧

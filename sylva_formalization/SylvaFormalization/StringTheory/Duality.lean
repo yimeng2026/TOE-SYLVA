@@ -9,7 +9,7 @@ References: Polchinski (1998); Becker, Becker, Schwarz (2007)
 -/
 
 import Mathlib
-import SylvaFormalization.StringTheory.Basic
+import StringTheory.Basic
 
 namespace Sylva
 namespace StringTheory
@@ -24,7 +24,7 @@ open Real
     - T-duality exchanges n ↔ m and R ↔ α'/R.
 
     The spectrum is invariant under T-duality. -/
-postulate TDuality (R : ℝ) (alpha' : ℝ) (n m : ℤ) :
+axiom TDuality (R : ℝ) (alpha' : ℝ) (n m : ℤ) :
   let p := n / R
   let w := m * R / alpha'
   let R_dual := alpha' / R
@@ -37,7 +37,7 @@ postulate TDuality (R : ℝ) (alpha' : ℝ) (n m : ℤ) :
 
     Type IIB superstring is self-dual under g_s ↔ 1/g_s.
     The SL(2, ℤ) symmetry of IIB relates different coupling regimes. -/
-postulate SDuality (g_s : ℝ) :
+axiom SDuality (g_s : ℝ) :
   let g_s_dual := 1 / g_s
   g_s > 0 → g_s_dual > 0
   -- S-duality: strong-weak coupling, postulated as string theory axiom

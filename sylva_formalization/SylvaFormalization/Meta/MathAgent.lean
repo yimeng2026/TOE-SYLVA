@@ -11,9 +11,9 @@ This module provides a mathematical research agent framework that integrates:
 - Integration with Sylva's core theory (φ, Φ_c, RH framework)
 -/\n\nimport Mathlib
 import Mathlib.Data.String.Defs
-import SylvaFormalization.Basic
-import SylvaFormalization.NumericalZeros
-import SylvaFormalization.RiemannHypothesis
+import Basic
+import NumericalZeros
+import RiemannHypothesis
 
 namespace Sylva
 namespace MathAgent

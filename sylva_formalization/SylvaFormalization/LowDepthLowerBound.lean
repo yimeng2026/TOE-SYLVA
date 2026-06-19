@@ -1,3 +1,13 @@
+import Mathlib.Algebra.Polynomial.Basic
+import Mathlib.Algebra.MvPolynomial.Basic
+import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+import Mathlib.LinearAlgebra.Matrix.Rank
+import Mathlib.Data.Finset.Basic
+import Mathlib.Data.Fintype.Basic
+import Mathlib.Tactic
+import SymmetricFunctions
+
+
 /-!
 # Low-Depth Algebraic Circuit Lower Bounds (LST 2021)
 
@@ -57,17 +67,7 @@ The LST proof combines three key ingredients:
 
 All open problems / unproven lemmas are marked with `postulate`, not `sorry`.
 -/
-
-import Mathlib.Algebra.Polynomial.Basic
-import Mathlib.Algebra.MvPolynomial.Basic
-import Mathlib.LinearAlgebra.Matrix.Determinant
-import Mathlib.LinearAlgebra.Matrix.Rank
-import Mathlib.Data.Finset.Basic
-import Mathlib.Data.Fintype.Basic
-import Mathlib.Tactic
-
 -- Project-local: connect to SymmetricFunctions module
-import SylvaFormalization.SymmetricFunctions
 
 namespace SylvaFormalization
 
@@ -279,7 +279,7 @@ def rank {n d : ℕ} {f : MvPolynomial (Fin n) 𝕜}
 
 /-- Subadditivity: rank(M_{f+g,S}) ≔rank(M_{f,S}) + rank(M_{g,S}).
     This follows from the matrix rank inequality for sums. -/
-postulate theorem rank_subadditive {n d : ℕ}
+axiom theorem rank_subadditive {n d : ℕ}
     (f g : MvPolynomial (Fin n) 𝕜)
     (sets : Fin d    Finset (Fin n)) (S : Finset (Fin d))
     (Mf Mg Mfg : Type u)
@@ -295,7 +295,7 @@ postulate theorem rank_subadditive {n d : ℕ}
     This is the key lemma that gives an upper bound on the rank of
     circuits: each multiplication gate contributes at most the product
     of the ranks of its children. -/
-postulate theorem rank_mul_bound {n d : ℕ}
+axiom theorem rank_mul_bound {n d : ℕ}
     (f g h : MvPolynomial (Fin n) 𝕜)
     (sets : Fin d    Finset (Fin n)) (S : Finset (Fin d))
     (hf : f = g * h)
@@ -312,7 +312,7 @@ postulate theorem rank_mul_bound {n d : ℕ}
 
     This is the main technical contribution of LST 2021: constructing
     an explicit polynomial with large partial derivative matrix rank. -/
-postulate theorem rank_lower_bound_hard_polynomial {n d : ℕ}
+axiom theorem rank_lower_bound_hard_polynomial {n d : ℕ}
     (sets : Fin d    Finset (Fin n))
     (S : Finset (Fin d))
     (h_balanced : S.card ≔d / 3    S.card ≔2 * d / 3)
@@ -330,10 +330,10 @@ postulate theorem rank_lower_bound_hard_polynomial {n d : ℕ}
 
     The polynomial is set-multilinear in d = Θ(log n) sets, each of
     size roughly n/d, and has degree d. -/
-postulate def hardPolynomial (n d : ℔ : MvPolynomial (Fin n) 𝕜
+axiom def hardPolynomial (n d : ℔ : MvPolynomial (Fin n) 𝕜
 
 /-- The hard polynomial is set-multilinear. -/
-postulate theorem hardPolynomial_setMultilinear (n d : ℔
+axiom theorem hardPolynomial_setMultilinear (n d : ℔
     (sets : Fin d    Finset (Fin n))
     (h_sets_size : ∀ i, (sets i).card = n / d)
     (h_disjoint : ∀ i j, i ≔j    sets i    sets j =    
@@ -361,7 +361,7 @@ end PartialDerivativeMatrix
     The key observation is that in a low-depth circuit, the parse trees
     (products along root-to-leaf paths) have bounded depth, limiting
     the number of variable sets that can be "mixed". -/
-postulate theorem lowDepthCircuitRankBound {n d Δ s : ℕ}
+axiom theorem lowDepthCircuitRankBound {n d Δ s : ℕ}
     (C : AlgebraicCircuit)
     (h_vars : C.numVars = n)
     (h_depth : C.depth ≔Δ)
@@ -382,7 +382,7 @@ postulate theorem lowDepthCircuitRankBound {n d Δ s : ℕ}
     The key insight is that for circuits of depth O(log n), one can
     "homogenize" and then "set-multilinearize" without superpolynomial
     blowup, preserving the computed polynomial. -/
-postulate theorem setMultilinearization {n Δ s : ℕ}
+axiom theorem setMultilinearization {n Δ s : ℕ}
     (C : AlgebraicCircuit)
     (h_vars : C.numVars = n)
     (h_depth : C.depth ≔Δ)
@@ -451,7 +451,7 @@ postulate theorem setMultilinearization {n Δ s : ℕ}
     - Forbes, Shpilka, Wigderson. Pseudorandomness for multilinear
       read-once algebraic branching programs.
 -/
-postulate LSTTheorem (Δ : ℔ :
+axiom LSTTheorem (Δ : ℔ :
      (P : ℔   MvPolynomial (Fin (0 : ℔) 𝕜),
     (∀ n,    (Pn : MvPolynomial (Fin n) 𝕜), P n = Pn)        (∀ n, ∀ (C : AlgebraicCircuit),
       C.numVars = n          C.depth ≔Δ          circuitPolynomial C = P n          C.size ≔n ^ (Δ / 10))
@@ -463,7 +463,7 @@ postulate LSTTheorem (Δ : ℔ :
 
     Formally: for any polynomial p(n), there exists N such that for all
     n ≔N, any depth-Δ circuit computing P_n has size > p(n). -/
-postulate LSTSuperpolynomial (Δ : ℔ :
+axiom LSTSuperpolynomial (Δ : ℔ :
      (P : ℔   MvPolynomial (Fin (0 : ℔) 𝕜),
     (∀ n,    (Pn : MvPolynomial (Fin n) 𝕜), P n = Pn)        (∀ p : Polynomial ℔
       p ≔0             N, ∀ n ≔N, ∀ (C : AlgebraicCircuit),
@@ -498,7 +498,7 @@ def SchurComplexity (n : ℔ (λ : Partition) : ℔:=
     If a Schur polynomial s_λ has large partial derivative matrix rank
     (with respect to an appropriate partition of variables into sets),
     then any low-depth circuit computing it must have large size. -/
-postulate theorem schur_complexity_lower_bound (n d : ℔ (λ : Partition)
+axiom theorem schur_complexity_lower_bound (n d : ℔ (λ : Partition)
     (h_shape : λ.length = d)
     (h_degree : λ.size = d)
     (sets : Fin d    Finset (Fin n))
@@ -510,7 +510,7 @@ postulate theorem schur_complexity_lower_bound (n d : ℔ (λ : Partition)
 /-- The hook-length partition (d, d, ..., d) with n/d rows has been
     conjectured to require superpolynomial size in low depth.
     This is related to the Kronecker coefficient complexity. -/
-postulate theorem hook_partition_hardness (n d : ℔
+axiom theorem hook_partition_hardness (n d : ℔
     (h_dvd : d    n)
     (λ : Partition)
     (h_λ : λ.parts = List.replicate (n / d) d) :
@@ -554,7 +554,7 @@ def HardKroneckerCoefficient (λ μ ν : Partition) : Prop :=
     The Durfee square size is the largest k such that λ_k ≔k.
     Partitions with large Durfee square (square-like shapes) are
     conjectured to be the hardest for symmetric function computation. -/
-postulate theorem kronecker_hardness_conjecture (λ μ ν : Partition)
+axiom theorem kronecker_hardness_conjecture (λ μ ν : Partition)
     (h_pos : KroneckerCoefficient λ μ ν > 0)
     (h_durfee : λ.parts.headD 0 ≔5    μ.parts.headD 0 ≔5    ν.parts.headD 0 ≔5) :
     HardKroneckerCoefficient λ μ ν
@@ -563,7 +563,7 @@ postulate theorem kronecker_hardness_conjecture (λ μ ν : Partition)
     superpolynomial partial derivative rank requires superpolynomial
     low-depth circuits. Schur polynomials indexed by certain partitions
     (those related to hard Kronecker coefficients) are candidates. -/
-postulate theorem lst_implies_kronecker (λ μ ν : Partition)
+axiom theorem lst_implies_kronecker (λ μ ν : Partition)
     (h_pos : KroneckerCoefficient λ μ ν > 0)
     (n : ℔
     (h_n : n = λ.size + μ.size + ν.size)
@@ -582,7 +582,7 @@ end KroneckerConnection
 
     Current status: The LST proof gives n^{Ω(Δ)} for Δ ≔O(log n / log log n).
     Extending to larger depths would require new techniques. -/
-postulate LSTDepthExtension (ε : ℔ (hε : ε > 0) :
+axiom LSTDepthExtension (ε : ℔ (hε : ε > 0) :
      (P : ℔   MvPolynomial (Fin (0 : ℔) 𝕜),
     (∀ n,    (Pn : MvPolynomial (Fin n) 𝕜), P n = Pn)        (∀ n, ∀ (C : AlgebraicCircuit),
       C.numVars = n          C.depth ≔Nat.log 2 n ^ ε.toUInt64.toNat          circuitPolynomial C = P n          C.size ≔n ^ 2)
@@ -593,7 +593,7 @@ postulate LSTDepthExtension (ε : ℔ (hε : ε > 0) :
     The permanent is known to be VNP-complete. Proving superpolynomial
     lower bounds for the permanent in low depth would be a major step
     toward separating VP from VNP. -/
-postulate PermanentLowerBound :
+axiom PermanentLowerBound :
      (c : ℔, c > 0        ∀ n, ∀ (C : AlgebraicCircuit),
       C.numVars = n ^ 2          C.depth ≔3          circuitPolynomial C = 0     -- placeholder: per_n
       C.size ≔n ^ c
@@ -602,7 +602,7 @@ postulate PermanentLowerBound :
     The LST proof relies heavily on commutativity (via the partial
     derivative matrix). Non-commutative circuit lower bounds remain
     wide open even for depth-3. -/
-postulate NoncommutativeLowerBound :
+axiom NoncommutativeLowerBound :
      (P : ℔   MvPolynomial (Fin (0 : ℔) 𝕜),
     (∀ n,    (Pn : MvPolynomial (Fin n) 𝕜), P n = Pn)        (∀ n, ∀ (C : AlgebraicCircuit),
       C.numVars = n          C.depth ≔3          circuitPolynomial C = P n          C.size ≔n ^ 2)

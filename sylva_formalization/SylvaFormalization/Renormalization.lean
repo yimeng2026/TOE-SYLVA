@@ -15,7 +15,7 @@ Submodules:
 - Renormalization.EFT         — Effective field theory and decoupling
 -/
 
-import SylvaFormalization.Renormalization.Basic
-import SylvaFormalization.Renormalization.Loops
-import SylvaFormalization.Renormalization.RGEquations
-import SylvaFormalization.Renormalization.EFT
+import Renormalization.Basic
+import Renormalization.Loops
+import Renormalization.RGEquations
+import Renormalization.EFT

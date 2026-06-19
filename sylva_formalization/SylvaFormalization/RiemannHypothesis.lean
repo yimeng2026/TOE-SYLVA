@@ -68,6 +68,6 @@ def CriticalLine : Set ℂ := { s : ℂ | s.re = 1 / 2 }
     problem: it marks the statement as an unproven assumption rather than
     a proven theorem (which would be false) or a `sorry` (which suggests
     a proof is merely incomplete rather than unknown). -/
-postulate RH_statement : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2
+axiom RH_statement : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2
 
 end Sylva

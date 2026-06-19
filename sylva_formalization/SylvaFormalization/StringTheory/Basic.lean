@@ -39,14 +39,14 @@ structure Worldsheet where
 
 /-- Polyakov action in conformal gauge (h_{ab} = η_{ab}):
     S = -(T/2) ∫ d²σ ∂_a X^μ ∂^a X_μ. -/
-postulate PolyakovAction (ws : Worldsheet) :
+axiom PolyakovAction (ws : Worldsheet) :
   let S := -(ws.T / 2) * ∫ (σ : ℝ^2), ‖deriv ws.embedding σ‖^2
   S < ∞
   -- Polyakov action finite: requires conformal gauge fixing, postulated as string theory axiom
 
 /-- Nambu-Goto action (area of worldsheet):
     S = -T ∫ d²σ √((Ẋ·X')² - (Ẋ²)(X'²)). -/
-postulate NambuGotoAction (ws : Worldsheet) :
+axiom NambuGotoAction (ws : Worldsheet) :
   let S := -ws.T * ∫ (σ : ℝ^2), Real.sqrt ((‖deriv ws.embedding σ 0‖ * ‖deriv ws.embedding σ 1‖)^2 -
     (‖deriv ws.embedding σ 0‖^2) * (‖deriv ws.embedding σ 1‖^2))
   S = PolyakovAction ws

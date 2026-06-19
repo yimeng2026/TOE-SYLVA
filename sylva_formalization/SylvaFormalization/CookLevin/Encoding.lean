@@ -1,7 +1,7 @@
 import Mathlib
 import Mathlib.Computability.TuringMachine.PostTuringMachine
 import Mathlib.Computability.TuringMachine.Tape
-import SylvaFormalization.CookLevin.SAT
+import CookLevin.SAT
 
 namespace SylvaFormalization.CookLevin.Encoding
 

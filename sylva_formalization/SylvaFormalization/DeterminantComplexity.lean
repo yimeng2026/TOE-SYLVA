@@ -280,7 +280,7 @@ theorem det_repr_sum_hessian_rank_bound {n m : ℕ}
     - Mignon & Ressayre, FoCM 2004, Theorem 1.
     - Landsberg, *Tensors*, §6.7.
 -/
-postulate MignonRessayreTheorem (n : ℕ) [Fact (n > 0)] [CharZero 𝕜] :
+axiom MignonRessayreTheorem (n : ℕ) [Fact (n > 0)] [CharZero 𝕜] :
     dc(det_ n) ≥ n ^ 2 / 2
 
 -- Note: The above is postulated because the complete proof requires:
@@ -347,14 +347,14 @@ theorem det_eq_schur_1pow_n (n : ℕ) (X : Matrix (Fin n) (Fin n) 𝕜) :
     any field of characteristic ≠ 2.
     Over characteristic 2, det = per, so the bound trivially holds.
     This variant requires the same Hessian method applied to the permanent. -/
-postulate MignonRessayrePermanent (n : ℕ) [Fact (n > 0)] [CharZero 𝕜] :
+axiom MignonRessayrePermanent (n : ℕ) [Fact (n > 0)] [CharZero 𝕜] :
     -- Permanent complexity lower bound (would require defining perComplexity)
     True
 
 /-- The n²/2 bound is tight up to constants: there exist constructions
     achieving O(n²) determinantal complexity (e.g., via the generic
     matrix method or polarization identities). -/
-postulate DetComplexityUpperBound (n : ℕ) [Fact (n > 0)] :
+axiom DetComplexityUpperBound (n : ℕ) [Fact (n > 0)] :
     -- There exists a representation with m = O(n²)
     True
 

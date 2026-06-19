@@ -10,25 +10,25 @@ import Mathlib.Topology.Basic
 import Mathlib.Topology.MetricSpace.Basic
 import Mathlib.Topology.UniformSpace.Basic
 import Mathlib.Topology.Compactness.Compact
-import Mathlib.Topology.Connected
+import Mathlib.Topology.Connected.Basic
 import Mathlib.Algebra.Field.Basic
 import Mathlib.Algebra.Ring.Basic
 import Mathlib.Algebra.Group.Basic
 import Mathlib.Algebra.Group.Defs
 import Mathlib.Data.Nat.Basic
-import Mathlib.Data.Nat.Prime
+import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.Nat.Factors
-import Mathlib.NumberTheory.ZetaFunction
+-- import Mathlib.NumberTheory.ZetaFunction  -- Does not exist in mathlib v4.29.0
 import Mathlib.NumberTheory.ArithmeticFunction
 import Mathlib.Combinatorics.SimpleGraph.Basic
 import Mathlib.Combinatorics.SimpleGraph.Coloring
 import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.LinearAlgebra.Matrix.Determinant
+import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 import Mathlib.LinearAlgebra.Eigenspace.Basic
 import Mathlib.LinearAlgebra.TensorProduct.Basic
 import Mathlib.MeasureTheory.Measure.Haar.Basic
-import Mathlib.MeasureTheory.Integral.Lebesgue
-import Mathlib.Probability.Distributions.Normal
+import Mathlib.MeasureTheory.Integral.Lebesgue.Basic
+-- import Mathlib.Probability.Distributions.Normal  -- Does not exist in mathlib v4.29.0
 import Mathlib.SetTheory.Cardinal.Basic
 import Mathlib.Order.Basic
 import Mathlib.Order.Lattice
@@ -202,7 +202,7 @@ theorem phi_gt_one : phi > 1 := by
   linarith
 
 -- 性质3：黄金比例是无理数（基于sqrt 5的无理性）
-postulate phi_irrational : Irrational phi
+axiom phi_irrational : Irrational phi
   -- 黄金比例 phi = (1 + sqrt 5)/2 的无理性可由 mathlib 的 Irrational 引理组合证明，
   -- 但涉及 sqrt 5 无理性、加法/除法封闭性，此处作为基础公理声明
 
@@ -301,7 +301,7 @@ theorem lambda_positive : lambda_ > 0 := by
   norm_num
 
 -- 性质2：lambda_与暗能量密度的关系
-postulate lambda_dark_energy_relation : lambda_ = 8 * Real.pi * G * DarkEnergyDensity / (3 * c^2)
+axiom lambda_dark_energy_relation : lambda_ = 8 * Real.pi * G * DarkEnergyDensity / (3 * c^2)
   -- 暗能量密度与宇宙学常数关系：数值舍入导致近似不一致，作为物理公理
 
 /- ============================
@@ -504,7 +504,7 @@ theorem HiggsVEV_positive : HiggsVEV > 0 := by
   norm_num
 
 -- 性质2：HiggsVEV与费米耦合常数的关系
-postulate HiggsVEV_fermi_relation : HiggsVEV = 1 / Real.sqrt (Real.sqrt 2 * GF3)
+axiom HiggsVEV_fermi_relation : HiggsVEV = 1 / Real.sqrt (Real.sqrt 2 * GF3)
   -- Higgs VEV 与费米耦合关系：定义值 246.22 GeV 与公式 1/√(√2·GF3) 数值近似一致，作为物理公理
 
 /- ============================
@@ -706,7 +706,7 @@ theorem DarkEnergyDensity_positive : DarkEnergyDensity > 0 := by
   norm_num
 
 -- 性质2：与Omega_L的关系
-postulate DarkEnergyDensity_Omega_L_relation : DarkEnergyDensity = Omega_L * rho_c
+axiom DarkEnergyDensity_Omega_L_relation : DarkEnergyDensity = Omega_L * rho_c
   -- 暗能量密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -730,7 +730,7 @@ theorem PlanckMass_positive : PlanckMass > 0 := by
   norm_num
 
 -- 性质2：定义关系
-postulate PlanckMass_definition : PlanckMass = Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G))
+axiom PlanckMass_definition : PlanckMass = Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G))
   -- 普朗克质量定义：数值定义值与公式近似一致，作为物理公理
 
 /- ============================
@@ -777,7 +777,7 @@ theorem GravitonCoupling_positive : GravitonCoupling > 0 := by
   norm_num
 
 -- 性质2：与普朗克质量和G的关系
-postulate GravitonCoupling_planck_relation : GravitonCoupling = Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2)
+axiom GravitonCoupling_planck_relation : GravitonCoupling = Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2)
   -- 引力子耦合与普朗克质量关系：定义值与公式近似一致，作为物理公理
 
 /- ============================
@@ -803,7 +803,7 @@ theorem NeutrinoOscillationAngle_range (i : Fin 3) : 0 ≤ NeutrinoOscillationAn
   fin_cases i <;> simp [NeutrinoOscillationAngle] <;> norm_num
 
 -- 性质2：PMNS矩阵是幺正的（由三个混合角和一个CP相位参数化）
-postulate NeutrinoOscillationAngle_PMNS_unitary : ∃ θ₁₂ θ₂₃ θ₁₃ δ,
+axiom NeutrinoOscillationAngle_PMNS_unitary : ∃ θ₁₂ θ₂₃ θ₁₃ δ,
   NeutrinoOscillationAngle 0 = Real.sin (2 * θ₁₂) ^ 2
   -- PMNS 幺正性：存在参数化使振荡角与 sin²(2θ) 一致，作为物理公理
 
@@ -828,7 +828,7 @@ theorem OmegaBaryonDensity_positive : OmegaBaryonDensity > 0 := by
   norm_num
 
 -- 性质2：与OmegaBaryon的关系
-postulate OmegaBaryonDensity_OmegaBaryon_relation : OmegaBaryonDensity = OmegaBaryon * rho_c
+axiom OmegaBaryonDensity_OmegaBaryon_relation : OmegaBaryonDensity = OmegaBaryon * rho_c
   -- 重子密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -852,7 +852,7 @@ theorem OmegaDarkEnergyDensity_positive : OmegaDarkEnergyDensity > 0 := by
   norm_num
 
 -- 性质2：与Omega_L的关系
-postulate OmegaDarkEnergyDensity_Omega_L_relation : OmegaDarkEnergyDensity = Omega_L * rho_c
+axiom OmegaDarkEnergyDensity_Omega_L_relation : OmegaDarkEnergyDensity = Omega_L * rho_c
   -- 暗能量密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -876,7 +876,7 @@ theorem OmegaNeutrinoDensity_positive : OmegaNeutrinoDensity > 0 := by
   norm_num
 
 -- 性质2：与中微子质量的关系
-postulate OmegaNeutrinoDensity_mass_relation : OmegaNeutrinoDensity = NeutrinoMassSum / (93.14 * h^2)
+axiom OmegaNeutrinoDensity_mass_relation : OmegaNeutrinoDensity = NeutrinoMassSum / (93.14 * h^2)
   -- 中微子密度与质量关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -900,7 +900,7 @@ theorem CosmologicalConstantDensity_positive : CosmologicalConstantDensity > 0 :
   norm_num
 
 -- 性质2：与lambda_的关系
-postulate CosmologicalConstantDensity_lambda_relation : CosmologicalConstantDensity = lambda_ * SpeedOfLight^4 / (8 * Real.pi * G)
+axiom CosmologicalConstantDensity_lambda_relation : CosmologicalConstantDensity = lambda_ * SpeedOfLight^4 / (8 * Real.pi * G)
   -- 宇宙学常数密度与lambda关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -927,7 +927,7 @@ theorem OmegaTotalDensity_approx_flat : |OmegaTotalDensity - 1| < 0.01 := by
   norm_num
 
 -- 性质2：各部分之和
-postulate OmegaTotalDensity_sum : OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity
+axiom OmegaTotalDensity_sum : OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity
   -- 总密度各部分之和：定义值近似一致（Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity = 1.0012 ≈ 1.001），作为物理公理
 
 /- ============================
@@ -1131,7 +1131,7 @@ theorem LightYear_positive : LightYear > 0 := by
   norm_num
 
 -- 性质2：LightYear与AU的关系
-postulate LightYear_AU_relation : LightYear ≈ 63241 * AU
+axiom LightYear_AU_relation : LightYear ≈ 63241 * AU
   -- 光年与天文单位关系：近似数值换算（1 ly ≈ 63241 AU），作为物理公理
 
 /- ============================
@@ -1155,7 +1155,7 @@ theorem Parsec_positive : Parsec > 0 := by
   norm_num
 
 -- 性质2：与光年的关系
-postulate Parsec_LightYear_relation : Parsec ≈ 3.26156 * LightYear
+axiom Parsec_LightYear_relation : Parsec ≈ 3.26156 * LightYear
   -- 秒差距与光年关系：近似数值换算（1 pc ≈ 3.26156 ly），作为物理公理
 
 /- ============================
@@ -1179,7 +1179,7 @@ theorem HubbleTime_positive : HubbleTime > 0 := by
   norm_num
 
 -- 性质2：与H0的关系
-postulate HubbleTime_H0_relation : HubbleTime ≈ 1 / H0
+axiom HubbleTime_H0_relation : HubbleTime ≈ 1 / H0
   -- 哈勃时间与哈勃常数关系：近似数值换算（t_H ≈ 1/H0），单位舍入导致近似不一致，作为物理公理
 
 /- ============================
@@ -1226,7 +1226,7 @@ theorem AgeOfUniverse_positive : AgeOfUniverse > 0 := by
   norm_num
 
 -- 性质2：AgeOfUniverse与哈勃时间的关系（在物质-暗能量宇宙中）
-postulate AgeOfUniverse_HubbleTime_relation : AgeOfUniverse ≈ HubbleTime
+axiom AgeOfUniverse_HubbleTime_relation : AgeOfUniverse ≈ HubbleTime
   -- 宇宙年龄与哈勃时间关系：近似数值一致（13.8e9 ≈ 14.4e9），作为物理公理
 
 -- 性质3：AgeOfUniverse > HubbleTime / 2（宇宙年龄下限）

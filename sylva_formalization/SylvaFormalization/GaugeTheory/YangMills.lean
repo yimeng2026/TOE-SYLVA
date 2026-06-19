@@ -12,8 +12,8 @@ References: Nakahara (2003), Chapter 10; Taubes (1982)
 import Mathlib
 import Mathlib.MeasureTheory.Measure.Haar.Basic
 import Mathlib.Analysis.InnerProductSpace.Basic
-import SylvaFormalization.GaugeTheory.Basic
-import SylvaFormalization.GaugeTheory.Connection
+import GaugeTheory.Basic
+import GaugeTheory.Connection
 
 namespace Sylva
 namespace GaugeTheory
@@ -39,7 +39,7 @@ noncomputable def YangMillsAction {M G : Type*} [TopologicalSpace M] [Group G] [
     - d_A *F = 0 (equations of motion) — from action principle
 
     With sources: d_A *F = *J where J is the current 3-form. -/
-postulate YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∀ (x : M), deriv (fun z => trace (F.field z)) x = 0
   -- Yang-Mills equations: variational principle δS/δA = 0, requires functional analysis
@@ -48,7 +48,7 @@ postulate YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [Topol
 
     T_{μν} = tr(F_{μα} F_ν^α) - ¼ g_{μν} tr(F_{αβ} F^{αβ}).
     Conserved: ∇^μ T_{μν} = 0 (follows from YM equations + Bianchi). -/
-postulate YMEnergyMomentum {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom YMEnergyMomentum {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∀ (x : M), deriv (fun z => energyDensity F z) x = 0
   -- Energy-momentum conservation: ∇^μ T_{μν} = 0, requires covariant derivative
@@ -59,18 +59,18 @@ noncomputable def energyDensity {M G : Type*} [TopologicalSpace M] [Group G] [To
   ½ * (‖electricPart F x‖² + ‖magneticPart F x‖²)
 
 /-- Electric part of field strength: F_{0i} = E_i. -/
-postulate electricPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom electricPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3
 
 /-- Magnetic part of field strength: F_{ij} = ε_{ijk} B_k. -/
-postulate magneticPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom magneticPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3
 
 /-- Noether current for gauge symmetry: J_μ = ∂ℒ/∂(∂^μ A_ν) · δA_ν.
 
     For Yang-Mills: J_μ = [F_{μν}, A^ν] (in adjoint representation).
     Conserved: ∂^μ J_μ = 0 on-shell. -/
-postulate NoetherCurrent {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom NoetherCurrent {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∀ (x : M), deriv (fun z => ‖F.field z‖²) x = 0
   -- Noether current conservation from gauge symmetry, requires Noether's theorem
@@ -79,7 +79,7 @@ postulate NoetherCurrent {M G : Type*} [TopologicalSpace M] [Group G] [Topologic
 
     The canonical variables are A_i and E_i (electric field), with
     Poisson bracket {A_i(x), E_j(y)} = δ_{ij} δ³(x-y). -/
-postulate YangMillsHamiltonian {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom YangMillsHamiltonian {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] [MeasureSpace M] {P : PrincipalBundle M G} (F : FieldStrength P) :
   ∫ (x : M), energyDensity F x = YangMillsAction F
   -- Hamiltonian equals action on static configurations, requires canonical formalism

@@ -10,8 +10,8 @@ References: Peskin & Schroeder (1995), Ch. 12; Weinberg (1996), Vol. 2
 
 import Mathlib
 import Mathlib.Analysis.Calculus.FDeriv.Basic
-import SylvaFormalization.StandardModel
-import SylvaFormalization.Renormalization.Basic
+import StandardModel
+import Renormalization.Basic
 
 namespace Sylva
 namespace Renormalization
@@ -41,7 +41,7 @@ structure BetaFunction where
 
     For n_f = 6 (all quark flavors): β_0 = 7 > 0 → asymptotic freedom.
     For n_f > 16: β_0 < 0 → no asymptotic freedom (Landau pole). -/
-postulate QCDBetaFunction (n_f : ℕ) (g_s : ℝ) :
+axiom QCDBetaFunction (n_f : ℕ) (g_s : ℝ) :
   let β_0 := 11 - 2*n_f/3
   let β := -g_s^3 / (16 * Real.pi^2) * β_0
   n_f ≤ 16 → β < 0
@@ -51,7 +51,7 @@ postulate QCDBetaFunction (n_f : ℕ) (g_s : ℝ) :
 
     β(e) > 0: QED has a Landau pole (coupling increases at high energy).
     The Landau pole is at Λ_L = m exp(3π/2α) for electron mass m. -/
-postulate QEDBetaFunction (n_f : ℕ) (e : ℝ) :
+axiom QEDBetaFunction (n_f : ℕ) (e : ℝ) :
   let β := e^3 / (12 * Real.pi^2) * (4*n_f/3)
   β > 0
   -- QED Landau pole: β > 0, postulated as RG axiom
@@ -60,7 +60,7 @@ postulate QEDBetaFunction (n_f : ℕ) (e : ℝ) :
 
     At high energy (μ > M_Z): g, g' run logarithmically.
     Near GUT scale: g ≈ g' ≈ g_s (gauge coupling unification). -/
-postulate ElectroweakRunning (gauges : SMGaugeGroup) (μ : ℝ) :
+axiom ElectroweakRunning (gauges : SMGaugeGroup) (μ : ℝ) :
   μ > 91.2e9 →  -- Above Z boson mass
     let g_run := gauges.g / Real.sqrt (1 + gauges.g^2/(16*Real.pi^2) * Real.log (μ/91.2e9))
     let g'_run := gauges.g' / Real.sqrt (1 + gauges.g'^2/(16*Real.pi^2) * Real.log (μ/91.2e9))
@@ -85,7 +85,7 @@ structure AnomalousDimension where
 
     The mixing matrix M satisfies the RG equation:
     μ d/dμ M = γ M where γ is the anomalous dimension matrix. -/
-postulate OperatorMixing (O : ℕ → ℝ → ℝ) (γ : Matrix (Fin n) (Fin n) ℝ) :
+axiom OperatorMixing (O : ℕ → ℝ → ℝ) (γ : Matrix (Fin n) (Fin n) ℝ) :
   ∀ (μ : ℝ), μ * deriv (fun μ' => O i μ') μ = ∑ j : Fin n, γ i j * O j μ
   -- Operator mixing: requires RG equation, postulated as renormalization axiom
 

@@ -20,10 +20,10 @@ References:
 -/
 
 import Mathlib
-import SylvaFormalization.Computability.TM1Extended
-import SylvaFormalization.Computability.PolynomialTime
-import SylvaFormalization.Computability.CNFEncoding
-import SylvaFormalization.SAT
+import Computability.TM1Extended
+import Computability.PolynomialTime
+import Computability.CNFEncoding
+import SAT
 
 namespace SylvaFormalization.Computability
 
@@ -58,7 +58,7 @@ def SATSatisfiabilityVerifier (φ : CNFFormula) (assignment : Assignment) : Bool
 
     对输入 (φ, assignment)，验证时间为 O(|φ| · C) 其中 C 是最大子句长度。
     由于 C ≤ |φ|（总文字数），时间为 O(|φ|²)。 -/
-postulate SATVerifierPolyTime :
+axiom SATVerifierPolyTime :
   ∃ (p : ℕ → ℕ), IsPolynomial p ∧
     ∀ (φ : CNFFormula) (assignment : Assignment),
       -- 验证时间界
@@ -68,7 +68,7 @@ postulate SATVerifierPolyTime :
       p φ.toString.length ≥ φ.clauses.length * φ.maxClauseLength
 
 /-- 证书长度界：对于可满足公式，存在长度不超过变量数的证书。 -/
-postulate SATCertificateBound (φ : CNFFormula) :
+axiom SATCertificateBound (φ : CNFFormula) :
   IsSatisfiable φ ↔ ∃ (a : Assignment), a.length ≤ φ.numVars ∧ SATSatisfiabilityVerifier φ a = true
 
 /-- SAT ∈ NP。
@@ -79,7 +79,7 @@ postulate SATCertificateBound (φ : CNFFormula) :
     3. 对任意 φ：φ 可满足 ⟺ 存在证书 a 使验证器接受
 
     这与 PolynomialTime.lean 中的 NPClass 定义对齐。 -/
-postulate SAT_in_NP : InNP (fun (φ : List Bool) =>
+axiom SAT_in_NP : InNP (fun (φ : List Bool) =>
   -- 将布尔列表解码为 CNF 公式（编码/解码细节省略）
   ∃ (formula : CNFFormula), formula.toList = φ ∧ IsSatisfiable formula
 )
@@ -108,7 +108,7 @@ postulate SAT_in_NP : InNP (fun (φ : List Bool) =>
               ⟺ CNF 公式 φ_x 可满足（由 CNFEncodingCorrect）
 
     这是 Cook-Levin 定理的"反向"方向，也是定理的核心难点。 -/
-postulate CookLevinReduction
+axiom CookLevinReduction
     {Γ : Type*} [Inhabited Γ]
     (L : DecisionProblem Γ)
     (hL : InNP L) :
@@ -148,7 +148,7 @@ def IsPolynomialTimeComputable {α β : Type*} [Inhabited α] [Inhabited β]
     推论：NP = P ⟺ SAT ∈ P（即 SAT 有多项式时间算法）
 
     这是计算复杂度理论的基石定理。 -/
-postulate cook_levin :
+axiom cook_levin :
   InNP (fun (φ : List Bool) => ∃ (formula : CNFFormula), formula.toList = φ ∧ IsSatisfiable formula) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →
@@ -163,12 +163,12 @@ postulate cook_levin :
 /-- 如果 SAT ∈ P，则 P = NP。
 
     这是 Millennium Prize Problem 之一的核心等价性。 -/
-postulate SAT_in_P_implies_P_eq_NP :
+axiom SAT_in_P_implies_P_eq_NP :
   InP (fun (φ : List Bool) => ∃ (formula : CNFFormula), formula.toList = φ ∧ IsSatisfiable formula) →
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ), InNP L → InP L
 
 /-- CircuitSAT 也是 NP-完全的（由 SAT ≤ₚ CircuitSAT 和 CircuitSAT ≤ₚ SAT）。 -/
-postulate CircuitSAT_is_NPComplete :
+axiom CircuitSAT_is_NPComplete :
   InNP (fun (circuit : List Bool) => ∃ (c : Circuit), c.toList = circuit ∧ CircuitSAT c) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →
@@ -177,7 +177,7 @@ postulate CircuitSAT_is_NPComplete :
       ∀ (x : List Γ), L x ↔ CircuitSAT (f x)
 
 /-- 3-SAT 也是 NP-完全的（由 SAT ≤ₚ 3-SAT 的 Tseitin 变换）。 -/
-postulate ThreeSAT_is_NPComplete :
+axiom ThreeSAT_is_NPComplete :
   InNP (fun (φ : List Bool) => ∃ (formula : CNF3Formula), formula.toList = φ ∧ IsSatisfiable3 formula) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →

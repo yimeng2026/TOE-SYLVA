@@ -8,7 +8,7 @@ References: Amari (1985); Nielsen (2020)
 -/
 
 import Mathlib
-import SylvaFormalization.InformationGeometry.FisherMetric
+import InformationGeometry.FisherMetric
 
 namespace Sylva
 namespace InformationGeometry
@@ -30,7 +30,7 @@ noncomputable def NaturalGradient (M : StatisticalManifold n) (L : M.parameterSp
 
     Converges faster than standard gradient descent for ill-conditioned problems.
     Invariant under reparameterization of the model. -/
-postulate NaturalGradientConvergence (M : StatisticalManifold n) (L : M.parameterSpace → ℝ)
+axiom NaturalGradientConvergence (M : StatisticalManifold n) (L : M.parameterSpace → ℝ)
   (θ₀ : M.parameterSpace) (η : ℝ) :
   η > 0 → ∃ (T : ℕ), ∀ (t ≥ T), ‖NaturalGradient M L θ₀‖ < ε
   -- Natural gradient convergence: requires optimization theory, postulated as information geometry axiom

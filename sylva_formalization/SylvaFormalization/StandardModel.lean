@@ -15,7 +15,7 @@ This module re-exports all submodules:
 References: Peskin & Schroeder (1995); Weinberg (1996)
 -/
 
-import SylvaFormalization.StandardModel.Basic
-import SylvaFormalization.StandardModel.Interactions
-import SylvaFormalization.StandardModel.Lagrangian
-import SylvaFormalization.StandardModel.Symmetries
+import StandardModel.Basic
+import StandardModel.Interactions
+import StandardModel.Lagrangian
+import StandardModel.Symmetries

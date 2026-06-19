@@ -20,7 +20,7 @@ mathematical structures.
 DEPENDENCY: Basic (for φ, GF3, and foundational structures)
 ================================================================================
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 namespace EmergentMath

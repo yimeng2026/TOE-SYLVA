@@ -2,10 +2,10 @@
 Sylva Test Suite - Simplified Version
 Tests module imports and basic definitions
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
-import SylvaFormalization.NumericalZeros
-import SylvaFormalization.RiemannHypothesis
-import SylvaFormalization.Complexity
+import Basic
+import NumericalZeros
+import RiemannHypothesis
+import Complexity
 
 namespace Sylva
 namespace TestSuite

@@ -11,8 +11,8 @@ References: Kane & Mele (2005); Fu, Kane & Mele (2007)
 import Mathlib
 import Mathlib.Data.ZMod.Basic
 import Mathlib.GroupTheory.SpecificGroups.Dihedral
-import SylvaFormalization.TopologicalInsulator.Basic
-import SylvaFormalization.TopologicalInsulator.ChernNumber
+import TopologicalInsulator.Basic
+import TopologicalInsulator.ChernNumber
 
 namespace Sylva
 namespace TopologicalInsulator
@@ -76,13 +76,13 @@ noncomputable def Z2Invariant2D (H : BlochHamiltonian 2) (bands : BandStructure 
 
     The correspondence is a topological invariant: the number of boundary states
     equals the bulk topological invariant modulo some integer. -/
-postulate BulkBoundaryCorrespondence2D (H : BlochHamiltonian 2) (bands : BandStructure 2 H)
+axiom BulkBoundaryCorrespondence2D (H : BlochHamiltonian 2) (bands : BandStructure 2 H)
   (ins : Insulator 2 H bands) :
   let C := ChernNumber H bands
   ∃ (N : ℕ), N = abs C
   -- Bulk-boundary correspondence: Chern number counts edge states, requires index theory
 
-postulate BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
+axiom BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
   (ins : Insulator 3 H bands) (tr : TimeReversalSymmetry 3 H) :
   let ν := Z2Invariant3D H bands ins tr
   ν = 1 → ∃ (n : ℕ), n % 2 = 1
@@ -93,7 +93,7 @@ postulate BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStr
     For a 3D topological insulator, the surface is a 2D Dirac fermion system
     with a single Dirac cone (protected by time-reversal symmetry).
     The surface states are spin-momentum locked: spin is perpendicular to momentum. -/
-postulate SurfaceDiracCone (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
+axiom SurfaceDiracCone (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
   (ins : Insulator 3 H bands) (tr : TimeReversalSymmetry 3 H) :
   let ν := Z2Invariant3D H bands ins tr
   ν = 1 → ∃ (v_F : ℝ), v_F > 0 ∧ ∀ (k : ℝ^2), ∃ (E : ℝ),

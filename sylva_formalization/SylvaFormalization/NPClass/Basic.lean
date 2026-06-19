@@ -14,7 +14,7 @@ Date: 2026-06-03
 -/
 
 import Mathlib
-import SylvaFormalization.NPClass.PolynomialTime
+import NPClass.PolynomialTime
 
 namespace Sylva.NPClass
 

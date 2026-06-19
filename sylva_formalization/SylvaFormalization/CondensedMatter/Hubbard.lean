@@ -8,7 +8,7 @@ References: Anderson (1987)
 -/
 
 import Mathlib
-import Mathlib.LinearAlgebra.Matrix
+-- import Mathlib.LinearAlgebra.Matrix  -- Does not exist in mathlib v4.29.0
 import Mathlib.Analysis.InnerProductSpace.Basic
 
 namespace Sylva
@@ -48,7 +48,7 @@ structure HubbardModel where
     - U > U_c: Mott insulator (antiferromagnetic order).
 
     U_c ≈ 0 for bipartite lattices (Mott transition at any U > 0). -/
-postulate HalfFilling (H : HubbardModel) :
+axiom HalfFilling (H : HubbardModel) :
   let n := 1  -- Average electron density per site
   H.U > 0 → n = 1
   -- Half-filling: one electron per site, postulated as Hubbard model axiom
@@ -57,7 +57,7 @@ postulate HalfFilling (H : HubbardModel) :
 
     The charge gap Δ_c ≈ U - 2zt for large U (z = coordination number).
     Spin excitations are gapless (Goldstone modes from AF order). -/
-postulate MottInsulator (H : HubbardModel) :
+axiom MottInsulator (H : HubbardModel) :
   let z := 2 * H.d  -- Coordination number for hypercubic lattice
   let Delta_c := H.U - 2 * z * H.t
   H.U > 2 * z * H.t → Delta_c > 0

@@ -11,9 +11,9 @@ References: Donaldson & Kronheimer (1990); Taubes (1982)
 
 import Mathlib
 import Mathlib.Topology.Algebra.Monoid.Defs
-import SylvaFormalization.GaugeTheory.Basic
-import SylvaFormalization.GaugeTheory.Connection
-import SylvaFormalization.GaugeTheory.YangMills
+import GaugeTheory.Basic
+import GaugeTheory.Connection
+import GaugeTheory.YangMills
 
 namespace Sylva
 namespace GaugeTheory
@@ -60,7 +60,7 @@ noncomputable def ChernSimonsAction {M G : Type*} [TopologicalSpace M] [Group G]
     index(D_A) = dim ker D_A - dim ker D_A† = n_+ - n_- = 8k - 3
     for SU(2) instanton of charge k on S⁴.
     This gives the dimension of the instanton moduli space. -/
-postulate InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] [RiemannianMetric M] [Oriented M] [CompactSpace M]
   {P : PrincipalBundle M G} (inst : Instanton conn curv) :
   dim (ModuliSpace inst) = 8 * (TopologicalCharge (FieldStrength.mk curv)) - 3
@@ -70,7 +70,7 @@ postulate InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] 
 
     For SU(2) on S⁴ with charge k: dim ℳ_k = 8k - 3.
     The moduli space is a smooth manifold (except at reducible connections). -/
-postulate ModuliSpace {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+axiom ModuliSpace {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] [RiemannianMetric M] [Oriented M] [CompactSpace M]
   {P : PrincipalBundle M G} (inst : Instanton conn curv) : Type*
 
@@ -79,7 +79,7 @@ postulate ModuliSpace {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalS
     A_μ = (2/g) η_{μν}^a (x-x₀)^ν / |x-x₀|² · σ_a/2
     where η_{μν}^a is the 't Hooft symbol and σ_a are Pauli matrices.
     This is a self-dual connection with charge k = 1. -/
-postulate tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (x₀ : ℝ⁴) :
+axiom tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (x₀ : ℝ⁴) :
   ∃ (F : FieldStrength P), TopologicalCharge F = 1
   -- 't Hooft instanton: explicit self-dual solution, requires differential geometry
 
@@ -87,7 +87,7 @@ postulate tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (
 
     The first explicit instanton solution on S⁴ (conformally compactified ℝ⁴).
     Topological charge k = 1, action S = 8π²/g². -/
-postulate BPSTInstanton {P : PrincipalBundle S⁴ (SpecialUnitaryGroup 2)} :
+axiom BPSTInstanton {P : PrincipalBundle S⁴ (SpecialUnitaryGroup 2)} :
   ∃ (F : FieldStrength P),
     TopologicalCharge F = 1 ∧
     YangMillsAction F = 8 * Real.pi^2

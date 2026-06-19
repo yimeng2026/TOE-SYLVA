@@ -17,9 +17,9 @@ References:
 -/
 
 import Mathlib
-import SylvaFormalization.CookLevin.SAT
-import SylvaFormalization.CookLevin.Reduction
-import SylvaFormalization.CookLevin.Encoding
+import CookLevin.SAT
+import CookLevin.Reduction
+import CookLevin.Encoding
 
 namespace SylvaFormalization.CookLevin
 end SylvaFormalization.CookLevin

@@ -90,7 +90,7 @@ structure EnergyGap (H : BCSHamiltonian) where
 
     Δ(0) ≈ 2ħω_D exp(-1/N(0)V) for weak coupling (N(0)V << 1).
     N(0) is the density of states at Fermi level. -/
-postulate GapEquationZeroT (H : BCSHamiltonian) (Δ : EnergyGap H) :
+axiom GapEquationZeroT (H : BCSHamiltonian) (Δ : EnergyGap H) :
   Δ.delta = 2 * ħ * ω_D * Real.exp (-1 / (N_0 * H.V))
   -- BCS gap at T=0: requires weak coupling approximation, postulated as BCS theory axiom
   where
@@ -102,7 +102,7 @@ postulate GapEquationZeroT (H : BCSHamiltonian) (Δ : EnergyGap H) :
 
     The ratio 2Δ(0)/k_B T_c ≈ 3.52 is a universal constant (weak coupling).
     Strong coupling corrections: 2Δ/k_B T_c ≈ 4-5. -/
-postulate CriticalTemperature (H : BCSHamiltonian) (Δ : EnergyGap H) :
+axiom CriticalTemperature (H : BCSHamiltonian) (Δ : EnergyGap H) :
   let k_B := 1.380649e-23  -- Boltzmann constant
   let T_c := (Real.exp (Real.eulerGamma) / Real.pi) * Δ.delta / k_B
   2 * Δ.delta / (k_B * T_c) ≈ 3.52
@@ -117,7 +117,7 @@ postulate CriticalTemperature (H : BCSHamiltonian) (Δ : EnergyGap H) :
     Minimum energy: E_min = Δ (at k = k_F).
     The gap Δ is the energy required to create a quasiparticle excitation.
     The density of states: N(E) = N(0) E / √(E² - Δ²) for E > Δ. -/
-postulate QuasiparticleSpectrum (H : BCSHamiltonian) (Δ : EnergyGap H) :
+axiom QuasiparticleSpectrum (H : BCSHamiltonian) (Δ : EnergyGap H) :
   ∀ (k : ℝ^3), let E_k := sqrt (H.epsilon k ^ 2 + Δ.delta ^ 2)
   E_k ≥ Δ.delta
   -- Quasiparticle spectrum: minimum energy is gap Δ, requires BCS diagonalization
@@ -126,7 +126,7 @@ postulate QuasiparticleSpectrum (H : BCSHamiltonian) (Δ : EnergyGap H) :
 
     Has a square-root singularity at E = Δ (coherence peak).
     For E < Δ: N_s(E) = 0 (gap, no states). -/
-postulate DensityOfStatesSuperconductor (H : BCSHamiltonian) (Δ : EnergyGap H) :
+axiom DensityOfStatesSuperconductor (H : BCSHamiltonian) (Δ : EnergyGap H) :
   ∀ (E : ℝ), E > Δ.delta →
     let N_s := N_0 * E / sqrt (E ^ 2 - Δ.delta ^ 2)
     N_s > 0
@@ -142,7 +142,7 @@ postulate DensityOfStatesSuperconductor (H : BCSHamiltonian) (Δ : EnergyGap H) 
     I_c = (πΔ / 2eR_N) tanh(Δ / 2k_B T) is the critical current.
     R_N is the normal state resistance.
     DC Josephson effect: I ≠ 0 even at V = 0. -/
-postulate JosephsonCurrent (H : BCSHamiltonian) (Δ : EnergyGap H) (φ : ℝ) :
+axiom JosephsonCurrent (H : BCSHamiltonian) (Δ : EnergyGap H) (φ : ℝ) :
   let I_c := (Real.pi * Δ.delta / (2 * e * R_N)) * Real.tanh (Δ.delta / (2 * k_B * T))
   let I := I_c * Real.sin φ
   |I| ≤ I_c
@@ -158,7 +158,7 @@ postulate JosephsonCurrent (H : BCSHamiltonian) (Δ : EnergyGap H) (φ : ℝ) :
     When V ≠ 0, the phase evolves as φ(t) = φ_0 + (2eV/ħ) t.
     The current oscillates: I(t) = I_c sin(φ_0 + 2eVt/ħ).
     Frequency: ν = 2eV/h (Josephson constant K_J = 2e/h ≈ 483.6 GHz/mV). -/
-postulate ACJosephsonEffect (H : BCSHamiltonian) (Δ : EnergyGap H) (V : ℝ) :
+axiom ACJosephsonEffect (H : BCSHamiltonian) (Δ : EnergyGap H) (V : ℝ) :
   let ν := 2 * e * V / h
   ν > 0 ↔ V > 0
   -- AC Josephson frequency: proportional to voltage, postulated as BCS theory axiom
@@ -190,7 +190,7 @@ structure GinzburgLandau where
 /-- Ginzburg-Landau equations (Euler-Lagrange from free energy):
     αψ + β|ψ|²ψ + (1/2m)(-iħ∇ - 2eA)²ψ = 0.
     ∇ × B = (2eμ₀/m) Im(ψ*(-iħ∇ - 2eA)ψ) (Maxwell with supercurrent). -/
-postulate GinzburgLandauEquations (GL : GinzburgLandau) :
+axiom GinzburgLandauEquations (GL : GinzburgLandau) :
   ∀ (r : ℝ^3), GL.alpha * GL.psi r + GL.beta * ‖GL.psi r‖^2 * GL.psi r +
     (1 / (2 * m_e)) * (-i * ħ * ∇ - 2 * e * GL.A r)^2 (GL.psi r) = 0
   -- Ginzburg-Landau equation: requires variational calculus, postulated as BCS theory axiom
@@ -203,7 +203,7 @@ postulate GinzburgLandauEquations (GL : GinzburgLandau) :
 
     Characteristic length scale of order parameter variation.
     ξ ~ 10-100 nm for typical superconductors. -/
-postulate CoherenceLength (GL : GinzburgLandau) :
+axiom CoherenceLength (GL : GinzburgLandau) :
   let ξ := ħ / sqrt (2 * m_e * |GL.alpha|)
   ξ > 0
   -- Coherence length: positive, requires BCS theory parameters
@@ -214,7 +214,7 @@ postulate CoherenceLength (GL : GinzburgLandau) :
 
     Characteristic depth of magnetic field penetration.
     λ ~ 50-500 nm for typical superconductors. -/
-postulate PenetrationDepth (GL : GinzburgLandau) :
+axiom PenetrationDepth (GL : GinzburgLandau) :
   let λ := sqrt (m_e / (2 * e^2 * μ₀ * ‖GL.psi 0‖^2))
   λ > 0
   -- Penetration depth: positive, requires Ginzburg-Landau parameters
@@ -227,7 +227,7 @@ postulate PenetrationDepth (GL : GinzburgLandau) :
 
     κ < 1/√2: Type I (first-order transition, Meissner effect).
     κ > 1/√2: Type II (second-order transition, vortex lattice, mixed state). -/
-postulate GinzburgLandauParameter (GL : GinzburgLandau) :
+axiom GinzburgLandauParameter (GL : GinzburgLandau) :
   let κ := PenetrationDepth GL / CoherenceLength GL
   κ < 1 / sqrt 2 → TypeI GL
   κ > 1 / sqrt 2 → TypeII GL
@@ -237,8 +237,8 @@ inductive SuperconductorType
   | TypeI
   | TypeII
 
-postulate TypeI (GL : GinzburgLandau) : SuperconductorType.TypeI
-postulate TypeII (GL : GinzburgLandau) : SuperconductorType.TypeII
+axiom TypeI (GL : GinzburgLandau) : SuperconductorType.TypeI
+axiom TypeII (GL : GinzburgLandau) : SuperconductorType.TypeII
 
 end BCSTherory
 end Sylva

@@ -7,7 +7,7 @@ Yukawa interactions and fermion mass generation via EWSB.
 References: Peskin & Schroeder (1995); Weinberg (1996)
 -/
 
-import SylvaFormalization.StandardModel.Basic
+import StandardModel.Basic
 
 namespace Sylva
 namespace StandardModel
@@ -34,7 +34,7 @@ structure YukawaCouplings where
 
     m_f = Y_f v / √2 for each fermion f.
     The top quark mass is the largest: m_t ≈ 173 GeV. -/
-postulate FermionMasses (Y : YukawaCouplings) (v : ℝ) :
+axiom FermionMasses (Y : YukawaCouplings) (v : ℝ) :
   let m_t := Y.Y_u 2 2 * v / Real.sqrt 2
   let m_b := Y.Y_d 2 2 * v / Real.sqrt 2
   let m_τ := Y.Y_e 2 2 * v / Real.sqrt 2

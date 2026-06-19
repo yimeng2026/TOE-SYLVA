@@ -96,7 +96,7 @@ structure BerryCurvature (L : BlochTheorem.Lattice2D) where
     - A_μ 不是可观测的（依赖于相位选择）
     - Ω_{xy} 是可观测的（规范不变）
     - Hall 电导 σ_xy 正比于 Ω_{xy} 的积分，因此也是规范不变的。 -/
-postulate BerryCurvature_GaugeInvariance
+axiom BerryCurvature_GaugeInvariance
     (L : BlochTheorem.Lattice2D) (Ω : BerryCurvature L)
     (gauge : BerryConnection.GaugeTransformation L) :
     -- 在规范变换下，Berry 曲率不变
@@ -121,7 +121,7 @@ postulate BerryCurvature_GaugeInvariance
     插入完备性关系 I = Σ_m |u_m⟩⟨u_m|，利用 ⟨u_n|u_m⟩ = δ_{nm}。
     
     开放问题：需要在 Lean 中形式化插入完备性的代数操作。 -/
-postulate BerryCurvature_KuboFormula
+axiom BerryCurvature_KuboFormula
     (L : BlochTheorem.Lattice2D) (Ω : BerryCurvature L)
     (E : BlochTheorem.BandEnergy L) (states : BlochTheorem.BandEigenstate L) :
     -- Ω_{xy} = i Σ_{m≠n} [⟨u_n|∂_x|u_m⟩⟨u_m|∂_y|u_n⟩ - (x↔y)] / (E_n - E_m)²
@@ -215,7 +215,7 @@ structure FirstChernNumber (L : BlochTheorem.Lattice2D) where
     开放问题：需要在 Lean 中形式化完整的证明。
     目前 Mathlib 中缺乏主丛分类的完整形式化，
     但可以使用 `ZMod` 或 `Int` 的离散性来构造证明框架。 -/
-postulate FirstChernNumber_Integrality
+axiom FirstChernNumber_Integrality
     (L : BlochTheorem.Lattice2D) (C : FirstChernNumber L) :
     -- C_n ∈ ℤ。这是定义的一部分，但需要证明它对任意能带成立。
     True
@@ -232,7 +232,7 @@ postulate FirstChernNumber_Integrality
     这是拓扑保护的精髓：只要能隙不关闭，拓扑不变量就不变。
     在 IQHE 中，即使存在杂质和相互作用，只要体态是绝缘的，
     σ_xy 的量子化就保持精确。 -/
-postulate FirstChernNumber_TopologicalInvariance
+axiom FirstChernNumber_TopologicalInvariance
     (L : BlochTheorem.Lattice2D) (C : FirstChernNumber L) :
     -- 在能隙不关闭的连续形变下，C_n 不变
     True
@@ -292,7 +292,7 @@ structure TotalChernNumber (L : BlochTheorem.Lattice2D) (N : ℕ) where
     因此 Σ_n Ω_n(k) = 0（通过直接计算）。
     
     物理意义：满带是 "原子" 绝缘体，没有拓扑性质。 -/
-postulate TotalChernNumber_FullBandVanishing
+axiom TotalChernNumber_FullBandVanishing
     (L : BlochTheorem.Lattice2D) (N : ℕ)
     (total : TotalChernNumber L N) :
     -- 满带时 C_total = 0

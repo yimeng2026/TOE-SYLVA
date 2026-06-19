@@ -8,7 +8,7 @@ References: Zhang, Rice (1988)
 -/
 
 import Mathlib
-import SylvaFormalization.CondensedMatter.Hubbard
+import CondensedMatter.Hubbard
 
 namespace Sylva
 namespace CondensedMatter
@@ -33,7 +33,7 @@ structure TJModel where
   P : Type → Type
 
 /-- Superexchange coupling J = 4t²/U > 0. -/
-postulate JPositive (TJ : TJModel) :
+axiom JPositive (TJ : TJModel) :
   TJ.J > 0
   -- J positive: requires U > 0, t > 0, postulated as t-J model axiom
 
@@ -42,7 +42,7 @@ postulate JPositive (TJ : TJModel) :
     H = J Σ_{⟨ij⟩} S_i · S_j (ignoring 3-site terms).
     The ground state has long-range antiferromagnetic order in 2D and 3D.
     In 1D: spin liquid (no long-range order, gapless spin excitations). -/
-postulate TJHalfFilling (TJ : TJModel) :
+axiom TJHalfFilling (TJ : TJModel) :
   let z := 2 * TJ.hubbard.d
   TJ.hubbard.mu = 0 → TJ.J * z > 0
   -- t-J at half-filling: AF Heisenberg model, postulated as t-J model axiom

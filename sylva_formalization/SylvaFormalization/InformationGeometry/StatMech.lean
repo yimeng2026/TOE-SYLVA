@@ -8,7 +8,7 @@ References: Amari & Nagaoka (2000)
 -/
 
 import Mathlib
-import SylvaFormalization.InformationGeometry.FisherMetric
+import InformationGeometry.FisherMetric
 
 namespace Sylva
 namespace InformationGeometry
@@ -19,7 +19,7 @@ open Real
 
     The Fisher information of the free energy is related to thermodynamic fluctuations:
     g_{ij} = ∂_i ∂_j F = ⟨∂_i H ∂_j H⟩ - ⟨∂_i H⟩⟨∂_j H⟩. -/
-postulate FreeEnergyFisher (M : StatisticalManifold n) (θ : M.parameterSpace) :
+axiom FreeEnergyFisher (M : StatisticalManifold n) (θ : M.parameterSpace) :
   let F := -Real.log (∫ (x : ℝ), M.pdf θ x)
   ∀ (i j : Fin n), FisherInformationMatrix M θ i j = deriv (deriv F θ j) θ i
   -- Free energy Fisher information: requires statistical mechanics, postulated as information geometry axiom
@@ -28,7 +28,7 @@ postulate FreeEnergyFisher (M : StatisticalManifold n) (θ : M.parameterSpace) :
 
     The Fisher information sets the fundamental limit on parameter estimation precision.
     Achieved by maximum likelihood estimator asymptotically. -/
-postulate CramerRaoBound (M : StatisticalManifold n) (θ : M.parameterSpace)
+axiom CramerRaoBound (M : StatisticalManifold n) (θ : M.parameterSpace)
   (θ̂ : ℝ^n → M.parameterSpace) :
   -- Unbiased estimator
   (∀ (x : ℝ^n), θ̂ x = θ) →

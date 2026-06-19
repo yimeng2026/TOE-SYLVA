@@ -10,7 +10,7 @@ References: Amari (1985); Amari & Nagaoka (2000)
 import Mathlib
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.MeasureTheory.Measure.Haar.Basic
-import Mathlib.Probability.Distributions.Gaussian
+-- import Mathlib.Probability.Distributions.Gaussian  -- Does not exist in mathlib v4.29.0
 
 namespace Sylva
 namespace InformationGeometry
@@ -45,13 +45,13 @@ noncomputable def FisherInformationMatrix (M : StatisticalManifold n) (θ : M.pa
     (deriv (fun θ' => Real.log (M.pdf θ' x)) θ j)
 
 /-- Fisher information is positive semi-definite. -/
-postulate FisherInformationPSD (M : StatisticalManifold n) (θ : M.parameterSpace) :
+axiom FisherInformationPSD (M : StatisticalManifold n) (θ : M.parameterSpace) :
   ∀ (v : ℝ^n), v ≠ 0 →
     ∑ i : Fin n, ∑ j : Fin n, v i * (FisherInformationMatrix M θ i j) * v j ≥ 0
   -- Fisher information PSD: requires probability theory, postulated as information geometry axiom
 
 /-- Fisher information defines a Riemannian metric on the statistical manifold. -/
-postulate FisherMetric (M : StatisticalManifold n) (θ : M.parameterSpace) :
+axiom FisherMetric (M : StatisticalManifold n) (θ : M.parameterSpace) :
   ∀ (i j : Fin n), FisherInformationMatrix M θ i j = FisherInformationMatrix M θ j i
   -- Fisher metric symmetry: g_{ij} = g_{ji}, requires integration by parts
 

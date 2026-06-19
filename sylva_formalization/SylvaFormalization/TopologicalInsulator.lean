@@ -150,7 +150,7 @@ noncomputable def ChernNumber (H : BlochHamiltonian 2) (bands : BandStructure 2 
     The quantized Hall conductance is proportional to the total Chern number
     of all occupied bands. This is a topological invariant, robust against
     perturbations that preserve the gap. -/
-postulate TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins : Insulator 2 H bands) :
+axiom TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins : Insulator 2 H bands) :
   -- Hall conductance in units of e²/h
   let σ_xy := (1 / (2 * Real.pi)) * ChernNumber H bands
   -- Quantized: σ_xy = n e²/h for integer n = Chern number
@@ -161,7 +161,7 @@ postulate TKNN_Formula (H : BlochHamiltonian 2) (bands : BandStructure 2 H) (ins
 
     This follows from the fact that the Berry connection is a U(1) gauge field
     on the torus, and the first Chern class is an element of H²(T², ℤ) ≅ ℤ. -/
-postulate ChernNumberInteger (H : BlochHamiltonian 2) (bands : BandStructure 2 H) :
+axiom ChernNumberInteger (H : BlochHamiltonian 2) (bands : BandStructure 2 H) :
   ∃ (n : ℤ), ChernNumber H bands = n
   -- Chern number integrality: Berry curvature integral over torus is integer, requires index theory
 
@@ -232,14 +232,14 @@ noncomputable def Z2Invariant2D (H : BlochHamiltonian 2) (bands : BandStructure 
 
     The correspondence is a topological invariant: the number of boundary states
     equals the bulk topological invariant modulo some integer. -/
-postulate BulkBoundaryCorrespondence2D (H : BlochHamiltonian 2) (bands : BandStructure 2 H)
+axiom BulkBoundaryCorrespondence2D (H : BlochHamiltonian 2) (bands : BandStructure 2 H)
   (ins : Insulator 2 H bands) :
   let C := ChernNumber H bands
   -- Number of chiral edge modes = |C|
   ∃ (N : ℕ), N = abs C
   -- Bulk-boundary correspondence: Chern number counts edge states, requires index theory
 
-postulate BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
+axiom BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
   (ins : Insulator 3 H bands) (tr : TimeReversalSymmetry 3 H) :
   let ν := Z2Invariant3D H bands ins tr
   -- Odd number of Dirac surface states when ν = 1
@@ -251,7 +251,7 @@ postulate BulkBoundaryCorrespondence3D (H : BlochHamiltonian 3) (bands : BandStr
     For a 3D topological insulator, the surface is a 2D Dirac fermion system
     with a single Dirac cone (protected by time-reversal symmetry).
     The surface states are spin-momentum locked: spin is perpendicular to momentum. -/
-postulate SurfaceDiracCone (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
+axiom SurfaceDiracCone (H : BlochHamiltonian 3) (bands : BandStructure 3 H)
   (ins : Insulator 3 H bands) (tr : TimeReversalSymmetry 3 H) :
   let ν := Z2Invariant3D H bands ins tr
   ν = 1 → ∃ (v_F : ℝ), v_F > 0 ∧ ∀ (k : ℝ^2), ∃ (E : ℝ),
@@ -368,10 +368,10 @@ def KTheoryInvariant (d : ℕ) (s : SymmetryClass) : Type :=
     K_R^{-n} ≅ K_R^{-n-8} (real Bott periodicity)
 
     This gives the periodic table its structure. -/
-postulate BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A
+axiom BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A
   -- Complex Bott periodicity: period 2, requires K-theory homotopy equivalence
 
-postulate BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
+axiom BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
   s = SymmetryClass.AI ∨ s = SymmetryClass.AII ∨ s = SymmetryClass.D ∨ s = SymmetryClass.DIII →
   KTheoryInvariant d s = KTheoryInvariant (d + 8) s
   -- Real Bott periodicity: period 8, requires K-theory homotopy equivalence
@@ -380,21 +380,21 @@ postulate BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
 
     Kitaev table: class AII, d=2 → Z₂.
     This matches the Kane-Mele Z₂ invariant. -/
-postulate KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2
+axiom KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2
   -- 2D quantum spin Hall: Z₂ invariant from K-theory classification
 
 /-- Example: 3D topological insulator (class AII, d=3) → Z₂ invariant.
 
     Kitaev table: class AII, d=3 → Z₂.
     This matches the Fu-Kane-Mele Z₂ invariant. -/
-postulate KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2
+axiom KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2
   -- 3D topological insulator: Z₂ invariant from K-theory classification
 
 /-- Example: 2D Chern insulator (class A, d=2) → ℤ invariant.
 
     Kitaev table: class A, d=2 → ℤ.
     This matches the TKNN Chern number. -/
-postulate KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ
+axiom KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ
   -- 2D quantum Hall: ℤ invariant (Chern number) from K-theory classification
 
 end TopologicalInsulator

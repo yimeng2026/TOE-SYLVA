@@ -9,7 +9,7 @@ References: Green, Schwarz, Witten (1987); Polchinski (1998)
 -/
 
 import Mathlib
-import SylvaFormalization.StringTheory.Basic
+import StringTheory.Basic
 
 namespace Sylva
 namespace StringTheory
@@ -23,7 +23,7 @@ open Real
     Massive: N + Ñ > 2.
 
     Critical dimension: D = 26 (bosonic) or D = 10 (superstring). -/
-postulate ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
+axiom ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
   let M2 := (4 / ws.alpha') * (N + Ñ - 2)
   ws.D = 26 → M2 ≥ -4 / ws.alpha'
   -- Closed string mass: critical dimension D=26, postulated as string theory axiom
@@ -35,7 +35,7 @@ postulate ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
     Massive: N > 1.
 
     Endpoints can satisfy Neumann or Dirichlet boundary conditions. -/
-postulate OpenStringMass (ws : Worldsheet) (N : ℕ) :
+axiom OpenStringMass (ws : Worldsheet) (N : ℕ) :
   let M2 := (1 / ws.alpha') * (N - 1)
   ws.D = 26 → M2 ≥ -1 / ws.alpha'
   -- Open string mass: critical dimension D=26, postulated as string theory axiom
@@ -45,7 +45,7 @@ postulate OpenStringMass (ws : Worldsheet) (N : ℕ) :
     Massless sector: graviton (G_{μν}), dilaton (Φ), Kalb-Ramond field (B_{μν}),
     gravitino (ψ_μ), dilatino (λ).
     Critical dimension: D = 10. -/
-postulate SuperstringSpectrum (ws : Worldsheet) :
+axiom SuperstringSpectrum (ws : Worldsheet) :
   ws.D = 10 → ∀ (N Ñ : ℕ), let M2 := (4 / ws.alpha') * (N + Ñ - 1)
     M2 ≥ 0
   -- Superstring no tachyon: GSO projection, critical dimension D=10, postulated as string theory axiom

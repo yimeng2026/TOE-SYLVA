@@ -15,8 +15,8 @@ References:
 -/
 
 import Mathlib
-import SylvaFormalization.NPClass.Basic
-import SylvaFormalization.NPClass.PolynomialTime
+import NPClass.Basic
+import NPClass.PolynomialTime
 
 namespace Sylva.NPClass
 end Sylva.NPClass

@@ -1,4 +1,4 @@
-﻿/-
+/-
 Sylva Formalization Project
 Elliptic Curve Reduction and Multiplicative Reduction Criterion
 ================================================================================
@@ -28,7 +28,7 @@ of the arithmetic-geometry correspondence that underlies modern number theory.
 -/
 
 import Mathlib
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 namespace EllipticCurveReduction

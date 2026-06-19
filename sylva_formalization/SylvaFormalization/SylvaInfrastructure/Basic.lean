@@ -203,7 +203,7 @@ def fib : Nat → Nat
   | n + 2 => fib n + fib (n + 1)
 
 /-- 朴素递归 Fibonacci 的复杂度为 O(φⁿ) --/
-postulate fib_naive_complexity :
+axiom fib_naive_complexity :
   ∃ C, ∀ n, fib_recursive_calls n ≤ C * Nat.ceil (phi ^ n)
   -- Fibonacci 朴素递归复杂度 O(φⁿ)：数学上可通过递推关系证明，形式化需完整分析工具，作为复杂度公理
 
@@ -218,12 +218,12 @@ def fib_fast_doubling_ops : Nat → Nat
     loop n 0
 
 /-- 快速倍增法复杂度为 O(log n) --/
-postulate fib_fast_doubling_complexity :
+axiom fib_fast_doubling_complexity :
   ∃ C N, ∀ n, n ≥ N → fib_fast_doubling_ops n ≤ C * Nat.log 2 n
   -- Fibonacci 快速倍增法复杂度：O(log n)，数学上可通过二分递推证明，作为复杂度公理
 
 /-- Fibonacci 数列增长率的精确描述：fib(n) ∈ Θ(φⁿ) --/
-postulate fib_growth_rate :
+axiom fib_growth_rate :
   ∃ c₁ c₂ N, ∀ n, n ≥ N → c₁ * Nat.ceil (phi ^ n) ≤ fib n ∧ fib n ≤ c₂ * Nat.ceil (phi ^ n)
   -- Fibonacci 增长率 Θ(φⁿ)：数学上可通过递推关系证明，形式化需完整分析工具，作为数论公理
 
@@ -268,12 +268,12 @@ theorem Ackermann3_eq : ∀ n, Ackermann 3 n = 2 ^ (n + 3) - 3 := by
     <;> omega
 
 /-- Ackermann3 的复杂度：O(2ⁿ) --/
-postulate Ackermann3_complexity :
+axiom Ackermann3_complexity :
   bigO (fun n => Ackermann 3 n) (fun n => 2 ^ n)
   -- Ackermann A(3,n) 复杂度 O(2ⁿ)：A(3,n) = 2^(n+3)-3，数学上直接计算，形式化需 bigO 定义完备，作为复杂度公理
 
 /-- Ackermann 函数 A(4, n) 是非原始递归的（增长极快） --/
-postulate Ackermann4_nonprimitive :
+axiom Ackermann4_nonprimitive :
   ¬bigO (fun n => Ackermann 4 n) (fun n => 2 ^ n)
   -- Ackermann A(4,n) 非原始递归：A(4,n) = 2^2^...^2 - 3 (n+3 个 2) 增长超任何原始递归函数，作为计算理论公理
 
@@ -354,7 +354,7 @@ theorem poly_growth {k : Nat} :
   linarith
 
 /-- 指数函数超越多项式增长：∀k, nᵏ ∈ O(2ⁿ) --/
-postulate exp_dominates_poly {k : Nat} :
+axiom exp_dominates_poly {k : Nat} :
   bigO (fun n => n ^ k) (fun n => 2 ^ n)
   -- 指数函数支配多项式：∀k, n^k = O(2^n)，数学上可通过极限或归纳证明，形式化需分析工具完备，作为复杂度公理
 
@@ -364,7 +364,7 @@ postulate exp_dominates_poly {k : Nat} :
 
 /-- 临界密度公式：ρ_c = 3H₀² / (8πG)
     数值验证：使用定义值计算应在同一数量级 --/
-postulate critical_density_formula_approx :
+axiom critical_density_formula_approx :
   0.5 * rho_c ≤ 3 * H0 ^ 2 / (8 * Real.pi * GF3) ∧
   3 * H0 ^ 2 / (8 * Real.pi * GF3) ≤ 2 * rho_c
   -- 临界密度公式数值验证：rho_c 与 3H₀²/(8πG) 数量级一致，作为物理公理

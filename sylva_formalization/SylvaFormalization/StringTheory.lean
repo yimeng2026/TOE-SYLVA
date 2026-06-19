@@ -14,7 +14,7 @@ Submodules:
 - StringTheory.Branes    — D-branes and M-theory
 -/
 
-import SylvaFormalization.StringTheory.Basic
-import SylvaFormalization.StringTheory.Spectrum
-import SylvaFormalization.StringTheory.Duality
-import SylvaFormalization.StringTheory.Branes
+import StringTheory.Basic
+import StringTheory.Spectrum
+import StringTheory.Duality
+import StringTheory.Branes

@@ -108,7 +108,7 @@ noncomputable def BlochWavefunction (L : Lattice2D) (u : PeriodicBlochFunction L
     开放问题：需要证明此定理，依赖于 u_nk 的周期性。
     证明路径：展开 ψ_nk(r+R) = e^{ik·(r+R)} u_nk(r+R) 
               = e^{ik·r} e^{ik·R} u_nk(r) = e^{ik·R} ψ_nk(r)。 -/
-postulate BlochTheorem_TranslationBehavior
+axiom BlochTheorem_TranslationBehavior
     (L : Lattice2D) (u : PeriodicBlochFunction L) (k : CrystalMomentum2D)
     (r : Position2D) (site : LatticeSite L) :
     BlochWavefunction L u k (r.1 + (LatticePosition L site).1, r.2 + (LatticePosition L site).2)
@@ -179,7 +179,7 @@ structure BandEigenstate (L : Lattice2D) where
     1. 证明 H(k) 在 L²(unit_cell) 上是自伴算子（self-adjoint）
     2. 使用谱定理得到离散本征值
     3. 本征态构成正交完备集。 -/
-postulate SchrodingerEquation_BlochBasis
+axiom SchrodingerEquation_BlochBasis
     (L : Lattice2D) (H : Hamiltonian2D L) (E : BandEnergy L) (ψ : BandEigenstate L)
     (k : CrystalMomentum2D) (r : Position2D) :
     -- H(k) 作用在 u_nk 上给出 E_n(k) u_nk
@@ -233,7 +233,7 @@ def inBrillouinZone (BZ : BrillouinZone2D) (k : CrystalMomentum2D) : Prop :=
     
     开放问题：需要在 Lean 中形式化 T² 作为流形，
     并证明其 de Rham 上同调群 H²(T²) = ℝ。 -/
-postulate BrillouinZone_IsTorus
+axiom BrillouinZone_IsTorus
     (L : Lattice2D) (BZ : BrillouinZone2D L) :
     -- BZ 作为拓扑空间同胚于 T²
     True

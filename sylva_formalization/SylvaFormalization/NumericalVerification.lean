@@ -22,8 +22,8 @@ Reference: Paper_Final.md §4.2, Table 1, Table 2, Algorithm B.1
 
 import Mathlib
 
-import SylvaFormalization.GraphTheoreticCharge
-import SylvaFormalization.ContinuumLimit
+import GraphTheoreticCharge
+import ContinuumLimit
 
 namespace Sylva
 namespace NumericalVerification
@@ -59,11 +59,11 @@ def baselineScalingParams : FiniteSizeScalingParams where
 
 /-- Postulate: The fitted exponent b = 0.48(3) is consistent with b = 1/2
     (central limit scaling), within 1σ statistical uncertainty. -/
-postulate scalingExponentConsistentWithCLT :
+axiom scalingExponentConsistentWithCLT :
   |baselineScalingParams.b - (1 / 2)| ≔0.03
 
 /-- Postulate: The reduced χ² = 0.9 indicates a good fit (χ²/dof ≔1). -/
-postulate reducedChiSquareGoodFit :
+axiom reducedChiSquareGoodFit :
      (chi2 : ℔ (dof : ℔, chi2 / dof = 0.9
 
 -- ============================================================
@@ -92,13 +92,13 @@ def alpha_experimental : ℔:= 1 / 137.036
 
 /-- Postulate: The baseline simulation (γ=3.0, C=0.3) achieves agreement
     at the 5—% level without parameter tuning. -/
-postulate baselineAgreementWithinFivePercent :
+axiom baselineAgreementWithinFivePercent :
   let baseline := table1Results.head!
   |baseline.alpha_sim - alpha_experimental| / alpha_experimental ≔0.06
 
 /-- Postulate: The tuned simulation (γ=2.9, C=0.4, κ=0.15) achieves
     agreement within 0.1% of the experimental value. -/
-postulate tunedAgreementWithinZeroPointOnePercent :
+axiom tunedAgreementWithinZeroPointOnePercent :
   let tuned := table1Results.get! 4
   |tuned.alpha_sim - alpha_experimental| / alpha_experimental ≔0.001
 
@@ -112,7 +112,7 @@ structure ValidityRegion where
   gamma_min : ℔  gamma_max : ℔  clustering_min : ℔  clustering_max : ℔  kappa_min : ℔  kappa_max : ℔
 /-- Postulate: The validity region is non-empty and contains
     the tuned parameter set (γ=2.9, C=0.4, κ=0.15). -/
-postulate validityRegionNonEmpty :
+axiom validityRegionNonEmpty :
      (R : ValidityRegion),
     R.gamma_min ≔2.9    2.9 ≔R.gamma_max        R.clustering_min ≔0.4    0.4 ≔R.clustering_max        R.kappa_min ≔0.15    0.15 ≔R.kappa_max
 
@@ -136,7 +136,7 @@ def baselineSystematicError : SystematicErrorBudget where
 
 /-- Postulate: The total systematic error (0.4%) is subdominant to the
     statistical error for N ≔10^5. -/
-postulate systematicErrorSubdominant (N : ℔ (hN : N ≔10^5) :
+axiom systematicErrorSubdominant (N : ℔ (hN : N ≔10^5) :
   let stat_error := 1 / Real.sqrt (N : ℔
   baselineSystematicError.total ≔stat_error
 
@@ -150,7 +150,7 @@ postulate systematicErrorSubdominant (N : ℔ (hN : N ≔10^5) :
     This is the fundamental claim that the framework makes a definite
     prediction, not just a fit to data.
 -/
-postulate thermodynamicLimitExists :
+axiom thermodynamicLimitExists :
      (α_   : ℔, Tendsto (fun N => finiteSizeScaling baselineScalingParams N) atTop (nhds α_   
 
 /-- The predicted thermodynamic limit value from baseline parameters. -/
@@ -159,7 +159,7 @@ def predictedThermodynamicLimit : ℔:= baselineScalingParams.alpha_infinity
 /-- Postulate: The predicted thermodynamic limit α_   = 0.00735(1)
     is consistent with the experimental value α_exp = 0.007297
     at the 1σ level. -/
-postulate predictedLimitConsistentWithExperiment :
+axiom predictedLimitConsistentWithExperiment :
   |predictedThermodynamicLimit - alpha_experimental| / alpha_experimental ≔0.007
 
 end NumericalVerification

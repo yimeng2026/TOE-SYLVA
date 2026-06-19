@@ -14,7 +14,7 @@ Submodules:
 - CondensedMatter.Topological       — Laughlin, anyons
 -/
 
-import SylvaFormalization.CondensedMatter.Hubbard
-import SylvaFormalization.CondensedMatter.TJModel
-import SylvaFormalization.CondensedMatter.Superconductivity
-import SylvaFormalization.CondensedMatter.Topological
+import CondensedMatter.Hubbard
+import CondensedMatter.TJModel
+import CondensedMatter.Superconductivity
+import CondensedMatter.Topological

@@ -8,7 +8,7 @@ References: Mukhanov (2005)
 -/
 
 import Mathlib
-import SylvaFormalization.Cosmology.FLRW
+import Cosmology.FLRW
 
 namespace Sylva
 namespace Cosmology
@@ -42,7 +42,7 @@ structure Inflaton where
     During slow-roll: φ̇² << V(φ), so p ≈ -ρ (quasi-de Sitter).
     Number of e-folds: N = ∫ H dt = ∫ dφ / (M_Pl² V'/V).
     N ≈ 60 for observable scales. -/
-postulate SlowRollInflation (inf : Inflaton) :
+axiom SlowRollInflation (inf : Inflaton) :
   ∀ (t : ℝ), inf.epsilon t < 1 ∧ ‖inf.eta t‖ < 1
   -- Slow-roll: inflation continues, postulated as inflation axiom
 
@@ -50,7 +50,7 @@ postulate SlowRollInflation (inf : Inflaton) :
 
     Sufficient inflation solves the flatness and horizon problems.
     N = 50-60 for scales from CMB to today. -/
-postulate EfoldsNumber (inf : Inflaton) :
+axiom EfoldsNumber (inf : Inflaton) :
   ∃ (N : ℝ), N > 50 ∧ N < 70
   -- E-folds: 50-60 for observable universe, postulated as inflation axiom
 

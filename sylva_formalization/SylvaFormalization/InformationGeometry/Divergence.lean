@@ -8,7 +8,7 @@ References: Amari & Nagaoka (2000)
 -/
 
 import Mathlib
-import SylvaFormalization.InformationGeometry.FisherMetric
+import InformationGeometry.FisherMetric
 
 namespace Sylva
 namespace InformationGeometry
@@ -23,7 +23,7 @@ noncomputable def KLDivergence (M : StatisticalManifold n) (θ₁ θ₂ : M.para
   ∫ (x : ℝ), M.pdf θ₁ x * Real.log (M.pdf θ₁ x / M.pdf θ₂ x)
 
 /-- KL divergence is non-negative: D_KL(p||q) ≥ 0 with equality iff p = q. -/
-postulate KLDivergenceNonNegative (M : StatisticalManifold n) (θ₁ θ₂ : M.parameterSpace) :
+axiom KLDivergenceNonNegative (M : StatisticalManifold n) (θ₁ θ₂ : M.parameterSpace) :
   KLDivergence M θ₁ θ₂ ≥ 0
   -- KL divergence non-negativity: Gibbs' inequality, requires measure theory
 

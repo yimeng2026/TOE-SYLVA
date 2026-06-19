@@ -105,7 +105,7 @@ def SpatialRecurrence {S : StratifiedSpace N} (C_s : ∀ k, ℔
     这是交汇  ?3 的核心数学命题，连接离散层化几何与连续微分几何  ?    证明需要：
     1. 逆向极限构造（profinite stratification  ?    2. 层间距一致趋  ?0
     3. 递推算子的一致有界  ?    4. 应用 Arzelà-Ascoli 定理或类似紧致性论  ?-/
-postulate LayerRecurrenceConvergesToParallelTransport
+axiom LayerRecurrenceConvergesToParallelTransport
     (S : StratifiedSpace N) (rec : LayerRecurrence S V)
     (hN : N        (hΔ : max_interLayerDistance    0) :
        (γ : ℔   S.stratum 0) (v : ℔   V),
@@ -122,7 +122,7 @@ def BerryPhase {S : StratifiedSpace N} {rec : LayerRecurrence S ℂ}
      k in Finset.range N, (rec.step k 1) / ‖rec.step k 1—
 /-- 命题：Berry 相位 =   ?西蒙斯数（模 2π）  ?    这是交汇  ?2 和交汇点 3 的联合推论：
     如果 α⁻ ?= n_CS = 137   ?Berry 相位 = 2π · n_CS · μ  ?    那么精细结构常数可以从层间递推的几何中读出  ?-/
-postulate BerryPhaseEqualsChernSimons
+axiom BerryPhaseEqualsChernSimons
     (S : StratifiedSpace N) (rec : LayerRecurrence S ℔
     (n_CS : ℔ (μ : ℔ :
     BerryPhase loop N = Complex.exp (Complex.I * 2 * Real.pi * n_CS * μ)

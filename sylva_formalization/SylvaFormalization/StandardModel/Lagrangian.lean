@@ -7,8 +7,8 @@ The full SM Lagrangian and renormalizability.
 References: Peskin & Schroeder (1995); Weinberg (1996)
 -/
 
-import SylvaFormalization.StandardModel.Basic
-import SylvaFormalization.StandardModel.Interactions
+import StandardModel.Basic
+import StandardModel.Interactions
 
 namespace Sylva
 namespace StandardModel
@@ -23,7 +23,7 @@ namespace StandardModel
     L_fermion = Σ_f Q̄_L i D̸ Q_L + ...
     L_Higgs = (D_μ Φ)† (D^μ Φ) + μ² Φ† Φ - λ (Φ† Φ)²
     L_Yukawa = -Y^u Q̄_L ũ_R Φ̃ - Y^d Q̄_L d̃_R Φ - Y^e L̄_L ẽ_R Φ + h.c. -/
-postulate StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
+axiom StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
   (Φ : HiggsDoublet) (Y : YukawaCouplings) (gauges : SMGaugeGroup) :
   let L_gauge := -¼ * sum_Gluons (G x) - ¼ * sum_W (G x) - ¼ * sum_B (G x)
   let L_fermion := sum_Fermions (ψ x) (D_ψ x)
@@ -41,7 +41,7 @@ postulate StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
     [μ] = 1 (mass dimension).
 
     This ensures the theory is predictive at all energy scales. -/
-postulate SMRenormalizable (gauges : SMGaugeGroup) (Y : YukawaCouplings) (Φ : HiggsDoublet) :
+axiom SMRenormalizable (gauges : SMGaugeGroup) (Y : YukawaCouplings) (Φ : HiggsDoublet) :
   gauges.g_s > 0 ∧ gauges.g > 0 ∧ gauges.g' > 0 ∧ Φ.λ > 0
   -- SM renormalizability: all couplings dimensionless, postulated as SM axiom
 

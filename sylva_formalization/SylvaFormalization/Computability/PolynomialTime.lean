@@ -14,8 +14,8 @@
 -/
 
 import Mathlib
-import SylvaFormalization.Computability.TM1Extended
-import SylvaFormalization.NPClass.PolynomialTime
+import Computability.TM1Extended
+import NPClass.PolynomialTime
 
 namespace SylvaFormalization.Computability
 
@@ -53,7 +53,7 @@ def TM1PolyTime (M : TM1Multitape.Machine Γ Λ σ n_tapes) : Prop :=
 namespace TM1PolyTime
 
 /-- 若 `p` 是多项式且 `M` 在 `p` 时间内停机，则 `M` 在任意更大的多项式时间内也停机。 -/
-postulate mono
+axiom mono
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     {p q : ℕ → ℕ}
     (hp : IsPolynomial p)
@@ -66,7 +66,7 @@ postulate mono
   -- 结合 `IsPolynomial` 的单调性即得。
 
 /-- 常数时间停机是多项式时间的特例。 -/
-postulate of_constant_time
+axiom of_constant_time
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (c : ℕ)
     (h : ∀ input, accepts_in M c input) :
@@ -78,7 +78,7 @@ postulate of_constant_time
 
 开放引理：需先定义“顺序组合”多带机器，再证明其时间复杂度
 为两机器多项式之和（或积）。 -/
-postulate comp
+axiom comp
     {Γ Λ₁ Λ₂ σ₁ σ₂ : Type*}
     [Inhabited Λ₁] [Inhabited Λ₂] [Inhabited Γ] [Inhabited σ₁] [Inhabited σ₂]
     {n_tapes : ℕ}
@@ -151,7 +151,7 @@ namespace PClass
 /-- P 对补运算封闭：若 L ∈ P，则 Lᶜ ∈ P。
 
 开放引理：将接受/拒绝条件取反即可，不影响时间复杂度。 -/
-postulate complement_closed
+axiom complement_closed
     (L : DecisionProblem Γ)
     (hL : InP L) :
   InP (fun input => ¬ L input)
@@ -160,7 +160,7 @@ postulate complement_closed
 /-- P 对交集封闭：若 L₁ ∈ P 且 L₂ ∈ P，则 L₁ ∩ L₂ ∈ P。
 
 开放引理：顺序运行两个判定器，多项式时间之和仍为多项式。 -/
-postulate intersection_closed
+axiom intersection_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InP L₁)
     (h₂ : InP L₂) :
@@ -171,7 +171,7 @@ postulate intersection_closed
 /-- P 对并集封闭：若 L₁ ∈ P 且 L₂ ∈ P，则 L₁ ∪ L₂ ∈ P。
 
 开放引理：类似交集，使用非确定性选择或顺序判定。 -/
-postulate union_closed
+axiom union_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InP L₁)
     (h₂ : InP L₂) :
@@ -183,7 +183,7 @@ postulate union_closed
 开放引理：此构造较复杂，需要猜测分割点。
 但由于是确定性机器，需要尝试所有 O(n) 个分割点，
 总时间为 `O(n · p(n))`，仍为多项式。 -/
-postulate concat_closed
+axiom concat_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InP L₁)
     (h₂ : InP L₂) :
@@ -195,7 +195,7 @@ postulate concat_closed
 /-- P 对 Kleene 星号封闭。
 
 开放引理：动态规划，多项式时间内判定是否存在有效分割序列。 -/
-postulate star_closed
+axiom star_closed
     (L : DecisionProblem Γ)
     (hL : InP L) :
   InP (fun input =>
@@ -228,7 +228,7 @@ variable {Γ : Type*} [Inhabited Γ]
 
 形式化：`(input, cert) ↦ input ++ [#] ++ cert`，
 其中 `#` 是分隔符。为简化，假设 `Γ` 已包含分隔符。 -/
-postulate hasSeparator : ∃ (sep : Γ), sep ≠ default
+axiom hasSeparator : ∃ (sep : Γ), sep ≠ default
   -- 注：若 `Γ` 至少有两个元素，则此命题平凡成立。
   -- 对于布尔字母表 `Γ = Bool`，`true ≠ false`。
   -- 若 `Γ` 只有一个元素，则需先通过编码扩展字母表。
@@ -268,7 +268,7 @@ namespace NPClass
 /-- P ⊆ NP：任何多项式时间判定器都可视为“无证书”的验证器。
 
 开放引理： trivial 构造——令证书为空，验证器直接运行判定器。 -/
-postulate P_subset_NP
+axiom P_subset_NP
     (L : DecisionProblem Γ)
     (hL : InP L) :
   InNP L
@@ -280,7 +280,7 @@ postulate P_subset_NP
 开放引理：给定 L₁, L₂ ∈ NP，构造验证器：
 证书为 `(b, c)` 其中 b : Bool 指示验证 L₁ 还是 L₂，
 c 为对应语言的证书。验证时间 = max(p₁, p₂) + O(1)`。 -/
-postulate union_closed
+axiom union_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InNP L₁)
     (h₂ : InNP L₂) :
@@ -291,7 +291,7 @@ postulate union_closed
 /-- NP 对交集封闭。
 
 开放引理：证书为 `(c₁, c₂)`，验证器分别验证两者。 -/
-postulate intersection_closed
+axiom intersection_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InNP L₁)
     (h₂ : InNP L₂) :
@@ -305,7 +305,7 @@ postulate intersection_closed
 
 这是 Cook-Levin 定理的“正向”方向（SAT ∈ NP），
 反向方向（NP ⊆ SAT）需要完整的 Cook-Levin 归约。 -/
-postulate SAT_in_NP :
+axiom SAT_in_NP :
   let SAT : DecisionProblem Bool := fun formula =>
     -- formula 编码为 CNF：List (List (Bool × ℕ))，
     -- 其中每个子句是文字列表，文字为 (正负号, 变量编号)
@@ -338,7 +338,7 @@ variable {Γ : Type*} [Inhabited Γ]
 
 开放引理：利用多带到单带的模拟（`multitape_to_singletape_overhead`），
 多项式时间的平方仍为多项式时间。 -/
-postulate InP_singletape_of_multitape
+axiom InP_singletape_of_multitape
     (L : DecisionProblem Γ)
     (h : InP L) :
   Sylva.NPClass.InP L
@@ -350,7 +350,7 @@ postulate InP_singletape_of_multitape
 /-- `Sylva.NPClass.InP` 蕴含 `SylvaFormalization.Computability.InP`。
 
 开放引理：单带 TM 是 1-带 TM1Multitape 的特例。 -/
-postulate InP_multitape_of_singletape
+axiom InP_multitape_of_singletape
     (L : DecisionProblem Γ)
     (h : Sylva.NPClass.InP L) :
   InP L
@@ -360,7 +360,7 @@ postulate InP_multitape_of_singletape
 /-- `SylvaFormalization.Computability.InNP` 蕴含 `Sylva.NPClass.InNP`。
 
 开放引理：类似 `InP_singletape_of_multitape`，利用模拟定理。 -/
-postulate InNP_singletape_of_multitape
+axiom InNP_singletape_of_multitape
     (L : DecisionProblem Γ)
     (h : InNP L) :
   Sylva.NPClass.InNP L
@@ -370,7 +370,7 @@ postulate InNP_singletape_of_multitape
 /-- `Sylva.NPClass.InNP` 蕴含 `SylvaFormalization.Computability.InNP`。
 
 开放引理：单带验证器是 1-带验证器的特例。 -/
-postulate InNP_multitape_of_singletape
+axiom InNP_multitape_of_singletape
     (L : DecisionProblem Γ)
     (h : Sylva.NPClass.InNP L) :
   InNP L

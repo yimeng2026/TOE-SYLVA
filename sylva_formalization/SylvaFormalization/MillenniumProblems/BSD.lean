@@ -14,7 +14,7 @@ L*(E,1) = (|Sha| · Regulator · Period · Tamagawa product) / |E(Q)_tors|²
 where L*(E,1) is the leading coefficient of the Taylor expansion of L(E,s) at s=1.
 -/\n\nimport Mathlib
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
-import SylvaFormalization.Basic
+import Basic
 
 namespace Sylva
 namespace BSD

@@ -24,10 +24,10 @@ Reference: Paper_Final.md §3.4, Assumption 3.3
 
 import Mathlib
 import Mathlib.Geometry.Manifold.ChartedSpace
-import Mathlib.Geometry.Manifold.SmoothManifoldWithCorners
+-- import Mathlib.Geometry.Manifold.SmoothManifoldWithCorners  -- Does not exist in mathlib v4.29.0
 import Mathlib.Topology.MetricSpace.Basic
 
-import SylvaFormalization.GraphTheoreticCharge
+import GraphTheoreticCharge
 
 namespace Sylva
 namespace ContinuumLimit
@@ -93,7 +93,7 @@ noncomputable def spectralEmbedding (G : CausalNetwork V) (d : ℕ)
     It has been proven for random geometric graphs (Belkin-Niyogi 2006,
     Singer 2006) and is supported by numerical evidence.
 -/
-postulate spectralConvergence
+axiom spectralConvergence
     (G : CausalNetwork V) (M : SpacetimeManifold)
     (N : ℕ) (d : ℕ) (hN : N = G.vertices.card)
     (eigenfunctions : Fin d → GraphEigenfunction G)
@@ -198,7 +198,7 @@ noncomputable def emergentStressTensorComponent
     2. Manifold learning theory foundations
     3. PDE theory for the limiting equations
 -/
-postulate continuumLimitTheorem
+axiom continuumLimitTheorem
     (G : CausalNetwork V) (M : SpacetimeManifold)
     (d : ℕ) (N : ℕ) (hN : N = G.vertices.card)
     (eigenfunctions : Fin d → GraphEigenfunction G) :

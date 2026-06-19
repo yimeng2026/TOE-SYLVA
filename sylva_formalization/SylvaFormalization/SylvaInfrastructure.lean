@@ -1,5 +1,5 @@
 import Mathlib
-import SylvaFormalization.Basic
+import Basic
 
 namespace SylvaFormalization
 

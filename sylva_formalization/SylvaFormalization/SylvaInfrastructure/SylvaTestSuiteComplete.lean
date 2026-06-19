@@ -18,14 +18,14 @@ NOTE: ZetaVerifier and RiemannHypothesis are excluded due to a pre-existing
 
 Run with: lake build SylvaTestSuiteComplete
 -/\n\nimport Mathlib
-import SylvaFormalization.Basic
-import SylvaFormalization.Complexity
-import SylvaFormalization.CP004
-import SylvaFormalization.NumericalZeros
-import SylvaFormalization.CookLevin
-import SylvaFormalization.BSD
-import SylvaFormalization.NavierStokes
-import SylvaFormalization.SylvaInfrastructure
+import Basic
+import Complexity
+import CP004
+import NumericalZeros
+import CookLevin
+import BSD
+import NavierStokes
+import SylvaInfrastructure
 
 namespace Sylva.TestSuiteComplete
 
