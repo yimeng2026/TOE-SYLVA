@@ -1,11 +1,11 @@
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.Algebra.MvPolynomial.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Finset.Sort
 import Mathlib.Data.Fin.Tuple.Sort
 import Mathlib.Data.List.Sort
 import Mathlib.Data.Nat.Factorial.Basic
-import Mathlib.Data.Nat.Partition
+-- import Mathlib.Data.Nat.Partition  -- Does not exist in mathlib v4.29.0
 import Mathlib.Tactic
 
 

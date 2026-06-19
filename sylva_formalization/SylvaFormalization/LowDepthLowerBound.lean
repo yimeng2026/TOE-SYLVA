@@ -5,7 +5,6 @@ import Mathlib.LinearAlgebra.Matrix.Rank
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Fintype.Basic
 import Mathlib.Tactic
-import SymmetricFunctions
 
 
 /-!
