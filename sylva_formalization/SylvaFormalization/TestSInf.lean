@@ -4,6 +4,7 @@ import Mathlib.Order.Lattice
 import Mathlib.Order.Bounds.Defs
 import Mathlib.Data.Nat.Basic
 import Mathlib.Data.Set.Basic
+import Mathlib.Order.CompleteLattice
 
 open Set Classical
 
