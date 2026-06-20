@@ -15,8 +15,14 @@ lean_lib «SylvaFormalization» where
   roots := #[
     `ChernNumber,
     `ChernSimons,
+    `CookLevin.SAT,
+    `Cosmology.DarkEnergy,
+    `Cosmology.Inflation,
     `FifteenConstants,
     `Hodge,
+    `NPClass.PolynomialTime,
     `RiemannHypothesis,
+    `StandardModel.Basic,
+    `StringTheory.Basic,
     `SylvaInfrastructure
   ]
