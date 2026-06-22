@@ -8,15 +8,11 @@ Key concepts: total space, projection, right action, local trivializations, cocy
 References: Nakahara (2003), Chapter 10
 -/
 
-import Mathlib
 import Mathlib.Topology.FiberBundle.Basic
--- import Mathlib.Geometry.Manifold.Basic  -- Does not exist in mathlib v4.29.0
 import Mathlib.Algebra.Lie.Basic
 
 namespace Sylva
 namespace GaugeTheory
-
-open Real Topology Manifold
 
 /-- A principal G-bundle P over a base manifold M with structure group G.
 
@@ -71,14 +67,29 @@ def TrivialPrincipalBundle (M G : Type*) [TopologicalSpace M] [Group G] [Topolog
   cocycle := fun _ => rfl
 
 /-- Trivial bundle has free action. -/
-axiom trivial_bundle_free : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
-  [TopologicalSpace G], FreeAction (TrivialPrincipalBundle M G)
-  -- Trivial bundle action: (m,g)·h = (m,g·h), free because g·h = g implies h = 1
+theorem trivial_bundle_free (M G : Type*) [TopologicalSpace M] [Group G]
+    [TopologicalSpace G] : FreeAction (TrivialPrincipalBundle M G) := by
+  intro p g h
+  simp [TrivialPrincipalBundle] at h
+  -- After simp, h directly gives us g = 1 (from Prod equality on second component)
+  cases p with | mk m g₀ =>
+    simp at h
+    exact h
 
 /-- Trivial bundle has transitive action. -/
-axiom trivial_bundle_transitive : ∀ (M G : Type*) [TopologicalSpace M] [Group G]
-  [TopologicalSpace G], TransitiveAction (TrivialPrincipalBundle M G)
-  -- Trivial bundle action: (m,g₁)·(g₁⁻¹·g₂) = (m,g₂), so transitive on each fiber
+theorem trivial_bundle_transitive (M G : Type*) [TopologicalSpace M] [Group G]
+    [TopologicalSpace G] : TransitiveAction (TrivialPrincipalBundle M G) := by
+  intro x p₁ p₂ hp₁ hp₂
+  simp [TrivialPrincipalBundle] at hp₁ hp₂
+  -- p₁ = (x, g₁), p₂ = (x, g₂), need g such that g₁ * g = g₂
+  -- Take g = g₁⁻¹ * g₂
+  cases p₁ with | mk x₁ g₁ =>
+    cases p₂ with | mk x₂ g₂ =>
+      simp at hp₁ hp₂
+      -- Now hp₁ : x₁ = x, hp₂ : x₂ = x, so x₁ = x₂ = x
+      refine ⟨g₁⁻¹ * g₂, ?_⟩
+      -- Expand rightAction and use group properties
+      simp [TrivialPrincipalBundle, hp₁, hp₂]
 
 end GaugeTheory
 end Sylva
