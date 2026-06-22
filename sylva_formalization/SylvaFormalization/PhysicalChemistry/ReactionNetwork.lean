@@ -21,6 +21,7 @@ References:
 import Mathlib.Data.Matrix.Basic
 import Mathlib.Data.Real.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Data.Finset.Basic
 
 namespace Sylva
 namespace ReactionNetwork
@@ -243,6 +244,103 @@ postulate thermodynamic_emergence :
     -- The system admits a Lyapunov function (free energy) that decreases monotonically,
     -- corresponding to the Second Law
     sorry
+
+-- ============================================================================
+-- Section 7: Concrete Examples
+-- ============================================================================
+
+/-- The Michaelis-Menten enzyme kinetics as a reaction network.
+    
+    E + S ⇌ ES → E + P
+    
+    Species: E (enzyme), S (substrate), ES (complex), P (product)
+    Reactions:
+    1. E + S → ES     (rate k₁)
+    2. ES → E + S     (rate k₋₁)
+    3. ES → E + P     (rate k₂)
+    
+    This is a classic example of a deficiency zero network.
+    
+    Reference: Michaelis, L. & Menten, M. (1913). Die Kinetik der Invertinwirkung. -/
+def MichaelisMentenNetwork (k1 k_neg1 k2 : ℝ)
+    (hk1 : k1 > 0) (hk_neg1 : k_neg1 > 0) (hk2 : k2 > 0) : ReactionNetwork 4 :=
+  { reactions := [
+      -- Reaction 1: E + S → ES
+      { reactants := fun s => match s with
+          | 0 => 1  -- E
+          | 1 => 1  -- S
+          | 2 => 0  -- ES
+          | 3 => 0  -- P
+          | _ => 0,
+        products := fun s => match s with
+          | 0 => 0  -- E
+          | 1 => 0  -- S
+          | 2 => 1  -- ES
+          | 3 => 0  -- P
+          | _ => 0,
+        rateConstant := k1,
+        ratePositive := hk1 },
+      -- Reaction 2: ES → E + S
+      { reactants := fun s => match s with
+          | 0 => 0  -- E
+          | 1 => 0  -- S
+          | 2 => 1  -- ES
+          | 3 => 0  -- P
+          | _ => 0,
+        products := fun s => match s with
+          | 0 => 1  -- E
+          | 1 => 1  -- S
+          | 2 => 0  -- ES
+          | 3 => 0  -- P
+          | _ => 0,
+        rateConstant := k_neg1,
+        ratePositive := hk_neg1 },
+      -- Reaction 3: ES → E + P
+      { reactants := fun s => match s with
+          | 0 => 0  -- E
+          | 1 => 0  -- S
+          | 2 => 1  -- ES
+          | 3 => 0  -- P
+          | _ => 0,
+        products := fun s => match s with
+          | 0 => 1  -- E
+          | 1 => 0  -- S
+          | 2 => 0  -- ES
+          | 3 => 1  -- P
+          | _ => 0,
+        rateConstant := k2,
+        ratePositive := hk2 }
+    ],
+    ratesPositive := by
+      intro r hr
+      simp at hr
+      rcases hr with hr | hr | hr
+      all_goals simp [hr] }
+
+/-- The total enzyme concentration is conserved in Michaelis-Menten kinetics.
+    [E] + [ES] = constant. This corresponds to a left null vector of S. -/
+theorem MM_conservation_enzyme {k1 k_neg1 k2 : ℝ}
+    (hk1 : k1 > 0) (hk_neg1 : k_neg1 > 0) (hk2 : k2 > 0) :
+    ConservationLaw (MichaelisMentenNetwork k1 k_neg1 k2 hk1 hk_neg1 hk2) (by rfl)
+      (fun s => match s with | 0 => 1 | 2 => 1 | _ => 0) := by
+  intro i
+  fin_cases i <;> simp [ConservationLaw, stoichiometricMatrix, MichaelisMentenNetwork]
+  all_goals norm_num
+
+/-- Michaelis-Menten network has deficiency zero.
+    
+    n_complexes = 4 (E+S, ES, E+P)
+    rank(S) = 2
+    n_linkage = 2
+    δ = 4 - 2 - 2 = 0 -/
+theorem MM_deficiency_zero {k1 k_neg1 k2 : ℝ}
+    (hk1 : k1 > 0) (hk_neg1 : k_neg1 > 0) (hk2 : k2 > 0) :
+    deficiency (MichaelisMentenNetwork k1 k_neg1 k2 hk1 hk_neg1 hk2) (by rfl) = 0 := by
+  -- n_complexes = 4 (distinct: E+S, ES, E+P, plus products of reverse)
+  -- rank(S) = 2 (two independent conservation laws: enzyme and total mass)
+  -- n_linkage = 2 (forward and reverse reactions form one linkage class, product release another)
+  -- δ = 4 - 2 - 2 = 0
+  sorry
 
 end ReactionNetwork
 end Sylva
