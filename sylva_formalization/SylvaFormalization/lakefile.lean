@@ -33,6 +33,7 @@ lean_lib «SylvaFormalization» where
     `InformationGeometry,
     `NPClass.PolynomialTime,
     `PhysicalChemistry.ReactionNetwork,
+    `QuantumChemistry.Hamiltonian,
     `Renormalization,
     `RiemannHypothesis,
     `SAT,
