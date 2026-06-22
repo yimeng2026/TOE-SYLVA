@@ -27,7 +27,7 @@ References:
 - Hückel (1931). Quantentheoretische Beiträge zum Benzolproblem.
 - Streitwieser (1961). Molecular Orbital Theory for Organic Chemists.
 - Graovac et al. (1977). Graph Theory and Molecular Orbitals.
--/-
+-/ 
 
 import Mathlib.Data.Matrix.Basic
 import Mathlib.Data.Real.Basic
@@ -242,7 +242,7 @@ def quantumWalkProbability {n : ℕ} (G : MolecularGraph n) (params : HuckelPara
 theorem quantum_speedup_complete_graph (n : ℕ) (h_n : n > 1) :
     -- Quantum walk reaches uniform distribution in O(1) time
     -- Classical random walk needs O(n) time
-    sorry := by
+    True := by
   sorry
 
 -- ============================================================================
@@ -257,9 +257,9 @@ theorem quantum_speedup_complete_graph (n : ℕ) (h_n : n > 1) :
     HOMO-LUMO gap = E_{LUMO} - E_{HOMO} = chemical hardness (Pearson)
     Small gap → reactive, soft; Large gap → stable, hard -/
 def homoLumoGap {n : ℕ} (G : MolecularGraph n) (params : HuckelParameters)
-    (n_electrons : ℕ) : ℝ :=
+    (n_electrons : ℕ) (h_n : n_electrons / 2 < n) (h_n' : n_electrons / 2 - 1 < n) : ℝ :=
   let E := orbitalEnergies G params
-  E (n_electrons / 2) - E (n_electrons / 2 - 1)
+  E (⟨n_electrons / 2, h_n⟩) - E (⟨n_electrons / 2 - 1, h_n'⟩)
 
 /-- **Topological Quantum Chemistry**:
     For infinite periodic systems (graphene, polyacetylene), the

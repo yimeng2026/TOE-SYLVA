@@ -16,11 +16,10 @@ References:
 - Horn, F. & Jackson, R. (1972). General mass action kinetics.
 - Gunawardena, J. (2003). Chemical reaction network theory for in-silico biologists.
 - Rao, R. & Esposito, M. (2016). Conservation laws and work fluctuation relations.
--/-
+-/
 
 import Mathlib.Data.Matrix.Basic
 import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.BigOperators.Group.Finset
 import Mathlib.Data.Finset.Basic
 
 namespace Sylva
@@ -348,9 +347,11 @@ def MM_stoichiometricMatrix (k1 k_neg1 k2 : ℝ)
 theorem MM_stoichiometric_rank (k1 k_neg1 k2 : ℝ)
     (hk1 : k1 > 0) (hk_neg1 : k_neg1 > 0) (hk2 : k2 > 0) :
     ∃ (r1 r2 : Fin 4 → ℤ),
-      r1 = (-1 : ℤ) ::ᵥ (-1 : ℤ) ::ᵥ (1 : ℤ) ::ᵥ (0 : ℤ) ::ᵥ Vector.nil ∧
-      r2 = (1 : ℤ) ::ᵥ (0 : ℤ) ::ᵥ (-1 : ℤ) ::ᵥ (1 : ℤ) ::ᵥ Vector.nil ∧
-      (∀ r : Fin 3 → ℤ,
+      (r1 = fun i => if i.val = 0 then (-1 : ℤ) else if i.val = 1 then (-1 : ℤ) else if i.val = 2 then (1 : ℤ) else (0 : ℤ))
+      ∧
+      (r2 = fun i => if i.val = 0 then (1 : ℤ) else if i.val = 1 then (0 : ℤ) else if i.val = 2 then (-1 : ℤ) else (1 : ℤ))
+      ∧
+      (∀ r : Fin 4 → ℤ,
         (∃ c1 c2 : ℤ, r = fun i => c1 * r1 i + c2 * r2 i) ↔
         ∃ i : Fin 3, r = MM_stoichiometricMatrix k1 k_neg1 k2 hk1 hk_neg1 hk2 i) := by
   -- Explicit construction: the two independent rows span the row space

@@ -28,7 +28,7 @@ References:
 - Pathria & Beale (2011). Statistical Mechanics.
 - Nishimori (2001). Statistical Physics of Spin Glasses and Information Processing.
 - Farhi et al. (2014). A Quantum Approximate Optimization Algorithm.
--/-
+-/ 
 
 import Mathlib.Data.Matrix.Basic
 import Mathlib.Data.Real.Basic
