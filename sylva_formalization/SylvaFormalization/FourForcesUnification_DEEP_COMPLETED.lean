@@ -23,8 +23,6 @@ FIXES APPLIED:
 
 import Mathlib
 
-import SylvaFormalization.Basic
-
 namespace Sylva
 
 open Real BigOperators
@@ -90,10 +88,6 @@ def futureLightCone (G : CausalNetwork) (v : CausalNode) : Set CausalNode :=
 def precedes (G : CausalNetwork) (u v : CausalNode) : Prop :=
   u ∈ G.pastLightCone v ∧ u ≠ v
 
-/-- The precedence relation is irreflexive (no node precedes itself).
-    
-    Proof: If v ≺ v, then by definition v ∈ pastLightCone(v) and v ≠ v.
-    The second conjunct v ≠ v is a direct contradiction. -/
 /-- The precedence relation is irreflexive (no node precedes itself).
     This follows directly from the definition: precedes requires u ≠ v. -/
 lemma precedes_irrefl (G : CausalNetwork) (v : CausalNode) :

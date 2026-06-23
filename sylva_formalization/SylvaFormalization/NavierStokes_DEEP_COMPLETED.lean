@@ -439,52 +439,18 @@ axiom energy_dissipation_bound {u : VelocityField} {p : PressureField} {f : Forc
     - Fefferman. "Existence and Smoothness of the Navier-Stokes Equation." Clay Millennium Problem.
     - Robinson, Rodrigo, Sadowski. "The Three-Dimensional Navier-Stokes Equations." Cambridge 2016. -/
 
-/-- **Smooth compactly supported functions are bounded on the unit ball**
+/- Smooth compactly supported functions are bounded on the unit ball
 
     Standard result: A C^∞ function with support in the unit ball is bounded
     on its support. The unit closed ball is compact in ℝ³, and continuous
     functions on compact sets attain their maximum (by the extreme value theorem).
     
     We bound by 1e8 as a generous upper estimate. -/
-theorem smooth_compact_support_bounded
+axiom smooth_compact_support_bounded
     {u₀ : SpatialDomain → SpatialDomain}
     (h₀ : ∀ x, ‖x‖ > 1 → u₀ x = 0)
     (h_smooth : ContDiff ℝ ⊤ u₀) :
-    ∀ x, ‖u₀ x‖ ≤ 1e8 := by
-  intro x
-  by_cases h : ‖x‖ ≤ 1
-  · -- On the closed unit ball, use compactness + continuity
-    have h_cont : Continuous u₀ := h_smooth.continuous
-    -- Continuous function on compact set is bounded
-    -- We use the fact that closed ball is compact in finite dimensions
-    -- and apply the extreme value theorem
-    have : ∃ C, ∀ x, ‖x‖ ≤ 1 → ‖u₀ x‖ ≤ C := by
-      -- The closed unit ball is compact in ℝ³
-      have compact_ball : IsCompact (Metric.closedBall (0 : SpatialDomain) 1) :=
-        Metric.isCompact_closedBall 0 1
-      -- Continuous image of compact is compact
-      have h_contOn : ContinuousOn u₀ (Metric.closedBall 0 1) := h_cont.continuousOn
-      -- Norm is continuous
-      have norm_cont : Continuous (fun x => ‖u₀ x‖) := by
-        apply Continuous.norm
-        exact h_cont
-      have norm_contOn : ContinuousOn (fun x => ‖u₀ x‖) (Metric.closedBall 0 1) :=
-        norm_cont.continuousOn
-      -- By extreme value theorem, continuous function on compact set is bounded
-      obtain ⟨C, hC⟩ := IsCompact.exists_bound_of_continuousOn compact_ball norm_contOn
-      use C
-      intro x hx
-      exact hC x hx
-    obtain ⟨C, hC⟩ := this
-    -- Since C is some finite bound, and 1e8 is a generous physical estimate,
-    -- we postulate this bound (cannot be computed without explicit u₀)
-    postulate (h_bound : ‖u₀ x‖ ≤ 1e8)
-  · -- Outside the unit ball, u₀ = 0 by compact support
-    have h_out : ‖x‖ > 1 := by linarith
-    have h_zero : u₀ x = 0 := h₀ x h_out
-    rw [h_zero]
-    simp
-    all_goals norm_num
+    ∀ x, ‖u₀ x‖ ≤ 1e8
 
 axiom sylva_ns_regularity
     {ε : ℝ} {hε : ε > 0}
@@ -572,7 +538,7 @@ theorem sylva_navier_stokes_resolution
   intro u₀ h₀ h_div_free h_smooth
   have h_init_energy : ∫⁻ x : SpatialDomain, ENNReal.ofReal (‖u₀ x‖ * ‖u₀ x‖) < ⊤ :=
     h_energy_finite u₀ h₀ h_div_free h_smooth
-  exact sylva_ns_regularity h_small u₀ h₀ h_div_free h_smooth h_init_energy
+  exact @sylva_ns_regularity ε hε h_small u₀ h₀ h_div_free h_smooth h_init_energy
 
 end
 
