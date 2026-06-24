@@ -73,7 +73,20 @@ def stoichiometricSubspace {n m : ℕ} (network : ReactionNetwork n)
   { v : Fin n → ℝ | ∃ c : Fin m → ℝ,
     v = fun j => ∑ i : Fin m, c i * (stoichiometricMatrix network h i j).toReal }
 
-/-- The rank of a reaction network is the rank of its stoichiometric matrix. -/
+/-- The rank of a reaction network is the rank of its stoichiometric matrix.
+    
+    **HARD**: Requires the formalization of matrix rank over a field (or PID) in Lean.
+    Mathlib has `Matrix.rank` but it requires a `DecidableEq` instance and a `Fintype` for the index types.
+    The rank of a stoichiometric matrix S ∈ ℤ^{m×n} is the dimension of the image of the linear map
+    represented by S. This equals the maximum number of linearly independent rows (or columns).
+    
+    Proof sketch: Define the linear map f: ℝ^m → ℝ^n by f(c) = S^T c. The rank is dim(Im(f)).
+    This requires:
+    1. Converting the Matrix to a LinearMap
+    2. Using `LinearMap.rank` or `FiniteDimensional.finrank` on the image
+    
+    Alternatively, compute the rank via row reduction (Gaussian elimination) over ℚ.
+    -/
 def networkRank {n m : ℕ} (network : ReactionNetwork n)
     (h : network.reactions.length = m) : ℕ :=
   -- In a full formalization, this would be the dimension of the stoichiometric subspace
@@ -81,7 +94,20 @@ def networkRank {n m : ℕ} (network : ReactionNetwork n)
   sorry
 
 /-- Number of linkage classes (connected components of the reaction graph).
-    Two reactions are in the same linkage class if they share a species. -/
+    Two reactions are in the same linkage class if they share a species.
+    
+    **HARD**: Requires graph-theoretic connected components formalization.
+    The reaction graph has reactions as vertices, with edges between reactions that share a species.
+    Linkage classes = connected components of this undirected graph.
+    
+    Implementation path:
+    1. Define the reaction graph as a simple graph (SimpleGraph in Mathlib)
+    2. Use `SimpleGraph.ConnectedComponent` or implement BFS/DFS to count components
+    3. Prove that the number of components is finite and computable
+    
+    For the Michaelis-Menten network (3 reactions, all sharing species ES),
+    the reaction graph is a triangle (3-cycle), so linkageClasses = 1.
+    -/
 def linkageClasses {n : ℕ} (network : ReactionNetwork n) : ℕ :=
   -- Count connected components of the reaction graph
   -- Each reaction is a node; edges connect reactions sharing a species
@@ -158,7 +184,25 @@ def nConservationLaws {n m : ℕ} (network : ReactionNetwork n)
 
 /-- A reaction network is weakly reversible if every linkage class is strongly
     connected (every reaction can be reached from every other reaction in the
-    same linkage class by a directed path). -/
+    same linkage class by a directed path).
+    
+    **HARD**: Requires formalization of directed reachability in the reaction graph.
+    The reaction graph is directed: edges go from reactants to products (or from complexes to complexes).
+    Weak reversibility means: in each linkage class, for every pair of reactions r1, r2,
+    there exists a directed path from r1 to r2 and from r2 to r1.
+    
+    Implementation path:
+    1. Define the directed reaction graph (digraph)
+    2. Use `SimpleGraph.Reachable` or `Digraph.Reachable` (if available in Mathlib)
+    3. Or implement reachability via reflexive-transitive closure of the adjacency relation
+    4. Prove that each connected component is strongly connected
+    
+    For the Michaelis-Menten network, the directed graph is NOT strongly connected
+    (e.g., E + S → ES is not reversible in the directed sense without the reverse reaction).
+    However, the full MM network with all 3 reactions is weakly reversible if we consider
+    the complex graph (E+S ↔ ES → E+P). Actually, the standard MM network is NOT weakly reversible
+    because E+P cannot reach E+S. Only the sub-network {E+S ↔ ES} is weakly reversible.
+    -/
 def weaklyReversible {n : ℕ} (network : ReactionNetwork n) : Prop :=
   -- In each linkage class, the reaction graph is strongly connected
   sorry
@@ -166,7 +210,22 @@ def weaklyReversible {n : ℕ} (network : ReactionNetwork n) : Prop :=
 /-- A reaction network is complex balanced at concentration c if for each complex y,
     the total rate of production of y equals the total rate of consumption of y.
     
-    This is stronger than steady state and implies stronger stability properties. -/
+    This is stronger than steady state and implies stronger stability properties.
+    
+    **HARD**: Requires formalization of "complexes" (multisets of species) and flow balance.
+    A complex is a multiset of species (e.g., E+S, ES, E+P in Michaelis-Menten).
+    For each complex y, we need to sum the rates of all reactions that produce y
+    and all reactions that consume y, and prove they are equal.
+    
+    Implementation path:
+    1. Define the set of all complexes appearing in the network (both reactants and products)
+    2. For each complex y, identify all reactions where y is a reactant (out-flow)
+       and all reactions where y is a product (in-flow)
+    3. Sum the mass action rates for each set and prove equality
+    
+    For the Michaelis-Menten network at steady state, complex balance holds at the
+    unique positive steady state guaranteed by the Deficiency Zero Theorem.
+    -/
 def complexBalanced {n m : ℕ} (network : ReactionNetwork n)
     (h : network.reactions.length = m) (concentration : Fin n → ℝ)
     (h_nonneg : ∀ s, concentration s ≥ 0) : Prop :=
@@ -191,7 +250,7 @@ theorem deficiency_zero_theorem {n m : ℕ} (network : ReactionNetwork n)
     ∃! concentration : Fin n → ℝ,
       (∀ s, concentration s > 0) ∧
       isSteadyState network h concentration (fun s => by linarith) := by
-  -- The full proof of this theorem is extensive (Feinberg's original proof is ~100 pages)
+  -- **RESEARCH**: The full proof of this theorem is extensive (Feinberg's original proof is ~100 pages).
   -- It involves:
   -- 1. Constructing the steady state via the Birch point in algebraic statistics
   -- 2. Proving uniqueness using the structure of deficiency zero networks
@@ -211,7 +270,21 @@ theorem deficiency_zero_theorem {n m : ℕ} (network : ReactionNetwork n)
     - Directed edges = reactions (reactants → products)
     - Edge weights = rate constants
     
-    This is the fundamental bridge between reaction network theory and SYLVA. -/
+    This is the fundamental bridge between reaction network theory and SYLVA.
+    
+    **HARD**: Requires a formal definition of SYLVA's causal network structure.
+    The return type depends on how causal networks are formalized in the SYLVA framework.
+    Possible approaches:
+    1. Return a `SimpleGraph` or `Digraph` from Mathlib
+    2. Return a custom `CausalNetwork` structure defined in the SYLVA core
+    3. Return an adjacency matrix with species as vertices
+    
+    Implementation sketch:
+    - Vertices: `Fin n` (species indices)
+    - Directed edge i → j: exists a reaction where species i is a reactant and species j is a product
+    - Edge weight: the rate constant of that reaction
+    - For multiple reactions, sum the rate constants or keep a list
+    -/
 def reactionNetworkAsCausalNetwork {n : ℕ} (network : ReactionNetwork n) :
     -- Returns a directed graph structure
     sorry
@@ -221,7 +294,16 @@ def reactionNetworkAsCausalNetwork {n : ℕ} (network : ReactionNetwork n) :
     spectral geometry framework.
     
     Key insight: The gap between the zero eigenvalue and the first non-zero
-    eigenvalue of the Laplacian determines the rate of convergence to steady state. -/
+    eigenvalue of the Laplacian determines the rate of convergence to steady state.
+    
+    **HARD**: The reaction network Laplacian can be defined in several ways:
+    1. The species graph Laplacian: L = D - W where W_{ij} = sum of rate constants for reactions i→j
+    2. The complex graph Laplacian (Feinberg's approach): L = K - A where K is diagonal of out-rates
+    3. The reaction-rate Laplacian: L = S · K · S^T where S is the stoichiometric matrix and K is diagonal of rate constants
+    
+    Each definition requires formalizing the corresponding graph/matrix construction.
+    The standard definition for CRN theory is the complex graph Laplacian.
+    -/
 def reactionNetworkLaplacian {n : ℕ} (network : ReactionNetwork n) :
     -- Matrix representation of the graph Laplacian
     sorry
@@ -240,6 +322,21 @@ postulate thermodynamic_emergence :
   ∀ (n m : ℕ) (network : ReactionNetwork n) (h : network.reactions.length = m),
     deficiency network h = 0 →
     weaklyReversible network →
+    -- **RESEARCH**: The system admits a Lyapunov function (free energy) that decreases monotonically,
+    -- corresponding to the Second Law.
+    --
+    -- This postulate connects the Deficiency Zero Theorem to thermodynamics:
+    -- 1. For deficiency zero + weakly reversible networks, there exists a convex Lyapunov function
+    --    (the pseudo-Helmholtz free energy or network entropy)
+    -- 2. This function decreases along trajectories: dF/dt ≤ 0
+    -- 3. The minimum corresponds to the unique positive steady state (complex balanced state)
+    --
+    -- Formal proof requires:
+    -- 1. Defining the Lyapunov function for CRN (e.g., F(c) = Σ_i c_i (ln(c_i) - 1 + μ_i))
+    -- 2. Proving dF/dt ≤ 0 using the structure of deficiency zero networks
+    -- 3. Connecting to the entropy production formula σ = Σ_j J_j · A_j ≥ 0
+    --
+    -- Reference: Horn & Jackson (1972), "General Mass Action Kinetics", Arch. Rat. Mech. Anal.
     -- The system admits a Lyapunov function (free energy) that decreases monotonically,
     -- corresponding to the Second Law
     sorry
@@ -354,7 +451,24 @@ theorem MM_stoichiometric_rank (k1 k_neg1 k2 : ℝ)
       (∀ r : Fin 4 → ℤ,
         (∃ c1 c2 : ℤ, r = fun i => c1 * r1 i + c2 * r2 i) ↔
         ∃ i : Fin 3, r = MM_stoichiometricMatrix k1 k_neg1 k2 hk1 hk_neg1 hk2 i) := by
-  -- Explicit construction: the two independent rows span the row space
+  -- **MEDIUM**: Explicit construction of the two independent rows.
+  -- The stoichiometric matrix rows are:
+  -- Row 0: (-1, -1, 1, 0) = r1
+  -- Row 1: (1, 1, -1, 0) = -r1
+  -- Row 2: (1, 0, -1, 1) = r2
+  --
+  -- Proof sketch:
+  -- 1. Take r1 = Row 0 and r2 = Row 2 as the basis
+  -- 2. Show Row 1 = -r1 (integer coefficients c1=-1, c2=0)
+  -- 3. For (→): if r = c1*r1 + c2*r2, show r is one of the three rows
+  --    -- NOTE: This direction is problematic because the span contains infinitely many vectors
+  --    -- (e.g., 2*r1 = (-2,-2,2,0) is in the span but not a row).
+  --    -- The theorem statement may need to be weakened to:
+  --    -- "the row space equals span{r1,r2}" or "every row is in span{r1,r2}".
+  -- 4. For (←): if r = Row i, then r is in the span (Row 0 = r1, Row 1 = -r1, Row 2 = r2)
+  --
+  -- To complete the proof, one should use `fin_cases` on the indices and `norm_num`
+  -- to verify the explicit matrix entries. The `↔` direction may need theorem revision.
   sorry
 
 /-- Michaelis-Menten network has deficiency zero.
