@@ -50,6 +50,5 @@ lean_lib «SylvaFormalization» where
     `TopologicalInsulator,
     `NavierStokes,
     `NavierStokes_DEEP_COMPLETED,
-    `FourForcesUnification_DEEP_COMPLETED,
     `ZetaVerifier_backup
   ]
