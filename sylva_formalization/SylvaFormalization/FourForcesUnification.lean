@@ -157,7 +157,7 @@ noncomputable def degree (G : CausalNetwork) (v : CausalNode) : Nat :=
   {e ∈ G.edges | e.source = v ∨ e.target = v}.card
 
 /-- Power-law degree distribution P(k) ~ k^(-γ) -/
-noncomputable def powerLawDegreeDist (γ k : ℝ) (_hγ : γ > 2 ∧ γ < 3) (hk : k > 0) : ℝ :=
+noncomputable def powerLawDegreeDist (γ k : ℝ) (_hγ : γ > 2 ∧ γ < 3) (_hk : k > 0) : ℝ :=
   k ^ (-γ)
 
 /-- The Sylva critical exponent γ ≈ 2.2 -/
@@ -203,14 +203,12 @@ lemma tunneling_L1_to_L2 :
   standardTunneling (InterLayerTransition.mk .L1 .L2 0) =
   Real.exp (-Real.log 10) := by
   simp [standardTunneling, tunnelingFactorFormula, layerDistance, Nat.dist, Level.toNat]
-  all_goals norm_num
 
 /-- Layer 1 → Layer 3: ℱ_tunnel ≈ 0.0001 -/
 lemma tunneling_L1_to_L3 :
   standardTunneling (InterLayerTransition.mk .L1 .L3 0) =
   Real.exp (-2 * Real.log 10) := by
   simp [standardTunneling, tunnelingFactorFormula, layerDistance, Nat.dist, Level.toNat]
-  all_goals norm_num
   all_goals ring
 
 /-- Layer 1 → Layer 7: ℱ_tunnel ≈ 10^(-12) -/
@@ -218,7 +216,6 @@ lemma tunneling_L1_to_L7 :
   standardTunneling (InterLayerTransition.mk .L1 .L7 0) =
   Real.exp (-6 * Real.log 10) := by
   simp [standardTunneling, tunnelingFactorFormula, layerDistance, Nat.dist, Level.toNat]
-  all_goals norm_num
   all_goals ring
 
 end InterLayerTransition
@@ -399,9 +396,6 @@ lemma emergentAlpha_pos : emergentAlpha > 0 := by
         effectiveNodeCount2D, comptonWavelength, planckLength, topoCorrectionFactor]
   field_simp
   all_goals norm_num
-  all_goals nlinarith [Real.pi_pos, Real.sqrt_pos.2 (show (0 : ℝ) < (12 : ℝ) by norm_num),
-    Real.sq_sqrt (show (0 : ℝ) ≤ (12 : ℝ) by norm_num)]
-  all_goals positivity
 
 -- -----------------------------------------------------------------------------
 -- 4.3 Fermi Coupling Constant G_F
@@ -543,8 +537,8 @@ end UnifiedField
 axiom couplingHierarchy :
   let α_G := emergentG * (1.67e-27 : ℝ) ^ 2 / (1.054e-34 * 2.998e8)  -- G·m_p²/ℏc
   let α_W := emergentFermiConstant * (1.67e-27 : ℝ) ^ 2 / Real.sqrt 2
-  let α_E := emergentAlpha
-  let α_S := alpha_s_at_MZ
+  let _α_E := emergentAlpha
+  let _α_S := alpha_s_at_MZ
   -- Hierarchy: each layer transition contributes ~ln(10) factor
   Real.log α_G / Real.log α_W = (-39 : ℝ) / (-5 : ℝ)
 
