@@ -57,10 +57,10 @@ instance : Group U1 where
     | U1.exp θ₁, U1.exp θ₂ => U1.exp (θ₁ + θ₂)
   one := U1.exp 0
   inv a := match a with | U1.exp θ => U1.exp (-θ)
-  mul_assoc := by intros; sorry
-  one_mul := by intros; sorry
-  mul_one := by intros; sorry
-  inv_mul_cancel := by intros; sorry
+  mul_assoc := by rintro ⟨a⟩ ⟨b⟩ ⟨c⟩; simp; rfl
+  one_mul := by rintro ⟨a⟩; simp; rfl
+  mul_one := by rintro ⟨a⟩; simp; rfl
+  inv_mul_cancel := by rintro ⟨a⟩; simp; rfl
 
 /-- Principal G-bundle over a manifold M.
     Framework: the full definition requires fiber bundles, local trivializations,
@@ -226,7 +226,7 @@ axiom alphaInverseIsChernSimonsLevel
 
 instance : GaugeGroup U1 where
   group := by infer_instance
-  smooth := by sorry
+  smooth := by trivial
 
 -- ============================================================
 -- Section 5: Connection to Causal Network (Bridge)

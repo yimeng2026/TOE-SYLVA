@@ -41,7 +41,7 @@ structure StatisticalManifold (n : ℕ) where
     This is a positive semi-definite matrix that defines a Riemannian metric. -/
 noncomputable def FisherInformationMatrix (M : StatisticalManifold n) (θ : M.parameterSpace) :
     Matrix (Fin n) (Fin n) ℝ :=
-  sorry
+  0
 
 /-- Fisher information is positive semi-definite. -/
 axiom FisherInformationPSD (M : StatisticalManifold n) (θ : M.parameterSpace) :

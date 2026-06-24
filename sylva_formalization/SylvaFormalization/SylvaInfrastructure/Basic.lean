@@ -268,9 +268,15 @@ theorem Ackermann3_eq : ∀ n, Ackermann 3 n = 2 ^ (n + 3) - 3 := by
     <;> omega
 
 /-- Ackermann3 的复杂度：O(2ⁿ) --/
-axiom Ackermann3_complexity :
-  bigO (fun n => Ackermann 3 n) (fun n => 2 ^ n)
-  -- Ackermann A(3,n) 复杂度 O(2ⁿ)：A(3,n) = 2^(n+3)-3，数学上直接计算，形式化需 bigO 定义完备，作为复杂度公理
+theorem Ackermann3_complexity :
+  bigO (fun n => Ackermann 3 n) (fun n => 2 ^ n) := by
+  rw [bigO, Ackermann3_eq]
+  use 8, 1
+  intro n hn
+  simp
+  have : 2 ^ (n + 3) - 3 ≤ 8 * 2 ^ n := by
+    omega
+  omega
 
 /-- Ackermann 函数 A(4, n) 是非原始递归的（增长极快） --/
 axiom Ackermann4_nonprimitive :

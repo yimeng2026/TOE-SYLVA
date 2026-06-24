@@ -54,13 +54,47 @@ def hasSignChange (f : ℝ → ℝ) (a b : ℝ) : Prop :=
 lemma zero_from_sign_change {f : ℝ → ℝ} {a b : ℝ} (hf : ContinuousOn f (Set.Icc a b))
     (hsc : hasSignChange f a b) (hab : a < b) :
     ∃ c, c ∈ Set.Icc a b ∧ f c = 0 := by
-  sorry
+  rcases hsc with h | h | h
+  · -- f a * f b < 0
+    have h0 : 0 ∈ Set.Icc (min (f a) (f b)) (max (f a) (f b)) := by
+      simp [min_le_iff, le_max_iff]
+      constructor
+      · cases le_or_lt (f a) (f b) <;> nlinarith
+      · cases le_or_lt (f a) (f b) <;> nlinarith
+    have h1 : Set.Icc (min (f a) (f b)) (max (f a) (f b)) ⊆ f '' Set.Icc a b := by
+      apply intermediate_value_Icc' hab hf
+    have h2 := h1 h0
+    simp at h2
+    exact h2
+  · -- f a = 0 ∧ a ≤ b
+    use a
+    constructor
+    · exact Set.mem_Icc.mpr ⟨by linarith, by linarith⟩
+    · exact h.1
+  · -- f b = 0 ∧ a ≤ b
+    use b
+    constructor
+    · exact Set.mem_Icc.mpr ⟨by linarith, by linarith⟩
+    · exact h.1
 
 -- Verify a specific zero on the critical line
 theorem verify_zero (t : ℝ) (h : t > 0) :
     ∃ ε > 0, ∀ δ, 0 < δ → δ < ε →
       hasSignChange (fun x => Real.sin (x - t)) (t - δ) (t + δ) := by
-  sorry
+  use Real.pi
+  constructor
+  · exact Real.pi_pos
+  intro δ hδ1 hδ2
+  have hsin : Real.sin δ > 0 := Real.sin_pos_of_pos_of_lt_pi hδ1 (by linarith [hδ2, Real.pi_pos])
+  simp [hasSignChange]
+  left
+  have h1 : Real.sin (t - δ - t) = -Real.sin δ := by
+    rw [show t - δ - t = -δ by ring]
+    rw [Real.sin_neg]
+  have h2 : Real.sin (t + δ - t) = Real.sin δ := by
+    rw [show t + δ - t = δ by ring]
+  rw [h1, h2]
+  nlinarith [hsin]
 
 -- Zero counting function (simplified for verified region)
 noncomputable def zeroCountUpTo (T : ℝ) : ℕ :=
@@ -81,20 +115,26 @@ def inInterval (x : ℝ) (i : Interval) : Prop := i.lower ≤ x ∧ x ≤ i.uppe
 
 -- Verified zeros are in their expected intervals
 theorem first_zero_in_interval : inInterval ZETA_ZERO_1 FIRST_ZERO_INTERVAL := by
-  sorry
+  simp [inInterval, ZETA_ZERO_1, FIRST_ZERO_INTERVAL, mkInterval]
+  all_goals norm_num
 
 theorem second_zero_in_interval : inInterval ZETA_ZERO_2 SECOND_ZERO_INTERVAL := by
-  sorry
+  simp [inInterval, ZETA_ZERO_2, SECOND_ZERO_INTERVAL, mkInterval]
+  all_goals norm_num
 
 theorem third_zero_in_interval : inInterval ZETA_ZERO_3 THIRD_ZERO_INTERVAL := by
-  sorry
+  simp [inInterval, ZETA_ZERO_3, THIRD_ZERO_INTERVAL, mkInterval]
+  all_goals norm_num
 
 theorem fourth_zero_in_interval : inInterval ZETA_ZERO_4 FOURTH_ZERO_INTERVAL := by
-  sorry
+  simp [inInterval, ZETA_ZERO_4, FOURTH_ZERO_INTERVAL, mkInterval]
+  all_goals norm_num
 
 -- Zero counting verification
 theorem zero_count_correct (hT : ZETA_ZERO_4 < T) : zeroCountUpTo T = 4 := by
-  sorry
+  simp [zeroCountUpTo]
+  all_goals norm_num
+  all_goals linarith
 
 -- Error bound in verified region
 theorem error_bound_verified_region (T : ℝ) (hT : 0 < T ∧ T ≤ 100) :

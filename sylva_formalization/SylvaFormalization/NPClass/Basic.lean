@@ -82,9 +82,10 @@ lemma runN_comp {Γ Λ σ} [Inhabited Γ] [Inhabited σ]
   | succ a ih =>
     simp [runN]
     split
-    · rw [runN_stable M (by sorry)]
-      simp [runN, (by sorry)]
-    · apply ih
+    next h =>
+      cases b <;> simp [runN, h]
+    next h =>
+      apply ih
 
 end TM1
 
