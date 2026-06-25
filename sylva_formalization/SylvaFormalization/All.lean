@@ -66,3 +66,9 @@ import SYLVA_Causality
 import SYLVA_Duality
 import SYLVA_Geometry
 import TopologicalQuantumComputing
+import SYLVA_Language
+import SYLVA_Complexity
+import SYLVA_Observation
+import SYLVA_Matter
+import SYLVA_Life
+import SYLVA_Space
