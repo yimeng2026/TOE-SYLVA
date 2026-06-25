@@ -59,4 +59,6 @@ import SYLVA_Emergence
 import SYLVA_Symmetry
 import SYLVA_Scale
 import SYLVA_Incompleteness
+import SYLVA_Information
+import SYLVA_Computability
 import TopologicalQuantumComputing

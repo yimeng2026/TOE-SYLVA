@@ -63,5 +63,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Symmetry,
     `SYLVA_Scale,
     `SYLVA_Incompleteness,
+    `SYLVA_Information,
+    `SYLVA_Computability,
     `TopologicalQuantumComputing
   ]
