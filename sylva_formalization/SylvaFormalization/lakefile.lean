@@ -79,5 +79,9 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Network,
     `SYLVA_OptimalControl,
     `SYLVA_Scaling,
-    `SYLVA_Feedback
+    `SYLVA_Feedback,
+    `SYLVA_CollectiveIntelligence,
+    `SYLVA_Resilience,
+    `SYLVA_Evolution,
+    `SYLVA_ConnectionLaws
   ]

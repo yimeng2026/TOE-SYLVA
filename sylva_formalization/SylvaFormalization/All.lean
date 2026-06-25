@@ -76,3 +76,7 @@ import SYLVA_Network
 import SYLVA_OptimalControl
 import SYLVA_Scaling
 import SYLVA_Feedback
+import SYLVA_CollectiveIntelligence
+import SYLVA_Resilience
+import SYLVA_Evolution
+import SYLVA_ConnectionLaws
