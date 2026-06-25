@@ -53,6 +53,9 @@ lean_lib «SylvaFormalization» where
     `GaugeGravityCorrespondence,
     `ComplexityPhysicalSystems,
     `CosmologicalThermodynamics,
+    `QuantumBiologyBridge,
+    `MachineLearningPhysics,
+    `NumberTheoryPhysics,
     `MathematicalTools.ProofPatternLibrary,
     `SYLVA_Hierarchy
   ]

@@ -49,5 +49,8 @@ import TopologicalStatMech
 import GaugeGravityCorrespondence
 import ComplexityPhysicalSystems
 import CosmologicalThermodynamics
+import QuantumBiologyBridge
+import MachineLearningPhysics
+import NumberTheoryPhysics
 import MathematicalTools.ProofPatternLibrary
 import SYLVA_Hierarchy
