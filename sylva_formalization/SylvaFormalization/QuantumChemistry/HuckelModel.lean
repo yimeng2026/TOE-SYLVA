@@ -186,10 +186,10 @@ def orbitalCoefficients {n : ℕ} (G : MolecularGraph n) (params : HuckelParamet
       have hj : j.val < 6 := by rw [h] at *; exact j.isLt
       match k.val with
       | 0 => 1 / Real.sqrt 6
-      | 1 => Real.cos (Real.pi * j.val / 6) / Real.sqrt 6
-      | 2 => Real.sin (Real.pi * j.val / 6) / Real.sqrt 6
-      | 3 => Real.cos (2 * Real.pi * j.val / 6) / Real.sqrt 6
-      | 4 => Real.sin (2 * Real.pi * j.val / 6) / Real.sqrt 6
+      | 1 => Real.cos (Real.pi * j.val / 3) / Real.sqrt 3
+      | 2 => Real.sin (Real.pi * j.val / 3) / Real.sqrt 3
+      | 3 => Real.cos (2 * Real.pi * j.val / 3) / Real.sqrt 3
+      | 4 => Real.sin (2 * Real.pi * j.val / 3) / Real.sqrt 3
       | 5 => (1 / Real.sqrt 6) * (-1 : ℝ) ^ j.val
       | _ => 0
     else
@@ -205,7 +205,8 @@ def piElectronEnergy {n : ℕ} (G : MolecularGraph n) (params : HuckelParameters
 /-- Bond order between atoms i and j:
     P_{ij} = Σ_{k occupied} c_{ki} · c_{kj}
 
-    For benzene: all C-C bond orders = 0.5 (resonance average)
+    For benzene: all C-C bond orders = 2/3 (exact Hückel value)
+    The "resonance" value of 0.5 is a pedagogical approximation.
     In ethylene: C=C bond order = 1.0 -/
 def bondOrder {n : ℕ} (G : MolecularGraph n) (params : HuckelParameters)
     (n_electrons : ℕ) (h_n : n_electrons / 2 < n) (i j : Fin n) : ℝ :=
@@ -301,41 +302,40 @@ theorem benzene_pi_energy :
   simp [piElectronEnergy, orbitalEnergies, BenzeneParameters]
   norm_num
 
-/-- All C-C bond orders in benzene equal 0.5 (Kekulé average).
+/-- All C-C bond orders in benzene equal 2/3 (exact Hückel value).
+    The "resonance" value of 0.5 is a pedagogical approximation from Kekulé structures.
     This is the quantum mechanical origin of "resonance".
     
-    **HARD**: Bond order is computed from the orbital coefficients (eigenvectors).
-    For benzene, the occupied orbitals are k = 0, 1, 2 (3 orbitals, 6 electrons).
-    The eigenvectors of the 6-cycle are the Fourier modes:
-    ψ_k(j) = (1/√6) exp(2πijk/6)
-    
-    Bond order P_{ij} = 2 Σ_{k=0}^{2} c_{ki} c_{kj}
-    For adjacent atoms i, j in benzene:
-    P_{ij} = (2/6) Σ_{k=0}^{2} [cos(2πk(i-j)/6) + cos(2πk(i+j)/6)]
-    
-    After simplification, for any adjacent pair: P_{ij} = 0.5
-    
-    Proof strategy:
-    1. Define the explicit eigenvectors of the 6-cycle (Fourier modes)
-    2. Substitute into the bond order formula
-    3. Evaluate the finite sum using trigonometric identities
-    4. Verify the result equals 0.5 using `norm_num` and `Real.cos` properties
+    Proof: For adjacent atoms i, j in the 6-cycle (j = i±1), the bond order is:
+    P_{ij} = 2 Σ_{k=0}^{2} c_{ki} c_{kj}
+           = 2 [1/6 + cos(π(i-j)/3)/3] 
+           = 2 [1/6 + 1/6] = 2/3
+    using the product-to-sum formula and cos(π/3) = 1/2.
     -/
 theorem benzene_bond_order (i j : Fin 6) (h_adj : BenzeneGraph.adjacency i j = 1) :
-    bondOrder BenzeneGraph BenzeneParameters 6 (by trivial) i j = (0.5 : ℝ) := by
-  simp [bondOrder, orbitalCoefficients, BenzeneParameters, BenzeneGraph, adjacency]
-  -- For adjacent atoms in benzene (6-cycle), the bond order is 0.5
-  -- This follows from the Hückel molecular orbital theory calculation
-  -- where the π-electron density is delocalized over all C-C bonds
-  -- For a rigorous proof: expand the orbital coefficients (Fourier modes),
-  -- compute the bond order formula P_{ij} = 2 Σ_{k occ} c_{ki} c_{kj},
-  -- and verify the trigonometric sum equals 1/2 for all adjacent pairs.
-  -- This is a standard result in quantum chemistry (Coulson-Rushbrooke theorem).
-  --
-  -- **Hard**: Full proof requires explicit evaluation of:
-  -- P_{ij} = (2/6) [1 + cos(π(i-j)/3) + cos(2π(i-j)/3)] = 0.5 for j = i±1
-  -- The cosine sum evaluates to 1/2 for all adjacent pairs due to the 6-fold symmetry.
-  sorry
+    bondOrder BenzeneGraph BenzeneParameters 6 (by trivial) i j = (2 / 3 : ℝ) := by
+  fin_cases i <;> fin_cases j
+  <;> simp [bondOrder, orbitalCoefficients, BenzeneGraph, adjacency, BenzeneParameters] at h_adj ⊢
+  <;> try { contradiction }
+  <;> all_goals
+    try {
+      have h1 : 2 * Real.pi / 3 = Real.pi - Real.pi / 3 := by ring
+      have h2 : 4 * Real.pi / 3 = Real.pi + Real.pi / 3 := by ring
+      have h3 : 5 * Real.pi / 3 = 2 * Real.pi - Real.pi / 3 := by ring
+      try { rw [h1] }
+      try { rw [h2] }
+      try { rw [h3] }
+      simp [Real.cos_zero, Real.sin_zero, Real.cos_pi_div_three, Real.sin_pi_div_three,
+            Real.cos_pi, Real.sin_pi, Real.cos_pi_sub, Real.sin_pi_sub,
+            Real.cos_add, Real.sin_add, Real.cos_sub, Real.sin_sub,
+            Real.cos_two_pi, Real.sin_two_pi]
+      field_simp
+      all_goals try { positivity }
+      simp [Real.sqrt_mul_self]
+      all_goals try { norm_num }
+      try { ring_nf }
+      try { norm_num }
+    }
 
 -- ============================================================================
 -- Section 5: Quantum Walk on Molecular Graphs

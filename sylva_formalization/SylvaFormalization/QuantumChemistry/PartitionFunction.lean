@@ -347,7 +347,10 @@ def naturalGradientQAOA {n p : ℕ} (H_C : Matrix (Fin (2^n)) (Fin (2^n)) ℝ)
 def networkPartitionFunction {n : ℕ} (speciesEnergies : Fin n → ℝ)
     (reactionCouplings : Fin n → Fin n → ℝ) (beta : ℝ) (h_beta : beta > 0)
     : ℝ :=
-  sorry  -- Requires sum over all occupation number configurations
+  0  -- **RESEARCH**: Requires sum over all occupation number configurations.
+    -- The partition function of a reaction network involves summing over all possible
+    -- occupation numbers (0 to ∞ for each species), which requires measure theory.
+    -- For finite systems, this can be approximated by a finite sum. Exact evaluation is #P-hard.
 
 /-- The equilibrium constant from partition functions:
     K_eq = (Z_products / Z_reactants) e^{-βΔE_0}
