@@ -57,5 +57,6 @@ lean_lib «SylvaFormalization» where
     `MachineLearningPhysics,
     `NumberTheoryPhysics,
     `MathematicalTools.ProofPatternLibrary,
-    `SYLVA_Hierarchy
+    `SYLVA_Hierarchy,
+    `SYLVA_Meta
   ]
