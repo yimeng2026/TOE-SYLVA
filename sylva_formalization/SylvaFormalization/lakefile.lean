@@ -60,5 +60,6 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Hierarchy,
     `SYLVA_Meta,
     `SYLVA_Emergence,
+    `SYLVA_Symmetry,
     `TopologicalQuantumComputing
   ]

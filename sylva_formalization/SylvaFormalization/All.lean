@@ -56,4 +56,5 @@ import MathematicalTools.ProofPatternLibrary
 import SYLVA_Hierarchy
 import SYLVA_Meta
 import SYLVA_Emergence
+import SYLVA_Symmetry
 import TopologicalQuantumComputing
