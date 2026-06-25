@@ -75,5 +75,9 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Observation,
     `SYLVA_Matter,
     `SYLVA_Life,
-    `SYLVA_Space
+    `SYLVA_Space,
+    `SYLVA_Network,
+    `SYLVA_OptimalControl,
+    `SYLVA_Scaling,
+    `SYLVA_Feedback
   ]

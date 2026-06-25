@@ -72,3 +72,7 @@ import SYLVA_Observation
 import SYLVA_Matter
 import SYLVA_Life
 import SYLVA_Space
+import SYLVA_Network
+import SYLVA_OptimalControl
+import SYLVA_Scaling
+import SYLVA_Feedback
