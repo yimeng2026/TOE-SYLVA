@@ -63,4 +63,6 @@ import SYLVA_Information
 import SYLVA_Computability
 import SYLVA_Dynamics
 import SYLVA_Causality
+import SYLVA_Duality
+import SYLVA_Geometry
 import TopologicalQuantumComputing
