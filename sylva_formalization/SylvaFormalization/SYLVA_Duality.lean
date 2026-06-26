@@ -81,7 +81,8 @@ import SylvaFormalization.FifteenConstants
 
 namespace Sylva.SYLVASDuality
 
-open Real SYLVA_Hierarchy Filter Topology
+open Real SYLVA_Hierarchy Filter
+open scoped Topology
 
 -- ============================================================================
 -- Section 1: Electromagnetic Duality — E ↔ B
