@@ -153,8 +153,16 @@ def FractalDimension (n r : ℕ) : ℝ := Real.log n.toFloat / Real.log (1 / r.t
     of the fractal network structure as the optimal solution to the problem of resource distribution in
     living organisms. -/
 
-axiom kleiber_law_universal (M₁ M₂ : ℝ) (h_M₁ : M₁ > 0) (h_M₂ : M₂ > 0) :
-    KleiberLaw M₁ / KleiberLaw M₂ = (M₁ / M₂)^(3/4)
+theorem kleiber_law_universal (M₁ M₂ : ℝ) (h_M₁ : M₁ > 0) (h_M₂ : M₂ > 0) :
+    KleiberLaw M₁ / KleiberLaw M₂ = (M₁ / M₂)^(3/4) := by
+  unfold KleiberLaw
+  have h1 : (70 * M₁^(3/4 : ℝ)) / (70 * M₂^(3/4 : ℝ)) = M₁^(3/4 : ℝ) / M₂^(3/4 : ℝ) := by
+    field_simp
+    <;> ring
+  have h2 : M₁^(3/4 : ℝ) / M₂^(3/4 : ℝ) = (M₁ / M₂)^(3/4 : ℝ) := by
+    rw [← Real.div_rpow]
+    all_goals positivity
+  rw [h1, h2]
 
 -- ============================================================================
 -- Section 2: Urban Scaling — City Size, GDP, Infrastructure
@@ -235,8 +243,10 @@ def OptimalCitySize (β_social β_infrastructure : ℝ) : ℝ :=
     The optimal city size is determined by the balance between the superlinear benefits of agglomeration
     and the sublinear costs of infrastructure. -/
 
-axiom urban_gdp_superlinear (N : ℝ) (h_N : N > 0) :
-    UrbanGDPScaling N = N^(1.15)
+theorem urban_gdp_superlinear (N : ℝ) (h_N : N > 0) :
+    UrbanGDPScaling N = N^(1.15) := by
+  unfold UrbanGDPScaling
+  rfl
 
 -- ============================================================================
 -- Section 3: Physical Scaling — Critical Phenomena, Renormalization Group
@@ -312,6 +322,8 @@ def RenormalizationGroupTransformation (x : ℝ) (scale_factor : ℝ) : ℝ :=
     is determined by the fixed point of the RG transformation, and all systems in the same universality class
     flow to the same fixed point. -/
 
+-- 待证明：需要证明自由能在临界点附近是齐次函数，涉及重整化群理论和标度假设
+-- 这是统计物理的核心假设，已在 Ising 模型等特定系统中得到验证
 axiom scaling_relations_universal (α β γ δ ν η d : ℝ)
     (h_α : α > 0) (h_β : β > 0) (h_γ : γ > 0) (h_δ : δ > 1) (h_ν : ν > 0) (h_η : η > 0) :
     RushbrookeRelation α β γ ∧ WidomRelation γ β δ ∧ FisherRelation γ ν η ∧ JosephsonRelation α ν d
@@ -380,8 +392,10 @@ def StructureFunction (n : ℕ) (r ε : ℝ) : ℝ := r^(n/3)
     and η. The -5/3 scaling is a profound result: it shows that the energy cascade is a universal process that is
     independent of the specific geometry of the flow. -/
 
-axiom kolmogorov_scaling_universal (k ε C : ℝ) (h_k : k > 0) (h_ε : ε > 0) :
-    KolmogorovSpectrum k ε C = C * ε^(2/3) * k^(-5/3)
+theorem kolmogorov_scaling_universal (k ε C : ℝ) (h_k : k > 0) (h_ε : ε > 0) :
+    KolmogorovSpectrum k ε C = C * ε^(2/3) * k^(-5/3) := by
+  unfold KolmogorovSpectrum
+  rfl
 
 -- ============================================================================
 -- Section 5: Cosmological Scaling — Big Bang, Expansion, Dark Energy
@@ -454,11 +468,16 @@ def ScaleFactor (t : ℝ) (dominant_component : String) : ℝ :=
     Big Bang to the present day. The scaling laws are a consequence of the Friedmann equations and the conservation
     of energy, and they are universal: they apply to all homogeneous and isotropic universes. -/
 
-axiom cosmological_scaling_universal (t : ℝ) (h_t : t > 0) (w : ℝ) :
+theorem cosmological_scaling_universal (t : ℝ) (h_t : t > 0) (w : ℝ) :
     let a := ScaleFactor t
     (if w = 0 then a "matter" = t^(2/3) else
      if w = 1/3 then a "radiation" = t^(1/2) else
-     if w = -1 then a "dark_energy" = Real.exp t else True)
+     if w = -1 then a "dark_energy" = Real.exp t else True) := by
+  intro a
+  split_ifs
+  all_goals
+    simp [a, ScaleFactor]
+    <;> rfl
 
 -- ============================================================================
 -- Section 6: Neural Network Scaling — Performance vs Parameters, Data, Compute
@@ -527,8 +546,10 @@ def ScalingLaw (Y M β : ℝ) : ℝ := Y * M^β
     marginal gain decreases with model size. The optimal model size is determined by the trade-off between performance and
     cost (training compute, inference latency, memory). -/
 
-axiom neural_network_scaling_universal (N L_∞ a α : ℝ) (h_N : N > 0) (h_α : α > 0) :
-    LossScalingParameters N L_∞ a α = L_∞ + a * N^(-α)
+theorem neural_network_scaling_universal (N L_∞ a α : ℝ) (h_N : N > 0) (h_α : α > 0) :
+    LossScalingParameters N L_∞ a α = L_∞ + a * N^(-α) := by
+  unfold LossScalingParameters
+  rfl
 
 -- ============================================================================
 -- Section 7: Cross-Disciplinary Bridges — Scaling Laws as Universal Language
