@@ -87,6 +87,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_HierarchyOfSciences,
     `SYLVA_ResearchProblems,
     `SYLVA_CrossModuleTheorems,
+    `SYLVA_UnifiedPhysics,
     `SYLVA_CrossReferences,
     `HiggsMass,
     `HiggsPotential,

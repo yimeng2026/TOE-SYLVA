@@ -537,7 +537,31 @@ def CrossModuleProblems : List CrossModuleProblem := [
     theoremB := "von_neumann_entropy_subadditivity",
     crossQuestion := "Is the Tsirelson bound (2√2) a consequence of the subadditivity of quantum entropy? Does the Bell inequality violation saturate the entropy bound?",
     expectedType := "open problem",
-    significance := "The Tsirelson bound is the maximum quantum violation of the CHSH inequality. The subadditivity of von Neumann entropy is a fundamental property of quantum information. If the Tsirelson bound is a consequence of subadditivity, then quantum non-locality is a consequence of quantum information theory. This would be a profound unification of quantum foundations and quantum information." }
+    significance := "The Tsirelson bound is the maximum quantum violation of the CHSH inequality. The subadditivity of von Neumann entropy is a fundamental property of quantum information. If the Tsirelson bound is a consequence of subadditivity, then quantum non-locality is a consequence of quantum information theory. This would be a profound unification of quantum foundations and quantum information." },
+
+  -- 黑洞信息悖论: 连接 QuantumGravity + SYLVA_Information + SYLVA_Causality
+  { involvedModules := ["QuantumGravity", "SYLVA_Information", "SYLVA_Causality"],
+    theoremA := "BlackHoleInformationParadox_Sharpens",
+    theoremB := "von_neumann_entropy_subadditivity",
+    crossQuestion := "Does the black hole information paradox violate the subadditivity of von Neumann entropy? If the Hawking radiation is thermal (mixed state), then the total entropy S(ρ_total) = S(ρ_BH) + S(ρ_rad). But subadditivity requires S(ρ_total) ≤ S(ρ_BH) + S(ρ_rad). Does the Page curve resolve this by showing that the entanglement entropy first increases then decreases, restoring unitarity?",
+    expectedType := "open problem",
+    significance := "The black hole information paradox is the central open problem in quantum gravity. It asks whether quantum mechanics (unitarity) or general relativity (Hawking radiation) is wrong. If the information is preserved, then the Bekenstein-Hawking entropy must be interpreted as entanglement entropy, and the Page curve must be explained by quantum gravity corrections. This connects quantum information (SYLVA_Information), quantum gravity (QuantumGravity), and causality (the arrow of time: the Page curve defines a time direction for information recovery)." },
+
+  -- 量子引力中的涌现时空: 连接 SYLVA_Emergence + QuantumGravity + SYLVA_Geometry
+  { involvedModules := ["SYLVA_Emergence", "QuantumGravity", "SYLVA_Geometry"],
+    theoremA := "causal_emergence_theorem",
+    theoremB := "bekenstein_holographic_equivalence",
+    crossQuestion := "Is spacetime geometry emergent from the entanglement structure of quantum states? In AdS/CFT, the bulk geometry is encoded in the boundary CFT entanglement (Ryu-Takayanagi). If the geometry is emergent, then the emergence of spacetime is a special case of the causal emergence theorem: the macro-level (bulk geometry) has higher effective information than the micro-level (boundary CFT).",
+    expectedType := "conjecture",
+    significance := "The emergence of spacetime from quantum entanglement is one of the deepest ideas in quantum gravity (Van Raamsdonk, 2010; Maldacena & Susskind, 2013). If proven, it would unify the theory of emergence (SYLVA_Emergence), quantum gravity (QuantumGravity), and geometry (SYLVA_Geometry): spacetime is not fundamental but emergent from the pattern of quantum correlations." },
+
+  -- 意识作为整合信息的物理极限: 连接 SYLVA_Emergence (IIT) + SYLVA_Complexity + QuantumBiologyBridge
+  { involvedModules := ["SYLVA_Emergence", "SYLVA_Complexity", "QuantumBiologyBridge"],
+    theoremA := "integrated_information_nonnegative",
+    theoremB := "FMO_efficiency_quantum_channel_bound",
+    crossQuestion := "Is consciousness (Φ) a physical limit on the efficiency of quantum information processing in biological systems? The Integrated Information Theory (IIT) posits that consciousness is Φ, the minimum information loss under partition. If Φ is NP-hard to compute (as suggested by SYLVA_Complexity), then consciousness may be a fundamental limit on biological quantum computation. Does the FMO complex's quantum efficiency approach this limit?",
+    expectedType := "conjecture",
+    significance := "This connects three frontiers: the neuroscience of consciousness (IIT in SYLVA_Emergence), the computational complexity of consciousness (SYLVA_Complexity), and the quantum biology of photosynthesis (QuantumBiologyBridge). If consciousness is a physical limit of integrated information, then the FMO complex's near-perfect quantum efficiency may be a biological realization of the theoretical maximum Φ." }
 ]
 
 -- ============================================================================

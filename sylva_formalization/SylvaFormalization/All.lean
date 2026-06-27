@@ -83,6 +83,7 @@ import SYLVA_ConnectionLaws
 import SYLVA_HierarchyOfSciences
 import SYLVA_ResearchProblems
 import SYLVA_CrossModuleTheorems
+import SYLVA_UnifiedPhysics
 import SYLVA_CrossReferences
 import HiggsMass
 import HiggsPotential
