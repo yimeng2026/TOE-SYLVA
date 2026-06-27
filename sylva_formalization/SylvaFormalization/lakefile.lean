@@ -89,6 +89,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_CrossModuleTheorems,
     `SYLVA_UnifiedPhysics,
     `SYLVA_CrossReferences,
+    `SYLVA_QuantumChaos,
     `HiggsMass,
     `HiggsPotential,
     `SYLVA_AdS_CFT,

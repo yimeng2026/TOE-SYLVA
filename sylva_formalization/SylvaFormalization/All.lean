@@ -85,6 +85,7 @@ import SYLVA_ResearchProblems
 import SYLVA_CrossModuleTheorems
 import SYLVA_UnifiedPhysics
 import SYLVA_CrossReferences
+import SYLVA_QuantumChaos
 import HiggsMass
 import HiggsPotential
 import SYLVA_AdS_CFT

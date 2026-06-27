@@ -561,7 +561,23 @@ def CrossModuleProblems : List CrossModuleProblem := [
     theoremB := "FMO_efficiency_quantum_channel_bound",
     crossQuestion := "Is consciousness (Φ) a physical limit on the efficiency of quantum information processing in biological systems? The Integrated Information Theory (IIT) posits that consciousness is Φ, the minimum information loss under partition. If Φ is NP-hard to compute (as suggested by SYLVA_Complexity), then consciousness may be a fundamental limit on biological quantum computation. Does the FMO complex's quantum efficiency approach this limit?",
     expectedType := "conjecture",
-    significance := "This connects three frontiers: the neuroscience of consciousness (IIT in SYLVA_Emergence), the computational complexity of consciousness (SYLVA_Complexity), and the quantum biology of photosynthesis (QuantumBiologyBridge). If consciousness is a physical limit of integrated information, then the FMO complex's near-perfect quantum efficiency may be a biological realization of the theoretical maximum Φ." }
+    significance := "This connects three frontiers: the neuroscience of consciousness (IIT in SYLVA_Emergence), the computational complexity of consciousness (SYLVA_Complexity), and the quantum biology of photosynthesis (QuantumBiologyBridge). If consciousness is a physical limit of integrated information, then the FMO complex's near-perfect quantum efficiency may be a biological realization of the theoretical maximum Φ." },
+
+  -- 量子混沌与量子引力的联系: 连接 QuantumGravity + SYLVA_QuantumChaos + SYLVA_Information
+  { involvedModules := ["QuantumGravity", "SYLVA_QuantumChaos", "SYLVA_Information"],
+    theoremA := "butterfly_effect_lyapunov",
+    theoremB := "BekensteinHawkingEntropy",
+    crossQuestion := "Is the interior of a black hole a quantum chaotic system? The Maldacena-Shenker-Stanford (MSS) bound on the quantum Lyapunov exponent (λ_L ≤ 2πk_B T/ħ) is saturated by black holes and the Sachdev-Ye-Kitaev (SYK) model. If black holes are maximally chaotic, then the butterfly effect (OTOC growth) inside the horizon is the mechanism by which information is scrambled and eventually released via Hawking radiation. Does the saturation of the MSS bound imply that black hole thermalization is the fastest possible quantum information scrambling process?",
+    expectedType := "open problem",
+    significance := "This connects quantum gravity (QuantumGravity), quantum chaos (SYLVA_QuantumChaos), and quantum information theory (SYLVA_Information). If black holes are maximally chaotic systems, the holographic principle and AdS/CFT correspondence can be understood as a quantum chaos phenomenon: the bulk geometry encodes the scrambled quantum information of the boundary CFT. The resolution of the black hole information paradox may require understanding quantum chaos in quantum gravity." },
+
+  -- 热化与涌现的等价性: 连接 SYLVA_Emergence + SYLVA_Dynamics + SYLVA_Complexity
+  { involvedModules := ["SYLVA_Emergence", "SYLVA_Dynamics", "SYLVA_Complexity"],
+    theoremA := "thermalization_entropy_growth",
+    theoremB := "causal_emergence_theorem",
+    crossQuestion := "Is thermalization of a many-body system equivalent to causal emergence? In quantum thermalization, the von Neumann entropy of a subsystem grows until it reaches the thermal value, and the local observables lose memory of the initial state (ETH). In causal emergence, the effective information at the macro level exceeds the micro level when the coarse-graining is chosen optimally. Does the process of thermalization — the emergence of a thermal macro-state from microscopic unitary dynamics — satisfy the conditions of causal emergence? If so, the thermal state is the 'macro-level' with higher effective information than the initial pure state (micro-level), and the Hamiltonian dynamics is the coarse-graining map.",
+    expectedType := "conjecture",
+    significance := "This unifies three fundamental concepts: thermalization (SYLVA_Dynamics), causal emergence (SYLVA_Emergence), and computational complexity (SYLVA_Complexity). If thermalization is a form of causal emergence, then the Eigenstate Thermalization Hypothesis (ETH) is a special case of the causal emergence theorem, and the entropy growth during thermalization is the increase in effective information. The complexity of predicting thermalization (simulating quantum dynamics) may be related to the computational complexity of computing integrated information (Φ)." }
 ]
 
 -- ============================================================================
