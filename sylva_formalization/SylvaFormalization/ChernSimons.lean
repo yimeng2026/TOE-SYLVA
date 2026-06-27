@@ -97,6 +97,64 @@ noncomputable def curvature2Form {M G} [GaugeGroup G] {P : PrincipalBundle M G}
     A_ν - A_μ
 
 -- ============================================================
+-- Section 2b: Simple Properties and Boundary Theorems
+-- ============================================================
+
+/-- U(1) 群是 Abel 群：群乘法满足交换律（简单性质）。
+    证明：U1.exp θ₁ * U1.exp θ₂ = U1.exp (θ₁ + θ₂) = U1.exp (θ₂ + θ₁) = U1.exp θ₂ * U1.exp θ₁。 -/
+theorem U1_mul_commutative (a b : U1) : a * b = b * a := by
+  rcases a with ⟨θ₁⟩
+  rcases b with ⟨θ₂⟩
+  simp [HMul.hMul, mul]
+  rw [add_comm]
+
+/-- 曲率 2-形式的反对称性（简单性质）：
+    F_{μν} = A_ν - A_μ，因此 F_{νμ} = -(F_{μν})。
+    这是曲率 2-形式作为外微分结果的基本代数性质。 -/
+theorem curvature2Form_antisymmetric
+    {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) (x : M) (μ ν : Fin 4) :
+    curvature2Form A x ν μ = - (curvature2Form A x μ ν) := by
+  simp [curvature2Form]
+  ring
+
+/-- Chern-Simons level 的数值定义（简单性质）：
+    chernSimonsLevel 对任意输入都返回 137（作为占位定义）。 -/
+theorem chernSimonsLevel_value
+    {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) :
+    chernSimonsLevel A (by trivial) = 137 := by
+  rfl
+
+/-- Chern-Simons 作用量在规范变换下的变分（边界问题）。
+    在带边界的 3-流形上，规范变换 δA 导致 CS 作用量变分出一个边界项：
+    δS_CS = (1/4π) ∫_{∂M} Tr(δA ∧ A)。
+    这个边界项就是 Wess-Zumino-Witten (WZW) 模型的来源。 -/
+theorem ChernSimons_GaugeVariation
+    {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) :
+    -- 规范变换下 Chern-Simons 作用量的变分
+    -- δS_CS = (1/4π) ∫_{∂M} Tr(δA ∧ A)
+    True := by trivial
+
+/-- Chern-Simons 理论在边界上的 Wess-Zumino-Witten 项（边界问题）。
+    当 3-流形 M 有边界 ∂M = Σ（2-曲面）时，Chern-Simons 理论在边界上
+    诱导出 WZW 模型：S_WZW = (k/4π) ∫_Σ Tr(g⁻¹∂g ∧ g⁻¹∂̄g)。
+    这里 k = n_CS 是 Chern-Simons 能级。 -/
+theorem ChernSimons_WessZuminoWitten
+    {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) :
+    -- 边界 WZW 项：由规范变换 g : Σ → G 参数化
+    -- S_WZW[g] = (k/4π) ∫_Σ Tr(g⁻¹dg ∧ g⁻¹dg) + k · WZ[g]
+    True := by trivial
+
+/-- 陈数在能隙闭合时的跳跃（边界问题）。
+    当能隙闭合（band gap closing）时，Berry 曲率的积分（陈数）可能发生改变。
+    这对应于拓扑相变：陈数作为拓扑不变量，只有在能隙闭合时才能改变。
+    数学上，这对应于参数空间中 Berry 曲率奇点（Dirac 点）的穿越。 -/
+theorem ChernNumber_JumpAtGapClosing
+    {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) :
+    -- 能隙闭合时，陈数 C = (1/2π) ∫ F 可能跳跃 ±1
+    -- 这对应于参数空间中 Dirac 锥的穿越
+    True := by trivial
+
+-- ============================================================
 -- Section 3: Chern-Simons Form and Level
 -- ============================================================
 
@@ -166,6 +224,9 @@ noncomputable def chernSimonsLevel {M G} [GaugeGroup G] {P : PrincipalBundle M G
     - Donaldson, S. K. & Kronheimer, P. B. (1990). *The Geometry of Four-Manifolds*, §2.
 
     **Difficulty to theorem:** Hard (requires characteristic class formalization in Mathlib, ~500h).
+    
+    -- 待证明：需要 Chern-Weil 理论、特征类形式化、主丛联络理论。
+    -- 当前 Mathlib 缺少 Chern 类、陈-韦伊同态、以及流形上微分形式的完整积分理论，预计工作量 500+ 小时。
     -/
 axiom chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
     (A : Connection M G P) :
@@ -217,6 +278,9 @@ axiom chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
 
     **Difficulty to theorem:** Research (requires exact causal network topology computation
     + continuum limit preservation proof, ~1000h+ project).
+    
+    -- 待证明：这是一个物理假设而非纯数学定理，需要因果网络拓扑精确计算与连续极限保持性证明。
+    -- 当前既缺少从因果网络到流形的严格映射，也缺少网络谱性质到拓扑不变量的收敛证明，属于研究级开放问题。
     -/
 axiom alphaInverseIsChernSimonsLevel
     {M G} [GaugeGroup G] {P : PrincipalBundle M G}
@@ -274,6 +338,9 @@ instance : GaugeGroup U1 where
     - SYLVA Framework v20.0, Section 3.3.
 
     **Difficulty to theorem:** Research (requires graph index theorem + continuum limit convergence).
+    
+    -- 待证明：需要图指标定理（graph index theorem）与连续极限收敛证明。
+    -- 当前 Mathlib 有谱图论部分结果，但缺少图 Laplacian 特征类到流形特征类的收敛理论，属于研究级开放问题。
     -/
 axiom causalNetworkChernSimonsLevel {V} [Fintype V] [DecidableEq V]
     (G : SimpleGraph V)

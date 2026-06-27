@@ -174,7 +174,12 @@ noncomputable def BlochWavefunction (L : Lattice2D) (u : PeriodicBlochFunction L
     
     开放问题：需要证明此定理，依赖于 u_nk 的周期性。
     证明路径：展开 ψ_nk(r+R) = e^{ik·(r+R)} u_nk(r+R) 
-              = e^{ik·r} e^{ik·R} u_nk(r) = e^{ik·R} ψ_nk(r)。 -/
+              = e^{ik·r} e^{ik·R} u_nk(r) = e^{ik·R} ψ_nk(r)。
+    
+    -- 待证明：需要 Bloch 波函数定义展开与 u_nk 的周期性条件。
+    -- 证明策略：展开 ψ_nk(r+R) = e^{ik·(r+R)} u_nk(r+R) = e^{ik·r} e^{ik·R} u_nk(r) = e^{ik·R} ψ_nk(r)。
+    -- 当前 Mathlib 已有复数指数运算，缺少的是将周期性条件 `u(r+R) = u(r)` 代入展开，预计工作量 2-5 小时。
+    -/
 axiom BlochTheorem_TranslationBehavior
     (L : Lattice2D) (u : PeriodicBlochFunction L) (k : CrystalMomentum2D)
     (r : Position2D) (site : LatticeSite L) :
@@ -245,7 +250,11 @@ structure BandEigenstate (L : Lattice2D) where
     证明策略：
     1. 证明 H(k) 在 L²(unit_cell) 上是自伴算子（self-adjoint）
     2. 使用谱定理得到离散本征值
-    3. 本征态构成正交完备集。 -/
+    3. 本征态构成正交完备集。
+    
+    -- 待证明：需要 Sobolev 空间理论、自伴算子谱定理、紧算子谱理论。
+    -- 当前 Mathlib 缺少 L² 空间上微分算子的自伴扩张与离散谱定理，预计工作量 200-300 小时。
+    -/
 axiom SchrodingerEquation_BlochBasis
     (L : Lattice2D) (H : Hamiltonian2D L) (E : BandEnergy L) (ψ : BandEigenstate L)
     (k : CrystalMomentum2D) (r : Position2D) :
@@ -299,7 +308,11 @@ def inBrillouinZone (L : Lattice2D) (BZ : BrillouinZone2D L) (k : CrystalMomentu
     是拓扑不变量，不能通过连续形变改变。
     
     开放问题：需要在 Lean 中形式化 T² 作为流形，
-    并证明其 de Rham 上同调群 H²(T²) = ℝ。 -/
+    并证明其 de Rham 上同调群 H²(T²) = ℝ。
+    
+    -- 待证明：需要 T² 流形结构形式化、de Rham 上同调群计算。
+    -- 当前 Mathlib 有 `Manifold` 框架但缺少 2D 环面作为积流形的标准构造与上同调计算，预计工作量 50-100 小时。
+    -/
 axiom BrillouinZone_IsTorus
     (L : Lattice2D) (BZ : BrillouinZone2D L) :
     -- BZ 作为拓扑空间同胚于 T²
