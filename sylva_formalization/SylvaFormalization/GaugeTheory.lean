@@ -104,25 +104,69 @@ structure GaugePotential {M G : Type*} [TopologicalSpace M] [Group G] [Topologic
   /-- Gauge transformation law. -/
   gaugeTransform : ∀ (x : M) (g : G), potential x = Ad g⁻¹ (potential x) + g⁻¹ * (deriv g x)
 
-/-- Parallel transport: horizontal lift of a curve γ: [t₀,t₁] → M.
-
-    A curve γ̃ in P is horizontal if ω(γ̃'(t)) = 0 for all t.
-    The parallel transport map P_γ: π⁻¹(γ(t₀)) → π⁻¹(γ(t₁)) is defined by
-    following the horizontal lift.
-
-    POSTULATED: requires ODE theory on smooth manifolds, which is not yet
-    complete in Mathlib. The existence/uniqueness of horizontal lifts depends on:
-    (1) ODE existence on manifolds, (2) smooth dependence on initial conditions,
-    (3) Frobenius theorem for horizontal distributions. Replaceable once
-    Mathlib develops these foundations (estimated 2026–2028). -/
--- 待证明：需要流形上的 ODE 理论（存在性、唯一性、Frobenius 可积性定理），~500h
+/-- **Parallel Transport on Principal Bundles**
+    
+    Mathematical statement: For a curve γ: [t₀, t₁] → M in the base manifold,
+    there exists a parallel transport map P_γ: π⁻¹(γ(t₀)) → π⁻¹(γ(t₁))
+    in the total space P, defined by following the horizontal lift.
+    
+    A curve γ̃ in P is horizontal if ω(γ̃'(t)) = 0 for all t, where ω is the
+    connection 1-form. The horizontal lift is the unique lift satisfying
+    this condition and the initial condition γ̃(t₀) = p ∈ π⁻¹(γ(t₀)).
+    
+    **Why unprovable in current framework:**
+    The existence and uniqueness of parallel transport requires:
+    1. ODE theory on smooth manifolds (existence and uniqueness)
+    2. Smooth dependence of solutions on initial conditions
+    3. Frobenius theorem for the horizontal distribution
+    4. Lifting of vector fields from M to P
+    Mathlib4's ODE theory on manifolds is not yet complete.
+    
+    **Required tool chain:**
+    1. Smooth manifold theory: tangent bundles, vector fields
+    2. ODE existence and uniqueness on manifolds (Picard-Lindelöf)
+    3. Smooth dependence on initial conditions
+    4. Frobenius integrability theorem for distributions
+    5. Horizontal distribution: H_p = ker ω_p ⊂ T_p P
+    
+    **References:**
+    - Kobayashi, S. & Nomizu, K. (1963). *Foundations of Differential Geometry*, Vol. 1.
+    - Nakahara, M. (2003). *Geometry, Topology and Physics*, Chapter 10.
+    - Taubes, C. H. (2011). *Differential Geometry: Bundles, Connections, Metrics and Curvature*.
+    
+    **Status:** Placeholder axiom. ODE theory on manifolds and Frobenius
+    theorem are not yet complete in Mathlib4 (estimated completion 2026–2028). -/
 axiom ParallelTransport {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
     [LieRing G] [LieAlgebra ℝ G] {P : PrincipalBundle M G} (conn : Connection P)
     (γ : ℝ → M) (t₀ t₁ : ℝ) :
     Fiber P (γ t₀) → Fiber P (γ t₁)
 
-/-- Horizontal lift existence and uniqueness.
-    -- 待证明：需要流形 ODE 理论（水平分布的 Frobenius 可积性），~500h -/
+/-- **Horizontal Lift Existence and Uniqueness**
+    
+    Mathematical statement: For any curve γ: [t₀, t₁] → M and any point
+    p ∈ π⁻¹(γ(t₀)), there exists a unique horizontal lift γ̃: [t₀, t₁] → P
+    such that γ̃(t₀) = p and π ∘ γ̃ = γ.
+    
+    **Why unprovable in current framework:**
+    The horizontal lift existence theorem requires:
+    1. ODE existence on manifolds (horizontal lift is an ODE in the fiber)
+    2. Uniqueness from the vertical condition ω(X) = X for vertical vectors
+    3. Smooth dependence on the initial point p
+    4. The equivariance property of the connection under G-action
+    These are all part of the ODE theory on manifolds, which is incomplete.
+    
+    **Required tool chain:**
+    1. Existence and uniqueness for ODEs on manifolds
+    2. Connection equivariance: R_g* ω = Ad(g⁻¹) · ω
+    3. Vertical/horizontal decomposition of T_p P
+    4. G-invariance of the horizontal lift: γ̃_p · g = γ̃_{p·g}
+    
+    **References:**
+    - Kobayashi, S. & Nomizu, K. (1963). *Foundations of Differential Geometry*, Vol. 1, §II.3.
+    - Dupont, J. L. (1978). *Curvature and Characteristic Classes*.
+    
+    **Status:** Placeholder axiom. Requires ODE theory on manifolds and
+    Frobenius integrability, not yet in Mathlib4. -/
 axiom ParallelTransport_horizontal_lift {M G : Type*} [TopologicalSpace M] [Group G]
     [TopologicalSpace G] [LieRing G] [LieAlgebra ℝ G] {P : PrincipalBundle M G}
     (conn : Connection P) (γ : ℝ → M) (t₀ t₁ : ℝ) :
@@ -319,15 +363,38 @@ def g1 : ℝ := 0.36  -- Hypercharge coupling α_Y = g₁²/4π ≈ 0.010
 axiom GaugeCouplingUnification :
     ∃ (M_GUT : ℝ), M_GUT > 0 ∧ g3 = g2 ∧ g2 = g1
 
-/-- Electroweak symmetry breaking: SU(2)_L × U(1)_Y → U(1)_EM.
-
-    Higgs mechanism: φ acquires VEV ⟨φ⟩ = v/√2 ≈ 246 GeV.
-    W±, Z acquire mass: m_W = g₂v/2, m_Z = √(g₂²+g₁²)v/2.
+/-- **Electroweak Symmetry Breaking: Higgs VEV v ≈ 246 GeV**
+    
+    Mathematical statement: ∃ v > 0 such that v = 246.0e9 (≈ 246 GeV in natural units).
+    This is the vacuum expectation value of the Higgs field in the Standard Model:
+    SU(2)_L × U(1)_Y → U(1)_EM.
+    
+    Physical content: W±, Z acquire mass: m_W = g₂v/2, m_Z = √(g₂²+g₁²)v/2.
     Photon remains massless: Q = T₃ + Y/2.
-
-    -- 待证明：需要 Higgs 机制 + 自发对称性破缺，~500h -/
-axiom ElectroweakSymmetryBreaking :
-    ∃ (v : ℝ), v > 0 ∧ v = 246.0e9
+    
+    **Converted from axiom to theorem:** The value v = 246.0e9 is a concrete positive
+    real number. Its positivity is directly provable by `norm_num`.
+    This is the only axiom in GaugeTheory that can be converted to a theorem
+    because it asserts a specific numerical value rather than a general physical principle.
+    
+    **Why other related axioms remain unprovable:**
+    - Higgs mechanism derivation from Lagrangian requires QFT
+    - Spontaneous symmetry breaking requires Goldstone theorem
+    - Gauge boson mass generation requires Higgs mechanism formalism
+    These are not yet available in Mathlib4.
+    
+    **Proof:** `use 246.0e9` then `constructor <;> norm_num` proves positivity.
+    
+    **References:**
+    - Weinberg, S. (1967). "A model of leptons." *Phys. Rev. Lett.* 19, 1264.
+    - Salam, A. (1968). "Weak and electromagnetic interactions." *Conf. Proc.* C680519, 367.
+    - Glashow, S. L. (1961). "Partial-symmetries of weak interactions." *Nucl. Phys.* 22, 579. -/
+theorem ElectroweakSymmetryBreaking :
+    ∃ (v : ℝ), v > 0 ∧ v = 246.0e9 := by
+  use 246.0e9
+  constructor
+  · norm_num
+  · rfl
 
 -- ============================================================
 -- Section 7: Boundary Problem Theorems
