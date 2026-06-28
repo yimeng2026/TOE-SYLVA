@@ -170,3 +170,6 @@ import SYLVA_BlochTranslation_v5_44
 import SYLVA_BerryGaugeTransformation_v5_44
 import SYLVA_ChernSimonsGeometry_v5_44
 import SYLVA_ModularTensorCategory_v5_44
+import SYLVA_NonAbelBerryAbelLimit_v5_44
+import SYLVA_BerryToyModel_v5_44
+import SYLVA_AxiomEliminationStrategy_v5_44

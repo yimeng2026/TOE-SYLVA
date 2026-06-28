@@ -179,5 +179,8 @@ lean_lib «SylvaFormalization» where
     `SYLVA_BlochTranslation_v5_44,
     `SYLVA_BerryGaugeTransformation_v5_44,
     `SYLVA_ChernSimonsGeometry_v5_44,
-    `SYLVA_ModularTensorCategory_v5_44
+    `SYLVA_ModularTensorCategory_v5_44,
+    `SYLVA_NonAbelBerryAbelLimit_v5_44,
+    `SYLVA_BerryToyModel_v5_44,
+    `SYLVA_AxiomEliminationStrategy_v5_44
   ]
