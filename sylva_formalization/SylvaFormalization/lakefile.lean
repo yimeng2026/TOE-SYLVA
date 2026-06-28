@@ -135,5 +135,6 @@ lean_lib «SylvaFormalization» where
     `SAT_CookLevin_v5_42,
     `SYLVA_Causality_v5_42,
     `SYLVA_Computability_v5_42,
-    `SYLVA_OptimalControl_v5_42
+    `SYLVA_OptimalControl_v5_42,
+    `TOE_SYLVA_Wave3_ComprehensiveProofs
   ]
