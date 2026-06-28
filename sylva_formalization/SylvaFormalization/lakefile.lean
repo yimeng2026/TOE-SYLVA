@@ -146,5 +146,6 @@ lean_lib «SylvaFormalization» where
     `SYLVA_ModularTensorCategory_v5_44,
     `SYLVA_FactorizationAlgebra_v5_44,
     `SYLVA_HigherStructures_v5_44,
-    `SYLVA_ApexLayer_v5_44
+    `SYLVA_ApexLayer_v5_44,
+    `SYLVA_BlochTheorem_v5_44
   ]
