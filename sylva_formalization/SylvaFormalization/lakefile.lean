@@ -175,5 +175,9 @@ lean_lib «SylvaFormalization» where
     `SYLVA_SyntheticDifferentialGeometry_v5_44,
     `SYLVA_SchrodingerBlochBasis_v5_44,
     `SYLVA_CobordismHypothesis_v5_44,
-    `SYLVA_TMFAnomalyClassification_v5_44
+    `SYLVA_TMFAnomalyClassification_v5_44,
+    `SYLVA_BlochTranslation_v5_44,
+    `SYLVA_BerryGaugeTransformation_v5_44,
+    `SYLVA_ChernSimonsGeometry_v5_44,
+    `SYLVA_ModularTensorCategory_v5_44
   ]
