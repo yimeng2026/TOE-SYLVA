@@ -155,3 +155,6 @@ import SYLVA_CohesiveInfinityTopos_v5_44
 import SYLVA_ApexCohomology_v5_44
 import SYLVA_HigherGaugeTheory_v5_44
 import SYLVA_ApexTopos_v5_44
+import SYLVA_TranscendentalQuantization_v5_44
+import SYLVA_AbsoluteQuantization_v5_44
+import SYLVA_AxiomEliminationPhase1_v5_44

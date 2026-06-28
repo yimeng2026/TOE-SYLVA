@@ -164,5 +164,8 @@ lean_lib «SylvaFormalization» where
     `SYLVA_CohesiveInfinityTopos_v5_44,
     `SYLVA_ApexCohomology_v5_44,
     `SYLVA_HigherGaugeTheory_v5_44,
-    `SYLVA_ApexTopos_v5_44
+    `SYLVA_ApexTopos_v5_44,
+    `SYLVA_TranscendentalQuantization_v5_44,
+    `SYLVA_AbsoluteQuantization_v5_44,
+    `SYLVA_AxiomEliminationPhase1_v5_44
   ]
