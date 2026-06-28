@@ -162,5 +162,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_TQFT_Spectra_v5_44,
     `SYLVA_TranscendentalCohomology_v5_44,
     `SYLVA_CohesiveInfinityTopos_v5_44,
-    `SYLVA_ApexCohomology_v5_44
+    `SYLVA_ApexCohomology_v5_44,
+    `SYLVA_HigherGaugeTheory_v5_44,
+    `SYLVA_ApexTopos_v5_44
   ]

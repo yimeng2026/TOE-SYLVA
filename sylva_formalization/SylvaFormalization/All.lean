@@ -153,3 +153,5 @@ import SYLVA_StabilityFlow_v5_44
 import SYLVA_TQFT_Spectra_v5_44
 import SYLVA_CohesiveInfinityTopos_v5_44
 import SYLVA_ApexCohomology_v5_44
+import SYLVA_HigherGaugeTheory_v5_44
+import SYLVA_ApexTopos_v5_44
