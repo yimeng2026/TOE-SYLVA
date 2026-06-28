@@ -166,5 +166,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_FactorizationAlgebras_v5_44,
     `SYLVA_HigherKoszulDuality_v5_44,
     `SYLVA_ChromaticHomotopyTheory_v5_44,
-    `SYLVA_TopologicalAutomorphicForms_v5_44
+    `SYLVA_TopologicalAutomorphicForms_v5_44,
+    `SYLVA_AntiPatternDiscipline_v5_44,
+    `SYLVA_FizeauEffectTopological_v5_44
   ]
