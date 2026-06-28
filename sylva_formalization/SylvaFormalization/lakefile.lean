@@ -141,5 +141,9 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Superconductivity_v5_44,
     `SYLVA_SpectralGraphTheory_v5_44,
     `SYLVA_InformationTheory_v5_44,
-    `SYLVA_ComputabilityInfrastructure_v5_44
+    `SYLVA_ComputabilityInfrastructure_v5_44,
+    `SYLVA_YangMills_v5_44,
+    `SYLVA_ModularTensorCategory_v5_44,
+    `SYLVA_FactorizationAlgebra_v5_44,
+    `SYLVA_HigherStructures_v5_44
   ]

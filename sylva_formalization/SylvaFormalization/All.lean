@@ -138,3 +138,7 @@ import SYLVA_Superconductivity_v5_44
 import SYLVA_SpectralGraphTheory_v5_44
 import SYLVA_InformationTheory_v5_44
 import SYLVA_ComputabilityInfrastructure_v5_44
+import SYLVA_YangMills_v5_44
+import SYLVA_ModularTensorCategory_v5_44
+import SYLVA_FactorizationAlgebra_v5_44
+import SYLVA_HigherStructures_v5_44
