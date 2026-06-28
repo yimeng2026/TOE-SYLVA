@@ -171,5 +171,9 @@ lean_lib «SylvaFormalization» where
     `SYLVA_UnivalentFoundations_v5_44,
     `SYLVA_SpectraFieldTheory_v5_44,
     `SYLVA_KuboFormula_v5_44,
-    `SYLVA_NambuGotoPolyakov_v5_44
+    `SYLVA_NambuGotoPolyakov_v5_44,
+    `SYLVA_SyntheticDifferentialGeometry_v5_44,
+    `SYLVA_SchrodingerBlochBasis_v5_44,
+    `SYLVA_CobordismHypothesis_v5_44,
+    `SYLVA_TMFAnomalyClassification_v5_44
   ]

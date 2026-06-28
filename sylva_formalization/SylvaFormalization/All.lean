@@ -162,3 +162,7 @@ import SYLVA_UnivalentFoundations_v5_44
 import SYLVA_SpectraFieldTheory_v5_44
 import SYLVA_KuboFormula_v5_44
 import SYLVA_NambuGotoPolyakov_v5_44
+import SYLVA_SyntheticDifferentialGeometry_v5_44
+import SYLVA_SchrodingerBlochBasis_v5_44
+import SYLVA_CobordismHypothesis_v5_44
+import SYLVA_TMFAnomalyClassification_v5_44
