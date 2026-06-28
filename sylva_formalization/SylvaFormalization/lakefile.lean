@@ -138,5 +138,8 @@ lean_lib «SylvaFormalization» where
     `SYLVA_OptimalControl_v5_42,
     `TOE_SYLVA_Wave3_ComprehensiveProofs,
     `SYLVA_ChernSimons_v5_44,
-    `SYLVA_Superconductivity_v5_44
+    `SYLVA_Superconductivity_v5_44,
+    `SYLVA_SpectralGraphTheory_v5_44,
+    `SYLVA_InformationTheory_v5_44,
+    `SYLVA_ComputabilityInfrastructure_v5_44
   ]

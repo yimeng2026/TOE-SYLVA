@@ -135,3 +135,6 @@ import SYLVA_OptimalControl_v5_42
 import TOE_SYLVA_Wave3_ComprehensiveProofs
 import SYLVA_ChernSimons_v5_44
 import SYLVA_Superconductivity_v5_44
+import SYLVA_SpectralGraphTheory_v5_44
+import SYLVA_InformationTheory_v5_44
+import SYLVA_ComputabilityInfrastructure_v5_44
