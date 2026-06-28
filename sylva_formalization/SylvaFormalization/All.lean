@@ -44,6 +44,7 @@ import SylvaInfrastructure
 import TestSInf
 import TopologicalInsulator
 import ZetaVerifier_backup
+import SYLVA_AdS_CFT
 import InterdisciplinaryBridge
 import TopologicalStatMech
 import GaugeGravityCorrespondence
@@ -86,29 +87,7 @@ import SYLVA_CrossModuleTheorems
 import SYLVA_UnifiedPhysics
 import SYLVA_CrossReferences
 import SYLVA_QuantumChaos
-import HiggsMass
-import HiggsPotential
-import SYLVA_AdS_CFT
-import BerryConnection_GaugeTransformationLaw
-import BerryCurvature_GaugeInvariance
-import BerryKubo_ChernTopology
-import BerryPhase_GaugeInvariance
-import HornSAT_in_P
-import ThreeSAT_NPComplete
-import SAT_CookLevin_Package
-import PhysicalConstants_Relations
-import SYLVADynamics_ConservationLaws
-import SylvaInfrastructure_Constants_Theorems
-import SYLVASymmetry_Geometry
-import NetworkScience_ThreeModels
-import OptimalControl_Theorems
-import NumberTheory_KnownResults
-import InformationGeometry_Theorems
-import TopologicalInsulator_Theorems
-import TOE_SYLVA_axiom_to_theorem_batch1
-import TOE_SYLVA_axiom_to_theorem_batch2
-import CORE_PROOFS_Complete
-import EXECUTION_Wave1_CompleteProofs
+
 import AllModules_v5_42
 import Module01_SylvaInfrastructure_v5_42
 import Module02_BerryGeometry_v5_42
@@ -173,3 +152,8 @@ import SYLVA_ModularTensorCategory_v5_44
 import SYLVA_NonAbelBerryAbelLimit_v5_44
 import SYLVA_BerryToyModel_v5_44
 import SYLVA_AxiomEliminationStrategy_v5_44
+import SYLVA_IndexTQFTCorrespondence_v5_44
+import SYLVA_FactorizationAlgebras_v5_44
+import SYLVA_HigherKoszulDuality_v5_44
+import SYLVA_ChromaticHomotopyTheory_v5_44
+import SYLVA_TopologicalAutomorphicForms_v5_44
