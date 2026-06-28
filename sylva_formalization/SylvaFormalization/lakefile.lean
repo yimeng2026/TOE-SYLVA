@@ -136,5 +136,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Causality_v5_42,
     `SYLVA_Computability_v5_42,
     `SYLVA_OptimalControl_v5_42,
-    `TOE_SYLVA_Wave3_ComprehensiveProofs
+    `TOE_SYLVA_Wave3_ComprehensiveProofs,
+    `SYLVA_ChernSimons_v5_44,
+    `SYLVA_Superconductivity_v5_44
   ]
