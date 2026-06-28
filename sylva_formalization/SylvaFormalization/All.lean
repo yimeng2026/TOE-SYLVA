@@ -151,4 +151,5 @@ import SYLVA_VOA_v5_44
 import SYLVA_SyntheticGeometry_v5_44
 import SYLVA_StabilityFlow_v5_44
 import SYLVA_TQFT_Spectra_v5_44
-import SYLVA_TranscendentalCohomology_v5_44
+import SYLVA_CohesiveInfinityTopos_v5_44
+import SYLVA_ApexCohomology_v5_44
