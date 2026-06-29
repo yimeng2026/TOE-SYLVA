@@ -1,13 +1,32 @@
-# 千禧年难题：纳维-斯托克斯存在性与光滑性（Navier-Stokes Existence and Smoothness）
+# 千禧年难题：纳维-斯托克斯存在性与光滑性（Navier-Stokes Existence and Smoothness）— SYLVA 学术完整研究档案
 
-> 状态：**未解决**  
-> 设立机构：克莱数学研究所（Clay Mathematics Institute），2000年  
-> 奖金：1,000,000 美元  
-> 所属领域：偏微分方程、流体力学、数学分析、调和分析
+> **状态：未解决**  
+> **设立机构：** 克莱数学研究所（Clay Mathematics Institute），2000年  
+> **奖金：** 1,000,000 美元  
+> **所属领域：** 偏微分方程、流体力学、数学分析、调和分析、几何分析
+
+> **SYLVA 关联模块：** `audit_report_NS_LG.md`, `sylva_complete/NavierStokes.lean`, `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`, `sylva_complete/LocalGlobalTemplate.lean`, `alpha_derivation/11_chern_simons_137.md`  
+> **文档编号：** Millennium-P-005-SYLVA  
+> **生成日期：** 2026-06-28
 
 ---
 
-## 一、问题的严格陈述
+## 目录
+
+1. [问题的严格陈述](#1-问题的严格陈述)
+2. [历史与里程碑](#2-历史与里程碑)
+3. [主要已知成果](#3-主要已知成果)
+4. [SYLVA 专项研究：NS 集群审核](#4-sylva-专项研究ns-集群审核)
+5. [SYLVA 专项研究：NS 形式化](#5-sylva-专项研究ns-形式化)
+6. [SYLVA 专项研究：Local-Global 模板](#6-sylva-专项研究local-global-模板)
+7. [等价表述与关联问题](#7-等价表述与关联问题)
+8. [开放问题与方向](#8-开放问题与方向)
+9. [Lean-ready 形式化结构](#9-lean-ready-形式化结构)
+10. [结论](#10-结论)
+
+---
+
+## 1. 问题的严格陈述
 
 ### 1.1 纳维-斯托克斯方程
 
@@ -50,7 +69,7 @@ $$\mathbf{u} \in C^\infty(\mathbb{R}^3 \times [0, \infty))$$
 
 ---
 
-## 二、历史与里程碑
+## 2. 历史与里程碑
 
 ### 2.1 时间线
 
@@ -82,7 +101,7 @@ Leray 证明：对任意 $\mathbf{u}_0 \in L^2$，存在至少一个全局弱解
 
 ---
 
-## 三、主要已知成果
+## 3. 主要已知成果
 
 ### 3.1 二维情形（已解决）
 
@@ -130,8 +149,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + \tilde{B}(\mathbf{u}, \mathbf{u}) = -
 **结果**：存在光滑初始条件，使得平均化 NSE 在**有限时间内爆破**（blow-up）。
 
 **意义**：这表明：
-- 能量守恒 + 尺度不变性 + 3维 $
-Rightarrow$ 全局正则性
+- 能量守恒 + 尺度不变性 + 3维 $\nRightarrow$ 全局正则性
 - 需要**额外的结构**（如不可压缩条件的精确形式）来阻止爆破
 
 ### 3.6 弱解的非唯一性（Buckmaster-Vicol, 2019）
@@ -146,43 +164,92 @@ Rightarrow$ 全局正则性
 
 ---
 
-## 四、最新进展（2018-2026）
+## 4. SYLVA 专项研究：NS 集群审核
 
-### 4.1 小初值全局正则性
+> **来源：** `audit_report_NS_LG.md`（73 行，2026-06-10）  
+> **范围：** 6 个文件（2 个存根跳过；1 个额外存根确认）
 
-对于小初始数据：$\|\mathbf{u}_0\|_{\dot{H}^{1/2}} \ll \nu$，全局光滑解存在。
+### 4.1 文件审核表
 
-**Kato 定理**：若 $\|\mathbf{u}_0\|_{L^3} < c \nu$，则全局光滑解存在。
+| # | 文件路径 | 判定 | 说明 |
+|---|----------|------|------|
+| 1 | `alpha_derivation/11_chern_simons_137.md` | **保留** | ~400 行中文推导。从 Chern-Simons 理论通过 GF(3)⊗Λ⁵ 和分层空间推导 α=1/137。高度推测性但内部结构一致。 |
+| 2 | `sylva_complete/NavierStokes.lean` | **保留**（附注） | ~630 行。实质性形式化：弱/强解、Sobolev 能量估计、爆破标准（Beale-Kato-Majda）、Leray-Hopf 框架、全局正则性公理。主要缺口：微分算子是有限差分近似（`h := 1e-8`）而非 Mathlib `deriv`/`fderiv`。12+ 个 `sorry`。 |
+| 3 | `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md` | **保留** | ~300 行问题集。12 个 NS 问题（NS-001 = 千禧年奖）。引用经典和现代文献。 |
+| 4 | `sylva_complete/LocalGlobalTemplate.lean` | **保留** | ~500 行。抽象局部到全局框架：`LocalGlobalPrinciple` typeclass、`DescentData`、`EffectiveDescent`，以及 Cook-Levin、BSD、Hodge、RH 的实例化模板。少数 `sorry` 在复合转移引理中。 |
+| 5 | `sylva_formalization/SylvaFormalization/NavierStokes.lean` | **删除** | 12 行占位符存根。"为编译截肢。原始内容包含编码问题。" |
+| 6 | `sylva_formalization/SylvaFormalization/LocalGlobalTemplate.lean` | **删除** | 12 行占位符存根。与 #5 相同模式。 |
+| 7 | `sylva_formalization/SylvaFormalization/LocalGlobal.lean` | **删除** | 12 行占位符存根（额外确认）。 |
 
-### 4.2 特殊几何的对称性
+### 4.2 交叉问题
 
-| 对称性 | 结果 | 作者 |
-|--------|------|------|
-| 轴对称（无 swirl） | 全局正则性 | Ladyzhenskaya, Ukhovskii |
-| 轴对称（有 swirl） | 开放 | |
-| 螺旋对称 | 部分结果 | |
-
-### 4.3 超临界性障碍
-
-NSE 在 3维是**超临界**（supercritical）的：
-- 尺度不变性：$\mathbf{u}(x,t) \to \lambda \mathbf{u}(\lambda x, \lambda^2 t)$
-- 守恒量（能量）的尺度 $<$ 尺度不变性下的临界正则性
-
-这意味着**标准方法**（能量估计、不动点定理）无法直接证明全局正则性。
-
-### 4.4 SYLVA 框架中的关联研究
-
-**纳维-斯托克斯方程形式化**：
-- 对 NS 方程的严格分析：能量估计、尺度不变性、涡量方程
-- 关联文件：`SYLVA_dim04_navier_stokes.md`
-
-**核心观点**：在形式化框架中，需要显式处理不可压缩条件与涡量方程的耦合。
+1. **存根污染**：`sylva_formalization/` 包含至少三个相同的 12 行占位符。它们混淆命名空间并混淆哪个目录是规范的。
+2. **有限差分 hack**：`NavierStokes.lean` 使用 `1e-8` 差商作为 `gradient`、`divergence`、`laplacian`、`curl`。这在数学上**不精确**，阻止文件链接到 Mathlib 的实际微积分库。
+3. **编码产物**：`sylva_complete/` 的 `.lean` 文件在注释和文档字符串中包含字面 `\n\n` 序列（来自先前的导出）。非破坏性但不整洁。
 
 ---
 
-## 五、等价表述与关联问题
+## 5. SYLVA 专项研究：NS 形式化
 
-### 5.1 Euler 方程的奇点（无粘性）
+### 5.1 `sylva_complete/NavierStokes.lean`（~630 行）
+
+**内容**：
+- **弱/强解定义**：`WeakSolution` 和 `StrongSolution` 结构
+- **Sobolev 能量估计**：能量不等式的形式化陈述
+- **爆破标准（Beale-Kato-Majda）**：涡量积分控制爆破
+- **Leray-Hopf 框架**：弱解的存在性公理
+- **全局正则性公理**：作为公理陈述（非证明）
+
+**主要缺口**：
+- 微分算子是有限差分近似：`h := 1e-8` 用于 `gradient`、`divergence`、`laplacian`、`curl`
+- 这**不是** Mathlib 的 `deriv`/`fderiv`，阻止与标准分析库的链接
+- 12+ 个 `sorry` 在严格证明中
+- 全局正则性作为 `axiom` 陈述——非证明
+
+### 5.2 `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`（~300 行）
+
+**内容**：
+- 12 个 NS 问题（NS-001 到 NS-012）
+- NS-001 = 千禧年奖问题
+- 引用经典和现代文献（Leray, CKN, Beale-Kato-Majda, Tao, Buckmaster-Vicol）
+- 每个问题包含：陈述、已知结果、开放问题、SYLVA 联系
+
+**质量**：准确的参考文献和问题陈述。作为**研究路线图**有价值。
+
+---
+
+## 6. SYLVA 专项研究：Local-Global 模板
+
+### 6.1 `sylva_complete/LocalGlobalTemplate.lean`（~500 行）
+
+**内容**：
+- **抽象局部到全局框架**：`LocalGlobalPrinciple` typeclass
+- **下降数据**：`DescentData` 结构
+- **有效下降**：`EffectiveDescent` 类型类
+- **实例化模板**：Cook-Levin、BSD、Hodge、RH
+
+**设计**：
+- 使用范畴论模式：局部数据 + 胶合条件 → 全局对象
+- 灵感来自代数几何中的 fpqc 下降和数论中的 Hasse 原理
+
+**质量**：
+- 结构良好，范畴论下降模式
+- 少数 `sorry` 在复合转移引理中
+- 作为**连接不同千禧年问题的抽象框架**有价值
+- 但未在实际证明中完全实例化
+
+### 6.2 Local-Global 原理与 NS 的联系
+
+虽然 Local-Global 模板主要设计用于 BSD、Hodge 和 RH（算术/几何问题），但其**抽象模式**也可应用于 NS：
+- **局部**：局部时空区域上的正则性
+- **全局**：全局时空上的正则性
+- **胶合**：CKN 部分正则性理论提供了局部到全局的胶合条件
+
+---
+
+## 7. 等价表述与关联问题
+
+### 7.1 Euler 方程的奇点（无粘性）
 
 设 $\nu = 0$（无粘性）：
 $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} = -\nabla p, \quad \nabla \cdot \mathbf{u} = 0$$
@@ -192,7 +259,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} 
 - **Elgindi (2019)**：在有限 Hölder 正则性中，$C^{1,\alpha}$ 解可爆破
 - **光滑情形**：仍开放
 
-### 5.2 Onsager 猜想（湍流耗散）
+### 7.2 Onsager 猜想（湍流耗散）
 
 **Onsager 猜想**（1949）：
 - 若 $\mathbf{u} \in C^{0,\alpha}$ 且 $\alpha > 1/3$，则能量守恒
@@ -200,7 +267,7 @@ $$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} 
 
 **Isett (2018)**：证明 $\alpha < 1/3$ 时存在能量耗散解（凸积分方法）。
 
-### 5.3 关联问题网络
+### 7.3 关联问题网络
 
 ```
 3维 NSE 全局正则性
@@ -216,49 +283,17 @@ Onsager 猜想（湍流耗散，已证）
 
 ---
 
-## 六、核心数学工具
+## 8. 开放问题与方向
 
-### 6.1 能量估计
-
-**基本能量估计**：
-$$\frac{d}{dt} \|\mathbf{u}\|_{L^2}^2 + 2\nu \|\nabla \mathbf{u}\|_{L^2}^2 = 0$$
-
-**涡量估计**：设 $\boldsymbol{\omega} = \nabla \times \mathbf{u}$，则：
-$$\frac{\partial \boldsymbol{\omega}}{\partial t} + (\mathbf{u} \cdot \nabla) \boldsymbol{\omega} = (\boldsymbol{\omega} \cdot \nabla) \mathbf{u} + \nu \Delta \boldsymbol{\omega}$$
-
-**涡量拉伸项** $(\boldsymbol{\omega} \cdot \nabla) \mathbf{u}$ 是 3维奇点形成的关键机制。
-
-### 6.2 尺度分析
-
-**Kolmogorov 尺度**（湍流中的最小尺度）：
-$$\eta = \left(\frac{\nu^3}{\varepsilon}\right)^{1/4}$$
-
-其中 $\varepsilon$ 为能量耗散率。
-
-### 6.3 调和分析
-
-**Littlewood-Paley 分解**：将解分解为不同频率的叠加：
-$$\mathbf{u} = \sum_{j \in \mathbb{Z}} \Delta_j \mathbf{u}$$
-
-**Besov 空间**：$B^s_{p,q}$ 中解的正则性分析。
-
----
-
-## 七、开放问题与方向
-
-### 7.1 核心开放问题
+### 8.1 核心开放问题
 
 1. **全局光滑解**：3维 NSE 对任意光滑初值是否存在全局光滑解？
-
 2. **弱解的唯一性**：Leray-Hopf 弱解是否唯一？
-
 3. **有限时间奇点**：是否存在光滑初值导致有限时间爆破？
-
 4. **物理 blow-up 的构造**：Tao 的平均化模型是"玩具模型"，能否构造更接近真实 NSE 的 blow-up？
-
 5. **湍流的严格理论**：如何从 NSE 严格推导 Kolmogorov 的湍流统计理论？
 
-### 7.2 可能的突破路径
+### 8.2 可能的突破路径
 
 1. **新的守恒量/单调量**：寻找除能量外的新的守恒律
 2. **概率方法**：随机初始数据下的正则性（Le Jan-Sznitman 方法）
@@ -268,7 +303,7 @@ $$\mathbf{u} = \sum_{j \in \mathbb{Z}} \Delta_j \mathbf{u}$$
 
 ---
 
-## 八、严格数学陈述（Lean-ready）
+## 9. Lean-ready 形式化结构
 
 ```lean
 -- 速度场与压强场
@@ -309,7 +344,7 @@ theorem NavierStokes2D :
 
 ---
 
-## 九、结论
+## 10. 结论
 
 纳维-斯托克斯存在性与光滑性问题是**分析学中最具物理意义的问题**。它要求：
 1. 严格理解 3维湍流的数学结构
@@ -322,6 +357,14 @@ theorem NavierStokes2D :
 - 有数值证据表明无有限时间奇点，但无严格证明
 - 超临界性障碍使得标准方法失效
 
+**SYLVA 项目中的关键发现**：
+1. NS 集群有 **3 个 12 行占位符存根**（应删除），全在 `sylva_formalization/` 中
+2. `sylva_complete/NavierStokes.lean`（~630 行）是**实质性形式化**，但使用有限差分近似（`h := 1e-8`）而非标准导数
+3. `sylva_complete/LocalGlobalTemplate.lean`（~500 行）是**抽象局部到全局框架**，连接不同千禧年问题
+4. `SYLVA_MATH_PROBLEMS_NavierStokes.md` 是**好的研究路线图**，12 个问题覆盖 NS 核心开放问题
+5. `alpha_derivation/11_chern_simons_137.md` 是**独特的推测性内容**，与 NS 无直接联系，但值得保留作为概念探索
+6. 无文件包含**危险错误**——最坏问题是有限差分近似的数学不精确性
+
 ---
 
 > **参考文献**  
@@ -333,6 +376,6 @@ theorem NavierStokes2D :
 > - Isett, P. (2018). A proof of Onsager's conjecture.  
 > - Fefferman, C. L. (2000). Existence and smoothness of the Navier-Stokes equation. Clay Institute.
 
-> **文件编号**：Millennium-P-005  
+> **文件编号**：Millennium-P-005-SYLVA  
 > **生成日期**：2026-06-28  
-> **关联 SYLVA 模块**：`SYLVA_dim04_navier_stokes.md`
+> **关联 SYLVA 模块**：`audit_report_NS_LG.md`, `sylva_complete/NavierStokes.lean`, `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`, `sylva_complete/LocalGlobalTemplate.lean`
