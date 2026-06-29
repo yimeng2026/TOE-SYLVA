@@ -1,0 +1,1445 @@
+{
+  "astronomy": {
+    "industry": "Astronomy",
+    "test_cases": [
+      {
+        "name": "Kepler-452b_orbital_params",
+        "input": [
+          1.046,
+          384.84,
+          130.75,
+          0.035,
+          289.0
+        ],
+        "expected_mae": 0.0008,
+        "bounds": [
+          [
+            0.5,
+            2.0
+          ],
+          [
+            300,
+            500
+          ],
+          [
+            100,
+            200
+          ],
+          [
+            0.01,
+            0.1
+          ],
+          [
+            200,
+            400
+          ]
+        ]
+      },
+      {
+        "name": "TRAPPIST-1e_habitable_zone",
+        "input": [
+          0.692,
+          6.1,
+          0.003,
+          251.3,
+          0.085
+        ],
+        "expected_mae": 0.0012,
+        "bounds": [
+          [
+            0.3,
+            1.5
+          ],
+          [
+            3,
+            15
+          ],
+          [
+            0.001,
+            0.01
+          ],
+          [
+            200,
+            350
+          ],
+          [
+            0.05,
+            0.15
+          ]
+        ]
+      },
+      {
+        "name": "solar_wind_pressure",
+        "input": [
+          1.0,
+          400,
+          5.0,
+          1.5,
+          96
+        ],
+        "expected_mae": 0.002,
+        "bounds": [
+          [
+            0.5,
+            2.0
+          ],
+          [
+            200,
+            800
+          ],
+          [
+            1,
+            20
+          ],
+          [
+            0.5,
+            5
+          ],
+          [
+            50,
+            200
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "length_scale": 0.5,
+      "signal_variance": 1.0,
+      "noise_variance": 0.01
+    },
+    "validation_benchmark": "NASA_Exoplanet_Archive_2024",
+    "data_size": 15000
+  },
+  "semiconductor": {
+    "industry": "Semiconductor",
+    "test_cases": [
+      {
+        "name": "3nm_node_IV_curve",
+        "input": [
+          0.7,
+          0.025,
+          300,
+          1e+18,
+          5
+        ],
+        "expected_mae": 0.03,
+        "bounds": [
+          [
+            0.5,
+            1.2
+          ],
+          [
+            0.01,
+            0.05
+          ],
+          [
+            77,
+            500
+          ],
+          [
+            1e+16,
+            1e+20
+          ],
+          [
+            1,
+            10
+          ]
+        ]
+      },
+      {
+        "name": "finFET_thermal_runaway",
+        "input": [
+          0.65,
+          85,
+          350,
+          2e+19,
+          3
+        ],
+        "expected_mae": 0.04,
+        "bounds": [
+          [
+            0.5,
+            1.0
+          ],
+          [
+            50,
+            150
+          ],
+          [
+            300,
+            500
+          ],
+          [
+            1e+18,
+            1e+21
+          ],
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      {
+        "name": "gate_oxide_breakdown",
+        "input": [
+          1.1,
+          0.001,
+          400,
+          5e+17,
+          7
+        ],
+        "expected_mae": 0.05,
+        "bounds": [
+          [
+            0.8,
+            1.5
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            300,
+            500
+          ],
+          [
+            1e+16,
+            1e+19
+          ],
+          [
+            3,
+            10
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "branch_width": 128,
+      "trunk_depth": 6,
+      "learning_rate": 0.001
+    },
+    "validation_benchmark": "TCAD_3nm_Sentaurus_2025",
+    "data_size": 25000
+  },
+  "energy_grid": {
+    "industry": "Energy Grid",
+    "test_cases": [
+      {
+        "name": "IEEE_118_bus_transient",
+        "input": [
+          1.0,
+          60,
+          100,
+          0.95,
+          500
+        ],
+        "expected_mae": 0.003,
+        "bounds": [
+          [
+            0.9,
+            1.1
+          ],
+          [
+            59,
+            61
+          ],
+          [
+            50,
+            500
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            100,
+            1000
+          ]
+        ]
+      },
+      {
+        "name": "fault_islanding_detection",
+        "input": [
+          0.85,
+          59.8,
+          0.02,
+          0.92,
+          0.15
+        ],
+        "expected_mae": 0.005,
+        "bounds": [
+          [
+            0.7,
+            1.0
+          ],
+          [
+            58,
+            62
+          ],
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.05,
+            0.5
+          ]
+        ]
+      },
+      {
+        "name": "renewable_integration_ramp",
+        "input": [
+          0.3,
+          0.7,
+          200,
+          15,
+          0.05
+        ],
+        "expected_mae": 0.008,
+        "bounds": [
+          [
+            0.1,
+            0.5
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            50,
+            500
+          ],
+          [
+            5,
+            50
+          ],
+          [
+            0.01,
+            0.2
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "modes": 32,
+      "width": 64,
+      "dt": 0.01
+    },
+    "validation_benchmark": "IEEE_118_bus_test_case_2024",
+    "data_size": 50000
+  },
+  "finance": {
+    "industry": "Finance",
+    "test_cases": [
+      {
+        "name": "VaR_99_backtest_2008",
+        "input": [
+          0.05,
+          0.25,
+          -0.15,
+          0.3,
+          0.95
+        ],
+        "expected_mae": 0.008,
+        "bounds": [
+          [
+            0.01,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            -0.5,
+            0
+          ],
+          [
+            0.1,
+            0.8
+          ],
+          [
+            0.9,
+            0.99
+          ]
+        ]
+      },
+      {
+        "name": "credit_default_swap_spread",
+        "input": [
+          0.02,
+          5,
+          0.85,
+          0.6,
+          0.03
+        ],
+        "expected_mae": 0.01,
+        "bounds": [
+          [
+            0.001,
+            0.1
+          ],
+          [
+            1,
+            30
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0.3,
+            0.9
+          ],
+          [
+            0.001,
+            0.1
+          ]
+        ]
+      },
+      {
+        "name": "portfolio_sharpe_optimization",
+        "input": [
+          0.12,
+          0.18,
+          0.03,
+          0.15,
+          0.85
+        ],
+        "expected_mae": 0.006,
+        "bounds": [
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.05,
+            0.5
+          ],
+          [
+            0,
+            0.1
+          ],
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.5,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "ensemble_size": 10,
+      "dropout_rate": 0.2,
+      "confidence_level": 0.95
+    },
+    "validation_benchmark": "Basel_III_stress_test_2024",
+    "data_size": 100000
+  },
+  "climate": {
+    "industry": "Climate",
+    "test_cases": [
+      {
+        "name": "CMIP6_temp_trend_1990_2020",
+        "input": [
+          1990,
+          2020,
+          14.5,
+          0.85,
+          0.5
+        ],
+        "expected_mae": 0.05,
+        "bounds": [
+          [
+            1980,
+            2030
+          ],
+          [
+            1990,
+            2050
+          ],
+          [
+            13,
+            16
+          ],
+          [
+            0.5,
+            1.5
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "precipitation_pattern_correlation",
+        "input": [
+          25,
+          120,
+          0.75,
+          0.6,
+          0.15
+        ],
+        "expected_mae": 0.08,
+        "bounds": [
+          [
+            0,
+            60
+          ],
+          [
+            60,
+            180
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0.3,
+            0.9
+          ],
+          [
+            0,
+            0.5
+          ]
+        ]
+      },
+      {
+        "name": "extreme_event_frequency_95CI",
+        "input": [
+          100,
+          0.05,
+          2.5,
+          0.9,
+          0.02
+        ],
+        "expected_mae": 0.06,
+        "bounds": [
+          [
+            10,
+            500
+          ],
+          [
+            0.01,
+            0.2
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0,
+            0.1
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "resolution": 1.0,
+      "temporal_window": 30,
+      "ensemble_members": 50
+    },
+    "validation_benchmark": "CMIP6_ensemble_2024",
+    "data_size": 80000
+  },
+  "biomedical": {
+    "industry": "Biomedical",
+    "test_cases": [
+      {
+        "name": "drug_interaction_prediction",
+        "input": [
+          500,
+          0.85,
+          0.05,
+          0.001,
+          0.92
+        ],
+        "expected_mae": 0.04,
+        "bounds": [
+          [
+            100,
+            1000
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0.01,
+            0.2
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            0.8,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "biomarker_correlation_p005",
+        "input": [
+          0.75,
+          0.02,
+          150,
+          0.003,
+          0.88
+        ],
+        "expected_mae": 0.03,
+        "bounds": [
+          [
+            0.3,
+            1.0
+          ],
+          [
+            0.001,
+            0.05
+          ],
+          [
+            50,
+            500
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "FDA_510k_clinical_endpoint",
+        "input": [
+          0.9,
+          0.15,
+          0.02,
+          0.95,
+          0.001
+        ],
+        "expected_mae": 0.02,
+        "bounds": [
+          [
+            0.7,
+            1.0
+          ],
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.0001,
+            0.01
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "causal_graph_depth": 5,
+      "neural_confidence": 0.9,
+      "symbolic_check_interval": 10
+    },
+    "validation_benchmark": "FDA_510k_clinical_data_2024",
+    "data_size": 30000
+  },
+  "material_science": {
+    "industry": "Material Science",
+    "test_cases": [
+      {
+        "name": "ASTM_stress_strain_curve",
+        "input": [
+          250,
+          0.002,
+          200000,
+          0.3,
+          400
+        ],
+        "expected_mae": 0.02,
+        "bounds": [
+          [
+            100,
+            1000
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            100000,
+            300000
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            200,
+            1000
+          ]
+        ]
+      },
+      {
+        "name": "fracture_prediction_within_10pct",
+        "input": [
+          500,
+          0.01,
+          0.05,
+          0.25,
+          600
+        ],
+        "expected_mae": 0.03,
+        "bounds": [
+          [
+            200,
+            1000
+          ],
+          [
+            0.001,
+            0.05
+          ],
+          [
+            0.01,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            300,
+            1200
+          ]
+        ]
+      },
+      {
+        "name": "CALPHAD_phase_diagram_consistency",
+        "input": [
+          1000,
+          0.5,
+          0.3,
+          0.2,
+          0.95
+        ],
+        "expected_mae": 0.015,
+        "bounds": [
+          [
+            300,
+            2000
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0.8,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "physics_weight": 0.5,
+      "data_weight": 0.5,
+      "stress_threshold": 100000000.0
+    },
+    "validation_benchmark": "ASTM_E8_standard_test_2024",
+    "data_size": 20000
+  },
+  "aerospace": {
+    "industry": "Aerospace",
+    "test_cases": [
+      {
+        "name": "wind_tunnel_Mach_0.5_to_20",
+        "input": [
+          5.0,
+          15,
+          25000,
+          0.7,
+          0.02
+        ],
+        "expected_mae": 0.012,
+        "bounds": [
+          [
+            0.5,
+            20
+          ],
+          [
+            0,
+            45
+          ],
+          [
+            0,
+            50000
+          ],
+          [
+            0.3,
+            1.0
+          ],
+          [
+            0.001,
+            0.1
+          ]
+        ]
+      },
+      {
+        "name": "lift_drag_coefficient",
+        "input": [
+          0.8,
+          2.5,
+          0.05,
+          0.35,
+          0.75
+        ],
+        "expected_mae": 0.015,
+        "bounds": [
+          [
+            0,
+            5
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            0.2
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "name": "flutter_boundary_prediction",
+        "input": [
+          0.6,
+          300,
+          0.03,
+          0.5,
+          0.85
+        ],
+        "expected_mae": 0.02,
+        "bounds": [
+          [
+            0.3,
+            1.0
+          ],
+          [
+            100,
+            1000
+          ],
+          [
+            0.01,
+            0.1
+          ],
+          [
+            0.2,
+            0.8
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "mach_number_range": 20,
+      "angle_of_attack": 45,
+      "tee_latency_ms": 50
+    },
+    "validation_benchmark": "NASA_wind_tunnel_database_2024",
+    "data_size": 35000
+  },
+  "automotive": {
+    "industry": "Automotive",
+    "test_cases": [
+      {
+        "name": "NCAP_crash_test_scenario",
+        "input": [
+          50,
+          0.3,
+          0.15,
+          0.85,
+          10
+        ],
+        "expected_mae": 0.01,
+        "bounds": [
+          [
+            30,
+            80
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.7,
+            1.0
+          ],
+          [
+            5,
+            20
+          ]
+        ]
+      },
+      {
+        "name": "object_detection_accuracy_99pct",
+        "input": [
+          0.99,
+          0.95,
+          0.02,
+          0.98,
+          0.15
+        ],
+        "expected_mae": 0.005,
+        "bounds": [
+          [
+            0.95,
+            1.0
+          ],
+          [
+            0.9,
+            1.0
+          ],
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.95,
+            1.0
+          ],
+          [
+            0.05,
+            0.5
+          ]
+        ]
+      },
+      {
+        "name": "lane_keeping_error_10cm",
+        "input": [
+          0.05,
+          0.02,
+          0.08,
+          0.95,
+          0.1
+        ],
+        "expected_mae": 0.008,
+        "bounds": [
+          [
+            0,
+            0.2
+          ],
+          [
+            0,
+            0.1
+          ],
+          [
+            0,
+            0.2
+          ],
+          [
+            0.9,
+            1.0
+          ],
+          [
+            0.05,
+            0.5
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "inference_latency_ms": 10,
+      "model_size_mb": 50,
+      "accuracy_threshold": 0.99
+    },
+    "validation_benchmark": "NCAP_2024_test_protocols",
+    "data_size": 60000
+  },
+  "chemical": {
+    "industry": "Chemical",
+    "test_cases": [
+      {
+        "name": "pilot_plant_reaction_yield",
+        "input": [
+          350,
+          5,
+          0.95,
+          0.02,
+          0.85
+        ],
+        "expected_mae": 0.03,
+        "bounds": [
+          [
+            300,
+            500
+          ],
+          [
+            1,
+            50
+          ],
+          [
+            0.7,
+            1.0
+          ],
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "selectivity_accuracy_95pct",
+        "input": [
+          0.95,
+          0.03,
+          400,
+          10,
+          0.9
+        ],
+        "expected_mae": 0.025,
+        "bounds": [
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.01,
+            0.1
+          ],
+          [
+            300,
+            600
+          ],
+          [
+            1,
+            100
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "safety_constraint_satisfaction",
+        "input": [
+          450,
+          0.01,
+          0.001,
+          0.99,
+          0.05
+        ],
+        "expected_mae": 0.02,
+        "bounds": [
+          [
+            300,
+            600
+          ],
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            0.9,
+            1.0
+          ],
+          [
+            0.01,
+            0.2
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "reaction_rate_tolerance": 0.05,
+      "temperature_range": 500,
+      "pressure_range": 10000000.0
+    },
+    "validation_benchmark": "OSHA_PSM_standard_2024",
+    "data_size": 22000
+  },
+  "civil_engineering": {
+    "industry": "Civil Engineering",
+    "test_cases": [
+      {
+        "name": "AASHTO_bridge_load_test",
+        "input": [
+          50000,
+          250,
+          0.3,
+          0.02,
+          5
+        ],
+        "expected_mae": 0.025,
+        "bounds": [
+          [
+            10000,
+            100000
+          ],
+          [
+            100,
+            500
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            0.005,
+            0.05
+          ],
+          [
+            1,
+            20
+          ]
+        ]
+      },
+      {
+        "name": "deflection_prediction_within_5pct",
+        "input": [
+          0.02,
+          0.15,
+          0.25,
+          0.003,
+          0.95
+        ],
+        "expected_mae": 0.03,
+        "bounds": [
+          [
+            0.001,
+            0.1
+          ],
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.1,
+            0.5
+          ],
+          [
+            0.001,
+            0.01
+          ],
+          [
+            0.8,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "natural_frequency_within_3pct",
+        "input": [
+          0.5,
+          0.02,
+          0.15,
+          0.95,
+          0.003
+        ],
+        "expected_mae": 0.02,
+        "bounds": [
+          [
+            0.1,
+            2
+          ],
+          [
+            0.005,
+            0.05
+          ],
+          [
+            0.05,
+            0.3
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.001,
+            0.01
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "mesh_resolution": 100,
+      "load_factor": 1.5,
+      "safety_factor": 2.0
+    },
+    "validation_benchmark": "AASHTO_LRFD_2024",
+    "data_size": 18000
+  },
+  "oceanography": {
+    "industry": "Oceanography",
+    "test_cases": [
+      {
+        "name": "NOAA_buoy_wave_height",
+        "input": [
+          3.5,
+          8,
+          0.25,
+          15,
+          0.85
+        ],
+        "expected_mae": 0.15,
+        "bounds": [
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            30
+          ],
+          [
+            0.5,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "current_direction_accuracy_85pct",
+        "input": [
+          0.85,
+          2.5,
+          0.15,
+          0.7,
+          0.02
+        ],
+        "expected_mae": 0.08,
+        "bounds": [
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0,
+            0.5
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0,
+            0.1
+          ]
+        ]
+      },
+      {
+        "name": "storm_surge_within_10pct",
+        "input": [
+          1.5,
+          0.85,
+          0.12,
+          0.03,
+          0.9
+        ],
+        "expected_mae": 0.1,
+        "bounds": [
+          [
+            0,
+            5
+          ],
+          [
+            0.5,
+            1.0
+          ],
+          [
+            0,
+            0.5
+          ],
+          [
+            0,
+            0.2
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "wave_height_range": 20,
+      "current_speed_range": 5,
+      "temporal_resolution": 3600
+    },
+    "validation_benchmark": "NOAA_buoy_database_2024",
+    "data_size": 40000
+  },
+  "nuclear": {
+    "industry": "Nuclear",
+    "test_cases": [
+      {
+        "name": "NRC_benchmark_criticality_50pcm",
+        "input": [
+          1.0,
+          0.0005,
+          300,
+          0.95,
+          0.01
+        ],
+        "expected_mae": 0.0008,
+        "bounds": [
+          [
+            0.95,
+            1.05
+          ],
+          [
+            0.0001,
+            0.001
+          ],
+          [
+            250,
+            350
+          ],
+          [
+            0.9,
+            1.0
+          ],
+          [
+            0.001,
+            0.05
+          ]
+        ]
+      },
+      {
+        "name": "temperature_distribution_1pct",
+        "input": [
+          0.01,
+          0.5,
+          0.95,
+          0.02,
+          0.99
+        ],
+        "expected_mae": 0.008,
+        "bounds": [
+          [
+            0.001,
+            0.05
+          ],
+          [
+            0.1,
+            1.0
+          ],
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.005,
+            0.05
+          ],
+          [
+            0.95,
+            1.0
+          ]
+        ]
+      },
+      {
+        "name": "safety_envelope_all_rods",
+        "input": [
+          0.95,
+          0.02,
+          0.003,
+          0.99,
+          0.001
+        ],
+        "expected_mae": 0.005,
+        "bounds": [
+          [
+            0.8,
+            1.0
+          ],
+          [
+            0.005,
+            0.05
+          ],
+          [
+            0.0001,
+            0.01
+          ],
+          [
+            0.95,
+            1.0
+          ],
+          [
+            0.0001,
+            0.01
+          ]
+        ]
+      }
+    ],
+    "hyperparameters": {
+      "neutron_flux_range": 1000000000000000.0,
+      "temperature_limit": 3000,
+      "formal_verification_timeout": 3600
+    },
+    "validation_benchmark": "NRC_10_CFR_50_benchmark_2024",
+    "data_size": 12000
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "industry": "Automotive",
+  "test_cases": [
+    {
+      "name": "NCAP_crash_test_scenario",
+      "input": [
+        50,
+        0.3,
+        0.15,
+        0.85,
+        10
+      ],
+      "expected_mae": 0.01,
+      "bounds": [
+        [
+          30,
+          80
+        ],
+        [
+          0.1,
+          0.5
+        ],
+        [
+          0.05,
+          0.3
+        ],
+        [
+          0.7,
+          1
+        ],
+        [
+          5,
+          20
+        ]
+      ]
+    },
+    {
+      "name": "object_detection_accuracy_99pct",
+      "input": [
+        0.99,
+        0.95,
+        0.02,
+        0.98,
+        0.15
+      ],
+      "expected_mae": 0.005,
+      "bounds": [
+        [
+          0.95,
+          1
+        ],
+        [
+          0.9,
+          1
+        ],
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.95,
+          1
+        ],
+        [
+          0.05,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "lane_keeping_error_10cm",
+      "input": [
+        0.05,
+        0.02,
+        0.08,
+        0.95,
+        0.1
+      ],
+      "expected_mae": 0.008,
+      "bounds": [
+        [
+          0,
+          0.2
+        ],
+        [
+          0,
+          0.1
+        ],
+        [
+          0,
+          0.2
+        ],
+        [
+          0.9,
+          1
+        ],
+        [
+          0.05,
+          0.5
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "inference_latency_ms": 10,
+    "model_size_mb": 50,
+    "accuracy_threshold": 0.99
+  },
+  "validation_benchmark": "NCAP_2024_test_protocols",
+  "data_size": 60000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.423Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

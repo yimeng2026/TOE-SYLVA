@@ -1,0 +1,118 @@
+{
+  "industry": "Oceanography",
+  "test_cases": [
+    {
+      "name": "NOAA_buoy_wave_height",
+      "input": [
+        3.5,
+        8,
+        0.25,
+        15,
+        0.85
+      ],
+      "expected_mae": 0.15,
+      "bounds": [
+        [
+          0,
+          20
+        ],
+        [
+          0,
+          20
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          0.5,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "current_direction_accuracy_85pct",
+      "input": [
+        0.85,
+        2.5,
+        0.15,
+        0.7,
+        0.02
+      ],
+      "expected_mae": 0.08,
+      "bounds": [
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "storm_surge_within_10pct",
+      "input": [
+        1.5,
+        0.85,
+        0.12,
+        0.03,
+        0.9
+      ],
+      "expected_mae": 0.1,
+      "bounds": [
+        [
+          0,
+          5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0,
+          0.5
+        ],
+        [
+          0,
+          0.2
+        ],
+        [
+          0.7,
+          1
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "wave_height_range": 20,
+    "current_speed_range": 5,
+    "temporal_resolution": 3600
+  },
+  "validation_benchmark": "NOAA_buoy_database_2024",
+  "data_size": 40000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.427Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

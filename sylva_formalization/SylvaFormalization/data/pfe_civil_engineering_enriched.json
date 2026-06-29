@@ -1,0 +1,118 @@
+{
+  "industry": "Civil Engineering",
+  "test_cases": [
+    {
+      "name": "AASHTO_bridge_load_test",
+      "input": [
+        50000,
+        250,
+        0.3,
+        0.02,
+        5
+      ],
+      "expected_mae": 0.025,
+      "bounds": [
+        [
+          10000,
+          100000
+        ],
+        [
+          100,
+          500
+        ],
+        [
+          0.1,
+          0.5
+        ],
+        [
+          0.005,
+          0.05
+        ],
+        [
+          1,
+          20
+        ]
+      ]
+    },
+    {
+      "name": "deflection_prediction_within_5pct",
+      "input": [
+        0.02,
+        0.15,
+        0.25,
+        0.003,
+        0.95
+      ],
+      "expected_mae": 0.03,
+      "bounds": [
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.05,
+          0.3
+        ],
+        [
+          0.1,
+          0.5
+        ],
+        [
+          0.001,
+          0.01
+        ],
+        [
+          0.8,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "natural_frequency_within_3pct",
+      "input": [
+        0.5,
+        0.02,
+        0.15,
+        0.95,
+        0.003
+      ],
+      "expected_mae": 0.02,
+      "bounds": [
+        [
+          0.1,
+          2
+        ],
+        [
+          0.005,
+          0.05
+        ],
+        [
+          0.05,
+          0.3
+        ],
+        [
+          0.8,
+          1
+        ],
+        [
+          0.001,
+          0.01
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "mesh_resolution": 100,
+    "load_factor": 1.5,
+    "safety_factor": 2
+  },
+  "validation_benchmark": "AASHTO_LRFD_2024",
+  "data_size": 18000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.425Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

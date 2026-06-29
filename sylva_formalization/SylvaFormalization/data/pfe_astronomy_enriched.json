@@ -1,0 +1,118 @@
+{
+  "industry": "Astronomy",
+  "test_cases": [
+    {
+      "name": "Kepler-452b_orbital_params",
+      "input": [
+        1.046,
+        384.84,
+        130.75,
+        0.035,
+        289
+      ],
+      "expected_mae": 0.0008,
+      "bounds": [
+        [
+          0.5,
+          2
+        ],
+        [
+          300,
+          500
+        ],
+        [
+          100,
+          200
+        ],
+        [
+          0.01,
+          0.1
+        ],
+        [
+          200,
+          400
+        ]
+      ]
+    },
+    {
+      "name": "TRAPPIST-1e_habitable_zone",
+      "input": [
+        0.692,
+        6.1,
+        0.003,
+        251.3,
+        0.085
+      ],
+      "expected_mae": 0.0012,
+      "bounds": [
+        [
+          0.3,
+          1.5
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          0.001,
+          0.01
+        ],
+        [
+          200,
+          350
+        ],
+        [
+          0.05,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "solar_wind_pressure",
+      "input": [
+        1,
+        400,
+        5,
+        1.5,
+        96
+      ],
+      "expected_mae": 0.002,
+      "bounds": [
+        [
+          0.5,
+          2
+        ],
+        [
+          200,
+          800
+        ],
+        [
+          1,
+          20
+        ],
+        [
+          0.5,
+          5
+        ],
+        [
+          50,
+          200
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "length_scale": 0.5,
+    "signal_variance": 1,
+    "noise_variance": 0.01
+  },
+  "validation_benchmark": "NASA_Exoplanet_Archive_2024",
+  "data_size": 15000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.407Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

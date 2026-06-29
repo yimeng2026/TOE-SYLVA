@@ -1,0 +1,118 @@
+{
+  "industry": "Aerospace",
+  "test_cases": [
+    {
+      "name": "wind_tunnel_Mach_0.5_to_20",
+      "input": [
+        5,
+        15,
+        25000,
+        0.7,
+        0.02
+      ],
+      "expected_mae": 0.012,
+      "bounds": [
+        [
+          0.5,
+          20
+        ],
+        [
+          0,
+          45
+        ],
+        [
+          0,
+          50000
+        ],
+        [
+          0.3,
+          1
+        ],
+        [
+          0.001,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lift_drag_coefficient",
+      "input": [
+        0.8,
+        2.5,
+        0.05,
+        0.35,
+        0.75
+      ],
+      "expected_mae": 0.015,
+      "bounds": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          0.2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "flutter_boundary_prediction",
+      "input": [
+        0.6,
+        300,
+        0.03,
+        0.5,
+        0.85
+      ],
+      "expected_mae": 0.02,
+      "bounds": [
+        [
+          0.3,
+          1
+        ],
+        [
+          100,
+          1000
+        ],
+        [
+          0.01,
+          0.1
+        ],
+        [
+          0.2,
+          0.8
+        ],
+        [
+          0.7,
+          1
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "mach_number_range": 20,
+    "angle_of_attack": 45,
+    "tee_latency_ms": 50
+  },
+  "validation_benchmark": "NASA_wind_tunnel_database_2024",
+  "data_size": 35000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.421Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

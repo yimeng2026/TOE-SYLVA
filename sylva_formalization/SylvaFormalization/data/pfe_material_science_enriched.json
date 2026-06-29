@@ -1,0 +1,118 @@
+{
+  "industry": "Material Science",
+  "test_cases": [
+    {
+      "name": "ASTM_stress_strain_curve",
+      "input": [
+        250,
+        0.002,
+        200000,
+        0.3,
+        400
+      ],
+      "expected_mae": 0.02,
+      "bounds": [
+        [
+          100,
+          1000
+        ],
+        [
+          0.0001,
+          0.01
+        ],
+        [
+          100000,
+          300000
+        ],
+        [
+          0.1,
+          0.5
+        ],
+        [
+          200,
+          1000
+        ]
+      ]
+    },
+    {
+      "name": "fracture_prediction_within_10pct",
+      "input": [
+        500,
+        0.01,
+        0.05,
+        0.25,
+        600
+      ],
+      "expected_mae": 0.03,
+      "bounds": [
+        [
+          200,
+          1000
+        ],
+        [
+          0.001,
+          0.05
+        ],
+        [
+          0.01,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ],
+        [
+          300,
+          1200
+        ]
+      ]
+    },
+    {
+      "name": "CALPHAD_phase_diagram_consistency",
+      "input": [
+        1000,
+        0.5,
+        0.3,
+        0.2,
+        0.95
+      ],
+      "expected_mae": 0.015,
+      "bounds": [
+        [
+          300,
+          2000
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0.8,
+          1
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "physics_weight": 0.5,
+    "data_weight": 0.5,
+    "stress_threshold": 100000000
+  },
+  "validation_benchmark": "ASTM_E8_standard_test_2024",
+  "data_size": 20000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.419Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

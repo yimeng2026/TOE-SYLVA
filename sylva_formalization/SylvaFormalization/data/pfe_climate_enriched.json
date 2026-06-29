@@ -1,0 +1,118 @@
+{
+  "industry": "Climate",
+  "test_cases": [
+    {
+      "name": "CMIP6_temp_trend_1990_2020",
+      "input": [
+        1990,
+        2020,
+        14.5,
+        0.85,
+        0.5
+      ],
+      "expected_mae": 0.05,
+      "bounds": [
+        [
+          1980,
+          2030
+        ],
+        [
+          1990,
+          2050
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          0.5,
+          1.5
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "precipitation_pattern_correlation",
+      "input": [
+        25,
+        120,
+        0.75,
+        0.6,
+        0.15
+      ],
+      "expected_mae": 0.08,
+      "bounds": [
+        [
+          0,
+          60
+        ],
+        [
+          60,
+          180
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0.3,
+          0.9
+        ],
+        [
+          0,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "extreme_event_frequency_95CI",
+      "input": [
+        100,
+        0.05,
+        2.5,
+        0.9,
+        0.02
+      ],
+      "expected_mae": 0.06,
+      "bounds": [
+        [
+          10,
+          500
+        ],
+        [
+          0.01,
+          0.2
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0.8,
+          1
+        ],
+        [
+          0,
+          0.1
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "resolution": 1,
+    "temporal_window": 30,
+    "ensemble_members": 50
+  },
+  "validation_benchmark": "CMIP6_ensemble_2024",
+  "data_size": 80000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.416Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

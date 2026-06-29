@@ -1,0 +1,198 @@
+{
+  "high_dimensional": {
+    "description": "高维输入压力测试 — 输入维度远超训练数据",
+    "scenarios": [
+      {
+        "name": "1000_dim_CFD_params",
+        "dimensions": 1000,
+        "input_type": "continuous",
+        "generation_method": "gaussian_mixture",
+        "mean": 0.5,
+        "std": 0.15,
+        "out_of_distribution_ratio": 0.3,
+        "expected_behavior": "forbidden_region_warning",
+        "notes": "CFD 参数空间 1000 维，30% 超出训练分布"
+      },
+      {
+        "name": "5000_dim_molecular_dynamics",
+        "dimensions": 5000,
+        "input_type": "continuous",
+        "generation_method": "uniform_with_spikes",
+        "min": -1.0,
+        "max": 1.0,
+        "spike_count": 50,
+        "spike_magnitude": 10.0,
+        "expected_behavior": "anomaly_detection_trigger",
+        "notes": "分子动力学 5000 原子坐标，含 50 个异常尖峰"
+      },
+      {
+        "name": "10000_dim_neural_network_weights",
+        "dimensions": 10000,
+        "input_type": "continuous",
+        "generation_method": "sparse_activation",
+        "sparsity": 0.95,
+        "active_value_range": [
+          0.8,
+          1.2
+        ],
+        "expected_behavior": "slow_inference_detected",
+        "notes": "神经网络权重空间 10000 维，95% 稀疏"
+      }
+    ]
+  },
+  "high_frequency": {
+    "description": "高频调用压力测试 — 推理请求突发",
+    "scenarios": [
+      {
+        "name": "trading_system_10000_rps",
+        "requests_per_second": 10000,
+        "duration_seconds": 60,
+        "input_batch_size": 128,
+        "expected_latency_p99_ms": 50,
+        "max_acceptable_latency_p99_ms": 100,
+        "expected_behavior": "auto_scaling_trigger",
+        "notes": "金融交易系统 10K RPS 持续 60 秒"
+      },
+      {
+        "name": "autopilot_1000_hz",
+        "requests_per_second": 1000,
+        "duration_seconds": 300,
+        "input_batch_size": 1,
+        "expected_latency_p99_ms": 5,
+        "max_acceptable_latency_p99_ms": 10,
+        "expected_behavior": "edge_deployment_optimized",
+        "notes": "自动驾驶 1000Hz 实时控制循环"
+      },
+      {
+        "name": "grid_monitoring_50000_rps",
+        "requests_per_second": 50000,
+        "duration_seconds": 30,
+        "input_batch_size": 256,
+        "expected_latency_p99_ms": 20,
+        "max_acceptable_latency_p99_ms": 50,
+        "expected_behavior": "pipeline_optimized",
+        "notes": "电网监控 50K RPS 故障检测"
+      }
+    ]
+  },
+  "distribution_shift": {
+    "description": "分布漂移压力测试 — 输入分布逐渐偏离训练分布",
+    "scenarios": [
+      {
+        "name": "gradual_covariate_shift",
+        "shift_type": "gradual",
+        "shift_rate_per_hour": 0.05,
+        "total_shift_duration_hours": 48,
+        "initial_distribution": "normal(0, 1)",
+        "final_distribution": "normal(3, 2)",
+        "expected_drift_detection_time_minutes": 5,
+        "expected_behavior": "auto_retrain_trigger",
+        "notes": "48 小时缓慢漂移，5 分钟内应检测"
+      },
+      {
+        "name": "sudden_concept_drift",
+        "shift_type": "sudden",
+        "shift_magnitude": 5.0,
+        "shift_timestamp": "2026-06-15T14:00:00Z",
+        "expected_drift_detection_time_minutes": 1,
+        "expected_behavior": "immediate_fallback",
+        "notes": "突发概念漂移，1 分钟内检测并回退"
+      },
+      {
+        "name": "seasonal_periodic_drift",
+        "shift_type": "periodic",
+        "period_hours": 24,
+        "amplitude": 2.0,
+        "expected_behavior": "adaptive_learning_rate",
+        "notes": "24 小时周期性漂移，自适应学习率应对"
+      }
+    ]
+  },
+  "adversarial": {
+    "description": "对抗攻击压力测试 — 恶意输入",
+    "scenarios": [
+      {
+        "name": "FGSM_perturbation_epsilon_0.1",
+        "attack_type": "FGSM",
+        "epsilon": 0.1,
+        "target": "untargeted",
+        "expected_robustness": "perturbation_detected",
+        "max_prediction_change": 0.05,
+        "notes": "快速梯度符号攻击，ε=0.1"
+      },
+      {
+        "name": "PGD_100_iterations",
+        "attack_type": "PGD",
+        "iterations": 100,
+        "epsilon": 0.2,
+        "step_size": 0.01,
+        "expected_robustness": "input_sanitized",
+        "max_prediction_change": 0.1,
+        "notes": "投影梯度下降 100 步攻击"
+      },
+      {
+        "name": "boundary_escape_attack",
+        "attack_type": "boundary_escape",
+        "target_region": "extrapolation",
+        "expected_robustness": "forbidden_region_blocked",
+        "notes": "边界逃逸攻击，应触发禁止区域检测"
+      }
+    ]
+  },
+  "boundary": {
+    "description": "边界条件压力测试 — 极值输入",
+    "scenarios": [
+      {
+        "name": "temperature_0K_and_1e6K",
+        "input_name": "temperature_K",
+        "values": [
+          0.0,
+          1000000.0,
+          -1,
+          Infinity,
+          NaN
+        ],
+        "expected_behavior": "input_validation_reject",
+        "valid_range": [
+          0.001,
+          10000
+        ],
+        "notes": "极端温度输入（0K, 1e6K, -1, inf, NaN）"
+      },
+      {
+        "name": "pressure_vacuum_to_extreme",
+        "input_name": "pressure_Pa",
+        "values": [
+          0.0,
+          1e+30,
+          -100000.0,
+          1e-100,
+          Infinity
+        ],
+        "expected_behavior": "input_validation_reject",
+        "valid_range": [
+          1e-10,
+          1000000000000000.0
+        ],
+        "notes": "极端压力输入（真空到极端高压）"
+      },
+      {
+        "name": "dimension_count_zero_and_million",
+        "input_name": "dimension_count",
+        "values": [
+          0,
+          1,
+          1000000,
+          -1,
+          999999.9
+        ],
+        "expected_behavior": "input_validation_reject",
+        "valid_range": [
+          1,
+          100000
+        ],
+        "notes": "极端维度数（0, 1, 1e6, -1, 999999.9）"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+industry,test_case_count,total_data_size,expected_avg_mae,validation_benchmark
+astronomy,3,15000,0.0013,NASA_Exoplanet_Archive_2024
+semiconductor,3,25000,0.0400,TCAD_3nm_Sentaurus_2025
+energy_grid,3,50000,0.0053,IEEE_118_bus_test_case_2024
+finance,3,100000,0.0080,Basel_III_stress_test_2024
+climate,3,80000,0.0633,CMIP6_ensemble_2024
+biomedical,3,30000,0.0300,FDA_510k_clinical_data_2024
+material_science,3,20000,0.0217,ASTM_E8_standard_test_2024
+aerospace,3,35000,0.0157,NASA_wind_tunnel_database_2024
+automotive,3,60000,0.0077,NCAP_2024_test_protocols
+chemical,3,22000,0.0250,OSHA_PSM_standard_2024
+civil_engineering,3,18000,0.0250,AASHTO_LRFD_2024
+oceanography,3,40000,0.1100,NOAA_buoy_database_2024
+nuclear,3,12000,0.0046,NRC_10_CFR_50_benchmark_2024

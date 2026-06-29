@@ -1,0 +1,118 @@
+{
+  "industry": "Chemical",
+  "test_cases": [
+    {
+      "name": "pilot_plant_reaction_yield",
+      "input": [
+        350,
+        5,
+        0.95,
+        0.02,
+        0.85
+      ],
+      "expected_mae": 0.03,
+      "bounds": [
+        [
+          300,
+          500
+        ],
+        [
+          1,
+          50
+        ],
+        [
+          0.7,
+          1
+        ],
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.7,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "selectivity_accuracy_95pct",
+      "input": [
+        0.95,
+        0.03,
+        400,
+        10,
+        0.9
+      ],
+      "expected_mae": 0.025,
+      "bounds": [
+        [
+          0.8,
+          1
+        ],
+        [
+          0.01,
+          0.1
+        ],
+        [
+          300,
+          600
+        ],
+        [
+          1,
+          100
+        ],
+        [
+          0.7,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "safety_constraint_satisfaction",
+      "input": [
+        450,
+        0.01,
+        0.001,
+        0.99,
+        0.05
+      ],
+      "expected_mae": 0.02,
+      "bounds": [
+        [
+          300,
+          600
+        ],
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.0001,
+          0.01
+        ],
+        [
+          0.9,
+          1
+        ],
+        [
+          0.01,
+          0.2
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "reaction_rate_tolerance": 0.05,
+    "temperature_range": 500,
+    "pressure_range": 10000000
+  },
+  "validation_benchmark": "OSHA_PSM_standard_2024",
+  "data_size": 22000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.424Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

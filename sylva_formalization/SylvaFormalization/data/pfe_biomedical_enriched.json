@@ -1,0 +1,118 @@
+{
+  "industry": "Biomedical",
+  "test_cases": [
+    {
+      "name": "drug_interaction_prediction",
+      "input": [
+        500,
+        0.85,
+        0.05,
+        0.001,
+        0.92
+      ],
+      "expected_mae": 0.04,
+      "bounds": [
+        [
+          100,
+          1000
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          0.01,
+          0.2
+        ],
+        [
+          0.0001,
+          0.01
+        ],
+        [
+          0.8,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "biomarker_correlation_p005",
+      "input": [
+        0.75,
+        0.02,
+        150,
+        0.003,
+        0.88
+      ],
+      "expected_mae": 0.03,
+      "bounds": [
+        [
+          0.3,
+          1
+        ],
+        [
+          0.001,
+          0.05
+        ],
+        [
+          50,
+          500
+        ],
+        [
+          0.0001,
+          0.01
+        ],
+        [
+          0.7,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "FDA_510k_clinical_endpoint",
+      "input": [
+        0.9,
+        0.15,
+        0.02,
+        0.95,
+        0.001
+      ],
+      "expected_mae": 0.02,
+      "bounds": [
+        [
+          0.7,
+          1
+        ],
+        [
+          0.05,
+          0.3
+        ],
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.8,
+          1
+        ],
+        [
+          0.0001,
+          0.01
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "causal_graph_depth": 5,
+    "neural_confidence": 0.9,
+    "symbolic_check_interval": 10
+  },
+  "validation_benchmark": "FDA_510k_clinical_data_2024",
+  "data_size": 30000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.418Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

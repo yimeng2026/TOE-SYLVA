@@ -1,0 +1,118 @@
+{
+  "industry": "Semiconductor",
+  "test_cases": [
+    {
+      "name": "3nm_node_IV_curve",
+      "input": [
+        0.7,
+        0.025,
+        300,
+        1000000000000000000,
+        5
+      ],
+      "expected_mae": 0.03,
+      "bounds": [
+        [
+          0.5,
+          1.2
+        ],
+        [
+          0.01,
+          0.05
+        ],
+        [
+          77,
+          500
+        ],
+        [
+          10000000000000000,
+          100000000000000000000
+        ],
+        [
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "name": "finFET_thermal_runaway",
+      "input": [
+        0.65,
+        85,
+        350,
+        20000000000000000000,
+        3
+      ],
+      "expected_mae": 0.04,
+      "bounds": [
+        [
+          0.5,
+          1
+        ],
+        [
+          50,
+          150
+        ],
+        [
+          300,
+          500
+        ],
+        [
+          1000000000000000000,
+          1e+21
+        ],
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "name": "gate_oxide_breakdown",
+      "input": [
+        1.1,
+        0.001,
+        400,
+        500000000000000000,
+        7
+      ],
+      "expected_mae": 0.05,
+      "bounds": [
+        [
+          0.8,
+          1.5
+        ],
+        [
+          0.0001,
+          0.01
+        ],
+        [
+          300,
+          500
+        ],
+        [
+          10000000000000000,
+          10000000000000000000
+        ],
+        [
+          3,
+          10
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "branch_width": 128,
+    "trunk_depth": 6,
+    "learning_rate": 0.001
+  },
+  "validation_benchmark": "TCAD_3nm_Sentaurus_2025",
+  "data_size": 25000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.412Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "industry": "Energy Grid",
+  "test_cases": [
+    {
+      "name": "IEEE_118_bus_transient",
+      "input": [
+        1,
+        60,
+        100,
+        0.95,
+        500
+      ],
+      "expected_mae": 0.003,
+      "bounds": [
+        [
+          0.9,
+          1.1
+        ],
+        [
+          59,
+          61
+        ],
+        [
+          50,
+          500
+        ],
+        [
+          0.8,
+          1
+        ],
+        [
+          100,
+          1000
+        ]
+      ]
+    },
+    {
+      "name": "fault_islanding_detection",
+      "input": [
+        0.85,
+        59.8,
+        0.02,
+        0.92,
+        0.15
+      ],
+      "expected_mae": 0.005,
+      "bounds": [
+        [
+          0.7,
+          1
+        ],
+        [
+          58,
+          62
+        ],
+        [
+          0.001,
+          0.1
+        ],
+        [
+          0.8,
+          1
+        ],
+        [
+          0.05,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "renewable_integration_ramp",
+      "input": [
+        0.3,
+        0.7,
+        200,
+        15,
+        0.05
+      ],
+      "expected_mae": 0.008,
+      "bounds": [
+        [
+          0.1,
+          0.5
+        ],
+        [
+          0.5,
+          1
+        ],
+        [
+          50,
+          500
+        ],
+        [
+          5,
+          50
+        ],
+        [
+          0.01,
+          0.2
+        ]
+      ]
+    }
+  ],
+  "hyperparameters": {
+    "modes": 32,
+    "width": 64,
+    "dt": 0.01
+  },
+  "validation_benchmark": "IEEE_118_bus_test_case_2024",
+  "data_size": 50000,
+  "_metadata": {
+    "ingested_at": "2026-06-29T01:24:36.414Z",
+    "source_file": "data/pfe_industry_test_data.json",
+    "validation_status": "PASSED",
+    "warning_count": 0,
+    "data_version": "1.0.0"
+  }
+}

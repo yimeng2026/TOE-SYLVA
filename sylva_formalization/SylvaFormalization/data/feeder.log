@@ -1,0 +1,117 @@
+[2026-06-29T01:24:14.621Z] Ingesting astronomy from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected astronomy, got Astronomy
+[2026-06-29T01:24:14.625Z] Ingesting semiconductor from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected semiconductor, got Semiconductor
+[2026-06-29T01:24:14.626Z] Ingesting energy_grid from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected energy_grid, got Energy Grid
+[2026-06-29T01:24:14.627Z] Ingesting finance from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected finance, got Finance
+[2026-06-29T01:24:14.627Z] Ingesting climate from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected climate, got Climate
+[2026-06-29T01:24:14.628Z] Ingesting biomedical from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected biomedical, got Biomedical
+[2026-06-29T01:24:14.629Z] Ingesting material_science from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected material_science, got Material Science
+[2026-06-29T01:24:14.630Z] Ingesting aerospace from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected aerospace, got Aerospace
+[2026-06-29T01:24:14.630Z] Ingesting automotive from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected automotive, got Automotive
+[2026-06-29T01:24:14.631Z] Ingesting chemical from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected chemical, got Chemical
+[2026-06-29T01:24:14.632Z] Ingesting civil_engineering from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected civil_engineering, got Civil Engineering
+[2026-06-29T01:24:14.632Z] Ingesting oceanography from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected oceanography, got Oceanography
+[2026-06-29T01:24:14.633Z] Ingesting nuclear from data/pfe_industry_test_data.json
+Validation: FAILED
+Errors (1):
+  - Industry mismatch: expected nuclear, got Nuclear
+[2026-06-29T01:24:36.407Z] Ingesting astronomy from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_astronomy_enriched.json
+Test cases: 3
+Data points: 15000
+[2026-06-29T01:24:36.412Z] Ingesting semiconductor from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_semiconductor_enriched.json
+Test cases: 3
+Data points: 25000
+[2026-06-29T01:24:36.414Z] Ingesting energy_grid from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_energy_grid_enriched.json
+Test cases: 3
+Data points: 50000
+[2026-06-29T01:24:36.415Z] Ingesting finance from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_finance_enriched.json
+Test cases: 3
+Data points: 100000
+[2026-06-29T01:24:36.416Z] Ingesting climate from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_climate_enriched.json
+Test cases: 3
+Data points: 80000
+[2026-06-29T01:24:36.418Z] Ingesting biomedical from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_biomedical_enriched.json
+Test cases: 3
+Data points: 30000
+[2026-06-29T01:24:36.419Z] Ingesting material_science from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_material_science_enriched.json
+Test cases: 3
+Data points: 20000
+[2026-06-29T01:24:36.421Z] Ingesting aerospace from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_aerospace_enriched.json
+Test cases: 3
+Data points: 35000
+[2026-06-29T01:24:36.423Z] Ingesting automotive from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_automotive_enriched.json
+Test cases: 3
+Data points: 60000
+[2026-06-29T01:24:36.424Z] Ingesting chemical from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_chemical_enriched.json
+Test cases: 3
+Data points: 22000
+[2026-06-29T01:24:36.425Z] Ingesting civil_engineering from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_civil_engineering_enriched.json
+Test cases: 3
+Data points: 18000
+[2026-06-29T01:24:36.427Z] Ingesting oceanography from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_oceanography_enriched.json
+Test cases: 3
+Data points: 40000
+[2026-06-29T01:24:36.428Z] Ingesting nuclear from data/pfe_industry_test_data.json
+Validation: PASSED
+Saved to pfe_nuclear_enriched.json
+Test cases: 3
+Data points: 12000
