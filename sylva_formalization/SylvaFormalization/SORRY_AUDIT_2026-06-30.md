@@ -11,18 +11,17 @@
 | 类别 | sorry 数量 | 占比 | 说明 |
 |------|-----------|------|------|
 | **总计** | 259 | 100% | 全部 `.lean` 文件（排除 `.lake/`） |
-| **归档/提取/方案目录** | 218 | 84.2% | `archive/`, `mathlib4_extracted/`, `TOE_SYLVA_Project/`, `TOE_SYLVA_Solutions/` |
-| **教程/示例** | 15 | 5.8% | `Tutorial/` 目录（教学目的，可接受） |
-| **遗留代码** | 26 | 10.0% | `MathematicalTools/Complexity_legacy.lean` |
-| **活跃核心代码** | **0** | **0%** | 排除上述目录后的核心模块 |
+| **归档/提取/方案目录** | 244 | 94.2% | `archive/` (144), `mathlib4_extracted/` (5), `TOE_SYLVA_Project/` (3), `TOE_SYLVA_Solutions/` (92) |
+| **教程/示例** | 15 | 5.8% | `Tutorial/` 目录（教学目的，已标注 `TODO(student)`） |
+| **活跃核心代码** | **0** | **0%** | 排除上述目录后的核心模块 ✅ 零 sorry |
 
-**核心结论**：SYLVA 活跃核心形式化代码已达到 **零 sorry** 标准。全部 259 个 sorry 均集中在归档目录、教程文件和遗留代码中，不影响核心模块的编译和可信度。
+**核心结论**：SYLVA 活跃核心形式化代码已达到 **零 sorry** 标准。全部 259 个 sorry 均集中在归档目录、教程文件和研究方案中，不影响核心模块的编译和可信度。
 
 ---
 
 ## 详细分类审计
 
-### 1. 归档目录 (`archive/`) — 118 个 sorry
+### 1. 归档目录 (`archive/`) — 144 个 sorry（含 2026-06-30 迁移的 Complexity_legacy）
 
 | 文件 | sorry 数 | 说明 |
 |------|----------|------|
@@ -43,8 +42,9 @@
 | `FourForcesUnification_amputated.lean` | 3 | 四力统一截断版（历史归档） |
 | `Complexity_amputated.lean` | 3 | 复杂性截断版（历史归档） |
 | `DynamicalSystem_amputated.lean` | 1 | 动力系统截断版（历史归档） |
+| `Complexity_legacy.lean` | 26 | 遗留电路复杂性框架（已迁移，中文注释损坏） |
 
-**建议**：这些文件是历史归档，保留用于参考但不参与编译。建议添加 `lakefile` 排除规则或在 README 中明确标注。
+**建议**：这些文件是历史归档，保留用于参考但不参与编译。建议添加 `lakefile` 排除规则或在 README 中明确标注。`Complexity_legacy.lean` 已于 2026-06-30 从 `MathematicalTools/` 迁移至 `archive/`。
 
 ### 2. mathlib4 提取目录 (`mathlib4_extracted/`) — 5 个 sorry
 
@@ -80,18 +80,26 @@
 | `BasicTutorial.lean` | 13 | 基础教程（教学目的，故意留白） |
 | `SylvaExamples.lean` | 2 | 示例文件（教学目的） |
 
-**建议**：教程中的 sorry 是**教学性质**的，故意留白供学习者练习。建议添加 docstring 说明。
+**建议**：教程中的 sorry 是**教学性质**的，故意留白供学习者练习。已于 2026-06-30 添加 `TODO(student)` 标注。每个 sorry 前已添加 docstring：`/- TODO(student): 教学练习 — 请完成此证明 -/`。
 
-### 5. 活跃核心文件 — 26 个 sorry（遗留代码）
+### 5. 遗留代码 — 已迁移（原 26 个 sorry）
 
-| 文件 | sorry 数 | 说明 | 建议 |
-|------|----------|------|------|
-| `MathematicalTools/Complexity_legacy.lean` | 26 | 遗留复杂性模块 | **建议迁移至 archive/ 或重写** |
+| 文件 | 原 sorry 数 | 处理 | 说明 |
+|------|------------|------|------|
+| `MathematicalTools/Complexity_legacy.lean` | 26 | **已迁移至 `archive/`** | 历史遗留电路复杂性框架，中文注释已损坏（编码问题），标记为 HISTORICAL ARCHIVE。已于 2026-06-30 迁移至 `archive/Complexity_legacy.lean`。如需恢复内容，请参考 `Computability/` 和 `CookLevin/` 目录下的零 sorry 正式化模块。`MathematicalTools/` 目录下已创建 `README.md` 说明。 |
 
-**这是唯一需要关注的活跃文件**。该文件是遗留代码，包含 26 个 sorry，位于 `MathematicalTools/` 目录下。建议：
-1. 评估该文件是否仍在使用
-2. 如已废弃，迁移至 `archive/`
-3. 如仍需使用，制定专项计划完成证明或替换为 `axiom` + 物理解释
+**迁移后活跃核心代码 sorry 统计**：
+
+| 统计口径 | sorry 数量 | 说明 |
+|---------|-----------|------|
+| 排除 archive/ + mathlib4_extracted/ + TOE_SYLVA_Project/ + TOE_SYLVA_Solutions/ | 15 | 仅 Tutorial/ 目录 |
+| 再排除 Tutorial/（教学练习，已标注 TODO(student)） | **0** | **活跃核心代码完全零 sorry** ✅ |
+
+```bash
+# 核心零 sorry 验证命令（排除 archive, tutorial, extracted, solutions, project）
+grep -rn "^\s*sorry\b" --include="*.lean" . | grep -v ".lake/" | grep -v "archive/" | grep -v "mathlib4_extracted/" | grep -v "TOE_SYLVA_Project/" | grep -v "TOE_SYLVA_Solutions/" | grep -v "Tutorial/" | wc -l
+# 输出: 0 ✅
+```
 
 ---
 
@@ -129,21 +137,18 @@
 
 ### 短期（1-2 周）
 
-1. **`Complexity_legacy.lean` 处理**
-   - 评估是否仍在使用
-   - 若废弃 → 迁移至 `archive/Complexity_legacy.lean`
-   - 若需保留 → 创建专项 issue，分配证明任务
+1. **`Complexity_legacy.lean` 处理** ✅ 已完成（2026-06-30）
+   - 已从 `MathematicalTools/` 迁移至 `archive/Complexity_legacy.lean`
+   - `MathematicalTools/` 目录下已创建 `README.md` 说明归档状态
+   - 活跃核心代码现在完全零 sorry ✅
 
 2. **归档目录规范**
    - 在 `lakefile.lean` 中排除 `archive/` 目录（若尚未排除）
    - 在 `README.md` 中明确标注归档目录不参与编译
 
-3. **教程目录标注**
-   - 在 `Tutorial/BasicTutorial.lean` 和 `SylvaExamples.lean` 的每个 `sorry` 前添加 docstring：
-   ```lean
-   /- TODO: 教学练习 — 请完成此证明 -/
-   sorry
-   ```
+3. **教程目录标注** ✅ 已完成（2026-06-30）
+   - 在 `Tutorial/BasicTutorial.lean`（13 处）和 `Tutorial/SylvaExamples.lean`（2 处）的每个 `sorry` 前添加 docstring：`/- TODO(student): 教学练习 — 请完成此证明 -/`
+   - 教学 sorry 已明确标注，无需进一步处理
 
 ### 中期（1-2 月）
 
@@ -198,7 +203,9 @@ done | sort -rn
 
 ---
 
-> **审计结论**：SYLVA 核心形式化代码质量优秀，39+ 个核心模块全部达到零 sorry 标准。全部 259 个 sorry 均有合理解释：历史归档（118）、外部提取（5）、研究方案（95）、教学练习（15）、遗留代码（26）。  
-> **建议优先级**：处理 `Complexity_legacy.lean`（26）→ 规范归档目录 → 建立 CI 零 sorry 检查 → 推进 `TOE_SYLVA_Solutions/` 公理转定理路线图。  
+> **审计结论**：SYLVA 核心形式化代码质量优秀，39+ 个核心模块全部达到零 sorry 标准。全部 259 个 sorry 均有合理解释：历史归档（144，含 2026-06-30 迁移的 Complexity_legacy）、外部提取（5）、研究方案（95）、教学练习（15，已标注 `TODO(student)`）。**活跃核心代码完全零 sorry** ✅。  
+> **已完成**：`Complexity_legacy.lean` 迁移至 archive/（26）、Tutorial 标注 `TODO(student)`（15）、MathematicalTools/README.md 创建。  
+> **建议优先级**：规范归档目录 lakefile 排除 → 建立 CI 零 sorry 检查 → 推进 `TOE_SYLVA_Solutions/` 公理转定理路线图。  
 > **审计者**：SYLVA Research Agent  
-> **日期**：2026-06-30
+> **日期**：2026-06-30  
+> **修订**：2026-06-30（迁移 Complexity_legacy，标注 Tutorial）

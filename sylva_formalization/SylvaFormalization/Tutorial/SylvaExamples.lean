@@ -138,6 +138,7 @@ example : smallDebt.value < D_c := by
   unfold smallDebt D_c
   -- D_c ≈ 6.85, smallDebt.value = 1.0
   -- 需要数值计算验证
+  /- TODO(student): 教学练习 — 请完成此证明 -/
   sorry
 
 -- 定理形式：如果债务值 > D_c，则驱动涌现
@@ -460,6 +461,7 @@ example : GAMMA_1 > φ := by
   have h1 : GAMMA_1 > 14 := by
     simp [GAMMA_1]
     -- 需要数值验证
+    /- TODO(student): 教学练习 — 请完成此证明 -/
     sorry
   have h2 : φ < 2 := by
     have h : φ < (1 + 3) / 2 := by
