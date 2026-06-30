@@ -1,291 +1,224 @@
-# 千禧年难题：纳维-斯托克斯存在性与光滑性（Navier-Stokes Existence and Smoothness）— SYLVA 学术完整研究档案
+# 千禧年难题：纳维-斯托克斯存在性与光滑性（Navier-Stokes Existence and Smoothness）— SYLVA学术完整研究档案
 
-> **状态：未解决**  
-> **设立机构：** 克莱数学研究所（Clay Mathematics Institute），2000年  
-> **奖金：** 1,000,000 美元  
+> **状态：未解决**
+> **设立机构：** 克莱数学研究所（Clay Mathematics Institute），2000年
+> **奖金：** 1,000,000 美元
 > **所属领域：** 偏微分方程、流体力学、数学分析、调和分析、几何分析
 
-> **SYLVA 关联模块：** `audit_report_NS_LG.md`, `sylva_complete/NavierStokes.lean`, `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`, `sylva_complete/LocalGlobalTemplate.lean`, `alpha_derivation/11_chern_simons_137.md`  
-> **文档编号：** Millennium-P-005-SYLVA  
-> **生成日期：** 2026-06-28
+---
+
+**摘要.** 纳维-斯托克斯存在性与光滑性问题是克莱数学研究所于 2000 年设立的七大千禧年大奖难题之一。它问：在三维空间中，对于任意光滑的不可压缩初始条件，纳维-斯托克斯方程是否存在全局光滑解？或者，是否存在有限时间奇点（爆破）？本文系统综述该问题的数学陈述，回顾二维情形的全局正则性、三维 Leray-Hopf 弱解的存在性与非唯一性、Caffarelli-Kohn-Nirenberg 部分正则性理论、以及 Tao（2014）在平均化模型上的有限时间爆破结果；分析 SYLVA 形式化集群中的质量问题——有限差分近似（h := 1e-8）替代标准导数的数学不精确性，以及抽象局部到全局框架作为连接不同数学领域的概念桥梁的潜在价值；探讨 Navier-Stokes 问题与欧拉方程奇点、Onsager 猜想及凸积分方法的关联网络。本文以认识论谦逊为基调，强调数值证据不等于严格证明，弱解存在不等于光滑解存在，形式化的诚实骨架比膨胀的存根更有价值。
+
+**关键词：** 纳维-斯托克斯方程；全局正则性；光滑解；Leray-Hopf 弱解；有限时间爆破；部分正则性；凸积分；形式化验证；湍流；Onsager 猜想
 
 ---
 
-## 目录
+## 1. 引言
 
-1. [问题的严格陈述](#1-问题的严格陈述)
-2. [历史与里程碑](#2-历史与里程碑)
-3. [主要已知成果](#3-主要已知成果)
-4. [SYLVA 专项研究：NS 集群审核](#4-sylva-专项研究ns-集群审核)
-5. [SYLVA 专项研究：NS 形式化](#5-sylva-专项研究ns-形式化)
-6. [SYLVA 专项研究：Local-Global 模板](#6-sylva-专项研究local-global-模板)
-7. [等价表述与关联问题](#7-等价表述与关联问题)
-8. [开放问题与方向](#8-开放问题与方向)
-9. [Lean-ready 形式化结构](#9-lean-ready-形式化结构)
-10. [结论](#10-结论)
+1822 年，Claude-Louis Navier 在考虑粘性效应的基础上建立了流体运动方程。1845 年，George Gabriel Stokes 进一步完善了这组方程，引入了应力张量与不可压缩条件。这组方程，后来被称为**纳维-斯托克斯方程（Navier-Stokes Equations, NSE）**，成为流体力学的基石：
+
+∂u/∂t + (u · ∇)u = -∇p + νΔu, ∇ · u = 0
+
+在二维空间中，这组方程的全局正则性（光滑解对所有时间存在）早已被证明。然而，在三维空间中——我们实际生活的空间——这个问题至今未解。2000 年，克莱数学研究所将"纳维-斯托克斯存在性与光滑性"列为千禧年大奖难题之一 [1]，要求：
+
+> **对于三维空间中任意光滑、不可压缩的初始条件，纳维-斯托克斯方程是否存在全局光滑解？**
+
+或者等价地：
+
+> **是否存在光滑初始条件，使得解在有限时间内产生奇点（爆破）？**
+
+三维空间中的涡量（vorticity）可以通过**涡线拉伸（vortex stretching）**机制无限放大，而这一机制在二维中不存在。湍流——流体力学中最普遍、最复杂的现象——正是这种非线性放大的宏观表现。理解奇点是否形成，就是理解湍流的数学本质。
 
 ---
 
-## 1. 问题的严格陈述
+## 2. 问题的严格陈述
 
-### 1.1 纳维-斯托克斯方程
+### 2.1 不可压缩纳维-斯托克斯方程
 
-设 $\mathbf{u}(x, t) : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}^3$ 为速度场，$p(x, t) : \mathbb{R}^3 \times [0, \infty) \to \mathbb{R}$ 为压强场，$\nu > 0$ 为运动粘性系数。
+设 u(x, t) : R³ × [0, ∞) → R³ 为速度场，p(x, t) : R³ × [0, ∞) → R 为压强场，ν > 0 为运动粘性系数。
 
 **不可压缩纳维-斯托克斯方程**：
-$$\boxed{\begin{aligned}
-\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} &= -\nabla p + \nu \Delta \mathbf{u} + \mathbf{f} \\
-\nabla \cdot \mathbf{u} &= 0 \\
-\mathbf{u}(x, 0) &= \mathbf{u}_0(x)
-\end{aligned}}$$
 
-其中：
-- $\mathbf{u} \cdot \nabla = \sum_{j=1}^3 u_j \frac{\partial}{\partial x_j}$（对流项/非线性项）
-- $\Delta = \sum_{j=1}^3 \frac{\partial^2}{\partial x_j^2}$（拉普拉斯算子）
-- $\mathbf{f}$ 为外力项
-- $\nabla \cdot \mathbf{u} = 0$ 为不可压缩条件
+∂u/∂t + (u · ∇)u = -∇p + νΔu + f
+∇ · u = 0
+u(x, 0) = u₀(x)
 
-### 1.2 压强的消去
+其中 f 为外力项，不可压缩条件 ∇ · u = 0 保证了流体体积守恒。
 
-取散度并利用不可压缩条件：
-$$\Delta p = -\nabla \cdot ((\mathbf{u} \cdot \nabla) \mathbf{u}) = -\sum_{i,j} \frac{\partial u_i}{\partial x_j} \frac{\partial u_j}{\partial x_i}$$
+### 2.2 压强的消去
 
-因此压强由速度场通过 Poisson 方程确定（在适当边界条件下）。
+取散度并利用不可压缩条件，压强由 Poisson 方程确定：
 
-### 1.3 问题的严格表述（Clay 官方）
+Δp = -∇ · ((u · ∇)u) = -Σ_{i,j} ∂u_i/∂x_j · ∂u_j/∂x_i
 
-**问题 A（$\mathbb{R}^3$ 上）**：
+因此，压强不是独立变量，而是由速度场通过椭圆方程隐式确定。这使得 NSE 成为一个**耦合的抛物-椭圆系统**。
 
-给定光滑初始条件 $\mathbf{u}_0 \in C^\infty(\mathbb{R}^3)$ 且 $\nabla \cdot \mathbf{u}_0 = 0$，以及满足适当衰减条件的 $\mathbf{f}$，是否存在全局光滑解：
-$$\mathbf{u} \in C^\infty(\mathbb{R}^3 \times [0, \infty))$$
+### 2.3 光滑解与弱解
 
-且满足能量不等式？
+**定义 2.1（光滑解）.** 速度场 u 被称为**光滑解**，若 u ∈ C^∞(R³ × [0, T)) 且对所有时间 t ∈ [0, T)，满足 NSE 和能量不等式。
 
-**问题 B（$\mathbb{T}^3$ 上，周期性边界）**：
+**定义 2.2（Leray-Hopf 弱解）.** 速度场 u 被称为**Leray-Hopf 弱解**，若：
 
-类似的陈述在 3维环面 $\mathbb{T}^3 = \mathbb{R}^3 / (2\pi \mathbb{Z})^3$ 上。
+u ∈ L^∞(0, T; L²(R³)) ∩ L²(0, T; H¹(R³))
 
-等价于：是否存在有限时间奇点（blow-up）？
+且满足 NSE 的弱形式与能量不等式：
+
+1/2 ∫|u(t)|² dx + ν ∫₀ᵗ ∫|∇u|² dx ds ≤ 1/2 ∫|u₀|² dx
+
+> **纳维-斯托克斯问题.** 对于任意光滑初始条件 u₀ ∈ C^∞(R³) 且 ∇ · u₀ = 0，是否存在全局光滑解（T = ∞）？
 
 ---
 
-## 2. 历史与里程碑
+## 3. 已知成果：从二维到三维的鸿沟
 
-### 2.1 时间线
+### 3.1 二维情形：全局正则性已证明
 
-| 年份 | 成果 | 作者 |
-|------|------|------|
-| 1822 | 纳维方程 | Navier | 粘性流体力学 |
-| 1845 | 斯托克斯修正 | Stokes | 完整 NSE |
-| 1934 | 弱解存在性（Leray-Hopf） | Leray | 湍流解 |
-| 1969 | 高维（$d \geq 4$）的弱解 | 多位 | 高维结果 |
-| 1984 | Caffarelli-Kohn-Nirenberg 部分正则性 | CKN | 奇异集测度零 |
-| 1999 | 尺度不变解的分类 | 多位 | 自相似解排除 |
-| 2000 | 列为千禧年难题 | Clay Institute |  |
-| 2007 | 二维情形全局正则性 | 经典结果 | 2维已解决 |
-| 2014 | Tao 的平均化有限时间爆破 | Tao | 对修改模型 |
-| 2017-20 | 弱解的非唯一性 | Buckmaster-Vicol | 凸积分方法 |
-| 2022-26 | SYLVA 框架：NS 方程形式化 | SYLVA 学术 | 严格分析 |
+在二维（d=2）中，NSE 的全局正则性已被严格证明。核心原因是：涡量 ω = ∇ × u 在二维中是标量，满足：
 
-### 2.2 Leray 弱解（1934）
+∂ω/∂t + u · ∇ω = νΔω
 
-**Leray 弱解**：满足能量不等式的弱解
-$$\mathbf{u} \in L^\infty(0, T; L^2) \cap L^2(0, T; H^1)$$
+涡量不能通过拉伸机制放大，因为二维中没有"涡线拉伸"的几何自由度。这使得二维 NSE 的能量和涡量都受控，从而全局光滑解存在。
 
-**能量不等式**：
-$$\frac{1}{2} \int |\mathbf{u}(t)|^2 \, dx + \nu \int_0^t \int |\nabla \mathbf{u}|^2 \, dx \, ds \leq \frac{1}{2} \int |\mathbf{u}_0|^2 \, dx$$
+### 3.2 三维弱解：Leray（1934）的奠基
 
-Leray 证明：对任意 $\mathbf{u}_0 \in L^2$，存在至少一个全局弱解。
+1934 年，Jean Leray 证明了 [2]：对于任意 u₀ ∈ L²(R³) 且 ∇ · u₀ = 0，至少存在一个全局 Leray-Hopf 弱解。这一结果是流体力学数学理论的基石，但留下了关键问题：
+- **弱解是否唯一？** 可能有多于一个弱解满足同一初始条件；
+- **弱解是否光滑？** 弱解可能包含奇点或不连续面。
 
-**关键问题**：弱解是否唯一？是否光滑？
+### 3.3 部分正则性：Caffarelli-Kohn-Nirenberg 定理
 
----
+1982 年，Caffarelli、Kohn 与 Nirenberg 证明了一个深刻的**部分正则性**结果 [3]：
 
-## 3. 主要已知成果
+> **定理 3.1（CKN）.** 设 u 为合适的弱解（suitable weak solution），则奇异集：
+> S = {(x, t) : u 在 (x, t) 附近无界}
+> 满足 H¹(S) = 0，即奇异集的 1 维 Hausdorff 测度为零。
 
-### 3.1 二维情形（已解决）
-
-在 2维（$d=2$）中，NSE **全局正则性已严格证明**：
-
-**关键原因**：2维不可压缩流中，涡量（vorticity）$\omega = \nabla \times \mathbf{u}$ 是标量，满足：
-$$\frac{\partial \omega}{\partial t} + \mathbf{u} \cdot \nabla \omega = \nu \Delta \omega$$
-
-涡量不能通过拉伸（vortex stretching）放大，而这是 3维奇点形成的主要机制。
-
-### 3.2 三维弱解的存在性
-
-**Leray-Hopf 弱解**（存在但不唯一）：
-- 对任意 $\mathbf{u}_0 \in L^2(\mathbb{R}^3)$，$\nabla \cdot \mathbf{u}_0 = 0$，存在全局弱解
-- 弱解满足能量不等式
-- **唯一性未知**：可能有多个弱解
-
-### 3.3 部分正则性理论（Caffarelli-Kohn-Nirenberg）
-
-**定理（CKN, 1982）**：设 $\mathbf{u}$ 为合适的弱解（suitable weak solution），则奇异集：
-$$S = \{(x, t) : \mathbf{u} \text{ 在 } (x,t) \text{ 附近无界}\}$$
-
-满足：
-$$\mathcal{H}^1(S) = 0$$
-
-即奇异集的 **1维 Hausdorff 测度为零**。这意味着奇点集若存在，必须非常"稀薄"。
-
-**进一步结果**：若 $\mathbf{u}$ 是轴对称（axially symmetric）的，则奇点只能出现在对称轴上。
+这意味着：如果奇点存在，它们必须非常"稀薄"——不能占据一条线或一个面。这一结果为后续的奇点分析提供了重要约束，但并未排除奇点的存在。
 
 ### 3.4 自相似解的排除
 
-**Necas-Ruzicka-Sverak (1996)**：
-- 在 $L^3$ 中不存在非平凡的自相似解（backward self-similar solution）
-- 这意味着：如果奇点形成，它不能是简单的自相似形式
+1996 年，Necas、Ruzicka 与 Sverak 证明 [4]：在 L³ 中不存在非平凡的**向后自相似解**（backward self-similar solution）。这意味着：如果奇点形成，它不能是简单的自相似形式。Tsai（1998）进一步扩展了这一结果到更广泛的函数类。
 
-**Tsai (1998)** 的扩展：对更广泛的函数类也排除自相似解。
+### 3.5 Tao 的平均化有限时间爆破
 
-### 3.5 Tao 的平均化有限时间爆破（2014）
+2014 年，Terence Tao 对**平均化纳维-斯托克斯方程**（averaged NSE）证明了一个惊人的结果 [5]：
 
-**Terry Tao** 对**平均化纳维-斯托克斯方程**（averaged NSE）：
-$$\frac{\partial \mathbf{u}}{\partial t} + \tilde{B}(\mathbf{u}, \mathbf{u}) = -\nabla p + \nu \Delta \mathbf{u}$$
+∂u/∂t + B̃(u, u) = -∇p + νΔu
 
-其中 $\tilde{B}$ 为平均化双线性形式（保留能量守恒和尺度不变性）。
+其中 B̃ 是平均化双线性形式（保留能量守恒与尺度不变性）。Tao 证明：存在光滑初始条件，使得平均化 NSE 在**有限时间内爆破**。
 
-**结果**：存在光滑初始条件，使得平均化 NSE 在**有限时间内爆破**（blow-up）。
+**意义**：这表明能量守恒 + 尺度不变性 + 三维 ⇏ 全局正则性。阻止真实 NSE 爆破的，必须是**不可压缩条件的精确形式**所提供的额外结构——而这种结构目前尚未被充分理解。
 
-**意义**：这表明：
-- 能量守恒 + 尺度不变性 + 3维 $\nRightarrow$ 全局正则性
-- 需要**额外的结构**（如不可压缩条件的精确形式）来阻止爆破
+### 3.6 弱解的非唯一性：Buckmaster-Vicol（2019）
 
-### 3.6 弱解的非唯一性（Buckmaster-Vicol, 2019）
+2019 年，Buckmaster 与 Vicol 利用 De Lellis-Székelyhidi 的**凸积分方法**（原用于解决欧拉方程的 Onsager 猜想）证明 [6]：对于三维 NSE，存在**非唯一的弱解**。
 
-利用 **De Lellis-Székelyhidi** 的**凸积分方法**（原用于 Euler 方程的 Onsager 猜想）：
-
-**结果**：对于 3维 NSE，存在**非唯一的弱解**。即给定初始条件，可以构造多个不同的弱解。
-
-**关键**：这些弱解不满足能量不等式（非物理的），但它们的存在表明：
-- 仅能量不等式不足以保证唯一性
-- 需要额外的正则性条件
+**关键**：这些弱解不满足能量不等式（非物理的），但它们的存在表明：仅凭能量不等式不足以保证唯一性。需要更多的正则性条件或物理约束来筛选出"正确的"解。
 
 ---
 
-## 4. SYLVA 专项研究：NS 集群审核
+## 4. SYLVA 专项研究：形式化质量与抽象框架
 
-> **来源：** `audit_report_NS_LG.md`（73 行，2026-06-10）  
-> **范围：** 6 个文件（2 个存根跳过；1 个额外存根确认）
+### 4.1 有限差分近似：数学不精确性的代价
 
-### 4.1 文件审核表
+SYLVA 项目审核了一份约 630 行的形式化文件，其中微分算子采用了以下近似：
 
-| # | 文件路径 | 判定 | 说明 |
-|---|----------|------|------|
-| 1 | `alpha_derivation/11_chern_simons_137.md` | **保留** | ~400 行中文推导。从 Chern-Simons 理论通过 GF(3)⊗Λ⁵ 和分层空间推导 α=1/137。高度推测性但内部结构一致。 |
-| 2 | `sylva_complete/NavierStokes.lean` | **保留**（附注） | ~630 行。实质性形式化：弱/强解、Sobolev 能量估计、爆破标准（Beale-Kato-Majda）、Leray-Hopf 框架、全局正则性公理。主要缺口：微分算子是有限差分近似（`h := 1e-8`）而非 Mathlib `deriv`/`fderiv`。12+ 个 `sorry`。 |
-| 3 | `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md` | **保留** | ~300 行问题集。12 个 NS 问题（NS-001 = 千禧年奖）。引用经典和现代文献。 |
-| 4 | `sylva_complete/LocalGlobalTemplate.lean` | **保留** | ~500 行。抽象局部到全局框架：`LocalGlobalPrinciple` typeclass、`DescentData`、`EffectiveDescent`，以及 Cook-Levin、BSD、Hodge、RH 的实例化模板。少数 `sorry` 在复合转移引理中。 |
-| 5 | `sylva_formalization/SylvaFormalization/NavierStokes.lean` | **删除** | 12 行占位符存根。"为编译截肢。原始内容包含编码问题。" |
-| 6 | `sylva_formalization/SylvaFormalization/LocalGlobalTemplate.lean` | **删除** | 12 行占位符存根。与 #5 相同模式。 |
-| 7 | `sylva_formalization/SylvaFormalization/LocalGlobal.lean` | **删除** | 12 行占位符存根（额外确认）。 |
+h := 1e-8
+gradient := (f(x+h) - f(x)) / h
+divergence := sum (partial_i u_i)
+laplacian := sum (u(x+h) - 2u(x) + u(x-h)) / h²
 
-### 4.2 交叉问题
+**问题**：
+- 这不是标准导数 deriv 或 fderiv，而是数值近似；
+- 在形式化证明中，有限差分近似需要额外的收敛性证明（当 h → 0 时），而文件中并未提供这些证明；
+- 这阻止了与标准微积分库的链接，使得所有依赖标准导数的定理都无法直接应用。
 
-1. **存根污染**：`sylva_formalization/` 包含至少三个相同的 12 行占位符。它们混淆命名空间并混淆哪个目录是规范的。
-2. **有限差分 hack**：`NavierStokes.lean` 使用 `1e-8` 差商作为 `gradient`、`divergence`、`laplacian`、`curl`。这在数学上**不精确**，阻止文件链接到 Mathlib 的实际微积分库。
-3. **编码产物**：`sylva_complete/` 的 `.lean` 文件在注释和文档字符串中包含字面 `\n\n` 序列（来自先前的导出）。非破坏性但不整洁。
+**建议**：将有限差分近似替换为 mathlib 的标准导数 fderiv，并通过 postulate 或 sorry 标记尚未证明的收敛性引理，保持形式化的诚实性。
 
----
+### 4.2 局部到全局框架：抽象模式的概念价值
 
-## 5. SYLVA 专项研究：NS 形式化
+SYLVA 项目中一份约 500 行的文件提出了抽象局部到全局框架，包含 LocalGlobalPrinciple typeclass、DescentData、EffectiveDescent，以及 Cook-Levin、BSD、Hodge、RH 的实例化模板。这一框架的设计灵感来自代数几何中的 fpqc 下降和数论中的 Hasse 原理：
 
-### 5.1 `sylva_complete/NavierStokes.lean`（~630 行）
+class LocalGlobalPrinciple (A : Type) where
+  localData : Type
+  globalData : Type
+  descentCondition : localData → Prop
+  descent : ∀ (ld : localData), descentCondition ld → globalData
 
-**内容**：
-- **弱/强解定义**：`WeakSolution` 和 `StrongSolution` 结构
-- **Sobolev 能量估计**：能量不等式的形式化陈述
-- **爆破标准（Beale-Kato-Majda）**：涡量积分控制爆破
-- **Leray-Hopf 框架**：弱解的存在性公理
-- **全局正则性公理**：作为公理陈述（非证明）
+在 NSE 语境下的潜在应用：
+- **局部**：局部时空区域上的正则性（通过 CKN 定理）；
+- **全局**：全局时空上的正则性；
+- **胶合**：利用 CKN 的部分正则性作为局部到全局的胶合条件。
 
-**主要缺口**：
-- 微分算子是有限差分近似：`h := 1e-8` 用于 `gradient`、`divergence`、`laplacian`、`curl`
-- 这**不是** Mathlib 的 `deriv`/`fderiv`，阻止与标准分析库的链接
-- 12+ 个 `sorry` 在严格证明中
-- 全局正则性作为 `axiom` 陈述——非证明
+虽然这一联系尚未被严格实例化，但抽象框架的存在为未来的跨问题研究提供了概念桥梁。这种"模式迁移"——从代数几何的下降到 PDE 的正则性——本身就是数学思想交流的重要方式。
 
-### 5.2 `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`（~300 行）
+### 4.3 审核发现的交叉问题
 
-**内容**：
-- 12 个 NS 问题（NS-001 到 NS-012）
-- NS-001 = 千禧年奖问题
-- 引用经典和现代文献（Leray, CKN, Beale-Kato-Majda, Tao, Buckmaster-Vicol）
-- 每个问题包含：陈述、已知结果、开放问题、SYLVA 联系
-
-**质量**：准确的参考文献和问题陈述。作为**研究路线图**有价值。
+SYLVA 对 NS 集群的审核发现：6 个文件中存在 3 个 12 行占位符存根（应删除），且 `sylva_formalization/` 目录中至少存在三个相同的 12 行占位符，混淆命名空间并制造虚假进展感。这些存根共享完全相同的模板，仅含模块头、导入声明和大量 `sorry`。
 
 ---
 
-## 6. SYLVA 专项研究：Local-Global 模板
+## 5. 关联问题网络：欧拉、Onsager 与凸积分
 
-### 6.1 `sylva_complete/LocalGlobalTemplate.lean`（~500 行）
+### 5.1 欧拉方程的奇点
 
-**内容**：
-- **抽象局部到全局框架**：`LocalGlobalPrinciple` typeclass
-- **下降数据**：`DescentData` 结构
-- **有效下降**：`EffectiveDescent` 类型类
-- **实例化模板**：Cook-Levin、BSD、Hodge、RH
+设 ν = 0（无粘性），得到**欧拉方程**：
 
-**设计**：
-- 使用范畴论模式：局部数据 + 胶合条件 → 全局对象
-- 灵感来自代数几何中的 fpqc 下降和数论中的 Hasse 原理
+∂u/∂t + (u · ∇)u = -∇p, ∇ · u = 0
 
-**质量**：
-- 结构良好，范畴论下降模式
-- 少数 `sorry` 在复合转移引理中
-- 作为**连接不同千禧年问题的抽象框架**有价值
-- 但未在实际证明中完全实例化
+**欧拉奇点问题**：三维欧拉方程是否存在有限时间奇点？
+- Elgindi（2019）证明：在有限 Hölder 正则性 C^{1,α} 中，解可以爆破 [7]；
+- 光滑情形（C^∞）：仍然开放。
 
-### 6.2 Local-Global 原理与 NS 的联系
+### 5.2 Onsager 猜想与湍流耗散
 
-虽然 Local-Global 模板主要设计用于 BSD、Hodge 和 RH（算术/几何问题），但其**抽象模式**也可应用于 NS：
-- **局部**：局部时空区域上的正则性
-- **全局**：全局时空上的正则性
-- **胶合**：CKN 部分正则性理论提供了局部到全局的胶合条件
+1949 年，Lars Onsager 猜想 [8]：
+- 若 u ∈ C^{0,α} 且 α > 1/3，则能量守恒；
+- 若 α < 1/3，可存在能量耗散（湍流）。
 
----
+Isett（2018）利用凸积分方法证明了 α < 1/3 时的能量耗散解 [9]。这揭示了湍流中能量级联的数学机制：在足够低的正则性下，非线性项可以"创造"能量耗散，即使欧拉方程本身形式上守恒能量。
 
-## 7. 等价表述与关联问题
-
-### 7.1 Euler 方程的奇点（无粘性）
-
-设 $\nu = 0$（无粘性）：
-$$\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla) \mathbf{u} = -\nabla p, \quad \nabla \cdot \mathbf{u} = 0$$
-
-**Euler 奇点问题**：3维 Euler 方程是否存在有限时间奇点？
-
-- **Elgindi (2019)**：在有限 Hölder 正则性中，$C^{1,\alpha}$ 解可爆破
-- **光滑情形**：仍开放
-
-### 7.2 Onsager 猜想（湍流耗散）
-
-**Onsager 猜想**（1949）：
-- 若 $\mathbf{u} \in C^{0,\alpha}$ 且 $\alpha > 1/3$，则能量守恒
-- 若 $\alpha < 1/3$，可存在能量耗散（湍流）
-
-**Isett (2018)**：证明 $\alpha < 1/3$ 时存在能量耗散解（凸积分方法）。
-
-### 7.3 关联问题网络
+### 5.3 关联问题网络
 
 ```
 3维 NSE 全局正则性
   ↓ (蕴含)
 2维 NSE 全局正则性（已证）
   ↓ (弱化)
-Euler 方程有限时间奇点（开放）
+欧拉方程有限时间奇点（开放）
   ↓ (关联)
 Onsager 猜想（湍流耗散，已证）
   ↓ (方法)
 凸积分法（弱解非唯一性）
 ```
 
+这一网络表明，NSE 问题不是孤立的，它与欧拉方程、湍流理论、以及凸积分方法等紧密相连。任何解决 NSE 正则性的新工具，都可能对这些关联问题产生深远影响。
+
 ---
 
-## 8. 开放问题与方向
+## 6. 形式化前沿：从 PDE 到 Lean 4
 
-### 8.1 核心开放问题
+### 6.1 数学分析在 mathlib 中的现状
+
+截至 2026 年，mathlib 已包含：微分方程（ODE）的存在性与唯一性定理、Sobolev 空间的基础理论、部分泛函分析（分布、弱收敛）。然而，以下关键工具仍然缺失：
+- Navier-Stokes 方程的弱解理论；
+- 涡量方程与 Beale-Kato-Majda 爆破标准；
+- CKN 部分正则性理论；
+- 凸积分方法的严格形式化。
+
+### 6.2 诚实骨架的建议
+
+基于质量评估，建议从以下路径推进 NSE 的形式化：
+1. **基础定义层**：形式化不可压缩流、弱解、Leray-Hopf 解、能量不等式；
+2. **二维层**：先完整形式化二维全局正则性，作为可验证的里程碑；
+3. **工具层**：向 mathlib PR Sobolev 嵌入、紧性论证、Aubin-Lions 引理；
+4. **三维层**：逐步攻 CKN 定理、BKM 爆破标准、部分正则性。
+
+---
+
+## 7. 开放问题与方向
+
+### 7.1 核心开放问题
 
 1. **全局光滑解**：3维 NSE 对任意光滑初值是否存在全局光滑解？
 2. **弱解的唯一性**：Leray-Hopf 弱解是否唯一？
@@ -293,7 +226,7 @@ Onsager 猜想（湍流耗散，已证）
 4. **物理 blow-up 的构造**：Tao 的平均化模型是"玩具模型"，能否构造更接近真实 NSE 的 blow-up？
 5. **湍流的严格理论**：如何从 NSE 严格推导 Kolmogorov 的湍流统计理论？
 
-### 8.2 可能的突破路径
+### 7.2 可能的突破路径
 
 1. **新的守恒量/单调量**：寻找除能量外的新的守恒律
 2. **概率方法**：随机初始数据下的正则性（Le Jan-Sznitman 方法）
@@ -303,79 +236,40 @@ Onsager 猜想（湍流耗散，已证）
 
 ---
 
-## 9. Lean-ready 形式化结构
+## 8. 结论
 
-```lean
--- 速度场与压强场
-def VelocityField (n : ℕ) : Type :=
-  ℝⁿ → ℝⁿ → ℝⁿ
+纳维-斯托克斯存在性与光滑性问题是分析学中最具物理意义的问题。它要求我们从数学上严格理解湍流——这个我们每天呼吸、航行、飞行时都在经历，却至今无法完全解释的现象。
 
-def PressureField (n : ℕ) : Type :=
-  ℝⁿ → ℝⁿ → ℝ
+SYLVA 形式化集群中的发现提醒我们：在形式化如此深刻的问题时，**数学精确性是不可妥协的**。有限差分近似 h := 1e-8 可能让代码通过编译，但它不代表数学上的严格导数。真正的形式化，是从诚实骨架出发，逐步填充，每一步都可审计、可验证。
 
--- 纳维-斯托克斯方程
-def NavierStokesEquation
-    (u : VelocityField 3) (p : PressureField 3)
-    (ν : ℝ) (f : ℝ³ → ℝ⁺ → ℝ³) : Prop :=
-  ∀ x t,
-    ∂u/∂t + (u · ∇) u = -∇p + ν Δ u + f x t
-    ∧ ∇ · u = 0
-
--- 全局光滑解
-def GlobalSmoothSolution
-    (u₀ : ℝ³ → ℝ³) (ν : ℝ) (f : ℝ³ → ℝ⁺ → ℝ³) : Prop :=
-  ∃ u : ℝ³ → ℝ⁺ → ℝ³, ∃ p : ℝ³ → ℝ⁺ → ℝ,
-    NavierStokesEquation u p ν f
-    ∧ u isSmoothOn ℝ³ × ℝ⁺
-    ∧ u(·, 0) = u₀
-    ∧ ∇ · u₀ = 0
-
--- 纳维-斯托克斯问题（3维）
-def NavierStokesProblem : Prop :=
-  ∀ u₀ ∈ C^∞(ℝ³), ∇ · u₀ = 0 →
-    GlobalSmoothSolution u₀ ν f
-
--- 2维情形已解决
-theorem NavierStokes2D :
-    ∀ u₀ ∈ C^∞(ℝ²), ∇ · u₀ = 0 →
-      GlobalSmoothSolution u₀ ν f := by
-  sorry -- 经典结果（Leray, Ladyzhenskaya）
-```
+纳维-斯托克斯问题的解决，可能来自新的守恒量发现、概率方法、几何流方法，或者完全不同的数学工具。无论答案来自何方，建立严格、透明、可审计的研究基础设施——区分已证、近似与猜想——是我们这一代研究者能够留下的最务实的贡献。
 
 ---
 
-## 10. 结论
+## 参考文献
 
-纳维-斯托克斯存在性与光滑性问题是**分析学中最具物理意义的问题**。它要求：
-1. 严格理解 3维湍流的数学结构
-2. 证明或反驳光滑解的全局存在性
-3. 理解涡量拉伸与奇点形成的机制
+[1] Fefferman C L. Existence and smoothness of the Navier-Stokes equation[C]//Millennium Prize Problems. Clay Mathematics Institute, 2000.
 
-**当前状态**：
-- 2维情形：全局正则性已严格证明
-- 3维情形：弱解存在但不唯一，光滑解全局存在性开放
-- 有数值证据表明无有限时间奇点，但无严格证明
-- 超临界性障碍使得标准方法失效
+[2] Leray J. Sur le mouvement d'un liquide visqueux emplissant l'espace[J]. Acta Mathematica, 1934, 63: 193–248.
 
-**SYLVA 项目中的关键发现**：
-1. NS 集群有 **3 个 12 行占位符存根**（应删除），全在 `sylva_formalization/` 中
-2. `sylva_complete/NavierStokes.lean`（~630 行）是**实质性形式化**，但使用有限差分近似（`h := 1e-8`）而非标准导数
-3. `sylva_complete/LocalGlobalTemplate.lean`（~500 行）是**抽象局部到全局框架**，连接不同千禧年问题
-4. `SYLVA_MATH_PROBLEMS_NavierStokes.md` 是**好的研究路线图**，12 个问题覆盖 NS 核心开放问题
-5. `alpha_derivation/11_chern_simons_137.md` 是**独特的推测性内容**，与 NS 无直接联系，但值得保留作为概念探索
-6. 无文件包含**危险错误**——最坏问题是有限差分近似的数学不精确性
+[3] Caffarelli L, Kohn R, Nirenberg L. Partial regularity of suitable weak solutions of the Navier-Stokes equations[J]. Communications on Pure and Applied Mathematics, 1982, 35(6): 771–831.
+
+[4] Necas J, Ruzicka M, Sverak V. On Leray's self-similar solutions of the Navier-Stokes equations[J]. Acta Mathematica, 1996, 176(2): 283–294.
+
+[5] Tao T. Finite time blowup for an averaged three-dimensional Navier-Stokes equation[J]. Journal of the American Mathematical Society, 2016, 29(4): 1067–1094.
+
+[6] Buckmaster T, Vicol V. Nonuniqueness of weak solutions to the Navier-Stokes equation[J]. Annals of Mathematics, 2019, 189(1): 101–144.
+
+[7] Elgindi T M. Finite-time singularity formation for C^{1,α} solutions of the incompressible Euler equations on R³[J]. Annals of Mathematics, 2021, 194(3): 647–727.
+
+[8] Onsager L. Statistical hydrodynamics[J]. Il Nuovo Cimento, 1949, 6: 279–287.
+
+[9] Isett P. A proof of Onsager's conjecture[J]. Annals of Mathematics, 2018, 188(3): 871–963.
 
 ---
 
-> **参考文献**  
-> - Leray, J. (1934). Sur le mouvement d'un liquide visqueux emplissant l'espace.  
-> - Caffarelli, L., Kohn, R., & Nirenberg, L. (1982). Partial regularity of suitable weak solutions.  
-> - Necas, J., Ruzicka, M., & Sverak, V. (1996). On Leray's self-similar solutions.  
-> - Tao, T. (2016). Finite time blowup for an averaged three-dimensional Navier-Stokes equation.  
-> - Buckmaster, T., & Vicol, V. (2019). Nonuniqueness of weak solutions to the Navier-Stokes equation.  
-> - Isett, P. (2018). A proof of Onsager's conjecture.  
-> - Fefferman, C. L. (2000). Existence and smoothness of the Navier-Stokes equation. Clay Institute.
-
-> **文件编号**：Millennium-P-005-SYLVA  
-> **生成日期**：2026-06-28  
-> **关联 SYLVA 模块**：`audit_report_NS_LG.md`, `sylva_complete/NavierStokes.lean`, `sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md`, `sylva_complete/LocalGlobalTemplate.lean`
+> **论文信息**
+> **标题：** 千禧年难题：纳维-斯托克斯存在性与光滑性（Navier-Stokes Existence and Smoothness）— SYLVA学术完整研究档案
+> **文档编号：** SYLVA-NavierStokes-2026-06-29
+> **生成日期：** 2026-06-29
+> **声明：** 本文不声称已证明纳维-斯托克斯全局正则性，而是提供系统性研究综述与路线图。
