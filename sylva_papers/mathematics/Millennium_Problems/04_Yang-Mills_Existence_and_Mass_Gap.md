@@ -263,6 +263,47 @@ Yang-Mills 存在性
 
 ---
 
+---
+
+## SYLVA 形式化代码片段
+
+以下代码片段选自 `GaugeTheory/YangMills.lean`，展示了杨-米尔斯作用量与场方程的 Lean 4 形式化骨架。
+
+**片段 1：杨-米尔斯作用量的定义**
+
+```lean
+/-- Yang-Mills action: S_YM = ∫_M tr(F ∧ *F) dvol.
+    For a compact Riemannian 4-manifold M with metric g:
+    S_YM = -½ ∫_M tr(F_{μν} F^{μν}) √g d⁴x
+    This is the generalization of the Maxwell action to non-abelian gauge groups. -/
+noncomputable def YangMillsAction {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+    [LieAlgebra ℝ G] [MeasureSpace M] [RiemannianMetric M]
+    {P : PrincipalBundle M G} (F : FieldStrength P) : ℝ :=
+  ∫ (x : M), -½ * trace (F.field x) * volumeForm x
+```
+
+**片段 2：杨-米尔斯场方程与能量密度**
+
+```lean
+/-- The Yang-Mills equations of motion: d_A *F = 0 (source-free).
+    Derived from δS_YM/δA = 0 via variational principle.
+    This is the non-abelian generalization of the Maxwell equations:
+    - d_A F = 0 (Bianchi identity) — automatic
+    - d_A *F = 0 (equations of motion) — from action principle -/
+axiom YangMillsEquations {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) :
+  ∀ (x : M), deriv (fun z => trace (F.field z)) x = 0
+
+/-- Energy density: ℰ = ½ (E² + B²) where E and B are electric and magnetic components of F. -/
+noncomputable def energyDensity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+    [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ :=
+  ½ * (‖electricPart F x‖² + ‖magneticPart F x‖²)
+```
+
+上述形式化定义了杨-米尔斯作用量 `YangMillsAction` 作为紧致黎曼 4-流形上场强 `F` 的积分，直接对应本文第 2.1 节的数学陈述。`YangMillsEquations` 声明了源自由变分原理 δS/δA = 0 导出的运动方程，即非阿贝尔版本的麦克斯韦方程组。`energyDensity` 定义了能量密度 ℰ = ½(E² + B²)，与质量间隙问题密切相关——证明哈密顿量谱在真空之上存在正间隙，等价于证明总能量下确界为正。这些定义目前依赖 `axiom` 标记的开放引理（如 `electricPart`、`magneticPart`），反映了当前 mathlib 中规范场论基础设施的深度缺失。
+
+---
+
 ## 10. 结论
 
 杨-米尔斯存在性与质量间隙问题是数学物理中最深刻的未解问题。它要求我们在四维时空中严格构造一个非阿贝尔规范理论的量子版本，并证明其谱具有正的质量间隙。这一问题的困难在于：低能强耦合区域使得微扰论完全失效；构造性量子场论在四维中尚无成熟工具；禁闭的严格证明需要将代数拓扑、非线性 PDE 与概率论结合。

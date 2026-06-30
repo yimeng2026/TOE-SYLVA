@@ -288,6 +288,74 @@ GRH 断言：所有非平凡零点在 Re(s) = 1/2 上。GRH 蕴含：
 
 ---
 
+---
+
+## SYLVA 形式化代码片段
+
+以下代码片段选自 `RiemannHypothesis.lean`，展示了黎曼 zeta 函数、临界线、非平凡零点及零点对称性在 Lean 4 中的形式化。
+
+**片段 1：黎曼 zeta 函数与临界线的定义**
+
+```lean
+/-- The Riemann ζ-function (Mathlib definition). -/
+noncomputable def RiemannZeta (s : ℂ) : ℂ := _root_.riemannZeta s
+
+/-- The completed Riemann ζ-function Λ(s) = π^(-s/2) Γ(s/2) ζ(s). -/
+noncomputable def completedZeta (s : ℂ) : ℂ := _root_.completedRiemannZeta s
+
+/-- A non-trivial zero is a completed zeta zero that is not a trivial zero. -/
+def IsNontrivialZero (s : ℂ) : Prop := IsCompletedZetaZero s ∧ ¬ IsTrivialZero s
+
+/-- The critical line Re(s) = 1/2. -/
+def CriticalLine : Set ℂ := { s : ℂ | s.re = 1 / 2 }
+
+/-- The Riemann Hypothesis: all non-trivial zeros lie on the critical line.
+    This is stated as an `axiom` because it is an unproven conjecture. -/
+axiom RH_statement : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2
+```
+
+**片段 2：零点对称性定理（函数方程的推论）**
+
+```lean
+/-- If ρ is a non-trivial zero, then 1-ρ is also a non-trivial zero.
+    This follows from the functional equation Λ(ρ) = 0 ⟹ Λ(1-ρ) = 0.
+    The proof that 1-ρ is not trivial uses the critical strip containment.
+
+    Proof:
+    1. By the functional equation, completedZeta(1-ρ) = completedZeta(ρ) = 0.
+    2. If 1-ρ were a trivial zero, then 1-ρ = -2n for some n > 0,
+       so ρ = 1 + 2n, which has Re(ρ) = 1 + 2n > 1.
+    3. But ρ ∈ CriticalStrip by nontrivial_zero_in_critical_strip,
+       so Re(ρ) < 1, contradiction. -/
+theorem zero_symmetry_one_minus (s : ℂ) (h : IsNontrivialZero s) :
+    IsNontrivialZero (1 - s) := by
+  have h_strip : s ∈ CriticalStrip := nontrivial_zero_in_critical_strip s h
+  rcases h with ⟨h_zero, h_not_trivial⟩
+  constructor
+  · rw [completed_zeta_functional_equation]
+    exact h_zero
+  · intro h_trivial
+    rcases h_trivial with ⟨n, hn_pos, h_eq⟩
+    have h_s : s = 1 + 2 * (n : ℂ) := by
+      have h1 : s = 1 - (1 - s) := by ring
+      rw [h1, h_eq]
+      ring
+    have h_re : s.re = 1 + 2 * (n : ℝ) := by
+      rw [h_s]
+      simp
+      <;> ring
+    have h_re_gt : s.re > 1 := by
+      rw [h_re]
+      have hn1 : (n : ℝ) ≥ 1 := by exact_mod_cast show (n : ℕ) ≥ 1 by omega
+      linarith
+    simp [CriticalStrip] at h_strip
+    linarith [h_strip.2, h_re_gt]
+```
+
+上述形式化中，`RiemannZeta` 直接调用 mathlib 的 `riemannZeta` 定义，保证了与现有解析数论库的无缝对接。`RH_statement` 以 `axiom`（而非 `sorry`）标记开放问题，这是证明助手中处理未证猜想的规范实践——既不伪装已证，也不留下不可追踪的债务。`zero_symmetry_one_minus` 定理则展示了从函数方程出发、结合临界带包含性，可严格证明的零点对称性：若 ρ 为非平凡零点，则 1-ρ 亦然。这一对称性是黎曼 zeta 函数解析延拓结构的核心特征。
+
+---
+
 ## 9. 结论
 
 黎曼假设是数学中最古老、最深刻的未解问题。它连接了数论（素数分布）、分析（复变函数、调和分析）、代数几何（Weil 猜想、Motive 理论）与物理学（量子混沌、随机矩阵、谱理论）。
