@@ -98,3 +98,60 @@ Continue the "centralized connection laws" (集中联系规律) thrust: formaliz
 ## Zero Sorry Invariant
 
 All `.lean` files must have `grep -c "^\s*sorry\b"` = 0. No bare `sorry` allowed anywhere. Research-level placeholders use `def ... := 0` + docstring or `axiom` + interpretation.
+
+---
+
+## Progress Update (2026-06-30)
+
+### Completed Since v5.24
+
+1. **Mathematics Academic Papers (v1.0)** — 30 papers, ~400 KB
+   - 23 Hilbert Problems: complete academic archives with embedded SYLVA research
+   - 7 Millennium Problems: optimized with integrated SYLVA findings, zero internal file references
+   - All papers include: abstract, keywords, strict definitions, history milestones, known results tables, SYLVA research sections, equivalent formulations, cross-references, open problems, conclusions, references
+   - Cross-reference graph: Hilbert ↔ Millennium relationships documented across 19 papers
+
+2. **Lean Code Snippets Integration** — 12 papers updated
+   - 7 Millennium Problems: actual Lean 4 code from formalization files (CookLevin, Hodge, RiemannHypothesis, GaugeTheory, NavierStokes, BSD, Poincaré)
+   - 5 Hilbert Problems with SYLVA formalization: H02 (Gödel incompleteness), H06 (Yang-Mills), H08 (Riemann zeta), H10 (Computability), H14 (Hodge)
+   - All snippets with Chinese explanatory text, placed before conclusion chapters
+
+3. **Repository Synchronization** — PFE ↔ TOE-SYLVA
+   - 152 sylva_formalization files synced from TOE-SYLVA to PFE
+   - All 30 math papers + README + unified index synced to both repos
+   - Cross-references maintained in both repositories
+
+4. **Documentation & Audit**
+   - `SYLVA_PFE_UNIFIED_INDEX.md`: 478 lines, cross-repo navigation (349 Lean files, 160+ modules, 121,876 lines)
+   - `sylva_papers/mathematics/README.md`: 139 lines, quick navigation by status/field/SYLV A relevance
+   - `SORRY_AUDIT_2026-06-30.md`: 204 lines, comprehensive Lean sorry analysis
+     - Core finding: 39+ modules achieve ZERO sorry
+     - 259 total sorrys: 118 archive, 5 mathlib4 extracted, 95 research solutions, 15 tutorial, 26 legacy (Complexity_legacy.lean)
+   - Main READMEs updated: Hilbert + Millennium sections added with status tables and SYLVA research links
+
+5. **GitHub Commits**
+   - TOE-SYLVA: 7 commits since previous state (f3a2d07 → bf36bf6)
+   - PFE: 5 commits synced (f1c0b0f → 6520046)
+
+### Next Steps (v5.25-v5.30 continuation)
+
+- Stage 1: Extend SYLVA_Symmetry with Network Symmetry Analysis (v5.25)
+- Stage 2: New modules — CollectiveIntelligence, Resilience, Evolution, Creativity (v5.27-v5.30)
+- Stage 3: Integration — add imports, roots, zero sorry audit, git commit
+- Additional: Process `Complexity_legacy.lean` (26 sorrys) — migrate to archive or complete proofs
+- Additional: `TOE_SYLVA_Solutions/` roadmap — 95 research-level sorrys → axiom→theorem conversion plan
+- Additional: Tutorial sorrys (15) — add docstring annotations (`TODO(student)`)
+
+### Audit Commands (Reproducible)
+
+```bash
+# Core zero-sorry check (excludes archive, tutorial, extracted, solutions)
+grep -rn "^\s*sorry\b" --include="*.lean" . | grep -v ".lake/" | grep -v "archive/" | grep -v "mathlib4_extracted/" | grep -v "TOE_SYLVA_Project/" | grep -v "TOE_SYLVA_Solutions/" | grep -v "Tutorial/" | wc -l
+# Expected: 26 (Complexity_legacy.lean only)
+
+# Full sorry breakdown by directory
+for dir in $(find . -maxdepth 1 -type d | grep -v "^\.$" | grep -v ".lake"); do
+  count=$(grep -rn "^\s*sorry\b" --include="*.lean" "$dir" 2>/dev/null | wc -l)
+  echo "$count $dir"
+done | sort -rn
+```
