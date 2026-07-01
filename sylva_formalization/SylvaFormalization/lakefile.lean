@@ -84,6 +84,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_CollectiveIntelligence,
     `SYLVA_Resilience,
     `SYLVA_Evolution,
+    `SYLVA_Creativity,
     `SYLVA_ConnectionLaws,
     `SYLVA_HierarchyOfSciences,
     `SYLVA_ResearchProblems,

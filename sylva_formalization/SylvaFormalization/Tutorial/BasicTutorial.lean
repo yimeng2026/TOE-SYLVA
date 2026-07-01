@@ -89,7 +89,7 @@ def neg (a : GF3) : GF3 := -a
 💡 提示：使用 rfl（自反性）直接证明，因为 Fin 3 的加法已经定义好了
 -/\n\ntheorem exercise_1_1 : add two one = zero := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 1.2：证明 2 × 2 = 1 在 GF(3) 中（难度：⭐）
 /-
@@ -97,7 +97,7 @@ def neg (a : GF3) : GF3 := -a
 💡 提示：同样可以使用 rfl
 -/\n\ntheorem exercise_1_2 : mul two two = one := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 1.3：证明对任意 a ∈ GF(3)，a + 0 = a（难度：⭐⭐）
 /-
@@ -105,7 +105,7 @@ def neg (a : GF3) : GF3 := -a
 💡 提示：使用 intro 引入 a，然后 fin_cases 分析所有情况
 -/\n\ntheorem exercise_1_3 (a : GF3) : add a zero = a := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 end GF3
 
@@ -177,7 +177,7 @@ namespace Phi
 - Real.sqrt_one: √1 = 1
 -/\n\ntheorem exercise_2_1 : φ > 1 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 2.2：证明 φ > 0（难度：⭐）
 /-
@@ -187,7 +187,7 @@ namespace Phi
 - linarith: 线性不等式求解
 -/\n\ntheorem exercise_2_2 : φ > 0 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 2.3：计算 φ³ = 2φ + 1（难度：⭐⭐⭐）
 /-
@@ -199,7 +199,7 @@ namespace Phi
 - rw [phi_sq_eq_phi_add_one]: 使用已证明的引理
 -/\n\ntheorem exercise_2_3 : φ ^ 3 = 2 * φ + 1 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- ============================================================================
 -- SECTION 3: Sylva 临界值
@@ -257,7 +257,7 @@ noncomputable def D_c : ℝ := φ ^ 4
 💡 提示：使用 exercise_2_3 的结果
 -/\n\ntheorem exercise_3_1 : Phi_c = 137 * (2 * φ + 1) := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 3.2：证明 D_c > 0（难度：⭐⭐）
 /-
@@ -267,7 +267,7 @@ noncomputable def D_c : ℝ := φ ^ 4
 - positivity: 自动证明正性
 -/\n\ntheorem exercise_3_2 : D_c > 0 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 end Phi
 
@@ -319,7 +319,7 @@ instance : LT Level where lt a b := a.toNat < b.toNat
 💡 提示：展开定义后使用 norm_num
 -/\n\ntheorem exercise_4_1 : L0 < L7 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 4.2：证明层级关系的传递性（难度：⭐⭐）
 /-
@@ -327,7 +327,7 @@ instance : LT Level where lt a b := a.toNat < b.toNat
 💡 提示：利用自然数的传递性
 -/\n\ntheorem exercise_4_2 (a b c : Level) (h1 : a ≤ b) (h2 : b ≤ c) : a ≤ c := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 end Level
 
@@ -361,7 +361,7 @@ namespace MetaAxiom
 💡 提示：使用 intro 和 cases
 -/\n\ntheorem exercise_5_1 : M1 ≠ M2 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 -- 练习 5.2：证明所有公理都有描述（难度：⭐⭐）
 /-
@@ -369,7 +369,7 @@ namespace MetaAxiom
 💡 提示：使用 intro 和 cases，然后计算每种情况
 -/\n\ntheorem exercise_5_2 (a : MetaAxiom) : description a ≠ "" := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 填入你的证明
+  sorry  -- TODO(student): 填入你的证明
 
 end MetaAxiom
 
@@ -391,7 +391,7 @@ end MetaAxiom
 - 思考 137 这个数字的特殊性
 -/\n\ntheorem challenge_Phi_c_positive : Phi.Phi_c > 0 := by
   /- TODO(student): 教学练习 — 请完成此证明 -/
-  sorry  -- 挑战：填入完整证明
+  sorry  -- TODO(student): 挑战——填入完整证明
 
 
 -- ============================================================================
