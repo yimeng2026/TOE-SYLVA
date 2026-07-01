@@ -136,6 +136,7 @@ theorem BerryPhase_GaugeInvariance
   have h_gradient : pathIntegral (fun k μ => fderiv ℝ θ k (if μ = 0 then (1,0) else (0,1))) C = 0 := by
     apply h_stokes
   /- 利用线积分的线性性 -/
+  -- 状态: TODO(research) -- 需要线积分可加性和路径积分形式化 (Stokes定理)
   sorry  -- 需要线积分线性性的形式化
 
 /- ----------------------------------------
@@ -151,7 +152,7 @@ theorem NonAbelBerryConnection_AbelLimit
     ∀ k μ ν, (A_nonabel k μ * A_nonabel k ν - A_nonabel k ν * A_nonabel k μ) = 0 := by
   /- 当 N = 1 时，1×1 矩阵的对易子恒为零 -/
   intro k μ ν
-  /- 1×1 矩阵就是复数，复数乘法交换 -/
+  -- 状态: TODO(research) -- 需要 1×1 矩阵与复数同构的形式化 (Matrix (Fin 1) (Fin 1) ℂ ≅ ℂ)
   sorry  -- 需要 1×1 矩阵 = 复数的等价性
 
 end BerryConnectionSolution
@@ -202,9 +203,10 @@ theorem BerryCurvature_GaugeInvariance
   /- 关键: ∂_x(∂_y θ) - ∂_y(∂_x θ) = 0 (Clairaut/Schwarz 定理) -/
   have h_clairaut : fderiv ℝ (fun k' => fderiv ℝ θ k' (0, 1)) k (1, 0)
       - fderiv ℝ (fun k' => fderiv ℝ θ k' (1, 0)) k (0, 1) = 0 := by
-    /- Clairaut 定理: 对于 C² 函数，混合偏导数可交换 -/
-    /- ∂_x ∂_y θ = ∂_y ∂_x θ -/
+    -- 已知数学定理: Clairaut/Schwarz 定理 -- C² 函数的混合偏导数可交换
+    -- 状态: TODO(research) -- 需要 Mathlib 中 fderiv 交换性引理 (fderiv_fderiv / fderiv_swap)
     sorry  -- 需要 Clairaut 定理的形式化
+  -- 状态: TODO(research) -- 需要 fderiv 代数简化的自动化
   sorry  -- 需要完成代数简化
 
 end BerryCurvatureSolution
@@ -455,9 +457,9 @@ theorem schrodinger_norm_preservation
     (ψ : ℝ → Hilbert)
     (h_schrodinger : ∀ t, deriv ψ t = (-Complex.I / ℏ) • (H (ψ t))) :
     ∀ t, ‖ψ t‖ = ‖ψ 0‖ := by
-  /- 证明 d/dt ‖ψ‖² = 0 -/
-  intro t
-  /- d/dt ⟨ψ|ψ⟩ = 0 使用薛定谔方程和 H 的厄米性 -/
+  -- 已知物理定理: 薛定谔方程 iℏ∂ψ/∂t = Hψ (H 厄米) ⇒ 范数守恒
+  -- 证明路径: d/dt‖ψ‖² = d/dt⟨ψ,ψ⟩ = ⟨ψ̇,ψ⟩ + ⟨ψ,ψ̇⟩ = (i/ℏ)⟨Hψ,ψ⟩ - (i/ℏ)⟨ψ,Hψ⟩ = 0 (H 厄米)
+  -- 状态: TODO(research) -- 需要 HasDerivAt 与内积空间组合的形式化引理
   sorry  -- 需要内积空间中的微分运算
 
 /- ----------------------------------------
@@ -479,6 +481,9 @@ theorem hamiltonian_energy_conservation
            = 0
   -/
   intro t
+  -- 已知物理定理: 哈密顿方程 ⇒ dH/dt = {H,H} = 0
+  -- 证明路径: dH/dt = Σ (∂H/∂q_i ẋ_i + ∂H/∂p_i ṗ_i) = Σ (∂H/∂q_i ∂H/∂p_i - ∂H/∂p_i ∂H/∂q_i) = 0
+  -- 状态: TODO(research) -- 需要链式法则和多变量导数的形式化 (Mathlib fderiv/deriv 链式法则)
   sorry  -- 需要链式法则和多变量求导
 
 /- ----------------------------------------
@@ -501,6 +506,9 @@ theorem master_equation_probability_conservation
      - Tr(LρL† - 1/2{L†L, ρ}) = Tr(L†Lρ) - Tr(L†Lρ) = 0
   -/
   intro t
+  -- 已知物理定理: Lindblad 主方程保持迹为 1 (概率守恒)
+  -- 证明路径: Tr(dρ/dt) = Tr(-i[H,ρ]) + Σ γ_k Tr(L_k ρ L_k† - 1/2{L_k†L_k, ρ}) = 0 (Tr([A,B])=0, Tr(ABC)=Tr(BCA))
+  -- 状态: TODO(research) -- 需要矩阵迹循环性和 Lindblad 算子结构的形式化
   sorry  -- 需要矩阵迹的性质
 
 end SYLVADynamicsSolution
@@ -530,6 +538,9 @@ theorem KL_divergence_nonneg {X : Type} [Fintype X] [DecidableEq X]
      -D_KL(P||Q) = Σ P log(Q/P) ≤ log(Σ Q) = 0 (Jensen)
      所以 D_KL(P||Q) ≥ 0
   -/
+  -- 已知数学定理: Gibbs 不等式 / KL 散度非负性 (Jensen 不等式的推论)
+  -- 证明路径: -D_KL(P||Q) = Σ P log(Q/P) ≤ log(Σ Q) = 0 (Jensen, ln 凹函数)
+  -- 状态: TODO(research) -- 需要 Jensen 不等式的形式化 (Mathlib.Analysis.Convex.Jensen)
   sorry  -- 需要 Jensen 不等式的形式化
 
 /- ----------------------------------------
@@ -547,6 +558,9 @@ theorem shannon_entropy_maximum {X : Type} [Fintype X] [DecidableEq X]
                       = -H(P) + log|X| ≥ 0
      所以 H(P) ≤ log|X|
   -/
+  -- 已知数学定理: 香农熵最大值在均匀分布时取到 (由 KL 散度非负性)
+  -- 证明路径: D_KL(P||Uniform) = -H(P) + ln|X| ≥ 0 ⇒ H(P) ≤ ln|X|
+  -- 状态: TODO(research) -- 需要 KL 散度非负性的形式化 (依赖 Jensen 不等式)
   sorry  -- 使用 KL 散度非负性
 
 end InformationGeometrySolution

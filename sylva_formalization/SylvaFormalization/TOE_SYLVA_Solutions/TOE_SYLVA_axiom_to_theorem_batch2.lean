@@ -133,6 +133,9 @@ theorem BA_model_power_law (M : BAModel) (k : ℕ) (hk : k ≥ M.m) :
      当 k → ∞: k²/[(k+1)(k+2)] → 1
      所以 P(k)·k³ → 2m(m+1)
   -/
+  -- 已知数学定理: Watts-Strogatz 小世界模型度数分布的尾部 ~ k⁻³
+  -- 证明路径: P(k) = 2m(m+1)/[k(k+1)(k+2)] ⇒ P(k)·k³ → 2m(m+1) (当 k→∞)
+  -- 状态: TODO(research) -- 需要极限形式化 (Mathlib 序列极限 / Tendsto)
   sorry  -- 需要极限的形式化
 
 /- ----------------------------------------
@@ -219,6 +222,9 @@ theorem value_iteration_convergence {X U : Type} [Fintype X] [Fintype U]
      3. 由 Banach 不动点定理，T 有唯一不动点 V*
      4. 值迭代 V_{n+1} = TV_n 收敛到 V*
   -/
+  -- 已知数学定理: Banach 不动点定理 -- 完备度量空间上的压缩映射有唯一不动点
+  -- 证明路径: Bellman 算子 T 是 γ-压缩映射 (γ < 1), (X→ℝ, ‖·‖_∞) 完备 ⇒ T 有唯一不动点
+  -- 状态: TODO(research) -- 需要 Mathlib 中完备度量空间不动点定理的形式化 (ContractingWith / FixedPoint)
   sorry  -- 需要 Banach 不动点定理和压缩映射证明
 
 /- ----------------------------------------
@@ -280,7 +286,7 @@ theorem metabolic_control_summation {n : ℕ} (J : (Fin n → ℝ) → ℝ)
      C_i = (e_i/J)(∂J/∂e_i)
      Σ C_i = (1/J) Σ e_i ∂J/∂e_i = J/J = 1
   -/
-  sorry  -- 需要 Euler 齐次函数定理
+  sorry  -- TODO(research): 需要 Euler 齐次函数定理 (齐次函数微分学)
 
 end OptimalControlSolution
 
@@ -360,7 +366,7 @@ theorem ChernNumber_integer {n : ℕ} (H : BlochHamiltonian2D n)
      4. 所以 ∮ A·dk = 2π × 整数 (Berry 相位量子化)
      5. C₁ = 整数
   -/
-  sorry  -- 需要环面拓扑的形式化
+  sorry  -- TODO(research): 需要环面拓扑的形式化 (Chern 数整数性)
 
 end TopologicalInsulatorSolution
 
@@ -394,7 +400,7 @@ theorem nontrivial_zero_in_critical_strip (s : ℂ)
      4. Re(s) = 0: 由函数方程和对称性
      5. 所以非平凡零点在 0 < Re(s) < 1
   -/
-  sorry  -- 需要黎曼 ζ 函数的完整理论
+  sorry  -- TODO(research): 需要黎曼 ζ 函数的完整理论 (临界带非平凡零点)
 
 /- ----------------------------------------
    Theorem 10: zero_symmetry_one_minus
@@ -415,7 +421,7 @@ theorem zero_symmetry_one_minus (s : ℂ)
      
      χ(s) = 0 或 ∞ 仅对应平凡零点区域
   -/
-  sorry  -- 需要函数方程的形式化
+  sorry  -- TODO(research): 需要函数方程的形式化 (ζ(s) = χ(s)ζ(1-s))
 
 /- ----------------------------------------
    Theorem 11: impossible_nontrivial_zero_on_Re_one
@@ -432,7 +438,7 @@ theorem no_zero_on_Re_one (t : ℝ) (ht : t ≠ 0) :
      2. 使用 3 + 4cos θ + cos(2θ) = 2(1+cos θ)² ≥ 0
      3. 证明这导致矛盾如果 ζ(1+it) = 0
   -/
-  sorry  -- 这是解析数论中的经典结果
+  sorry  -- TODO(research): 解析数论经典结果 (Hadamard-de la Vallée Poussin 1896, Re(s)=1 无零点)
 
 end RiemannHypothesisSolution
 
@@ -452,34 +458,54 @@ namespace SymmetricFunctionsSolution
 def powerSum (n k : ℕ) (x : Fin n → ℝ) : ℝ :=
   ∑ i, (x i)^k
 
-/-- 初等对称函数 e_k -/
+/-- 初等对称函数 e_k (修正: 使用 Finset.filter 正确筛选 k 元子集) -/
 def elementarySymmetric (n k : ℕ) (x : Fin n → ℝ) : ℝ :=
   match k with
   | 0 => 1
   | k' + 1 =>
-    ∑ s : Finset (Fin n), s.card = k' + 1 → ∏ i ∈ s, x i
+    ∑ s in Finset.univ.filter (fun s : Finset (Fin n) => s.card = k' + 1), ∏ i in s, x i
 
-/- ----------------------------------------
-   Theorem 12: Newton 恒等式 (k=1 情形)
-   e_1 = p_1
-   ---------------------------------------- -/
+/-- 验证: e_1 = Σ x_i = p_1 (初等对称函数 k=1 退化为幂和) -/
+lemma elementarySymmetric_one_eq_sum (n : ℕ) (x : Fin n → ℝ) :
+    elementarySymmetric n 1 x = ∑ i, x i := by
+  simp [elementarySymmetric]
+  let f : Fin n → Finset (Fin n) := fun i => {i}
+  have hf_inj : ∀ (i j : Fin n), i ∈ Finset.univ → j ∈ Finset.univ → f i = f j → i = j := by
+    intro i j _ _ h
+    simp [f] at h
+    exact h
+  have h_eq : Finset.filter (fun s => s.card = 1) (Finset.univ : Finset (Finset (Fin n))) = Finset.image f Finset.univ := by
+    ext s
+    simp [f]
+    constructor
+    · -- s.card = 1 → ∃ i, s = {i}
+      intro h
+      rw [Finset.card_eq_one] at h
+      obtain ⟨i, hi⟩ := h
+      use i
+      rw [hi]
+    · -- ∃ i, s = {i} → s.card = 1
+      rintro ⟨i, rfl⟩
+      simp
+  rw [h_eq]
+  rw [Finset.sum_image hf_inj]
+  simp [f]
 
+/- 原命题: Newton 恒等式 k=1 (保留为说明: 定义已修正，e_1 = p_1 由 elementarySymmetric_one_eq_sum 直接可得) -/
 theorem newton_identity_k1 (n : ℕ) (x : Fin n → ℝ) :
     elementarySymmetric n 1 x = powerSum n 1 x := by
-  /- e_1 = Σ x_i = p_1 -/
-  sorry  -- 需要初等对称函数的形式化
+  rw [elementarySymmetric_one_eq_sum]
+  simp [powerSum]
 
-/- ----------------------------------------
-   Theorem 13: Newton 恒等式 (k=2 情形)
-   2e_2 = e_1 p_1 - p_2
-   ---------------------------------------- -/
-
+/- 原命题: Newton 恒等式 k=2 (保留为研究级: 需要展开 e_2 = Σ_{i<j} x_i x_j 并验证 2Σ_{i<j} x_i x_j = (Σ_i x_i)² - Σ_i x_i²) -/
 theorem newton_identity_k2 (n : ℕ) (x : Fin n → ℝ) :
     2 * elementarySymmetric n 2 x = elementarySymmetric n 1 x * powerSum n 1 x - powerSum n 2 x := by
-  /- 2e_2 = (Σ x_i)² - Σ x_i² = e_1 p_1 - p_2 -/
-  sorry  -- 需要详细计算
-
-end SymmetricFunctionsSolution
+  rw [elementarySymmetric_one_eq_sum]
+  simp [elementarySymmetric, powerSum]
+  -- 已知代数恒等式: 2 Σ_{i<j} x_i x_j = (Σ_i x_i)² - Σ_i x_i²
+  -- 展开 (Σ_i x_i)² = Σ_i x_i² + 2 Σ_{i<j} x_i x_j
+  -- 状态: TODO(research) -- 需要 Finset 双重求和展开和代数简化
+  sorry -- 需要详细计算 (Finset 双重求和展开)
 
 
 /- ============================================================================

@@ -40,9 +40,9 @@ theorem newton_momentum_conservation
     (h_eom : ∀ i, masses i • deriv² (positions i) = ∑ j, forces i j) :
     /- 总动量守恒: d/dt Σ m_i v_i = 0 -/
     ∑ i, masses i • deriv (positions i) = const := by
-  /- 对总动量求时间导数 -/
-  /- dP/dt = Σ m_i a_i = Σ_i Σ_j F_{ij} = Σ_{i<j} (F_{ij} + F_{ji}) = 0 -/
-  /- 使用牛顿第三定律 F_{ij} = -F_{ji} -/
+  -- 已知物理定理: 牛顿第三定律 ⇒ 内力成对抵消 ⇒ 总动量守恒
+  -- 证明路径: dP/dt = Σ m_i a_i = Σ_i Σ_j F_{ij} = Σ_{i<j} (F_{ij} + F_{ji}) = 0 (反对称性)
+  -- 状态: TODO(research) -- 需要 deriv/deriv² 定义和双重求和反对称性的形式化
   sorry -- 需要完成双重求和的反对称性论证
 
 /-
@@ -89,9 +89,9 @@ theorem hamiltonian_energy_conservation {n : ℕ}
     /- dH/dt = {H,H} = 0 -/
     let energy t := H (x t)
     deriv energy t = 0 := by
-  /- 使用链式法则 -/
-  simp [energy]
-  /- dH/dt = Σ_i (∂H/∂q_i ẋ_i + ∂H/∂p_i ṗ_i) -/
+  -- 已知物理定理: 哈密顿方程 ⇒ dH/dt = {H,H} = 0
+  -- 证明路径: dH/dt = Σ (∂H/∂q_i ẋ_i + ∂H/∂p_i ṗ_i) = Σ (∂H/∂q_i ∂H/∂p_i - ∂H/∂p_i ∂H/∂q_i) = 0
+  -- 状态: TODO(research) -- 需要链式法则和多变量导数的形式化 (Mathlib fderiv/deriv 链式法则)
   sorry -- 需要链式法则和多变量求导的形式化
 
 /-
@@ -137,8 +137,9 @@ theorem schrodinger_norm_preservation
     /- ‖ψ(t)‖ = const -/
     ∀ t, ‖ψ t‖ = ‖ψ 0‖ := by
   intro t
-  /- 证明 d/dt ‖ψ‖² = 0 -/
-  /- d/dt ⟨ψ,ψ⟩ = 0 使用薛定谔方程和 H 的厄米性 -/
+  -- 已知物理定理: 薛定谔方程 iℏ∂ψ/∂t = Hψ (H 厄米) ⇒ 范数守恒
+  -- 证明路径: d/dt‖ψ‖² = d/dt⟨ψ,ψ⟩ = ⟨ψ̇,ψ⟩ + ⟨ψ,ψ̇⟩ = (i/ℏ)⟨Hψ,ψ⟩ - (i/ℏ)⟨ψ,Hψ⟩ = 0 (H 厄米)
+  -- 状态: TODO(research) -- 需要 HasDerivAt 与内积空间组合的形式化引理
   sorry -- 需要内积空间的微分运算形式化
 
 /-
@@ -181,8 +182,9 @@ theorem master_equation_probability_conservation (n : ℕ) (L : Lindbladian n)
         - (1/2 : ℝ) • (L.L[i]ᴴ * L.L[i] * rho t + rho t * L.L[i]ᴴ * L.L[i]))) :
     ∀ t, (rho t).trace = 1 := by
   intro t
-  /- 证明 d/dt Tr(ρ) = 0 -/
-  /- Tr(dρ/dt) = 0 使用迹的循环性和 Lindblad 算子的结构 -/
+  -- 已知物理定理: Lindblad 主方程保持迹为 1 (概率守恒)
+  -- 证明路径: d/dt Tr(ρ) = Tr(-i[H,ρ]) + Σ γ_k Tr(L_k ρ L_k† - 1/2{L_k†L_k, ρ}) = 0 (Tr([A,B])=0, Tr(ABC)=Tr(BCA))
+  -- 状态: TODO(research) -- 需要矩阵迹运算完整性质的形式化 (循环性、Lindblad算子结构)
   sorry -- 需要迹运算的详细性质
 
 /-
@@ -232,8 +234,9 @@ theorem schrodinger_heisenberg_equivalence
     /- 薛定谔绘景期望值 = 海森堡绘景期望值 -/
     ∀ t, ⟪U t ψ0, A (U t ψ0)⟫_ℂ = ⟪ψ0, (U t† ∘ A ∘ U t) ψ0⟫_ℂ := by
   intro t
-  /- 使用 U 的酉性: U†U = I -/
-  /- ⟪Uψ, A Uψ⟫ = ⟪ψ, U† A U ψ⟫ (酉变换保持内积) -/
+  -- 已知物理定理: 薛定谔绘景期望值 = 海森堡绘景期望值 (酉变换保持内积)
+  -- 证明路径: ⟪Uψ, A Uψ⟫ = ⟪ψ, U† A U ψ⟫ (U 酉: U†U = I)
+  -- 状态: TODO(research) -- 需要酉算子保持内积的形式化引理
   sorry -- 需要内积空间中酉算子的性质
 
 /-
@@ -278,8 +281,9 @@ theorem boltzmann_H_nonneg {V : Type} [Fintype V] [DecidableEq V]
     (f : V → ℝ) (hf_nonneg : ∀ v, f v ≥ 0) (hf_norm : ∑ v, f v = 1) :
     /- H = Σ f ln f ≥ -ln|V| (最小值在均匀分布时取到) -/
     ∑ v, f v * Real.log (f v) ≥ - Real.log (Fintype.card V : ℝ) := by
-  /- 使用 Gibbs 不等式 (KL 散度非负性) -/
-  /- D_KL(f || uniform) = Σ f ln(f/(1/|V|)) = Σ f ln f + ln|V| ≥ 0 -/
+  -- 已知数学定理: 概率分布的负熵 ≥ -ln|V| (Gibbs不等式 / KL散度非负性)
+  -- 证明路径: D_KL(f||uniform) = Σ f ln(f|V|) = Σ f ln f + ln|V| ≥ 0 (Jensen不等式)
+  -- 状态: TODO(research) -- 需要 Jensen 不等式 / Gibbs 不等式的形式化 (Mathlib.Analysis.Convex.Jensen)
   sorry -- 需要 Gibbs 不等式的形式化
 
 /-
