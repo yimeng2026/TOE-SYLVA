@@ -280,6 +280,24 @@ def HodgeConjecture : Prop :=
 
 ---
 
+---
+
+## 交叉引用网络（Cross-References）
+
+### 与本论文直接相关的 SYLVA 数学档案
+- 千禧年问题1（P vs NP）— GCT纲领与几何复杂性理论
+- 千禧年问题6（BSD猜想）— Motive理论与L-函数的深刻联系
+- 希尔伯特第14问题（代数不变量）— 不变量理论与Hodge类的有限生成
+- 希尔伯特第15问题（Schubert计数）— 相交理论与代数闭链
+
+### 关联的 SYLVA Lean 形式化模块
+- `Hodge.lean` — SYLVA 形式化代码库核心模块
+- `MillenniumProblems/BSD.lean` — SYLVA 形式化代码库核心模块
+
+### 关键词标签
+代数几何、Hodge理论、Motive理论
+
+
 ## 参考文献
 
 [1] Clay Mathematics Institute. Millennium Prize Problems: Hodge Conjecture[EB/OL]. 2000.

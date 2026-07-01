@@ -311,6 +311,24 @@ Birch 与 Swinnerton-Dyer 猜想是算术几何的皇冠明珠。它连接了：
 
 ---
 
+---
+
+## 交叉引用网络（Cross-References）
+
+### 与本论文直接相关的 SYLVA 数学档案
+- 千禧年问题3（黎曼假设）— L-函数与解析数论
+- 千禧年问题2（Hodge猜想）— Motive理论、代数闭链与算术几何
+- 希尔伯特第10问题（丢番图方程）— 椭圆曲线有理点的可判定性
+- 希尔伯特第12问题（Kronecker-Weber）— 复乘法与椭圆曲线的模性
+
+### 关联的 SYLVA Lean 形式化模块
+- `MillenniumProblems/BSD.lean` — SYLVA 形式化代码库核心模块
+- `EllipticCurveReduction.lean` — SYLVA 形式化代码库核心模块
+
+### 关键词标签
+算术几何、L-函数、椭圆曲线
+
+
 ## 参考文献
 
 [1] Clay Mathematics Institute. Millennium Prize Problems: Birch and Swinnerton-Dyer Conjecture[EB/OL]. 2000.
