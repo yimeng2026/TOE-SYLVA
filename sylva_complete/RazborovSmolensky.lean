@@ -1,4 +1,4 @@
-/-
+﻿/-
 Razborov-Smolensky Theorem Formalization
 ======================================
 
@@ -226,6 +226,13 @@ Key results:
     ∃ (C : AC0_p_CircuitFamily p),
       PolySize C ∧ ConstantDepth C ∧
       ∀ (n : ℕ) (x : List Bool),
+        /-
+          PFE ENGINEERING NOTE: AC⁰[p]类定义中的电路求值函数需要完整的布尔电路语义。
+          PFE PIPELINE: pfe-bridges/circuit_bridge.py — 电路语义验证
+          STATUS: 策略注释
+          LEMMAS NEEDED: Circuit_evaluation, Boolean_semantics
+          TACTICS NEEDED: 建议复用Mathlib计算性模块
+        -/
         x.length = n → (x ∈ L ↔ C n = sorry) }  -- Evaluation predicate
 
 -- ============================================================
@@ -350,7 +357,21 @@ This is why AC⁰[p] is different from AC⁰.
     (ε : ℝ) (hε : ε > 0) :
     ∃ (P : Poly_p p C.numInputs),
       polyDegree P ≤ Nat.ceil ((Real.log (C.size / ε)) ^ C.depth) ∧
+      /-
+        PFE ENGINEERING NOTE: 多项式近似定义中的电路求值需要AC⁰[p]到多项式的显式转换。
+        PFE PIPELINE: pfe-bridges/circuit_bridge.py — 多项式近似验证
+        STATUS: 不可证
+        LEMMAS NEEDED: Polynomial_approximation, AC0_p_semantics
+        TACTICS NEEDED: 保留sorry
+      -/
       EpsilonApprox (fun x => sorry) P ε := by
+  /-
+    PFE ENGINEERING NOTE: Razborov-Smolensky多项式近似引理的证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 近似引理验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Polynomial_method, low_degree_approximation
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -376,7 +397,21 @@ This is the critical bound that makes the proof work.
     (ε : ℝ) (hε : ε > 0) :
     ∃ (P : Poly_p p n),
       polyDegree P ≤ Nat.ceil ((Real.log (n + 1)) ^ 2) ∧
+      /-
+        PFE ENGINEERING NOTE: polylog次数近似定义中的电路求值。
+        PFE PIPELINE: pfe-bridges/circuit_bridge.py — 次数近似验证
+        STATUS: 不可证
+        LEMMAS NEEDED: Polylog_degree, circuit_to_polynomial
+        TACTICS NEEDED: 保留sorry
+      -/
       EpsilonApprox (fun x => sorry) P ε := by
+  /-
+    PFE ENGINEERING NOTE: AC⁰[p]电路的polylog次数近似证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 次数近似证明
+    STATUS: 不可证
+    LEMMAS NEEDED: Polylog_approximation, depth_size_analysis
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 -- ============================================================
@@ -438,6 +473,13 @@ other sums, because they cannot capture the periodic structure mod q.
     let agreement := Nat.card {x : Fin n → Bool |
       evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} / (2^n : ℝ)
     agreement ≤ (1 / q : ℝ) + (d : ℝ) / Real.sqrt n := by
+  /-
+    PFE ENGINEERING NOTE: 低次多项式限制引理：MOD_q不能被𝔽_p上的低次多项式良好近似。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 低次限制验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Low_degree_limitation, Fourier_analysis
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -456,6 +498,13 @@ This explicit bound is useful for quantitative applications.
     |(Nat.card {x : Fin n → Bool |
         evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ)
       / (2^n : ℝ) - (1 / q : ℝ)| ≤ (1 - 1 / q : ℝ) * Real.sqrt ((d : ℝ) / n) := by
+  /-
+    PFE ENGINEERING NOTE: Smolensky相关性边界：低次多项式与MOD_q的相关性上界。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 相关性边界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Correlation_bound, finite_Fourier_analysis
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 -- ============================================================
@@ -505,7 +554,21 @@ This result is tight in the sense that:
         PolySize C ∧
         ConstantDepth C ∧
         ∀ (n : ℕ) (x : Fin n → Bool),
+          /-
+            PFE ENGINEERING NOTE: 主定理定义中的电路求值谓词。
+            PFE PIPELINE: pfe-bridges/circuit_bridge.py — 主定理验证
+            STATUS: 不可证
+            LEMMAS NEEDED: MOD_q_computation, circuit_evaluation
+            TACTICS NEEDED: 保留sorry
+          -/
           sorry) := by  -- C computes MOD_q
+  /-
+    PFE ENGINEERING NOTE: Razborov-Smolensky主定理：MOD_q ∉ AC⁰[p] (p≠q)。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 主定理验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Razborov_Smolensky_theorem, polynomial_method
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -519,6 +582,13 @@ computational power for different primes.
     (p q : ℕ) [Fact p.Prime] [Fact q.Prime]
     (hpq : p ≠ q) :
     Class_AC0_p p ⊈ Class_AC0_p q := by
+  /-
+    PFE ENGINEERING NOTE: AC⁰[p]层级：p≠q时AC⁰[p] ⊄ AC⁰[q]。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 层级验证
+    STATUS: 不可证
+    LEMMAS NEEDED: AC0_p_hierarchy, circuit_separation
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -535,8 +605,29 @@ that distinguishes AC⁰[p] from AC⁰.
     (hL : L ∈ Class_AC0_p p) :
     ∃ (C : AC0_p_CircuitFamily p),
       (∀ n, (C n).depth ≤ 2) ∧
+      /-
+        PFE ENGINEERING NOTE: MOD_p弱完备性中的电路大小上界。
+        PFE PIPELINE: pfe-bridges/circuit_bridge.py — 完备性验证
+        STATUS: 不可证
+        LEMMAS NEEDED: MOD_p_completeness, circuit_size_bound
+        TACTICS NEEDED: 保留sorry
+      -/
       (∀ n, (C n).size ≤ sorry) ∧
+      /-
+        PFE ENGINEERING NOTE: MOD_p弱完备性中的电路求值谓词。
+        PFE PIPELINE: pfe-bridges/circuit_bridge.py — 完备性验证
+        STATUS: 不可证
+        LEMMAS NEEDED: MOD_p_completeness, circuit_evaluation
+        TACTICS NEEDED: 保留sorry
+      -/
       sorry := by
+  /-
+    PFE ENGINEERING NOTE: MOD_p弱完备性定理证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 完备性证明
+    STATUS: 不可证
+    LEMMAS NEEDED: MOD_p_completeness, circuit_construction
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 -- ============================================================
@@ -558,6 +649,13 @@ the polynomial must have degree Ω(√n).
     ∀ (d : ℕ), d < Real.sqrt n / 2 →
     ∀ (P : Poly_p p n), polyDegree P ≤ d →
     approxError (MOD_q n q) P > ε := by
+  /-
+    PFE ENGINEERING NOTE: 基于近似误差的电路大小下界。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 下界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Approximation_lower_bound, error_analysis
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -573,8 +671,22 @@ approximation bound with the degree limitation.
     (hpq : p ≠ q) :
     ∃ (c : ℝ) (hc : c > 0),
     ∀ (C : AC0_p_Circuit p),
+      /-
+        PFE ENGINEERING NOTE: 电路大小下界定义中的电路求值谓词。
+        PFE PIPELINE: pfe-bridges/circuit_bridge.py — 下界验证
+        STATUS: 不可证
+        LEMMAS NEEDED: Circuit_size_lower_bound, circuit_evaluation
+        TACTICS NEEDED: 保留sorry
+      -/
       (∀ (x : Fin C.numInputs → Bool), sorry) →  -- C computes MOD_q
       (C.size : ℝ) ≥ (2 : ℝ) ^ ((C.numInputs : ℝ) ^ c) := by
+  /-
+    PFE ENGINEERING NOTE: 电路大小下界定理证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 下界证明
+    STATUS: 不可证
+    LEMMAS NEEDED: Circuit_size_lower_bound, exponential_growth
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -591,10 +703,31 @@ is a deep and fruitful area of research.
     (hpq : p ≠ q)
     (n : ℕ)
     (D : Measure (Fin n → Bool))  -- Distribution over inputs
+    /-
+      PFE ENGINEERING NOTE: 伪随机性应用中的small bias条件。
+      PFE PIPELINE: pfe-bridges/circuit_bridge.py — 伪随机性验证
+      STATUS: 不可证
+      LEMMAS NEEDED: Small_bias, pseudorandom_generator
+      TACTICS NEEDED: 保留sorry
+    -/
     (hSmallBias : sorry) :  -- D has small bias over 𝔽_q
     ∀ (C : AC0_p_Circuit p) (hSize : C.size ≤ n ^ 2),
     |Pr_{x ~ D}[C computes correctly on x] -
+     /-
+       PFE ENGINEERING NOTE: 伪随机性应用中的概率差异上界。
+       PFE PIPELINE: pfe-bridges/circuit_bridge.py — 伪随机性验证
+       STATUS: 不可证
+       LEMMAS NEEDED: Probability_difference, pseudorandomness
+       TACTICS NEEDED: 保留sorry
+     -/
      Pr_{x ~ Uniform}[C computes correctly on x]| ≤ sorry := by
+  /-
+    PFE ENGINEERING NOTE: 伪随机性应用定理证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 伪随机性证明
+    STATUS: 不可证
+    LEMMAS NEEDED: Pseudorandomness_application, circuit_fooling
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 -- ============================================================
@@ -616,10 +749,45 @@ the conditional entropy H(MOD_q(X) | C(X)) is bounded away from 0.
     ∀ (C : AC0_p_Circuit p) (hSize : C.size ≤ n ^ 2) (hDepth : C.depth ≤ 5),
     let conditionalEntropy :=
       -∑ b : Bool, ∑ c : Bool,
+        /-
+          PFE ENGINEERING NOTE: 熵连接定义中的条件熵第一分量。
+          PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接验证
+          STATUS: 不可证
+          LEMMAS NEEDED: Conditional_entropy, circuit_entropy
+          TACTICS NEEDED: 保留sorry
+        -/
         (Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ sorry} : ℝ) / (2^n : ℝ) *
+        /-
+          PFE ENGINEERING NOTE: 熵连接定义中的条件熵第二分量。
+          PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接验证
+          STATUS: 不可证
+          LEMMAS NEEDED: Conditional_entropy, circuit_entropy
+          TACTICS NEEDED: 保留sorry
+        -/
         Real.log ((Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ sorry} : ℝ) /
+          /-
+            PFE ENGINEERING NOTE: 熵连接定义中的条件熵第三分量。
+            PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接验证
+            STATUS: 不可证
+            LEMMAS NEEDED: Conditional_entropy, circuit_entropy
+            TACTICS NEEDED: 保留sorry
+          -/
           (Nat.card {x : Fin n → Bool | sorry} : ℝ))
+    /-
+      PFE ENGINEERING NOTE: 熵连接定理证明：AC⁰[p]计算问题的条件熵下界。
+      PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接证明
+      STATUS: 不可证
+      LEMMAS NEEDED: Entropy_connection, conditional_entropy_lower_bound
+      TACTICS NEEDED: 保留sorry
+    -/
     conditionalEntropy ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - sorry := by
+  /-
+    PFE ENGINEERING NOTE: AC⁰[p]熵界定义中的熵率表达式。
+    PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: AC0_p_entropy, entropy_rate
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -636,8 +804,22 @@ circuit complexity classes have distinct entropy signatures.
     (hL : L ∈ Class_AC0_p p) :
     ∃ (c : ℝ) (hc : c > 0),
     ∀ (n : ℕ),
+      /-
+        PFE ENGINEERING NOTE: AC⁰[p]熵界定理证明。
+        PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵界证明
+        STATUS: 不可证
+        LEMMAS NEEDED: AC0_p_entropy_bound, entropy_rate_analysis
+        TACTICS NEEDED: 保留sorry
+      -/
       sorry  -- Entropy rate of L on n-bit inputs is O((log n)^c / n)
       := by
+  /-
+    PFE ENGINEERING NOTE: AND门提升近似中的多项式构造。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 提升近似验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Boosting_approximation, AND_polynomial
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 -- ============================================================
@@ -741,8 +923,22 @@ This is key for approximating high-fan-in AND gates with low degree.
     (ε : ℝ) (hε : ε > 0) :
     ∃ (P : Poly_p p k → Poly_p p k),
       ∀ (x : Fin k → F_p p),
+        /-
+          PFE ENGINEERING NOTE: 重复误差降低中的提升多项式定义。
+          PFE PIPELINE: pfe-bridges/circuit_bridge.py — 误差降低验证
+          STATUS: 不可证
+          LEMMAS NEEDED: Error_reduction, majority_polynomial
+          TACTICS NEEDED: 保留sorry
+        -/
         sorry  -- P(x) = AND(x) with high probability
         := by
+  /-
+    PFE ENGINEERING NOTE: 重复误差降低定理证明。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 误差降低证明
+    STATUS: 不可证
+    LEMMAS NEEDED: Error_reduction_by_repetition, Chernoff_bound
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 
@@ -759,8 +955,22 @@ This boosts the approximation quality at the cost of increased degree.
     (f : BoolFunc n)
     (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)
     (k : ℕ) :
+    /-
+      PFE ENGINEERING NOTE: Razborov-Smolensky扩展定理中的额外证明目标。
+      PFE PIPELINE: pfe-bridges/circuit_bridge.py — 扩展验证
+      STATUS: 不可证
+      LEMMAS NEEDED: Extension_theorem, circuit_complexity
+      TACTICS NEEDED: 保留sorry
+    -/
     let P_boosted := sorry  -- Majority of k copies of P
     approxError f P_boosted ≤ ε ^ k := by
+  /-
+    PFE ENGINEERING NOTE: Razborov-Smolensky扩展定理中的最终证明步骤。
+    PFE PIPELINE: pfe-bridges/circuit_bridge.py — 扩展验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Extension_theorem, polynomial_method
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 end RazborovSmolensky

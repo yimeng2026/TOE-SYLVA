@@ -1,4 +1,4 @@
-/-
+﻿/-
 -- HISTORICAL ARCHIVE: 32 sorry placeholders, requires refactoring to comply with zero-sorry policy
 ================================================================================
 Entropy Gap Spectral Theorem - Core Formalization
@@ -80,7 +80,21 @@ noncomputable def StdDescriptionComplexityOperator (Σ : Type) [Fintype Σ] :
   DescriptionComplexityOperator Σ where
   domain := {L | ∃ p : Program, ∀ w, p.code = w ↔ w ∈ L}
   complexityMeasure L := (K(L) : ℝ)
+  /-
+    PFE ENGINEERING NOTE: Kolmogorov复杂度次可加性是信息论基本性质。在标准定义下K(xy)≤K(x)+K(y)+O(1)。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 数值验证K(xy)≤K(x)+K(y)对随机字符串成立
+    STATUS: 公理化
+    LEMMAS NEEDED: KolmogorovComplexity_well_defined, sInf_le
+    TACTICS NEEDED: 无法通过纯tactic证明，建议保留为axiom或opaque
+  -/
   subadditivity := sorry  -- 待证明：描述复杂度的次可加性
+  /-
+    PFE ENGINEERING NOTE: 正齐次性c·K(L)=K(L)在标准Kolmogorov复杂度中不成立（K是离散值）。此处为工程抽象。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 尺度变换不变性验证
+    STATUS: 公理化
+    LEMMAS NEEDED: 无
+    TACTICS NEEDED: 建议改为homogeneity:=by rfl或保留为公理
+  -/
   homogeneity := sorry    -- 待证明：正齐次性
 
 /-- Ĥ记法 -/
@@ -162,16 +176,37 @@ section SpectralGapHypothesis
 
 /-- SGH的标准形式 (使用自然对数) -/\n\ndef SGH_Standard : Prop :=
   ∃ (c : ℝ), c > 0 ∧ ∀ (n : ℕ), n > 0 →
+    /-
+      PFE ENGINEERING NOTE: SGH存在性断言等价于P≠NP，属于Millennium Prize Problem级别。
+      PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 启发式搜索验证谱间隙
+      STATUS: 不可证
+      LEMMAS NEEDED: P_neq_NP_provable_in_ZFC, EntropyGapSpectrum_constructible
+      TACTICS NEEDED: 当前技术条件下不可证，保留sorry作为研究目标
+    -/
     let spec : EntropyGapSpectrum := sorry  -- 由上下文确定具体谱
     spec.eigenvalues 1 ≥ c * Real.log n
 
 /-- SGH的强形式：间隙关于n线性增长 -/\n\ndef SGH_Strong : Prop :=
   ∃ (c : ℝ), c > 0 ∧ ∀ (n : ℕ), n > 0 →
+    /-
+      PFE ENGINEERING NOTE: SGH存在性断言等价于P≠NP，属于Millennium Prize Problem级别。
+      PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 启发式搜索验证谱间隙
+      STATUS: 不可证
+      LEMMAS NEEDED: P_neq_NP_provable_in_ZFC, EntropyGapSpectrum_constructible
+      TACTICS NEEDED: 当前技术条件下不可证，保留sorry作为研究目标
+    -/
     let spec : EntropyGapSpectrum := sorry
     spec.eigenvalues 1 ≥ c * n
 
 /-- SGH的弱形式：间隙为正但不指定增长率 -/\n\ndef SGH_Weak : Prop :=
   ∀ (n : ℕ), n > 0 →
+    /-
+      PFE ENGINEERING NOTE: SGH存在性断言等价于P≠NP，属于Millennium Prize Problem级别。
+      PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 启发式搜索验证谱间隙
+      STATUS: 不可证
+      LEMMAS NEEDED: P_neq_NP_provable_in_ZFC, EntropyGapSpectrum_constructible
+      TACTICS NEEDED: 当前技术条件下不可证，保留sorry作为研究目标
+    -/
     let spec : EntropyGapSpectrum := sorry
     spec.eigenvalues 1 > 0
 
@@ -205,6 +240,13 @@ section MainTheorem
     spec.firstExcitedIsNPminusP ∧
     -- 条件4: 谱间隙与P vs NP的关系
     (spec.eigenvalues 1 > 0 ↔ P ≠ NP) := by
+  /-
+    PFE ENGINEERING NOTE: 主定理4.1是论文核心主张，等价于P≠NP。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 置信度评估
+    STATUS: 不可证
+    LEMMAS NEEDED: SGH_Equivalent_P_neq_NP, diagonalization_argument
+    TACTICS NEEDED: 需要突破性数学方法，当前保留sorry
+  -/
   sorry  -- 证明框架：构造性证明 + 对角线论证
 
 /-- 定理4.1的详细版本，包含谱的具体构造 -/\n\ntheorem EntropyGapSpectral_Constructive {Σ : Type} [Fintype Σ]
@@ -216,6 +258,13 @@ section MainTheorem
     (∀ n, spec.complexityClass n = Set.range (basis n)) ∧
     -- 谱的完备性
     (⋃ n, spec.complexityClass n) = {L | L ∈ P ∪ NP} := by
+  /-
+    PFE ENGINEERING NOTE: 构造性定理要求显式构造谱基，这在P≠NP未解决时不可行。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 谱构造启发式
+    STATUS: 不可证
+    LEMMAS NEEDED: Explicit_basis_construction, Orthogonal_decomposition
+    TACTICS NEEDED: 保留sorry，待P≠NP解决后填补
+  -/
   sorry
 where
   /-- 语言之间的正交性：不交且复杂度独立 -/
@@ -242,17 +291,90 @@ section EquivalenceTheorem
     have h_gap_positive : ∃ (spec : EntropyGapSpectrum), spec.eigenvalues 1 > 0 := by
       use {
         eigenvalues := fun n => if n = 0 then 0 else sgh.constant_c * Real.log 2,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段mono的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         mono := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段countable的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         countable := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段groundState的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         groundState := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段firstExcitedPositive的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         firstExcitedPositive := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段complexityClass的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         complexityClass := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段groundIsP的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         groundIsP := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段firstExcitedIsNPminusP的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         firstExcitedIsNPminusP := sorry,
+        /-
+          PFE ENGINEERING NOTE: 结构体字段gapCondition的证明依赖SGH存在性。
+          PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+          STATUS: 策略注释
+          LEMMAS NEEDED: SGH_field_witness, structure_inhabitation
+          TACTICS NEEDED: 使用use提供witness，各字段需单独证明
+        -/
         gapCondition := sorry
       }
-      sorry
+      /-
+        PFE ENGINEERING NOTE: eigenvalues 1 > 0 可由 c_positive 和 log 2 > 0 直接推出。
+        PFE PIPELINE: pfe-bridges/complexity_bridge.py — 正性验证
+        STATUS: 已证明
+        LEMMAS NEEDED: mul_pos, Real.log_pos
+        TACTICS NEEDED: simp, apply mul_pos, exact Real.log_pos (by norm_num)
+      -/
+      simp
+      apply mul_pos
+      · exact sgh.c_positive
+      · exact Real.log_pos (by norm_num)
     -- 间隙为正 ⟹ NP\P非空 ⟹ P≠NP
+    /-
+      PFE ENGINEERING NOTE: 间隙为正⟹NP\P非空⟹P≠NP的推导链。
+      PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+      STATUS: 不可证
+      LEMMAS NEEDED: NP_nonempty, set_difference_nonempty
+      TACTICS NEEDED: 保留sorry，需先证明NP\P非空
+    -/
     sorry
   · -- (←) P≠NP ⟹ SGH
     intro h_p_neq_np
@@ -265,6 +387,13 @@ section EquivalenceTheorem
     exact {
       constant_c := c,
       c_positive := by positivity,
+      /-
+        PFE ENGINEERING NOTE: gap_lower_bound字段要求对所有n>0构造满足eigenvalues 1≥c·log n的谱。当前构造的固定谱不满足n>2。
+        PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 统一间隙构造
+        STATUS: 不可证
+        LEMMAS NEEDED: Uniform_gap_construction, spectral_family
+        TACTICS NEEDED: 当前构造存在gap，需重构
+      -/
       gap_lower_bound := sorry,  -- 由P≠NP推导间隙下界
       nontriviality := by simp [c]
     }
@@ -272,11 +401,25 @@ section EquivalenceTheorem
 /-- 等价性的定量版本：SGH给出P≠NP的显式下界 -/\n\ntheorem SGH_Gives_Explicit_Bound (sgh : SpectralGapHypothesis) :
   ∃ (L : Language Bool), L ∈ NP ∧ L ∉ P ∧
     KolmogorovComplexity L ≥ sgh.constant_c * Real.log 2 := by
+  /-
+    PFE ENGINEERING NOTE: SGH给出P≠NP的显式下界，这是核心定量结果。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 显式界计算
+    STATUS: 不可证
+    LEMMAS NEEDED: Explicit_lower_bound, NP_hard_language_construction
+    TACTICS NEEDED: 保留sorry，需先证明P≠NP
+  -/
   sorry
 
 /-- 逆命题：P≠NP给出SGH的构造 -/\n\ntheorem P_neq_NP_Gives_SGH (h : P ≠ NP) :
   ∃ (sgh : SpectralGapHypothesis),
     sgh.constant_c = 1 / Real.log 2 := by
+  /-
+    PFE ENGINEERING NOTE: P≠NP给出SGH的构造，这是反向推导。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 反向构造
+    STATUS: 不可证
+    LEMMAS NEEDED: P_neq_NP_implies_SGH, complexity_hierarchy
+    TACTICS NEEDED: 保留sorry，依赖P≠NP
+  -/
   sorry
 
 end EquivalenceTheorem
@@ -291,30 +434,65 @@ section ProofFramework
     对于任何递归可枚举语言L，K(L)是良定义的且有限 -/
 lemma K_is_well_defined {Σ : Type} [Fintype Σ] (L : Language Σ) [DecidablePred (· ∈ L)] :
   KolmogorovComplexity L < ⊤ := by
+  /-
+    PFE ENGINEERING NOTE: Kolmogorov复杂度良定义性。注意：当前K(L)定义要求L为单例，与标准Kolmogorov复杂度不同。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 良定义性验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: Kolmogorov_well_definedness, singleton_constraint
+    TACTICS NEEDED: 定义需重构，当前保留sorry
+  -/
   sorry
 
 /-- 引理7.2：P类的特征
     L ∈ P 当且仅当 K(L) = O(log n) -/
 lemma P_characterization {Σ : Type} [Fintype Σ] (L : Language Σ) :
   L ∈ P ↔ ∃ (C : ℝ), ∀ n, KolmogorovComplexity L ≤ C * Real.log n := by
+  /-
+    PFE ENGINEERING NOTE: P类特征化引理。K(L)=O(log n)当且仅当L∈P。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — P类特征验证
+    STATUS: 不可证
+    LEMMAS NEEDED: P_characterization_theorem, complexity_class_equivalence
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 引理7.3：NP类的特征
     L ∈ NP 当且仅当 K(L) = poly(n) -/
 lemma NP_characterization {Σ : Type} [Fintype Σ] (L : Language Σ) :
   L ∈ NP ↔ ∃ (k : ℕ), ∀ n, KolmogorovComplexity L ≤ (n : ℝ) ^ k := by
+  /-
+    PFE ENGINEERING NOTE: NP类特征化引理。K(L)=poly(n)当且仅当L∈NP。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — NP类特征验证
+    STATUS: 不可证
+    LEMMAS NEEDED: NP_characterization_theorem, polynomial_growth
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 引理7.4：谱间隙的单调性
     若NP ⊈ P，则存在最小的正特征值 -/
 lemma spectral_gap_monotonicity :
   P ⊂ NP → ∃ (spec : EntropyGapSpectrum), spec.eigenvalues 0 = 0 ∧ spec.eigenvalues 1 > 0 := by
+  /-
+    PFE ENGINEERING NOTE: 谱间隙单调性。若NP⊈P，则存在最小正特征值。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 单调性验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Spectral_gap_monotonicity, min_positive_eigenvalue
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 关键引理：对角线论证的谱解释
     使用对角线方法构造不在P中但在NP中的语言 -/
 lemma diagonalization_spectral (spec : EntropyGapSpectrum) :
   spec.eigenvalues 1 > 0 ↔ ∃ (L_diagonal : Language Bool), L_diagonal ∈ NP ∧ L_diagonal ∉ P := by
+  /-
+    PFE ENGINEERING NOTE: 对角线论证的谱解释。使用对角线方法构造不在P中但在NP中的语言。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 对角线构造
+    STATUS: 不可证
+    LEMMAS NEEDED: Diagonalization_argument, NP_minus_P_nonempty
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 end ProofFramework
@@ -329,23 +507,65 @@ section Corollaries
     若SGH成立，则ΔH = Ω(log n) -/\n\ntheorem EntropyGap_Lower_Bound (sgh : SpectralGapHypothesis) :
   ∀ (L : Language Bool), L ∈ NP → L ∉ P →
     ΔH L ≥ sgh.constant_c * Real.log 2 := by
+  /-
+    PFE ENGINEERING NOTE: 熵间隙下界推导。若SGH成立，则ΔH=Ω(log n)。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+    STATUS: 不可证
+    LEMMAS NEEDED: SGH_lower_bound, entropy_gap_estimation
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 推论8.2：SAT的描述复杂度
     K(SAT) = Θ(log n) 当且仅当 P = NP
     K(SAT) = poly(n) 当且仅当 P ≠ NP -/\n\ntheorem SAT_Description_Complexity :
+  /-
+    PFE ENGINEERING NOTE: SAT的形式化定义需要完整的布尔公式编码。
+    PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT编码验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: SAT_formalization, CNF_encoding
+    TACTICS NEEDED: 建议复用SylvaFormalization.Basic中的SAT定义
+  -/
   let SAT : Language Bool := sorry  -- SAT问题的形式化定义
   (SAT ∈ P ↔ K(SAT) = O(Real.log 2)) ∧
+  /-
+    PFE ENGINEERING NOTE: SAT复杂度指数下界的精确指数需要P≠NP。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — SAT复杂度估计
+    STATUS: 不可证
+    LEMMAS NEEDED: SAT_circuit_lower_bound, exponential_complexity
+    TACTICS NEEDED: 保留sorry
+  -/
   (SAT ∉ P ↔ K(SAT) = Θ((2 : ℕ) ^ sorry)) := by
+  /-
+    PFE ENGINEERING NOTE: SAT描述复杂度等价性定理的证明。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py
+    STATUS: 不可证
+    LEMMAS NEEDED: SAT_P_equivalence, complexity_characterization
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 
 /-- 推论8.3：多项式层级的谱解释
     PH = ∪ₖ Σₖ^P 对应于谱的高激发态 -/\n\ntheorem PH_Spectral_Interpretation :
   ∀ (k : ℕ), ∃ (spec : EntropyGapSpectrum),
     spec.complexityClass k = {L | L ∈ Σₖ^P} := by
+  /-
+    PFE ENGINEERING NOTE: 多项式层级的谱解释。PH=∪ₖ Σₖ^P对应于谱的高激发态。
+    PFE PIPELINE: pfe-bridges/ph_bridge.py — PH层级验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Polynomial_hierarchy_formalization, spectral_mapping
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry
 where
   /-- Σₖ^P: 多项式层级的第k层 -/
+  /-
+    PFE ENGINEERING NOTE: Σ_k^P的形式化定义需要交替量词序列。
+    PFE PIPELINE: pfe-bridges/ph_bridge.py
+    STATUS: 策略注释
+    LEMMAS NEEDED: Sigma_k_P_definition, alternating_quantifiers
+    TACTICS NEEDED: 建议复用现有PH形式化
+  -/
   Sigma_k_P (k : ℕ) : Set (Language Bool) := sorry
 
 end Corollaries
@@ -392,6 +612,13 @@ section OpenProblems
     spec.complexityClass 2 = {L | L ∈ BQP}
 where
   /-- BQP: 有界错误量子多项式时间 -/
+  /-
+    PFE ENGINEERING NOTE: BQP类的形式化定义需要量子计算模型。
+    PFE PIPELINE: pfe-bridges/quantum_bridge.py — BQP验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: BQP_formalization, quantum_circuit_model
+    TACTICS NEEDED: 建议复用Mathlib量子计算模块
+  -/
   BQP : Set (Language Bool) := sorry
 
 end OpenProblems

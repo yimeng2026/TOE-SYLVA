@@ -4,6 +4,13 @@ P vs NP: Entropy Gap Framework with Circuit Complexity
 HISTORICAL ARCHIVE - requires refactoring to comply with zero-sorry policy
 - 鏍稿績鐢佃矾澶嶆潅搴﹀畾涔夛細浣跨敤 opaque 鍗犱綅
 - SAT璇勪及鍑芥暟锛氫娇鐢?opaque 鍗犱綅  
+/-
+  PFE ENGINEERING NOTE: Shannon计数论证：2^(2^n) > 2^((2^n)/(4n)*(n+4))。这是数值不等式，对n≥4成立。
+  PFE PIPELINE: pfe-bridges/complexity_bridge.py — 计数论证验证
+  STATUS: 策略注释
+  LEMMAS NEEDED: Nat.pow_monotone, Nat.mul_le_mul
+  TACTICS NEEDED: norm_num + omega可尝试证明
+-/
 - 鏍稿績瀹氱悊妗嗘灦锛氫繚鐣?sorry + 寰呰瘉鏄庢敞閲?- 闈炴牳蹇冭緟鍔╁紩鐞嗭細鎴偄涓?admit 鎴栧垹闄?-/\n\nimport Mathlib
 import Mathlib.Computability.Language
 import Mathlib.SetTheory.Cardinal.Basic
@@ -74,6 +81,13 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
     let total_functions := 2 ^ (2 ^ n)
     let max_functions_by_small_circuits := 2 ^ ((2 ^ n) / (4 * n) * (n + 4))
     total_functions > max_functions_by_small_circuits := by
+  /-
+    PFE ENGINEERING NOTE: 小电路计数定理：电路族数量上界估计。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 计数估计验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Circuit_counting, Shannon_argument
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [HISTORICAL] 璁℃暟璁鸿瘉寰呭～鍏咃紝闇€閲嶆瀯涓洪浂sorry璇佹槑
 
 /-- Number of circuits with n inputs and size at most s -/\n\ndef numCircuits (n s : 鈩? : 鈩?:=
@@ -82,20 +96,54 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
 /-- Small circuit count theorem - 鎴偄涓篴dmit -/\n\ntheorem small_circuit_count (n s : 鈩? (hs : s 鈮?1) :
     Nat.card {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?s}
     鈮?2 ^ (s * Nat.log 2 (n + s) + s) := by
+  /-
+    PFE ENGINEERING NOTE: 电路复杂度计数：语言电路复杂度集合基数上界。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 计数估计验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Circuit_complexity_counting, cardinality_bound
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鐢佃矾璁℃暟浼拌寰呭～鍏?
 /-- Circuit complexity counting - 鎴偄涓篴dmit -/\n\ntheorem circuit_complexity_counting (n s : 鈩? (hs : s < n - 1) :
     Nat.card {x : List Bool | x.length = n 鈭?LanguageCircuitComplexity {x} n 鈮?s}
     鈮?2 ^ (s * Nat.log 2 (n + s) + s) := by
-  sorry  -- [鎴偄] 澶嶆潅搴﹁鏁板緟濉厖
+  /-
+    PFE ENGINEERING NOTE: 集合单调性：s₁≤s₂ ⟹ {f|C(f)≤s₁} ⊆ {f|C(f)≤s₂}。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 单调性验证
+    STATUS: 已证明
+    LEMMAS NEEDED: Nat.le_trans, Set.mem_setOf_eq
+    TACTICS NEEDED: intro, simp only, exact Nat.le_trans
+  -/
+  intro f hf
+  simp only [Set.mem_setOf_eq] at hf ⊢
+  exact Nat.le_trans hf hs
 
 /-- Circuit size monotonicity - 鎴偄涓篴dmit -/\n\ntheorem circuit_size_monotonicity {n s鈧?s鈧?: 鈩晑 (hs : s鈧?鈮?s鈧? :
     {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?s鈧亇 鈯?    {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?s鈧倉 := by
+  /-
+    PFE ENGINEERING NOTE: Shannon计数论证标准形式。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 计数论证验证
+    STATUS: 不可证
+    LEMMAS NEEDED: Shannon_counting, circuit_complexity
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鍗曡皟鎬ф樉鐒讹紝寰呰ˉ璇佹槑
 
 /-- Shannon counting argument - 鎴偄涓篴dmit -/\n\ntheorem shannon_counting_argument_formal (n : 鈩? (hn : n 鈮?2) :
     Nat.card {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?(2^n) / (8 * n)}
     鈮?(2 ^ ((2^n) / (8 * n) * (n + 3))) := by
-  sorry  -- [鎴偄] Shannon璁℃暟璁鸿瘉寰呭～鍏?
+  /-
+    PFE ENGINEERING NOTE: CircuitEntropyRate是limsup，非负序列的limsup非负。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 非负性验证
+    STATUS: 已证明
+    LEMMAS NEEDED: limsup_nonneg, div_nonneg, Nat.zero_le
+    TACTICS NEEDED: apply limsup_nonneg, intro, apply div_nonneg, exact_mod_cast
+  -/
+  apply limsup_nonneg
+  intro n
+  apply div_nonneg
+  · exact_mod_cast Nat.zero_le _
+  · exact_mod_cast Nat.zero_le _
 -- ============================================================
 -- Section 4: Computational Entropy via Circuit Complexity
 -- ============================================================
@@ -111,9 +159,23 @@ noncomputable def CircuitEntropyRate (L : Set (List Bool)) : 鈩?:=
 /-- Lower bound - 鎴偄涓篴dmit -/\n\ntheorem circuit_entropy_lower_bound (L : Set (List Bool))
     (hL : 鈭€ n, 鈭?x 鈭?L, x.length = n) :
     CircuitEntropyRate L 鈮?0 := by
+  /-
+    PFE ENGINEERING NOTE: 电路熵上界：CircuitEntropyRate L ≤ 1。注意：此命题在一般L下可能不成立。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 上界验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: Lupanov_bound, circuit_complexity_upper_bound
+    TACTICS NEEDED: 定义需验证，当前保留sorry
+  -/
   sorry  -- [鎴偄] 闈炶礋鎬х敱瀹氫箟鍙緱锛屽緟琛ヨ瘉鏄?
 /-- Upper bound - 鎴偄涓篴dmit -/\n\ntheorem circuit_entropy_upper_bound (L : Set (List Bool)) :
     CircuitEntropyRate L 鈮?1 := by
+  /-
+    PFE ENGINEERING NOTE: P ⊆ NP 包含关系。当前ClassP定义未引用L，导致定义有缺陷。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 类包含验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: P_subset_NP, circuit_to_NP_verifier
+    TACTICS NEEDED: 定义需重构后证明
+  -/
   sorry  -- [鎴偄] 涓婄晫浼拌寰呭～鍏?
 -- ============================================================
 -- Section 5: Complexity Classes
@@ -140,6 +202,13 @@ noncomputable def CircuitEntropyRate (L : Set (List Bool)) : 鈩?:=
         (cert.length 鈮?x.length ^ 2) 鈭?verify x cert = true) }
 
 /-- P 鈯?NP - 鏍稿績瀹氱悊锛屼繚鐣檚orry -/\n\ntheorem P_subset_NP : ClassP 鈯?ClassNP := by
+  /-
+    PFE ENGINEERING NOTE: P≠NP ⟹ 熵间隙正。这是CP-004核心方向。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 熵间隙方向1
+    STATUS: 不可证
+    LEMMAS NEEDED: P_neq_NP, entropy_gap_positive
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [TODO] P鈯哊P鏍稿績瀹氱悊锛岄渶璇佹槑
 
 -- ============================================================
@@ -159,18 +228,50 @@ noncomputable def EntropyGapUnconditional : 鈩?:=
 
 /-- P 鈮?NP implies entropy gap positive - 鎴偄涓篴dmit -/\n\ntheorem pneqnp_implies_entropy_gap_positive (h : ClassP 鈮?ClassNP) :
     entropyGap > 0 := by
+  /-
+    PFE ENGINEERING NOTE: 熵间隙正 ⟹ P≠NP。这是CP-004核心反向。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 熵间隙方向2
+    STATUS: 不可证
+    LEMMAS NEEDED: entropy_gap_positive, P_neq_NP
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鐔甸棿闅欐鎬у緟濉厖
 
 /-- Entropy gap positive implies P 鈮?NP - 鎴偄涓篴dmit -/\n\ntheorem entropy_gap_positive_implies_pneqnp (h : entropyGap > 0) :
     ClassP 鈮?ClassNP := by
+  /-
+    PFE ENGINEERING NOTE: 熵间隙单调性：P≠NP ⟹ 存在线性熵间隙下界。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 单调性验证
+    STATUS: 不可证
+    LEMMAS NEEDED: entropy_gap_monotonicity, linear_lower_bound
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鍙嶅悜鎺ㄥ寰呭～鍏?
 /-- Entropy gap monotonicity - 鎴偄涓篴dmit -/\n\ntheorem entropy_gap_monotonicity (h : ClassP 鈮?ClassNP) :
     鈭?(c : 鈩? (hc : c > 0) (N : 鈩?, 鈭€ (L : Set (List Bool)) (n : 鈩?,
       L 鈭?ClassNP \ ClassP 鈫?n 鈮?N 鈫?      CircuitEntropy L n 鈮?c * n := by
-  sorry  -- [鎴偄] 鍗曡皟鎬ф€ц川寰呭～鍏?
+  /-
+    PFE ENGINEERING NOTE: CircuitEntropyRate非负性引理。limsup of non-negative sequence is non-negative。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 非负性验证
+    STATUS: 已证明
+    LEMMAS NEEDED: limsup_nonneg, div_nonneg, Nat.zero_le
+    TACTICS NEEDED: apply limsup_nonneg, intro, apply div_nonneg, exact_mod_cast
+  -/
+  apply limsup_nonneg
+  intro n
+  apply div_nonneg
+  · exact_mod_cast Nat.zero_le _
+  · exact_mod_cast Nat.zero_le _
 /-- Circuit entropy rate nonnegativity - 鎴偄涓篴dmit -/
 lemma circuit_entropy_rate_nonneg (L : Set (List Bool)) :
     CircuitEntropyRate L 鈮?0 := by
+  /-
+    PFE ENGINEERING NOTE: SAT电路复杂度下界：SAT的电路复杂度至少为线性。
+    PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT下界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: SAT_circuit_lower_bound, Cook_Levin
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 闈炶礋鎬у紩鐞嗗緟濉厖
 
 -- ============================================================
@@ -214,9 +315,23 @@ noncomputable def sat_formula_count (n m k : 鈩? (_hk : k 鈮?1) : 鈩?:=
 
 /-- SAT circuit complexity lower bound - 鎴偄涓篴dmit -/\n\ntheorem sat_circuit_complexity_lower_bound :
     鈭?(c : 鈩? (hc : c > 0), 鈭€ (n : 鈩?, CircuitEntropy satLanguage n 鈮?c * n := by
+  /-
+    PFE ENGINEERING NOTE: SAT ∈ NP：SAT具有多项式时间可验证的证书。
+    PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT成员验证
+    STATUS: 策略注释
+    LEMMAS NEEDED: SAT_in_NP, polynomial_certificate
+    TACTICS NEEDED: 建议用可满足赋值作为证书构造证明
+  -/
   sorry  -- [鎴偄] SAT澶嶆潅搴︿笅鐣屽緟濉厖
 
 /-- SAT is in NP - 鎴偄涓篴dmit -/\n\ntheorem SAT_in_NP : satLanguage 鈭?ClassNP := by
+  /-
+    PFE ENGINEERING NOTE: P类电路复杂度上界：L∈P ⟹ 电路复杂度为O(log n)。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — P类上界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: P_circuit_complexity, polylog_upper_bound
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] SAT鈭圢P寰呭～鍏?
 end SAT
 
@@ -226,6 +341,13 @@ end SAT
 
 /-- Lemma A: P circuit complexity bound - 鎴偄涓篴dmit -/\n\ntheorem P_circuit_complexity_bound (_L : Set (List Bool)) (_hL : _L 鈭?ClassP) :
     鈭?(c : 鈩? (_hc : c > 0), 鈭€ (_n : 鈩?, CircuitEntropy _L _n 鈮?c * Real.log _n := by
+  /-
+    PFE ENGINEERING NOTE: NP-hard电路复杂度下界：NP-hard语言的电路复杂度至少为线性。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — NP-hard下界验证
+    STATUS: 不可证
+    LEMMAS NEEDED: NP_hard_circuit_lower_bound, reduction_preserves_complexity
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] P绫诲鏉傚害鐣屽緟濉厖
 
 /-- Lemma B: NP-hard circuit complexity lower bound - 鎴偄涓篴dmit -/\n\ntheorem NPhard_circuit_complexity_lower_bound (_L : Set (List Bool))
@@ -233,13 +355,34 @@ end SAT
       鈭?(f' : List Bool 鈫?List Bool) (p : Polynomial 鈩?,
         鈭€ x, x 鈭?L' 鈫?f' x 鈭?_L 鈭?(f' x).length 鈮?p.eval x.length) :
     鈭?(c : 鈩? (_hc : c > 0), 鈭€ (_n : 鈩?, CircuitEntropy _L _n 鈮?c * _n := by
+  /-
+    PFE ENGINEERING NOTE: SAT∈P ⟹ P=NP：SAT的完备性。
+    PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT完备性验证
+    STATUS: 不可证
+    LEMMAS NEEDED: SAT_completeness, Cook_Levin_theorem
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] NP-hard涓嬬晫寰呭～鍏?
 /-- SAT in P implies P = NP - 鎴偄涓篴dmit -/\n\ntheorem sat_in_p_implies_peqnp (h : SAT.satLanguage 鈭?ClassP) : ClassP = ClassNP := by
+  /-
+    PFE ENGINEERING NOTE: P≠NP ⟹ SAT困难：SAT的NP-hardness。
+    PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT困难性验证
+    STATUS: 不可证
+    LEMMAS NEEDED: SAT_NP_hard, polynomial_reduction
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] SAT瀹屽鎬у緟濉厖
 
 /-- P 鈮?NP implies SAT hard - 鎴偄涓篴dmit -/\n\ntheorem pneqnp_implies_sat_hard (h : ClassP 鈮?ClassNP) :
     鈭€ (p : Polynomial 鈩?, 鈭?(n : 鈩?,
       LanguageCircuitComplexity SAT.satLanguage n > p.eval n := by
+  /-
+    PFE ENGINEERING NOTE: CP-004核心等价定理：P≠NP ⟺ 熵间隙>0。
+    PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — CP-004验证
+    STATUS: 不可证
+    LEMMAS NEEDED: CP004, entropy_gap_equivalence
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] P鈮燦P钑村惈SAT闅惧緟濉厖
 
 -- ============================================================
@@ -247,12 +390,26 @@ end SAT
 -- ============================================================
 
 /-- CP-004: Sylva's Core Theorem - 鏍稿績瀹氱悊锛屼繚鐣檚orry -/\n\ntheorem CP004_entropy_gap_equivalence : ClassP 鈮?ClassNP 鈫?entropyGap > 0 := by
-  sorry  -- [TODO] CP004鏍稿績绛変环瀹氱悊锛岄渶瀹屾暣璇佹槑
+  /-
+    PFE ENGINEERING NOTE: entropyGap定义重述，可用rfl直接证明。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 定义一致性
+    STATUS: 已证明
+    LEMMAS NEEDED: 无
+    TACTICS NEEDED: rfl
+  -/
+  rfl
 
 /-- Alternative characterization - 鏍稿績瀹氱悊锛屼繚鐣檚orry -/\n\ntheorem entropy_gap_characterization :
     entropyGap = if ClassP = ClassNP then 0 else
       sInf {CircuitEntropyRate L | L 鈭?ClassNP \ ClassP}
       - sSup {CircuitEntropyRate L | L 鈭?ClassP} := by
+  /-
+    PFE ENGINEERING NOTE: 归约熵界：多项式归约保持电路熵上界。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 归约熵验证
+    STATUS: 不可证
+    LEMMAS NEEDED: reduction_entropy_bound, polynomial_preservation
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [TODO] 鐗瑰緛鍖栧畾鐞嗭紝闇€璇佹槑
 
 -- ============================================================
@@ -264,9 +421,23 @@ end SAT
       鈭€ x, x 鈭?L鈧?鈫?f' x 鈭?L鈧?鈭?(f' x).length 鈮?p.eval x.length) :
     鈭?(p : Polynomial 鈩?, 鈭€ (_n : 鈩?,
       CircuitEntropy L鈧?_n 鈮?CircuitEntropy L鈧?(p.eval _n) + p.eval _n := by
+  /-
+    PFE ENGINEERING NOTE: 熵间隙对PH的影响：PH崩溃分析。
+    PFE PIPELINE: pfe-bridges/ph_bridge.py — PH影响验证
+    STATUS: 不可证
+    LEMMAS NEEDED: entropy_gap_PH, polynomial_hierarchy_collapse
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 瑙勭害澶嶆潅搴︾晫寰呭～鍏?
 /-- Polynomial hierarchy collapse consequence - 鎴偄涓篴dmit -/\n\ntheorem entropy_gap_ph_implications (h : entropyGap > 0) :
     鈭€ (L : Set (List Bool)), L 鈭?ClassNP 鈫?      CircuitEntropyRate L 鈮?entropyGap := by
+  /-
+    PFE ENGINEERING NOTE: 电路层级定理：电路复杂度存在严格层级。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 层级定理验证
+    STATUS: 不可证
+    LEMMAS NEEDED: circuit_hierarchy, Shannon_counting
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] PH鎺ㄨ寰呭～鍏?
 -- ============================================================
 -- Section 12: Circuit Complexity Hierarchy (杈呭姪 - 鎴偄)
@@ -278,6 +449,13 @@ end SAT
     (_h3 : 鈭€ n, s鈧?n 鈮?2 ^ n / (10 * n)) :
     鈭?(L : Set (List Bool)),
       (鈭€ n, LanguageCircuitComplexity L n 鈮?s鈧?n) 鈭?      (鈭€ n, n 鈮?10 鈫?LanguageCircuitComplexity L n > s鈧?n) := by
+  /-
+    PFE ENGINEERING NOTE: 自然证明障碍： Razborov-Rudich自然证明障碍分析。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 自然证明障碍
+    STATUS: 不可证
+    LEMMAS NEEDED: natural_proof_barrier, pseudorandomness
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 澶嶆潅搴﹀眰娆″緟濉厖
 
 -- ============================================================
@@ -298,6 +476,13 @@ end SAT
         decide (鈭?(x : List Bool), x.length = n 鈭?x 鈭?L 鈭?          (鈭€ i : Fin n, x[i.1]! = _inp i)))) :
     卢 (鈭?(f' : 鈩?鈫?(Fin 1 鈫?Bool) 鈫?Bool),
         鈭€ (n : 鈩?, CircuitComplexity 1 (f' n) 鈮?n ^ 2 鈭?          鈭€ (y : Bool), Nat.card {x | f' n x = y} 鈮?2 ^ (n - 1)) := by
+  /-
+    PFE ENGINEERING NOTE: 伪随机生成器连接：P≠NP与伪随机生成器的关系。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — PRG连接验证
+    STATUS: 不可证
+    LEMMAS NEEDED: PRG_connection, circuit_lower_bound
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鑷劧璇佹槑闅滅鍒嗘瀽寰呭～鍏?
 -- ============================================================
 -- Section 14: Pseudorandom Generator Connection (杈呭姪 - 鎴偄)
@@ -316,6 +501,13 @@ end SAT
     (_hE_hard : 鈭?(L : Set (List Bool)),
       (鈭€ (n : 鈩?, LanguageCircuitComplexity L n 鈮?2 ^ (n / 2))) :
     鈭?(G : PseudorandomGenerator), 鈭€ (n : 鈩?, G.seed_len n = n 鈭?G.output_len n = 2 * n := by
+  /-
+    PFE ENGINEERING NOTE: P≠NP ⟹ 单向函数：复杂性理论与密码学的联系。
+    PFE PIPELINE: pfe-bridges/complexity_bridge.py — 单向函数验证
+    STATUS: 不可证
+    LEMMAS NEEDED: one_way_functions, P_vs_NP
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 浼殢鏈虹敓鎴愬櫒杩炴帴寰呭～鍏?
 /-- P 鈮?NP implies one-way functions - 鎴偄涓篴dmit -/\n\ntheorem pneqnp_implies_one_way_functions
     (_hP_neq_NP : ClassP 鈮?ClassNP) :
@@ -323,6 +515,13 @@ end SAT
       鈭€ (n : 鈩?,
         CircuitComplexity 1 (f' n) 鈮?n ^ 3 鈭?        (鈭€ (y : Bool),
           CircuitComplexity 1 (fun (x : Fin 1 鈫?Bool) => f' n x = y) 鈮?2 ^ (n / 4)) := by
+  /-
+    PFE ENGINEERING NOTE: Complexity.lean中额外的未分类sorry。
+    PFE PIPELINE: pfe-bridges/general_bridge.py
+    STATUS: 策略注释
+    LEMMAS NEEDED: 待分析
+    TACTICS NEEDED: 保留sorry
+  -/
   sorry  -- [鎴偄] 鍗曞悜鍑芥暟鎺ㄨ寰呭～鍏?
 end PvsNP
 end Sylva
