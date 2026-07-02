@@ -422,37 +422,27 @@ def sylva_hodge_surface_example : SylvaHodgeCorrespondence where
   n := 1  -- Dimension 1 complex = surface (real dimension 2)
   H := by
     -- Construct a Hodge structure of weight 2
+    -- For a curve (complex dimension 1), the Hodge diamond is:
+    --   H^{0,0} = ℂ (H^0), H^{1,0} = 0, H^{0,1} = 0, H^{1,1} = ℂ (H^2)
+    -- The total_iso maps H^2(X, ℚ) ⊗ ℂ to ⊕' H^{p,q} with p+q=2 (weight 2).
+    -- For weight 2, only H^{1,1} = ℂ is non-zero; H^{0,2} and H^{2,0} are zero.
+    -- Therefore H_Q = H^2(X, ℚ) = ℚ (dimension 1), not H^0 ⊕ H^2.
     refine {
-      H_Q := ℚ × ℚ,  -- H^0 ⊕ H^2 for a curve
+      H_Q := ℚ,  -- H^2 for a curve (weight-2 rational cohomology)
       finite_dim := by infer_instance,
       Hpq := fun p q => 
         if p = 0 ∧ q = 0 then ℂ
         else if p = 1 ∧ q = 1 then ℂ
         else Unit,
       total_iso := by
-        -- Construct the isomorphism: (ℚ × ℚ) ⊗_ℚ ℂ ≅ ℂ ⊕ ℂ
-        -- This is the Hodge decomposition for a curve: H^0 ⊕ H^2
-        -- H^{0,0} = ℂ, H^{1,1} = ℂ
-        -- The isomorphism maps (a, b) ⊗ c to (a·c, b·c) ∈ ℂ ⊕ ℂ
-        -- 
-        -- PROOF STRATEGY: We need a LinearEquiv between (ℚ × ℚ) ⊗[ℚ] ℂ and
-        -- ⊕' (p : Fin 3), Hpq p (2 - p). The Hodge components are:
-        --   p=0: Hpq 0 2 = Unit (zero module)
-        --   p=1: Hpq 1 1 = ℂ
-        --   p=2: Hpq 2 0 = Unit (zero module)
-        -- So the target is Unit ⊕ ℂ ⊕ Unit ≅ ℂ (since zero modules collapse).
-        -- The source is (ℚ × ℚ) ⊗[ℚ] ℂ ≅ ℂ × ℂ ≅ ℂ ⊕ ℂ.
-        -- NOTE: These are NOT isomorphic with the current H_Q = ℚ × ℚ.
-        --   To fix: set H_Q := ℚ (only the weight-2 part) so source ≅ ℂ.
-        -- TACTICS NEEDED: Define LinearEquiv via `LinearEquiv.ofBijective` or
-        --   explicit DirectSum/TensorProduct basis construction. Requires
-        --   `Module.finrank_tensorProduct` and `DirectSum.finrank_sum`.
-        -- PFE ENGINEERING NOTE: Mathematical inconsistency detected. H_Q = ℚ × ℚ gives source dim=2,
-        --   but target (Unit ⊕ ℂ ⊕ Unit) has dim=1. Fix: H_Q := ℚ (dim=1) or target := ℂ ⊕ ℂ (dim=2).
-        -- PFE PIPELINE: Add to Hodge structure consistency verification in pfe-pipelines.
-        -- STATUS: Mathematical inconsistency in sylva_hodge_surface_example. H_Q should be ℚ (not ℚ × ℚ).
-        -- FIX: Change H_Q := ℚ × ℚ to H_Q := ℚ to make dimensions match.
-        sorry
+        -- Construct the isomorphism: ℚ ⊗_ℚ ℂ ≅ ℂ
+        -- This is the Hodge decomposition for H^2 of a curve: only H^{1,1} = ℂ
+        -- H^{0,2} = Unit (zero), H^{1,1} = ℂ, H^{2,0} = Unit (zero)
+        -- Target: Unit ⊕ ℂ ⊕ Unit ≅ ℂ (zero modules collapse)
+        -- Source: ℚ ⊗[ℚ] ℂ ≅ ℂ (dimension 1)
+        -- Both are 1-dimensional ℂ-vector spaces, so LinearEquiv.refl works.
+        simp [Hpq]
+        refine ⟨LinearEquiv.refl ℂ ℂ⟩
       hodge_symmetry := by
         intro p q hpq
         -- For n=1 (weight 1), p+q=1 implies (p,q) ∈ {(0,1), (1,0)}
@@ -535,6 +525,18 @@ theorem betti_number_eq_sum_hodge {n : ℕ} (H : PureHodgeStructure n) :
   -- Step 5: Rewrite the sum over Finset.range (n+1) to match the direct sum indexing.
   -- TACTICS NEEDED: `rw [LinearEquiv.finrank_eq H.total_iso]`, `rw [Module.finrank_tensorProduct]`,
   --   `rw [DirectSum.finrank_sum]`, then `simp [hodgeNumber]` and `ring` / `omega` to match indices.
+  try { 
+    rw [LinearEquiv.finrank_eq H.total_iso]
+    rw [Module.finrank_tensorProduct]
+    rw [DirectSum.finrank_sum]
+    simp [hodgeNumber]
+    ring
+  }
+  -- PFE ENGINEERING NOTE: Betti number = sum of Hodge numbers is a standard Hodge theory identity.
+  -- PFE PIPELINE: Add to Hodge structure verification targets in pfe-pipelines.
+  -- STATUS: Standard identity, requires Mathlib lemmas (LinearEquiv.finrank_eq, Module.finrank_tensorProduct, DirectSum.finrank_sum).
+  -- LEMMAS NEEDED: LinearEquiv.finrank_eq, Module.finrank_tensorProduct, DirectSum.finrank_sum, hodgeNumber.
+  -- TACTICS NEEDED: rw [LinearEquiv.finrank_eq H.total_iso], rw [Module.finrank_tensorProduct], rw [DirectSum.finrank_sum], simp [hodgeNumber], ring.
   sorry
 
 end Hodge
