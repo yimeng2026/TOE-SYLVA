@@ -199,6 +199,11 @@ theorem entropy_gap_lower_bound : EntropyGap ≥ Real.log 2 := by
         -- 4. Therefore SAT witnesses the strict inclusion
         -- TACTICS NEEDED: by_contra, use SAT as witness, apply sat_in_p_implies_peqnp, contradiction
         -- LEMMAS NEEDED: SAT_in_NP, sat_in_p_implies_peqnp, Set.exists_of_ssubset
+        -- PFE ENGINEERING NOTE: SAT is the canonical NP-complete witness. If P≠NP, SAT∉P.
+        -- PFE PIPELINE: Add to P-vs-NP verification targets in pfe-pipelines.
+        -- STATUS: Unprovable from current definitions. Requires Cook-Levin theorem formalization.
+        -- LEMMAS NEEDED: SAT_in_NP, sat_in_p_implies_peqnp, Set.exists_of_ssubset, ClassP_neq_ClassNP_implies_SAT_not_in_P.
+        -- TACTICS NEEDED: by_contra, use SAT as witness, apply sat_in_p_implies_peqnp, contradiction.
         sorry
     · -- Entropy strictly increases with strict set inclusion
       -- For finite classes: if A ⊂ B, then |B| > |A|, so log|B| > log|A|
@@ -212,6 +217,11 @@ theorem entropy_gap_lower_bound : EntropyGap ≥ Real.log 2 := by
       -- TACTICS NEEDED: Nat.card_lt_card_of_ssubset, Real.log_lt_log, iSup_mono, strict_mono_iSup
       -- LEMMAS NEEDED: strict_subset_implies_higher_cardinality, strict_subset_implies_higher_entropy,
       --                 finite_subset_entropy_bound, Real.log_strict_mono
+      -- PFE ENGINEERING NOTE: Entropy monotonicity is a standard information-theoretic property.
+      -- PFE PIPELINE: Add to entropy verification targets in pfe-pipelines.
+      -- STATUS: Unprovable from current definitions. Requires cardinality + log monotonicity lemmas.
+      -- LEMMAS NEEDED: Nat.card_lt_card_of_ssubset, Real.log_lt_log, iSup_mono, strict_mono_iSup.
+      -- TACTICS NEEDED: Nat.card_lt_card_of_ssubset, Real.log_lt_log, iSup_mono, strict_mono_iSup.
       sorry
   linarith
 

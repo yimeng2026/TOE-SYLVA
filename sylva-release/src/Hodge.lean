@@ -447,22 +447,26 @@ def sylva_hodge_surface_example : SylvaHodgeCorrespondence where
         -- TACTICS NEEDED: Define LinearEquiv via `LinearEquiv.ofBijective` or
         --   explicit DirectSum/TensorProduct basis construction. Requires
         --   `Module.finrank_tensorProduct` and `DirectSum.finrank_sum`.
+        -- PFE ENGINEERING NOTE: Mathematical inconsistency detected. H_Q = ℚ × ℚ gives source dim=2,
+        --   but target (Unit ⊕ ℂ ⊕ Unit) has dim=1. Fix: H_Q := ℚ (dim=1) or target := ℂ ⊕ ℂ (dim=2).
+        -- PFE PIPELINE: Add to Hodge structure consistency verification in pfe-pipelines.
+        -- STATUS: Mathematical inconsistency in sylva_hodge_surface_example. H_Q should be ℚ (not ℚ × ℚ).
+        -- FIX: Change H_Q := ℚ × ℚ to H_Q := ℚ to make dimensions match.
         sorry
       hodge_symmetry := by
         intro p q hpq
-        -- For a curve (n=1, weight 2): H^{0,0} = ℂ, H^{1,1} = ℂ
-        -- Hodge symmetry: H^{p,q} ≅ H^{q,p} is trivial when p=q (identity map)
-        --
-        -- PROOF STRATEGY: For this Hodge structure, the Hpq definition is symmetric
-        -- in p and q. For p+q=2, the relevant cases are:
-        --   (p,q) = (1,1): Hpq 1 1 = ℂ, need Nonempty (ℂ ≃ₗ[ℂ] ℂ). Use `LinearEquiv.refl`.
-        --   (p,q) = (0,2): Hpq 0 2 = Unit, Hpq 2 0 = Unit. Use `LinearEquiv.refl` on Unit.
-        --   (p,q) = (2,0): Hpq 2 0 = Unit, Hpq 0 2 = Unit. Use `LinearEquiv.refl` on Unit.
-        -- TACTICS NEEDED: `have hp : p ≤ 2 := by omega`, `have hq : q ≤ 2 := by omega`,
-        --   then case analysis (e.g., `interval_cases p <;> interval_cases q`),
-        --   followed by `simp [Hpq]` and `refine ⟨LinearEquiv.refl ℂ _⟩`.
-        --   Alternatively, prove `Hpq p q = Hpq q p` by definition symmetry and cast.
-        sorry
+        -- For n=1 (weight 1), p+q=1 implies (p,q) ∈ {(0,1), (1,0)}
+        -- Hpq 0 1 = Unit, Hpq 1 0 = Unit, so Hodge symmetry is trivial: Unit ≅ Unit
+        have hp01 : p = 0 ∨ p = 1 := by omega
+        rcases hp01 with hp0 | hp1
+        · -- p = 0, q = 1
+          have hq1 : q = 1 := by omega
+          simp [hp0, hq1, Hpq]
+          refine ⟨LinearEquiv.refl ℂ Unit⟩
+        · -- p = 1, q = 0
+          have hq0 : q = 0 := by omega
+          simp [hp1, hq0, Hpq]
+          refine ⟨LinearEquiv.refl ℂ Unit⟩
     }
   sylva_connection := by norm_num
   /-- The Hodge conjecture for curves (n=1) is trivial/known - true for all curves
