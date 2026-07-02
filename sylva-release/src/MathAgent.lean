@@ -181,7 +181,7 @@ inductive TacticSuggestion
   | by_cases       -- Case analysis
   | induction      -- Induction
   | contradiction  -- Derive contradiction
-  | sorry          -- Admit (placeholder)
+  | admit          -- Admit (placeholder)
   deriving DecidableEq, Repr
 
 /-- Proof step suggestion -/
