@@ -111,21 +111,40 @@ calc
 🎯 证明：a³ - b³ = (a-b)(a² + ab + b²)
 💡 提示：从右边展开，使用 ring
 -/\n\ntheorem exercise_1_1 (a b : ℝ) : a^3 - b^3 = (a - b) * (a^2 + a*b + b^2) := by
-  sorry
+  ring
 
 -- 练习 1.2：不等式链（难度：⭐⭐⭐）
 /-
 🎯 证明：若 0 < a < b，则 a² < b²
 💡 提示：使用 nlinarith 或分步推导
 -/\n\ntheorem exercise_1_2 (a b : ℝ) (ha : 0 < a) (h : a < b) : a^2 < b^2 := by
-  sorry
+  nlinarith [h, mul_pos ha (sub_pos.mpr h)]
 
 -- 练习 1.3：复杂等式（难度：⭐⭐⭐）
 /-
 🎯 证明黄金比例恒等式：φ⁵ = 5φ + 3
 💡 提示：利用 φ² = φ + 1 反复降次
 -/\n\ntheorem exercise_1_3 {φ : ℝ} (hφ : φ^2 = φ + 1) : φ^5 = 5*φ + 3 := by
-  sorry
+  have h3 : φ^3 = 2*φ + 1 := by
+    calc
+      φ^3 = φ * φ^2 := by ring
+      _ = φ * (φ + 1) := by rw [hφ]
+      _ = φ^2 + φ := by ring
+      _ = (φ + 1) + φ := by rw [hφ]
+      _ = 2*φ + 1 := by ring
+  have h4 : φ^4 = 3*φ + 2 := by
+    calc
+      φ^4 = φ * φ^3 := by ring
+      _ = φ * (2*φ + 1) := by rw [h3]
+      _ = 2*φ^2 + φ := by ring
+      _ = 2*(φ + 1) + φ := by rw [hφ]
+      _ = 3*φ + 2 := by ring
+  calc
+    φ^5 = φ * φ^4 := by ring
+    _ = φ * (3*φ + 2) := by rw [h4]
+    _ = 3*φ^2 + 2*φ := by ring
+    _ = 3*(φ + 1) + 2*φ := by rw [hφ]
+    _ = 5*φ + 3 := by ring
 
 
 -- ============================================================================
@@ -192,7 +211,13 @@ have name : statement := by
 2. 然后证明 a² = 0 和 b² = 0
 3. 最后推出 a = 0 和 b = 0
 -/\n\ntheorem exercise_2_1 (a b : ℝ) (h : a^2 + b^2 = 0) : a = 0 ∧ b = 0 := by
-  sorry
+  have ha2 : a^2 ≥ 0 := sq_nonneg a
+  have hb2 : b^2 ≥ 0 := sq_nonneg b
+  have ha2_zero : a^2 = 0 := by linarith [h, ha2, hb2]
+  have hb2_zero : b^2 = 0 := by linarith [h, ha2, hb2]
+  have ha_zero : a = 0 := pow_eq_zero ha2_zero
+  have hb_zero : b = 0 := pow_eq_zero hb2_zero
+  exact ⟨ha_zero, hb_zero⟩
 
 -- 练习 2.2：多辅助引理（难度：⭐⭐⭐）
 /-
@@ -200,7 +225,10 @@ have name : statement := by
 (a² + b²)(c² + d²) ≥ (ac + bd)²
 💡 提示：展开右边，证明差值非负
 -/\n\ntheorem exercise_2_2 (a b c d : ℝ) : (a^2 + b^2) * (c^2 + d^2) ≥ (a*c + b*d)^2 := by
-  sorry
+  have h : (a^2 + b^2) * (c^2 + d^2) - (a*c + b*d)^2 = (a*d - b*c)^2 := by
+    ring
+  have h2 : (a*d - b*c)^2 ≥ 0 := sq_nonneg (a*d - b*c)
+  linarith [h, h2]
 
 
 -- ============================================================================
@@ -256,14 +284,28 @@ example : ¬ ∃ q : ℚ, (q : ℝ) = Real.sqrt 2 := by
 🎯 证明：若 n² 是偶数，则 n 是偶数（n 为自然数）
 💡 提示：反设 n 是奇数，推出 n² 是奇数，矛盾
 -/\n\ntheorem exercise_3_1 (n : ℕ) (h : Even (n^2)) : Even n := by
-  sorry
+  by_contra h_odd
+  have h_odd' : Odd n := by
+    simpa using h_odd
+  have h_odd_sq : Odd (n^2) := by
+    apply Nat.odd_pow
+    exact h_odd'
+  have h_even_sq : ¬Odd (n^2) := by
+    simpa using h
+  contradiction
 
 -- 练习 3.2：唯一性证明（难度：⭐⭐⭐）
 /-
 🎯 证明：方程 x³ = x 在自然数中只有 x = 0 或 x = 1 的解
 💡 提示：反设 x ≥ 2，证明 x³ > x
 -/\n\ntheorem exercise_3_2 (x : ℕ) (h : x^3 = x) : x = 0 ∨ x = 1 := by
-  sorry
+  by_cases hx : x ≤ 1
+  · interval_cases x <;> simp
+  · have h2 : x ≥ 2 := by omega
+    have h3 : x^3 > x := by
+      have h4 : x^2 > 1 := by nlinarith [h2]
+      nlinarith [h2, h4]
+    linarith
 
 
 -- ============================================================================
@@ -328,7 +370,13 @@ theorem fib_sum (n : ℕ) : ∑ i in Finset.range (n + 1), fib i = fib (n + 2) -
 🎯 证明：1 + 2 + 2² + ... + 2ⁿ = 2ⁿ⁺¹ - 1
 💡 提示：使用归纳法，基础情况 n = 0
 -/\n\ntheorem exercise_4_1 (n : ℕ) : ∑ i in Finset.range (n + 1), (2 : ℕ)^i = 2^(n + 1) - 1 := by
-  sorry
+  induction n with
+  | zero =>
+    simp
+  | succ n ih =>
+    rw [Finset.sum_range_succ, ih]
+    ring_nf
+    omega
 
 -- 练习 4.2：整除性质（难度：⭐⭐⭐⭐）
 /-
@@ -338,7 +386,16 @@ theorem fib_sum (n : ℕ) : ∑ i in Finset.range (n + 1), fib i = fib (n + 2) -
 2. 归纳步骤：假设 3 | (n³ - n)，证明 3 | ((n+1)³ - (n+1))
 3. 展开 (n+1)³ - (n+1) = n³ + 3n² + 3n + 1 - n - 1 = (n³ - n) + 3(n² + n)
 -/\n\ntheorem exercise_4_2 (n : ℕ) (hn : n ≥ 1) : 3 ∣ (n^3 - n) := by
-  sorry
+  have h : ∀ n : ℕ, 3 ∣ (n^3 - n) := by
+    intro n
+    induction n with
+    | zero =>
+      simp
+    | succ n ih =>
+      rw [Nat.pow_succ, Nat.mul_sub]
+      ring_nf
+      omega
+  exact h n
 
 
 -- ============================================================================
@@ -413,7 +470,10 @@ Lean 提供了强大的自动化策略：
 💡 提示：使用 nlinarith，可能需要展开
 -/\n\ntheorem exercise_5_1 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
     (a + b + c) * (1/a + 1/b + 1/c) ≥ 9 := by
-  sorry
+  field_simp
+  nlinarith [sq_nonneg (a*b - b*c), sq_nonneg (b*c - c*a), sq_nonneg (c*a - a*b),
+            sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),
+            mul_pos ha hb, mul_pos hb hc, mul_pos ha hc]
 
 -- 练习 5.2：复杂简化（难度：⭐⭐⭐⭐）
 /-
@@ -422,7 +482,10 @@ Lean 提供了强大的自动化策略：
 💡 提示：使用 field_simp 和 ring
 -/\n\ntheorem exercise_5_2 (a b : ℝ) (ha : a ≠ 0) (hb : b ≠ 0) :
     ((a + b)^2 - (a - b)^2) / (4 * a * b) = 1 := by
-  sorry
+  have h1 : (a + b)^2 - (a - b)^2 = 4 * a * b := by
+    ring
+  rw [h1]
+  field_simp [ha, hb]
 
 
 -- ============================================================================
@@ -443,7 +506,18 @@ Lean 提供了强大的自动化策略：
 提示：使用 have 组织证明，使用 nlinarith 处理不等式
 -/\n\ntheorem challenge_AM_GM (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
     (a + b) / 2 ≥ Real.sqrt (a * b) := by
-  sorry
+  have h : ((a + b) / 2)^2 ≥ a * b := by
+    nlinarith [sq_nonneg (a - b)]
+  have h2 : 0 ≤ (a + b) / 2 := by linarith
+  have h3 : 0 ≤ a * b := by nlinarith
+  have h4 : Real.sqrt (((a + b) / 2)^2) = (a + b) / 2 := by
+    apply Real.sqrt_sq
+    linarith
+  have h5 : Real.sqrt (a * b) ≤ Real.sqrt (((a + b) / 2)^2) := by
+    apply Real.sqrt_le_sqrt
+    linarith
+  rw [h4] at h5
+  linarith
 
 
 -- ============================================================================

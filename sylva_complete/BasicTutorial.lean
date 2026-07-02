@@ -88,21 +88,21 @@ def neg (a : GF3) : GF3 := -a
 🎯 目标：证明 2 + 1 = 0 (mod 3)
 💡 提示：使用 rfl（自反性）直接证明，因为 Fin 3 的加法已经定义好了
 -/\n\ntheorem exercise_1_1 : add two one = zero := by
-  sorry  -- 填入你的证明
+  rfl
 
 -- 练习 1.2：证明 2 × 2 = 1 在 GF(3) 中（难度：⭐）
 /-
 🎯 目标：证明 2 × 2 = 1 (mod 3)
 💡 提示：同样可以使用 rfl
 -/\n\ntheorem exercise_1_2 : mul two two = one := by
-  sorry  -- 填入你的证明
+  rfl
 
 -- 练习 1.3：证明对任意 a ∈ GF(3)，a + 0 = a（难度：⭐⭐）
 /-
 🎯 目标：证明 0 是加法单位元
 💡 提示：使用 intro 引入 a，然后 fin_cases 分析所有情况
 -/\n\ntheorem exercise_1_3 (a : GF3) : add a zero = a := by
-  sorry  -- 填入你的证明
+  fin_cases a <;> rfl
 
 end GF3
 
@@ -173,7 +173,11 @@ namespace Phi
 - Real.sqrt_lt_sqrt: √ 函数的单调性
 - Real.sqrt_one: √1 = 1
 -/\n\ntheorem exercise_2_1 : φ > 1 := by
-  sorry  -- 填入你的证明
+  have h : Real.sqrt 5 > 1 := by
+    have : Real.sqrt 5 > Real.sqrt 1 := Real.sqrt_lt_sqrt (by norm_num) (by norm_num)
+    rw [Real.sqrt_one] at this
+    linarith
+  linarith [show φ = (1 + Real.sqrt 5) / 2 from rfl, h]
 
 -- 练习 2.2：证明 φ > 0（难度：⭐）
 /-
@@ -182,7 +186,8 @@ namespace Phi
 使用的策略：
 - linarith: 线性不等式求解
 -/\n\ntheorem exercise_2_2 : φ > 0 := by
-  sorry  -- 填入你的证明
+  have h1 : φ > 1 := exercise_2_1
+  linarith
 
 -- 练习 2.3：计算 φ³ = 2φ + 1（难度：⭐⭐⭐）
 /-
@@ -193,7 +198,13 @@ namespace Phi
 - calc: 链式计算
 - rw [phi_sq_eq_phi_add_one]: 使用已证明的引理
 -/\n\ntheorem exercise_2_3 : φ ^ 3 = 2 * φ + 1 := by
-  sorry  -- 填入你的证明
+  have h1 : φ ^ 2 = φ + 1 := phi_sq_eq_phi_add_one
+  calc
+    φ ^ 3 = φ * φ ^ 2 := by ring
+    _ = φ * (φ + 1) := by rw [h1]
+    _ = φ ^ 2 + φ := by ring
+    _ = (φ + 1) + φ := by rw [h1]
+    _ = 2 * φ + 1 := by ring
 
 -- ============================================================================
 -- SECTION 3: Sylva 临界值
@@ -250,7 +261,9 @@ noncomputable def D_c : ℝ := φ ^ 4
 🎯 目标：将 Phi_c 用 φ 的线性表达式表示
 💡 提示：使用 exercise_2_3 的结果
 -/\n\ntheorem exercise_3_1 : Phi_c = 137 * (2 * φ + 1) := by
-  sorry  -- 填入你的证明
+  rw [show Phi_c = 137 * φ ^ 3 by rfl]
+  rw [exercise_2_3]
+  ring
 
 -- 练习 3.2：证明 D_c > 0（难度：⭐⭐）
 /-
@@ -259,7 +272,9 @@ noncomputable def D_c : ℝ := φ ^ 4
 使用的策略：
 - positivity: 自动证明正性
 -/\n\ntheorem exercise_3_2 : D_c > 0 := by
-  sorry  -- 填入你的证明
+  rw [show D_c = φ ^ 4 by rfl]
+  have h1 : φ > 0 := exercise_2_2
+  positivity
 
 end Phi
 
@@ -310,14 +325,15 @@ instance : LT Level where lt a b := a.toNat < b.toNat
 🎯 目标：证明 L0 < L7
 💡 提示：展开定义后使用 norm_num
 -/\n\ntheorem exercise_4_1 : L0 < L7 := by
-  sorry  -- 填入你的证明
+  simp [LT.lt, Level.toNat]
 
 -- 练习 4.2：证明层级关系的传递性（难度：⭐⭐）
 /-
 🎯 目标：如果 a ≤ b 且 b ≤ c，则 a ≤ c
 💡 提示：利用自然数的传递性
 -/\n\ntheorem exercise_4_2 (a b c : Level) (h1 : a ≤ b) (h2 : b ≤ c) : a ≤ c := by
-  sorry  -- 填入你的证明
+  simp [LE.le, Level.toNat] at h1 h2 ⊢
+  linarith
 
 end Level
 
@@ -350,14 +366,16 @@ namespace MetaAxiom
 🎯 目标：证明两个不同的公理不相等
 💡 提示：使用 intro 和 cases
 -/\n\ntheorem exercise_5_1 : M1 ≠ M2 := by
-  sorry  -- 填入你的证明
+  intro h
+  cases h
 
 -- 练习 5.2：证明所有公理都有描述（难度：⭐⭐）
 /-
 🎯 目标：证明任意公理 a，description a 非空
 💡 提示：使用 intro 和 cases，然后计算每种情况
 -/\n\ntheorem exercise_5_2 (a : MetaAxiom) : description a ≠ "" := by
-  sorry  -- 填入你的证明
+  intro h
+  cases a <;> simp [MetaAxiom.description] at h
 
 end MetaAxiom
 
@@ -378,7 +396,9 @@ end MetaAxiom
 - 可能需要计算 Phi_c 的近似值
 - 思考 137 这个数字的特殊性
 -/\n\ntheorem challenge_Phi_c_positive : Phi.Phi_c > 0 := by
-  sorry  -- 挑战：填入完整证明
+  have h1 : φ > 0 := exercise_2_2
+  rw [show Phi.Phi_c = 137 * φ ^ 3 by rfl]
+  positivity
 
 
 -- ============================================================================
