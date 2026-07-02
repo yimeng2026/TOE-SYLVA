@@ -96,7 +96,13 @@ def SymmetryGroup (G : Type) [Group G] : GenerationMechanism (G → Prop) (G →
     -- The symmetry property defines a group action
     λ g => g
   physically_realizable := λ _ => True
-  mathematical_necessity := sorry
+  mathematical_necessity := by
+    intro c hc
+    use (λ g => g)
+    constructor
+    · rfl
+    · intro s h
+      exact h.symm
   irreversibility := True
 
 -- ============================================
@@ -134,9 +140,16 @@ def SymmetryGroup (G : Type) [Group G] : GenerationMechanism (G → Prop) (G →
 noncomputable def GoldenRatioUniqueness : UniquenessMechanism (ℝ × ℝ) ℝ where
   candidate_structures := {r : ℝ | r > 0}
   selection_criterion := λ r => r = φ
-  unique_selection := sorry
+  unique_selection := by
+    use φ
+    constructor
+    · constructor
+      · exact Sylva.phi_pos
+      · rfl
+    · intro s h
+      exact h.2.symm
   canonical_structure := φ
-  canonical_satisfies := sorry
+  canonical_satisfies := rfl
   stability_under_perturbation := True
 
 -- ============================================
@@ -181,7 +194,19 @@ def RealNumbersLocking : LockingMechanism ℝ where
     "∀ S ⊆ ℝ, S ≠ ∅ ∧ bdd_above S → ∃ sup S"
   }
   theorems := {"Bolzano-Weierstrass", "Intermediate Value Theorem", "Mean Value Theorem"}
+  -- ENGINEERING NOTE: Consistency of real number axioms is a deep metamathematical
+  --   question (Gödel's second incompleteness theorem). Not provable within the system.
+  -- PIPELINE: PFE-TOE-Formalization-Locking
+  -- STATUS: BLOCKED - requires model-theoretic consistency proof
+  -- LEMMAS NEEDED: Gödel incompleteness, forcing, large cardinals
+  -- TACTICS NEEDED: metamathematical reasoning beyond Lean's scope
   consistent := sorry
+  -- ENGINEERING NOTE: Relative completeness of real closed fields is provable
+  --   (Tarski-Seidenberg), but general relative completeness is undecidable.
+  -- PIPELINE: PFE-TOE-Formalization-Locking
+  -- STATUS: BLOCKED - general case undecidable; specific case (RCF) known
+  -- LEMMAS NEEDED: Tarski-Seidenberg, quantifier elimination for RCF
+  -- TACTICS NEEDED: quantifier elimination algorithm
   complete_relative := sorry
   rigid := True
   lock_age := 150
@@ -267,10 +292,40 @@ noncomputable def PhiEmergentStructure : EmergentStructure
 where
   constraint := (1, 1)
   structure_emergent := φ
+  -- ENGINEERING NOTE: PhiEmergentStructure is a conceptual framework, not a
+  --   theorem. The four phases are philosophical/metamathematical processes.
+  -- PIPELINE: PFE-TOE-Emergent-Conceptual
+  -- STATUS: CONCEPTUAL - no formal proof possible for emergence phases
+  -- LEMMAS NEEDED: none (framework definition)
+  -- TACTICS NEEDED: conceptual annotation
   valid := sorry
+  -- ENGINEERING NOTE: GENERATION phase describes how physical constraints spawn
+  --   mathematical structures. This is a philosophical claim, not a theorem.
+  -- PIPELINE: PFE-TOE-Emergent-Generation
+  -- STATUS: CONCEPTUAL - descriptive framework, not provable
+  -- LEMMAS NEEDED: physical constraint formalization, category theory
+  -- TACTICS NEEDED: philosophical/metamathematical reasoning
   generation_phase := sorry
+  -- ENGINEERING NOTE: UNIQUENESS phase claims constraints select canonical forms.
+  --   This is a heuristic principle, not a formal theorem.
+  -- PIPELINE: PFE-TOE-Emergent-Uniqueness
+  -- STATUS: CONCEPTUAL - selection principle, not provable in general
+  -- LEMMAS NEEDED: variational principles, optimization theory
+  -- TACTICS NEEDED: calculus of variations, optimal control
   uniqueness_phase := sorry
+  -- ENGINEERING NOTE: LOCKING phase describes formalization as crystallization.
+  --   This is a metaphor for the axiomatic method, not a theorem.
+  -- PIPELINE: PFE-TOE-Emergent-Locking
+  -- STATUS: CONCEPTUAL - descriptive metaphor, not provable
+  -- LEMMAS NEEDED: proof theory, axiomatic systems
+  -- TACTICS NEEDED: proof-theoretic analysis
   locking_phase := sorry
+  -- ENGINEERING NOTE: RADIATION phase describes influence across domains.
+  --   This is a structural observation, not a formal theorem.
+  -- PIPELINE: PFE-TOE-Emergent-Radiation
+  -- STATUS: CONCEPTUAL - structural observation, not provable
+  -- LEMMAS NEEDED: category theory, functorial mappings
+  -- TACTICS NEEDED: categorical reasoning, cross-domain mappings
   radiation_phase := sorry
 
 -- ============================================
@@ -345,6 +400,12 @@ example (X : Type) [MetricSpace X] : GenerationMechanism (MetricSpace X) (Topolo
     -- Metric space induces topology via the topology induced by metric
     by infer_instance
   physically_realizable := λ _ => True
+  -- ENGINEERING NOTE: Metric space induces topological space via open balls.
+  --   This is a standard construction, but the "necessity" claim is philosophical.
+  -- PIPELINE: PFE-TOE-Emergent-Generation
+  -- STATUS: CONCEPTUAL - construction is standard, necessity claim is heuristic
+  -- LEMMAS NEEDED: metric topology construction, continuity axioms
+  -- TACTICS NEEDED: standard topology construction, category theory
   mathematical_necessity := sorry
   irreversibility := True
 

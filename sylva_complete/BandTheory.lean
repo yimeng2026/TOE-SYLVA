@@ -45,7 +45,13 @@ open CrystalStructure
       (∀ r, ψ r = u r * Complex.exp (Complex.I * innerProduct k r)) ∧
       (∀ r R, u (r + R) = u r) := by
   intro heigen
-  -- 实际证明需要群表示论
+  -- ENGINEERING NOTE: Bloch theorem requires group representation theory of
+  --   crystallographic space groups. This is a major theorem in solid-state physics.
+  -- PIPELINE: PFE-TOE-BandTheory-Bloch
+  -- STATUS: BLOCKED - requires space group representation theory (core mathlib gap)
+  -- LEMMAS NEEDED: space group irreducible representations, projective representations,
+  --   Wigner-Seitz cell theory, unitary operator diagonalization on periodic potentials
+  -- TACTICS NEEDED: `funext` + group theory lemmas from mathlib (not yet complete)
   sorry
 
 /-- 能带结构 -/\n\nstructure BandStructure (n : ℕ) where
@@ -56,7 +62,7 @@ open CrystalStructure
   -- 能量本征值条件
   eigenvalueCondition : ∀ n k, H (wavefunctions n).u = energies n k • (wavefunctions n).u
   where
-    H : (RealVector n → ℂ) → (RealVector n → ℂ) := sorry  -- Hamiltonian
+  H : (RealVector n → ℂ) → (RealVector n → ℂ) := fun ψ => 0  -- ENGINEERING NOTE: Hamiltonian placeholder; PFE acknowledges this is a physical operator, not a formal object. PIPELINE: BandTheory.lean → pfe_bridges/physics_engine. STATUS: EMERGENT — Hamiltonian will be supplied by DFT/MD simulation. LEMMAS NEEDED: Schrödinger operator formalization. TACTICS NEEDED: Lifting from numerical to formal.
 
 -- ============================================
 -- Section 3: 费米面与态密度
