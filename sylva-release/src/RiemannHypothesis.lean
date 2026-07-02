@@ -506,18 +506,52 @@ theorem Xi_critical_line_property (t : ℝ) (ht : t ≠ 0) :
   -- On the critical line, the symmetry is manifest
   -- xi(1/2 + it) = xi(1/2 - it) by the functional equation
   constructor
-  · -- If xi(s) = 0, then zeta(s) = 0 (since other factors are non-zero)
+  · -- Forward: If xi(s) = 0, then zeta(s) = 0 (prefactors non-zero on critical line)
     intro h_xi_zero
-    -- The prefactors are non-zero for s = 1/2 + it with t ≠ 0
-    -- - s = 1/2 + it ≠ 0
-    -- - s - 1 = -1/2 + it ≠ 0
-    -- - pi^(-s/2) ≠ 0
-    -- - Gamma(s/2) ≠ 0 for s/2 = 1/4 + it/2
     simp at *
-    sorry  -- Show the prefactors are non-zero
-  · -- If zeta(s) = 0, then xi(s) = 0 (by definition)
+    -- s = 1/2 + it with t ≠ 0, so s ≠ 0
+    have h_s_ne_zero : s ≠ 0 := by
+      intro h
+      have h_im : s.im = 0 := by rw [h]; simp
+      have h_im_t : s.im = t := by simp [s]
+      rw [h_im_t] at h_im
+      contradiction
+    -- s - 1 = -1/2 + it ≠ 0 since t ≠ 0
+    have h_s1_ne_zero : s - 1 ≠ 0 := by
+      intro h
+      have h_re : s.re = 1 := by
+        have : s.re - 1 = 0 := by simpa using congr_arg Complex.re h
+        linarith
+      have h_re_half : s.re = 1 / 2 := by simp [s]
+      linarith
+    -- pi^(-s/2) ≠ 0 since pi > 0
+    have h_pi : (Real.pi : ℂ) ^ (-s / 2 : ℂ) ≠ 0 := by
+      apply Complex.cpow_ne_zero
+      · norm_num
+      · sorry
+    -- Gamma(s/2) ≠ 0 for s/2 = 1/4 + it/2 (Re > 0, no zeros in right half-plane)
+    have h_gamma : Complex.Gamma (s / 2) ≠ 0 := by
+      -- Gamma has no zeros in the right half-plane
+      -- s/2 = 1/4 + it/2, Re(s/2) = 1/4 > 0
+      sorry
+    -- The product of all prefactors is non-zero
+    have h_product_ne_zero : (1 / 2 : ℂ) * s * (s - 1) * (Real.pi : ℂ) ^ (-s / 2) * Complex.Gamma (s / 2) ≠ 0 := by
+      apply mul_ne_zero
+      · apply mul_ne_zero
+        · apply mul_ne_zero
+          · apply mul_ne_zero
+            · norm_num
+            · exact h_s_ne_zero
+          · exact h_s1_ne_zero
+        · exact h_pi
+      · exact h_gamma
+    -- Since product * zeta = 0 and product ≠ 0, we have zeta = 0
+    have h_zeta_zero : riemannZeta s = 0 := by
+      apply (mul_eq_zero.mp h_xi_zero).resolve_left
+      exact h_product_ne_zero
+    exact h_zeta_zero
+  · -- Backward: If zeta(s) = 0, then xi(s) = 0 (by definition, zeta is a factor)
     intro h_zeta_zero
-    -- xi(s) contains zeta(s) as a factor
     simp [h_zeta_zero]
 
 

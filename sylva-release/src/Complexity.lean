@@ -375,17 +375,158 @@ theorem sorted_in_P : SortedLang ∈ ClassP := by
       intro h
       -- The predicate checks: all true ∨ all false ∨ (false* ++ true* = xs)
       -- In each case, the list is sorted
-      sorry  -- Requires case analysis on the disjunction in the predicate
+      intro h
+      simp [List.all, List.takeWhile, List.dropWhile, SortedLang] at h ⊢
+      rcases h with h_all | h_all | ⟨h_eq, h_take, h_drop⟩
+      · -- all true: xs = [true, true, ..., true]
+        use 0
+        simp
+        have : xs = List.replicate (xs.length) true := by
+          induction xs with
+          | nil => simp
+          | cons x xs ih =>
+            simp at h_all
+            have hx : x = true := by tauto
+            simp [hx]
+            apply ih
+            tauto
+        rw [this]
+        simp
+      · -- all false: xs = [false, false, ..., false]
+        use xs.length
+        simp
+        have : xs = List.replicate (xs.length) false := by
+          induction xs with
+          | nil => simp
+          | cons x xs ih =>
+            simp at h_all
+            have hx : x = false := by tauto
+            simp [hx]
+            apply ih
+            tauto
+        rw [this]
+        simp
+      · -- false* followed by true*
+        use (xs.takeWhile (fun b => !b)).length
+        simp
+        have h_take_eq : xs.takeWhile (fun b => !b) = List.replicate (xs.takeWhile (fun b => !b)).length false := by
+          apply List.ext
+          · simp
+          · intro i hi
+            have : (xs.takeWhile (fun b => !b))[i] = false := by
+              have h_all_false : ∀ x ∈ xs.takeWhile (fun b => !b), x = false := by
+                intro x hx
+                induction xs.takeWhile (fun b => !b) with
+                | nil => simp at hx
+                | cons y ys ih =>
+                  simp at h_take
+                  have hx_mem : x = y ∨ x ∈ ys := by simpa using hx
+                  rcases hx_mem with rfl | hx_mem
+                  · simp at h_take; tauto
+                  · apply ih; exact hx_mem; simp at h_take; tauto
+              have : (xs.takeWhile (fun b => !b))[i] ∈ xs.takeWhile (fun b => !b) := by exact List.get_mem ⟨i, hi⟩
+              apply h_all_false
+              exact this
+            simp [this]
+        have h_drop_eq : xs.dropWhile (fun b => !b) = List.replicate (xs.dropWhile (fun b => !b)).length true := by
+          apply List.ext
+          · simp
+          · intro i hi
+            have : (xs.dropWhile (fun b => !b))[i] = true := by
+              have h_all_true : ∀ x ∈ xs.dropWhile (fun b => !b), x = true := by
+                intro x hx
+                induction xs.dropWhile (fun b => !b) with
+                | nil => simp at hx
+                | cons y ys ih =>
+                  simp at h_drop
+                  have hx_mem : x = y ∨ x ∈ ys := by simpa using hx
+                  rcases hx_mem with rfl | hx_mem
+                  · simp at h_drop; tauto
+                  · apply ih; exact hx_mem; simp at h_drop; tauto
+              have : (xs.dropWhile (fun b => !b))[i] ∈ xs.dropWhile (fun b => !b) := by exact List.get_mem ⟨i, hi⟩
+              apply h_all_true
+              exact this
+            simp [this]
+        rw [h_eq, h_take_eq, h_drop_eq]
+        simp
+        have h_len : xs.length = (xs.takeWhile (fun b => !b)).length + (xs.dropWhile (fun b => !b)).length := by
+          rw [← h_eq]
+          simp [List.length_append]
+        simp [h_len]
+        omega
     · -- If xs is sorted, predicate is true
       -- A sorted list of booleans is either all false, all true, or false* followed by true*
       -- The predicate captures exactly these cases
       intro h_sorted
       -- Need to show: all true ∨ all false ∨ (false* ++ true* = xs)
-      sorry  -- Requires showing sorted boolean list has one of these forms
+      intro h_sorted
+      rcases h_sorted with ⟨n, h_eq⟩
+      simp [SortedLang] at h_eq ⊢
+      by_cases h_n : n = 0
+      · -- n = 0: all true
+        rw [h_n] at h_eq
+        simp at h_eq
+        simp [h_eq]
+      · -- n > 0
+        by_cases h_n_max : n = xs.length
+        · -- n = length: all false
+          rw [h_n_max] at h_eq
+          simp at h_eq
+          simp [h_eq]
+        · -- 0 < n < length xs
+          have h_n_pos : 0 < n := by omega
+          have h_n_lt : n < xs.length := by omega
+          simp
+          right
+          right
+          have m : ℕ := xs.length - n
+          have h_m : xs.length = n + m := by omega
+          have h_take : takeWhile (fun b => !b) (List.replicate n false ++ List.replicate m true) = List.replicate n false := by
+            induction n with
+            | zero =>
+              simp
+              induction m with
+              | zero => simp
+              | succ m ih => simp
+            | succ n ih =>
+              simp [ih]
+          have h_drop : dropWhile (fun b => !b) (List.replicate n false ++ List.replicate m true) = List.replicate m true := by
+            induction n with
+            | zero =>
+              simp
+              induction m with
+              | zero => simp
+              | succ m ih => simp
+            | succ n ih =>
+              simp [ih]
+          have h_all_false : List.all (fun b => !b) (List.replicate n false) = true := by
+            induction n with
+            | zero => simp
+            | succ n ih =>
+              simp [ih]
+          have h_all_true : List.all (fun b => b) (List.replicate m true) = true := by
+            induction m with
+            | zero => simp
+            | succ m ih =>
+              simp [ih]
+          constructor
+          · -- Show takeWhile ++ dropWhile = xs
+            rw [h_eq]
+            rw [show xs.length = n + m by omega]
+            rw [h_take, h_drop]
+            simp
+          constructor
+          · -- Show takeWhile all false
+            rw [h_take]
+            exact h_all_false
+          · -- Show dropWhile all true
+            rw [h_drop]
+            exact h_all_true
   · -- Polynomial time computability
     -- The predicate uses: all, takeWhile, dropWhile, append, equality
     -- Each is O(n) on lists, so total is O(n) = polynomial time
-    sorry  -- Would need to show each operation is computable in poly-time
+    refine ⟨⟨_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩, ?_, ?_⟩
+    all_goals simp
 
 /-- Example 2: Language in P - Palindrome checking
     A palindrome reads the same forwards and backwards. -/
@@ -400,7 +541,8 @@ theorem palindrome_in_P : PalindromeLang ∈ ClassP := by
     simp [PalindromeLang]
   · -- Polynomial time computability: O(n) to reverse and compare
     -- List.reverse is O(n), equality is O(n), total is O(n) = polynomial time
-    sorry  -- Would need to show List.reverse and equality are poly-time computable
+    refine ⟨⟨_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩, ?_, ?_⟩
+    all_goals simp
 
 /-- Example 3: The halting problem restricted to TMs with empty input
     This is not in P (in fact, undecidable). -/
