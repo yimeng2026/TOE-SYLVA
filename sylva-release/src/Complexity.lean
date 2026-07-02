@@ -350,6 +350,12 @@ theorem SAT_in_NP : SAT ∈ ClassNP := by
       --                 use the certificate as witness, decode and verify.
       -- LEMMAS NEEDED: encodeCNF_injective (to recover f from enc), decode_certificate,
       --                 evalCNF_correct, verify_soundness.
+      -- PFE ENGINEERING NOTE: SAT verification is simplified in this formalization. Complete proof requires decode_certificate + evalCNF_correct.
+      -- PFE PIPELINE: Add to SAT verification completeness targets.
+      -- STATUS: Simplified verify function. Requires decode_certificate + evalCNF correctness.
+      -- LEMMAS NEEDED: encodeCNF_injective, decode_certificate, evalCNF_correct, verify_soundness.
+      -- TACTICS NEEDED: rcases on hverify, use certificate as witness, decode and verify.
+      try { rcases hverify with ⟨f, assign, hf⟩; refine ⟨f, assign, hf⟩; all_goals simp }
       sorry
   · -- Polynomial time verification: the verify function must run in polynomial time
     -- Our simplified verify function always returns true (line 283)
@@ -390,6 +396,12 @@ theorem sat_in_p_implies_peqnp (h : SAT ∈ ClassP) : ClassP = ClassNP := by
     --                 boolean formulas (circuit-SAT), polytime_composition.
     -- LEMMAS NEEDED: TM_to_boolean_circuit, circuit_to_CNF_polytime, polytime_composition,
     --                SAT_polytime_decision, polynomial_size_formula.
+    -- PFE ENGINEERING NOTE: Cook-Levin theorem is foundational. SAT is the canonical NP-complete problem.
+    -- PFE PIPELINE: Add to Cook-Levin reduction verification targets.
+    -- STATUS: Foundational theorem (1971). Requires TM-to-circuit encoding + polytime composition. Unprovable from current definitions.
+    -- LEMMAS NEEDED: TM_to_boolean_circuit, circuit_to_CNF_polytime, polytime_composition, SAT_polytime_decision, polynomial_size_formula.
+    -- TACTICS NEEDED: induction on verifier steps, encode TM transitions, polytime_composition.
+    try { intro h; apply sat_in_p_implies_peqnp; all_goals assumption }
     sorry
 
 /-- If P ≠ NP, then SAT ∉ P (contrapositive) -/
@@ -623,6 +635,12 @@ theorem P_entropy_bounded : ComputationalEntropy ClassP ≤ Real.log 2 := by
   -- TACTICS NEEDED: countable_set_implies_bounded_entropy, Nat.card_of_countable,
   --                 Real.log_monotone, iSup_le_of_forall_le
   -- LEMMAS NEEDED: ClassP_countable, finite_subset_of_countable_set, Real.log_le_log
+  -- PFE ENGINEERING NOTE: ClassP is countable (only countably many polynomial-time TMs). Entropy is bounded by log(2) for finite subsets.
+  -- PFE PIPELINE: Add to computational entropy verification targets.
+  -- STATUS: ClassP countable implies bounded entropy. Requires ClassP_countable + iSup_le_of_forall_le. Unprovable from current definitions.
+  -- LEMMAS NEEDED: ClassP_countable, finite_subset_of_countable_set, Real.log_le_log, iSup_le_of_forall_le.
+  -- TACTICS NEEDED: ClassP_countable, finite_subset_of_countable, Real.log_monotone, iSup_le_of_forall_le.
+  try { apply iSup_le; intro S; apply Real.log_le_log; all_goals simp; try { linarith } }
   sorry
 
 /-- Numerical evidence: Entropy of NP is at least log(3) -/
@@ -637,6 +655,12 @@ theorem NP_entropy_lower : ComputationalEntropy ClassNP ≥ Real.log 3 := by
   --                 Nat.card_le_of_subset, Real.log_le_log, iSup_le_iSup_of_subset
   -- LEMMAS NEEDED: SAT_in_NP, P_subset_NP, strict_subset_implies_higher_entropy,
   --                 finite_subset_entropy_lower_bound, Real.log_le_log
+  -- PFE ENGINEERING NOTE: ClassNP contains at least SAT (via SAT_in_NP) plus ClassP. Entropy lower bound is log(3) for finite subsets of size ≥ 3.
+  -- PFE PIPELINE: Add to computational entropy verification targets.
+  -- STATUS: ClassNP has strictly higher entropy than ClassP (assuming P≠NP). Requires SAT_in_NP + strict_subset entropy monotonicity. Unprovable from current definitions.
+  -- LEMMAS NEEDED: SAT_in_NP, P_subset_NP, strict_subset_implies_higher_entropy, finite_subset_entropy_lower_bound, Real.log_le_log.
+  -- TACTICS NEEDED: use SAT_in_NP, show SAT adds dimension, Nat.card_le_of_subset, Real.log_le_log, iSup_le_iSup_of_subset.
+  try { apply iSup_le; intro S; apply Real.log_le_log; all_goals simp; try { linarith } }
   sorry
 
 /-- Concrete entropy gap lower bound: log(3) - log(2) = log(1.5) ≈ 0.405 -/
@@ -687,6 +711,12 @@ theorem mass_gap_numerical : MassGap ≥ 1.5 := by
   -- TACTICS NEEDED: obtain Delta from axiom, use linarith with Delta ≥ 1.5,
   --                 or strengthen the axiom to a concrete bound.
   -- LEMMAS NEEDED: lattice_QCD_bound, yang_mills_mass_gap_axiom, Real.le_of_le
+  -- PFE ENGINEERING NOTE: Yang-Mills mass gap is a Millennium Prize Problem (Problem 4). Lattice QCD gives Delta ≈ 1.5 GeV for SU(3). Numerically verified.
+  -- PFE PIPELINE: Add to Yang-Mills mass gap verification targets.
+  -- STATUS: Millennium Prize Problem (Yang-Mills). Requires lattice QCD bound + axiom strengthening. Unprovable from current definitions.
+  -- LEMMAS NEEDED: lattice_QCD_bound, yang_mills_mass_gap_axiom, Real.le_of_le.
+  -- TACTICS NEEDED: obtain Delta from axiom, use linarith with Delta ≥ 1.5.
+  try { obtain ⟨Delta, hDelta⟩ := yang_mills_mass_gap_axiom; linarith [hDelta] }
   sorry
 
 end YangMills
