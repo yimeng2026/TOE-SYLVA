@@ -186,6 +186,9 @@ theorem sigma_star_hypothesis (lam t : ℝ) (hlam : lam > 1)
   -- 1. The functional equation xi(s) = xi(1-s)
   -- 2. The symmetry of the coarse-graining operator
   -- 3. The convexity of B_lambda in sigma
+  -- Proof strategy: Show B_lambda(1/2,t) ≤ B_lambda(sigma,t) using convexity of
+  -- BootstrapResidual in sigma (BootstrapResidual_convex) and the symmetry xi(s)=xi(1-s).
+  -- The critical line sigma=1/2 is the fixed point of the symmetry, hence the minimizer.
   -- For now, we use the fact that the critical line is the locus of symmetry
   sorry  -- Requires full convexity analysis
 
@@ -344,6 +347,8 @@ theorem variational_bootstrap_rh :
     -- 1. Showing that at a zero, B_lambda is minimized at rho.re
     -- 2. Combining with sigma_star_converges_to_half
     -- 3. Concluding rho.re = 1/2
+    -- Proof strategy: Combine sigma_star_converges_to_half (minimizer → 1/2) with
+    -- BootstrapResidual_zero_iff (zero ↔ residual = 0) to show the zero must lie on Re=1/2.
     sorry  -- Full proof requires additional machinery
 
 
@@ -435,6 +440,8 @@ theorem BootstrapResidual_convex (t : ℝ) (lam : ℝ) (hlam : lam ≥ lambda_c)
   -- 1. The squared norm is convex
   -- 2. The coarse-graining is a linear operator
   -- 3. The composition preserves convexity
+  -- Proof strategy: Use ConvexOn.comp_of_convexOn_of_convexMonotone (normSq is convex,
+  -- coarse-graining is linear/affine) and Mathlib lemmas for ConvexOn.
   sorry  -- Requires detailed analysis of convexity using Mathlib tools
 
 
@@ -489,6 +496,8 @@ theorem RiemannXi_functional_equation (s : ℂ) :
   unfold RiemannXi
   -- The functional equation is a standard result in analytic number theory
   -- It follows from the Mellin transform of theta function and Poisson summation
+  -- Proof strategy: Use riemannZeta_functional_equation from Mathlib, then substitute
+  -- the definition of RiemannXi and simplify using Gamma reflection and power laws.
   sorry  -- Requires full proof using zeta functional equation
 
 /-- On the critical line sigma = 1/2, |xi(sigma+i*t)| is minimized at zeros
@@ -528,9 +537,14 @@ theorem Xi_critical_line_property (t : ℝ) (ht : t ≠ 0) :
     have h_pi : (Real.pi : ℂ) ^ (-s / 2 : ℂ) ≠ 0 := by
       apply Complex.cpow_ne_zero
       · norm_num
-      · sorry
+      · refine (fun h => ?_)
+        simp [s, Complex.ext_iff] at h
+        norm_num at h
+        tauto
     -- Gamma(s/2) ≠ 0 for s/2 = 1/4 + it/2 (Re > 0, no zeros in right half-plane)
     have h_gamma : Complex.Gamma (s / 2) ≠ 0 := by
+      -- Proof strategy: Apply Complex.Gamma_ne_zero (or similar Mathlib lemma) since
+      -- Gamma has no zeros in the complex plane (only poles at non-positive integers).
       -- Gamma has no zeros in the right half-plane
       -- s/2 = 1/4 + it/2, Re(s/2) = 1/4 > 0
       sorry

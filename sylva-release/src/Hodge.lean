@@ -434,11 +434,34 @@ def sylva_hodge_surface_example : SylvaHodgeCorrespondence where
         -- This is the Hodge decomposition for a curve: H^0 ⊕ H^2
         -- H^{0,0} = ℂ, H^{1,1} = ℂ
         -- The isomorphism maps (a, b) ⊗ c to (a·c, b·c) ∈ ℂ ⊕ ℂ
+        -- 
+        -- PROOF STRATEGY: We need a LinearEquiv between (ℚ × ℚ) ⊗[ℚ] ℂ and
+        -- ⊕' (p : Fin 3), Hpq p (2 - p). The Hodge components are:
+        --   p=0: Hpq 0 2 = Unit (zero module)
+        --   p=1: Hpq 1 1 = ℂ
+        --   p=2: Hpq 2 0 = Unit (zero module)
+        -- So the target is Unit ⊕ ℂ ⊕ Unit ≅ ℂ (since zero modules collapse).
+        -- The source is (ℚ × ℚ) ⊗[ℚ] ℂ ≅ ℂ × ℂ ≅ ℂ ⊕ ℂ.
+        -- NOTE: These are NOT isomorphic with the current H_Q = ℚ × ℚ.
+        --   To fix: set H_Q := ℚ (only the weight-2 part) so source ≅ ℂ.
+        -- TACTICS NEEDED: Define LinearEquiv via `LinearEquiv.ofBijective` or
+        --   explicit DirectSum/TensorProduct basis construction. Requires
+        --   `Module.finrank_tensorProduct` and `DirectSum.finrank_sum`.
         sorry
       hodge_symmetry := by
         intro p q hpq
         -- For a curve (n=1, weight 2): H^{0,0} = ℂ, H^{1,1} = ℂ
         -- Hodge symmetry: H^{p,q} ≅ H^{q,p} is trivial when p=q (identity map)
+        --
+        -- PROOF STRATEGY: For this Hodge structure, the Hpq definition is symmetric
+        -- in p and q. For p+q=2, the relevant cases are:
+        --   (p,q) = (1,1): Hpq 1 1 = ℂ, need Nonempty (ℂ ≃ₗ[ℂ] ℂ). Use `LinearEquiv.refl`.
+        --   (p,q) = (0,2): Hpq 0 2 = Unit, Hpq 2 0 = Unit. Use `LinearEquiv.refl` on Unit.
+        --   (p,q) = (2,0): Hpq 2 0 = Unit, Hpq 0 2 = Unit. Use `LinearEquiv.refl` on Unit.
+        -- TACTICS NEEDED: `have hp : p ≤ 2 := by omega`, `have hq : q ≤ 2 := by omega`,
+        --   then case analysis (e.g., `interval_cases p <;> interval_cases q`),
+        --   followed by `simp [Hpq]` and `refine ⟨LinearEquiv.refl ℂ _⟩`.
+        --   Alternatively, prove `Hpq p q = Hpq q p` by definition symmetry and cast.
         sorry
     }
   sylva_connection := by norm_num
@@ -496,6 +519,18 @@ theorem betti_number_eq_sum_hodge {n : ℕ} (H : PureHodgeStructure n) :
   -- 3. Since dim_ℂ(H_Q ⊗_ℚ ℂ) = dim_ℚ H_Q = b_n (Betti number)
   -- 4. And dim_ℂ H^{p,q} = h^{p,q} (Hodge numbers)
   -- 5. Therefore: b_n = Σ_{p+q=n} h^{p,q}
+  --
+  -- PROOF STRATEGY (detailed):
+  -- Step 1: Apply `LinearEquiv.finrank_eq` to H.total_iso to get:
+  --   Module.finrank ℂ (H.H_Q ⊗[ℚ] ℂ) = Module.finrank ℂ (⊕' (p : Fin (n+1)), H.Hpq p (n - p))
+  -- Step 2: Use `Module.finrank_tensorProduct` over ℚ to show:
+  --   Module.finrank ℂ (H.H_Q ⊗[ℚ] ℂ) = Module.finrank ℚ H.H_Q
+  -- Step 3: Use `DirectSum.finrank_sum` to show:
+  --   Module.finrank ℂ (⊕' H.Hpq p (n-p)) = Σ p, Module.finrank ℂ (H.Hpq p (n-p))
+  -- Step 4: Use `hodgeNumber` definition: for p ∈ range(n+1), hodgeNumber H p (n-p) = Module.finrank ℂ (H.Hpq p (n-p))
+  -- Step 5: Rewrite the sum over Finset.range (n+1) to match the direct sum indexing.
+  -- TACTICS NEEDED: `rw [LinearEquiv.finrank_eq H.total_iso]`, `rw [Module.finrank_tensorProduct]`,
+  --   `rw [DirectSum.finrank_sum]`, then `simp [hodgeNumber]` and `ring` / `omega` to match indices.
   sorry
 
 end Hodge

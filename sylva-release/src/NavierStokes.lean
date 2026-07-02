@@ -344,12 +344,15 @@ theorem beale_kato_majda_criterion {u : VelocityField} {T : ℝ}
   -- If ∫_0^T ||ω(t)||_{L^∞} dt < ∞, then the solution remains smooth on [0,T]
   -- Proof strategy: show bounded vorticity controls all higher derivatives
   -- via the vorticity equation and Biot-Savart law
+  -- [STRATEGY] This sorry covers the vorticity blow-up case of BlowUpCriterion. Need `intro`/`rcases` to destructure the disjunction, then derive contradiction from bounded vorticity hypothesis `h` and Tendsto atTop via the fact that a finite integral cannot accommodate infinite enstrophy.
   sorry
   · -- Vorticity gradient blow-up case
     -- Show this contradicts the boundedness assumption via energy estimates
+    -- [STRATEGY] This sorry covers the gradient blow-up case. Need to show bounded vorticity in L^∞ (hypothesis `h`) implies bounded gradient enstrophy via Sobolev/interpolation inequalities, contradicting the Tendsto atTop hypothesis for the gradient integral.
     sorry
   · -- Velocity blow-up case  
     -- Show this contradicts bounded vorticity via the Beale-Kato-Majda inequality
+    -- [STRATEGY] This sorry covers the velocity blow-up case. Need to apply the Beale-Kato-Majda inequality (logarithmic bound of velocity L^∞ by vorticity L^∞) to show bounded vorticity implies bounded velocity, contradicting Tendsto atTop.
     sorry
 
 -- ============================================================
@@ -410,6 +413,7 @@ theorem global_existence_small_data {u0 : SpatialDomain → SpatialDomain}
   -- 3. Use bootstrap argument: if energy stays small, higher norms also stay bounded
   -- 4. Apply continuation criterion: bounded norms imply global existence
   -- 5. Standard result: small initial data in H^1 implies global solution in 3D
+  -- [STRATEGY] Apply the axiom sylva_ns_regularity (GlobalRegularity) which gives exactly the existential conclusion for smooth, divergence-free, finite-energy initial data. Need to convert the finite-energy hypothesis from < 1 to < ⊤ using ENNReal transitivity.
   sorry
 
 -- ============================================================
@@ -430,6 +434,7 @@ theorem weak_strong_uniqueness {u v : VelocityField} {p q : PressureField}
   -- 3. Apply energy estimates: d/dt ||w||^2_2 + 2ν||∇w||^2_2 ≤ C||w||^2_2
   -- 4. Use Gronwall's inequality: ||w(t)||^2_2 ≤ ||w(0)||^2_2 · exp(Ct) = 0
   -- 5. Therefore w = 0, so v = u everywhere
+  -- [STRATEGY] Weak-strong uniqueness via energy estimates. Define w = v - u, show it satisfies linearized NS with zero initial data. Energy method gives d/dt ‖w‖² + 2ν‖∇w‖² ≤ C‖w‖². Apply Gronwall's inequality with w(0)=0 to conclude w=0. TACTICS NEEDED: intro w_def, have energy_ineq_for_w, apply Gronwall_lemma, simp.
   sorry
 
 /-- Uniqueness of strong solutions -/
@@ -446,6 +451,7 @@ theorem strong_solution_uniqueness {u v : VelocityField} {p q : PressureField}
   -- 4. Take L^2 inner product with w, use divergence-free condition
   -- 5. Energy estimate: d/dt ||w||^2_2 + 2ν||∇w||^2_2 ≤ C(||∇u||_2 + ||∇v||_2)||w||^2_2
   -- 6. Apply Gronwall's inequality: w(0) = 0 implies w(t) = 0 for all t
+  -- [STRATEGY] Uniqueness of strong solutions via energy estimates. Define w = u - v, subtract NS equations, take L^2 inner product with w. Energy estimate: d/dt ‖w‖² + 2ν‖∇w‖² ≤ C(‖∇u‖ + ‖∇v‖)‖w‖². Apply Gronwall with w(0)=0 to conclude w(t)=0. TACTICS NEEDED: intro w_def, have energy_eq, apply Gronwall, simp.
   sorry
 
 -- ============================================================
@@ -474,6 +480,7 @@ theorem ns_energy_debt_analogy {u : VelocityField} {t : ℝ}
   -- 2. The Sylva critical value Phi_c represents the maximum sustainable energy
   -- 3. The energy dissipation rate ensures KineticEnergy ≤ Phi_c for all t ≥ 0
   -- 4. This is an analogy, not a rigorous theorem, connecting fluid dynamics to Sylva theory
+  -- [STRATEGY] Energy-debt analogy: extract weak solution from h_solution, use energy inequality to bound KineticEnergy by initial energy, then show initial energy ≤ Phi_c via Sylva framework properties. TACTICS NEEDED: rcases h_solution, apply energy_inequality_of_weak_solution, trans Phi.Phi_c, simp.
   sorry
 
 /-- Critical threshold for regularity -/
@@ -492,6 +499,7 @@ theorem regularity_criterion {u : VelocityField} {T : ℝ}
   -- 3. Controlled enstrophy implies bounded vorticity in L^∞
   -- 4. By Beale-Kato-Majda criterion, bounded vorticity implies no blow-up
   -- 5. Therefore the solution remains regular on [0,T]
+  -- [STRATEGY] Regularity criterion: NSBootstrapResidual < λ_c implies controlled enstrophy. Controlled enstrophy gives bounded L^∞ vorticity via Sobolev embedding. Apply beale_kato_majda_criterion (bounded vorticity implies no blow-up) to conclude. TACTICS NEEDED: intro h_blowup, have vorticity_bound, apply beale_kato_majda_criterion, all_goals assumption.
   sorry
 
 -- ============================================================
@@ -534,6 +542,7 @@ theorem leray_hopf_existence (u0 : SpatialDomain → SpatialDomain)
   -- 3. Use weak compactness to extract a convergent subsequence
   -- 4. Pass to the limit to obtain a weak solution
   -- 5. Verify the energy inequality and right-continuity properties
+  -- [STRATEGY] Leray-Hopf existence via Galerkin approximations: construct finite-dimensional approximations using Stokes eigenfunctions, prove uniform energy bounds, extract weakly convergent subsequences via Banach-Alaoglu, pass to limit and verify energy inequality and right-continuity. TACTICS NEEDED: refine ⟨...⟩, all_goals simp, energy estimates, compactness arguments.
   sorry
 
 -- ============================================================
@@ -555,12 +564,14 @@ theorem navier_stokes_summary :
   · -- Local regularity: known result (local well-posedness in 3D)
     -- For smooth initial data, there exists a unique smooth solution for short time
     -- This is a standard result using fixed-point arguments in Banach spaces
+    -- [STRATEGY] Local well-posedness via mild formulation: u(t) = e^{tΔ}u₀ + ∫₀^t e^{(t-s)Δ} ℙ(-(u·∇)u)(s) ds. Show the solution map is a contraction in C([0,T]; H¹) for small T, then apply Banach fixed-point theorem. TACTICS NEEDED: intro u0 h_smooth h_div_free nu h_nu, refine ⟨...⟩, apply Banach_fixed_point, all_goals simp.
     sorry
   constructor
   · -- Global weak existence: Leray-Hopf theorem (1934)
     -- For any smooth, divergence-free initial data with finite energy,
     -- there exists a global weak solution satisfying the energy inequality
     -- Proof: Galerkin approximations + compactness arguments + passing to limit
+    -- [STRATEGY] Global weak existence for all initial data. For smooth data, apply leray_hopf_existence to get a LerayHopfSolution (which extends WeakSolution). For non-smooth data, mollify and pass to the limit using the energy inequality for compactness. TACTICS NEEDED: intro u0 nu f h_nu, by_cases h_smooth, apply leray_hopf_existence, all_goals assumption.
     sorry
   · -- Strong solution uniqueness: proven above (strong_solution_uniqueness theorem)
     intros
