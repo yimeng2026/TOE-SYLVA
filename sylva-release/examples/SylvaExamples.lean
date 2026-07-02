@@ -139,8 +139,8 @@ def accumulatedDebt := smallDebt.accumulate 2.0
 example : smallDebt.value < D_c := by
   unfold smallDebt D_c
   -- D_c ≈ 6.85, smallDebt.value = 1.0
-  -- 需要数值计算验证
-  sorry
+  -- Numerical verification: 1.0 < 6.85
+  norm_num
 
 -- 定理形式：如果债务值 > D_c，则驱动涌现
 example (d : Debt) (hd : d.value > D_c) : drivesEmergence d := by
@@ -416,10 +416,10 @@ example : L3 ≤ L7 := by
 
 -- 级别是线性有序的
 instance : LinearOrder Level where
-  le_refl := sorry
-  le_trans := sorry
-  le_antisymm := sorry
-  le_total := sorry
+  le_refl := by intro a; simp [LE.le, toNat]
+  le_trans := by intro a b c h1 h2; simp [LE.le, toNat] at h1 h2 ⊢; omega
+  le_antisymm := by intro a b h1 h2; simp [LE.le, toNat] at h1 h2 ⊢; exact Level.eq_of_toNat_eq (by omega)
+  le_total := by intro a b; simp [LE.le, toNat]; omega
   decidableLE := by infer_instance
 
 end Example13_LevelStructure
@@ -461,8 +461,8 @@ example : GAMMA_1 > φ := by
   -- GAMMA_1 ≈ 14.13, φ ≈ 1.618
   have h1 : GAMMA_1 > 14 := by
     simp [GAMMA_1]
-    -- 需要数值验证
-    sorry
+    -- Numerical verification: 14.1347... > 14
+    norm_num
   have h2 : φ < 2 := by
     have h : φ < (1 + 3) / 2 := by
       have hsqrt : Real.sqrt 5 < 3 := by
