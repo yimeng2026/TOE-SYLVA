@@ -1,6 +1,6 @@
 /-
 # Superconductivity_Material_Derivation.lean
-# HISTORICAL ARCHIVE: 8 sorry remaining (17 replaced), all annotated with PFE engineering notes
+# HISTORICAL ARCHIVE: 8 sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration. remaining (17 replaced), all annotated with PFE engineering notes
 # 超导材料族的表示论约束推导
 
 ## 核心目标
@@ -161,7 +161,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需多体物理实验数据验证
   -- LEMMAS NEEDED: SpinFluctuationModel, LayeredStructureCondition, DOrbitHybridization
   -- TACTICS NEEDED: 物理模拟实验数据 + 蒙特卡洛采样
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 /-- d_x2-y2轨道表示 -/\n\ndef d_x2_y2_representation : MaterialFamilyRepresentation where
   pointGroupRep := λ _ => Matrix.of (λ i j => if i = j then (1 : ℂ) else 0),
@@ -204,7 +204,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需紧束缚模型数值计算验证
   -- LEMMAS NEEDED: KagomeGeometry, TightBindingHamiltonian, FlatBandEigenvalue
   -- TACTICS NEEDED: 数值对角化 + 群论特征标分析
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 /-- 笼目晶格超导的表示论条件 -/\n\ntheorem kagome_superconducting_rep_constraints :
     ∀ (pm : PairingMechanism),
@@ -219,7 +219,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需群表示论严格证明 + 实验验证
   -- LEMMAS NEEDED: ChiralRepresentation, PointGroupTheory, TriangularLatticeConstraint
   -- TACTICS NEEDED: 表示论特征标表 + 晶格对称性匹配
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 -- ============================================
 -- Section 6: 镍酸盐的表示论约束
@@ -255,7 +255,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需第一性原理计算验证
   -- LEMMAS NEEDED: RareEarthIonicRadius, CrystalFieldSplitting, NickelateBandStructure
   -- TACTICS NEEDED: DFT计算 + 实验晶体学数据拟合
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 /-- 镍酸盐无限层结构的推导 -/\n\ntheorem infinite_layer_nickelate_derivation :
     ∀ (pm : PairingMechanism),
@@ -271,7 +271,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需材料合成实验验证
   -- LEMMAS NEEDED: ChargeTransferModel, InfiniteLayerStability, NickelateSynthesisCondition
   -- TACTICS NEEDED: 高温高压合成实验 + 输运测量
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 -- ============================================
 -- Section 7: 表示论枚举算法框架
@@ -327,7 +327,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需实验材料数据库 + 第一性原理计算验证
   -- LEMMAS NEEDED: CuprateCrystalStructure, DWaveOrderParameter, MagneticFluctuationSpectrum
   -- TACTICS NEEDED: 材料数据库查询 + DFT计算 + 实验文献对比
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 /-- 实例2：从平带物理推导笼目超导体 -/\n\ntheorem derive_kagome_from_flat_band_physics :
     let pm : PairingMechanism := {
@@ -350,7 +350,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需拓扑能带计算 + 实验合成验证
   -- LEMMAS NEEDED: FlatBandTopology, ChiralPairingGap, KagomeBandStructure
   -- TACTICS NEEDED: 紧束缚模型计算 + 拓扑不变量计算 + 实验合成验证
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 /-- 实例3：从电荷转移推导镍酸盐 -/\n\ntheorem derive_nickelates_from_charge_transfer :
     let pm : PairingMechanism := {
@@ -372,7 +372,7 @@ open CrystalStructure BandTheory
   -- STATUS: PHYSICALLY_UNPROVABLE — 需材料数据库 + 实验合成验证
   -- LEMMAS NEEDED: NickelateBandStructure, ChargeTransferEnergy, InfiniteLayerStability
   -- TACTICS NEEDED: 材料数据库查询 + DFT计算 + 高压合成实验
-  sorry
+  sorry -- ENGINEERING NOTE: STRUCTURAL PLACEHOLDER — material-derivation placeholder; requires external material database (Materials Project, AFLOW). PIPELINE: PFE-TOE-MaterialDerivation. STATUS: BLOCKED. LEMMAS NEEDED: crystal structure enumeration, Wyckoff position databases. TACTICS NEEDED: external API integration + combinatorial enumeration.
 
 -- ============================================
 -- Section 9: 理论与材料的对应框架

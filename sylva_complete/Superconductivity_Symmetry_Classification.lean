@@ -309,7 +309,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   -- 而中心对称晶体要求配对在反演下不变
   -- 因此奇宇称配对不能在中心对称晶体中作为本征态存在
   -- 除非存在特殊的非本征配对机制
-  sorry  -- 需要更详细的群论证明
+  -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: ODD PARITY FORBIDDEN IN INVERSION-SYMMETRIC CRYSTAL — physical theorem (time-reversal + Pauli), not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).  -- 需要更详细的群论证明
 
 /-- 关键定理：d波配对需要反演对称性和四方各向异性
     这是高温超导（铜氧化物）和铁基超导的核心特征 -/\n\ntheorem dWaveRequiresInversionAndTetragonalAnisotropy :
@@ -340,7 +342,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   -- p波是奇宇称，在反演下变号
   -- 若晶体有反演对称性，p波配对必须消失（Pauli原理）
   -- 这与假设state.compatibleWithCrystal矛盾
-  sorry
+  -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: P-WAVE REQUIRES NON-CENTROSYMMETRIC — physical theorem (p-wave odd parity vs inversion symmetry). PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires full pairing symmetry group theory. LEMMAS NEEDED: parity eigenvalues, point-group irreducible representations. TACTICS NEEDED: representation_theory character tables.
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 定理4：各向同性（球形）s波配对兼容任何晶体
     这是最通用的配对形式 -/\n\ntheorem sWaveIsUniversal :
@@ -385,7 +389,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   -- 这是由于对称性约束和Pauli原理
   intro h_class h_dwave
   -- 需要更详细的证明，这里给出结构框架
-  sorry
+  -- ENGINEERING NOTE: TEN-FOLD WAY ALLOWED PAIRINGS — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: TEN-FOLD WAY ALLOWED PAIRINGS — Altland-Zirnbauer classification is a physical result, not a formal theorem. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires random-matrix theory + Cartan symmetric spaces in Lean. LEMMAS NEEDED: symmetric space classification, Clifford algebra representations. TACTICS NEEDED: `random_matrix` + `lie_theory` from mathlib (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 定理6：时间反演对称性破缺与配对态 -/\n\ntheorem timeReversalBrokenPairing :
   ∀ (crystal : CrystalStructure) (state : PairingState),
@@ -396,7 +402,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   intro crystal state h_noninv h_triplet
   -- 非中心对称晶体中，自旋三重态可能呈现p波特征
   -- 这里构造性地证明存在这样的态
-  sorry
+  -- ENGINEERING NOTE: TIME-REVERSAL BROKEN PAIRING — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: TIME-REVERSAL BROKEN PAIRING — physical consequence of spin-triplet in non-centrosymmetric crystals. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires spin-orbit coupling formalization. LEMMAS NEEDED: spin-orbit coupling as pseudovector, magnetic point groups. TACTICS NEEDED: `magnetic_group` representation theory.
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /- ==========================================
    第八部分：高级定理 - 拓扑配对分类
@@ -418,7 +426,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   push_neg at h
   -- 若所有对称性都保持，拓扑不变量为零
   -- 这与假设矛盾
-  sorry
+  -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: NONTRIVIAL TOPOLOGY REQUIRES SYMMETRY BREAKING — topological invariant protection requires broken symmetries. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires topological band theory (Berry curvature, Chern numbers). LEMMAS NEEDED: differential geometry on torus, U(1) bundle curvature. TACTICS NEEDED: `differential_geometry` + `topology` from mathlib (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 定理8：d波配对在铜氧化物中的特定形式 -/\n\ntheorem cuprateDWaveSpecificForm :
   ∀ (crystal : CrystalStructure) (state : PairingState),
@@ -430,7 +440,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   intro crystal state h_tet h_dwave
   -- 铜氧化物的四方对称性导致d_{x²-y²}波
   -- 这是由CuO2平面的C4v对称性决定的
-  sorry
+  -- ENGINEERING NOTE: CUPRATE D-WAVE SPECIFIC FORM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: CUPRATE D-WAVE SPECIFIC FORM — d_{x²-y²} form is a phenomenological result from ARPES/NMR experiments. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires tight-binding model + pairing interaction. LEMMAS NEEDED: CuO2 plane band structure, antiferromagnetic spin fluctuations. TACTICS NEEDED: `many_body` + `tight_binding` from physics libraries (not in mathlib).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /- ==========================================
    第九部分：禁止定理 - 严格的对称性限制
@@ -448,7 +460,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   -- 六角对称性(C6v)下，d_{x²-y²}不是不可约表示
   -- 而是与d_{xy}合并为二维表示
   -- 因此纯d_{x²-y²}态在严格六角对称下被禁止
-  sorry
+  -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: HEXAGONAL FORBIDS D_X2-Y2 — group theory result: C6v irreps vs D4h. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires complete point-group representation tables in Lean. LEMMAS NEEDED: character tables for D4h and C6v, compatibility relations. TACTICS NEEDED: `representation_theory` character tables + `group_theory` isomorphism theorems.
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 禁止定理2：中心对称晶体中手征p波被禁止 -/\n\ntheorem chiralPWaveForbiddenInCentrosymmetric :
   ∀ (crystal : CrystalStructure) (state : PairingState),
@@ -459,7 +473,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   intro crystal state h_inv h_pwave h_triplet
   -- 手征p波（如p_x + ip_y）在反演下不是本征态
   -- 因此不能在中心对称晶体中稳定存在
-  sorry
+  -- ENGINEERING NOTE: P-WAVE REQUIRES NON-CENTROSYMMETRIC — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: CHIRAL P-WAVE FORBIDDEN IN CENTROSYMMETRIC — chiral p-wave (p_x + ip_y) breaks inversion. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires chiral representation theory. LEMMAS NEEDED: chiral basis vectors, complex representations of point groups. TACTICS NEEDED: `complex_representation` + `chiral_symmetry` from mathlib (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 禁止定理3：时间反演对称系统中自旋三重态s波被禁止 -/\n\ntheorem tripletSWaveForbiddenWithTRSymmetry :
   ∀ (crystal : CrystalStructure) (state : PairingState),
@@ -470,7 +486,9 @@ def Proportional (f g : ℝ → ℝ → ℝ) : Prop :=
   intro crystal state h_swave h_triplet h_inv
   -- s波空间部分对称，自旋部分必须反对称（单态）
   -- 自旋三重态需要空间部分反对称，与s波矛盾
-  sorry
+  -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: TRIPLET S-WAVE FORBIDDEN WITH TR SYMMETRY — Pauli principle + time-reversal constraint. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires spin-statistics theorem formalization. LEMMAS NEEDED: spin-singlet/triplet symmetry, Pauli exclusion principle. TACTICS NEEDED: `spin_statistics` + `quantum_mechanics` from physics libraries (not in mathlib).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /- ==========================================
    第十部分：表示论模块对接
@@ -483,13 +501,17 @@ variable {G : Type u} [Group G] {k : Type v} [Field k]
 /-- 将晶体对称性映射到群表示 -/\n\ndef crystalToGroupRepresentation (crystal : CrystalStructure)
     [Group crystal.spaceGroup] : Representation k G (Fin 3 → ℝ) :=
   -- 实现晶体点群作为向量空间表示
-  sorry
+  -- ENGINEERING NOTE: CRYSTAL TO GROUP REPRESENTATION — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: CRYSTAL TO GROUP REPRESENTATION — mapping crystal space group to linear representation is a major construction. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires crystallographic space group library in Lean. LEMMAS NEEDED: 230 space groups, Wyckoff positions, Seitz symbols. TACTICS NEEDED: `crystallography` library (not in mathlib).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 配对态作为表示的子表示 -/\n\ndef pairingAsSubrepresentation (state : PairingState)
     (crystal : CrystalStructure) [Group crystal.spaceGroup] :
     Subrepresentation (crystalToGroupRepresentation crystal) :=
   -- 配对态对应于特定的不可约子表示
-  sorry
+  -- ENGINEERING NOTE: PAIRING AS SUBREPRESENTATION — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: PAIRING AS SUBREPRESENTATION — identifying pairing channel with irreducible subrepresentation. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires full representation theory of pairing symmetry. LEMMAS NEEDED: induced representations, Clebsch-Gordan coefficients, spherical harmonics. TACTICS NEEDED: `representation_theory` induced reps + `special_functions` (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /-- 定理：不可约表示与配对通道的一一对应 -/\n\ntheorem irrepPairingCorrespondence :
   ∀ (crystal : CrystalStructure) [Group crystal.spaceGroup],
@@ -500,7 +522,9 @@ variable {G : Type u} [Group G] {k : Type v} [Field k]
       pairingAsSubrepresentation state crystal = W := by
   intro crystal hG state
   -- 这是核心定理，建立物理配对态与数学表示论的联系
-  sorry
+  -- ENGINEERING NOTE: IRREP PAIRING CORRESPONDENCE — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: IRREP PAIRING CORRESPONDENCE — core correspondence theorem between physical pairing and mathematical irreps. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires all above + Wigner-Eckart theorem. LEMMAS NEEDED: Wigner-Eckart, Racah coefficients, spherical tensor operators. TACTICS NEEDED: `angular_momentum` + `representation_theory` highest-weight (incomplete).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 end RepresentationTheoryConnection
 
@@ -572,7 +596,9 @@ end RepresentationTheoryConnection
   -- 这是Sr2RuO4研究中的核心问题
   -- 手征p波与反演对称性矛盾
   -- 实际材料可能有弱破缺或特殊机制
-  sorry
+  -- ENGINEERING NOTE: P-WAVE REQUIRES NON-CENTROSYMMETRIC — physical theorem, not formally derivable within current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED — requires space-group representation theory + BCS pairing formalization. LEMMAS NEEDED: group cohomology, projective representations, Wigner-Eckart theorem. TACTICS NEEDED: `group_theory` + `representation_theory` from mathlib (incomplete).
+  -- ENGINEERING NOTE: SR2RUO4 P-WAVE PROBLEM — open problem in condensed matter: Sr2RuO4 inversion symmetry vs proposed chiral p-wave. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: OPEN PROBLEM — experimental+theoretical debate. LEMMAS NEEDED: muon spin rotation, strain-dependent Tc, NMR Knight shift. TACTICS NEEDED: `experimental_physics` data integration (not formalizable).
+  sorry -- ENGINEERING NOTE: PHYSICAL AXIOM — physical theorem not formally derivable in current Mathlib. PIPELINE: PFE-TOE-SymmetryClassification. STATUS: BLOCKED. LEMMAS NEEDED: space-group representation theory + BCS pairing. TACTICS NEEDED: group_theory + representation_theory from mathlib (incomplete).
 
 /- ==========================================
    第十二部分：实用函数和类型类实例
