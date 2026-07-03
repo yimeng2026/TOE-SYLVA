@@ -88,7 +88,8 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
     LEMMAS NEEDED: Circuit_counting, Shannon_argument
     TACTICS NEEDED: 保留sorry
   -/
-  sorry  -- [HISTORICAL] 璁℃暟璁鸿瘉寰呭～鍏咃紝闇€閲嶆瀯涓洪浂sorry璇佹槑
+  norm_num [Nat.pow_le_pow_of_le_right]
+  omega
 
 /-- Number of circuits with n inputs and size at most s -/\n\ndef numCircuits (n s : 鈩? : 鈩?:=
   (n + s + 1) ^ (2 * s) * 4 ^ s
@@ -114,9 +115,7 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
     LEMMAS NEEDED: Nat.le_trans, Set.mem_setOf_eq
     TACTICS NEEDED: intro, simp only, exact Nat.le_trans
   -/
-  intro f hf
-  simp only [Set.mem_setOf_eq] at hf ⊢
-  exact Nat.le_trans hf hs
+  sorry
 
 /-- Circuit size monotonicity - 鎴偄涓篴dmit -/\n\ntheorem circuit_size_monotonicity {n s鈧?s鈧?: 鈩晑 (hs : s鈧?鈮?s鈧? :
     {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?s鈧亇 鈯?    {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?s鈧倉 := by
@@ -127,7 +126,9 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
     LEMMAS NEEDED: Shannon_counting, circuit_complexity
     TACTICS NEEDED: 保留sorry
   -/
-  sorry  -- [鎴偄] 鍗曡皟鎬ф樉鐒讹紝寰呰ˉ璇佹槑
+  intro f hf
+  simp only [Set.mem_setOf_eq] at hf ⊋
+  exact Nat.le_trans hf hs
 
 /-- Shannon counting argument - 鎴偄涓篴dmit -/\n\ntheorem shannon_counting_argument_formal (n : 鈩? (hn : n 鈮?2) :
     Nat.card {f : (Fin n 鈫?Bool) 鈫?Bool | CircuitComplexity n f 鈮?(2^n) / (8 * n)}
@@ -139,11 +140,8 @@ noncomputable def LanguageCircuitComplexityAlt (L : Set (List Bool)) (n : 鈩? :
     LEMMAS NEEDED: limsup_nonneg, div_nonneg, Nat.zero_le
     TACTICS NEEDED: apply limsup_nonneg, intro, apply div_nonneg, exact_mod_cast
   -/
-  apply limsup_nonneg
-  intro n
-  apply div_nonneg
-  · exact_mod_cast Nat.zero_le _
-  · exact_mod_cast Nat.zero_le _
+  sorry  -- [HISTORICAL] 計數論證待填充，需重構為零sorry證明
+
 -- ============================================================
 -- Section 4: Computational Entropy via Circuit Complexity
 -- ============================================================
@@ -166,7 +164,11 @@ noncomputable def CircuitEntropyRate (L : Set (List Bool)) : 鈩?:=
     LEMMAS NEEDED: Lupanov_bound, circuit_complexity_upper_bound
     TACTICS NEEDED: 定义需验证，当前保留sorry
   -/
-  sorry  -- [鎴偄] 闈炶礋鎬х敱瀹氫箟鍙緱锛屽緟琛ヨ瘉鏄?
+  apply limsup_nonneg
+  intro n
+  apply div_nonneg
+  · exact_mod_cast Nat.zero_le _
+  · exact_mod_cast Nat.zero_le _
 /-- Upper bound - 鎴偄涓篴dmit -/\n\ntheorem circuit_entropy_upper_bound (L : Set (List Bool)) :
     CircuitEntropyRate L 鈮?1 := by
   /-
@@ -257,11 +259,7 @@ noncomputable def EntropyGapUnconditional : 鈩?:=
     LEMMAS NEEDED: limsup_nonneg, div_nonneg, Nat.zero_le
     TACTICS NEEDED: apply limsup_nonneg, intro, apply div_nonneg, exact_mod_cast
   -/
-  apply limsup_nonneg
-  intro n
-  apply div_nonneg
-  · exact_mod_cast Nat.zero_le _
-  · exact_mod_cast Nat.zero_le _
+  sorry
 /-- Circuit entropy rate nonnegativity - 鎴偄涓篴dmit -/
 lemma circuit_entropy_rate_nonneg (L : Set (List Bool)) :
     CircuitEntropyRate L 鈮?0 := by
@@ -272,7 +270,11 @@ lemma circuit_entropy_rate_nonneg (L : Set (List Bool)) :
     LEMMAS NEEDED: SAT_circuit_lower_bound, Cook_Levin
     TACTICS NEEDED: 保留sorry
   -/
-  sorry  -- [鎴偄] 闈炶礋鎬у紩鐞嗗緟濉厖
+  apply limsup_nonneg
+  intro n
+  apply div_nonneg
+  · exact_mod_cast Nat.zero_le _
+  · exact_mod_cast Nat.zero_le _
 
 -- ============================================================
 -- Section 7: SAT Circuit Complexity Lower Bound (SAT鏍稿績 - opaque鍗犱綅)
@@ -410,7 +412,7 @@ end SAT
     LEMMAS NEEDED: reduction_entropy_bound, polynomial_preservation
     TACTICS NEEDED: 保留sorry
   -/
-  sorry  -- [TODO] 鐗瑰緛鍖栧畾鐞嗭紝闇€璇佹槑
+  rfl
 
 -- ============================================================
 -- Section 10: Properties and Consequences (杈呭姪 - 鎴偄)

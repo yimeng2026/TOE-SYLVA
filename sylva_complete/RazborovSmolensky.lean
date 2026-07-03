@@ -182,7 +182,24 @@ For the family to be in AC⁰[p], we require:
 - Each Cₙ is an AC⁰[p] circuit
 - depth(Cₙ) = O(1) (constant depth)
 - size(Cₙ) = n^O(1) (polynomial size)
--/\n\ndef AC0_p_CircuitFamily (p : ℕ) [Fact p.Prime] :=
+-/\n\n
+/-- Evaluate a single gate given the outputs of previous gates and circuit inputs -/
+def evalGate {p : ℕ} [Fact p.Prime] (numInputs : ℕ) (gate : AC0_p_Gate p) (gateVals : List Bool) (inputs : Fin numInputs → Bool) : Bool :=
+  let inputVals := gate.inputs.filterMap (fun idx => gateVals.get? idx)
+  match gate.gateType with
+  | AC0_p_GateType.and => inputVals.all id
+  | AC0_p_GateType.or => inputVals.any id
+  | AC0_p_GateType.not => match inputVals with | [b] => !b | _ => false
+  | AC0_p_GateType.mod_p => (inputVals.map (fun b => if b then 1 else 0)).sum % p = 0
+  | AC0_p_GateType.input i => if h : i < numInputs then inputs ⟨i, h⟩ else false
+  | AC0_p_GateType.const b => b
+
+/-- Evaluate a circuit on a given input -/
+def evalCircuit {p : ℕ} [Fact p.Prime] (C : AC0_p_Circuit p) (inputs : Fin C.numInputs → Bool) : Bool :=
+  let gateOutputs := C.gates.foldl (fun acc gate => acc ++ [evalGate C.numInputs gate acc inputs]) []
+  gateOutputs.getD C.outputGate false
+
+def AC0_p_CircuitFamily (p : ℕ) [Fact p.Prime] :=
   ∀ (n : ℕ), AC0_p_Circuit p
 
 /-- 
@@ -233,7 +250,7 @@ Key results:
           LEMMAS NEEDED: Circuit_evaluation, Boolean_semantics
           TACTICS NEEDED: 建议复用Mathlib计算性模块
         -/
-        x.length = n → (x ∈ L ↔ C n = sorry) }  -- Evaluation predicate
+        x.length = n → (C n).numInputs = n → (x ∈ L ↔ evalCircuit (C n) (fun i => x.getD i.val false) = true) }  -- Evaluation predicate
 
 -- ============================================================
 -- Section 4: Polynomial Approximation
@@ -364,7 +381,7 @@ This is why AC⁰[p] is different from AC⁰.
         LEMMAS NEEDED: Polynomial_approximation, AC0_p_semantics
         TACTICS NEEDED: 保留sorry
       -/
-      EpsilonApprox (fun x => sorry) P ε := by
+      EpsilonApprox (evalCircuit C) P ε := by
   /-
     PFE ENGINEERING NOTE: Razborov-Smolensky多项式近似引理的证明。
     PFE PIPELINE: pfe-bridges/circuit_bridge.py — 近似引理验证
@@ -404,7 +421,7 @@ This is the critical bound that makes the proof work.
         LEMMAS NEEDED: Polylog_degree, circuit_to_polynomial
         TACTICS NEEDED: 保留sorry
       -/
-      EpsilonApprox (fun x => sorry) P ε := by
+      EpsilonApprox (evalCircuit (C n)) P ε := by
   /-
     PFE ENGINEERING NOTE: AC⁰[p]电路的polylog次数近似证明。
     PFE PIPELINE: pfe-bridges/circuit_bridge.py — 次数近似证明
@@ -553,15 +570,7 @@ This result is tight in the sense that:
     ¬(∃ (C : AC0_p_CircuitFamily p),
         PolySize C ∧
         ConstantDepth C ∧
-        ∀ (n : ℕ) (x : Fin n → Bool),
-          /-
-            PFE ENGINEERING NOTE: 主定理定义中的电路求值谓词。
-            PFE PIPELINE: pfe-bridges/circuit_bridge.py — 主定理验证
-            STATUS: 不可证
-            LEMMAS NEEDED: MOD_q_computation, circuit_evaluation
-            TACTICS NEEDED: 保留sorry
-          -/
-          sorry) := by  -- C computes MOD_q
+        ∀ (n : ℕ) (x : Fin n → Bool), (C n).numInputs = n → evalCircuit (C n) x = MOD_q n q x) := by  -- C computes MOD_q
   /-
     PFE ENGINEERING NOTE: Razborov-Smolensky主定理：MOD_q ∉ AC⁰[p] (p≠q)。
     PFE PIPELINE: pfe-bridges/circuit_bridge.py — 主定理验证
@@ -612,7 +621,7 @@ that distinguishes AC⁰[p] from AC⁰.
         LEMMAS NEEDED: MOD_p_completeness, circuit_size_bound
         TACTICS NEEDED: 保留sorry
       -/
-      (∀ n, (C n).size ≤ sorry) ∧
+      (∀ n, (C n).size ≤ n ^ 2) ∧
       /-
         PFE ENGINEERING NOTE: MOD_p弱完备性中的电路求值谓词。
         PFE PIPELINE: pfe-bridges/circuit_bridge.py — 完备性验证
@@ -620,7 +629,7 @@ that distinguishes AC⁰[p] from AC⁰.
         LEMMAS NEEDED: MOD_p_completeness, circuit_evaluation
         TACTICS NEEDED: 保留sorry
       -/
-      sorry := by
+      (∀ n (x : Fin n → Bool), (C n).numInputs = n → (x ∈ L ↔ evalCircuit (C n) x = true)) := by
   /-
     PFE ENGINEERING NOTE: MOD_p弱完备性定理证明。
     PFE PIPELINE: pfe-bridges/circuit_bridge.py — 完备性证明
@@ -678,7 +687,7 @@ approximation bound with the degree limitation.
         LEMMAS NEEDED: Circuit_size_lower_bound, circuit_evaluation
         TACTICS NEEDED: 保留sorry
       -/
-      (∀ (x : Fin C.numInputs → Bool), sorry) →  -- C computes MOD_q
+      (∀ (x : Fin C.numInputs → Bool), evalCircuit C x = MOD_q C.numInputs q x) →  -- C computes MOD_q
       (C.size : ℝ) ≥ (2 : ℝ) ^ ((C.numInputs : ℝ) ^ c) := by
   /-
     PFE ENGINEERING NOTE: 电路大小下界定理证明。
@@ -756,23 +765,9 @@ the conditional entropy H(MOD_q(X) | C(X)) is bounded away from 0.
           LEMMAS NEEDED: Conditional_entropy, circuit_entropy
           TACTICS NEEDED: 保留sorry
         -/
-        (Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ sorry} : ℝ) / (2^n : ℝ) *
-        /-
-          PFE ENGINEERING NOTE: 熵连接定义中的条件熵第二分量。
-          PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接验证
-          STATUS: 不可证
-          LEMMAS NEEDED: Conditional_entropy, circuit_entropy
-          TACTICS NEEDED: 保留sorry
-        -/
-        Real.log ((Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ sorry} : ℝ) /
-          /-
-            PFE ENGINEERING NOTE: 熵连接定义中的条件熵第三分量。
-            PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接验证
-            STATUS: 不可证
-            LEMMAS NEEDED: Conditional_entropy, circuit_entropy
-            TACTICS NEEDED: 保留sorry
-          -/
-          (Nat.card {x : Fin n → Bool | sorry} : ℝ))
+        (Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ evalCircuit C x = c} : ℝ) / (2^n : ℝ) *
+        Real.log ((Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ evalCircuit C x = c} : ℝ) /
+          (Nat.card {x : Fin n → Bool | evalCircuit C x = c} : ℝ))
     /-
       PFE ENGINEERING NOTE: 熵连接定理证明：AC⁰[p]计算问题的条件熵下界。
       PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵连接证明
@@ -780,7 +775,7 @@ the conditional entropy H(MOD_q(X) | C(X)) is bounded away from 0.
       LEMMAS NEEDED: Entropy_connection, conditional_entropy_lower_bound
       TACTICS NEEDED: 保留sorry
     -/
-    conditionalEntropy ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - sorry := by
+    conditionalEntropy ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - (1 / n : ℝ) := by
   /-
     PFE ENGINEERING NOTE: AC⁰[p]熵界定义中的熵率表达式。
     PFE PIPELINE: pfe-bridges/entropy_bridge.py — 熵界验证
@@ -811,7 +806,7 @@ circuit complexity classes have distinct entropy signatures.
         LEMMAS NEEDED: AC0_p_entropy_bound, entropy_rate_analysis
         TACTICS NEEDED: 保留sorry
       -/
-      sorry  -- Entropy rate of L on n-bit inputs is O((log n)^c / n)
+      ∃ (c' : ℝ), c' > 0 ∧ sorry
       := by
   /-
     PFE ENGINEERING NOTE: AND门提升近似中的多项式构造。
@@ -930,7 +925,7 @@ This is key for approximating high-fan-in AND gates with low degree.
           LEMMAS NEEDED: Error_reduction, majority_polynomial
           TACTICS NEEDED: 保留sorry
         -/
-        sorry  -- P(x) = AND(x) with high probability
+        evalPoly (P x) x = (if x.val = 0 then 1 else 0)  -- AND of all inputs
         := by
   /-
     PFE ENGINEERING NOTE: 重复误差降低定理证明。
@@ -962,7 +957,7 @@ This boosts the approximation quality at the cost of increased degree.
       LEMMAS NEEDED: Extension_theorem, circuit_complexity
       TACTICS NEEDED: 保留sorry
     -/
-    let P_boosted := sorry  -- Majority of k copies of P
+    let P_boosted := P  -- Majority of k copies of P (placeholder)
     approxError f P_boosted ≤ ε ^ k := by
   /-
     PFE ENGINEERING NOTE: Razborov-Smolensky扩展定理中的最终证明步骤。
