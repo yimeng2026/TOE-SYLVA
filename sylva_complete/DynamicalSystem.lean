@@ -81,6 +81,9 @@ Total for all p < B: O(B log log B) using sieve optimization
     detectsFactor p = true ↔ (betaValue % p = 0) := by
   unfold detectsFactor betaValue
   simp
+  -- PFE 五元组: (ModularExponentiation, FastExpCorrectness, Unprovable, UseMathlibPowMod, NumberTheory)
+  -- betaValue = 2^202711-3过大，无法直接计算验证
+  -- 需要引用Mathlib的Nat.powMod正确性定理，或形式化快速模幂算法
   sorry  -- TODO: Prove correctness via fastModExp properties
 
 /-- The dynamical system degenerates exactly when p divides β -/\n\ntheorem degeneration_iff_divides (p : ℕ) [Fact p.Prime] :
@@ -131,6 +134,9 @@ We formalize the complexity bounds:
     detectionComplexity p ≤ 20 * (Nat.log 2 p + 1) := by
   unfold detectionComplexity fastModExpComplexity modMulComplexity
   simp [targetExponent]
+  -- PFE 五元组: (ComplexityBound, AsymptoticAnalysis, Unprovable, BigO_Proof, ComplexityTheory)
+  -- 复杂度上界需要渐近分析和大O符号严格证明
+  -- targetExponent为常数但bigO证明需要抽象常数处理，建议重构为O(log p)
   sorry  -- TODO: Complete arithmetic bound proof
 
 /-- Theorem: total sieve complexity is O(B log log B) -/\n\ntheorem sieve_complexity_bound (B : ℕ) (hB : B ≥ 2) :
@@ -138,6 +144,9 @@ We formalize the complexity bounds:
   unfold totalSieveComplexity
   simp
   have h : Nat.log 2 (Nat.log 2 B + 2) ≤ Nat.log 2 (Nat.log 2 B) + 1 := by
+    -- PFE 五元组: (LogarithmInequality, Nat.logProperties, ProvableWithEffort, CaseAnalysis, LeanNatLibrary)
+    -- 对数不等式可证但需分情况讨论和Nat.log引理系统
+    -- 建议用Nat.log_mul和Nat.log_monotone进行完整归纳证明
     sorry  -- Logarithm inequality
   linarith
 
@@ -174,6 +183,9 @@ using the rank information to determine if remaining factor R is prime.
     (knownFactors : List ℕ) (rankE : ℕ) (h : RemainingFactorIsPrime knownFactors rankE) :
     ∃ R : ℕ, R.Prime ∧ N_Value = knownFactors.prod * R := by
   unfold RemainingFactorIsPrime at h
+  -- PFE 五元组: (EllipticCurve, RankConnection, Unprovable, BSD_Assumption, AlgebraicGeometry)
+  -- 椭圆曲线秩与因子分解的连接需要BSD猜想或类似深刻结果
+  -- 超出当前形式化能力，建议作为开放问题标记
   sorry  -- TODO: Connect to elliptic curve rank computation
 
 end Integration
@@ -191,6 +203,9 @@ Section 5: Main Results
     (p = 2 ∨ p = 5 ∨ p = 19 ∨ (betaValue % p = 0 ∧ p > 19)) := by
   unfold detectsFactor
   simp
+  -- PFE 五元组: (Factorization, MainTheorem, Unprovable, AlgorithmVerification, NumberTheory)
+  -- 核心因数检测定理，需要完整算法正确性证明
+  -- 依赖于detectsFactor_correct和betaValue的数论性质，建议分解为子引理
   sorry  -- TODO: Complete proof using degeneration_iff_divides
 
 /-- Complexity guarantee: single factor detection is O(log p) -/\n\ntheorem complexity_guarantee (p : ℕ) [Fact p.Prime] :
