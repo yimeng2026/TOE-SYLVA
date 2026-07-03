@@ -1,4 +1,18 @@
 /-
+================================================================================
+HISTORICAL ARCHIVE — SUPERCEDED BY MAIN FILE
+================================================================================
+
+This file is an historical backup from the archive/ directory.
+It is preserved for reference but superseded by the corresponding main file
+in sylva_complete/.
+
+Do not modify or compile this file directly. For current work, use the main file.
+
+Original filename: SylvaInfrastructure_simplified.lean
+================================================================================
+-/
+/-
 Sylva Infrastructure Module
 PDE Tools and Complexity Theory Foundations
 

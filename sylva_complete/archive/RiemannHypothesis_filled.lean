@@ -1,4 +1,18 @@
 /-
+================================================================================
+HISTORICAL ARCHIVE — SUPERCEDED BY MAIN FILE
+================================================================================
+
+This file is an historical backup from the archive/ directory.
+It is preserved for reference but superseded by the corresponding main file
+in sylva_complete/.
+
+Do not modify or compile this file directly. For current work, use the main file.
+
+Original filename: RiemannHypothesis_filled.lean
+================================================================================
+-/
+/-
 RiemannHypothesis.lean - FILLED VERSION (Core Proofs Implemented)
 ==========================================================
 

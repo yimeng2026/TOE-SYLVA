@@ -1,4 +1,18 @@
 /-
+================================================================================
+HISTORICAL ARCHIVE — SUPERCEDED BY MAIN FILE
+================================================================================
+
+This file is an historical backup from the archive/ directory.
+It is preserved for reference but superseded by the corresponding main file
+in sylva_complete/.
+
+Do not modify or compile this file directly. For current work, use the main file.
+
+Original filename: CookLevin_final.lean
+================================================================================
+-/
+/-
 Sylva Formalization Project
 CookLevin_final.lean - Cook-Levin Theorem Formalization (Final Integrated Version)
 
