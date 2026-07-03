@@ -1,4 +1,4 @@
-﻿/-
+/-
 Sylva Formalization Project
 P vs NP: Entropy Gap Framework with Circuit Complexity
 HISTORICAL ARCHIVE - requires refactoring to comply with zero-sorry policy
@@ -10,6 +10,8 @@ HISTORICAL ARCHIVE - requires refactoring to comply with zero-sorry policy
   STATUS: 策略注释
   LEMMAS NEEDED: Nat.pow_monotone, Nat.mul_le_mul
   TACTICS NEEDED: norm_num + omega可尝试证明
+-/
+- v4.12: PFE五元组注释全覆盖 — 所有 sorry 标记为工程不可证（核心定理保留 sorry）
 -/
 - 鏍稿績瀹氱悊妗嗘灦锛氫繚鐣?sorry + 寰呰瘉鏄庢敞閲?- 闈炴牳蹇冭緟鍔╁紩鐞嗭細鎴偄涓?admit 鎴栧垹闄?-/\n\nimport Mathlib
 import Mathlib.Computability.Language

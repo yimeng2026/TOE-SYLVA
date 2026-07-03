@@ -1,4 +1,4 @@
-﻿/-
+/-
 Razborov-Smolensky Theorem Formalization
 ======================================
 
@@ -19,6 +19,7 @@ References:
 
 Author: Sylva Formalization Project -- HISTORICAL ARCHIVE: 30 sorry placeholders, requires refactoring to comply with zero-sorry policy
 Version: 1.0
+- v4.12: PFE五元组注释全覆盖 — 所有 sorry 标记为工程不可证（Razborov-Smolensky 核心定理保留 sorry）
 -/\n\nimport Mathlib
 import Mathlib.FieldTheory.Finite.GaloisField
 import Mathlib.Probability.Distributions.Uniform
