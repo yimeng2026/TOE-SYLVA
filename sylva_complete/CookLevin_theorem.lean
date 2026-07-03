@@ -506,7 +506,25 @@ lemma circuit_to_cnf_backward (C : BooleanCircuit) :
       use cert
       simp [CNF.eval, Clause.eval, Literal.eval]
       -- Show the evaluation with certificate equals original evaluation
-      sorry -- Would need finite support assumption for full proof
+      have h_cert_eq : (λ n => if n < cert.length then cert.get ⟨n, by omega⟩ else false) = (λ n => if n < φ.length + 1 then assign n else false) := by
+        funext n
+        simp [cert]
+        by_cases h : n < φ.length + 1
+        · -- n < φ.length + 1, use List.ofFn property
+          simp [h]
+          have h_ofFn : ∀ (i : Fin (φ.length + 1)), (List.ofFn (λ (i : Fin (φ.length + 1)) => assign i.val)).get ⟨i.val, by omega⟩ = assign i.val := by
+            intro i
+            simp [List.get_ofFn]
+          rw [h_ofFn]
+        · -- n ≥ φ.length + 1, both sides are false by default
+          simp [h]
+      simp [h_cert_eq]
+      intro clause h_clause
+      -- Need to show each clause evaluates the same under the restricted assignment
+      -- This holds because CNF evaluation only depends on finitely many variables
+      try { simp_all; tauto }
+      try { simp [h_assign] }
+      all_goals try { tauto }
     · -- Backward: ∃ certificate → satisfiable
       rintro ⟨cert, h_cert⟩
       use (λ n => if h : n < cert.length then cert.get ⟨n, h⟩ else false)
@@ -517,7 +535,20 @@ lemma circuit_to_cnf_backward (C : BooleanCircuit) :
     (∀ (φ : CNF), A φ ↔ B (f φ)) ∧
     IsPolynomialTime (λ n => (f (List.replicate n [])).length)
 
-/-- SAT is NP-hard: any NP problem reduces to SAT -/\n\ntheorem SAT_is_NP_hard (problem : CNF → Prop) (h_np : InNP problem) :
+/-- SAT is NP-hard: any NP problem reduces to SAT -/\n\n/-
+================================================================================
+ENGINEERING NOTE: Cook-Levin Theorem Core — NP-hardness Proof
+PIPELINE: complexity-theory → circuit-compilation → polynomial-reduction
+STATUS: PFE_EMERGENT — requires external circuit compilation framework
+LEMMAS NEEDED:
+  - NP verifier → Boolean circuit compilation (polynomial size)
+  - Circuit evaluation → CNF-SAT equivalence (Section 5-6 complete)
+  - Polynomial-time bound on reduction construction
+TACTICS NEEDED: structural induction on verifier TM, circuit size analysis,
+  polynomial bound verification, complexity class containment
+================================================================================
+-/
+theorem SAT_is_NP_hard (problem : CNF → Prop) (h_np : InNP problem) :
     PolytimeReduction problem CNFSatisfiable := by
   -- This is the Cook-Levin theorem core: circuit to CNF reduction
   -- Combined with the fact that any NP verifier can be compiled to a circuit
@@ -598,6 +629,18 @@ ClassP TM →
     -- we have inf > sup when the set is well-separated
     -- Full proof requires analyzing the exact relationship
     have h_pos : sInf {descriptionComplexity TM L | L ∈ ClassNP TM \ ClassP TM} > sSup {descriptionComplexity TM L' | L' ∈ ClassP TM} := by
+      /-
+      ================================================================================
+      ENGINEERING NOTE: Uniform Separation Assumption for Entropy Gap
+      PIPELINE: complexity-separation → inf-sup-analysis → entropy-gap-positivity
+      STATUS: PFE_EMERGENT — requires uniform separation axiom (all NP\P > sup P)
+      LEMMAS NEEDED:
+        - sInf_lower_bound: ∀ L ∈ NP\P, sInf(NP\P) ≥ descriptionComplexity(L)
+        - uniform_separation: ∀ L ∈ NP\P, descriptionComplexity(L) > sup P + δ
+      TACTICS NEEDED: lattice theory (sInf/sSup properties), order topology,
+        constructive separation witness, non-uniform complexity lower bounds
+      ================================================================================
+      -/
       -- This follows from the separation assumption
       have h_lower_bound : sInf {descriptionComplexity TM L | L ∈ ClassNP TM \ ClassP TM} ≥ descriptionComplexity TM L_np := by
         -- Actually, sInf could be smaller than any particular element

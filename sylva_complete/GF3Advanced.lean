@@ -70,25 +70,32 @@ namespace FieldAxioms
 
 -- 练习 1.1：加法交换律（难度：⭐⭐）
 theorem exercise_1_1_add_comm (a b : GF3) : a + b = b + a := by
-  sorry
+  fin_cases a <;> fin_cases b <;> simp [GF3.add]
+  all_goals rfl
 
 -- 练习 1.2：乘法结合律（难度：⭐⭐）
 theorem exercise_1_2_mul_assoc (a b c : GF3) : (a * b) * c = a * (b * c) := by
-  sorry
+  fin_cases a <;> fin_cases b <;> fin_cases c <;> simp [GF3.mul]
+  all_goals rfl
 
 -- 练习 1.3：乘法交换律（难度：⭐⭐）
 theorem exercise_1_3_mul_comm (a b : GF3) : a * b = b * a := by
-  sorry
+  fin_cases a <;> fin_cases b <;> simp [GF3.mul]
+  all_goals rfl
 
 -- 练习 1.4：分配律（难度：⭐⭐⭐）
 theorem exercise_1_4_distrib (a b c : GF3) : a * (b + c) = a * b + a * c := by
-  sorry
+  fin_cases a <;> fin_cases b <;> fin_cases c <;> simp [GF3.mul, GF3.add]
+  all_goals rfl
 
 -- 练习 1.5：乘法逆元（难度：⭐⭐⭐）
 -- 提示：对于非零元素，2⁻¹ = 2
 theorem exercise_1_5_mul_inv (a : GF3) (ha : a ≠ 0) : 
   ∃ b : GF3, a * b = 1 := by
-  sorry
+  fin_cases a
+  · contradiction
+  · use 1; rfl
+  · use 2; rfl
 
 end FieldAxioms
 
@@ -145,17 +152,20 @@ theorem eval_g_at_2 : g.eval 2 = 0 := by
 
 -- 练习 2.1：计算 f + g（难度：⭐⭐）
 theorem exercise_2_1 : (f + g).eval 0 = 0 := by
-  sorry
+  simp [f, g, GF3]
+  rfl
 
 -- 练习 2.2：计算 f × g 的次数（难度：⭐⭐⭐）
 -- 提示：deg(f×g) = deg(f) + deg(g)（当 f,g ≠ 0 时）
 theorem exercise_2_2 : (f * g).natDegree = 3 := by
-  sorry
+  simp [f, g]
+  native_decide
 
 -- 练习 2.3：寻找多项式的根（难度：⭐⭐⭐）
 -- 找出所有 a ∈ GF(3) 使得 f(a) = 0
 theorem exercise_2_3 : ∀ a : GF3, f.eval a = 0 ↔ a = 1 := by
-  sorry
+  intro a
+  fin_cases a <;> simp [f, GF3] <;> rfl
 
 end Polynomials
 
@@ -209,12 +219,14 @@ Frobenius 是有限域理论的核心工具，在密码学中有广泛应用。
 
 -- 练习 3.1：Frobenius 保持乘法（难度：⭐⭐）
 theorem exercise_3_1_mul (a b : GF3) : F (a * b) = F a * F b := by
-  sorry
+  simp [F, frobenius_identity]
+  all_goals rfl
 
 -- 练习 3.2：Frobenius 保持加法（难度：⭐⭐）
 -- 注意：这个性质只在特征 p 的域中成立
 theorem exercise_3_2_add (a b : GF3) : F (a + b) = F a + F b := by
-  sorry
+  simp [F, frobenius_identity]
+  all_goals rfl
 
 end Frobenius
 
@@ -253,7 +265,42 @@ def GF9.mul (x y : GF9) : GF9 :=
 -- 挑战：证明乘法逆元存在
 theorem challenge_GF9_field : ∀ x : GF9, x ≠ ⟨0, 0⟩ → ∃ y : GF9, 
   GF9.mul x y = ⟨1, 0⟩ := by
-  sorry
+  intro x hx
+  fin_cases x.a <;> fin_cases x.b
+  · -- x = ⟨0, 0⟩, contradiction
+    contradiction
+  · -- x = ⟨0, 1⟩, inverse is ⟨0, 2⟩ since 2*1=2 and 2*2=1 (mod 3)
+    use ⟨0, 2⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨0, 2⟩, inverse is ⟨0, 1⟩
+    use ⟨0, 1⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨1, 0⟩, inverse is ⟨1, 0⟩
+    use ⟨1, 0⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨1, 1⟩, need to solve for y
+    use ⟨1, 2⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨1, 2⟩
+    use ⟨1, 1⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨2, 0⟩, inverse is ⟨2, 0⟩
+    use ⟨2, 0⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨2, 1⟩
+    use ⟨2, 2⟩
+    simp [GF9.mul]
+    all_goals rfl
+  · -- x = ⟨2, 2⟩
+    use ⟨2, 1⟩
+    simp [GF9.mul]
+    all_goals rfl
 
 
 -- ============================================================================
