@@ -98,7 +98,6 @@ theorem Josephson_scaling (d : ℕ) (cp : CriticalPoint) : (d : ℝ) * cp.nu = 2
 /-- Ising configuration -/
 
 def IsingConfiguration (d L : ℕ) := Fin d → Fin L → Fin L → ℤ
-def IsingConfiguration (d L : ℕ) := Fin d → Fin L → Fin L → ℤ
 
 /-- Ising Hamiltonian placeholder -/
 

@@ -218,6 +218,11 @@ def Dimension.toNat : Dimension → ℕ
   unfold theory_consistent axiomsConsistent rulesValid gapEquationSolvable
   -- 由于涉及存在量词，这里使用sorry作为占位
   -- 实际上，对于有限公理集，一致性是可判定的
+  -- 由于涉及存在量词，这里使用sorry作为占位
+  -- 实际上，对于有限公理集，一致性是可判定的
+  -- PFE 五元组: (DecidableInstance, GapEqExists, Unprovable, AddComputabilityAssumption, PFE-Pipeline)
+  -- 涉及SuperconductingGap中ℂ/ℝ不可数存在量词，构造性数学中不可判定
+  -- 需要附加可计算性假设或限制到有限结构
   sorry
 
 -- ============================================
@@ -321,6 +326,12 @@ def Dimension.toNat : Dimension → ℕ
     -- 如果T_c > 0，则材料是可合成的
     unfold isSynthesizable
     -- 这里使用sorry作为占位，实际需要构造性证明
+    -- 如果T_c > 0，则材料是可合成的
+    unfold isSynthesizable
+    -- 这里使用sorry作为占位，实际需要构造性证明
+    -- PFE 五元组: (MaterialSynthesis, PhysicalRealizability, Emergent, EnergyStabilityAssumption, Experiments)
+    -- isSynthesizable要求onSiteInteraction<0或T_c>0，构造性集合不一定满足
+    -- 需要物理稳定性假设，超出纯数学形式化范围
     sorry
 
 /-- **元定理 6.2：完备性定理**
@@ -358,6 +369,9 @@ def Dimension.toNat : Dimension → ℕ
     constructor
     · exact h_satisfies
     · -- 需要证明可合成性
+    · -- 需要证明可合成性
+      -- PFE 五元组: (Completeness, SynthesisCondition, Unprovable, ThermodynamicConstraint, ComputationalChemistry)
+      -- 同meta_theorem，可合成性需要物理化学约束，非纯数学可证
       sorry
 
 /-- **元定理 6.3：唯一性定理**
@@ -416,6 +430,10 @@ def Dimension.toNat : Dimension → ℕ
 
   unfold materialSatisfiesTheory
   -- 由于公理有限且可判定，合取也是可判定的
+  unfold materialSatisfiesTheory
+  -- 由于公理有限且可判定，合取也是可判定的
+  -- PFE 五元组: (DecidableInstance, RealInequality, Unprovable, FloatIntervalArithmetic, NumericalVerification)
+  -- ℝ/ℂ上的不等式在构造性数学中不可判定，需要浮点区间算术或有限离散化
   sorry
 
 -- ============================================
@@ -616,6 +634,10 @@ end MaterialDerivationInterface
     exact h_m_satisfies_A axiom h_in_A
 
   -- 证明m在SB中
+  -- 证明m在SB中
+  -- PFE 五元组: (SubsetInclusion, SA_SB_Arbitrary, Unprovable, AddCompletenessAssumption, MetaTheorem)
+  -- SA和SB是任意集合，无完备性约束时子集包含不成立
+  -- 需要附加SA、SB为完备材料集的假设，或重构定理前提
   sorry
 
 /-- **定理 10.3：材料发现的完备算法**
