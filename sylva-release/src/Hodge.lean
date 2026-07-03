@@ -535,6 +535,10 @@ theorem betti_number_eq_sum_hodge {n : ℕ} (H : PureHodgeStructure n) :
   -- PFE ENGINEERING NOTE: Betti number = sum of Hodge numbers is a standard Hodge theory identity.
   -- PFE PIPELINE: Add to Hodge structure verification targets in pfe-pipelines.
   -- STATUS: Standard identity, requires Mathlib lemmas (LinearEquiv.finrank_eq, Module.finrank_tensorProduct, DirectSum.finrank_sum).
+  try { rw [LinearEquiv.finrank_eq H.total_iso]; rw [Module.finrank_tensorProduct]; rw [DirectSum.finrank_sum]; simp [hodgeNumber]; ring }
+  -- PFE ENGINEERING NOTE: Betti number = sum of Hodge numbers is a standard Hodge theory identity.
+  -- PFE PIPELINE: Add to Hodge structure verification targets in pfe-pipelines.
+  -- STATUS: Standard identity. Requires Mathlib lemmas (LinearEquiv.finrank_eq, Module.finrank_tensorProduct, DirectSum.finrank_sum). Try-block added; may need explicit basis construction.
   -- LEMMAS NEEDED: LinearEquiv.finrank_eq, Module.finrank_tensorProduct, DirectSum.finrank_sum, hodgeNumber.
   -- TACTICS NEEDED: rw [LinearEquiv.finrank_eq H.total_iso], rw [Module.finrank_tensorProduct], rw [DirectSum.finrank_sum], simp [hodgeNumber], ring.
   sorry
