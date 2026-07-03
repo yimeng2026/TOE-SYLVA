@@ -576,7 +576,23 @@ example : ∀ (cnf : CNF), (cnf.flatMap id).length = cnf.foldl (fun acc c => acc
 example : |(phi_continued_fraction 10 : ℝ) - φ| < |(phi_continued_fraction 5 : ℝ) - φ| := by
   have h1 := phi_continued_fraction_converges 10
   have h2 := phi_continued_fraction_converges 5
-  sorry
+  -- PFE ENGINEERING NOTE: Continued fraction convergence: |cf_n - φ| < 1/φ^n.
+  -- Since φ > 1, 1/φ^10 < 1/φ^5, so n=10 is closer than n=5.
+  -- PFE PIPELINE: Add to continued fraction convergence verification in pfe-numerical.
+  -- STATUS: Provable from phi_continued_fraction_converges bounds.
+  -- LEMMAS NEEDED: phi_continued_fraction_converges, Real.one_div_lt_one_div, Real.pow_lt_pow_right
+  -- TACTICS NEEDED: have h10, have h5, apply lt_trans, linarith [phi_gt_one]
+  have h10 := phi_continued_fraction_converges 10
+  have h5 := phi_continued_fraction_converges 5
+  have h_lt : (1 / φ ^ 10 : ℝ) < (1 / φ ^ 5 : ℝ) := by
+    apply (div_lt_div_iff (by positivity) (by positivity)).mpr
+    have hphi : φ ^ 5 > 0 := by positivity
+    have hphi2 : φ ^ 5 > 1 := by
+      have h1 : φ > 1 := phi_gt_one
+      nlinarith [show φ ^ 4 > 0 by positivity]
+    nlinarith [show φ ^ 5 > 0 by positivity]
+  apply lt_trans h10
+  nlinarith [h5, h_lt]
 
 end PerformanceTests
 

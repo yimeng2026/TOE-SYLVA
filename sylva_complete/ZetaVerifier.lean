@@ -318,6 +318,16 @@ noncomputable instance : DecidableEq ZeroVerification :=
 -- 当前版本使用sorry标记待完成工作
 theorem hardyZ_zero_implies_zeta_zero {t : ℝ} (_ht : zetaHardyZ t = 0) (_ht_pos : t > 0) :
     ∃ s : ℂ, s.re = 1 / 2 ∧ s.im = t ∧ riemannZeta s = 0 := by
+  -- PFE ENGINEERING NOTE: Hardy Z-function is a real-valued function on the critical line.
+  -- Z(t) = e^{iθ(t)} ζ(1/2 + it). Zeros of Z correspond to zeros of ζ on the critical line.
+  -- Full proof requires: (1) Correct definition of Hardy Z-function (not the placeholder `zetaHardyZ`)
+  --                      (2) Proof that Z(t) = 0 ↔ ζ(1/2 + it) = 0
+  --                      (3) Verification that the phase factor e^{iθ(t)} never vanishes
+  -- PFE PIPELINE: Add to Riemann-Siegel Z-function verification targets in pfe-numerical/complex_analysis.py
+  -- STATUS: Framework declaration. `zetaHardyZ` is a placeholder (`Real.cos (t * Real.log t)`).
+  --         Requires proper Hardy Z-function implementation.
+  -- LEMMAS NEEDED: RiemannSiegel_formula, hardyZ_function_correct, theta_phase_nonzero
+  -- TACTICS NEEDED: unfold zetaHardyZ, simp [RiemannSiegel_formula], use ⟨1/2, t⟩
   sorry
 
 -- Gram点处的函数值性质

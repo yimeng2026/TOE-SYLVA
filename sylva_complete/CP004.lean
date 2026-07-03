@@ -275,6 +275,13 @@ lemma np_minus_p_nonempty (TM : Type) [ComputationalModel TM] (h : P_neq_NP TM) 
     separation axioms, non-uniform lower bound techniques
   ================================================================================
   -/
+  -- PFE ENGINEERING NOTE: P≠NP implies positive entropy gap is a Millennium Prize-level implication.
+  -- This requires: (1) Constructive proof that P≠NP, (2) Existence of a language in NP\P,
+  --                (3) Lower bound on description complexity for NP\P languages.
+  -- PFE PIPELINE: Add to CP004-EntropyGapEquivalence verification targets.
+  -- STATUS: BLOCKED — depends on P≠NP resolution / constructive complexity separation.
+  -- LEMMAS NEEDED: sInf_sSup_separation, descriptionComplexity_lower_bounds, NP_minus_P_nonempty, uniform_complexity_separation.
+  -- TACTICS NEEDED: sInf/sSup lattice theory, constructive existence, separation axioms, non-uniform lower bound techniques.
   sorry
 
 /-- Reverse direction -/\n\ntheorem positive_entropy_gap_implies_pneqnp (TM : Type) [ComputationalModel TM]
