@@ -367,7 +367,8 @@ theorem variational_bootstrap_rh :
     -- PFE PIPELINE: Numerical verification of first 10^15 zeros on critical line (Odlyzko, Gourdon).
     -- STATUS: Millennium Prize Problem. All non-trivial zeros verified numerically.
     -- PFE VERIFICATION: Odlyzko 10^15 zeros, Gourdon 10^13, Platt 10^12, current best 10^15 (2023).
-    try { simp [B_lambda, BootstrapResidual, sigma_star, XiSquaredMag, riemannZeta_one_sub]; ring_nf; field_simp; norm_num }
+    try { simp [BootstrapResidual, sigma_star, XiSquaredMag, RiemannXi]; ring_nf; field_simp; norm_num }
+    try { apply zero_distribution_omnibase; assumption; assumption }
     -- LEMMAS NEEDED: sigma_star_converges_to_half, BootstrapResidual_zero_iff, XiSquaredMag_nonneg.
     -- TACTICS NEEDED: simp [B_lambda, BootstrapResidual, sigma_star, XiSquaredMag], ring_nf, field_simp, norm_num.
     sorry
@@ -468,6 +469,15 @@ theorem BootstrapResidual_convex (t : ℝ) (lam : ℝ) (hlam : lam ≥ lambda_c)
   -- LEMMAS NEEDED: ConvexOn.normSq, ConvexOn.comp_of_convexOn_of_convexMonotone, ConvexOn.Icc
   -- TACTICS NEEDED: apply ConvexOn.comp_of_convexOn_of_convexMonotone, simp, norm_num
   -- STATUS: Requires detailed convexity analysis of xi(sigma+it) in sigma. Xi is complex analytic, not obviously convex.
+  try { 
+    apply ConvexOn.comp_convexOn
+    · exact ConvexOn.normSq
+    · intro x y hx hy
+      simp [BootstrapResidual]
+      ring_nf
+    all_goals simp; try { norm_num }
+  }
+  try { simp [ConvexOn, BootstrapResidual]; ring_nf; field_simp; norm_num }
   sorry  -- Requires detailed analysis of convexity using Mathlib tools
 
 
@@ -525,11 +535,45 @@ theorem RiemannXi_functional_equation (s : ℂ) :
   -- Proof strategy: Use riemannZeta_functional_equation from Mathlib, then substitute
   -- the definition of RiemannXi and simplify using Gamma reflection and power laws.
   -- ATTEMPT: Automated tactics for functional equation verification
+  -- ATTEMPT: Use Mathlib's zeta functional equation and Gamma reflection
   try {
-    simp [riemannZeta_one_sub, mul_assoc, mul_comm, mul_left_comm, Complex.ext_iff]
+    intro s
+    by_cases h : s = 1 ∨ ∃ n : ℕ, s = -n
+    · -- s is a pole or trivial zero of zeta; RiemannXi is entire, so functional equation holds by continuity
+      rcases h with h1 | ⟨n, hn⟩
+      · -- s = 1: RiemannXi 1 = 0 = RiemannXi 0 by direct computation
+        rw [h1]
+        simp [RiemannXi]
+        ring_nf
+        field_simp
+        norm_num
+      · -- s = -n: RiemannXi (-n) = 0 = RiemannXi (1+n) by direct computation
+        rw [hn]
+        simp [RiemannXi]
+        ring_nf
+        field_simp
+        norm_num
+    · -- s is not a pole or trivial zero
+      push_neg at h
+      have h1 : s ≠ 1 := h.1
+      have h2 : ∀ n : ℕ, s ≠ -n := h.2
+      have h_zeta := riemannZeta_one_sub h2 h1
+      simp [RiemannXi, h_zeta]
+      ring_nf
+      field_simp
+      norm_num
+      simp [Complex.Gamma, Complex.Gamma_reflection]
+      ring_nf
+      field_simp
+      norm_num
+  }
+  try { 
+    simp [RiemannXi, riemannZeta_one_sub, mul_assoc, mul_comm, mul_left_comm, Complex.ext_iff]
     ring_nf
     field_simp
     norm_num
+    simp [Complex.Gamma]
+    try { native_decide }
   }
   sorry  -- Requires full proof using zeta functional equation + Gamma reflection formula
   -- LEMMAS NEEDED: riemannZeta_one_sub, Gamma_reflection_formula, Complex.cpow_mul
@@ -590,6 +634,12 @@ theorem Xi_critical_line_property (t : ℝ) (ht : t ≠ 0) :
       -- ATTEMPT: Use Mathlib lemma for Gamma ne_zero in right half-plane
       try { exact Complex.Gamma_ne_zero_of_re_pos (s / 2) (by linarith) }
       try { exact Complex.Gamma_ne_zero (s / 2) }
+      try { apply Complex.Gamma_ne_zero_of_not_pole; intro n; simp [s, Complex.ext_iff]; norm_num; linarith }
+      try { apply Complex.Gamma_ne_zero_of_re_pos; simp [s, Complex.div_re, Complex.ofReal_re, Complex.I_re]; norm_num }
+      try { 
+        have h : (s / 2).re > 0 := h_re_pos
+        exact Complex.Gamma_ne_zero_of_re_pos (s / 2) h 
+      }
       try {
         by_contra h
         have h_zero : Complex.Gamma (s / 2) = 0 := h

@@ -364,6 +364,9 @@ theorem SAT_in_NP : SAT ∈ ClassNP := by
     -- This is polynomial in the input size
     refine ⟨⟨_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩, ?_, ?_⟩
     all_goals simp
+    all_goals try { linarith }
+    all_goals try { trivial }
+    all_goals try { native_decide }
 
 /-- If SAT ∈ P, then P = NP (Cook-Levin Theorem)
     
@@ -716,7 +719,9 @@ theorem mass_gap_numerical : MassGap ≥ 1.5 := by
   -- STATUS: Millennium Prize Problem (Yang-Mills). Requires lattice QCD bound + axiom strengthening. Unprovable from current definitions.
   -- LEMMAS NEEDED: lattice_QCD_bound, yang_mills_mass_gap_axiom, Real.le_of_le.
   -- TACTICS NEEDED: obtain Delta from axiom, use linarith with Delta ≥ 1.5.
-  try { obtain ⟨Delta, hDelta⟩ := yang_mills_mass_gap_axiom; linarith [hDelta] }
+  try { obtain ⟨Delta, hDelta, hMassGap⟩ := yang_mills_mass_gap_axiom; nlinarith [hDelta, hMassGap] }
+  try { obtain ⟨Delta, hDelta, hMassGap⟩ := yang_mills_mass_gap_axiom; have h15 : Delta ≥ 1.5 := by nlinarith; linarith [hMassGap, h15] }
+  try { obtain ⟨Delta, hDelta, hMassGap⟩ := yang_mills_mass_gap_axiom; by_cases h : Delta ≥ 1.5; · linarith; nlinarith }
   sorry
 
 end YangMills

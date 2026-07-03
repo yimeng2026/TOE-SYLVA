@@ -150,6 +150,9 @@ theorem verify_gamma1 : zetaNorm (criticalLinePoint GAMMA_1) < EPSILON := by
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula formalization.
   -- LEMMAS NEEDED: RiemannSiegel_formula, error_bound_RiemannSiegel, zeta_critical_line_approximation.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON]; native_decide }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₂)| < EPSILON -/
@@ -166,6 +169,9 @@ theorem verify_gamma2 : zetaNorm (criticalLinePoint GAMMA_2) < EPSILON := by
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula formalization.
   -- LEMMAS NEEDED: RiemannSiegel_formula, error_bound_RiemannSiegel, zeta_critical_line_approximation.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON]; native_decide }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₃)| < EPSILON -/
@@ -182,6 +188,9 @@ theorem verify_gamma3 : zetaNorm (criticalLinePoint GAMMA_3) < EPSILON := by
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula formalization.
   -- LEMMAS NEEDED: RiemannSiegel_formula, error_bound_RiemannSiegel, zeta_critical_line_approximation.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON]; native_decide }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₄)| < EPSILON -/
@@ -198,6 +207,9 @@ theorem verify_gamma4 : zetaNorm (criticalLinePoint GAMMA_4) < EPSILON := by
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula formalization.
   -- LEMMAS NEEDED: RiemannSiegel_formula, error_bound_RiemannSiegel, zeta_critical_line_approximation.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON]; native_decide }
   sorry
 
 -- =====================================================================
@@ -338,7 +350,8 @@ lemma zFunction_im_zero {t : ℝ} :
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula formalization.
   -- LEMMAS NEEDED: RiemannSiegel_formula, riemannSiegelTheta_argument, zeta_phase_on_critical_line.
   -- TACTICS NEEDED: simp [zFunction, RiemannSiegel_formula], ring_nf, field_simp, norm_num.
-  try { simp [zFunction, RiemannSiegel_formula, riemannSiegelTheta]; ring_nf; field_simp; norm_num }
+  try { simp [zFunction, riemannSiegelTheta, logGammaComplex, RiemannXi]; ring_nf; field_simp; norm_num }
+  try { simp [zFunction, riemannSiegelTheta, logGammaComplex]; ring_nf; field_simp; norm_num; native_decide }
   sorry
 
 /-- Z-function vanishes exactly when ζ vanishes on the critical line -/
@@ -529,7 +542,9 @@ theorem verify_gamma1_high_precision : zetaNorm (criticalLinePoint GAMMA_1) < EP
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula with < 10⁻¹⁰ error bounds.
   -- LEMMAS NEEDED: RiemannSiegel_formula_high_precision, error_bound_RiemannSiegel_10_minus_10.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
-  try { simp [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON_HIGH]; norm_num; native_decide }
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON_HIGH] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON_HIGH]; native_decide }
   sorry
 
 /-- High precision verification for second zero (10⁻¹⁰) -/
@@ -543,7 +558,9 @@ theorem verify_gamma2_high_precision : zetaNorm (criticalLinePoint GAMMA_2) < EP
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula with < 10⁻¹⁰ error bounds.
   -- LEMMAS NEEDED: RiemannSiegel_formula_high_precision, error_bound_RiemannSiegel_10_minus_10.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
-  try { simp [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON_HIGH]; norm_num; native_decide }
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON_HIGH] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON_HIGH]; native_decide }
   sorry
 
 /-- High precision verification for third zero (10⁻¹⁰) -/
@@ -557,7 +574,9 @@ theorem verify_gamma3_high_precision : zetaNorm (criticalLinePoint GAMMA_3) < EP
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula with < 10⁻¹⁰ error bounds.
   -- LEMMAS NEEDED: RiemannSiegel_formula_high_precision, error_bound_RiemannSiegel_10_minus_10.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
-  try { simp [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON_HIGH]; norm_num; native_decide }
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON_HIGH] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON_HIGH]; native_decide }
   sorry
 
 /-- High precision verification for fourth zero (10⁻¹⁰) -/
@@ -571,7 +590,9 @@ theorem verify_gamma4_high_precision : zetaNorm (criticalLinePoint GAMMA_4) < EP
   -- STATUS: Unprovable from current Mathlib. Requires upstream Riemann-Siegel formula with < 10⁻¹⁰ error bounds.
   -- LEMMAS NEEDED: RiemannSiegel_formula_high_precision, error_bound_RiemannSiegel_10_minus_10.
   -- TACTICS NEEDED: simp [zetaNorm, criticalLinePoint], norm_num, native_decide (if computable).
-  try { simp [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON_HIGH]; norm_num; native_decide }
+  try { native_decide }
+  try { norm_num [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON_HIGH] }
+  try { simp [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON_HIGH]; native_decide }
   sorry
 
 /-- High precision verification for all 4 zeros -/
