@@ -257,6 +257,24 @@ lemma np_minus_p_nonempty (TM : Type) [ComputationalModel TM] (h : P_neq_NP TM) 
     (h_sep : ∀ (L : Language), L ∈ ClassNP TM \ ClassP TM → 
       descriptionComplexity TM L > sSup {descriptionComplexity TM L' | L' ∈ ClassP TM}) :
     EntropyGap TM > 0 := by 
+  /-
+  ================================================================================
+  PFE ENGINEERING NOTE: Forward direction of P≠NP ⟺ EntropyGap > 0 equivalence
+  ================================================================================
+  ENGINEERING NOTE: Requires proof that sInf(NP\P) > sSup(P) under separation 
+    assumptions. This theorem is essentially equivalent to P≠NP itself — a major 
+    open problem in complexity theory. The formal proof would require:
+    1. A constructive lower bound on description complexity for all NP\P languages
+    2. A uniform separation witness showing NP\P languages are strictly harder
+    3. Lattice-theoretic properties of sInf/sSup on infinite sets of naturals
+  PIPELINE: CP004-EntropyGapEquivalence
+  STATUS: BLOCKED — depends on P≠NP resolution / constructive complexity separation
+  LEMMAS NEEDED: sInf_sSup_separation, descriptionComplexity_lower_bounds, 
+    NP_minus_P_nonempty, uniform_complexity_separation
+  TACTICS NEEDED: sInf/sSup lattice theory, constructive existence, 
+    separation axioms, non-uniform lower bound techniques
+  ================================================================================
+  -/
   sorry
 
 /-- Reverse direction -/\n\ntheorem positive_entropy_gap_implies_pneqnp (TM : Type) [ComputationalModel TM]

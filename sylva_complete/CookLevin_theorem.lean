@@ -552,6 +552,27 @@ theorem SAT_is_NP_hard (problem : CNF → Prop) (h_np : InNP problem) :
     PolytimeReduction problem CNFSatisfiable := by
   -- This is the Cook-Levin theorem core: circuit to CNF reduction
   -- Combined with the fact that any NP verifier can be compiled to a circuit
+  /-
+  ================================================================================
+  PFE ENGINEERING NOTE: SAT is NP-hard (Cook-Levin Theorem Core)
+  ================================================================================
+  ENGINEERING NOTE: This is the core of the Cook-Levin theorem — any NP problem 
+    reduces to SAT via polynomial-time reduction. The full proof requires:
+    1. A circuit compilation framework that converts polynomial-time Turing machine 
+       verifiers into equivalent boolean circuits
+    2. Polynomial bounds on circuit size relative to input length
+    3. Proof that the circuit-to-CNF reduction preserves satisfiability
+    This is a foundational theorem in complexity theory; formalization in Lean 
+    would require a complete model of polynomial-time computation and circuit 
+    complexity.
+  PIPELINE: CookLevin-NPCompleteness
+  STATUS: BLOCKED — requires circuit compilation framework for NP verifiers
+  LEMMAS NEEDED: TM_to_circuit_compiler, polynomial_time_circuit_size_bound, 
+    verifier_circuit_equivalence, tseitin_encoding_correctness
+  TACTICS NEEDED: computability theory, circuit complexity, polynomial-time 
+    reduction construction, structural induction on TM configurations
+  ================================================================================
+  -/
   sorry -- Full proof requires additional circuit compilation framework
 
 /-- SAT is NP-complete -/\n\ntheorem SAT_is_NP_complete :
@@ -641,14 +662,54 @@ ClassP TM →
         constructive separation witness, non-uniform complexity lower bounds
       ================================================================================
       -/
-      -- This follows from the separation assumption
-      have h_lower_bound : sInf {descriptionComplexity TM L | L ∈ ClassNP TM \ ClassP TM} ≥ descriptionComplexity TM L_np := by
-        -- Actually, sInf could be smaller than any particular element
-        -- We need a stronger assumption: all NP\P languages have complexity > sup P
-        sorry -- Would need uniform separation assumption
-      -- For now, we use the fact that gap > 0 by construction
+      /-
+      ================================================================================
+      PFE ENGINEERING NOTE: Step 1 — sInf lower bound on NP\P description complexity
+      ================================================================================
+      ENGINEERING NOTE: Need to establish that sInf of description complexities 
+        over NP\P is bounded below by some specific language's complexity. In 
+        general, sInf ≤ any element, but proving a useful lower bound requires 
+        uniform separation: all NP\P languages have complexity > sup P. This is 
+        stronger than the pointwise assumption h_sep.
+      PIPELINE: CP004-EntropyGapEquivalence
+      STATUS: BLOCKED — needs uniform separation assumption (all NP\P > sup P)
+      LEMMAS NEEDED: sInf_lower_bound_uniform, descriptionComplexity_monotonicity
+      TACTICS NEEDED: lattice theory, order topology, uniform quantification
+      ================================================================================
+      -/
+      sorry -- Would need uniform separation assumption
+      /-
+      ================================================================================
+      PFE ENGINEERING NOTE: Step 2 — gap positivity from separation
+      ================================================================================
+      ENGINEERING NOTE: With uniform separation established, need to show 
+        sInf(NP\P) > sSup(P) strictly. The gap > 0 then follows from Nat.sub_pos 
+        and the definition of entropyGap'. Additional work needed to bridge 
+        from pointwise separation (h_sep) to uniform separation.
+      PIPELINE: CP004-EntropyGapEquivalence
+      STATUS: BLOCKED — depends on Step 1 uniform separation
+      LEMMAS NEEDED: Nat.sub_pos_of_lt, sInf_sSup_strict_separation
+      TACTICS NEEDED: lattice inequalities, strict order reasoning
+      ================================================================================
+      -/
       sorry -- Additional work needed for full formalization
     -- Therefore gap > 0
+    /-
+    ================================================================================
+    PFE ENGINEERING NOTE: Step 3 — final assembly of gap > 0 proof
+    ================================================================================
+    ENGINEERING NOTE: Final step requires combining:
+      - sInf(NP\P) > sSup(P) (from Steps 1-2)
+      - entropyGap' definition: gap = max(0, sInf - sSup)
+      - Nat sub positivity when minuend > subtrahend
+    This is the capstone of the forward direction, currently blocked on 
+      the uniform separation prerequisite.
+    PIPELINE: CP004-EntropyGapEquivalence
+    STATUS: BLOCKED — depends on Steps 1-2
+    LEMMAS NEEDED: entropyGap'_positive_iff, Nat.sub_pos_iff_lt
+    TACTICS NEEDED: linarith, simp on entropyGap' definition
+    ================================================================================
+    -/
     sorry -- Final step requires completing the above
   exact h_gap_pos
 
@@ -657,6 +718,26 @@ ClassP TM →
     EntropyGap TM > 0 := by
   -- Apply the complete proof with appropriate assumptions
   -- SAT's NP-completeness implies the separation needed for positive entropy gap
+  /-
+  ================================================================================
+  PFE ENGINEERING NOTE: Cook-Levin ↔ CP004 Entropy Gap Connection
+  ================================================================================
+  ENGINEERING NOTE: This theorem connects the Cook-Levin SAT NP-completeness result 
+    to the CP004 entropy gap framework. To prove EntropyGap > 0 from P≠NP, we 
+    would instantiate the general separation theorem with SAT-specific properties:
+    1. SAT is NP-complete (SAT_is_NP_complete)
+    2. SAT has super-polynomial description complexity (if P≠NP)
+    3. All P languages have polynomially bounded description complexity
+    The gap then emerges from the SAT-vs-P complexity separation. Full proof 
+    requires completing SAT_is_NP_hard and the uniform separation argument.
+  PIPELINE: CookLevin-CP004-Integration
+  STATUS: BLOCKED — depends on SAT_is_NP_hard and P≠NP separation framework
+  LEMMAS NEEDED: SAT_is_NP_complete, pneqnp_implies_positive_entropy_gap, 
+    SAT_description_complexity_lower_bound, P_language_complexity_upper_bound
+  TACTICS NEEDED: instantiation of general framework, SAT-specific complexity 
+    analysis, reduction chain composition
+  ================================================================================
+  -/
   sorry -- Requires instantiating the general theorem with SAT-specific properties
 
 end SylvaFormalization
