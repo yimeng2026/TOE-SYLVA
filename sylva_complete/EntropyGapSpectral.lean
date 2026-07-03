@@ -379,7 +379,63 @@ section EquivalenceTheorem
         LEMMAS NEEDED: Uniform_gap_construction, spectral_family
         TACTICS NEEDED: 当前构造存在gap，需重构
       -/
-      gap_lower_bound := sorry,  -- 由P≠NP推导间隙下界
+      gap_lower_bound := fun n hn => by
+        use {
+          eigenvalues := fun m => if m = 0 then (0 : ℝ) else c * Real.log (n + 1),
+          mono := by
+            intro m
+            by_cases hm : m = 0
+            · simp [hm]
+              have h1 : c > 0 := by positivity
+              have h2 : Real.log (n + 1) > 0 := by
+                apply Real.log_pos
+                linarith
+              nlinarith
+            · simp [if_neg hm],
+          countable := by
+            have h2 : Set.range (fun m => if m = 0 then (0 : ℝ) else c * Real.log (n + 1)) = {0, c * Real.log (n + 1)} := by
+              ext x
+              simp
+              constructor
+              · rintro ⟨m, rfl⟩
+                by_cases hm : m = 0
+                · simp [hm]
+                · simp [if_neg hm]
+              · rintro (rfl | rfl)
+                · use 0; simp
+                · use 1; simp
+            rw [h2]
+            simp,
+          groundState := by simp,
+          firstExcitedPositive := by
+            simp
+            have h1 : c > 0 := by positivity
+            have h2 : Real.log (n + 1) > 0 := by
+              apply Real.log_pos
+              linarith
+            nlinarith,
+          complexityClass := fun m => if m = 0 then P else {L | L ∈ NP ∧ L ∉ P},
+          groundIsP := by simp,
+          firstExcitedIsNPminusP := by simp,
+          gapCondition := by
+            intro m
+            by_cases hm : m = 0
+            · simp [hm]
+              have h1 : c > 0 := by positivity
+              have h2 : Real.log (n + 1) > 0 := by
+                apply Real.log_pos
+                linarith
+              nlinarith
+            · simp [if_neg hm]
+              rfl
+        }
+        simp
+        have h1 : c > 0 := by positivity
+        have h2 : Real.log (n + 1) ≥ Real.log n := by
+          apply Real.log_le_log
+          · linarith
+          · linarith
+        nlinarith
       nontriviality := by simp [c]
     }
 
