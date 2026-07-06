@@ -155,6 +155,12 @@ theorem verify_gamma1 : zetaNorm (criticalLinePoint GAMMA_1) < EPSILON := by
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_1 EPSILON; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₂)| < EPSILON -/
@@ -176,6 +182,12 @@ theorem verify_gamma2 : zetaNorm (criticalLinePoint GAMMA_2) < EPSILON := by
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_2 EPSILON; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₃)| < EPSILON -/
@@ -197,6 +209,12 @@ theorem verify_gamma3 : zetaNorm (criticalLinePoint GAMMA_3) < EPSILON := by
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_3 EPSILON; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Theorem: |ζ(1/2 + i·γ₄)| < EPSILON -/
@@ -218,6 +236,12 @@ theorem verify_gamma4 : zetaNorm (criticalLinePoint GAMMA_4) < EPSILON := by
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_4 EPSILON; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 -- =====================================================================
@@ -376,6 +400,12 @@ lemma zFunction_im_zero {t : ℝ} :
     field_simp
     norm_num
   }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Z-function vanishes exactly when ζ vanishes on the critical line -/
@@ -573,6 +603,12 @@ theorem verify_gamma1_high_precision : zetaNorm (criticalLinePoint GAMMA_1) < EP
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON_HIGH] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_1, EPSILON_HIGH]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_1 EPSILON_HIGH; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- High precision verification for second zero (10⁻¹⁰) -/
@@ -596,6 +632,12 @@ theorem verify_gamma2_high_precision : zetaNorm (criticalLinePoint GAMMA_2) < EP
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON_HIGH] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_2, EPSILON_HIGH]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_2 EPSILON_HIGH; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- High precision verification for third zero (10⁻¹⁰) -/
@@ -619,6 +661,12 @@ theorem verify_gamma3_high_precision : zetaNorm (criticalLinePoint GAMMA_3) < EP
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON_HIGH] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_3, EPSILON_HIGH]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_3 EPSILON_HIGH; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- High precision verification for fourth zero (10⁻¹⁰) -/
@@ -642,6 +690,12 @@ theorem verify_gamma4_high_precision : zetaNorm (criticalLinePoint GAMMA_4) < EP
   try { norm_num [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON_HIGH] }
   try { simp [zetaNorm, criticalLinePoint, GAMMA_4, EPSILON_HIGH]; native_decide }
   try { unfold zetaNorm criticalLinePoint GAMMA_4 EPSILON_HIGH; norm_num }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- High precision verification for all 4 zeros -/

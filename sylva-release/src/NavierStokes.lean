@@ -355,6 +355,12 @@ theorem beale_kato_majda_criterion {u : VelocityField} {T : ℝ}
   -- STATUS: Standard theorem. Requires Biot-Savart law + vorticity estimates in Mathlib. Unprovable from current definitions.
   -- LEMMAS NEEDED: Biot_Savart_estimate, vorticity_equation, enstrophy_bound, L2_Linfty_embedding.
   -- TACTICS NEEDED: intro h_blowup, rcases h_blowup, simp at h, contradiction, by_contra, push_neg, apply ne_of_gt.
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
   · -- Vorticity gradient blow-up case
     -- Show this contradicts the boundedness assumption via energy estimates
@@ -368,6 +374,12 @@ theorem beale_kato_majda_criterion {u : VelocityField} {T : ℝ}
     -- STATUS: Requires Sobolev embedding + interpolation inequalities. Unprovable from current definitions.
     -- LEMMAS NEEDED: Sobolev_embedding_3D, interpolation_inequality, gradient_enstrophy_bound.
     -- TACTICS NEEDED: simp at h, contradiction, by_contra, push_neg, apply ne_of_gt.
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
     sorry
   · -- Velocity blow-up case  
     -- Show this contradicts bounded vorticity via the Beale-Kato-Majda inequality
@@ -381,6 +393,12 @@ theorem beale_kato_majda_criterion {u : VelocityField} {T : ℝ}
     -- STATUS: Requires BKM inequality + logarithmic Sobolev embedding. Unprovable from current definitions.
     -- LEMMAS NEEDED: BKM_inequality, logarithmic_Sobolev, velocity_bound_from_vorticity.
     -- TACTICS NEEDED: simp at h, contradiction, by_contra, push_neg, apply ne_of_gt.
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
     sorry
 
 -- ============================================================
@@ -487,6 +505,12 @@ theorem weak_strong_uniqueness {u v : VelocityField} {p q : PressureField}
     try { trivial }
     try { nlinarith }
   exact h_eq }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Uniqueness of strong solutions -/
@@ -518,6 +542,12 @@ theorem strong_solution_uniqueness {u v : VelocityField} {p q : PressureField}
     try { trivial }
     try { nlinarith }
   exact h_eq }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 -- ============================================================
@@ -560,6 +590,12 @@ theorem ns_energy_debt_analogy {u : VelocityField} {t : ℝ}
     try { nlinarith }
     try { trivial }
   exact h_bound }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Critical threshold for regularity -/
@@ -592,6 +628,12 @@ theorem regularity_criterion {u : VelocityField} {T : ℝ}
     try { simp; linarith }
     try { nlinarith }
   exact h_no_blowup }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 -- ============================================================
@@ -643,6 +685,12 @@ theorem leray_hopf_existence (u0 : SpatialDomain → SpatialDomain)
   try { refine ⟨_, _, _, _, _, _, _, _, _, _⟩; all_goals simp; try { linarith }; try { trivial }; try { native_decide } }
   try { refine ⟨_, _, _, _, _, _, _, _, _, _⟩; all_goals simp; all_goals try { linarith }; all_goals try { trivial } }
   try { constructor; all_goals simp; all_goals try { linarith }; all_goals try { trivial }; all_goals try { native_decide } }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 -- ============================================================
@@ -673,6 +721,12 @@ theorem navier_stokes_summary :
     try { intro u0 h_smooth h_div_free nu h_nu; refine ⟨_⟩; all_goals simp; try { linarith }; try { trivial }; try { native_decide } }
     try { intro u0 h_smooth h_div_free nu h_nu; refine ⟨_⟩; all_goals simp; all_goals try { linarith }; all_goals try { trivial } }
     try { intro u0 h_smooth h_div_free nu h_nu; use (fun _ _ => 0); use (fun _ _ => 0); use 1; all_goals simp; all_goals try { linarith } }
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
     sorry
   constructor
   · -- Global weak existence: Leray-Hopf theorem (1934)
@@ -688,6 +742,12 @@ theorem navier_stokes_summary :
     try { intro u0 nu f h_nu; refine ⟨_⟩; all_goals simp; try { linarith }; try { trivial }; try { native_decide } }
     try { intro u0 nu f h_nu; refine ⟨_⟩; all_goals simp; all_goals try { linarith }; all_goals try { trivial } }
     try { intro u0 nu f h_nu; by_cases h_smooth; all_goals try { apply leray_hopf_existence }; all_goals try { assumption }; all_goals try { simp } }
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
     sorry
   · -- Strong solution uniqueness: proven above (strong_solution_uniqueness theorem)
     intros

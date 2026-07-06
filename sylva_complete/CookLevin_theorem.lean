@@ -573,7 +573,23 @@ theorem SAT_is_NP_hard (problem : CNF → Prop) (h_np : InNP problem) :
     reduction construction, structural induction on TM configurations
   ================================================================================
   -/
-  sorry -- Full proof requires additional circuit compilation framework
+/- 千界花园八要素注释
+问题: 证明 SAT 是 NP-hard：任意 NP 问题可多项式时间归约到 SAT（Cook-Levin 定理核心）
+策略: 经典复杂性理论：将 NP 验证器的多项式时间图灵机编译为多项式大小的布尔电路，再用 Tseitin 编码转为 CNF
+引理需求: TM_to_circuit_compiler, polynomial_time_circuit_size_bound, verifier_circuit_equivalence, tseitin_encoding_correctness
+策略需求: computability theory, circuit complexity, polynomial-time reduction construction, structural induction on TM configurations
+置信度: 0.3
+数值验证: 无
+文献引用: Cook 'The Complexity of Theorem-Proving Procedures', Levin 'Universal Search Problems', Arora-Barak 'Computational Complexity'
+PFE PIPELINE: 是 — PFE-TOE-Emergent-Complexity
+-/
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
+  sorry
 
 /-- SAT is NP-complete -/\n\ntheorem SAT_is_NP_complete :
     InNP CNFSatisfiable ∧ ∀ (problem : CNF → Prop), InNP problem → PolytimeReduction problem CNFSatisfiable := by
@@ -677,7 +693,23 @@ ClassP TM →
       TACTICS NEEDED: lattice theory, order topology, uniform quantification
       ================================================================================
       -/
-      sorry -- Would need uniform separation assumption
+/- 千界花园八要素注释
+问题: 证明 sInf(NP\P 的描述复杂度) > sSup(P 的描述复杂度)，即 uniform separation 假设
+策略: 需要从点态分离假设 h_sep 升级为全局分离：所有 NP\P 语言复杂度 > sup P + δ。这是复杂性理论中的核心未解决问题
+引理需求: sInf_lower_bound, descriptionComplexity_monotonicity, uniform_separation_axiom
+策略需求: lattice theory, order topology, uniform quantification, non-uniform complexity lower bounds
+置信度: 0.2
+数值验证: 无
+文献引用: Sylva CP004 module, complexity theory separation assumptions, Arora-Barak Chapter 3
+PFE PIPELINE: 是 — PFE-TOE-Emergent-Complexity
+-/
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
+      sorry
       /-
       ================================================================================
       PFE ENGINEERING NOTE: Step 2 — gap positivity from separation
@@ -692,7 +724,23 @@ ClassP TM →
       TACTICS NEEDED: lattice inequalities, strict order reasoning
       ================================================================================
       -/
-      sorry -- Additional work needed for full formalization
+/- 千界花园八要素注释
+问题: 从 uniform separation 推出 sInf(NP\P) > sSup(P) 的严格不等式
+策略: 依赖前一步 uniform separation 的完成。需要证明 gap 严格大于 0，涉及 Nat.sub_pos 和 lattice 不等式
+引理需求: Nat.sub_pos_of_lt, sInf_sSup_strict_separation, entropyGap'_positive_iff
+策略需求: lattice inequalities, strict order reasoning, Nat arithmetic
+置信度: 0.2
+数值验证: 无
+文献引用: Sylva CP004 module, lattice theory (sInf/sSup properties)
+PFE PIPELINE: 是 — PFE-TOE-Emergent-Complexity
+-/
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
+      sorry
     -- Therefore gap > 0
     /-
     ================================================================================
@@ -710,7 +758,23 @@ ClassP TM →
     TACTICS NEEDED: linarith, simp on entropyGap' definition
     ================================================================================
     -/
-    sorry -- Final step requires completing the above
+/- 千界花园八要素注释
+问题: 组装 entropyGap' > 0 的最终证明：结合 sInf > sSup 和 entropyGap' = max(0, sInf - sSup) 的定义
+策略: 最后一步：已知 sInf(NP\P) > sSup(P)，entropyGap' = max(0, sInf - sSup)，当 minuend > subtrahend 时 Nat.sub_pos
+引理需求: entropyGap'_positive_iff, Nat.sub_pos_iff_lt, max_eq_left_of_lt
+策略需求: linarith, simp on entropyGap' definition, Nat arithmetic
+置信度: 0.3
+数值验证: 无
+文献引用: Sylva CP004 module, Nat arithmetic, order theory
+PFE PIPELINE: 是 — PFE-TOE-Emergent-Complexity
+-/
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
+    sorry
   exact h_gap_pos
 
 /-- Cook-Levin theorem with CP004 entropy gap connection -/\n\ntheorem cook_levin_entropy_connection (TM : Type) [ComputationalModel TM]
@@ -738,6 +802,22 @@ ClassP TM →
     analysis, reduction chain composition
   ================================================================================
   -/
-  sorry -- Requires instantiating the general theorem with SAT-specific properties
+/- 千界花园八要素注释
+问题: Cook-Levin ↔ CP004 熵间隙连接：从 P≠NP 推出 EntropyGap > 0，利用 SAT 的 NP-完全性
+策略: 将 SAT_is_NP_complete 和 P≠NP 分离假设实例化到 CP004 的熵间隙框架。SAT 具有超多项式描述复杂度（若 P≠NP）
+引理需求: SAT_is_NP_complete, pneqnp_implies_positive_entropy_gap, SAT_description_complexity_lower_bound, P_language_complexity_upper_bound
+策略需求: instantiation of general framework, SAT-specific complexity analysis, reduction chain composition
+置信度: 0.3
+数值验证: 无
+文献引用: Sylva CP004 + CookLevin modules, Arora-Barak 'Computational Complexity' Chapter 2-3
+PFE PIPELINE: 是 — PFE-TOE-Emergent-Complexity
+-/
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
+  sorry
 
 end SylvaFormalization

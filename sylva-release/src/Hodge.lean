@@ -595,17 +595,16 @@ theorem betti_number_eq_sum_hodge {n : ℕ} (H : PureHodgeStructure n) :
       all_goals try { ring }
     rw [h1, h2, h3, h4]
   }
-  -- 若上述策略均失败, 保留 sorry 并添加详细工程注释
-  -- 千界花园工程注释 =============================================================
-  -- 问题描述: Betti 数 = Hodge 数之和 的证明需跨域 TensorProduct 维数引理
-  -- 策略: 分四步建立等式链 (dim_ℚ → dim_ℂ ⊗ → dim_ℂ ⊕ → Σ dim_ℂ → Σ h^{p,q})
-  -- 引理需求: TensorProduct.finrank (跨域 ℚ→ℂ), LinearEquiv.finrank_eq, DirectSum.finrank_eq_sum
-  -- 策略需求: 先 have h_step1 建立 dim_ℚ = dim_ℂ 桥梁, 再顺序应用 total_iso 和直和维数
-  -- 已知结果: 这是标准 Hodge 论恒等式, 在 Hodge Theory (Voisin, 2002) 第 6 章有证明
-  -- 数值验证: 对 n=2, h^{0,2}+h^{1,1}+h^{2,0} = b_2, 验证于所有 K3 曲面
-  -- 置信度: 90% (定理正确, 但 Mathlib 引理名称和形式可能需微调)
-  -- PFE PIPELINE: 将本定理加入 Hodge 结构验证管线, 待 Mathlib 跨域 TensorProduct 维数引理稳定后移除 sorry
-  -- =============================================================================
+  /- 千界花园八要素注释
+  问题: 证明 Betti 数 = Hodge 数之和 (b_n = Σ_{p+q=n} h^{p,q})
+  策略: 分四步建立等式链: dim_ℚ H_Q = dim_ℂ (H_Q ⊗_ℚ ℂ) = dim_ℂ (⊕' H^{p,q}) = Σ dim_ℂ H^{p,q} = Σ h^{p,q}
+  引理需求: TensorProduct.finrank (跨域 ℚ→ℂ), LinearEquiv.finrank_eq, DirectSum.finrank_eq_sum
+  策略需求: have h_step1 建立 dim_ℚ = dim_ℂ 桥梁 → 顺序应用 total_iso 和直和维数
+  置信度: 0.90
+  数值验证: 对 n=2, h^{0,2}+h^{1,1}+h^{2,0} = b_2, 验证于所有 K3 曲面
+  文献引用: Voisin, "Hodge Theory and Complex Algebraic Geometry", 2002, Ch. 6; Griffiths & Harris, "Principles of Algebraic Geometry", Ch. 0
+  PFE PIPELINE: 将本定理加入 Hodge 结构验证管线, 待 Mathlib 跨域 TensorProduct 维数引理稳定后移除 sorry
+  -/
   sorry
 
 end Hodge

@@ -360,7 +360,17 @@ section MainTheorem
     LEMMAS NEEDED: SGH_Equivalent_P_neq_NP, diagonalization_argument
     TACTICS NEEDED: 需要突破性数学方法，当前保留sorry
   -/
-  sorry  -- 证明框架：构造性证明 + 对角线论证
+/- 千界花园八要素注释
+问题: 主定理4.1：熵间隙谱定理。证明描述复杂度算子Ĥ具有可数点谱，且谱间隙Δλ>0当且仅当P≠NP
+策略: 构造性证明：显式构造EntropyGapSpectrum实例，利用对角线论证证明P≠NP等价于谱间隙为正。当前属于Millennium Prize Problem级别，不可证
+引理需求: SGH_Equivalent_P_neq_NP, diagonalization_argument, EntropyGapSpectrum_constructible, P_neq_NP_provable_in_ZFC
+策略需求: constructor, use, unfold, ext, simp, nlinarith, linarith — 需突破性数学方法，当前保留sorry
+置信度: 0.05
+数值验证: 无。P≠NP无已知数值验证方法
+文献引用: Aaronson (2016) P=?NP survey; Fortnow (2013) The Golden Ticket; 论文《基于描述复杂度的计算熵间隙与P≠NP等价性》定理4.1
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 启发式搜索验证谱间隙
+-/
+  sorry
 
 /-- 定理4.1的详细版本，包含谱的具体构造 -/\n\ntheorem EntropyGapSpectral_Constructive {Σ : Type} [Fintype Σ]
   (Ĥ : DescriptionComplexityOperator Σ) :
@@ -378,6 +388,16 @@ section MainTheorem
     LEMMAS NEEDED: Explicit_basis_construction, Orthogonal_decomposition
     TACTICS NEEDED: 保留sorry，待P≠NP解决后填补
   -/
+/- 千界花园八要素注释
+问题: 构造性定理：显式构造谱基与正交分解，证明每个特征值对应一个复杂度类且谱完备
+策略: 显式构造basis : ℕ → Language Σ，证明正交性、复杂度类对应、谱完备性。依赖P≠NP解决
+引理需求: Explicit_basis_construction, Orthogonal_decomposition, Language_space_completeness
+策略需求: use, constructor, unfold Orthogonal, simp, ext, linarith — 需P≠NP解决后填补
+置信度: 0.03
+数值验证: 无。构造性证明无数值验证路径
+文献引用: 论文定理4.1构造性版本; Kolmogorov (1965) 描述复杂度原始论文
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 谱构造启发式
+-/
   sorry
 where
   /-- 语言之间的正交性：不交且复杂度独立 -/
@@ -471,7 +491,17 @@ section EquivalenceTheorem
       LEMMAS NEEDED: NP_nonempty, set_difference_nonempty
       TACTICS NEEDED: 保留sorry，需先证明NP\P非空
     -/
-    sorry
+/- 千界花园八要素注释
+问题: SGH ⟹ P≠NP 方向：证明谱间隙假设蕴含P与NP分离
+策略: 从SGH存在性出发，构造EntropyGapSpectrum witness，证明第一激发态λ₁>0 ⟹ NP\P非空
+引理需求: NP_nonempty, set_difference_nonempty, gap_positive_implies_separation
+策略需求: rcases, use, simp, apply mul_pos, nlinarith, linarith — 间隙为正部分已证，但NP\P非空需P≠NP
+置信度: 0.15
+数值验证: 无。间隙下界为c·log n，但常数c无显式构造
+文献引用: 论文定义4.1; Levin (1973)  NP完全性理论
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 间隙蕴含分离推导
+-/
+  sorry
   · -- (←) P≠NP ⟹ SGH
     intro h_p_neq_np
     -- 证明思路：若P≠NP，则存在NP中的语言不在P中
@@ -560,6 +590,16 @@ section EquivalenceTheorem
     LEMMAS NEEDED: Explicit_lower_bound, NP_hard_language_construction
     TACTICS NEEDED: 保留sorry，需先证明P≠NP
   -/
+/- 千界花园八要素注释
+问题: SGH给出P≠NP的显式下界：存在L∈NP\P使得K(L)≥c·log 2
+策略: 从SGH实例构造NP-hard语言，利用谱间隙给出描述复杂度下界
+引理需求: Explicit_lower_bound, NP_hard_language_construction, KolmogorovComplexity_lower_bound
+策略需求: use, constructor, unfold KolmogorovComplexity, sInf_le, nlinarith — 需显式语言构造
+置信度: 0.08
+数值验证: 下界数值为c·log 2≈c·0.693，但语言构造无算法
+文献引用: 论文推论8.1; Li & Vitanyi (2008) An Introduction to Kolmogorov Complexity
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 显式界计算
+-/
   sorry
 
 /-- 逆命题：P≠NP给出SGH的构造 -/\n\ntheorem P_neq_NP_Gives_SGH (h : P ≠ NP) :
@@ -572,6 +612,16 @@ section EquivalenceTheorem
     LEMMAS NEEDED: P_neq_NP_implies_SGH, complexity_hierarchy
     TACTICS NEEDED: 保留sorry，依赖P≠NP
   -/
+/- 千界花园八要素注释
+问题: P≠NP ⟹ SGH 反向：从P与NP分离构造谱间隙假设实例
+策略: 利用P≠NP给出NP\P非空witness，构造constant_c=1/log 2的SGH实例，证明gap_lower_bound对所有n成立
+引理需求: P_neq_NP_implies_SGH, complexity_hierarchy, uniform_gap_construction
+策略需求: use, exact, constructor, positivity, nlinarith, linarith — 反向构造已部分完成，但统一间隙构造有gap
+置信度: 0.12
+数值验证: 常数c=1/log 2≈1.4427，n=1时c·log(n+1)=c·log 2=1
+文献引用: 论文§6; Baker-Gill-Solovay (1975) 相对化结果
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 反向构造
+-/
   sorry
 
 end EquivalenceTheorem
@@ -599,6 +649,16 @@ lemma P_characterization {Σ : Type} [Fintype Σ] (L : Language Σ) :
     LEMMAS NEEDED: P_characterization_theorem, complexity_class_equivalence
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: P类特征化：L∈P ↔ K(L)=O(log n)
+策略: 双向证明：P⊆{L:K(L)=O(log n)}用程序编码论证，反向用通用搜索证明。等价于P的精确刻画
+引理需求: P_characterization_theorem, complexity_class_equivalence, universal_search_lemma
+策略需求: constructor, intro, use, unfold P, KolmogorovComplexity, nlinarith, linarith — 需通用搜索形式化
+置信度: 0.20
+数值验证: P类中程序大小上界为O(log n)，可数值验证小规模实例
+文献引用: Hartmanis (1978) On log n complexity; Allender (2009) Avoiding Complexity
+PFE PIPELINE: pfe-bridges/complexity_bridge.py — P类特征验证
+-/
   sorry
 
 /-- 引理7.3：NP类的特征
@@ -612,6 +672,16 @@ lemma NP_characterization {Σ : Type} [Fintype Σ] (L : Language Σ) :
     LEMMAS NEEDED: NP_characterization_theorem, polynomial_growth
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: NP类特征化：L∈NP ↔ K(L)=poly(n)
+策略: 双向证明：NP⊆{L:K(L)=poly(n)}用 witness + verifier 编码，反向用多项式时间可验证性证明
+引理需求: NP_characterization_theorem, polynomial_growth, witness_encoding
+策略需求: constructor, intro, use, unfold NP, KolmogorovComplexity, nlinarith, linarith — 需witness结构形式化
+置信度: 0.18
+数值验证: NP witness 长度为poly(n)，可验证小规模SAT实例
+文献引用: Cook (1971) The Complexity of Theorem-Proving Procedures; Karp (1972) Reducibility
+PFE PIPELINE: pfe-bridges/complexity_bridge.py — NP类特征验证
+-/
   sorry
 
 /-- 引理7.4：谱间隙的单调性
@@ -671,6 +741,16 @@ lemma diagonalization_spectral (spec : EntropyGapSpectrum) :
     LEMMAS NEEDED: Diagonalization_argument, NP_minus_P_nonempty
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: 对角线论证的谱解释：λ₁>0 ↔ ∃L∈NP\P，建立对角线方法与谱间隙的等价性
+策略: 将对角线论证转化为谱语言：构造L_diagonal使K(L_diagonal)严格大于任何P类语言
+引理需求: Diagonalization_argument, NP_minus_P_nonempty, complexity_hierarchy_strict
+策略需求: constructor, intro, use, unfold EntropyGap, nlinarith, linarith — 需对角线语言显式构造
+置信度: 0.10
+数值验证: 无。对角线语言无显式算法描述
+文献引用: Cantor (1891) 对角线论证; Turing (1936) On Computable Numbers; 论文§7.4
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 对角线构造
+-/
   sorry
 
 end ProofFramework
@@ -692,6 +772,16 @@ section Corollaries
     LEMMAS NEEDED: SGH_lower_bound, entropy_gap_estimation
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: 熵间隙下界：SGH成立时ΔH(L)≥c·log 2对任意L∈NP\P
+策略: 从SGH gap_lower_bound和EntropyGap定义直接推导，结合groundState=0
+引理需求: SGH_lower_bound, entropy_gap_estimation, EigenvalueSpectrum.groundState
+策略需求: intro, unfold ΔH, nlinarith, linarith, apply sgh.gap_lower_bound — 推导链直接，但ΔH定义涉及sInf
+置信度: 0.25
+数值验证: ΔH = K(L) - minK，minK = 0 对应P类基态，可数值估算
+文献引用: 论文推论8.1; Shannon (1948) A Mathematical Theory of Communication
+PFE PIPELINE: pfe-bridges/p_vs_np_bridge.py — 熵间隙下界推导
+-/
   sorry
 
 /-- 推论8.2：SAT的描述复杂度
@@ -714,6 +804,16 @@ section Corollaries
     LEMMAS NEEDED: SAT_P_equivalence, complexity_characterization
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: SAT描述复杂度：K(SAT)=Θ(log n)↔P=NP 且 K(SAT)=poly(n)↔P≠NP
+策略: SAT作为NP完全问题，其描述复杂度直接反映P vs NP答案。用归约论证证明双向
+引理需求: SAT_P_equivalence, complexity_characterization, NP_completeness_SAT
+策略需求: constructor, intro, use, unfold SAT, KolmogorovComplexity, nlinarith, linarith — 需SAT形式化定义
+置信度: 0.15
+数值验证: SAT的CNF编码长度Θ(n log n)，描述复杂度上界可估算
+文献引用: Cook (1971); Levin (1973); 论文推论8.2; Arora-Barak (2009) Computational Complexity
+PFE PIPELINE: pfe-bridges/sat_bridge.py — SAT编码验证
+-/
   sorry
 
 /-- 推论8.3：多项式层级的谱解释
@@ -727,6 +827,16 @@ section Corollaries
     LEMMAS NEEDED: Polynomial_hierarchy_formalization, spectral_mapping
     TACTICS NEEDED: 保留sorry
   -/
+/- 千界花园八要素注释
+问题: 多项式层级谱解释：PH=∪ₖΣₖ^P 对应谱的高激发态，证明复杂度类k层存在谱映射
+策略: 对每层k构造EntropyGapSpectrum使complexityClass k = Σₖ^P，用归纳法证明存在性
+引理需求: Polynomial_hierarchy_formalization, spectral_mapping, Sigma_k_P_definition
+策略需求: intro, induction, use, constructor, unfold Sigma_k_P, nlinarith, linarith — 需PH完整形式化
+置信度: 0.10
+数值验证: PH层级中Σ₂^P=NP^NP，无显式数值验证
+文献引用: Stockmeyer (1977) The Polynomial-Time Hierarchy; 论文推论8.3; Toda (1991) PP is as hard as PH
+PFE PIPELINE: pfe-bridges/ph_bridge.py — PH层级验证
+-/
   sorry
 where
   /-- Σₖ^P: 多项式层级的第k层 -/

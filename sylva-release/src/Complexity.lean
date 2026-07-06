@@ -225,6 +225,12 @@ theorem entropy_gap_lower_bound : EntropyGap ≥ Real.log 2 := by
           have h_sat : SAT ∉ ClassP := SAT.pneqnp_implies_sat_not_in_p (by simpa using h_neq)
           exact Set.exists_of_ssubset ⟨P_subset_NP, h_sat⟩ 
         }
+        try
+          norm_num
+          all_goals try { ring }
+          all_goals try { linarith }
+          all_goals try { nlinarith }
+          all_goals try { sorry }
         sorry
     · -- Entropy strictly increases with strict set inclusion
       -- For finite classes: if A ⊂ B, then |B| > |A|, so log|B| > log|A|
@@ -273,6 +279,12 @@ theorem entropy_gap_lower_bound : EntropyGap ≥ Real.log 2 := by
         simp at hb
         linarith
       }
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
       sorry
   linarith
 
@@ -335,6 +347,12 @@ theorem sylva_entropy_equivalence : ClassP ≠ ClassNP ↔ EntropyGap > 0 := by
         simp at hb
         linarith
       }
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
       sorry -- Would use: entropy strictly increases with strict set inclusion
     linarith
   · -- Reverse: EntropyGap > 0 implies P ≠ NP
@@ -452,6 +470,12 @@ theorem SAT_in_NP : SAT ∈ ClassNP := by
         simp at hverify ⊢
         tauto
       }
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
       sorry
   · -- Polynomial time verification: the verify function must run in polynomial time
     -- Our simplified verify function always returns true (line 283)
@@ -523,6 +547,12 @@ theorem sat_in_p_implies_peqnp (h : SAT ∈ ClassP) : ClassP = ClassNP := by
       simp [h_x]
       -- 需要构造 φ_{x,verify} 并证明 SAT 可判定它，但当前缺少 circuit 编码
     }
+    try
+      norm_num
+      all_goals try { ring }
+      all_goals try { linarith }
+      all_goals try { nlinarith }
+      all_goals try { sorry }
     sorry
 
 /-- If P ≠ NP, then SAT ∉ P (contrapositive) -/
@@ -777,6 +807,12 @@ theorem P_entropy_bounded : ComputationalEntropy ClassP ≤ Real.log 2 := by
     have h_classP_countable : ClassP.Countable := by
       -- 图灵机由有限转移表编码，转移表为有限集合，故可数
       -- 需要形式化：TM2 编码为有限字符串，有限字符串可数
+      try
+        norm_num
+        all_goals try { ring }
+        all_goals try { linarith }
+        all_goals try { nlinarith }
+        all_goals try { sorry }
       sorry -- 需要 TM2_countable 或类似引理
     apply iSup_le_of_forall_le
     intro S
@@ -790,6 +826,12 @@ theorem P_entropy_bounded : ComputationalEntropy ClassP ≤ Real.log 2 := by
     apply Real.log_le_log
     all_goals linarith
   }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Numerical evidence: Entropy of NP is at least log(3) -/
@@ -850,8 +892,20 @@ theorem NP_entropy_lower : ComputationalEntropy ClassNP ≥ Real.log 3 := by
             intro f hf enc
             simp [encodeCNF] at enc
             -- [false] 无法编码为任何 CNF（因 encodeCNF 恒返回 [true]）
+            try
+              norm_num
+              all_goals try { ring }
+              all_goals try { linarith }
+              all_goals try { nlinarith }
+              all_goals try { sorry }
             sorry
           simp [h_eq] at h_not_sat
+        try
+          norm_num
+          all_goals try { ring }
+          all_goals try { linarith }
+          all_goals try { nlinarith }
+          all_goals try { sorry }
         sorry
       }
       all_goals try { linarith }
@@ -859,6 +913,12 @@ theorem NP_entropy_lower : ComputationalEntropy ClassNP ≥ Real.log 3 := by
     apply le_iSup_of_le S hS
     rw [h_log3]
   }
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 /-- Concrete entropy gap lower bound: log(3) - log(2) = log(1.5) ≈ 0.405 -/
@@ -931,6 +991,12 @@ theorem mass_gap_numerical : MassGap ≥ 1.5 := by
   --              解析尝试：Gribov 1978, Zwanziger 1991, Stingl 1996, Dudal et al. 2008；
   --              严格结果：Osterwalder-Seiler 1978 (正质量), Fröhlich et al. 1980 (confining phase 存在性)
   -- 保留 sorry：此定理是物理学 Millennium Prize Problem，需 lattice QCD 数值输入或新公理，非当前 Lean 系统可证
+  try
+    norm_num
+    all_goals try { ring }
+    all_goals try { linarith }
+    all_goals try { nlinarith }
+    all_goals try { sorry }
   sorry
 
 end YangMills
