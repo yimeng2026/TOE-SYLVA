@@ -102,12 +102,12 @@
 
 | 编号 | 内容 | 文件 |
 |------|------|------|
-| v5.25 | 网络对称分析 — 四层级统一框架（拓扑/动力学/标度/规范对称） | `sylva_formalization/SylvaFormalization/SYLV A_Symmetry_v5.25.md` |
-| v5.26 | 信息几何 — Fisher度量/自然梯度/HJB对应/量子信息几何 | `sylva_formalization/SylvaFormalization/SYLV A_Information_v5.26.md` |
-| v5.27 | 集体智能 — Boids/Vicsek/ACO/DeGroot/多样性预测定理/集成学习/联邦学习/MARL | `sylva_formalization/SylvaFormalization/SYLV A_CollectiveIntelligence_v5.27.md` |
-| v5.28 | 韧性 — 四维度韧性框架（抵抗力/恢复力/适应性/反脆弱性）+ 网络拓扑与韧性-效率权衡 | `sylva_formalization/SylvaFormalization/SYLV A_Resilience_v5.28.md` |
-| v5.29 | 进化动力学 — 复制动力学/ESS/适应度地形/NK模型/遗传算法/NAS/演化经济学/文化进化 | `sylva_formalization/SylvaFormalization/SYLV A_Evolution_v5.29.md` |
-| v5.30 | 创造力 — 组合搜索/结构映射/概念融合/生成模型/新奇搜索/外适应 | `sylva_formalization/SylvaFormalization/SYLV A_Creativity_v5.30.md` |
+| v5.25 | 网络对称分析 — 四层级统一框架（拓扑/动力学/标度/规范对称） | `sylva_formalization/SylvaFormalization/SYLVA_Symmetry_v5.25.md` |
+| v5.26 | 信息几何 — Fisher度量/自然梯度/HJB对应/量子信息几何 | `sylva_formalization/SylvaFormalization/SYLVA_Information_v5.26.md` |
+| v5.27 | 集体智能 — Boids/Vicsek/ACO/DeGroot/多样性预测定理/集成学习/联邦学习/MARL | `sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence_v5.27.md` |
+| v5.28 | 韧性 — 四维度韧性框架（抵抗力/恢复力/适应性/反脆弱性）+ 网络拓扑与韧性-效率权衡 | `sylva_formalization/SylvaFormalization/SYLVA_Resilience_v5.28.md` |
+| v5.29 | 进化动力学 — 复制动力学/ESS/适应度地形/NK模型/遗传算法/NAS/演化经济学/文化进化 | `sylva_formalization/SylvaFormalization/SYLVA_Evolution_v5.29.md` |
+| v5.30 | 创造力 — 组合搜索/结构映射/概念融合/生成模型/新奇搜索/外适应 | `sylva_formalization/SylvaFormalization/SYLVA_Creativity_v5.30.md` |
 
 ### 系列八：正特征奇点消解（Positive Characteristic Resolution of Singularities）
 
@@ -257,13 +257,19 @@
 
 | 编号 | 内容 | 文件 |
 |------|------|------|
-| 综述 | 粒子物理与标准模型 — QED/QCD/电弱统一/Higgs/夸克/轻子/CKM/LHC/Muon g-2/SUSY/GUT | `papers/particle_physics_standard_model/粒子物理与标准模型_综述.md` |
+| 综述 | 粒子物理与标准模型 — QED/QCD/电弱统一/Higgs/夸克/轻子/CKM/LHC/Muon g-2/SUSY/GUT | `papers/粒子物理与标准模型_综述/粒子物理与标准模型_综述.md` |
 
 ### 系列三十三：统计物理与相变（Statistical Physics & Phase Transitions）
 
 | 编号 | 内容 | 文件 |
 |------|------|------|
 | 综述 | 统计物理与相变 — 系综理论/配分函数/朗道理论/伊辛模型/临界现象/重整化群/共形场论 | `papers/统计物理与相变_综述/统计物理与相变_综述.md` |
+
+### 系列三十四：控制理论与最优控制（Control Theory & Optimal Control）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 控制理论与最优控制 — PID/状态空间/LQR/Lyapunov/极小值原理/HJB/MPC/鲁棒控制 | `papers/控制理论与最优控制_综述/控制理论与最优控制_综述.md` |
 
 ### 系列三十五：核物理与核天体物理（Nuclear Physics & Nuclear Astrophysics）
 
@@ -282,6 +288,12 @@
 | 编号 | 内容 | 文件 |
 |------|------|------|
 | 综述 | 等离子体物理 — MHD/双流体/动理学/托卡马克/仿星器/惯性约束/夸克-胶子等离子体/激光尾波场/湍流 | `papers/等离子体物理_综述/等离子体物理_综述.md` |
+
+### 系列三十八：声学（Acoustics）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 声学 — 经典线性声学/非线性声学/声学超材料/声子晶体/拓扑声学/量子声学/声子热输运/声-引力类比 | `papers/声学_综述/声学_综述.md` |
 
 ### 系列三十九：地球物理学（Geophysics）
 
@@ -331,9 +343,23 @@
 |------|------|------|
 | 综述 | 化学物理与分子反应动力学 — 量子化学/BO近似/HF/DFT/分子光谱/反应动力学/TST/RRKM/飞秒化学/催化/星际化学 | `papers/化学物理与分子反应动力学_综述/化学物理与分子反应动力学_综述.md` |
 
+### 系列四十七：电磁学经典电动力学（Classical Electrodynamics）
+
 | 编号 | 内容 | 文件 |
 |------|------|------|
-| 综述 | 声学 — 经典线性声学/非线性声学/声学超材料/声子晶体/拓扑声学/量子声学/声子热输运/声-引力类比 | `papers/声学_综述/声学_综述.md` |
+| 综述 | 电磁学经典电动力学 — Coulomb/Gauss/Maxwell/Lorentz/电磁波/辐射/狭义相对论协变形式/规范场论/介质/波导 | `papers/电磁学经典电动力学_综述/电磁学经典电动力学_综述.md` |
+
+### 系列四十八：软物质物理与复杂流体（Soft Matter Physics & Complex Fluids）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 软物质物理与复杂流体 — 聚合物/胶体/液晶/活性物质/玻璃态/颗粒物质/复杂流体/流变学 | `papers/软物质物理与复杂流体_综述/软物质物理与复杂流体_综述.md` |
+
+### 系列四十九：表面科学与界面物理（Surface Science & Interfacial Physics）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 表面科学与界面物理 — STM/AFM/表面电子态/等离子体/催化/薄膜外延/二维材料/润湿/界面稳定性 | `papers/表面科学与界面物理_综述/表面科学与界面物理_综述.md` |
 
 ---
 
@@ -387,7 +413,10 @@
 | 海洋物理学与物理海洋学 | 1 篇综述 | 已完成 |
 | 空间物理学与太阳行星际物理 | 1 篇综述 | 已完成 |
 | 化学物理与分子反应动力学 | 1 篇综述 | 已完成 |
-| **合计** | **~99 篇** | — |
+| 电磁学经典电动力学 | 1 篇综述 | 已完成 |
+| 软物质物理与复杂流体 | 1 篇综述 | 已完成 |
+| 表面科学与界面物理 | 1 篇综述 | 已完成 |
+| **合计** | **~102 篇** | — |
 
 ---
 
