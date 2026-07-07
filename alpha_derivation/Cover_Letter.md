@@ -2,7 +2,7 @@
 %  Cover Letter for Physical Review D Submission
 %  Manuscript: "Emergent Fine-Structure Constant from Causal Network Dynamics:
 %               A Topological Field Theory Approach"
-%  Authors: SYLVA Research Group
+%  Authors: 乔瀚（TOE-SYLVA 形式化物理研究所）
 %  Date: 2026-06-18
 % =============================================================================
 
