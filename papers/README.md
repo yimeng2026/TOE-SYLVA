@@ -175,6 +175,34 @@
 |------|------|------|
 | 综述 | 微分几何与广义相对论 — 流形/张量/Levi-Civita联络/Riemann曲率/Einstein场方程/黑洞/Schwarzschild/Kerr/FLRW/引力波/LIGO | `papers/differential_geometry_gr/微分几何与广义相对论_综述.md` |
 
+### 系列十九：代数拓扑与 homotopy 理论（Algebraic Topology & Homotopy Theory）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 代数拓扑与 homotopy 理论 — 基本群/同调/上同调/同伦群/纤维丛/示性类/谱序列/广义上同调/K理论/TDA | `papers/algebraic_topology/代数拓扑与 homotopy 理论_综述.md` |
+
+### 系列二十：量子场论与路径积分（Quantum Field Theory & Path Integral）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 量子场论与路径积分 — 泛函积分/标量场/费米子/Grassmann/规范场/费曼图/瞬子/重整化/AdS/CFT | `papers/quantum_field_theory/量子场论与路径积分_综述.md` |
+
+### 系列二十一：统计学习理论（Statistical Learning Theory）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 统计学习理论 — PAC学习/VC维/Rademacher复杂度/一致收敛/核方法/RKHS/深度学习泛化/信息论泛化界 | `papers/statistical_learning/统计学习理论_综述.md` |
+
+### 系列二十二：凝聚态物理与拓扑物态（Condensed Matter Physics & Topological Phases）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 凝聚态物理与拓扑物态 — 能带理论/Bloch定理/拓扑绝缘体/Majorana/量子霍尔/强关联/Hubbard/高温超导/自旋液体 | `papers/condensed_matter/凝聚态物理与拓扑物态_综述.md` |
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 微分几何与广义相对论 — 流形/张量/Levi-Civita联络/Riemann曲率/Einstein场方程/黑洞/Schwarzschild/Kerr/FLRW/引力波/LIGO | `papers/differential_geometry_gr/微分几何与广义相对论_综述.md` |
+
 ---
 
 ## 总计
@@ -199,7 +227,12 @@
 | 信息论基础 | 1 篇综述 | 已完成 |
 | 动力系统与混沌理论 | 1 篇综述 | 已完成 |
 | 微分几何与广义相对论 | 1 篇综述 | 已完成 |
-| **合计** | **~71 篇** | — |
+| 代数拓扑与 homotopy 理论 | 1 篇综述 | 已完成 |
+| 量子场论与路径积分 | 1 篇综述 | 已完成 |
+| 统计学习理论 | 1 篇综述 | 已完成 |
+| 凝聚态物理与拓扑物态 | 1 篇综述 | 已完成 |
+| **合计** | **~75 篇** | — |
+| **合计** | **~75 篇** | — |
 
 ---
 
