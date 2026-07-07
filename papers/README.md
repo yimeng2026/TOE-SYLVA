@@ -16,6 +16,8 @@
 | 黎曼假设 | `millennium_papers/黎曼假设_学术论文_最终版.md` | 732 |
 | 纳维-斯托克斯方程 | `millennium_papers/纳维-斯托克斯_学术论文_最终版.md` | 472 |
 | **BSD 猜想** | `millennium_papers/BSD_猜想_学术论文_最终版.md` | 342 |
+| **庞加莱猜想** | `millennium_papers/庞加莱猜想_学术论文_最终版.md` | — |
+| **杨-米尔斯存在性与质量间隙** | `millennium_papers/杨-米尔斯_学术论文_最终版.md` | — |
 
 ### 系列二：四力统一理论（Four Forces Unification）
 
