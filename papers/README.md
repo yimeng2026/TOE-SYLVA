@@ -199,9 +199,29 @@
 |------|------|------|
 | 综述 | 凝聚态物理与拓扑物态 — 能带理论/Bloch定理/拓扑绝缘体/Majorana/量子霍尔/强关联/Hubbard/高温超导/自旋液体 | `papers/condensed_matter/凝聚态物理与拓扑物态_综述.md` |
 
+### 系列二十三：代数几何基础（Algebraic Geometry Foundations）
+
 | 编号 | 内容 | 文件 |
 |------|------|------|
-| 综述 | 微分几何与广义相对论 — 流形/张量/Levi-Civita联络/Riemann曲率/Einstein场方程/黑洞/Schwarzschild/Kerr/FLRW/引力波/LIGO | `papers/differential_geometry_gr/微分几何与广义相对论_综述.md` |
+| 综述 | 代数几何基础 — 概形/层/上同调/代数曲线/模空间/Calabi-Yau/镜像对称/导出范畴/动机理论 | `papers/algebraic_geometry/代数几何基础综述.md` |
+
+### 系列二十四：数论与算术几何（Number Theory & Arithmetic Geometry）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 数论与算术几何 — 椭圆曲线/BSD/模形式/Langlands/局部-整体原理/p进霍奇/Perfectoid | `papers/number_theory_arithmetic/数论与算术几何综述.md` |
+
+### 系列二十五：辛几何与经典力学（Symplectic Geometry & Classical Mechanics）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 辛几何与经典力学 — 辛流形/Darboux定理/Hamilton力学/动量映射/Marsden-Weinstein约化/Floer同调 | `papers/symplectic_geometry/辛几何与经典力学_综述.md` |
+
+### 系列二十六：量子信息与量子计算（Quantum Information & Quantum Computing）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 量子信息与量子计算 — 量子比特/纠缠/量子算法/Shor/Grover/物理实现/量子纠错/量子通信 | `papers/quantum_info_computing/量子信息与量子计算综述.md` |
 
 ---
 
@@ -231,8 +251,11 @@
 | 量子场论与路径积分 | 1 篇综述 | 已完成 |
 | 统计学习理论 | 1 篇综述 | 已完成 |
 | 凝聚态物理与拓扑物态 | 1 篇综述 | 已完成 |
-| **合计** | **~75 篇** | — |
-| **合计** | **~75 篇** | — |
+| 代数几何基础 | 1 篇综述 | 已完成 |
+| 数论与算术几何 | 1 篇综述 | 已完成 |
+| 辛几何与经典力学 | 1 篇综述 | 已完成 |
+| 量子信息与量子计算 | 1 篇综述 | 已完成 |
+| **合计** | **~79 篇** | — |
 
 ---
 
