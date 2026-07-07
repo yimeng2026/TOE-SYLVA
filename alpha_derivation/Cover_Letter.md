@@ -10,8 +10,8 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 
-\signature{SYLVA Research Group\\TOE-SYLVA Project}
-\address{TOE-SYLVA Project\\Email: contact@toe-sylva.org}
+\signature{乔瀚\\TOE-SYLVA 形式化物理研究所}
+\address{TOE-SYLVA 形式化物理研究所\\Email: contact@toe-sylva.org}
 
 \begin{document}
 

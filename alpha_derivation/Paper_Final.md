@@ -1,6 +1,6 @@
 ---
 title: "Emergent Fine-Structure Constant from Causal Network Dynamics: A Topological Field Theory Approach"
-author: "SYLVA Research Group"
+author: "乔瀚（TOE-SYLVA 形式化物理研究所）"
 affiliation: "TOE-SYLVA Project"
 date: "2026-06-17"
 ---
