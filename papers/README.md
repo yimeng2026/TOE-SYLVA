@@ -109,6 +109,12 @@
 | v5.29 | 进化动力学 — 复制动力学/ESS/适应度地形/NK模型/遗传算法/NAS/演化经济学/文化进化 | `sylva_formalization/SylvaFormalization/SYLV A_Evolution_v5.29.md` |
 | v5.30 | 创造力 — 组合搜索/结构映射/概念融合/生成模型/新奇搜索/外适应 | `sylva_formalization/SylvaFormalization/SYLV A_Creativity_v5.30.md` |
 
+### 系列八：正特征奇点消解（Positive Characteristic Resolution of Singularities）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | 正特征奇点消解 — Hironaka/Abhyankar/Cossart-Piltant/CJS/perfectoid spaces | `papers/positive_characteristic_resolution/正特征奇点消解_综述.md` |
+
 ---
 
 ## 总计
@@ -122,7 +128,8 @@
 | 室温超导 | 1 篇 + 完整资料 | 推进中 |
 | 精细结构常数 | 15 篇子文件 | 推进中 |
 | 集中联系规律 (v5.25-v5.30) | 6 篇 | 已完成 |
-| **合计** | **~60 篇** | — |
+| 正特征奇点消解 | 1 篇综述 | 已完成 |
+| **合计** | **~61 篇** | — |
 
 ---
 
