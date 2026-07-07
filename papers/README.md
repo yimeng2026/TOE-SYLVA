@@ -98,19 +98,31 @@
 | 最终论文 | 完整论文 | `alpha_derivation/Paper_Final.md` / `Paper_Final_v2.md` |
 | 修订计划 | 修订方案 | `alpha_derivation/PAPER_REVISION_PLAN.md` |
 
+### 系列七：集中联系规律 v5.25-v5.30（Centralized Connection Laws）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| v5.25 | 网络对称分析 — 四层级统一框架（拓扑/动力学/标度/规范对称） | `sylva_formalization/SylvaFormalization/SYLV A_Symmetry_v5.25.md` |
+| v5.26 | 信息几何 — Fisher度量/自然梯度/HJB对应/量子信息几何 | `sylva_formalization/SylvaFormalization/SYLV A_Information_v5.26.md` |
+| v5.27 | 集体智能 — Boids/Vicsek/ACO/DeGroot/多样性预测定理/集成学习/联邦学习/MARL | `sylva_formalization/SylvaFormalization/SYLV A_CollectiveIntelligence_v5.27.md` |
+| v5.28 | 韧性 — 四维度韧性框架（抵抗力/恢复力/适应性/反脆弱性）+ 网络拓扑与韧性-效率权衡 | `sylva_formalization/SylvaFormalization/SYLV A_Resilience_v5.28.md` |
+| v5.29 | 进化动力学 — 复制动力学/ESS/适应度地形/NK模型/遗传算法/NAS/演化经济学/文化进化 | `sylva_formalization/SylvaFormalization/SYLV A_Evolution_v5.29.md` |
+| v5.30 | 创造力 — 组合搜索/结构映射/概念融合/生成模型/新奇搜索/外适应 | `sylva_formalization/SylvaFormalization/SYLV A_Creativity_v5.30.md` |
+
 ---
 
 ## 总计
 
 | 系列 | 论文数量 | 状态 |
 |------|---------|------|
-| 千禧年难题 | 4 篇 | 已完成 |
+| 千禧年难题 | 7 篇 | 已完成 |
 | 四力统一理论 | 1 篇 | 已完成 |
 | 拓扑量子互联网 | 14 篇 + 综述 | 已完成 |
-| 量子纠错与容错计算 | 14 篇 + 综述 | 已完成 |
+| 量子纠错与容错计算 | 15 篇 + 综述 | 已完成 |
 | 室温超导 | 1 篇 + 完整资料 | 推进中 |
 | 精细结构常数 | 15 篇子文件 | 推进中 |
-| **合计** | **~50 篇** | — |
+| 集中联系规律 (v5.25-v5.30) | 6 篇 | 已完成 |
+| **合计** | **~60 篇** | — |
 
 ---
 
