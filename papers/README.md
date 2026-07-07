@@ -121,6 +121,12 @@
 |------|------|------|
 | 综述 | p-adic Hodge理论 — Fontaine环/B_dR/B_st/B_cris/比较定理/perfectoid/prismatic cohomology | `papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md` |
 
+### 系列十：Langlands 纲领（Langlands Program）
+
+| 编号 | 内容 | 文件 |
+|------|------|------|
+| 综述 | Langlands纲领 — 经典/几何/p-adic Langlands对应 + BSD/黎曼/AdS-CFT/随机矩阵联系 | `papers/langlands_program/Langlands纲领_综述.md` |
+
 ---
 
 ## 总计
@@ -136,7 +142,8 @@
 | 集中联系规律 (v5.25-v5.30) | 6 篇 | 已完成 |
 | 正特征奇点消解 | 1 篇综述 | 已完成 |
 | p-adic Hodge 理论 | 1 篇综述 | 已完成 |
-| **合计** | **~62 篇** | — |
+| Langlands 纲领 | 1 篇综述 | 已完成 |
+| **合计** | **~63 篇** | — |
 
 ---
 
