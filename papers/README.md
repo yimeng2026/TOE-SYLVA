@@ -15,6 +15,7 @@
 | 霍奇猜想 | `millennium_papers/霍奇猜想_学术论文_最终版.md` | 467 |
 | 黎曼假设 | `millennium_papers/黎曼假设_学术论文_最终版.md` | 732 |
 | 纳维-斯托克斯方程 | `millennium_papers/纳维-斯托克斯_学术论文_最终版.md` | 472 |
+| **BSD 猜想** | `millennium_papers/BSD_猜想_学术论文_最终版.md` | 342 |
 
 ### 系列二：四力统一理论（Four Forces Unification）
 
