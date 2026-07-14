@@ -1,0 +1,63 @@
+============================================================
+TOE-SYLVA 自旋电子学数值验证套件
+Numerical Validation Suite for Spintronics
+============================================================
+
+[泡利矩阵代数与自旋对易关系]
+  状态: [PASS]
+  - σ_x^2 = I: True
+  - σ_y^2 = I: True
+  - σ_z^2 = I: True
+  - [σ_x, σ_y] = 2i·σ_z: True
+  - [σ_x, σ_z] = 2i·σ_y: True
+  - [σ_y, σ_x] = 2i·σ_z: True
+  - [σ_y, σ_z] = 2i·σ_x: True
+  - [σ_z, σ_x] = 2i·σ_y: True
+  - [σ_z, σ_y] = 2i·σ_x: True
+  - [S_x, S_y] = i*hbar*S_z: True
+  - [S_x, S_z] = i*hbar*S_y: True
+  - [S_y, S_x] = i*hbar*S_z: True
+  - [S_y, S_z] = i*hbar*S_x: True
+  - [S_z, S_x] = i*hbar*S_y: True
+  - [S_z, S_y] = i*hbar*S_x: True
+
+[Stoner铁磁性判据]
+  状态: [PASS]
+  - Fe: I·D(E_F) = 1.395: OK
+  - Co: I·D(E_F) = 1.296: OK
+  - Ni: I·D(E_F) = 1.079: OK
+  - Cu: I·D(E_F) = 0.120: OK
+
+[Jullière TMR公式]
+  状态: [FAIL]
+  - 公式自洽性 (P=0.55): OK
+  - TMR计算值: 0.867 (86.7%)
+  - TMR单调性 (P∈[0.1,0.9]): True
+  - TMR发散行为 (P→1): NG
+  - 与实验值一致性 (TMR>600%): NG
+
+[Slonczewski STT力矩]
+  状态: [PASS]
+  - STT系数数量级: 1.609e+09
+  - τ ⊥ m (几何约束): True
+  - 力矩数量级合理性: False
+  - τ_magnitude: 1.609e+09 N·m
+  - 最大力矩在m⊥M处: False
+
+[自旋霍尔角与Rashba参数]
+  状态: [PASS]
+  - Pt自旋霍尔角 θ_SH = 0.07: OK
+  - β-Ta自旋霍尔角 θ_SH = -0.12: OK
+  - 自旋霍尔角符号正确: OK
+  - 自旋流数量级合理性: OK
+  - Rashba哈密顿量厄米性: True
+  - Rashba能带劈裂 E=±α_R|k|: True
+  - 自旋-动量锁定 (σ⊥k): OK
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\TOE-SYLVA-pull\papers\自旋电子学与磁电子学_综述\validate_spintronics.py", line 356, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\一梦\Documents\TOE-SYLVA-pull\papers\自旋电子学与磁电子学_综述\validate_spintronics.py", line 331, in main
+    print(f"  - {key}: {val}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\xb2' in position 26: illegal multibyte sequence

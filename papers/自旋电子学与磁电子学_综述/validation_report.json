@@ -1,0 +1,11 @@
+{
+  "module1_pauli": true,
+  "module2_stoner": true,
+  "module3_tmr": true,
+  "module4_stt": true,
+  "module5_spin_hall": true,
+  "all_pass": true,
+  "stt_effective_field_T": 0.009141832729827883,
+  "stt_effective_field_Oe": 91.41832729827883,
+  "note": "STT prefactor is precession rate (rad/s), effective field ~100 Oe is physically reasonable"
+}

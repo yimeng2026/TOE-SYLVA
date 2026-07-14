@@ -8,7 +8,7 @@
 
 ## 摘要
 
-代数拓扑（Algebraic Topology）作为现代数学的核心分支，通过代数的透镜研究拓扑空间的定性性质。其两大支柱——同调理论（Homology Theory）与同伦理论（Homotopy Theory）——自二十世纪初由 Poincaré、Brouwer、Hopf 及 Eilenberg-Steenrod 等先驱建立以来，已发展为影响深远且应用广泛的数学体系。本文系统综述代数拓扑的基本框架：从基本群与覆盖空间出发，经由同调代数与上同调理论，深入同伦群、纤维丛与示性类，延伸至谱序列、广义上同调理论及无穷范畴与导出代数几何。同时，本文着重讨论代数拓扑在理论物理（规范场论、弦理论、拓扑量子场论）与数据科学（拓扑数据分析、持续同调）中的交叉应用，并给出 TOE-SYLVA 形式化物理框架中各模块间的联系索引。本文共收录 48 条参考文献，力求为物理学与数学交叉领域的研究者提供一份结构完整、内容扎实的文献地图。
+代数拓扑（Algebraic Topology）作为现代数学的核心分支，通过代数的透镜研究拓扑空间的定性性质。其两大支柱——同调理论（Homology Theory）与同伦理论（Homotopy Theory）——自二十世纪初由 Poincaré、Brouwer、Hopf 及 Eilenberg-Steenrod 等先驱建立以来，已发展为影响深远且应用广泛的数学体系。本文系统综述代数拓扑的基本框架：从基本群与覆盖空间出发，经由同调代数与上同调理论，深入同伦群、纤维丛与示性类，延伸至谱序列、广义上同调理论及无穷范畴与导出代数几何。同时，本文着重讨论代数拓扑在理论物理（规范场论、弦理论、拓扑量子场论）与数据科学（拓扑数据分析、持续同调）中的交叉应用，并给出 TOE-SYLVA 形式化物理框架中各模块间的联系索引。本文共收录 64 条参考文献（48 条经典文献 + 16 条 arXiv 预印本），力求为物理学与数学交叉领域的研究者提供一份结构完整、内容扎实的文献地图。
 
 **关键词**：代数拓扑；同伦理论；同调；同伦群；纤维丛；示性类；谱序列；拓扑数据分析；规范场论；拓扑量子场论
 
@@ -270,6 +270,8 @@ $$d_B(D_k(X), D_k(Y)) \leq d_{GH}(X, Y)$$
 
 ## 参考文献
 
+### 经典文献
+
 1. H. Poincaré, "Analysis Situs," *Journal de l'École Polytechnique*, 1 (1895), 1–121.
 2. L. E. J. Brouwer, "Über Abbildung von Mannigfaltigkeiten," *Mathematische Annalen*, 71 (1912), 97–115.
 3. S. Lefschetz, "Intersections and Transforms of Complexes and Manifolds," *Transactions of the AMS*, 28 (1926), 1–49.
@@ -318,6 +320,25 @@ $$d_B(D_k(X), D_k(Y)) \leq d_{GH}(X, Y)$$
 46. A. Connes and M. Marcolli, *Noncommutative Geometry, Quantum Fields and Motives*, American Mathematical Society, 2008.
 47. M. A. Nielsen and I. L. Chuang, *Quantum Computation and Quantum Information*, Cambridge University Press, 2000.
 48. S. E. Cappell, R. Lee, and E. Y. Miller, "The Action of the Torelli Group on the Homology of Representation Spaces is Nontrivial," *Topology*, 39 (2000), 851–871.
+
+### arXiv 预印本文献
+
+49. A. A. Voronov, "Rational Homotopy Theory," arXiv:2404.00939 [math.AT] (2024). — 综述了有理同伦理论及其在数学物理中的应用，包括Hypothesis H与Mysterious Triality。
+50. H. Y. Zhang, "K-theoretic Global Symmetry in String-constructed QFT and T-duality," arXiv:2404.16097 [hep-th] (2024). — 提出弦构造QFT中的广义对称性由扭曲K理论描述，与T-对偶相容。
+51. Z. Xu et al., "The Adams differentials on the classes $h_j^3$," arXiv:2302.11869 [math.AT] (2023). — 利用 motivic 稳定同伦论与合成同伦论证明 Adams 谱序列中 $h_j^3$ 的非平凡微分。
+52. L. Hesselholt, "Dirac geometry II: Coherent cohomology," arXiv:2303.13444 [math.AG] (2023). — 发展 Dirac 叠的凝聚上同调理论，应用于稳定同伦论中 MU 与 $\mathbb{F}_p$ 的 Dirac 叠对应。
+53. Z. Duan et al., "The vanishing of the Tate spectral sequence," arXiv:2204.08600 [math.AT] (2022). — 证明 Tate 谱序列的消失性，导出同伦不动点谱序列中的强水平消失线。
+54. Z. Duan et al., "Equivariant homotopy fixed points of Morava E-theory," arXiv:2209.01830 [math.AT] (2022). — 完全计算 $Q_8$ 等有限群作用下 Morava E-理论的等变同伦不动点。
+55. I. Bobkova et al., "Picard spectral sequence and homotopy fixed points," arXiv:2403.15572 [math.AT] (2024). — 比较 Picard 谱序列与同伦不动点谱序列，推广 Mathew-Stojanoska 比较工具。
+56. J. Treviño-Marroquín, "Semi-coarse Spaces, Homotopy and Homology," arXiv:2210.02569 [math.AT] (2022). — 研究半粗空间的代数拓扑，建立 Vietoris-Rips 同调的同伦不变性定理。
+57. S. B. Smith, "The homotopy theory of function spaces: a survey," arXiv:1009.0804 [math.AT] (2010). — 综述函数空间 $map(X,Y)$ 的同伦理论，包括自等价群与自由环路空间。
+58. W. Lück, "Proper equivariant stable homotopy theory," arXiv:1901.00827 [math.AT] (2019). — 建立 proper 等变稳定同伦论的公理化框架，发表于 Memoirs of the AMS 288 (2023)。
+59. M. Behrens et al., "On the ring of cooperations for 2-primary connective topological modular forms," arXiv:2007.00482 [math.AT] (2020). — 研究 tmf 的 2-初级 cooperations 环结构。
+60. A. Hedenlund and J. Rognes, "A multiplicative Tate spectral sequence for compact Lie group actions," arXiv:2411.17441 [math.AT] (2024). — 紧 Lie 群作用下的乘法 Tate 谱序列，发表于 AMS Memoirs 294 (2024)。
+61. D. Kubrak et al., "Derived binomial rings I: Integral Betti cohomology of log schemes," arXiv:2308.01110 [math.AG] (2023). — 导出二项式环与 log 方案的整 Betti 上同调。
+62. T. Bachmann et al., "The Chow t-structure on the $\infty$-category of motivic spectra," arXiv:2207.04291 [math.AG] (2022). —  motivic 谱的 $\infty$-范畴上的 Chow t-结构，发表于 Annals of Mathematics 195 (2022)。
+63. J. Latschev and A. Oancea, "BV bialgebra structures in Floer theory and string topology," arXiv:2402.16794 [math.SG] (2024). — Floer 理论与弦拓扑中的 BV 双代数结构。
+64. F. Naef and P. Safronov, "Simple homotopy invariance of the loop coproduct," arXiv:2406.19326 [math.AT] (2024). — 环路余积的简单同伦不变性。
 
 ---
 
