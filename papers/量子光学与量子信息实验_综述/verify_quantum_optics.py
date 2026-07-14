@@ -140,7 +140,122 @@ def verify_bell_chsh():
         all_entangled = all_entangled and is_entangled
         print(f"{name:<10} {purity:<15.6f} {'✓ 纠缠' if is_entangled else '✗ 混合'}")
     
-    # CHSH不等式验证
+    # CHSH不等式验证 - 使用标准最优测量设置
+    print(f"\nCHSH不等式验证:")
+    
+    # 泡利矩阵
+    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
+    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
+    
+    # 标准CHSH测量设置
+    A0 = sigma_z
+    A1 = sigma_x
+    
+    def expectation_value(state, op1, op2):
+        """两体关联期望值 <AB>"""
+        op = np.kron(op1, op2)
+        return np.real(state.conj() @ op @ state)
+    
+    # 对 |Ψ⁻⟩ (单态), 关联为负，需要使用调整后的B设置
+    # B0 = (σ_z + σ_x)/√2, B1 = (σ_x - σ_z)/√2 (注意顺序交换)
+    state = psi_minus
+    B0_minus = (sigma_z + sigma_x) / np.sqrt(2)
+    B1_minus = (sigma_x - sigma_z) / np.sqrt(2)
+    
+    E_ab = expectation_value(state, A0, B0_minus)
+    E_abp = expectation_value(state, A0, B1_minus)
+    E_apb = expectation_value(state, A1, B0_minus)
+    E_apbp = expectation_value(state, A1, B1_minus)
+    
+    S = abs(E_ab - E_abp + E_apb + E_apbp)
+    
+    print(f"  |Psi-> (singlet) CHSH:")
+    print(f"  E(a,b)   = {E_ab:+.4f}")
+    print(f"  E(a,b')  = {E_abp:+.4f}")
+    print(f"  E(a',b)  = {E_apb:+.4f}")
+    print(f"  E(a',b') = {E_apbp:+.4f}")
+    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
+    print(f"  经典极限: S ≤ 2.0")
+    print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
+    print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
+    
+    # 对 |Φ⁺⟩ (三重态), 标准设置即可
+    state2 = phi_plus
+    B0_plus = (sigma_z + sigma_x) / np.sqrt(2)
+    B1_plus = (sigma_z - sigma_x) / np.sqrt(2)
+    
+    E2_ab = expectation_value(state2, A0, B0_plus)
+    E2_abp = expectation_value(state2, A0, B1_plus)
+    E2_apb = expectation_value(state2, A1, B0_plus)
+    E2_apbp = expectation_value(state2, A1, B1_plus)
+    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
+    
+    print(f"\n  |Phi+> (triplet) CHSH:")
+    print(f"  S = {S2:.4f}")
+    print(f"  判定: {'✓ CHSH不等式违反' if S2 > 2 else '✗ 未违反'}")
+    print(f"\nCHSH不等式验证:")
+    
+    # 泡利矩阵
+    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
+    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
+    
+    # 对 |Ψ⁻⟩ (单态), 标准CHSH测量设置:
+    # A0 = σ_z, A1 = σ_x
+    # B0 = (σ_z + σ_x)/√2, B1 = (σ_z - σ_x)/√2
+    # 但对于单态，关联符号相反，需要调整
+    
+    # 正确方法: 计算每个测量设置下的关联函数 E = <AB>
+    # 对于单态 |Ψ⁻⟩, <σ_i ⊗ σ_j> = -δ_ij
+    
+    A0 = sigma_z
+    A1 = sigma_x
+    
+    # B的设置需要与A的设置有22.5度夹角
+    # B0 = cos(π/8)σ_z + sin(π/8)σ_x
+    # B1 = cos(π/8)σ_z - sin(π/8)σ_x
+    theta = np.pi / 8
+    B0 = np.cos(theta) * sigma_z + np.sin(theta) * sigma_x
+    B1 = np.cos(theta) * sigma_z - np.sin(theta) * sigma_x
+    
+    def expectation_value(state, op1, op2):
+        """两体关联期望值 <AB>"""
+        op = np.kron(op1, op2)
+        return np.real(state.conj() @ op @ state)
+    
+    # 对 |Ψ⁻⟩ 计算CHSH参数
+    state = psi_minus
+    
+    E_ab = expectation_value(state, A0, B0)
+    E_abp = expectation_value(state, A0, B1)
+    E_apb = expectation_value(state, A1, B0)
+    E_apbp = expectation_value(state, A1, B1)
+    
+    S = abs(E_ab - E_abp + E_apb + E_apbp)
+    
+    print(f"  E(a,b)   = {E_ab:+.4f}")
+    print(f"  E(a,b')  = {E_abp:+.4f}")
+    print(f"  E(a',b)  = {E_apb:+.4f}")
+    print(f"  E(a',b') = {E_apbp:+.4f}")
+    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
+    print(f"  经典极限: S ≤ 2.0")
+    print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
+    print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
+    
+    # 对 |Φ⁺⟩ 验证 (三重态，关联为正)
+    state2 = phi_plus
+    # 对于 |Φ⁺⟩, 使用 A0=σ_z, A1=σ_x, B0=(σ_z+σ_x)/√2, B1=(σ_z-σ_x)/√2
+    B0_phi = (sigma_z + sigma_x) / np.sqrt(2)
+    B1_phi = (sigma_z - sigma_x) / np.sqrt(2)
+    
+    E2_ab = expectation_value(state2, A0, B0_phi)
+    E2_abp = expectation_value(state2, A0, B1_phi)
+    E2_apb = expectation_value(state2, A1, B0_phi)
+    E2_apbp = expectation_value(state2, A1, B1_phi)
+    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
+    
+    print(f"\n  |Φ⁺⟩态 S = {S2:.4f}")
     print(f"\nCHSH不等式验证:")
     
     # 泡利矩阵

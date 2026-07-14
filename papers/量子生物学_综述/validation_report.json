@@ -1,0 +1,89 @@
+{
+  "suite": "Quantum Biology Numerical Validation",
+  "institution": "TOE-SYLVA Formal Physics Institute",
+  "numpy_version": "2.4.4",
+  "results": [
+    {
+      "module": "FMO_coherence",
+      "input_freq_cm-1": 200.0,
+      "derived_freq_cm-1": 200.0,
+      "delta_E_meV": 24.796185926323044,
+      "coherence_lifetime_fs": 300.0,
+      "max_amplitude": 0.5,
+      "freq_check": true,
+      "lifetime_check": true,
+      "passed": true
+    },
+    {
+      "module": "radical_pair_spin_dynamics",
+      "B_earth_uT": 50.0,
+      "Larmor_freq_MHz": 1.4012796964525924,
+      "Larmor_period_us": 0.7136334041887201,
+      "hyperfine_freq_MHz": 28.02559392905185,
+      "RP_lifetime_us": 10.0,
+      "Larmor_cycles": 14.012796964525927,
+      "singlet_survival": 0.0,
+      "Larmor_check": true,
+      "hyperfine_check": true,
+      "cycles_check": true,
+      "passed": true
+    },
+    {
+      "module": "enzyme_tunneling",
+      "barrier_height_kJ_mol": 40.0,
+      "thermal_energy_meV": 25.85393258426966,
+      "test_barrier_width_A": 1.0,
+      "proton_tunneling_prob": 5.282750717696447e-13,
+      "deuteron_tunneling_prob": 4.358318467838403e-18,
+      "KIE": 121210.75494321402,
+      "classical_prob": 1.0841948486516939e-07,
+      "tunneling_classical_ratio": 4.872510438751929e-06,
+      "exponential_sensitivity_ratio": 0.05919513451241004,
+      "KIE_check": true,
+      "exponential_sensitivity_check": true,
+      "tunneling_nonzero_check": true,
+      "passed": true
+    },
+    {
+      "module": "ENAQC_transport",
+      "coupling_J_meV": 50.0,
+      "bridge_offset_meV": 100.0,
+      "zero_noise_efficiency": 1.4999999999250002e-05,
+      "optimal_gamma_meV": 100.0,
+      "theoretical_optimal_gamma_meV": 141.4213562373095,
+      "optimal_efficiency": 1.0,
+      "strong_noise_efficiency": 1.0,
+      "enhancement_factor": 66666.66666999999,
+      "optimal_exists_check": true,
+      "enaqc_signature_check": true,
+      "strong_noise_check": false,
+      "optimal_theory_check": true,
+      "passed": false
+    },
+    {
+      "module": "lindblad_master_equation",
+      "delta_meV": 100.0,
+      "gamma_rel_meV": 5.0,
+      "gamma_pump_meV": 2.0,
+      "gamma_deph_meV": 10.0,
+      "steady_state_ee": 0.2857142857142857,
+      "steady_state_gg": 0.7142857142857143,
+      "steady_state_coherence": 0.0,
+      "trace": 1.0,
+      "eigenvalues": [
+        0.2857142857142857,
+        0.7142857142857143
+      ],
+      "hermitian_error": 0.0,
+      "population_ratio": 0.39999999999999997,
+      "theoretical_ratio": 0.4,
+      "hermitian_check": true,
+      "positivity_check": true,
+      "trace_check": true,
+      "steady_state_check": true,
+      "coherence_zero_check": true,
+      "passed": true
+    }
+  ],
+  "all_passed": false
+}

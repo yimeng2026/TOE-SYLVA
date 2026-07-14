@@ -73,7 +73,7 @@ def verify_gor_relation():
     print(f"  文献典型值: -(250 MeV)^3 = {-(250**3):.3e} MeV^3")
 
     passed = relative_error < 15.0  # GOR 是领头阶关系，允许 ~10-15% 偏差
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status} (GOR 领头阶关系，允许约 15% 偏差)")
     return passed
 
@@ -113,7 +113,7 @@ def verify_weinberg_scattering_length():
 
     # Weinberg 领头阶对 a_0^0 低估约 30%，这是已知的——需要O(p^4)修正
     passed = (err_0 < 40.0) and (err_2 < 20.0)
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status} (Weinberg 领头阶对 a₀^0 低估约30%，属已知系统效应)")
     return passed
 
@@ -153,7 +153,7 @@ def verify_chiral_power_counting():
     print(f"在 p < 500 MeV 区域，展开参数 < 0.25，ChPT 收敛良好")
 
     passed = all_small
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -198,7 +198,7 @@ def verify_goldstone_mass_quark_relation():
 
     # Gell-Mann–Okubo 对 eta 质量预言偏差较大，因为 eta 混入了 eta' (U(1)_A 反常)
     passed = (err_pi < 20) and (err_k < 20)
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status} (eta 质量偏差大是已知的 eta-eta' 混合效应)")
     return passed
 
@@ -243,7 +243,7 @@ def verify_nucleon_mass_chiral_extrapolation():
     print(f"该正的非解析项是重子ChPT的标志性特征")
 
     passed = err < 10.0
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -292,7 +292,7 @@ def verify_chiral_nuclear_force_lo():
     print(f"\npi介子康普顿波长: hbarc/M_pi = {range_check:.2f} fm")
 
     passed = (range_check > 1.3) and (range_check < 1.5)
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -337,7 +337,7 @@ def verify_finite_volume_gA():
     print(f"\n大体积极限 (L -> ∞): Deltag_A -> 0, g_A -> {G_A:.4f}")
 
     passed = (L_min > 2.0) and (L_min < 6.0)
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status} (非单调有限体积修正的定性验证)")
     return passed
 
@@ -380,7 +380,7 @@ def verify_pion_nucleon_sigma():
     print(f"  sigma_piN 的不确定性是暗物质探测的主要理论误差来源之一")
 
     passed = (sigma_central > 40) and (sigma_central < 70)
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -427,7 +427,7 @@ def verify_lattice_chiral_extrapolation_fpi():
     print(f"  这导致 f_pi(物理点) > f_pi^0，与实验一致")
 
     passed = err < 10.0
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -483,7 +483,7 @@ def verify_eft_operator_dimension_counting():
     print(f"  若 c_i << 1 或 c_i ≫ 1，可能暗示新物理或精细调节")
 
     passed = all_valid
-    status = "✓ PASS" if passed else "✗ FAIL"
+    status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status}")
     return passed
 
@@ -520,7 +520,7 @@ def main():
     total_count = len(results)
 
     for name, result in results:
-        status = "✓ PASS" if result else "✗ FAIL"
+        status = "[PASS] PASS" if result else "[FAIL] FAIL"
         print(f"  {status}  {name}")
 
     print("=" * 70)
@@ -528,7 +528,7 @@ def main():
     print("=" * 70)
 
     if passed_count == total_count:
-        print("\n  ★ 所有验证模块全部通过 ★")
+        print("\n  * 所有验证模块全部通过 *")
     else:
         print(f"\n  注意: {total_count - passed_count} 项未通过，请检查参数或理论近似")
 

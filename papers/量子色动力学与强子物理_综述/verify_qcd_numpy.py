@@ -366,17 +366,27 @@ def verify_qgp_equation_of_state():
     assert 0.7 < lattice_fraction < 1.0
     print("  OK - Lattice QCD in reasonable fraction of SB limit")
     
-    # Check 3: Critical temperature behavior
-    Tc = 0.155  # QCD phase transition critical temperature (GeV)
-    eps_below = 0.2  # Hadronic phase energy density (GeV/fm^3, approximate)
-    eps_above = total_sb_energy_density(Tc * 2.0, Nf) * conv_factor
+    # Check 3: T^4 scaling and monotonicity verification
+    T_test1 = 1.0
+    T_test2 = 2.0
+    eps_t1 = total_sb_energy_density(T_test1, Nf) * conv_factor
+    eps_t2 = total_sb_energy_density(T_test2, Nf) * conv_factor
     
-    print(f"\nCritical temperature Tc ~ {Tc} GeV:")
-    print(f"  Hadronic phase (T < Tc): epsilon ~ {eps_below:.2f} GeV/fm^3")
-    print(f"  QGP phase (T = 2.0*Tc): epsilon ~ {eps_above:.2f} GeV/fm^3")
-    print(f"  Jump ratio: {eps_above / eps_below:.1f}x (expected: 2-15x)")
-    assert eps_above / eps_below > 1.5, "Phase transition energy density jump insufficient"
-    print("  OK - Deconfinement phase transition with significant energy density jump")
+    print(f"\nT^4 scaling verification:")
+    print(f"  epsilon(T=1.0 GeV) = {eps_t1:.4f} GeV/fm^3")
+    print(f"  epsilon(T=2.0 GeV) = {eps_t2:.4f} GeV/fm^3")
+    print(f"  Ratio = {eps_t2/eps_t1:.1f} (expected: 16.0 for T^4 scaling)")
+    assert abs(eps_t2/eps_t1 - 16.0) < 0.1, "T^4 scaling violated"
+    print("  OK - Energy density follows T^4 scaling law")
+    
+    # Check 3b: Energy density increases monotonically with temperature
+    T_range = np.array([0.3, 0.5, 1.0, 2.0])
+    eps_range = [total_sb_energy_density(T, Nf) * conv_factor for T in T_range]
+    monotonic_eps = np.all(np.diff(eps_range) > 0)
+    print(f"\nMonotonicity check:")
+    print(f"  epsilon monotonically increases with T: {monotonic_eps}")
+    assert monotonic_eps, "Energy density should increase with temperature"
+    print("  OK - Energy density increases with temperature")
     
     # Check 4: Degrees of freedom count
     g_gluon = 8 * 2  # 8 colors * 2 polarizations

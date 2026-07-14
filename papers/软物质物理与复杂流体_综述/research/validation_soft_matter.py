@@ -207,29 +207,30 @@ def validate_nematic_order():
     
     # 验证点3: Maier-Saupe平均场理论
     # 在T_NI (向列-各向同性相变温度) 处, S ≈ 0.43
-    # 模拟Maier-Saupe分布: P(θ) ∝ exp[(3cos²θ-1)S/2 * U/kT]
-    def maier_saupe_sample(S_ms, n=100000):
-        """使用拒绝采样生成Maier-Saupe分布"""
-        samples = []
-        while len(samples) < n:
-            theta_try = np.arccos(2 * np.random.random() - 1)
-            u = np.random.random()
-            prob = np.exp(0.5 * (3 * np.cos(theta_try)**2 - 1) * S_ms)
-            if u < prob:  # 归一化
-                samples.append(theta_try)
-        return np.array(samples)
+    # Maier-Saupe自洽方程: S = <P_2(cosθ)>_S = ∫ P_2(cosθ) exp[U*S*P_2(cosθ)] dΩ / Z
+    # 其中 U/kT = 4.48 对应相变点 (T = T_NI)
+    # 使用Gauss-Legendre数值积分求解
+    from numpy.polynomial.legendre import leggauss
     
-    # 自洽求解Maier-Saupe方程
+    def compute_S_ms(U_over_kT, S_ms, n_points=200):
+        """给定相互作用强度U/kT和S_ms, 计算序参量"""
+        x, w = leggauss(n_points)  # x = cosθ, w = 权重
+        weights = np.exp(U_over_kT * 0.5 * (3 * x**2 - 1) * S_ms)
+        Z = np.sum(w * weights)
+        S_val = np.sum(w * weights * 0.5 * (3 * x**2 - 1)) / Z
+        return S_val
+    
+    # 在T = T_NI处 (U/kT = 4.48), 自洽解 S ≈ 0.429
+    U_kT = 4.48
     S_guess = 0.5
-    for iteration in range(50):
-        theta_ms = maier_saupe_sample(S_guess, n=50000)
-        S_new = order_parameter(theta_ms)
-        if abs(S_new - S_guess) < 1e-4:
+    for _ in range(100):
+        S_new = compute_S_ms(U_kT, S_guess)
+        if abs(S_new - S_guess) < 1e-6:
             break
-        S_guess = 0.5 * S_guess + 0.5 * S_new
+        S_guess = 0.7 * S_guess + 0.3 * S_new
     
-    print(f"[OK] 验证点3: Maier-Saupe自洽解 S = {S_guess:.4f} (理论值≈0.43)")
-    assert 0.3 < S_guess < 0.6, f"Maier-Saupe失败: S={S_guess}"
+    print(f"[OK] 验证点3: Maier-Saupe自洽解 S = {S_guess:.4f} (理论值≈0.429)")
+    assert 0.35 < S_guess < 0.55, f"Maier-Saupe失败: S={S_guess}"
     
     # 验证点4: 序参量张量的迹
     # Q_ij = S(n_i n_j - δ_ij/3), Tr(Q²) = (2/3)S²
