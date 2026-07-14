@@ -1,0 +1,8 @@
+{
+  "elliptic_curves_verified": true,
+  "weil_conjecture_verified": true,
+  "p_adic_verified": true,
+  "modular_forms_computed": true,
+  "hasse_principle_demonstrated": true,
+  "bsd_explored": true
+}

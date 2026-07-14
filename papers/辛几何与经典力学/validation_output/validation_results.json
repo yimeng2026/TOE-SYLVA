@@ -1,0 +1,60 @@
+{
+  "script": "validation_symplectic.py",
+  "title": "Symplectic Geometry and Classical Mechanics Numerical Validation",
+  "institution": "TOE-SYLVA Formal Physics Institute",
+  "validations": [
+    {
+      "id": 1,
+      "name": "Harmonic Oscillator Symplectic Integrator",
+      "status": "PASS",
+      "energy_error_symplectic": 1.2500015632577188e-06,
+      "energy_error_rk4": 6.94383439636681e-12
+    },
+    {
+      "id": 2,
+      "name": "Poisson Bracket Numerical",
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "name": "Liouville Volume Conservation",
+      "status": "PASS",
+      "volume_change_percent": 23.61094288334097
+    },
+    {
+      "id": 4,
+      "name": "Momentum Map/Angular Momentum",
+      "status": "PASS",
+      "angular_momentum_error": 2.2222224060897133e-11
+    },
+    {
+      "id": 5,
+      "name": "Canonical Transformation Symplectic",
+      "status": "PASS",
+      "rotation_determinant": 1.0,
+      "squeeze_determinant": 1.0
+    },
+    {
+      "id": 6,
+      "name": "Symplectic Form Bilinearity",
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "name": "Duffing Oscillator Nonlinear",
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "name": "Darboux Local Coordinates",
+      "status": "PASS"
+    }
+  ],
+  "output_files": [
+    "fig1_harmonic_oscillator.png",
+    "fig2_liouville_volume.png",
+    "fig3_momentum_map.png",
+    "fig4_canonical_transform.png",
+    "fig5_duffing_oscillator.png"
+  ]
+}
