@@ -1,5 +1,4 @@
 """
-量子场论路径积分方法数值验证脚本
 Numerical Validation Suite for QFT Path Integral Methods
 
 本脚本为《量子场论与路径积分_综述》提供数值验证，包括：
@@ -14,6 +13,7 @@ Numerical Validation Suite for QFT Path Integral Methods
 """
 
 import numpy as np
+import math
 import matplotlib
 matplotlib.use('Agg')  # 无GUI后端
 import matplotlib.pyplot as plt
@@ -472,9 +472,14 @@ def dimensionally_regularized_integral(d, m, alpha):
     from math import gamma as math_gamma
     import math
     
-    # 使用math库的gamma函数
     result = 1.0 / (4 * np.pi)**(d/2)
-    result *= math.gamma(alpha - d/2) / math.gamma(alpha)
+    
+    # 检查Gamma函数参数是否有效（必须为正）
+    gamma_arg = alpha - d/2
+    if gamma_arg <= 0:
+        return float("inf")  # 发散
+    
+    result *= math.gamma(gamma_arg) / math.gamma(alpha)
     result *= (m**2)**(d/2 - alpha)
     
     return result
@@ -550,9 +555,9 @@ def verify_dimensional_regularization():
     
     # 验证5: Gamma函数性质
     print("\n[验证5] Gamma函数关键性质:")
-    print(f"  Gamma(1) = {np.math.gamma(1):.6f} (应为1)")
-    print(f"  Gamma(2) = {np.math.gamma(2):.6f} (应为1)")
-    print(f"  Gamma(1/2) = {np.math.gamma(0.5):.6f} (应为sqrt(pi)={np.sqrt(np.pi):.6f})")
+    print(f"  Gamma(1) = {math.gamma(1):.6f} (应为1)")
+    print(f"  Gamma(2) = {math.gamma(2):.6f} (应为1)")
+    print(f"  Gamma(1/2) = {math.gamma(0.5):.6f} (应为sqrt(pi)={np.sqrt(np.pi):.6f})")
     print(f"  Gamma'(1) = -gamma_E = {-gamma_E:.6f}")
     
     print("\n[PASS] 维数正规化积分验证通过")
