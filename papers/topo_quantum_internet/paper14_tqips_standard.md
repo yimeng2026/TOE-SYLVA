@@ -247,7 +247,7 @@ $$
 
 [5] Minev, Z. K. et al. Realizing string-net condensation: Fibonacci anyon braiding for universal gates. IBM Quantum (2025).
 
-[6] Iulianelli, F. Universal quantum computation using Ising anyons from a non-semisimple TQFT. arXiv:2410.xxxxx (2024/2025).
+[6] Iulianelli, F. Universal quantum computation using Ising anyons from a non-semisimple TQFT. arXiv:2410.14860 (2024).
 
 [7] Kim, J. et al. Enabling quantum communication in ultra-large-scale networks (QEP/hxQEP). *Nature Communications* (2026).
 

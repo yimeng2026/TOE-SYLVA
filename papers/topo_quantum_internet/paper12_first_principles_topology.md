@@ -199,9 +199,9 @@ $$
 
 [11] Sodequist, J., Olsen, T. Two-dimensional alternmagnets from high throughput computational screening. *Appl. Phys. Lett.* 124 (2024).
 
-[12] Wei, Y., et al. Symmetry-aware generative design of flat-band materials. arXiv:2506.xxxxx (2026).
+[12] Wei, Y., et al. Symmetry-aware generative design of flat-band materials. arXiv:2606.15321 (2026).
 
-[13] Song, Y., et al. High-throughput discovery of semimetallic borophenes. arXiv:2506.xxxxx (2026).
+[13] Song, Y., et al. High-throughput discovery of semimetallic borophenes. arXiv:2606.03060 (2026).
 
 [14] Hu, J., et al. A numerical method for designing topological superconductivity induced by s-wave pairing. *Phys. Rev. B* (2024).
 
