@@ -57,12 +57,8 @@ def reduced_density_matrix(rho: np.ndarray, dim_a: int = 2, dim_b: int = 2, subs
     subsystem='A' 时对 B 求偏迹；='B' 时对 A 求偏迹。
     使用正确的张量指标收缩: rho_{ij,kl} -> 对 B 求迹得 rho_A_{ik} = sum_j rho_{ij,kj}
     """
-    # rho 是 (dim_a*dim_b, dim_a*dim_b) 矩阵
-    #  reshape 为 (dim_a, dim_b, dim_a, dim_b)
     rho_tensor = rho.reshape(dim_a, dim_b, dim_a, dim_b)
     if subsystem == 'A':
-        # 对 B 的指标 j 求和: rho_A[i,k] = sum_j rho[i,j,k,j]
-        # 即 einsum 'ijkl->ik' 其中 j=l 被求和
         rho_A = np.zeros((dim_a, dim_a), dtype=complex)
         for i in range(dim_a):
             for k in range(dim_a):
@@ -70,18 +66,12 @@ def reduced_density_matrix(rho: np.ndarray, dim_a: int = 2, dim_b: int = 2, subs
                     rho_A[i, k] += rho_tensor[i, j, k, j]
         return rho_A
     else:
-        # 对 A 的指标 i 求和: rho_B[j,l] = sum_i rho[i,j,i,l]
         rho_B = np.zeros((dim_b, dim_b), dtype=complex)
         for j in range(dim_b):
             for l in range(dim_b):
                 for i in range(dim_a):
                     rho_B[j, l] += rho_tensor[i, j, i, l]
         return rho_B
-    rho_tensor = rho.reshape(dim_a, dim_b, dim_a, dim_b)
-    if subsystem == 'A':
-        return np.einsum('ijkl->ik', rho_tensor).reshape(dim_a, dim_a)
-    else:
-        return np.einsum('ijkl->jl', rho_tensor).reshape(dim_b, dim_b)
 
 
 # =============================================================================
@@ -150,173 +140,16 @@ def verify_chsh_inequality() -> dict:
     使用 |Phi+> 态验证 CHSH 不等式:
       - 经典上限: |S| <= 2
       - 量子力学预测: |S| = 2*sqrt(2) ≈ 2.828
-    测量设置: a=Z, a'=X, b=(Z+X)/sqrt(2), b'=(X-Z)/sqrt(2)
-    """
-    a = PAULI_Z
-    a_prime = PAULI_X
-    b = (PAULI_Z + PAULI_X) / np.sqrt(2)
-    b_prime = (PAULI_X - PAULI_Z) / np.sqrt(2)
-
-    psi = BELL_PHI_PLUS
-    rho = np.outer(psi, psi.conj())
-    s_phi = chsh_correlation(rho, a, a_prime, b, b_prime)
-
-    # 对可分离态 |00> 验证经典上限
-    psi_sep = np.array([1, 0, 0, 0], dtype=complex)
-    rho_sep = np.outer(psi_sep, psi_sep.conj())
-    s_sep = chsh_correlation(rho_sep, a, a_prime, b, b_prime)
-
-    # 对 Werner 态 p=0.9 验证
-    rho_werner_09 = werner_state(0.9)
-    s_werner_09 = chsh_correlation(rho_werner_09, a, a_prime, b, b_prime)
-
-    return {
-        'classical_bound': 2.0,
-        'tsirelson_bound': 2.0 * np.sqrt(2),
-        's_phi_plus': float(s_phi),
-        'violates_classical': abs(s_phi) > 2.0,
-        'reaches_tsirelson': np.isclose(abs(s_phi), 2 * np.sqrt(2), atol=1e-6),
-        's_separable': float(s_sep),
-        'satisfies_classical': abs(s_sep) <= 2.0 + 1e-6,
-        's_werner_09': float(s_werner_09),
-    }
-                     b: np.ndarray, b_prime: np.ndarray) -> float:
-    """
-    计算 CHSH 关联量 S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
-    其中 E(a,b) = Tr(rho * (a ⊗ b))
-    注意: 测量算符应为 A = a·σ, B = b·σ (单位矢量点乘Pauli矩阵)
-    对于 |Phi+> = (|00>+|11>)/sqrt(2), 标准CHSH设置:
-      a=Z, a'=X, b=(Z+X)/sqrt(2), b'=(Z-X)/sqrt(2)
-    这样 <Phi+|A⊗B|Phi+> = a·b (点积)
-    """
-    def expectation(op_a: np.ndarray, op_b: np.ndarray) -> float:
-        op = np.kron(op_a, op_b)
-        return float(np.real(np.trace(rho @ op)))
-
-    e_ab = expectation(a, b)
-    e_abp = expectation(a, b_prime)
-    e_apb = expectation(a_prime, b)
-    e_apbp = expectation(a_prime, b_prime)
-
-    s = e_ab - e_abp + e_apb + e_apbp
-    return s
-
-
-def verify_chsh_inequality() -> dict:
-    """
-    使用 |Phi+> 态验证 CHSH 不等式:
-      - 经典上限: |S| <= 2
-      - 量子力学预测: |S| = 2*sqrt(2) ≈ 2.828
     测量设置: a=Z, a'=X, b=(Z+X)/sqrt(2), b'=(Z-X)/sqrt(2)
-    对于 |Phi+>, <ZZ> = 1, <XX> = 1, <ZX> = 0, <XZ> = 0
-    S = <ZZ> - <Z(-X)> + <XZ> + <X(-X)> = 1 + 1 + 0 + 0 = 2 (不对)
-    
-    正确设置:
-      a=Z, a'=X
-      b=(Z+X)/sqrt(2), b'=(Z-X)/sqrt(2)
-    S = <a,b> - <a,b'> + <a',b> + <a',b'>
-      = (1+0)/sqrt(2) - (1-0)/sqrt(2) + (0+1)/sqrt(2) + (0-1)/sqrt(2)
-      = 1/sqrt(2) - 1/sqrt(2) + 1/sqrt(2) - 1/sqrt(2) = 0 (也不对)
-    
-    正确的CHSH设置（对于 |Phi+> = (|00>+|11>)/sqrt(2)）:
-      a = Z, a' = X
-      b = (Z+X)/sqrt(2), b' = (Z-X)/sqrt(2)
-    由于 |Phi+> 在 Z 基下: |00> 和 |11>, 所以 <ZZ> = 1
-    在 X 基下: |Phi+> = (|++>+|-->)/sqrt(2), 所以 <XX> = 1
-    <ZX> = 0, <XZ> = 0
-    
-    S = <a,b> - <a,b'> + <a',b> + <a',b'>
-    <a,b> = <Z, (Z+X)/sqrt(2)> = (1+0)/sqrt(2) = 1/sqrt(2)
-    <a,b'> = <Z, (Z-X)/sqrt(2)> = (1-0)/sqrt(2) = 1/sqrt(2)
-    <a',b> = <X, (Z+X)/sqrt(2)> = (0+1)/sqrt(2) = 1/sqrt(2)
-    <a',b'> = <X, (Z-X)/sqrt(2)> = (0-1)/sqrt(2) = -1/sqrt(2)
-    S = 1/sqrt(2) - 1/sqrt(2) + 1/sqrt(2) + (-1/sqrt(2)) = 0
-    
-    问题: 这是针对 |Psi-> 态的设置！
-    对于 |Phi+> 态，需要使用不同的设置:
-      a = Z, a' = X
-      b = (Z+X)/sqrt(2), b' = (X-Z)/sqrt(2)  (注意 b' 的符号)
-    或者更标准地:
-      a = Z, a' = X  
-      b = (Z+X)/sqrt(2), b' = (Z-X)/sqrt(2)
-    但 |Phi+> 的关联是 <ZZ>=<XX>=1, <ZX>=<XZ>=0
-    
-    标准CHSH对 |Phi+>:
-      S = 2*sqrt(2) 需要:
-      E(a,b) = 1/sqrt(2), E(a,b') = -1/sqrt(2), E(a',b) = 1/sqrt(2), E(a',b') = 1/sqrt(2)
-    
-    使用测量设置:
-      a = Z (即测量算符 σ_z)
-      a' = X (即测量算符 σ_x)
-      b = (Z+X)/sqrt(2)  (即测量算符 (σ_z+σ_x)/sqrt(2))
-      b' = (Z-X)/sqrt(2)  (即测量算符 (σ_z-σ_x)/sqrt(2))
-    
-    对于 |Phi+> = (|00>+|11>)/sqrt(2):
-      <ZZ> = 1, <XX> = 1, <ZX> = 0, <XZ> = 0
-    
-    E(a,b) = <Z ⊗ (Z+X)/sqrt(2)> = (<ZZ> + <ZX>)/sqrt(2) = 1/sqrt(2)
-    E(a,b') = <Z ⊗ (Z-X)/sqrt(2)> = (<ZZ> - <ZX>)/sqrt(2) = 1/sqrt(2)
-    E(a',b) = <X ⊗ (Z+X)/sqrt(2)> = (<XZ> + <XX>)/sqrt(2) = 1/sqrt(2)
-    E(a',b') = <X ⊗ (Z-X)/sqrt(2)> = (<XZ> - <XX>)/sqrt(2) = -1/sqrt(2)
-    
-    S = E(a,b) - E(a,b') + E(a',b) + E(a',b')
-      = 1/sqrt(2) - 1/sqrt(2) + 1/sqrt(2) + (-1/sqrt(2))
-      = 0
-    
-    这不对。让我重新思考...
-    
-    实际上，对于 |Phi+> = (|00>+|11>)/sqrt(2)，标准CHSH设置是:
-      a = Z, a' = X
-      b = (Z+X)/sqrt(2), b' = (X-Z)/sqrt(2)  # 注意 b' 的符号
-    
-    E(a,b') = <Z ⊗ (X-Z)/sqrt(2)> = (<ZX> - <ZZ>)/sqrt(2) = -1/sqrt(2)
-    
-    S = 1/sqrt(2) - (-1/sqrt(2)) + 1/sqrt(2) + (-1/sqrt(2))
-      = 1/sqrt(2) + 1/sqrt(2) + 1/sqrt(2) - 1/sqrt(2)
-      = 2/sqrt(2) = sqrt(2) ≈ 1.414
-    
-    还是不对。让我用不同的方法...
-    
-    标准结果: 对于 |Phi+>, S = 2*sqrt(2)
-    这要求: E(a,b) = 1/sqrt(2), E(a,b') = -1/sqrt(2), E(a',b) = 1/sqrt(2), E(a',b') = 1/sqrt(2)
-    
-    使用 |Psi-> = (|01>-|10>)/sqrt(2) 作为纠缠态:
-    <ZZ> = -1, <XX> = -1, <ZX> = 0, <XZ> = 0
-    
-    E(a,b) = <Z ⊗ (Z+X)/sqrt(2)> = (-1+0)/sqrt(2) = -1/sqrt(2)
-    E(a,b') = <Z ⊗ (Z-X)/sqrt(2)> = (-1-0)/sqrt(2) = -1/sqrt(2)
-    E(a',b) = <X ⊗ (Z+X)/sqrt(2)> = (0-1)/sqrt(2) = -1/sqrt(2)
-    E(a',b') = <X ⊗ (Z-X)/sqrt(2)> = (0+1)/sqrt(2) = 1/sqrt(2)
-    
-    S = -1/sqrt(2) - (-1/sqrt(2)) + (-1/sqrt(2)) + 1/sqrt(2) = 0
-    
-    让我换一种方法，直接使用已知结果验证...
     """
-    # 对于 |Phi+> 态，使用标准CHSH测量设置
-    # 测量方向: a=(0,0,1), a'=(0,0,1) 不对
-    # 标准设置: a=(0,0,1) [Z], a'=(1,0,0) [X]
-    #          b=(1,0,1)/sqrt(2) [(Z+X)/sqrt(2)], b'=(1,0,-1)/sqrt(2) [(X-Z)/sqrt(2)]
-    
-    # 但更简单的方法是使用 |Psi-> 态和特定设置
-    # 或者直接用数值验证已知结果
-    
-    # 使用 |Phi+> 和以下设置:
     a = PAULI_Z
     a_prime = PAULI_X
-    # 对于 |Phi+>, 需要 b 和 b' 的特殊选择
-    # 实际上，标准CHSH设置对于 |Phi+> 是:
-    # a=Z, a'=X, b=(Z+X)/sqrt(2), b'=(X-Z)/sqrt(2)
     b = (PAULI_Z + PAULI_X) / np.sqrt(2)
-    b_prime = (PAULI_X - PAULI_Z) / np.sqrt(2)  # 注意顺序
-    
+    b_prime = (PAULI_Z - PAULI_X) / np.sqrt(2)
+
     psi = BELL_PHI_PLUS
     rho = np.outer(psi, psi.conj())
     s_phi = chsh_correlation(rho, a, a_prime, b, b_prime)
-    
-    # 如果还是不对，尝试 |Psi-> 态
-    psi_psi_minus = BELL_PSI_MINUS
-    rho_psi_minus = np.outer(psi_psi_minus, psi_psi_minus.conj())
-    s_psi_minus = chsh_correlation(rho_psi_minus, a, a_prime, b, b_prime)
 
     # 对可分离态 |00> 验证经典上限
     psi_sep = np.array([1, 0, 0, 0], dtype=complex)
@@ -331,7 +164,6 @@ def verify_chsh_inequality() -> dict:
         'classical_bound': 2.0,
         'tsirelson_bound': 2.0 * np.sqrt(2),
         's_phi_plus': float(s_phi),
-        's_psi_minus': float(s_psi_minus),
         'violates_classical': abs(s_phi) > 2.0,
         'reaches_tsirelson': np.isclose(abs(s_phi), 2 * np.sqrt(2), atol=1e-6),
         's_separable': float(s_sep),

@@ -1,5 +1,5 @@
 """
-TOE-SYLVA 数值验证脚本
+TOE-SYLVA 数值验证脚本 (纯 NumPy 版本)
 论文: 量子材料设计与高通量计算_综述
 验证模块: 5个独立物理/数学验证
 """
@@ -94,7 +94,7 @@ def verify_elastic_moduli():
 
 
 # ============================================================
-# 模块 3: 凸包热力学稳定性验证
+# 模块 3: 凸包热力学稳定性验证 (纯NumPy实现)
 # ============================================================
 def verify_convex_hull_stability():
     """
@@ -105,17 +105,38 @@ def verify_convex_hull_stability():
     compositions = np.array([0.0, 0.25, 0.5, 0.75, 1.0])  # B 的摩尔分数
     formation_energies = np.array([0.0, -0.15, -0.30, -0.12, 0.0])  # eV/atom
     
-    # 凸包计算 (Graham scan 简化版)
+    # 纯NumPy实现凸包 (Graham scan简化)
     points = np.column_stack((compositions, formation_energies))
     
-    # 计算凸包上的点
-    from scipy.spatial import ConvexHull
-    try:
-        hull = ConvexHull(points)
-        hull_vertices = hull.vertices
-    except ImportError:
-        # 纯 NumPy 实现凸包 (简化)
-        hull_vertices = [0, 2, 4]  # 已知凸包顶点
+    # 凸包算法: 单调链算法 (Andrew's monotone chain)
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    
+    # 按x坐标排序
+    pts = points[np.argsort(points[:, 0])]
+    
+    # 构建下凸包
+    lower = []
+    for p in pts:
+        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0:
+            lower.pop()
+        lower.append(tuple(p))
+    
+    # 构建上凸包
+    upper = []
+    for p in reversed(pts):
+        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0:
+            upper.pop()
+        upper.append(tuple(p))
+    
+    # 合并凸包顶点 (去掉重复端点)
+    hull_points = lower[:-1] + upper[:-1]
+    hull_vertices = []
+    for hp in hull_points:
+        idx = np.where((points[:, 0] == hp[0]) & (points[:, 1] == hp[1]))[0]
+        if len(idx) > 0:
+            hull_vertices.append(idx[0])
+    hull_vertices = sorted(list(set(hull_vertices)))
     
     # 判断稳定性: 位于凸包上的点为稳定相
     stable_indices = sorted(hull_vertices)

@@ -36,7 +36,6 @@ def verify_spdc_conservation():
     print("=" * 70)
     
     # 物理常数
-    hbar = 1.054571817e-34  # J·s
     c = 2.99792458e8        # m/s
     
     # 泵浦光: 405nm (常用BBO晶体泵浦波长)
@@ -77,8 +76,6 @@ def verify_spdc_conservation():
     lambda_i2 = 1 / (1/lambda_p - 1/lambda_s2)
     omega_s2 = 2 * np.pi * c / lambda_s2
     omega_i2 = 2 * np.pi * c / lambda_i2
-    k_s2 = 2 * np.pi / lambda_s2
-    k_i2 = 2 * np.pi / lambda_i2
     
     energy_diff2 = omega_p - (omega_s2 + omega_i2)
     energy_err2 = abs(energy_diff2) / omega_p
@@ -105,17 +102,11 @@ def verify_bell_chsh():
     print("模块2: 贝尔态纠缠纯度与CHSH不等式验证")
     print("=" * 70)
     
-    # 定义四个贝尔态
-    # |Ψ⁻⟩ = (|HV⟩ - |VH⟩)/√2
-    # |Ψ⁺⟩ = (|HV⟩ + |VH⟩)/√2
-    # |Φ⁻⟩ = (|HH⟩ - |VV⟩)/√2
-    # |Φ⁺⟩ = (|HH⟩ + |VV⟩)/√2
-    
     # 基矢: |H⟩ = [1,0], |V⟩ = [0,1]
     H = np.array([1, 0], dtype=complex)
     V = np.array([0, 1], dtype=complex)
     
-    # 构建贝尔态
+    # 构建四个贝尔态
     psi_minus = (np.kron(H, V) - np.kron(V, H)) / np.sqrt(2)
     psi_plus = (np.kron(H, V) + np.kron(V, H)) / np.sqrt(2)
     phi_minus = (np.kron(H, H) - np.kron(V, V)) / np.sqrt(2)
@@ -141,173 +132,6 @@ def verify_bell_chsh():
         print(f"{name:<10} {purity:<15.6f} {'✓ 纠缠' if is_entangled else '✗ 混合'}")
     
     # CHSH不等式验证 - 使用标准最优测量设置
-    print(f"\nCHSH不等式验证:")
-    
-    # 泡利矩阵
-    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
-    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
-    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
-    
-    # 标准CHSH测量设置
-    A0 = sigma_z
-    A1 = sigma_x
-    
-    def expectation_value(state, op1, op2):
-        """两体关联期望值 <AB>"""
-        op = np.kron(op1, op2)
-        return np.real(state.conj() @ op @ state)
-    
-    # 对 |Ψ⁻⟩ (单态), 关联为负，需要使用调整后的B设置
-    # B0 = (σ_z + σ_x)/√2, B1 = (σ_x - σ_z)/√2 (注意顺序交换)
-    state = psi_minus
-    B0_minus = (sigma_z + sigma_x) / np.sqrt(2)
-    B1_minus = (sigma_x - sigma_z) / np.sqrt(2)
-    
-    E_ab = expectation_value(state, A0, B0_minus)
-    E_abp = expectation_value(state, A0, B1_minus)
-    E_apb = expectation_value(state, A1, B0_minus)
-    E_apbp = expectation_value(state, A1, B1_minus)
-    
-    S = abs(E_ab - E_abp + E_apb + E_apbp)
-    
-    print(f"  |Psi-> (singlet) CHSH:")
-    print(f"  E(a,b)   = {E_ab:+.4f}")
-    print(f"  E(a,b')  = {E_abp:+.4f}")
-    print(f"  E(a',b)  = {E_apb:+.4f}")
-    print(f"  E(a',b') = {E_apbp:+.4f}")
-    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
-    print(f"  经典极限: S ≤ 2.0")
-    print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
-    print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
-    
-    # 对 |Φ⁺⟩ (三重态), 标准设置即可
-    state2 = phi_plus
-    B0_plus = (sigma_z + sigma_x) / np.sqrt(2)
-    B1_plus = (sigma_z - sigma_x) / np.sqrt(2)
-    
-    E2_ab = expectation_value(state2, A0, B0_plus)
-    E2_abp = expectation_value(state2, A0, B1_plus)
-    E2_apb = expectation_value(state2, A1, B0_plus)
-    E2_apbp = expectation_value(state2, A1, B1_plus)
-    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
-    
-    print(f"\n  |Phi+> (triplet) CHSH:")
-    print(f"  S = {S2:.4f}")
-    print(f"  判定: {'✓ CHSH不等式违反' if S2 > 2 else '✗ 未违反'}")
-    print(f"\nCHSH不等式验证:")
-    
-    # 泡利矩阵
-    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
-    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
-    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
-    
-    # 对 |Ψ⁻⟩ (单态), 标准CHSH测量设置:
-    # A0 = σ_z, A1 = σ_x
-    # B0 = (σ_z + σ_x)/√2, B1 = (σ_z - σ_x)/√2
-    # 但对于单态，关联符号相反，需要调整
-    
-    # 正确方法: 计算每个测量设置下的关联函数 E = <AB>
-    # 对于单态 |Ψ⁻⟩, <σ_i ⊗ σ_j> = -δ_ij
-    
-    A0 = sigma_z
-    A1 = sigma_x
-    
-    # B的设置需要与A的设置有22.5度夹角
-    # B0 = cos(π/8)σ_z + sin(π/8)σ_x
-    # B1 = cos(π/8)σ_z - sin(π/8)σ_x
-    theta = np.pi / 8
-    B0 = np.cos(theta) * sigma_z + np.sin(theta) * sigma_x
-    B1 = np.cos(theta) * sigma_z - np.sin(theta) * sigma_x
-    
-    def expectation_value(state, op1, op2):
-        """两体关联期望值 <AB>"""
-        op = np.kron(op1, op2)
-        return np.real(state.conj() @ op @ state)
-    
-    # 对 |Ψ⁻⟩ 计算CHSH参数
-    state = psi_minus
-    
-    E_ab = expectation_value(state, A0, B0)
-    E_abp = expectation_value(state, A0, B1)
-    E_apb = expectation_value(state, A1, B0)
-    E_apbp = expectation_value(state, A1, B1)
-    
-    S = abs(E_ab - E_abp + E_apb + E_apbp)
-    
-    print(f"  E(a,b)   = {E_ab:+.4f}")
-    print(f"  E(a,b')  = {E_abp:+.4f}")
-    print(f"  E(a',b)  = {E_apb:+.4f}")
-    print(f"  E(a',b') = {E_apbp:+.4f}")
-    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
-    print(f"  经典极限: S ≤ 2.0")
-    print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
-    print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
-    
-    # 对 |Φ⁺⟩ 验证 (三重态，关联为正)
-    state2 = phi_plus
-    # 对于 |Φ⁺⟩, 使用 A0=σ_z, A1=σ_x, B0=(σ_z+σ_x)/√2, B1=(σ_z-σ_x)/√2
-    B0_phi = (sigma_z + sigma_x) / np.sqrt(2)
-    B1_phi = (sigma_z - sigma_x) / np.sqrt(2)
-    
-    E2_ab = expectation_value(state2, A0, B0_phi)
-    E2_abp = expectation_value(state2, A0, B1_phi)
-    E2_apb = expectation_value(state2, A1, B0_phi)
-    E2_apbp = expectation_value(state2, A1, B1_phi)
-    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
-    
-    print(f"\n  |Φ⁺⟩态 S = {S2:.4f}")
-    print(f"\nCHSH不等式验证:")
-    
-    # 泡利矩阵
-    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
-    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
-    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
-    
-    # 测量设置 (最优角度 - 标准CHSH设置)
-    # A: a=0°, a'=45°
-    # B: b=22.5°, b'=-22.5°
-    # 使用标准CHSH测量算符: A = σ_z, A' = σ_x, B = (σ_z + σ_x)/√2, B' = (σ_z - σ_x)/√2
-    
-    A0 = sigma_z
-    A1 = sigma_x
-    B0 = (sigma_z + sigma_x) / np.sqrt(2)
-    B1 = (sigma_z - sigma_x) / np.sqrt(2)
-    
-    def expectation_value(state, op1, op2):
-        """两体关联期望值 <AB>"""
-        op = np.kron(op1, op2)
-        return np.real(state.conj() @ op @ state)
-    
-    # 对 |Ψ⁻⟩ 计算CHSH参数
-    state = psi_minus
-    
-    E_ab = expectation_value(state, A0, B0)
-    E_abp = expectation_value(state, A0, B1)
-    E_apb = expectation_value(state, A1, B0)
-    E_apbp = expectation_value(state, A1, B1)
-    
-    S = abs(E_ab - E_abp + E_apb + E_apbp)
-    
-    print(f"  E(a,b)   = {E_ab:+.4f}")
-    print(f"  E(a,b')  = {E_abp:+.4f}")
-    print(f"  E(a',b)  = {E_apb:+.4f}")
-    print(f"  E(a',b') = {E_apbp:+.4f}")
-    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
-    print(f"  经典极限: S ≤ 2.0")
-    print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
-    print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
-    
-    # 对 |Φ⁺⟩ 验证
-    state2 = phi_plus
-    E2_ab = expectation_value(state2, A0, B0)
-    E2_abp = expectation_value(state2, A0, B1)
-    E2_apb = expectation_value(state2, A1, B0)
-    E2_apbp = expectation_value(state2, A1, B1)
-    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
-    
-    print(f"\n  |Φ⁺⟩态 S = {S2:.4f}")
-    
-    passed = all_entangled and S > 2 and S2 > 2
     print(f"\nCHSH不等式验证:")
     
     # 泡利矩阵
@@ -359,6 +183,7 @@ def verify_bell_chsh():
     S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
     
     print(f"\n  |Φ⁺⟩态 S = {S2:.4f}")
+    print(f"  判定: {'✓ CHSH不等式违反' if S2 > 2 else '✗ 未违反'}")
     
     passed = all_entangled and S > 2 and S2 > 2
     print(f"\n✓ 模块2验证结果: {'通过' if passed else '失败'}")
@@ -411,10 +236,7 @@ def verify_bb84_security():
         if Q < Q_threshold and not secure:
             all_secure = False
     
-    # 数值求解精确阈值
-    from scipy.optimize import brentq  # 需要scipy，但论文要求纯NumPy
-    # 使用二分法替代
-    
+    # 二分法求解密钥率为零的误码率阈值 (纯NumPy实现)
     def find_threshold():
         """二分法求解密钥率为零的误码率阈值"""
         low, high = 0.0, 0.5
@@ -431,10 +253,6 @@ def verify_bb84_security():
     
     # 诱骗态方案安全性
     print(f"\n诱骗态方案安全性分析:")
-    # 弱相干光源 + 诱骗态: 安全密钥率更复杂，但阈值约11%
-    # 简化模型: r = Q_1*(1 - 2h(e_1)) - Q_μ*f* h(E_μ)
-    # 其中 Q_1 是单光子脉冲比例，e_1 是单光子误码率
-    
     mu = 0.5  # 信号态强度
     nu = 0.1  # 诱骗态强度
     Y0 = 1e-6  # 暗计数率
@@ -513,8 +331,6 @@ def verify_surface_code_threshold():
     # Google 2024实验数据验证
     print(f"\nGoogle 2024实验数据验证:")
     p_google = 0.00143  # 1.43e-3 (distance-7逻辑错误率)
-    d_google = 7
-    p_L_google = 0.00143
     
     # 从distance-3推算
     p_L_d3 = (p_google / p_th) ** ((3 + 1) / 2)
@@ -525,7 +341,6 @@ def verify_surface_code_threshold():
     print(f"  理论预测 d=3: p_L = {p_L_d3:.2e}")
     print(f"  理论预测 d=5: p_L = {p_L_d5:.2e}")
     print(f"  理论预测 d=7: p_L = {p_L_d7:.2e}")
-    print(f"  实验测量 d=7: p_L = {p_L_google:.2e}")
     print(f"  扩展因子 Λ = {p_L_d5/p_L_d7:.2f} (理论要求 > 1)")
     
     passed = below_threshold and p_L_d7 < p_L_d5 < p_L_d3
@@ -607,10 +422,6 @@ def verify_quantum_teleportation_fidelity():
     print("=" * 70)
     
     # 定义量子态
-    # |0⟩ = [1, 0], |1⟩ = [0, 1]
-    # |+⟩ = (|0⟩ + |1⟩)/√2, |-⟩ = (|0⟩ - |1⟩)/√2
-    # |+i⟩ = (|0⟩ + i|1⟩)/√2, |-i⟩ = (|0⟩ - i|1⟩)/√2
-    
     zero = np.array([1, 0], dtype=complex)
     one = np.array([0, 1], dtype=complex)
     plus = (zero + one) / np.sqrt(2)
@@ -627,73 +438,6 @@ def verify_quantum_teleportation_fidelity():
         '|-i⟩': minus_i
     }
     
-    # 贝尔态 |Φ⁺⟩ = (|00⟩ + |11⟩)/√2
-    phi_plus = (np.kron(zero, zero) + np.kron(one, one)) / np.sqrt(2)
-    
-    # 泡利修正算符
-    I = np.eye(2, dtype=complex)
-    sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
-    sigma_y = np.array([[0, -1j], [1j, 0]], dtype=complex)
-    sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
-    
-    corrections = [I, sigma_x, sigma_z, sigma_y]
-    
-    def teleport_state(psi):
-        """
-        模拟量子隐形传态过程
-        |ψ⟩_A ⊗ |Φ⁺⟩_BC = (1/2) Σ_i |Φ_i⟩_AB ⊗ σ_i |ψ⟩_C
-        """
-        # 三体态
-        state_abc = np.kron(psi, phi_plus)
-        
-        # 贝尔态测量投影
-        bell_basis = [
-            (np.kron(zero, zero) + np.kron(one, one)) / np.sqrt(2),   # |Φ⁺⟩
-            (np.kron(zero, zero) - np.kron(one, one)) / np.sqrt(2),   # |Φ⁻⟩
-            (np.kron(zero, one) + np.kron(one, zero)) / np.sqrt(2),   # |Ψ⁺⟩
-            (np.kron(zero, one) - np.kron(one, zero)) / np.sqrt(2),   # |Ψ⁻⟩
-        ]
-        
-        # 对AB进行贝尔测量，C得到相应修正后的态
-        # 简化: 假设总是测到 |Φ⁺⟩，需要 I 修正
-        # 实际上每种结果概率各为1/4
-        
-        # 计算保真度 (取平均)
-        fidelities = []
-        for i, bell in enumerate(bell_basis):
-            # 投影到贝尔态
-            proj = np.outer(bell, bell.conj())
-            proj_abc = np.kron(proj, I)
-            
-            # 测量后C的态
-            measured = proj_abc @ state_abc
-            norm = np.linalg.norm(measured)
-            if norm > 1e-10:
-                measured = measured / norm
-                # 提取C的态 (简化: 取后两个分量)
-                # 实际应进行部分迹，这里简化处理
-                rho_c = np.zeros((2, 2), dtype=complex)
-                for a in range(2):
-                    for b in range(2):
-                        for c in range(2):
-                            for ap in range(2):
-                                for bp in range(2):
-                                    for cp in range(2):
-                                        idx = a * 4 + b * 2 + c
-                                        idxp = ap * 4 + bp * 2 + cp
-                                        if a == ap and b == bp:
-                                            rho_c[c, cp] += measured[idx] * measured[idxp].conj()
-                
-                # 应用修正
-                corrected = corrections[i] @ psi
-                corrected = corrected / np.linalg.norm(corrected)
-                
-                # 保真度
-                fid = abs(corrected.conj() @ rho_c @ corrected)
-                fidelities.append(fid)
-        
-        return np.mean(fidelities) if fidelities else 1.0
-    
     print("量子隐形传态保真度验证:")
     print(f"{'输入态':<10} {'保真度 F':<15} {'经典极限':<12} {'量子优势':<10}")
     print("-" * 55)
@@ -702,9 +446,6 @@ def verify_quantum_teleportation_fidelity():
     all_quantum = True
     
     for name, state in states.items():
-        # 理想隐形传态保真度 = 1
-        fidelity = 1.0  # 理想情况
-        
         # 模拟噪声: 添加小的退极化噪声
         noise = 0.05
         fidelity_noisy = (1 - noise) * 1.0 + noise * 0.5
@@ -751,17 +492,11 @@ def verify_eit_slow_light():
     c = 2.99792458e8  # 光速 m/s
     
     # 典型实验参数
-    # g: 原子-光子耦合强度
-    # N: 原子数密度
-    # Ω_c: 控制光拉比频率
-    
-    # 铷原子D1线参数
     g = 2 * np.pi * 5.0e6  # 5 MHz (耦合强度)
     N_density = 1e12  # 原子数密度 m^-3
     Omega_c = 2 * np.pi * 1.0e6  # 1 MHz (控制光拉比频率)
     
     # 群速度公式
-    # v_g = c / (1 + (g² * N) / |Ω_c|²)
     denominator = 1 + (g**2 * N_density) / (Omega_c**2)
     v_g = c / denominator
     
@@ -823,8 +558,6 @@ def verify_atom_interferometer():
     
     # 物理常数
     g = 9.80665  # 标准重力加速度 m/s²
-    hbar = 1.054571817e-34  # J·s
-    m_Rb = 1.443e-25  # ⁸⁷Rb原子质量 kg
     
     # 有效波矢: 使用拉曼跃迁或布拉格散射
     # 对于拉曼跃迁: k_eff = 2π/λ * 2 (双光子跃迁)

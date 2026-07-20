@@ -57,7 +57,7 @@ def steane_code_verification():
             if symplectic != 0:
                 commute = False
                 print(f"  X-S{i+1} 与 Z-S{j+1} 不对易! 辛内积 = {symplectic}")
-    print(f"  所有X-Z稳定子对易: {'✓ PASS' if commute else '✗ FAIL'}")
+    print(f"  所有X-Z稳定子对易: {'PASS' if commute else 'FAIL'}")
 
     # 码字空间维度验证: 2^k = 2^(n-r) = 2^1 = 2
     print("\n[验证 1.2] 码字空间维度")
@@ -67,7 +67,7 @@ def steane_code_verification():
     print(f"  X型生成元秩 = {rank_x}, Z型生成元秩 = {rank_z}")
     print(f"  码字空间维度 = 2^(n - rank_x - rank_z) = 2^{n}-{rank_x}-{rank_z} = {code_dim}")
     print(f"  期望维度 = 2^k = 2^{k} = {2**k}")
-    print(f"  码字空间维度验证: {'✓ PASS' if code_dim == 2**k else '✗ FAIL'}")
+    print(f"  码字空间维度验证: {'PASS' if code_dim == 2**k else 'FAIL'}")
 
     # 码距验证：最小权重非平凡逻辑算子
     print("\n[验证 1.3] 码距验证 (最小权重逻辑算子)")
@@ -104,7 +104,7 @@ def steane_code_verification():
         min_weight = min(w for w, _ in logical_ops)
         print(f"  最小权重逻辑算子权重 = {min_weight}")
         print(f"  期望码距 d = 3")
-        print(f"  码距验证: {'✓ PASS' if min_weight == 3 else '✗ FAIL'}")
+        print(f"  码距验证: {'PASS' if min_weight == 3 else 'FAIL'}")
     else:
         print("  未找到非平凡逻辑算子 (需要更完整的搜索)")
 
@@ -113,7 +113,7 @@ def steane_code_verification():
     d = 3
     t = (d - 1) // 2
     print(f"  码距 d = {d}, 可纠正错误数 t = floor((d-1)/2) = {t}")
-    print(f"  Steane码可纠正任意单比特错误: {'✓ PASS' if t >= 1 else '✗ FAIL'}")
+    print(f"  Steane码可纠正任意单比特错误: {'PASS' if t >= 1 else 'FAIL'}")
 
     print("\n模块 1 验证完成。\n")
     return True
@@ -187,7 +187,7 @@ def surface_code_syndrome_verification():
     # 中心比特4影响m0,m1,m2,m3 -> 4个syndrome
     expected_syndrome = np.array([1, 1, 1, 1])
     match = np.array_equal(syndrome_x, expected_syndrome)
-    print(f"  Syndrome模式验证: {'✓ PASS' if match else '✗ FAIL'}")
+    print(f"  Syndrome模式验证: {'PASS' if match else 'FAIL'}")
 
     print("\n[验证 2.2] 双X错误 (可纠正) 的Syndrome")
     data_qubits_2 = np.zeros(n_data, dtype=int)
@@ -209,7 +209,7 @@ def surface_code_syndrome_verification():
     syndrome_logical = measure_x @ logical_x % 2
     print(f"  逻辑X算子 (权重3): {logical_x}")
     print(f"  逻辑X的Syndrome: {syndrome_logical}")
-    print(f"  逻辑算子Syndrome全零 (不可检测): {'✓ PASS' if np.all(syndrome_logical == 0) else '✗ FAIL'}")
+    print(f"  逻辑算子Syndrome全零 (不可检测): {'PASS' if np.all(syndrome_logical == 0) else 'FAIL'}")
 
     print("\n模块 2 验证完成。\n")
     return True
@@ -269,7 +269,7 @@ def threshold_scaling_verification():
     expected_ratio = (p / p_th) ** 2
     print(f"\n  d=5 vs d=3 的p_L比值 = {ratio:.4f}")
     print(f"  理论预期 (p/p_th)^2 = {expected_ratio:.4f}")
-    print(f"  指数抑制验证: {'✓ PASS' if abs(ratio - expected_ratio) < 0.1 * expected_ratio else '✗ FAIL'}")
+    print(f"  指数抑制验证: {'PASS' if abs(ratio - expected_ratio) < 0.1 * expected_ratio else 'FAIL'}")
 
     print("\n[验证 3.3] 阈值以上的逻辑错误率发散")
     p_above = 0.02  # 高于阈值
@@ -282,7 +282,7 @@ def threshold_scaling_verification():
     # 验证：阈值以上p_L应随d增加
     p_L_d3 = C * (p_above / p_th) ** 2
     p_L_d5 = C * (p_above / p_th) ** 3
-    print(f"\n  p_L(d=5) > p_L(d=3): {'✓ PASS' if p_L_d5 > p_L_d3 else '✗ FAIL'}")
+    print(f"\n  p_L(d=5) > p_L(d=3): {'PASS' if p_L_d5 > p_L_d3 else 'FAIL'}")
 
     print("\n模块 3 验证完成。\n")
     return True
@@ -307,8 +307,8 @@ def magic_state_distillation_verification():
     d = 3   # 码距
 
     print(f"协议: Bravyi-Kitaev [[{n},{k},{d}]] Reed-Muller 魔术态蒸馏")
-    print(f"输入: 15个保真度为 F_in 的 |T⟩ = |0⟩ + e^(iπ/4)|1⟩ 态")
-    print(f"输出: 1个保真度提升的 |T⟩ 态")
+    print(f"输入: 15个保真度为 F_in 的 |T> = |0> + e^(i*pi/4)|1> 态")
+    print(f"输出: 1个保真度提升的 |T> 态")
     print()
 
     # 魔术态的目标保真度阈值
@@ -317,7 +317,7 @@ def magic_state_distillation_verification():
     print()
 
     # 保真度提升公式 (一阶近似，针对对角噪声)
-    # 对于[[15,1,3]]码，输出误差 ≈ 35 * ε^3，其中 ε = 1 - F_in
+    # 对于[[15,1,3]]码，输出误差 ≈ 35 * epsilon^3，其中 epsilon = 1 - F_in
     def distill_fidelity(F_in):
         epsilon = 1 - F_in
         epsilon_out = 35 * epsilon ** 3  # 主导项
@@ -325,7 +325,7 @@ def magic_state_distillation_verification():
 
     print("[验证 4.1] 单轮蒸馏保真度提升")
     test_F_in = [0.90, 0.95, 0.99, 0.999]
-    print(f"{'F_in':>10} | {'ε_in':>10} | {'F_out':>10} | {'ε_out':>10} | {'提升比':>10}")
+    print(f"{'F_in':>10} | {'eps_in':>10} | {'F_out':>10} | {'eps_out':>10} | {'提升比':>10}")
     print("-" * 60)
     for F_in in test_F_in:
         F_out = distill_fidelity(F_in)
@@ -343,7 +343,7 @@ def magic_state_distillation_verification():
     for level in range(1, 6):
         F_current = distill_fidelity(F_current)
         eps = 1 - F_current
-        print(f"  第{level}级: F = {F_current:.10f}, ε = {eps:.2e}")
+        print(f"  第{level}级: F = {F_current:.10f}, eps = {eps:.2e}")
         if eps < 1e-15:
             print(f"  达到数值精度极限，停止级联")
             break
@@ -368,7 +368,7 @@ def magic_state_distillation_verification():
     print(f"  1轮蒸馏后保真度 = {F_out_1:.6f}")
     F_out_2 = distill_fidelity(F_out_1)
     print(f"  2轮蒸馏后保真度 = {F_out_2:.10f}")
-    print(f"  2轮蒸馏达到通用计算要求: {'✓ PASS' if F_out_2 > 0.9999 else '✗ FAIL'}")
+    print(f"  2轮蒸馏达到通用计算要求: {'PASS' if F_out_2 > 0.9999 else 'FAIL'}")
 
     print("\n模块 4 验证完成。\n")
     return True
@@ -420,7 +420,7 @@ def mwpm_decoder_verification():
     best_str = "(1,4)+(7,10)"
     print(f"\n  最小权重配对: {best_str}, 权重 = {min_weight}")
     expected_best = "(1,4)+(7,10)"
-    print(f"  MWPM结果验证: {'✓ PASS' if best_str == expected_best else '✗ FAIL'}")
+    print(f"  MWPM结果验证: {'PASS' if best_str == expected_best else 'FAIL'}")
 
     print("\n[验证 5.2] 2D网格上的Manhattan距离配对")
     # 2D anyons位置 (x, y)
@@ -454,7 +454,7 @@ def mwpm_decoder_verification():
     print(f"\n  最小权重配对: {best_str_2d}, 权重 = {min_weight_2d}")
     # 预期: (1,1)-(1,4) + (5,1)-(5,4) = 3+3 = 6 或 (1,1)-(5,1) + (1,4)-(5,4) = 4+4 = 8
     # 最小应该是 3+3 = 6
-    print(f"  最小权重 = 6 (预期): {'✓ PASS' if min_weight_2d == 6 else '✗ FAIL'}")
+    print(f"  最小权重 = 6 (预期): {'PASS' if min_weight_2d == 6 else 'FAIL'}")
 
     print("\n[验证 5.3] 解码成功率与错误权重的关系")
     # 在d=3表面码中，可纠正的错误权重 <= t = 1
@@ -480,7 +480,7 @@ def mwpm_decoder_verification():
     # 对于d×d表面码，anyons数量 ~ O(d^2)，所以解码复杂度 ~ O(d^6)
     # Union-Find优化到 ~ O(d^2)
     ds = [3, 5, 7, 9, 11, 13, 15]
-    print(f"  {'d':>5} | {'anyons≈d²':>10} | {'MWPM O(d⁶)':>12} | {'Union-Find O(d²)':>16}")
+    print(f"  {'d':>5} | {'anyons~d^2':>10} | {'MWPM O(d^6)':>12} | {'Union-Find O(d^2)':>16}")
     print("  " + "-" * 55)
     for d in ds:
         n_anyons = d * d
@@ -498,7 +498,7 @@ def mwpm_decoder_verification():
 
 def main():
     print("\n" + "=" * 70)
-    print("TOE-SYLVA 量子纠错与量子容错计算 — 数值验证脚本")
+    print("TOE-SYLVA 量子纠错与量子容错计算 - 数值验证脚本")
     print("=" * 70)
     print()
 
@@ -513,7 +513,7 @@ def main():
     print("验证总结")
     print("=" * 70)
     for name, passed in results:
-        status = "✓ PASS" if passed else "✗ FAIL"
+        status = "PASS" if passed else "FAIL"
         print(f"  {name:20s}: {status}")
     print()
     print("所有数值验证模块执行完毕。")

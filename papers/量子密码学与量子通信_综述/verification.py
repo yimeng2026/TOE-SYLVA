@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 量子密码学与量子通信_综述 — 数值验证脚本
 TOE-SYLVA 形式化物理研究所

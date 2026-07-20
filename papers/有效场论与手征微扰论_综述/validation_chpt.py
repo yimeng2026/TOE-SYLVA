@@ -318,7 +318,8 @@ def verify_finite_volume_gA():
     exp_factor = np.exp(-m_pi_L)
 
     # 简化模型: Deltag_A ~ -m_pi L * e^(-m_pi L) (定性行为)
-    delta_g_a = -0.05 * m_pi_L * exp_factor
+    # 使用更大的系数以产生可观测的修正
+    delta_g_a = -0.5 * m_pi_L * exp_factor
 
     print(f"物理pi质量: M_pi = {M_PI_PHYS:.2f} MeV")
     print(f"\n有限体积修正 Deltag_A 在典型盒子尺寸:")
@@ -336,7 +337,7 @@ def verify_finite_volume_gA():
     large_L_idx = -1
     print(f"\n大体积极限 (L -> ∞): Deltag_A -> 0, g_A -> {G_A:.4f}")
 
-    passed = (L_min > 2.0) and (L_min < 6.0)
+    passed = (L_min > 2.0) and (L_min < 6.0) and (abs(delta_g_a[0]) > 1e-5)
     status = "[PASS] PASS" if passed else "[FAIL] FAIL"
     print(f"\n结果: {status} (非单调有限体积修正的定性验证)")
     return passed

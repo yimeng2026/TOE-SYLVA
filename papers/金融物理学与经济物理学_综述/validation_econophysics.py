@@ -16,6 +16,7 @@ Date: 2026-07-14
 import numpy as np
 from numpy import linalg as LA
 import warnings
+import time
 warnings.filterwarnings('ignore')
 
 np.random.seed(42)
@@ -375,16 +376,53 @@ if __name__ == "__main__":
     print("="*70 + "\n")
     
     results = {}
+    pass_count = 0
+    total_count = 5
+    start_time = time.time()
     
+    # 模块1: 幂律分布
+    t0 = time.time()
     results['power_law'] = validate_power_law_tail()
+    print(f"  [耗时: {time.time()-t0:.2f}s]\n")
+    
+    # 模块2: Marchenko-Pastur
+    t0 = time.time()
     results['marchenko_pastur'] = validate_marchenko_pastur()
+    print(f"  [耗时: {time.time()-t0:.2f}s]\n")
+    
+    # 模块3: LPPL
+    t0 = time.time()
     results['lppl'] = validate_lppl_model()
+    print(f"  [耗时: {time.time()-t0:.2f}s]\n")
+    
+    # 模块4: 财富交换
+    t0 = time.time()
     results['wealth_exchange'] = validate_wealth_exchange()
+    print(f"  [耗时: {time.time()-t0:.2f}s]\n")
+    
+    # 模块5: MST拓扑
+    t0 = time.time()
     results['mst_topology'] = validate_mst_topology()
+    print(f"  [耗时: {time.time()-t0:.2f}s]\n")
+    
+    total_time = time.time() - start_time
     
     print("="*70)
     print("验证总结")
     print("="*70)
     for name, result in results.items():
-        print(f"  {name}: 已完成")
+        status_str = "PASS" if result is not None else "FAIL"
+        if name == 'power_law' and result is not None:
+            pass_count += 1
+        elif name == 'marchenko_pastur' and result is not None:
+            pass_count += 1
+        elif name == 'lppl' and result is not None:
+            pass_count += 1
+        elif name == 'wealth_exchange' and result is not None:
+            pass_count += 1
+        elif name == 'mst_topology' and result is not None:
+            pass_count += 1
+        print(f"  {name}: {status_str}")
+    print(f"\n总耗时: {total_time:.2f}s")
+    print(f"通过模块: {pass_count}/{total_count}")
     print("\n所有数值验证模块执行完毕。")

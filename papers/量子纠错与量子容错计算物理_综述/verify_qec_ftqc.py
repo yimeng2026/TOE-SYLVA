@@ -131,7 +131,6 @@ def verify_surface_code_stabilizers():
     print(f"  - [A_v, B_p] = 0: 是")
     print(f"  - 投影算符 P=(I+A_v)/2 满足 P^2=P: 是")
     return True
-    return True
 
 # =============================================================================
 # 模块3：阈值定理标度律验证
