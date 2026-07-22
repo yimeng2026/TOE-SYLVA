@@ -93,6 +93,13 @@ lean_lib «SylvaFormalization» where
     `SYLVA_CrossReferences,
     `SYLVA_QuantumChaos,
 
+    -- v6.0 Extension Modules (2026-07-22)
+    `SYLVA_UniversalSymmetry,
+    `SYLVA_ConsciousnessBridge,
+    `SYLVA_QuantumInformationUnity,
+    `SYLVA_CosmologicalConstant,
+    `SYLVA_DarkSector,
+
 
     `Module01_SylvaInfrastructure_v5_42,
     `Module02_BerryGeometry_v5_42,

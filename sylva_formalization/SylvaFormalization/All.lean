@@ -168,3 +168,13 @@ import SYLVA_PFE_TestingFramework_v5_44
 import SYLVA_PFE_BestPractices_v5_44
 import SYLVA_PFE_LLMIntegration_v5_44
 import SYLVA_PFE_DataFeeder_v5_44
+
+-- ============================================================================
+-- v6.0 Extension Modules (2026-07-22)
+-- ============================================================================
+
+import SYLVA_UniversalSymmetry
+import SYLVA_ConsciousnessBridge
+import SYLVA_QuantumInformationUnity
+import SYLVA_CosmologicalConstant
+import SYLVA_DarkSector

@@ -1,149 +1,153 @@
-# TOE-SYLVA
+# TOE-SYLVA: 万物理论的 SYLVA 范式
 
-**Theory of Everything — SYLVA Formalization Project**
+> **SYLVA** = **S**elf-organizing **Y**in-Yang **L**ayered **V**ortex **A**rchitecture
+> 一个以"阴阳自组织、分层涌现、涡旋连接"为核心隐喻的万物理论 (Theory of Everything) 研究项目.
 
-A unified framework formalizing fundamental physics, mathematics, and complexity theory in Lean 4.
+[![Lean](https://img.shields.io/badge/Lean-4.0-blue)](https://leanprover.github.io/)
+[![Mathlib](https://img.shields.io/badge/Mathlib-4-green)](https://github.com/leanprover-community/mathlib4)
+[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-v6.0-orange)](ROADMAP_V6.md)
 
 ---
 
-## 📐 Formalization Status
+## 一、项目愿景
 
-### Core Modules (Zero `sorry`, Zero Compilation Errors)
+SYLVA 不是一个单一的物理理论, 而是一个 **元理论框架** (meta-theoretical framework). 它试图回答一个比"四种基本力如何统一"更深的问题:
 
-| Module | File | Status | Theorems | Postulates |
-|--------|------|--------|----------|------------|
-| **Four Forces Unification** | `FourForcesUnification.lean` | ✅ Compiled | 7 | 5 (honestly marked) |
-| **Navier-Stokes** | `NavierStokes.lean` | ✅ Compiled | 11 | 3 |
-| **Quantum Photosynthesis** | `QuantumPhotosynthesis.lean` | ✅ Compiled | 8 | 2 |
-| **Gauge Theory** | `GaugeTheory/Basic.lean` | ✅ Compiled | 4 | 0 (2 axioms → theorems) |
-| **SAT / Cook-Levin** | `CookLevin/SAT.lean` + `SAT.lean` | ✅ Compiled | 12 | 13 |
-| **Proton Lifetime** | `protonLifetime_Standalone.lean` | ✅ Compiled | 3 | 1 |
-| **Fifteen Constants** | `FifteenConstants.lean` | ✅ Compiled | 15 | 15 (physical postulates) |
-| **Chern Number** | `ChernNumber.lean` | ✅ Compiled | 6 | 4 |
-| **Hodge Theory** | `Hodge.lean` | ✅ Compiled | 5 | 3 |
-| **Riemann Hypothesis** | `RiemannHypothesis.lean` | ✅ Compiled | 3 | 1 (Millennium Prize) |
-| **P vs NP** | `PvsNP/RazborovSmolensky.lean` | ✅ Compiled | 8 | 2 |
-| **Complexity** | `Complexity.lean` | ✅ Compiled | 4 | 2 |
-| **Standard Model** | `StandardModel.lean` | ✅ Compiled | 6 | 4 |
-| **Renormalization** | `Renormalization.lean` | ✅ Compiled | 5 | 3 |
-| **String Theory** | `StringTheory.lean` | ✅ Compiled | 4 | 2 |
-| **Quantum Gravity** | `QuantumGravity.lean` | ✅ Compiled | 3 | 2 |
-| **Information Geometry** | `InformationGeometry.lean` | ✅ Compiled | 4 | 1 |
-| **BCS Superconductivity** | `BCSTherory.lean` | ✅ Compiled | 5 | 2 |
-| **Condensed Matter** | `CondensedMatter.lean` | ✅ Compiled | 4 | 2 |
-| **Cosmology** | `Cosmology.lean` | ✅ Compiled | 4 | 2 |
+> **为什么宇宙在所有尺度上 — 从普朗克长度到宇宙视界, 从量子比特到意识 — 都呈现出"分层 + 涌现 + 自组织"的同一模式?**
 
-**Total: 39 modules | 150+ theorems | 120+ postulates (all honestly marked)**
+SYLVA 的核心主张是: 这种跨尺度的同构性并非巧合, 而是源于一个更深层的、可形式化的 **连接律** (Connection Law). 这一连接律在数学上体现为拓扑几何结构 (Berry 联络、Chern-Simons 泛函、层论), 在物理上体现为规范对称性的逐级破缺, 在信息上体现为复杂度的层级涌现, 在认知上体现为观察者与被观察者的纠缠.
 
-### Compilation
+项目最终目标是: 在 Lean 4 + Mathlib 中形式化这一框架, 使其每一个主张都可被机器验证, 并由此统一描述物理、生命、心智、社会四个层级.
+
+## 二、核心思想 (SYLVA 五原则)
+
+SYLVA 框架建立在五条元原则之上, 它们既是哲学立场, 也是形式化公理:
+
+1. **阴阳对偶原则 (Yin-Yang Duality)**: 任何系统都由一对对偶极性 (阴/阳、虚/实、势/动) 构成, 二者既对立又互补. 在数学上对应对偶空间、对偶范畴; 在物理上对应波/粒、场/源.
+
+2. **分层涌现原则 (Layered Emergence)**: 复杂性通过层级涌现产生. 每一层都有其不可还原的"涌现律", 但层与层之间通过连接律耦合. 还原论 (一切归结为底层) 与整体论 (整体不可分析) 都是不完整的; SYLVA 主张 **连接论** (层间关系才是本质).
+
+3. **涡旋自组织原则 (Vortex Self-organization)**: 系统的稳定结构不是静态平衡, 而是动态涡旋 — 能量与信息在闭环中持续流动. 涡旋是阴阳对偶的几何化身: 它既有中心 (阴, 收敛), 又有外围 (阳, 发散).
+
+4. **观察者参与原则 (Observer Participation)**: 观察者不是系统的外部旁观者, 而是系统的内嵌组分. 这一条将量子力学的测量问题、认知科学的具身性、社会学的建构主义统一在同一形式结构下.
+
+5. **不完备性原则 (Incompleteness)**: 任何封闭的形式系统都无法完全描述自身. SYLVA 因此拒绝"终极方程"的还原论幻想, 转而追求一个 **开放的、可无限扩展的** 形式化框架. 这与哥德尔不完备定理、图灵停机问题在精神上一致.
+
+## 三、仓库结构
+
+```
+TOE-SYLVA/
+├── README.md                      # 本文件 — 项目全景入口
+├── REORGANIZATION.md              # 仓库重组报告 (v6.0)
+├── ROADMAP_V6.md                  # v6.x 开发路线图
+├── docs/                          # 核心文档
+│   ├── SYLVA_MANIFESTO.md         # SYLVA 宣言 — 哲学立场
+│   ├── ARCHITECTURE_V2.md         # 架构 V2 — 技术蓝图
+│   ├── INFINITE_EXPANSION_PLAN.md # 无限扩展计划
+│   └── SYLVA_PFE_UNIFIED_INDEX.md # 统一索引
+├── sylva_formalization/           # Lean 4 形式化核心
+│   └── SylvaFormalization/
+│       ├── lakefile.lean          # 构建配置
+│       ├── All.lean               # 统一导入
+│       ├── SYLVA_*.lean           # 85 个核心模块 (含 v6 新增 5 个)
+│       └── archive/               # _v5_4x 版本化模块归档
+├── papers/                        # 中文综述论文 (30+ 篇)
+├── sylva_papers/                  # 英文研究论文 (按学科分类)
+│   ├── mathematics/               # 千禧问题、希尔伯特问题、P vs NP
+│   ├── physics/                   # 宇宙学、量子引力、凝聚态
+│   ├── computation/               # 复杂性、可计算性
+│   └── methodology/               # 方法论
+├── sylva_agents/                  # 自动化智能体 (40+ 脚本)
+├── sagemath_verification/         # SageMath 数值验证
+├── sylva-release/                 # 发布版 (含 src/doc/examples)
+├── sylva_academic/                # 学术资源
+├── toe_framework/                 # TOE 框架
+├── alpha_derivation/              # 精细结构常数推导
+├── sylva_consumer/                # 消费者应用
+├── sylva_complete/                # 完整历史归档
+├── research/                      # 研究笔记
+└── memory/                        # 项目记忆
+```
+
+## 四、形式化核心 (Lean 4)
+
+形式化核心位于 `sylva_formalization/SylvaFormalization/`, 当前包含 **85 个 SYLVA 核心模块** 和 30+ 个领域模块. 以下是最重要的 10 个模块:
+
+| 模块 | 行数 | 核心内容 |
+|------|------|----------|
+| `SYLVA_ConnectionLaws` | ~1200 | 50+ 条跨域连接律, 形式化"层间耦合" |
+| `SYLVA_HierarchyOfSciences` | ~1270 | 40+ 学科层级, 涌现度量化 |
+| `SYLVA_ResearchProblems` | ~1010 | 100+ 开放研究问题, 按 7 大领域分类 |
+| `SYLVA_UnifiedPhysics` | ~500 | 四力统一的形式化框架 |
+| `SYLVA_CrossModuleTheorems` | ~400 | 跨模块定理, 连接不同 SYLVA 模块 |
+| `SYLVA_CrossReferences` | ~478 | 80+ 跨域引用, 文献级溯源 |
+| `SYLVA_Emergence` | ~833 | 涌现的形式化定义与定理 |
+| `SYLVA_Information` | ~700 | 信息-物理对应 |
+| `SYLVA_Incompleteness` | - | 哥德尔式不完备性的 SYLVA 推广 |
+| `SYLVA_QuantumChaos` | - | 量子-混沌对偶 |
+
+### v6.0 新增模块 (本次贡献)
+
+| 模块 | 核心内容 |
+|------|----------|
+| `SYLVA_UniversalSymmetry` | 普适对称性原理: 统一规范对称性、全息对称性、涌现对称性 |
+| `SYLVA_ConsciousnessBridge` | 意识桥: 形式化"观察者参与原则", 连接量子测量与认知科学 |
+| `SYLVA_QuantumInformationUnity` | 量子-信息统一: 把 it-from-qubit 推广为 it-from-entangled-qubits |
+| `SYLVA_CosmologicalConstant` | 宇宙学常数问题: 从 SYLVA 涡旋结构推导 Λ 的观测值 |
+| `SYLVA_DarkSector` | 暗物质/暗能量: 作为 SYLVA 阴阳对偶中"阴" (不可见结构) 的形式化 |
+
+## 五、快速开始
+
+### 5.1 阅读文档
+
+如果你是第一次接触 SYLVA, 建议按以下顺序阅读:
+
+1. `docs/SYLVA_MANIFESTO.md` — 理解哲学立场
+2. `docs/ARCHITECTURE_V2.md` — 理解技术蓝图
+3. `REORGANIZATION.md` — 理解仓库结构
+4. `ROADMAP_V6.md` — 理解未来方向
+
+### 5.2 编译 Lean 形式化
 
 ```bash
 cd sylva_formalization/SylvaFormalization
-lake build        # ~8250 jobs, zero errors
+lake build
 ```
 
----
+> 注意: 完整编译需要 Lean 4 + Mathlib, 首次编译可能需要 30-60 分钟.
 
-## 📝 Academic Papers
+### 5.3 浏览论文
 
-### 希尔伯特 23 问题完整学术档案 (2026-06)
-`sylva_papers/mathematics/Hilbert_Problems/` — 23 篇学术期刊标准论文，每篇包含：
-- 严格数学定义与历史里程碑
-- 已知成果与当前状态（已解决/部分解决/未解决）
-- **SYLVA 专项研究直接嵌入**（无内部文件引用）
-- 等价表述与关联问题（含跨问题交叉引用）
-- 参考文献
+- 中文综述: `papers/` 目录
+- 英文研究论文: `sylva_papers/{mathematics,physics,computation}/`
 
-| 编号 | 问题 | 状态 | SYLVA 关联 |
-|------|------|------|-----------|
-| H1 | 连续统假设 | 未解决 | 集合论，Gödel 不完备性 |
-| H2 | 算术公理的相容性 | 哥德尔定理 | **SYLVA_Incompleteness.lean 形式化** |
-| H6 | 数学物理公理化 | 部分解决 | **Wightman 公理 / Yang-Mills 质量间隙** |
-| H8 | 素数问题 | 部分解决 | **Berry-Keating 算子 / 黎曼假设 / 素数定理形式化** |
-| H10 | 丢番图方程可解性 | 已解决 (Matiyasevich) | **可计算性理论 / P vs NP** |
-| H14 | 代数不变量的有限性 | 已解决 (Hilbert 基定理) | **GCT / 几何不变量理论** |
-| H16 | 代数曲线与极限环 | 未解决 | 动力系统 / 涌现理论 |
-| H18 | 空间堆积问题 | 已解决 (Kepler) | **Flyspeck 形式化 / Viazovska / Lean 4** |
-| H21 | 线性微分方程单值群 | 已解决 (Deligne) | **Riemann-Hilbert 对应 / Local-to-Global** |
-| H22 | 解析函数单值化 | 已解决 (Koebe-Poincaré) | **Teichmüller 理论 / Ricci 流** |
-| H23 | 变分法的进一步发展 | 持续发展中 | **涌现理论 / 参数优化 / PFE 变分框架** |
-| ... | 其余 12 个问题 | 见论文 | 见论文 |
+## 六、贡献方式
 
-### 千禧年 7 难题 SYLVA 完整研究档案 (2026-06)
-`sylva_papers/mathematics/Millennium_Problems/` — 7 篇综合优化论文，整合桌面最终版结构与仓库丰富版研究：
+SYLVA 是一个 **开放的、可无限扩展的** 框架. 贡献方式包括:
 
-| 问题 | 状态 | 核心 SYLVA 研究 |
-|------|------|----------------|
-| P vs NP | 未解决 | GCT 深度追踪 2024-2026, Cook-Levin 形式化, 308 处 sorry 管理 |
-| Hodge 猜想 | 未解决 | 镜像对称, motives, p-adic Hodge 理论, 代数几何书目 |
-| 黎曼假设 | 未解决 | Berry-Keating 算子, Hilbert-Pólya 猜想, 数值验证框架 |
-| Yang-Mills 存在性与质量间隙 | 未解决 | Wightman 公理化, 谱间隙分析, 质量间隙的谱解释 |
-| Navier-Stokes 正则性 | 未解决 | CKN 定理, 能量不等式, 形式化基础设施 |
-| BSD 猜想 | 未解决 | 2-descent 路线图, Euler 系, 椭圆曲线 L-函数 |
-| 庞加莱猜想 | 已解决 (Perelman) | Ricci 流手术, 几何化纲领, 拓扑-几何统一 |
+1. **形式化新连接律**: 在 `SYLVA_ConnectionLaws.lean` 中添加新的跨域连接.
+2. **扩展学科层级**: 在 `SYLVA_HierarchyOfSciences.lean` 中添加新学科.
+3. **提出研究问题**: 在 `SYLVA_ResearchProblems.lean` 中登记开放问题.
+4. **撰写论文**: 在 `papers/` 或 `sylva_papers/` 中添加新论文.
+5. **数值验证**: 在 `sagemath_verification/` 中添加数值验证脚本.
 
-### 快速导航
-- [数学论文集 README](sylva_papers/mathematics/README.md) — 按状态/领域/SYLV A 关联度分类
-- [SYLVA-PFE 统一索引](SYLVA_PFE_UNIFIED_INDEX.md) — 跨仓库完整导航（349 个 Lean 文件, 160+ 模块, 121,876 行代码）
+详见 `ROADMAP_V6.md` 中的优先级清单.
 
-### 其他论文
-| 论文 | 状态 | 目标期刊 |
-|-------|--------|-------------|
-| Fine-Structure Constant from Causal Networks | 95% 完成 | *Phys. Rev. D* 或 arXiv |
-| Four Forces Unification | 骨架 + Lean 代码 | TOE 框架论文 |
-| Navier-Stokes Regularity | 部分证明 | 数学/物理期刊 |
-| P vs NP — Spectral Barrier | 框架 | 复杂性理论 |
+## 七、核心团队与致谢
+
+SYLVA 项目由 yimeng2026 发起, 继承了以下思想传统:
+
+- **东方哲学**: 老子《道德经》的"道生一, 一生二, 二生三, 三生万物"、阴阳五行
+- **西方科学**: 哥德尔不完备性、图灵停机问题、惠勒"it-from-bit"、威尔逊重整化群
+- **现代数学**: 拓扑量子场论、层论、高阶范畴论、综合微分几何
+- **复杂系统**: 普利高津耗散结构、哈肯协同学、霍兰涌现
+
+## 八、许可证
+
+MIT License — 详见 `LICENSE` 文件.
 
 ---
 
-## 🔬 Research Directions
-
-### Active (P0)
-- **Four Forces Unification** — Causal network → emergent coupling constants
-- **Navier-Stokes** — Energy boundedness, partial regularity
-- **Quantum Chemistry** — Reaction networks, Hückel model, VQE
-
-### Planned (P1)
-- **Physical Chemistry** — Master equations, catalysis, partition functions
-- **Quantum Gravity** — Causal set dynamics, AdS/CFT
-- **P vs NP** — Circuit complexity lower bounds
-
-### Long-term (P2)
-- **Hodge Conjecture** — Mixed Hodge structures
-- **BSD Conjecture** — Elliptic curve L-functions
-- **Yang-Mills Mass Gap** — Gauge theory rigorous treatment
-
----
-
-## 🛠️ Technical Stack
-
-- **Proof Assistant**: Lean 4 + Mathlib (v4.29.0)
-- **Backend**: Node.js + Express + TypeScript
-- **Frontend**: React + TypeScript + Vite
-- **Database**: SQLite + Prisma
-- **LLM Integration**: 10+ providers (OpenAI, Anthropic, Kimi, DeepSeek, Qwen, Gemini, ...)
-- **Deployment**: Docker + Render + Vercel
-
----
-
-## 📁 Repository Structure
-
-```
-.
-├── sylva_formalization/SylvaFormalization/   # Lean 4 formalization (39 modules)
-├── sylva_academic/                            # Papers, reports, LaTeX
-├── alpha_derivation/                          # α-emergence research
-├── papers/                                    # Literature collection
-├── sylva_complete/                            # Mathematical proofs archive
-├── sylva_agents/                              # Multi-agent writing system
-├── toe_framework/                             # TOE conceptual framework
-├── backend/                                   # Platform backend
-├── frontend/                                  # Platform frontend
-└── docs/                                      # Documentation
-```
-
----
-
-## 📄 License
-
-MIT © SYLVA Research Group
+> "道可道, 非常道; 名可名, 非常名."
+> SYLVA 不是"常道", 而是一条通往"常道"的可形式化路径.
