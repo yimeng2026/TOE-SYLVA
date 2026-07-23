@@ -1,6 +1,0 @@
-import Mathlib
-
-open Set Classical
-
-lemma test1 : sInf (鈭?: Set 鈩? = 0 := by
-  simp [sInf_eq_zero]
