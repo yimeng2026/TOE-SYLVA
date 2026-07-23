@@ -1,2 +1,6 @@
 .lake/
 mathlib4_extracted/
+
+__pycache__/
+*.pyc
+*.pyo
