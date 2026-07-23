@@ -60,3 +60,12 @@
 - Witten (2018), Symmetry and emergence. arXiv:1810.01732
 - Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
 - Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.
+
+
+---
+
+## 补充arXiv引用（v3）
+
+- Penrose (2004), The Road to Reality. Knopf.
+- Weinberg (2008), Cosmology. Oxford Univ. Press.
+- Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.

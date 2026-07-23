@@ -8,3 +8,12 @@
 
 本文旨在系统综述拓扑缺陷与孤子理论的数学基础、物理模型及跨学科应用，并在此基础上探讨其在TOE-SYLVA统一框架中的定位与交叉联系。全文结构如下：第二节阐述拓扑缺陷的同伦分类理论；第三节介绍孤子的经典模型与拓扑荷结构；第四节讨论缺陷与孤子在凝聚态物理、宇宙学和量子模拟中的应用；第五节给出TOE-SYLVA交叉联系表及本体论模块关联；第六节总结全文并展望未来研究方向。
 
+
+
+---
+
+## 补充arXiv引用（v3）
+
+- Penrose (2004), The Road to Reality. Knopf.
+- Weinberg (2008), Cosmology. Oxford Univ. Press.
+- Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.

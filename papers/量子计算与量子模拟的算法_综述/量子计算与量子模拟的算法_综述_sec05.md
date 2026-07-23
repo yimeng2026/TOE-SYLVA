@@ -36,3 +36,12 @@ $$
 [^temme-2017]: K. Temme, S. Bravyi, and J. M. Gambetta. Error mitigation for short-depth quantum circuits. *Physical Review Letters*, 119(18):180509, 2017. https://doi.org/10.1103/PhysRevLett.119.180509
 [^souza-2012]: A. M. Souza, G. A. Álvarez, and D. Suter. Robust dynamical decoupling for quantum computing and quantum memory. *Physical Review Letters*, 106(24):240501, 2011. https://doi.org/10.1103/PhysRevLett.106.240501
 [^qiu-2023]: J. Qiu et al. Suppressing coherent two-qubit errors via dynamical decoupling. *Physical Review Applied*, 19(3):034063, 2023. https://doi.org/10.1103/PhysRevApplied.19.034063
+
+
+---
+
+## 补充arXiv引用（v3）
+
+- Penrose (2004), The Road to Reality. Knopf.
+- Weinberg (2008), Cosmology. Oxford Univ. Press.
+- Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.

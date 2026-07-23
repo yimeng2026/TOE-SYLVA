@@ -17,3 +17,12 @@
 
 从本体论视角看，中微子在TOE-SYLVA框架中具有独特的"枢纽"（hub）地位：作为标准模型中唯一仅参与弱相互作用的费米子，中微子同时连接粒子物理（味对称性与质量生成）、天体物理（极端环境下的产生与传播）、宇宙学（宇宙演化历史）以及超越标准模型的新物理（Majorana本质、惰性中微子、暗物质耦合）。IceCube、Borexino、JUNO和DUNE等实验平台，本质上都是跨越上述多个SYLVA模块的"界面探测器"（interface detectors），其物理产出同时服务于基础物理和天体物理的双重目标。
 
+
+
+---
+
+## 补充arXiv引用（v3）
+
+- Penrose (2004), The Road to Reality. Knopf.
+- Weinberg (2008), Cosmology. Oxford Univ. Press.
+- Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.
