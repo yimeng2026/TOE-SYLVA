@@ -14,7 +14,6 @@ TOE-SYLVA 形式化物理研究所
 
 import numpy as np
 import matplotlib.pyplot as plt
-from numba import njit, prange
 import os
 
 # 设置中文字体
@@ -29,57 +28,54 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # 1. 二维伊辛模型 Metropolis 蒙特卡洛模拟
 # ============================================================================
 
-@njit(cache=True)
 def metropolis_step_2d(spins, beta, L):
-    """执行一次Metropolis更新（对整个格点）"""
-    for _ in range(L * L):
-        i = np.random.randint(0, L)
-        j = np.random.randint(0, L)
-        s = spins[i, j]
-        # 周期性边界条件
-        neighbors = spins[(i+1)%L, j] + spins[(i-1)%L, j] + \
-                    spins[i, (j+1)%L] + spins[i, (j-1)%L]
-        dE = 2 * s * neighbors
-        if dE < 0 or np.random.random() < np.exp(-beta * dE):
-            spins[i, j] = -s
+    """执行一次Metropolis更新（对整个格点）——纯NumPy向量化棋盘格更新"""
+    parity = np.indices((L, L)).sum(axis=0) % 2
+    for sublattice in (0, 1):
+        neighbors = (np.roll(spins, 1, 0) + np.roll(spins, -1, 0) +
+                     np.roll(spins, 1, 1) + np.roll(spins, -1, 1))
+        dE = 2.0 * spins * neighbors
+        flip = ((dE < 0) | (np.random.random((L, L)) < np.exp(-beta * dE))) & \
+               (parity == sublattice)
+        spins[flip] = -spins[flip]
     return spins
 
-@njit(cache=True)
 def compute_energy_magnetization(spins, L):
-    """计算能量和磁化强度"""
-    E = 0.0
+    """计算能量和磁化强度——纯NumPy向量化实现"""
+    E = -float(np.sum(spins * (np.roll(spins, 1, 0) + np.roll(spins, 1, 1))))
     M = np.sum(spins)
-    for i in range(L):
-        for j in range(L):
-            s = spins[i, j]
-            neighbors = spins[(i+1)%L, j] + spins[i, (j+1)%L]
-            E -= s * neighbors
     return E, M / (L * L)
 
-@njit(cache=True)
 def wolff_step(spins, beta, L):
-    """Wolff集群算法单步"""
+    """Wolff集群算法单步——纯NumPy向量化集群生长实现"""
     i = np.random.randint(0, L)
     j = np.random.randint(0, L)
     seed_spin = spins[i, j]
-    cluster = [(i, j)]
-    spins[i, j] = -seed_spin
-    pocket = [(i, j)]
     p_add = 1.0 - np.exp(-2.0 * beta)
-    
-    while len(pocket) > 0:
-        idx = np.random.randint(0, len(pocket))
-        ci, cj = pocket[idx]
-        pocket[idx] = pocket[-1]
-        pocket.pop()
-        
-        for di, dj in [(1,0), (-1,0), (0,1), (0,-1)]:
-            ni, nj = (ci + di) % L, (cj + dj) % L
-            if spins[ni, nj] == seed_spin and np.random.random() < p_add:
-                spins[ni, nj] = -seed_spin
-                cluster.append((ni, nj))
-                pocket.append((ni, nj))
-    
+
+    cluster = np.zeros((L, L), dtype=bool)
+    cluster[i, j] = True
+    spins[i, j] = -seed_spin
+    frontier = cluster.copy()
+
+    # 按“环”逐层生长：frontier 的邻居中同向自旋以概率 p_add 加入集群，
+    # 与逐键测试的原始算法统计等价（未加入的格点可在后续环中再次被测试）。
+    # same 掩码在循环外计算一次，之后随 accept 增量更新，避免每环重复全格点比较。
+    same = (spins == seed_spin)
+    same[i, j] = False
+    while frontier.any():
+        if not same.any():
+            break
+        neighbor_of_frontier = (np.roll(frontier, 1, 0) | np.roll(frontier, -1, 0) |
+                                np.roll(frontier, 1, 1) | np.roll(frontier, -1, 1))
+        accept = (neighbor_of_frontier & same &
+                  (np.random.random((L, L)) < p_add))
+        if not accept.any():
+            break
+        spins[accept] = -seed_spin
+        same &= ~accept
+        frontier = accept
+
     return spins
 
 def run_ising_mc(L, T_range, n_thermal=5000, n_measure=10000, use_wolff=True):
@@ -161,6 +157,11 @@ def run_ising_mc(L, T_range, n_thermal=5000, n_measure=10000, use_wolff=True):
         'C': np.array(specific_heats),
         'U4': np.array(binder_cumulants)
     }
+
+def _simulate_one_L(args):
+    """multiprocessing 工作函数：运行单个格点尺寸的全温度扫描（须为顶层函数以便pickle）"""
+    L, T_range, n_thermal, n_measure = args
+    return L, run_ising_mc(L, T_range, n_thermal, n_measure, use_wolff=True)
 
 # ============================================================================
 # 2. 朗道自由能分析
@@ -314,17 +315,32 @@ def main_simulation():
     # 使用多个系统尺寸进行有限尺寸标度
     L_values = [16, 32, 64]
     T_range = np.linspace(1.5, 3.5, 30)
-    
-    results_by_L = {}
-    
+
+    # 不同尺寸之间相互独立：用标准库 multiprocessing 并行（纯NumPy无JIT时
+    # 单进程串行运行时间过长）。子进程不可用（如无多核/受限环境）时回退串行。
+    tasks = []
     for L in L_values:
-        print(f"  模拟 L = {L}...")
-        # 根据系统大小调整模拟参数
         n_thermal = 2000 if L <= 32 else 1000
         n_measure = 5000 if L <= 32 else 2000
-        
-        results = run_ising_mc(L, T_range, n_thermal, n_measure, use_wolff=True)
-        results_by_L[L] = results
+        tasks.append((L, T_range, n_thermal, n_measure))
+
+    results_by_L = {}
+    try:
+        import multiprocessing as mp
+        n_proc = min(len(tasks), mp.cpu_count() or 1)
+        if n_proc > 1:
+            with mp.Pool(processes=n_proc) as pool:
+                for L, results in pool.imap(_simulate_one_L, tasks):
+                    print(f"  完成 L = {L}")
+                    results_by_L[L] = results
+        else:
+            raise RuntimeError("single core, fallback to serial")
+    except Exception:
+        results_by_L = {}
+        for task in tasks:
+            L = task[0]
+            print(f"  模拟 L = {L}...")
+            results_by_L[L] = _simulate_one_L(task)[1]
     
     # 绘制结果
     print("\n[运行] 生成可视化结果...")

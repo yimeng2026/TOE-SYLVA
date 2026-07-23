@@ -238,8 +238,14 @@ def verify_magic_angle_flatband():
     
     w = 0.11 * eV  # interlayer coupling
     k_D = 4 * np.pi / (3 * a0)
-    
-    theta_magic = np.sqrt(3) * w / (2 * hbar * vF * k_D)
+
+    # Bistritzer-MacDonald continuum model:
+    # dimensionless coupling alpha = w / (hbar * vF * k_theta),
+    # with k_theta = k_D * theta at small twist angle.
+    # The first magic angle corresponds to alpha_1 = 0.586,
+    # i.e. theta_magic = w / (alpha_1 * hbar * vF * k_D).
+    alpha_1 = 0.586  # first magic value of the BM coupling parameter
+    theta_magic = w / (alpha_1 * hbar * vF * k_D)
     theta_magic_deg = np.degrees(theta_magic)
     
     print(f"  Graphene lattice constant a0 = {a0*1e9:.3f} nm")

@@ -68,18 +68,15 @@ def solve_continuous_are_euler(A, B, Q, R, dt=0.001, max_iter=50000, tol=1e-8):
 def solve_continuous_lyapunov(A, Q, dt=0.001, max_iter=50000, tol=1e-8):
     """
     连续时间 Lyapunov 方程: A^T P + P A = -Q
-    通过离散化迭代求解
+    通过 Kronecker 积将方程化为线性系统直接求解 (纯 NumPy, 无离散化误差):
+        (I ⊗ A^T + A^T ⊗ I) vec(P) = -vec(Q)
+    (dt/max_iter/tol 参数保留以保持接口兼容)
     """
     n = A.shape[0]
-    A_d = np.eye(n) + dt * A
-    Q_d = dt * Q
-    P = Q_d.copy()
-    for i in range(max_iter):
-        P_new = A_d.T @ P @ A_d + Q_d
-        if la.norm(P_new - P, 'fro') < tol:
-            return P_new
-        P = P_new
-    return P
+    K = np.kron(np.eye(n), A.T) + np.kron(A.T, np.eye(n))
+    P = la.solve(K, -Q.ravel()).reshape(n, n)
+    # 数值上对称化, 消除浮点不对称
+    return (P + P.T) / 2
 
 
 def matrix_sign_eigen(M):
@@ -94,9 +91,12 @@ def solve_care_newton(A, B, Q, R, max_iter=50, tol=1e-10):
     使用 Newton 迭代求解 CARE:
         A^T P + P A - P B R^{-1} B^T P + Q = 0
     这是控制理论中标准的数值方法
+    注意: Newton-Kleinman 迭代要求初始闭环矩阵 A - B R^{-1} B^T P_0 稳定,
+    否则 Lyapunov 子迭代发散。这里先用离散化方法求得稳定化解作为初值。
     """
     n = A.shape[0]
-    P = np.eye(n)  # 初始猜测
+    # 初始猜测: Euler 离散化 CARE 解 (DARE 迭代从 P=Q 出发必收敛到稳定化解)
+    P = solve_continuous_are_euler(A, B, Q, R)
     BRinvBT = B @ la.inv(R) @ B.T
     for i in range(max_iter):
         # Newton 更新: (A - B R^{-1} B^T P_k)^T P_{k+1} + P_{k+1} (A - B R^{-1} B^T P_k) = -Q - P_k B R^{-1} B^T P_k
@@ -104,6 +104,9 @@ def solve_care_newton(A, B, Q, R, max_iter=50, tol=1e-10):
         RHS = -(Q + P @ BRinvBT @ P)
         # 使用离散化方法求解 Lyapunov 方程
         P_new = solve_continuous_lyapunov(A_k, -RHS)
+        if not np.all(np.isfinite(P_new)):
+            raise FloatingPointError(
+                "Newton 迭代发散: Lyapunov 子迭代产生 inf/NaN (初始闭环不稳定)")
         if la.norm(P_new - P, 'fro') < tol:
             return P_new
         P = P_new
@@ -235,7 +238,7 @@ def verify_kalman_filter():
     y_meas = np.zeros(T)
     for k in range(T):
         v = np.random.normal(0, np.sqrt(R[0,0]))
-        y_meas[k] = C @ x_true[:, k] + v
+        y_meas[k] = (C @ x_true[:, k])[0] + v
     
     # Kalman 滤波
     x_est = np.zeros((2, T))

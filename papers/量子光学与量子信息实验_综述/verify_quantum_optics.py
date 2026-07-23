@@ -163,13 +163,13 @@ def verify_bell_chsh():
     E_apb = expectation_value(state, measurement_operator(theta_ap), measurement_operator(theta_b))
     E_apbp = expectation_value(state, measurement_operator(theta_ap), measurement_operator(theta_bp))
     
-    S = abs(E_ab - E_abp + E_apb + E_apbp)
+    S = abs(E_ab + E_abp + E_apb - E_apbp)
     
     print(f"  E(a,b)   = {E_ab:+.4f}")
     print(f"  E(a,b')  = {E_abp:+.4f}")
     print(f"  E(a',b)  = {E_apb:+.4f}")
     print(f"  E(a',b') = {E_apbp:+.4f}")
-    print(f"  S = |E(a,b) - E(a,b') + E(a',b) + E(a',b')| = {S:.4f}")
+    print(f"  S = |E(a,b) + E(a,b') + E(a',b) - E(a',b')| = {S:.4f}")
     print(f"  经典极限: S ≤ 2.0")
     print(f"  量子力学最大违反: S = 2√2 ≈ {2*np.sqrt(2):.4f}")
     print(f"  判定: {'✓ CHSH不等式违反' if S > 2 else '✗ 未违反'}")
@@ -180,7 +180,7 @@ def verify_bell_chsh():
     E2_abp = expectation_value(state2, measurement_operator(theta_a), measurement_operator(theta_bp))
     E2_apb = expectation_value(state2, measurement_operator(theta_ap), measurement_operator(theta_b))
     E2_apbp = expectation_value(state2, measurement_operator(theta_ap), measurement_operator(theta_bp))
-    S2 = abs(E2_ab - E2_abp + E2_apb + E2_apbp)
+    S2 = abs(E2_ab + E2_abp + E2_apb - E2_apbp)
     
     print(f"\n  |Φ⁺⟩态 S = {S2:.4f}")
     print(f"  判定: {'✓ CHSH不等式违反' if S2 > 2 else '✗ 未违反'}")

@@ -134,26 +134,24 @@ def validate_kitaev_chain():
         mu = case["mu"]
         delta = case["delta"]
         
-        # 构建Bogoliubov-de Gennes哈密顿量 (Nambu表示)
-        # 每个格点有2个自由度: [c_j, c_j+]
-        H = np.zeros((2 * N_sites, 2 * N_sites), dtype=complex)
-        
+        # 构建Bogoliubov-de Gennes哈密顿量 (标准Nambu分块表示)
+        # 基矢 Psi = (c_1,...,c_N, c+_1,...,c+_N), H = (1/2) Psi+ H_BdG Psi
+        # H_BdG = [[h, D], [-D*, -h^T]]
+        #   h: 正常部分 (化学势 + 跃迁), D: 反对称配对矩阵
+        h = np.zeros((N_sites, N_sites), dtype=complex)
+        D = np.zeros((N_sites, N_sites), dtype=complex)
         for j in range(N_sites):
-            # 化学势项
-            H[2*j, 2*j] = -mu / 2
-            H[2*j+1, 2*j+1] = mu / 2
-            
-            # 跃迁项和配对项
+            h[j, j] = -mu
             if j < N_sites - 1:
-                # c_j+ c_{j+1}
-                H[2*j, 2*(j+1)] = -t
-                H[2*(j+1), 2*j] = -t
-                # c_j c_{j+1} (配对)
-                H[2*j, 2*(j+1)+1] = delta
-                H[2*(j+1)+1, 2*j] = delta
-                # c_j+ c_{j+1}+ (配对厄米共轭)
-                H[2*j+1, 2*(j+1)] = -delta
-                H[2*(j+1), 2*j+1] = -delta
+                # 跃迁项 -t (c+_j c_{j+1} + h.c.)
+                h[j, j + 1] = -t
+                h[j + 1, j] = -t
+                # 配对项 Delta (c_j c_{j+1} + h.c.) -> 反对称 D
+                D[j, j + 1] = delta
+                D[j + 1, j] = -delta
+        
+        H = np.block([[h, D],
+                      [-D.conj(), -h.T]])
         
         # 对角化 (使用numpy.linalg.eigh)
         energies = np.linalg.eigvalsh(H)

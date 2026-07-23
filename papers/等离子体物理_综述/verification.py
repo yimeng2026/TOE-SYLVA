@@ -186,12 +186,6 @@ def verify_plasma_frequency():
     print(f"  [OK] 德拜长度-等离子体频率关系验证:")
     print(f"    lambda_D (直接计算) = {lambda_D:.3e} m")
     print(f"    lambda_D (v_th/omega_pe) = {lambda_D_from_freq:.3e} m")
-    lambda_D = np.sqrt(eps0 * kB * Te / (ne * e**2))
-    lambda_D_from_freq = vth / omega_pe
-    assert np.isclose(lambda_D, lambda_D_from_freq, rtol=0.1), "lambda_D = v_th / omega_pe 关系应成立"
-    print(f"  [OK] 德拜长度-等离子体频率关系验证:")
-    print(f"    lambda_D (直接计算) = {lambda_D:.3e} m")
-    print(f"    lambda_D (v_th/omega_pe) = {lambda_D_from_freq:.3e} m")
     
     print("  [模块 3 通过]\n")
     return True

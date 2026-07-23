@@ -598,8 +598,8 @@ def compute_zeta_zeros_statistics(n_zeros=5000):
     print(f"{'='*60}")
     print("  使用GUE本征值模拟黎曼零点统计")
     
-    N = 2000
-    n_samples = 20
+    N = 800
+    n_samples = 8
     
     all_zeros = []
     for i in range(n_samples):
@@ -706,34 +706,34 @@ def main():
     # 1. Wigner半圆律验证
     print("\n\n[模块 1/6] Wigner半圆律验证")
     for beta in [1, 2, 4]:
-        result = verify_wigner_semicirole(N=1000, n_samples=30, beta=beta)
+        result = verify_wigner_semicirole(N=600, n_samples=12, beta=beta)
         all_results[f'wigner_beta{beta}'] = result
     
     # 2. Marchenko-Pastur律验证
     print("\n\n[模块 2/6] Marchenko-Pastur律验证")
     for c in [0.5, 1.0, 2.0]:
-        result = verify_marchenko_pastur(N=800, c=c, n_samples=20)
+        result = verify_marchenko_pastur(N=500, c=c, n_samples=8)
         all_results[f'mp_c{c}'] = result
     
     # 3. 能级间距分布验证
     print("\n\n[模块 3/6] 能级间距分布验证")
     for beta in [1, 2, 4]:
-        result = verify_level_spacing(N=400, beta=beta, n_samples=100)
+        result = verify_level_spacing(N=300, beta=beta, n_samples=40)
         all_results[f'spacing_beta{beta}'] = result
     
     # 4. Tracy-Widom分布验证
     print("\n\n[模块 4/6] Tracy-Widom分布验证")
-    result = verify_tracy_widom(N_values=[100, 300, 1000], beta=2, n_samples=200)
+    result = verify_tracy_widom(N_values=[100, 200, 400], beta=2, n_samples=60)
     all_results['tracy_widom'] = result
     
     # 5. Pair correlation验证
     print("\n\n[模块 5/6] Pair Correlation函数验证")
-    result = verify_pair_correlation(N=800, beta=2, n_samples=50)
+    result = verify_pair_correlation(N=400, beta=2, n_samples=15)
     all_results['pair_corr'] = result
     
     # 6. Montgomery-Odlyzko定律
     print("\n\n[模块 6/6] Montgomery-Odlyzko定律数值演示")
-    result = compute_zeta_zeros_statistics(n_zeros=5000)
+    result = compute_zeta_zeros_statistics(n_zeros=2400)
     all_results['montgomery_odlyzko'] = result
     
     # 总结

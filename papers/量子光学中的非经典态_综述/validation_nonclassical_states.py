@@ -208,7 +208,8 @@ def validate_fock_wigner_negativity():
 def validate_dgcz_entanglement_criterion():
     """
     Verify DGCZ entanglement criterion for two-mode squeezed vacuum states.
-    DGCZ: <(d(X1+X2))^2> + <(d(P1-P2))^2> < 2
+    DGCZ: <(d(X1-X2))^2> + <(d(P1+P2))^2> < 2
+    (equivalent to <(d(X1+X2))^2> + <(d(P1-P2))^2> for the opposite sign convention)
     where X = (a + a^dagger)/sqrt(2), P = (a - a^dagger)/(i*sqrt(2))
     For TMSV: DGCZ = 2*exp(-2r) < 2 for all r > 0
     """
@@ -227,8 +228,11 @@ def validate_dgcz_entanglement_criterion():
     X2 = (a2 + a2_dag) / np.sqrt(2.0)
     P2 = 1j * (a2_dag - a2) / np.sqrt(2.0)
     
-    X_sum = np.kron(X1, np.eye(n_max)) + np.kron(np.eye(n_max), X2)
-    P_diff = np.kron(P1, np.eye(n_max)) - np.kron(np.eye(n_max), P2)
+    # For TMSV |psi> = sech(r) * sum_n (tanh r)^n |n,n> (positive sign convention),
+    # <a1 a2> = +(1/2) sinh(2r), so the squeezed EPR combinations are
+    # Var(X1 - X2) = e^{-2r} and Var(P1 + P2) = e^{-2r} (DGCZ = 2 e^{-2r}).
+    X_diff = np.kron(X1, np.eye(n_max)) - np.kron(np.eye(n_max), X2)
+    P_sum = np.kron(P1, np.eye(n_max)) + np.kron(np.eye(n_max), P2)
     
     test_r_values = [0.1, 0.3, 0.5, 0.8, 1.0]
     
@@ -239,14 +243,14 @@ def validate_dgcz_entanglement_criterion():
     for r in test_r_values:
         psi = two_mode_squeezed_state(r, n_max=n_max)
         
-        var_X = np.real(np.vdot(psi, X_sum @ X_sum @ psi) - np.vdot(psi, X_sum @ psi)**2)
-        var_P = np.real(np.vdot(psi, P_diff @ P_diff @ psi) - np.vdot(psi, P_diff @ psi)**2)
+        var_X = np.real(np.vdot(psi, X_diff @ X_diff @ psi) - np.vdot(psi, X_diff @ psi)**2)
+        var_P = np.real(np.vdot(psi, P_sum @ P_sum @ psi) - np.vdot(psi, P_sum @ psi)**2)
         
         dgcz = var_X + var_P
         threshold = 2.0
         is_entangled = dgcz < threshold
         
-        # For TMSV with DGCZ normalization: <(d(X1+X2))^2> = e^{-2r}, <(d(P1-P2))^2> = e^{-2r}
+        # For TMSV with DGCZ normalization: <(d(X1-X2))^2> = e^{-2r}, <(d(P1+P2))^2> = e^{-2r}
         # So DGCZ = 2*e^{-2r}
         theory_dgcz = 2.0 * np.exp(-2 * r)
         err = abs(dgcz - theory_dgcz) / theory_dgcz

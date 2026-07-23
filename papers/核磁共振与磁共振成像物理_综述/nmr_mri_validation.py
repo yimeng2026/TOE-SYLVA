@@ -347,7 +347,10 @@ def validate_bpp_model():
                    0.5 * tau_c / (1 + (2 * omega_0 * tau_c)**2) + tau_c)
     
     # Find minimum T1
-    min_idx = np.argmin(T1_inv)
+    # 修复: T1 最小值对应弛豫率 1/T1 的最大值, 原代码误用 argmin(在 tau_c
+    # 区间端点取值, 给出无意义的 omega0*tauc ~ 8e5)。BPP 谱密度
+    # f(x)=x/(1+x^2)+4x/(1+4x^2) 的极大值在 x=omega0*tauc ≈ 0.616 处。
+    min_idx = np.argmax(T1_inv)
     tau_c_min = tau_c[min_idx]
     T1_min = 1 / T1_inv[min_idx]
     

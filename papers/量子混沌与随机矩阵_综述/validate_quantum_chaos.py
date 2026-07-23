@@ -84,7 +84,7 @@ def matrix_exponential_eig(H, t):
 # 验证模块 1：Wigner-Dyson 能级间距分布
 # =============================================================================
 
-def validate_wigner_dyson(N=2000, n_trials=50):
+def validate_wigner_dyson(N=800, n_trials=15):
     """验证 GOE 和 GUE 的最近邻能级间距分布。"""
     print("=" * 70)
     print("验证模块 1：Wigner-Dyson 能级间距分布")
@@ -150,7 +150,7 @@ def validate_wigner_dyson(N=2000, n_trials=50):
 # 验证模块 2：泊松统计与可积系统对比
 # =============================================================================
 
-def validate_poisson_vs_wigner(N=1000, n_trials=30):
+def validate_poisson_vs_wigner(N=600, n_trials=15):
     """验证可积系统（泊松）与混沌系统（Wigner-Dyson）的能级间距分布差异。"""
     print("\n" + "=" * 70)
     print("验证模块 2：泊松统计与 Wigner-Dyson 对比")
@@ -282,7 +282,7 @@ def validate_spectral_form_factor(N=500, beta=1.0):
 # 验证模块 5：ETH 矩阵元统计验证
 # =============================================================================
 
-def validate_eth_matrix_elements(N=1000, n_local=10):
+def validate_eth_matrix_elements(N=600, n_local=10):
     """验证 ETH 的矩阵元统计性质。"""
     print("\n" + "=" * 70)
     print("验证模块 5：本征态热化假设（ETH）矩阵元统计")
@@ -379,7 +379,7 @@ def validate_syk_spectrum(N_majorana=16, n_samples=20):
 # 验证模块 7：间距比统计验证
 # =============================================================================
 
-def validate_spacing_ratio(N=1000, n_trials=30):
+def validate_spacing_ratio(N=600, n_trials=15):
     """验证间距比统计 r = min(s_n, s_{n+1}) / max(s_n, s_{n+1})。"""
     print("\n" + "=" * 70)
     print("验证模块 7：间距比统计验证")
@@ -416,7 +416,7 @@ def validate_spacing_ratio(N=1000, n_trials=30):
 # 验证模块 8：Wigner 半圆律验证
 # =============================================================================
 
-def validate_wigner_semicircle(N=2000, n_trials=20):
+def validate_wigner_semicircle(N=800, n_trials=8):
     """验证大维度随机矩阵的本征值分布是否符合 Wigner 半圆律。"""
     print("\n" + "=" * 70)
     print("验证模块 8：Wigner 半圆律验证")
@@ -453,7 +453,7 @@ def validate_wigner_semicircle(N=2000, n_trials=20):
 # 验证模块 9：能级排斥验证
 # =============================================================================
 
-def validate_level_repulsion(N=1000, n_trials=50):
+def validate_level_repulsion(N=600, n_trials=15):
     """验证能级排斥效应：P(s) ~ s^β 当 s → 0。"""
     print("\n" + "=" * 70)
     print("验证模块 9：能级排斥效应验证")

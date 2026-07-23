@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from scipy import integrate
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -19,6 +18,102 @@ np.random.seed(42)
 
 # Force UTF-8 output
 sys.stdout.reconfigure(encoding='utf-8')
+
+# ============================================================
+# Pure-NumPy replacement for scipy.solve_ivp
+# (scipy is unavailable in this environment). Implements the same
+# adaptive Runge-Kutta 4(5) Dormand-Prince method with the same
+# default tolerances (rtol=1e-3, atol=1e-6), so the numerical
+# trajectories match scipy's RK45 to within tolerance.
+# ============================================================
+
+class OdeResult:
+    """Minimal container mirroring the scipy OdeResult attributes used here."""
+    def __init__(self, t, y):
+        self.t = t
+        self.y = y
+
+
+def _rk45_dp_step(fun, t, y, h):
+    """Single Dormand-Prince RK45 step; returns (5th-order solution, error)."""
+    k1 = np.asarray(fun(t, y), dtype=float)
+    k2 = np.asarray(fun(t + h / 5, y + h * (k1 / 5)), dtype=float)
+    k3 = np.asarray(fun(t + 3 * h / 10,
+                      y + h * (3 * k1 / 40 + 9 * k2 / 40)), dtype=float)
+    k4 = np.asarray(fun(t + 4 * h / 5,
+                      y + h * (44 * k1 / 45 - 56 * k2 / 15 + 32 * k3 / 9)), dtype=float)
+    k5 = np.asarray(fun(t + 8 * h / 9,
+                      y + h * (19372 * k1 / 6561 - 25360 * k2 / 2187
+                               + 64448 * k3 / 6561 - 212 * k4 / 729)), dtype=float)
+    k6 = np.asarray(fun(t + h,
+                      y + h * (9017 * k1 / 3168 - 355 * k2 / 33
+                               + 46732 * k3 / 5247 + 49 * k4 / 176
+                               - 5103 * k5 / 18656)), dtype=float)
+    y5 = y + h * (35 * k1 / 384 + 500 * k3 / 1113 + 125 * k4 / 192
+                  - 2187 * k5 / 6784 + 11 * k6 / 84)
+    k7 = np.asarray(fun(t + h, y5), dtype=float)
+    y4 = y + h * (5179 * k1 / 57600 + 7571 * k3 / 16695 + 393 * k4 / 640
+                  - 92097 * k5 / 339200 + 187 * k6 / 2100 + k7 / 40)
+    return y5, y5 - y4
+
+
+def solve_ivp(fun, t_span, y0, t_eval=None, method='RK45', max_step=np.inf,
+              rtol=1e-3, atol=1e-6):
+    """Drop-in replacement for scipy.solve_ivp (RK45 only).
+
+    Supports the call signature used in this script: fun(t, y) -> dy/dt,
+    t_span=(t0, tf), y0 initial state, optional t_eval sample grid and
+    max_step limit. Adaptive step-size control identical in form to scipy.
+    """
+    if method != 'RK45':
+        raise ValueError("Only method='RK45' is supported by this fallback")
+    t0, tf = float(t_span[0]), float(t_span[1])
+    y = np.asarray(y0, dtype=float)
+
+    if t_eval is not None:
+        grid = np.asarray(t_eval, dtype=float)
+        grid = grid[(grid >= t0) & (grid <= tf)]
+    else:
+        grid = None
+
+    h = (tf - t0) / 50.0
+    if np.isfinite(max_step):
+        h = min(h, max_step)
+    h = max(h, 1e-9)
+
+    t = t0
+    out_t, out_y = [], []
+    if grid is None:
+        out_t.append(t0)
+        out_y.append(y.copy())
+
+    targets = grid if grid is not None else np.array([tf])
+    for t_end in targets:
+        while t < t_end - 1e-12:
+            h = min(h, t_end - t)
+            if np.isfinite(max_step):
+                h = min(h, max_step)
+            y5, err = _rk45_dp_step(fun, t, y, h)
+            scale = atol + rtol * np.abs(y5)
+            err_norm = np.max(np.abs(err) / scale)
+            if err_norm <= 1.0:
+                t += h
+                y = y5
+                if grid is None:
+                    out_t.append(t)
+                    out_y.append(y.copy())
+                factor = 0.9 * (1.0 / max(err_norm, 1e-16)) ** 0.2
+                h = h * min(5.0, max(0.2, factor))
+            else:
+                factor = 0.9 * (1.0 / err_norm) ** 0.2
+                h = h * max(0.1, factor)
+                if h < 1e-14:
+                    raise RuntimeError("RK45 step size underflow")
+        if grid is not None:
+            out_t.append(t_end)
+            out_y.append(y.copy())
+
+    return OdeResult(np.array(out_t), np.array(out_y).T)
 
 # ============================================================
 # Module 1: Hodgkin-Huxley Model Verification
@@ -68,12 +163,12 @@ def verify_hh_model():
     y0 = [-65.0, 0.317, 0.05, 0.6]
     
     # Sub-threshold stimulus (should NOT produce AP)
-    sol_sub = integrate.solve_ivp(lambda t, y: hh_model(t, y, I_ext=2.0), t_span, y0,
+    sol_sub = solve_ivp(lambda t, y: hh_model(t, y, I_ext=2.0), t_span, y0,
                                   t_eval=t_eval, method='RK45', max_step=0.1)
     V_max_sub = np.max(sol_sub.y[0])
     
     # Supra-threshold stimulus (should produce AP)
-    sol_sup = integrate.solve_ivp(lambda t, y: hh_model(t, y, I_ext=10.0), t_span, y0,
+    sol_sup = solve_ivp(lambda t, y: hh_model(t, y, I_ext=10.0), t_span, y0,
                                   t_eval=t_eval, method='RK45', max_step=0.1)
     V_max_sup = np.max(sol_sup.y[0])
     
@@ -90,7 +185,7 @@ def verify_hh_model():
     
     # Refractory period test
     y0_post = sol_sup.y[:, -1]
-    sol_refractory = integrate.solve_ivp(lambda t, y: hh_model(t, y, I_ext=15.0),
+    sol_refractory = solve_ivp(lambda t, y: hh_model(t, y, I_ext=15.0),
                                         (50, 55), y0_post, method='RK45', max_step=0.1)
     V_max_refractory = np.max(sol_refractory.y[0])
     assert V_max_refractory < 0, "Refractory period should prevent second AP"

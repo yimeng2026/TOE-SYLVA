@@ -44,9 +44,10 @@ def validate_qubit_state():
     assert np.isclose(norm, 1.0), "归一化条件不满足!"
 
     # 计算布洛赫向量
+    # <Y> = Tr(ρY) = i(ρ01 - ρ10) = -2 Im(ρ01)
     rho = np.outer(psi, psi.conj())
     bx = 2 * rho[0, 1].real
-    by = 2 * rho[0, 1].imag
+    by = -2 * rho[0, 1].imag
     bz = rho[0, 0].real - rho[1, 1].real
     bloch = np.array([bx, by, bz])
     print(f"  布洛赫向量: ({bx:.6f}, {by:.6f}, {bz:.6f})")
@@ -196,7 +197,9 @@ def validate_quantum_entanglement():
         E_abp = expectation(A, Bp, rho)
         E_apb = expectation(Ap, B, rho)
         E_apbp = expectation(Ap, Bp, rho)
-        S_val = abs(E_ab - E_abp + E_apb + E_apbp)
+        # 标准 CHSH 组合 (对最优化测量角 a=0, a'=π/2, b=±π/4):
+        # S = E(a,b) + E(a,b') + E(a',b) - E(a',b')
+        S_val = abs(E_ab + E_abp + E_apb - E_apbp)
         return S_val
 
     S_chsh = measure_CHSH(rho, 0, np.pi/2, np.pi/4, -np.pi/4)

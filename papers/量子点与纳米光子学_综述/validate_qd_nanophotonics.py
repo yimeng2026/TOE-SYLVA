@@ -86,8 +86,8 @@ def validate_exciton_binding():
     mh_star = 0.45 * m0
     mu = (me_star * mh_star) / (me_star + mh_star)
 
-    # 激子玻尔半径
-    a_B = (epsilon * hbar**2) / (mu * e**2)
+    # 激子玻尔半径 a_B = 4*pi*epsilon*hbar^2 / (mu*e^2)
+    a_B = (4 * np.pi * epsilon * hbar**2) / (mu * e**2)
     a_B_nm = a_B * 1e9
     print(f"CdSe 激子玻尔半径 a_B ≈ {a_B_nm:.2f} nm")
 
@@ -96,7 +96,8 @@ def validate_exciton_binding():
     R = R_nm * 1e-9
 
     E_conf = (hbar**2 * np.pi**2) / (2 * mu * R**2) / eV
-    E_coul = 1.8 * e**2 / (epsilon * R) / eV
+    # 库仑修正项 (SI 单位制, 含 4*pi*epsilon)
+    E_coul = 1.8 * e**2 / (4 * np.pi * epsilon * R) / eV
     E_exciton = Eg + E_conf - E_coul
 
     # 验证: 强限域 (R << a_B) 下单粒子能主导
@@ -180,8 +181,11 @@ def validate_rabi_splitting():
     assert np.isclose(Omega_R_resonance, 2*g, rtol=1e-6), \
         f"共振时 Rabi 分裂应等于 2g, 得到 {Omega_R_resonance:.3e}"
     # 验证: 大失谐时 Ω_R ≈ |delta|
-    idx_far = 0
-    assert np.isclose(Omega_R[idx_far], np.abs(delta[idx_far]), rtol=1e-3), \
+    # 注意: 需 |delta| >> g 才进入渐近区; 扫描边缘 |Δ|=200μeV 仅为 2g, 不算大失谐
+    # 在 |Δ| = 100g (10 meV) 处显式验证渐近行为
+    delta_far = 100 * g
+    Omega_R_far = np.sqrt(delta_far**2 + 4 * g**2)
+    assert np.isclose(Omega_R_far, np.abs(delta_far), rtol=1e-3), \
         "大失谐时 Rabi 分裂应近似等于失谐量"
 
     print(f"耦合强度 g = {g_eV:.1f} meV")

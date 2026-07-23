@@ -164,8 +164,11 @@ def verify_entanglement_and_bell():
     E_abp = expectation(A, Bp, phi_plus)
     E_apb = expectation(Ap, B, phi_plus)
     E_apbp = expectation(Ap, Bp, phi_plus)
-    
-    S_chsh = abs(E_ab - E_abp + E_apb + E_apbp)
+
+    # 对 |Φ+> 及上述算符选取 (B = (Z+X)/√2, B' = (Z-X)/√2)，
+    # 四个关联值为 (+, +, +, -)·√2/2，标准 CHSH 组合为
+    # S = |E(a,b) + E(a,b') + E(a',b) - E(a',b')|，给出 2√2。
+    S_chsh = abs(E_ab + E_abp + E_apb - E_apbp)
     tsirelson_bound = 2 * np.sqrt(2)
     
     assert S_chsh > 2.0, f"CHSH值 {S_chsh} 未违反经典界限 2"
@@ -267,8 +270,18 @@ def verify_vqe_algorithm():
             [np.sin(theta/2), np.cos(theta/2)]
         ], dtype=complex)
     
+    CNOT = np.array([
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 0, 1],
+        [0, 0, 1, 0]
+    ], dtype=complex)
+
     def ansatz(theta1, theta2):
-        U = np.kron(ry_gate(theta1), ry_gate(theta2))
+        # 含纠缠门的试探态: CNOT · [RY(θ1)⊗RY(θ2)] |00>
+        # 直积态 RY⊗RY|00> 无法表示纠缠基态 (E_0 = -√2)，
+        # CNOT 使 {|Φ+>, |Ψ+>} 子空间可被精确覆盖。
+        U = CNOT @ np.kron(ry_gate(theta1), ry_gate(theta2))
         ket00 = np.array([1, 0, 0, 0], dtype=complex)
         return U @ ket00
     

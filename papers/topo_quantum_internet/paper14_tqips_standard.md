@@ -263,7 +263,7 @@ $$
 
 [13] Majumder, A., Main, D. et al. Distributed quantum computing across an optical network link. *Nature* (2025).
 
-[14] Zhang, Y. et al. Universal blind quantum computing assisted by quantum teleportation. arXiv:2504.xxxxx (2025).
+[14] Zhang, X. Universal blind quantum computing assisted by quantum teleportation. *Quantum Information Processing* **24**, 182 (2025). DOI: 10.1007/s11128-025-04798-3.
 
 [15] ETRI. Partial blind quantum computation. *IEEE Access* (2025).
 

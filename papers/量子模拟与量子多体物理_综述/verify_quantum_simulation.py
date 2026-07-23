@@ -49,16 +49,19 @@ def verify_hubbard_parameters():
     """验证光晶格中 t/U 比值与量子相变关系"""
     # 典型光晶格参数
     V0_over_Er = np.array([5, 8, 10, 15, 20])  # 晶格深度 (以反冲能量为单位)
-    # 近似关系: t/Er ~ (4/sqrt(pi)) * V0^(3/4) * exp(-2*sqrt(V0))
-    # 简化模型: t 随 V0 指数衰减, U 随 V0 线性增长
+    # 标准深晶格近似关系 (Bloch, Dalibard & Zwerger, RMP 2008):
+    #   t/Er ~ (4/sqrt(pi)) * V0^(3/4) * exp(-2*sqrt(V0))
+    #   U/Er ~ sqrt(8/pi) * (a_s/a) * V0^(3/4)
+    # 注意: U 随 V0^(3/4) 增长 (并非线性), 且正比于散射长与晶格常数之比 a_s/a
     t_over_Er = 4.0 / np.sqrt(np.pi) * V0_over_Er**0.75 * np.exp(-2 * np.sqrt(V0_over_Er))
-    U_over_Er = 0.5 * V0_over_Er  # 简化的 onsite 相互作用
+    a_s_over_a = 0.1  # 典型散射长/晶格常数比
+    U_over_Er = np.sqrt(8.0 / np.pi) * a_s_over_a * V0_over_Er**0.75
     t_over_U = t_over_Er / U_over_Er
     print("[模块2] Hubbard模型参数映射")
     print(f"  V0/Er:    {V0_over_Er}")
     print(f"  t/U 比值: {[f'{x:.4f}' for x in t_over_U]}")
-    # 超流-莫特绝缘相变临界值约 t/U ~ 0.3 (Bose-Hubbard, 3D)
-    critical = 0.3
+    # 超流-莫特绝缘相变临界值 (U/t)_c ≈ 29.34, 即 t/U ≈ 0.034 (Bose-Hubbard, 3D)
+    critical = 1.0 / 29.34
     sf_mask = t_over_U > critical
     mi_mask = t_over_U < critical
     print(f"  超流相 (t/U > {critical}): V0/Er = {V0_over_Er[sf_mask]}")
@@ -99,6 +102,9 @@ def verify_mbl_level_statistics():
     W = 10.0  # 强无序强度 (MBL regime)
     J = 1.0
     H = np.zeros((dim, dim), dtype=complex)
+    # 每个格点抽取一次固定随机场 (物理上无序是淬灭的;
+    # 若逐矩阵元重复抽取会导致 H 非厄米, 能级统计完全失真)
+    h_fields = np.random.uniform(-W, W, L)
     # 构建基矢
     for i in range(dim):
         for site in range(L):
@@ -108,10 +114,9 @@ def verify_mbl_level_statistics():
                 s2 = 1 if (i >> (site + 1)) & 1 else -1
                 H[i, i] += J * s1 * s2 * 0.25
             # 随机磁场 (X方向)
-            h = np.random.uniform(-W, W)
             # 翻转自旋的跃迁
             j = i ^ (1 << site)
-            H[i, j] += h * 0.5
+            H[i, j] += h_fields[site] * 0.5
     # 对角化
     energies = np.linalg.eigvalsh(H)
     spacings = np.diff(np.sort(energies))

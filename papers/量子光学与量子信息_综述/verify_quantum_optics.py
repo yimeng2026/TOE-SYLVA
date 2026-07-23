@@ -363,16 +363,26 @@ def verify_lindblad_evolution():
     pops_1 = []
     coherences = []
 
+    def rhs(rho):
+        comm_H = -1j * (H @ rho - rho @ H)
+        dissipator = gamma * (L @ rho @ L.T.conj() -
+                              0.5 * (L.T.conj() @ L @ rho + rho @ L.T.conj() @ L))
+        return comm_H + dissipator
+
+    # 前向 Euler 对含时转动项 -i[H,rho] 的放大因子为
+    # |1 + (-i*omega - gamma/2)*dt| ≈ 1 - gamma*dt/2 + omega^2*dt^2/2，
+    # O(dt^2) 的虚假增长会抵消部分阻尼，导致退相干被低估。
+    # 采用经典 RK4（局部误差 O(dt^5)）消除该系统性误差。
     for t in times:
         pops_0.append(rho[0, 0].real)
         pops_1.append(rho[1, 1].real)
         coherences.append(abs(rho[0, 1]))
 
-        comm_H = -1j * (H @ rho - rho @ H)
-        dissipator = gamma * (L @ rho @ L.T.conj() -
-                              0.5 * (L.T.conj() @ L @ rho + rho @ L.T.conj() @ L))
-        drho = comm_H + dissipator
-        rho = rho + dt * drho
+        k1 = rhs(rho)
+        k2 = rhs(rho + 0.5 * dt * k1)
+        k3 = rhs(rho + 0.5 * dt * k2)
+        k4 = rhs(rho + dt * k3)
+        rho = rho + (dt / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
         rho = 0.5 * (rho + rho.T.conj())
         rho = rho / np.trace(rho)
 

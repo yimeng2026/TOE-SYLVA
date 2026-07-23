@@ -67,11 +67,13 @@ def verify_heisenberg_ed():
                 op_z = np.kron(op_z, np.eye(2))
         H += op_x + op_y + op_z
     evals = eigvalsh(H)
+    # N=4 开边界 XXX 链 (H = Σ σ·σ, J=1) 基态能量精确值: E0 = -3 - 2√3 ≈ -6.464102
+    E0_theory = -3.0 - 2.0 * np.sqrt(3.0)
     print("[模块2] 海森堡模型 ED (N=4)")
-    print(f"  基态能量: {evals[0]:.6f} (理论: -2.0)")
+    print(f"  基态能量: {evals[0]:.6f} (理论: {E0_theory:.6f} = -3-2√3)")
     print(f"  第一激发态: {evals[1]:.6f}")
     print(f"  能隙: {evals[1] - evals[0]:.6f}")
-    assert np.isclose(evals[0], -2.0, atol=1e-6), "基态能量不匹配"
+    assert np.isclose(evals[0], E0_theory, atol=1e-6), "基态能量不匹配"
     print("  [OK] 基态能量与理论值一致\n")
 
 # ============================================================
@@ -85,22 +87,33 @@ def verify_vqe_simulation():
     IX = np.kron(np.eye(2), np.array([[0, 1], [1, 0]]))
     H = ZZ + 0.5 * XI + 0.5 * IX
     E_true = eigvalsh(H)[0]
-    # 参数化 ansatz: |ψ(θ)> = RY(θ)⊗RY(θ) |00>
+    # 基态是纠缠态 (≈ 0.92|Ψ+> - 0.38|Φ+>), 乘积态 ansatz RY⊗RY 最低只能到 -1.0,
+    # 必须使用含纠缠门的硬件高效 ansatz: RY⊗RY -> CNOT -> RY⊗RY
+    CNOT = np.array([[1, 0, 0, 0],
+                     [0, 1, 0, 0],
+                     [0, 0, 0, 1],
+                     [0, 0, 1, 0]], dtype=complex)
     def ry(theta):
         c, s = np.cos(theta / 2), np.sin(theta / 2)
         return np.array([[c, -s], [s, c]])
-    def energy(theta):
-        psi = np.kron(ry(theta), ry(theta)) @ np.array([1, 0, 0, 0])
+    def energy(p):
+        t1, t2, t3, t4 = p
+        psi = np.kron(ry(t1), ry(t2)) @ np.array([1, 0, 0, 0])
+        psi = CNOT @ psi
+        psi = np.kron(ry(t3), ry(t4)) @ psi
         return np.real(psi.conj() @ H @ psi)
-    # 简单梯度下降
-    theta = 0.1
-    lr = 0.3
-    for _ in range(50):
-        dE = (energy(theta + 1e-4) - energy(theta - 1e-4)) / (2e-4)
-        theta -= lr * dE
-    E_vqe = energy(theta)
-    print("[模块3] VQE 模拟 (两量子比特)")
-    print(f"  优化后参数 θ: {theta:.6f}")
+    # 简单梯度下降 (4 参数)
+    p = np.array([0.3, -0.2, 0.1, 0.4])
+    lr = 0.2
+    for _ in range(300):
+        grad = np.array([
+            (energy(p + np.eye(4)[i] * 1e-5) - energy(p - np.eye(4)[i] * 1e-5)) / (2e-5)
+            for i in range(4)
+        ])
+        p -= lr * grad
+    E_vqe = energy(p)
+    print("[模块3] VQE 模拟 (两量子比特, RY-CNOT-RY ansatz)")
+    print(f"  优化后参数: {[f'{x:.4f}' for x in p]}")
     print(f"  VQE 能量: {E_vqe:.6f}")
     print(f"  精确基态: {E_true:.6f}")
     print(f"  相对误差: {abs(E_vqe - E_true) / abs(E_true) * 100:.4f}%")
@@ -154,11 +167,11 @@ def verify_qpe_simulation():
     U = np.diag([1, np.exp(2j * np.pi * phi_true)])
     # 控制-U 操作
     def controlled_U(k):
-        """k 次方的控制-U^{2^k}"""
+        """k 次方的控制-U^{2^k} (由第 k 个寄存器比特控制, 与 IQFT 位序约定一致)"""
         dim = 2 ** (n_reg + 1)
         cu = np.eye(dim, dtype=complex)
         for j in range(2 ** n_reg):
-            if (j >> (n_reg - 1 - k)) & 1:
+            if (j >> k) & 1:
                 cu[j * 2:(j + 1) * 2, j * 2:(j + 1) * 2] = np.linalg.matrix_power(U, 2 ** k)
         return cu
     # 初始化 |0>^⊗n ⊗ |1>
@@ -171,21 +184,17 @@ def verify_qpe_simulation():
         for j in range(n_reg + 1):
             op = np.kron(op, H1) if j == i else np.kron(op, np.eye(2))
         state = op @ state
-    # 逆 QFT
+    # 应用受控-U^{2^k}
     for k in range(n_reg):
         state = controlled_U(k) @ state
-    # 逆 QFT
-    for i in range(n_reg):
-        for j in range(i):
-            phase = np.exp(-2j * np.pi / (2 ** (i - j + 1)))
-            # 简化: 直接应用 IQFT 矩阵
-    # 简化版: 直接对寄存器做 IQFT
+    # 逆 QFT: iqft[i,j] = exp(-2πi·i·j/N) / sqrt(N) (酉归一化),
+    # 必须真正作用到寄存器上 (此前仅构造未使用, 且误用 1/N 归一化)
     reg_dim = 2 ** n_reg
     iqft = np.eye(reg_dim, dtype=complex)
     for i in range(reg_dim):
         for j in range(reg_dim):
-            iqft[i, j] = np.exp(-2j * np.pi * i * j / reg_dim) / reg_dim
-    # 测量概率
+            iqft[i, j] = np.exp(-2j * np.pi * i * j / reg_dim) / np.sqrt(reg_dim)
+    state = np.kron(iqft, np.eye(2)) @ state
     probs = np.zeros(reg_dim)
     for j in range(reg_dim):
         for k in range(2):

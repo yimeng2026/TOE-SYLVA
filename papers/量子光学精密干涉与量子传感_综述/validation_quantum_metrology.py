@@ -61,7 +61,9 @@ def module_01_sql_vs_hl_scaling():
     
     assert np.isclose(sql_slope, -0.5, atol=0.01), "SQL标度律验证失败"
     assert np.isclose(hl_slope, -1.0, atol=0.01), "HL标度律验证失败"
-    assert np.all(ratio == np.sqrt(N_values)), "SQL/HL比值验证失败"
+    # 浮点数除法 (1/√N)/(1/N) 与直接 np.sqrt(N) 可能相差 1 ulp，
+    # 使用严格的相对容差比较而非逐位相等
+    assert np.allclose(ratio, np.sqrt(N_values), rtol=1e-12, atol=0), "SQL/HL比值验证失败"
     
     print("  ✓ 模块1验证通过: SQL和HL标度律符合理论预期")
     return True

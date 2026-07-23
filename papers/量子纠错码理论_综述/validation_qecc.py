@@ -94,11 +94,17 @@ def test_module_1_stabilizer_syndrome():
 
 def build_surface_code_stabilizers(L: int) -> tuple:
     """
-    Build LxL square lattice surface code vertex (A_v) and face (B_p) stabilizer matrices.
+    Build LxL lattice surface code (toric code, periodic boundary conditions)
+    vertex (A_v) and face (B_p) stabilizer matrices.
     Returns (H_x, H_z), where H_x is vertex stabilizer (X-type), H_z is face stabilizer (Z-type).
-    Physical qubits on edges, total 2*L*(L+1) edges.
+    Physical qubits on edges, total 2*L*L edges:
+      horizontal edge h(i,j) connects vertex (i,j) -> (i, j+1 mod L)
+      vertical   edge v(i,j) connects vertex (i,j) -> (i+1 mod L, j)
+    Vertex A_v: {h(i,j), h(i,j-1), v(i,j), v(i-1,j)} (X-type star)
+    Face   B_p: {h(i,j), h(i+1,j), v(i,j), v(i,j+1)} (Z-type plaquette)
+    Each vertex and each face share exactly 0 or 2 edges, so H_x @ H_z.T = 0 (mod 2).
     """
-    n = 2 * L * (L + 1)
+    n = 2 * L * L
     n_v = L * L
     n_p = L * L
 
@@ -106,36 +112,29 @@ def build_surface_code_stabilizers(L: int) -> tuple:
     H_z = np.zeros((n_p, n), dtype=int)
 
     def idx_h(i, j):
-        return i * (L + 1) + j
+        return (i % L) * L + (j % L)
 
     def idx_v(i, j):
-        return L * (L + 1) + i * (L + 1) + j
+        return L * L + (i % L) * L + (j % L)
 
-    # Vertex stabilizers
+    # Vertex stabilizers (X-type stars)
     for i in range(L):
         for j in range(L):
             v = i * L + j
-            H_x[v, idx_h(i, j)] = 1
-            H_x[v, idx_h(i + 1, j)] = 1
-            H_x[v, idx_v(i, j)] = 1
-            H_x[v, idx_v(i, j + 1)] = 1
+            H_x[v, idx_h(i, j)] = 1      # right edge
+            H_x[v, idx_h(i, j - 1)] = 1  # left edge
+            H_x[v, idx_v(i, j)] = 1      # down edge
+            H_x[v, idx_v(i - 1, j)] = 1  # up edge
 
-    # Face stabilizers: each face (i,j) uses 4 edges around the plaquette
-    # For a proper surface code, faces and vertices must share exactly 0 or 2 edges
-    # We use a different edge indexing for face stabilizers to ensure orthogonality
+    # Face stabilizers (Z-type plaquettes): 4 edges around plaquette (i,j)
     for i in range(L):
         for j in range(L):
             p = i * L + j
-            # Face stabilizer edges: use the same edges as vertex but ensure
-            # each vertex shares 0 or 2 edges with each face
-            H_z[p, idx_h(i, j)] = 1
-            H_z[p, idx_h(i + 1, j)] = 1
-            H_z[p, idx_v(i, j)] = 1
-            H_z[p, idx_v(i, j + 1)] = 1
+            H_z[p, idx_h(i, j)] = 1      # top edge
+            H_z[p, idx_h(i + 1, j)] = 1  # bottom edge
+            H_z[p, idx_v(i, j)] = 1      # left edge
+            H_z[p, idx_v(i, j + 1)] = 1  # right edge
 
-    # Verify orthogonality: each vertex and face should share even number of edges
-    # This is automatically satisfied for the standard surface code construction
-    # because each edge is shared by exactly 2 faces and 2 vertices
     return H_x, H_z
 
 
@@ -160,9 +159,10 @@ def test_module_2_surface_code():
     L = 3
     H_x, H_z = build_surface_code_stabilizers(L)
     n = H_x.shape[1]
+    # Logical Z: vertical string of edges v(i, 0), i = 0..L-1, wrapping the torus
     logical_z = np.zeros(n, dtype=int)
     for i in range(L):
-        logical_z[L * (L + 1) + i * (L + 1)] = 1
+        logical_z[L * L + i * L] = 1
     weight_z = np.sum(logical_z)
     comm_z = (H_x @ logical_z) % 2
     assert np.all(comm_z == 0), "Logical Z must commute with all vertex stabilizers"
@@ -185,13 +185,16 @@ def test_module_3_color_code_fusion():
     print("Module 3: Color Code - Fusion Rules Verification")
     print("=" * 60)
 
-    e_r = np.array([1, 0, 0, 0, 0, 0])
-    e_g = np.array([0, 1, 0, 0, 0, 0])
-    e_b = np.array([0, 0, 1, 0, 0, 0])
-    m_r = np.array([0, 0, 0, 1, 0, 0])
-    m_g = np.array([0, 0, 0, 0, 1, 0])
-    m_b = np.array([0, 0, 0, 0, 0, 1])
-    vacuum = np.array([0, 0, 0, 0, 0, 0])
+    # 色码 anyon 群为 Z2^2 x Z2^2 (等价于两份环面码):
+    # 电荷只有两种独立颜色, e_b = e_r x e_g; 磁通同理 m_b = m_r x m_g
+    # 向量表示: [e_x1, e_x2 | m_x1, m_x2]
+    e_r = np.array([1, 0, 0, 0])
+    e_g = np.array([0, 1, 0, 0])
+    e_b = np.array([1, 1, 0, 0])  # e_b = e_r + e_g (mod 2)
+    m_r = np.array([0, 0, 1, 0])
+    m_g = np.array([0, 0, 0, 1])
+    m_b = np.array([0, 0, 1, 1])  # m_b = m_r + m_g (mod 2)
+    vacuum = np.array([0, 0, 0, 0])
 
     # Rule 1: e_r x e_g x e_b = 1 (vacuum)
     fusion_1 = (e_r + e_g + e_b) % 2
@@ -218,10 +221,10 @@ def test_module_3_color_code_fusion():
 
     # Braiding statistics
     def braiding_phase(a, b):
-        e_a = a[:3]
-        m_a = a[3:]
-        e_b = b[:3]
-        m_b = b[3:]
+        e_a = a[:2]
+        m_a = a[2:]
+        e_b = b[:2]
+        m_b = b[2:]
         exponent = (e_a @ m_b + m_a @ e_b) % 2
         return -1 if exponent == 1 else 1
 
@@ -316,9 +319,12 @@ def test_module_5_floquet_sequence():
     print("Module 5: Floquet Codes - Measurement Sequence & ISG Verification")
     print("=" * 60)
 
-    XX = pauli_to_binary('XX')
-    YY = pauli_to_binary('YY')
-    ZZ = pauli_to_binary('ZZ')
+    # Floquet 蜂窝码的非对易性来自"相邻键共享一个格点"的不同颜色测量,
+    # 而非同一键上的 XX/YY/ZZ (同一键上它们在两处都反对易, 符号相消, 实际对易)。
+    # 最小模型: 3 个比特构成三角, 三条相邻键分别测量 XX, YY, ZZ
+    XX = pauli_to_binary('XXI')  # 键 (0,1)
+    YY = pauli_to_binary('IYY')  # 键 (1,2)
+    ZZ = pauli_to_binary('ZIZ')  # 键 (2,0)
 
     comm_xx_yy = symplectic_inner_product(XX, YY)
     comm_yy_zz = symplectic_inner_product(YY, ZZ)
@@ -375,9 +381,11 @@ def test_module_6_toric_degeneracy():
         print(f"  Genus g={g}: ground state degeneracy = 4^{g} = {calculated} [OK]")
 
     # Verify logical operator algebra
+    # 环面上逻辑 Z 与逻辑 X 反对易, 因为它们代表的两条非平凡环路恰好交于一个比特;
+    # 原代码 'ZZZZ' 与 'XXXX' 在全部 4 个比特上重叠 (偶数次反对易), 实际对易
     n = 4
-    L_x = pauli_to_binary('ZZZZ')  # Z string around torus
-    L_z = pauli_to_binary('XXXX')  # X string around torus
+    L_x = pauli_to_binary('ZZII')  # Z 环路, 经过比特 0,1
+    L_z = pauli_to_binary('IXXI')  # X 环路, 经过比特 1,2 (与 Z 环路仅交于比特 1)
     comm = symplectic_inner_product(L_x, L_z)
     print(f"\n  Logical operator anti-commutation: [L_x, L_z] = {comm} (should be 1)")
     assert comm == 1, "Logical operators on torus must anti-commute"

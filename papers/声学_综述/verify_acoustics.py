@@ -36,29 +36,43 @@ def verify_linear_acoustic_dispersion():
     Nx = 512
     dx = L / Nx
     dt = dx / (2 * c0)
-    Nt = 400
+    Nt = 16000
 
-    x = np.linspace(0, L, Nx)
-    p = np.exp(-((x - L/2)**2) / (2 * 0.05**2))
-    p_old = np.copy(p)
+    # 修复: 原实现把"空间 FFT 的峰值频率"误当作时间角频率 omega,
+    # 又与 c0*k 比较, 混淆了空间频率(波数)与时间频率两个不同物理量,
+    # 导致相对误差恒 ~100%。正确做法: 激发满足固定边界的单一驻波模式
+    # k_m = m*pi/L, 跟踪该模式振幅随时间的振荡, 从时间 FFT 提取 omega。
+    m_mode = 8
+    k_mode = m_mode * np.pi / L
 
+    x = np.arange(Nx) * dx
+    mode_shape = np.sin(k_mode * x)
+    p = np.copy(mode_shape)
+    p_old = np.copy(p)  # 零初始速度
+
+    amp = np.zeros(Nt)
     for n in range(Nt):
         p_new = 2*p - p_old + (c0*dt/dx)**2 * (np.roll(p, -1) - 2*p + np.roll(p, 1))
         p_new[0] = p_new[-1] = 0
         p_old, p = p, p_new
+        amp[n] = np.dot(p, mode_shape)
 
-    p_fft = np.fft.rfft(p)
-    freqs = np.fft.rfftfreq(Nx, dx)
-    peak_idx = np.argmax(np.abs(p_fft[1:])) + 1
-    f_peak = freqs[peak_idx]
+    # 时间 FFT 提取振荡频率, 抛物线插值提高峰值定位精度
+    A = np.fft.rfft(amp - amp.mean())
+    freqs = np.fft.rfftfreq(Nt, dt)
+    peak_idx = np.argmax(np.abs(A[1:])) + 1
+    y0, y1, y2 = np.abs(A[peak_idx-1]), np.abs(A[peak_idx]), np.abs(A[peak_idx+1])
+    shift = 0.5 * (y0 - y2) / (y0 - 2*y1 + y2)
+    df = freqs[1] - freqs[0]
+    f_peak = freqs[peak_idx] + shift * df
     omega_peak = 2 * np.pi * f_peak
-    k_peak = 2 * np.pi * freqs[peak_idx]
-    omega_pred = c0 * k_peak
+    omega_pred = c0 * k_mode
 
     error = abs(omega_peak - omega_pred) / omega_pred
-    print(f"  解析预测 ω = {omega_pred:.4f} rad/s")
-    print(f"  数值提取 ω = {omega_peak:.4f} rad/s")
-    print(f"  相对误差   = {error*100:.4f}%")
+    print(f"  驻波模式 m = {m_mode}, 波数 k = {k_mode:.4f} rad/m")
+    print(f"  解析预测 omega = c0*k = {omega_pred:.4f} rad/s")
+    print(f"  数值提取 omega = {omega_peak:.4f} rad/s")
+    print(f"  相对误差       = {error*100:.4f}%")
     assert error < 0.05, "色散关系验证失败！"
     print("  [PASS] 线性色散关系验证通过。\n")
 
@@ -116,27 +130,34 @@ def verify_burgers_shock():
     delta = 1e-5
     p0 = 100.0
     tau0 = 0.0
+    x_obs = 1.0  # m, 观察点传播距离
 
-    def p_shock(x, tau):
+    def p_shock(tau, x):
         coeff = beta * p0 * x / (2 * rho0 * c0**3 * delta)
         return p0 * (1 + np.tanh(coeff * (tau - tau0)))
 
-    x_vals = np.linspace(-0.1, 0.1, 200)
-    tau = 0.0
-    p_vals = p_shock(x_vals, tau)
+    # 修复: Burgers 稳态激波解 p(tau) 是在固定传播距离 x 处关于延迟时间
+    # tau 的 tanh 波形。原实现固定 tau=tau0=0 去扫描 x, tanh(0)=0 使
+    # p 恒等于 p0, 宽度提取时 np.where 返回空数组 (IndexError)。
+    # 正确做法: 固定 x = x_obs, 扫描 tau。
+    coeff = beta * p0 * x_obs / (2 * rho0 * c0**3 * delta)
+    tau_vals = np.linspace(-30.0/coeff, 30.0/coeff, 4001)
+    p_vals = p_shock(tau_vals, x_obs)
 
     idx_10 = np.where(p_vals > 0.1 * 2*p0)[0][0]
     idx_90 = np.where(p_vals > 0.9 * 2*p0)[0][0]
-    shock_width = x_vals[idx_90] - x_vals[idx_10]
+    shock_width = tau_vals[idx_90] - tau_vals[idx_10]
 
-    delta_x_theory = 2 * rho0 * c0**3 * delta / (beta * p0)
+    # 理论 10%-90% 上升时间: tanh 自变量从 atanh(-0.8) 到 atanh(+0.8)
+    # Δτ = 2*atanh(0.8)/coeff。原"理论厚度"漏掉了 2*atanh(0.8) 因子。
+    delta_tau_theory = 2 * np.arctanh(0.8) / coeff
 
     print(f"  激波振幅 p0 = {p0} Pa")
-    print(f"  理论激波厚度 Δx = {delta_x_theory:.6e} m")
-    print(f"  数值提取激波厚度 = {shock_width:.6e} m")
-    print(f"  相对偏差 = {abs(shock_width - delta_x_theory)/delta_x_theory*100:.2f}%")
+    print(f"  理论 10%-90% 上升时间 Δτ = {delta_tau_theory:.6e} s")
+    print(f"  数值提取上升时间 = {shock_width:.6e} s")
+    print(f"  相对偏差 = {abs(shock_width - delta_tau_theory)/delta_tau_theory*100:.2f}%")
 
-    assert abs(shock_width - delta_x_theory) / delta_x_theory < 0.2
+    assert abs(shock_width - delta_tau_theory) / delta_tau_theory < 0.2
     print("  [PASS] Burgers 激波解验证通过。\n")
 
 
@@ -184,32 +205,26 @@ def verify_phononic_bandgap():
                 w1, f1 = wm, fm
         return (w1 + w2) / 2.0
 
-    omega_range = np.linspace(0, 2e7, 5000)
-    k_bloch_vals = np.linspace(0, np.pi/a, 100)
+    # 修复: 一维周期结构存在传播态 (实数 Bloch 波矢) 当且仅当 |cos_ka| ≤ 1,
+    # 禁带即 |cos_ka| > 1 的频率区间。原实现逐 k 求根再按序号分组:
+    # k=0 处 ω=0 根 (f=0 无变号) 与带边相切根 (cos_ka=±1 处无变号) 丢失,
+    # 导致能带错组、带隙算出负值。改为在细密频率网格上直接判定 |cos_ka|
+    # 是否越界来定位第一带顶与第二带底, 数值上稳健。
+    omega_dense = np.linspace(1e-9, 1.5e4, 30001)
+    cos_ka_vals = transfer_matrix(omega_dense, 0.0) + 1.0  # k=0 时返回 cos_ka - 1
 
-    bands = []
-    for k in k_bloch_vals:
-        roots = []
-        for i in range(len(omega_range)-1):
-            w1, w2 = omega_range[i], omega_range[i+1]
-            f1 = transfer_matrix(w1, k)
-            f2 = transfer_matrix(w2, k)
-            if f1 * f2 < 0:
-                root = find_root(transfer_matrix, w1, w2, k)
-                if root is not None:
-                    roots.append(root)
-        bands.append(roots)
+    in_band = np.abs(cos_ka_vals) <= 1.0
+    transitions = np.diff(in_band.astype(int))
+    leave_band = np.where(transitions == -1)[0]  # 离开带 (进入禁带)
+    enter_band = np.where(transitions == 1)[0]   # 进入带 (离开禁带)
 
-    all_bands = [[] for _ in range(10)]
-    for roots in bands:
-        for i, r in enumerate(roots[:10]):
-            all_bands[i].append(r)
-
-    if len(all_bands[0]) > 0 and len(all_bands[1]) > 0:
-        gap = np.min(all_bands[1]) - np.max(all_bands[0])
-        print(f"  第一带顶频率 = {np.max(all_bands[0])/1e6:.3f} MHz")
-        print(f"  第二带底频率 = {np.min(all_bands[1])/1e6:.3f} MHz")
-        print(f"  带隙宽度 = {gap/1e6:.3f} MHz")
+    if len(leave_band) > 0 and len(enter_band) > 0:
+        band1_top = omega_dense[leave_band[0]]
+        band2_bottom = omega_dense[enter_band[0]]
+        gap = band2_bottom - band1_top
+        print(f"  第一带顶角频率 = {band1_top:.1f} rad/s")
+        print(f"  第二带底角频率 = {band2_bottom:.1f} rad/s")
+        print(f"  带隙宽度 = {gap:.1f} rad/s")
         assert gap > 0, "带隙不存在！"
         print("  [PASS] 声子晶体带隙验证通过。\n")
     else:
@@ -229,17 +244,26 @@ def verify_debye_heat_capacity():
     print("模块 5：Debye 热容模型验证")
     print("=" * 60)
 
-    def debye_integral_simpson(x, n=1000):
+    def debye_integral_simpson(x, n=1001):
+        """Debye 积分 I(x) = ∫₀^x t⁴e^t/(e^t-1)² dt (Simpson 法则)。
+
+        修复两处 bug:
+        1) t=0 处被积函数为 0/0 (NaN), 其极限为 t² → 0, 需显式置零;
+        2) 原代码返回值多除了 x³。Debye 公式为
+           C_V = 9Nk(T/Θ)³ · I(x), 积分本身不应再除 x³。
+        """
         if x < 1e-6:
-            return 1.0
-        t = np.linspace(0, x, n)
+            return x**3 / 3.0  # 小 x 极限: 被积函数 ≈ t²
+        t = np.linspace(0, x, n)  # n=1001 → 1000 个区间 (偶数, 满足 Simpson)
         dt = t[1] - t[0]
-        integrand = t**4 * np.exp(t) / (np.exp(t) - 1)**2
+        with np.errstate(divide='ignore', invalid='ignore'):
+            integrand = t**4 * np.exp(t) / (np.exp(t) - 1)**2
+        integrand[0] = 0.0  # t→0 极限 t⁴e^t/(e^t-1)² ~ t² → 0
         # Simpson 法则
         s = integrand[0] + integrand[-1]
         s += 4 * np.sum(integrand[1:-1:2])
         s += 2 * np.sum(integrand[2:-1:2])
-        return (s * dt / 3.0) / x**3
+        return s * dt / 3.0
 
     Theta_D = 428.0
     N = 6.022e23
@@ -284,7 +308,12 @@ def verify_optomechanical_cooling():
     kappa = 2 * np.pi * 500e3
     gamma_m = 2 * np.pi * 35.0
     g0 = 2 * np.pi * 172.0
-    n_cav = 1000.0
+    # 修复: 原参数 n_cav=1000 (腔内光子数) 比实际边带冷却实验典型值
+    # (~1e6-1e8, 如 Chan et al. 2011) 低 3-4 个数量级, 导致光阻尼
+    # Γ_opt/2π ≈ 1.2 Hz 远小于 γ_m·n_th/2π ≈ 5.2 kHz, 冷却条件在物理上
+    # 不可能满足。改为实验典型值 n_cav = 1e7, 此时 Γ_opt/2π ≈ 12 kHz,
+    # 满足基态冷却条件且 n_m < 1。公式本身 (Γ_opt = 4g²κ/(κ²+4Δ²)) 正确。
+    n_cav = 1.0e7
     g = g0 * np.sqrt(n_cav)
     T = 0.025
 
@@ -369,8 +398,12 @@ def verify_nonhermitian_acoustic_ep():
         eigenvals.append(np.sort(ev))
 
     eigenvals = np.array(eigenvals)
-    diff_real = np.abs(np.real(eigenvals[:,0] - eigenvals[:,1]))
-    ep_idx = np.argmin(diff_real)
+    # 修复: EP 处两特征值完全兼并。解析解 λ = ω0 - iγ ± √(κ²-γ²),
+    # 当 γ≥κ 时实部恒等, |Re(λ1-λ2)| 在整个 γ≥κ 区间都是 ~1e-16 的
+    # 舍入噪声平台, argmin 会随机选中平台上任意 γ (实测取到 0.557)。
+    # 应使用复特征值差的模 |λ1-λ2| = 2|√(κ²-γ²)|, 它在 γ=κ 处有唯一最小值。
+    diff_abs = np.abs(eigenvals[:,0] - eigenvals[:,1])
+    ep_idx = np.argmin(diff_abs)
     ep_gamma = gamma_vals[ep_idx]
 
     print(f"  耦合强度 κ = {kappa}")
@@ -401,9 +434,14 @@ def verify_parametric_array_beam():
     fd = f2 - f1
     D = 0.1
 
+    # Westervelt 经验公式给出的是 -3dB 全角宽 (rad)
     theta_3dB = np.sqrt(4 * c0 / (np.pi * fd * D))
 
-    theta = np.linspace(-np.pi/6, np.pi/6, 1000)
+    # 修复: 原角度扫描范围 ±π/6 (±30°) 窄于实际半功率点 (±~49°),
+    # 波束在扫描边界内始终高于 0.707, 提取到的"宽度"只是扫描窗宽;
+    # 且比较时把理论全角宽与数值半角宽 (除了 2) 对比, 量纲不一致。
+    # 改为: 扫描 ±π/2, 提取半功率全角宽, 与理论全角宽直接比较。
+    theta = np.linspace(-np.pi/2, np.pi/2, 4001)
     k_d = 2 * np.pi * fd / c0
     # sinc 函数: sin(x)/x
     x = k_d * D * np.sin(theta) / (2 * np.pi)
@@ -411,14 +449,14 @@ def verify_parametric_array_beam():
     beam_pattern /= np.max(beam_pattern)
 
     idx_3db = np.where(beam_pattern > 0.707)[0]
-    theta_3db_num = theta[idx_3db[-1]] - theta[idx_3db[0]]
+    theta_3db_num = theta[idx_3db[-1]] - theta[idx_3db[0]]  # 半功率全角宽
 
     print(f"  泵频 f1 = {f1/1e3:.1f} kHz, f2 = {f2/1e3:.1f} kHz")
     print(f"  差频 fd = {fd} Hz")
-    print(f"  理论半功率角 ≈ {np.degrees(theta_3dB):.2f}°")
-    print(f"  数值提取半功率角 ≈ {np.degrees(theta_3db_num/2):.2f}°")
+    print(f"  理论半功率全角宽 ≈ {np.degrees(theta_3dB):.2f}°")
+    print(f"  数值提取半功率全角宽 ≈ {np.degrees(theta_3db_num):.2f}°")
 
-    assert abs(theta_3dB - theta_3db_num/2) / theta_3dB < 0.3
+    assert abs(theta_3dB - theta_3db_num) / theta_3dB < 0.3
     print("  [PASS] 参数阵波束指向性验证通过。\n")
 
 

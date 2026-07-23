@@ -133,8 +133,11 @@ def verify_synchrotron_and_luminosity():
     P = (e**2 * c / (6 * np.pi * epsilon_0)) * (gamma**4 / rho**2)
     
     # LHC 亮度参数
-    f = 11245  # Hz, 对撞频率
-    N1 = N2 = 1.15e11  # 每束粒子数
+    # 注意: 11245 Hz 是回旋频率 f_rev; 束团对撞频率 = f_rev * n_bunches
+    f_rev = 11245  # Hz, LHC 回旋频率
+    n_bunches = 2808  # 每束束团数 (LHC 设计值)
+    f = f_rev * n_bunches  # Hz, 束团对撞频率 (~3.16e7 Hz)
+    N1 = N2 = 1.15e11  # 每束团粒子数
     sigma_x = 16.7e-6  # m
     sigma_y = 16.7e-6  # m
     
@@ -167,6 +170,12 @@ def verify_breit_wigner():
     Gamma_Z = 2.495  # GeV, Z 玻色子总宽度
     J = 1  # Z 玻色子自旋
     s1 = s2 = 0.5  # 入射费米子自旋 (e+e-)
+    # Z 玻色子分宽度 (PDG): Gamma_ee ≈ 83.9 MeV, Gamma_had ≈ 1.741 GeV
+    # 共振产生截面必须包含产生道与衰变道的分支比:
+    # sigma_peak = (4pi/k^2) * spin_factor * (Gamma_ee * Gamma_had) / Gamma_Z^2
+    # 原脚本分子直接用 Gamma_Z^2, 相当于假设 100% 分支比, 高估约 40 倍
+    Gamma_ee = 0.0839  # GeV
+    Gamma_had = 1.741  # GeV
     
     # 在共振峰处 E = E_R
     E = m_Z
@@ -175,9 +184,9 @@ def verify_breit_wigner():
     # 计算 k = |p| ~ E/2 (对于 e+e- 对撞)
     k = E / 2
     
-    # Breit-Wigner 截面 (在共振峰处)
+    # Breit-Wigner 截面 (在共振峰处, 含分宽度分支比)
     spin_factor = (2 * J + 1) / ((2 * s1 + 1) * (2 * s2 + 1))
-    sigma_peak = (4 * np.pi / k**2) * spin_factor * (Gamma_Z**2 / 4) / ((E - E_R)**2 + Gamma_Z**2 / 4)
+    sigma_peak = (4 * np.pi / k**2) * spin_factor * (Gamma_ee * Gamma_had / 4) / ((E - E_R)**2 + Gamma_Z**2 / 4)
     
     # 在共振峰处简化为
     sigma_peak_simplified = (4 * np.pi / k**2) * spin_factor
@@ -194,7 +203,7 @@ def verify_breit_wigner():
     sigma_nb = sigma_peak * 389.4e3  # nb
     print(f"Peak cross section: {sigma_nb:.2f} nb")
     
-    # 验证 Z 玻色子共振截面在 ~30 nb 量级 (LEP 实验值)
+    # 验证 Z 玻色子强子共振截面与 LEP 实验值 σ_had^0 ≈ 41.5 nb 一致
     assert 20 < sigma_nb < 50, "Z resonance cross section anomaly"
     print("[PASS] Z resonance cross section consistent with LEP data\n")
 
