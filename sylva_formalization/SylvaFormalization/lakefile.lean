@@ -102,4 +102,8 @@ lean_lib «SylvaFormalization» where
 
 
     `TOE_SYLVA_Wave3_ComprehensiveProofs,
+
+    -- v7.0 Extension Modules
+    `SYLVA_Sustainability,
+    `SYLVA_Ethics,
   ]

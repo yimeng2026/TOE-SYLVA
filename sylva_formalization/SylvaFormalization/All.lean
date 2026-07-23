@@ -100,3 +100,9 @@ import SYLVA_ConsciousnessBridge
 import SYLVA_QuantumInformationUnity
 import SYLVA_CosmologicalConstant
 import SYLVA_DarkSector
+-- ============================================================================
+-- v7.0 Extension Modules
+-- ============================================================================
+
+import SYLVA_Sustainability
+import SYLVA_Ethics
