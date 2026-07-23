@@ -789,7 +789,7 @@ $$\frac{(p_{\text{in}} - p_{\text{out}})^2}{k \cdot (p_{\text{in}} + (k-1)p_{\te
 
 $$\text{Emergence}: \mathcal{L}_{\text{eff}}^{(n+1)} = \mathcal{R}\left[\mathcal{L}_{\text{eff}}^{(n)}\right]$$
 
-其中 $\mathcal{R}$ 为重整化群变换，有效理论 $mathcal{L}_{\text{eff}}^{(n)}$ 在第 $n$ 层级涌现出新的自由度。
+其中 $\mathcal{R}$ 为重整化群变换，有效理论 $ mathcal{L}_{\text{eff}}^{(n)}$ 在第 $n$ 层级涌现出新的自由度。
 
 **定理 7.1.1** (生命的涌现判据)
 

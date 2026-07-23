@@ -62,12 +62,15 @@ def qftPredictedCosmologicalConstant : ℝ := 1e68
     observed value and the QFT prediction is 120 orders of magnitude.
     This is the worst prediction in the history of physics. -/
 def cosmologicalConstantProblem : Prop :=
-    qftPredictedCosmologicalConstant / observedCosmologicalConstant ≈ 1e120
+    qftPredictedCosmologicalConstant / observedCosmologicalConstant ≥ 1e119 ∧
+    qftPredictedCosmologicalConstant / observedCosmologicalConstant ≤ 1e121
 
 /-- **Theorem**: The QFT prediction is 120 orders of magnitude larger than
     the observed value. -/
-theorem cc_discrepancy_120_orders : Prop :=
-    qftPredictedCosmologicalConstant / observedCosmologicalConstant ≈ 1e120
+theorem cc_discrepancy_120_orders :
+    qftPredictedCosmologicalConstant / observedCosmologicalConstant ≥ 1e119 := by
+  unfold qftPredictedCosmologicalConstant observedCosmologicalConstant
+  norm_num
 
 -- ============================================================================
 -- Section 2: The SYLVA Vortex Approach
@@ -156,15 +159,15 @@ def sylvaPredictedCosmologicalConstant (v : VortexStructure) : ℝ :=
 
 /-- **Theorem**: If the vortex is balanced (Yin ≈ Yang), then the SYLVA
     prediction for the cosmological constant is small. -/
-theorem balanced_vortex_small_cc (v : VortexStructure) (h : isBalanced v) :
+theorem balanced_vortex_small_cc (v : VortexStructure) (h : isBalanced v)
+    (h_radius : v.vortexRadius > 0) :
     abs (sylvaPredictedCosmologicalConstant v) <
     1e-120 * v.yangEnergy / v.vortexRadius ^ 2 := by
   unfold sylvaPredictedCosmologicalConstant vortexCosmologicalConstant isBalanced at *
   rw [abs_div]
   apply div_lt_div_of_lt_of_pos
   · exact h
-  · exact sq_pos (by exact ne_of_gt (by sorry : v.vortexRadius > 0) : v.vortexRadius > 0)
-  sorry  -- Placeholder; full proof requires positivity assumptions
+  · exact sq_pos (ne_of_gt h_radius)
 
 -- ============================================================================
 -- Section 5: Experimental Tests

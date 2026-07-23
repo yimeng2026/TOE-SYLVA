@@ -10,7 +10,7 @@
 重组前的仓库存在以下结构性问题:
 
 1. **顶层目录过多且语义重叠**: `sylva_complete/`、`sylva_formalization/`、`sylva-release/`、`sylva_agents/`、`sylva_papers/`、`sylva_academic/`、`sylva_consumer/`、`toe_framework/`、`alpha_derivation/`、`sagemath_verification/`、`research/`、`memory/`、`papers/` 共 13 个顶层目录, 其中至少 5 个承载重叠职能.
-2. **Lean 模块版本碎片化**: `sylva_formalization/SylvaFormalization/` 下存在 80 个核心 `SYLVA_*.lean` 模块和 78 个 `_v5_4x` 版本化模块, 二者职责边界不清, `All.lean` 同时导入两套, 编译负担极重.
+2. **Lean 模块版本碎片化**: `sylva_formalization/SylvaFormalization/` 下存在 39 个核心 `SYLVA_*.lean` 模块和 65 个 `_v5_4x` 版本化模块, 二者职责边界不清, `All.lean` 同时导入两套, 编译负担极重.
 3. **备份文件污染**: 仓库内散落 `.orig`、`.backup`、`.bak`、`_backup`、`_old` 等后缀的文件, 这些本应由 Git 历史承载.
 4. **文档分散**: 宣言、架构、路线图、计划散落在 `sylva_complete/`、根目录、`sylva-release/doc/` 三处, 无单一入口.
 5. **论文目录双轨**: `papers/` (中文综述, 30+ 篇) 与 `sylva_papers/` (英文论文, 按学科分类) 并存, 无统一索引.
@@ -34,7 +34,7 @@ TOE-SYLVA/
 │   │   ├── lakefile.lean
 │   │   ├── lean-toolchain
 │   │   ├── All.lean
-│   │   ├── SYLVA_*.lean           # 80 个核心模块 + 新增 5 个 v6 模块
+│   │   ├── SYLVA_*.lean           # 39 个核心模块 + 新增 5 个 v6 模块 = 44 个
 │   │   ├── domain/                # 凝聚态、标准模型、弦论等领域模块
 │   │   └── archive/               # _v5_4x 版本化模块归档
 │   └── README.md
@@ -110,8 +110,8 @@ TOE-SYLVA/
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| 核心 SYLVA 模块 | 80 + 5 (新增) = 85 | `SYLVA_*.lean` |
-| 版本化模块 (归档) | 78 | `_v5_4x` 系列, 冻结 |
+| 核心 SYLVA 模块 | 39 + 5 (新增) = 44 | `SYLVA_*.lean` (不含 `_v5_4x` 版本化模块) |
+| 版本化模块 (归档) | 65 | `_v5_4x` 系列, 冻结 |
 | 领域模块 | 30+ | 凝聚态、标准模型、弦论等 |
 | 中文综述论文 | 30+ | `papers/` |
 | 英文研究论文 | 30+ | `sylva_papers/` |

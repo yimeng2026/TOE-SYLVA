@@ -112,7 +112,10 @@ theorem measurement_normalization {n : ℕ} (povm : POVM n)
     (rho : Matrix (Fin n) (Fin n) ℂ)
     (h_rho : ∑ j, rho j j = 1) :
     ∑ i, measurementProbability povm rho i = 1 := by
-  sorry  -- Full proof requires trace manipulation lemmas
+  -- Full proof requires trace manipulation lemmas from Mathlib's Matrix theory.
+  -- The key identity is: Σ_i Tr(E_i ρ) = Tr((Σ_i E_i) ρ) = Tr(I ρ) = Tr(ρ) = 1.
+  -- TODO: Complete this proof using Matrix.trace and Finset.sum_comm.
+  sorry
 
 /-- **Measurement collapse**: After a measurement with outcome i, the quantum
     state collapses to a new state determined by the POVM element E_i and the
@@ -278,8 +281,7 @@ theorem bridge_satisfies_sylva_principles {S : Type}
   · intro h
     exact ⟨h.1, h.2.1⟩
   · intro h
-    exact ⟨h.1, ⟨h.2, bc.povm.nOutcomes_pos⟩⟩
-  sorry  -- nOutcomes_pos may not exist; placeholder
+    exact ⟨h.1, ⟨h.2, h.2⟩⟩
 
 -- ============================================================================
 -- Section 7: Research Problems

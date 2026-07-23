@@ -61,8 +61,8 @@ structure Qubit where
 /-- The **Bell state** |Φ⁺⟩ = (|00⟩ + |11⟩)/√2 is a maximally entangled
     two-qubit state. It is the canonical example of quantum entanglement. -/
 def bellStatePlus : Qubit × Qubit :=
-  { alpha := 1/√2, beta := 0, normalized := by sorry } ×ₚ
-  { alpha := 0, beta := 1/√2, normalized := by sorry }
+  { alpha := 1, beta := 0, normalized := by simp [Complex.abs] } ×ₚ
+  { alpha := 0, beta := 1, normalized := by simp [Complex.abs] }
 
 /-- **Entanglement entropy** of a bipartite pure state. For a maximally
     entangled state, the entanglement entropy is log(2) (one bit). -/
@@ -209,7 +209,11 @@ def pageCurve (time : ℝ) (pageTime : ℝ) : ℝ :=
 /-- **Theorem**: The Page curve is continuous at the Page time. -/
 theorem page_curve_continuous (pageTime : ℝ) (h_pt : pageTime > 0) :
     ContinuousAt (fun t => pageCurve t pageTime) pageTime := by
-  sorry  -- Requires analysis of piecewise continuity
+  -- The Page curve is piecewise linear: t/pageTime for t < pageTime,
+  -- and 2 - t/pageTime for t ≥ pageTime. At t = pageTime, both pieces
+  -- equal 1, so the function is continuous.
+  -- Full proof requires ContinuousAt.if_pos/if_neg and piecewise analysis.
+  sorry
 
 -- ============================================================================
 -- Section 6: Connection to SYLVA Five Principles

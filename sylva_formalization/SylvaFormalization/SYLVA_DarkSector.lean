@@ -45,7 +45,6 @@ import SylvaFormalization.SYLVA_Duality
 import SylvaFormalization.SYLVA_Scale
 import SylvaFormalization.SYLVA_Emergence
 import SylvaFormalization.SYLVA_CosmologicalConstant
-import SylvaFormalization.Cosmology.DarkMatter
 import SylvaFormalization.Cosmology.DarkEnergy
 
 namespace Sylva.DarkSector

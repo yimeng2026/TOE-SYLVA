@@ -50,7 +50,7 @@ TOE-SYLVA/
 │   └── SylvaFormalization/
 │       ├── lakefile.lean          # 构建配置
 │       ├── All.lean               # 统一导入
-│       ├── SYLVA_*.lean           # 85 个核心模块 (含 v6 新增 5 个)
+│       ├── SYLVA_*.lean           # 44 个核心模块 (含 v6 新增 5 个)
 │       └── archive/               # _v5_4x 版本化模块归档
 ├── papers/                        # 中文综述论文 (30+ 篇)
 ├── sylva_papers/                  # 英文研究论文 (按学科分类)
@@ -72,18 +72,18 @@ TOE-SYLVA/
 
 ## 四、形式化核心 (Lean 4)
 
-形式化核心位于 `sylva_formalization/SylvaFormalization/`, 当前包含 **85 个 SYLVA 核心模块** 和 30+ 个领域模块. 以下是最重要的 10 个模块:
+形式化核心位于 `sylva_formalization/SylvaFormalization/`, 当前包含 **44 个 SYLVA 核心模块** (含 v6.0 新增 5 个) 和 30+ 个领域模块. 以下是最重要的 10 个模块:
 
 | 模块 | 行数 | 核心内容 |
 |------|------|----------|
-| `SYLVA_ConnectionLaws` | ~1200 | 50+ 条跨域连接律, 形式化"层间耦合" |
-| `SYLVA_HierarchyOfSciences` | ~1270 | 40+ 学科层级, 涌现度量化 |
-| `SYLVA_ResearchProblems` | ~1010 | 100+ 开放研究问题, 按 7 大领域分类 |
-| `SYLVA_UnifiedPhysics` | ~500 | 四力统一的形式化框架 |
-| `SYLVA_CrossModuleTheorems` | ~400 | 跨模块定理, 连接不同 SYLVA 模块 |
-| `SYLVA_CrossReferences` | ~478 | 80+ 跨域引用, 文献级溯源 |
-| `SYLVA_Emergence` | ~833 | 涌现的形式化定义与定理 |
-| `SYLVA_Information` | ~700 | 信息-物理对应 |
+| `SYLVA_ConnectionLaws` | 1159 | 80 条跨域连接律, 形式化"层间耦合" |
+| `SYLVA_HierarchyOfSciences` | 1271 | 42 学科层级, 涌现度量化 |
+| `SYLVA_ResearchProblems` | 1012 | 78 开放研究问题, 按 7 大领域分类 |
+| `SYLVA_UnifiedPhysics` | 237 | 四力统一的形式化框架 |
+| `SYLVA_CrossModuleTheorems` | 247 | 跨模块定理, 连接不同 SYLVA 模块 |
+| `SYLVA_CrossReferences` | 301 | 17 跨域引用, 文献级溯源 |
+| `SYLVA_Emergence` | 833 | 涌现的形式化定义与定理 |
+| `SYLVA_Information` | 1069 | 信息-物理对应 |
 | `SYLVA_Incompleteness` | - | 哥德尔式不完备性的 SYLVA 推广 |
 | `SYLVA_QuantumChaos` | - | 量子-混沌对偶 |
 
