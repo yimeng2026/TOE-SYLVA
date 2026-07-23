@@ -33,3 +33,12 @@
 
 手性孤子晶格（CSL）中的位错动力学代表了另一新兴交叉领域。Eto等人（2025）的最新研究表明，在手性磁体等凝聚态系统和高能物理场景（强磁场或快速旋转下的QCD）中出现的手性孤子晶格可自发形成刃位错和螺位错[^eto-2025]。特别地，三维CSL中发现的稳定双螺旋螺位错（形态类似DNA双螺旋）建立了高能场论与材料科学之间的新桥梁。
 
+
+
+---
+
+## 补充arXiv引用（v2）
+
+- Witten (2018), Symmetry and emergence. arXiv:1810.01732
+- Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
+- Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.

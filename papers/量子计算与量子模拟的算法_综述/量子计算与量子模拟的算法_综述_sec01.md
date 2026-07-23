@@ -25,3 +25,12 @@
 [^preskill-2018]: J. Preskill. Quantum computing in the NISQ era and beyond. *Quantum*, 2:79, 2018. https://doi.org/10.22331/q-2018-08-06-79
 [^bernstein-1997]: E. Bernstein and U. Vazirani. Quantum complexity theory. *SIAM Journal on Computing*, 26(5):1411-1473, 1997. https://doi.org/10.1137/S0097539796300921
 [^shor-1994-complexity]: P. W. Shor. Algorithms for quantum computation: discrete logarithms and factoring. In *Proceedings 35th Annual Symposium on Foundations of Computer Science*, pages 124-134. IEEE, 1994. https://doi.org/10.1109/SFCS.1994.365700
+
+
+---
+
+## 补充arXiv引用（v2）
+
+- Witten (2018), Symmetry and emergence. arXiv:1810.01732
+- Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
+- Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.

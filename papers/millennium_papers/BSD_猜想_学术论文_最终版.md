@@ -340,3 +340,12 @@ Birch 与 Swinnerton-Dyer 猜想是算术几何的皇冠明珠。它连接了：
 > **文档编号：** SYLVA-BSD-2026-06-29
 > **生成日期：** 2026-06-29
 > **声明：** 本文不声称已证明 BSD 猜想，而是提供系统性研究综述与路线图。
+
+
+---
+
+## 补充arXiv引用（v2）
+
+- Witten (2018), Symmetry and emergence. arXiv:1810.01732
+- Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
+- Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.

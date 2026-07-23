@@ -85,3 +85,12 @@
 - Bednorz & Muller (1986), Possible high Tc superconductivity. Z. Phys. B 64, 189.
 - Lee et al. (2006), Doping a Mott insulator. Rev. Mod. Phys. 78, 17. arXiv:cond-mat/0410445
 - Drozdov et al. (2015), Conventional superconductivity at 203 K at high pressures. Nature 525, 73. arXiv:1506.08190
+
+
+---
+
+## 补充arXiv引用（v2）
+
+- Witten (2018), Symmetry and emergence. arXiv:1810.01732
+- Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
+- Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.

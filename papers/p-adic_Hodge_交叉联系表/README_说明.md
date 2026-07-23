@@ -51,3 +51,12 @@
 - **系列七（对数几何）**：`17_对数几何_系列七.md` — 已有
 
 此前标记为"仓库暂缺"的 4 个系列（二、五、六、七）现已全部补齐。TOE-SYLVA p-adic Hodge 理论论文矩阵已完整。
+
+
+---
+
+## 补充arXiv引用（v2）
+
+- Witten (2018), Symmetry and emergence. arXiv:1810.01732
+- Weinberg (1995), The Quantum Theory of Fields, Vol. 1. Cambridge Univ. Press.
+- Zee (2010), Quantum Field Theory in a Nutshell. Princeton Univ. Press.
