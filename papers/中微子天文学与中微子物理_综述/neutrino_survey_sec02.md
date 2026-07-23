@@ -52,3 +52,12 @@ $$ \mathcal{M}_\nu^{\mathrm{eff}} = - m_D^T \, M_R^{-1} \, m_D \tag{4} $$
 [^nufit-2024]: I. Esteban et al. (Nu-fit Collaboration). The fate of hints: updated global analysis of three-flavor neutrino oscillations. JHEP 09, 037 (2020); updated 2024. https://doi.org/10.1007/JHEP09(2020)037
 [^mohapatra-2005]: R. N. Mohapatra et al. Theory of neutrinos: a white paper. Rept. Prog. Phys. 70, 1757 (2007). https://doi.org/10.1088/0034-4885/70/11/R02
 [^dolinski-2019]: M. J. Dolinski, A. W. P. Poon and W. Rodejohann. Neutrinoless double-beta decay: status and prospects. Annu. Rev. Nucl. Part. Sci. 69, 219 (2019). https://doi.org/10.1146/annurev-nucl-101918-023407
+
+
+---
+
+## 补充arXiv引用
+
+- Fukuda et al. (1998), Evidence for oscillation of atmospheric neutrinos. Phys. Rev. Lett. 81, 1562. arXiv:hep-ex/9807003
+- Ahmad et al. (2001), Measurement of the rate of nu_e + d -> p + p + e^- interactions. Phys. Rev. Lett. 87, 071301. arXiv:nucl-ex/0106015
+- IceCube Collaboration (2013), Evidence for high-energy extraterrestrial neutrinos at the IceCube detector. Science 342, 1242856. arXiv:1311.5238

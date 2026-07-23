@@ -76,3 +76,12 @@
 ## 输出文件
 - room_temp_sc_handbook.docx
 - room_temp_sc_handbook.pdf（如可能）
+
+
+---
+
+## 补充arXiv引用
+
+- Bednorz & Muller (1986), Possible high Tc superconductivity. Z. Phys. B 64, 189.
+- Lee et al. (2006), Doping a Mott insulator. Rev. Mod. Phys. 78, 17. arXiv:cond-mat/0410445
+- Drozdov et al. (2015), Conventional superconductivity at 203 K at high pressures. Nature 525, 73. arXiv:1506.08190

@@ -29,3 +29,12 @@ SYLVA本体论对拓扑缺陷的形式化描述包含三个层级：（1）**结
 
 将拓扑缺陷纳入TOE-SYLVA本体论框架的深远意义在于：它为跨尺度的物理现象提供了统一的语言。从晶体中的位错（纳米尺度）到宇宙弦（宇宙学尺度），从超导体涡旋的磁通量子化到Skyrmion的重子数拓扑起源，这些现象均可被同一套同伦理论所描述。SYLVA框架进一步要求将这些描述与因果结构、信息守恒和计算复杂性等更基本的原理相联系。例如，拓扑缺陷的动力学稳定性可被视为信息在局域扰动下的守恒——拓扑荷作为"不可伪造的量子信息"，其保护机制与量子纠错码中的拓扑码存在形式上的对应。这一视角为未来探索拓扑缺陷在量子引力与信息物理交汇处的角色开辟了新的研究方向。
 
+
+
+---
+
+## 补充arXiv引用
+
+- Vilenkin & Shellard (1994), Cosmic Strings and Other Topological Defects. Cambridge Univ. Press.
+- Manton & Sutcliffe (2004), Topological Solitons. Cambridge Univ. Press.
+- Kibble (1976), Topology of cosmic domains and strings. J. Phys. A 9, 1387.

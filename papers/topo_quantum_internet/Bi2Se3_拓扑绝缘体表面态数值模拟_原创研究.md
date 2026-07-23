@@ -472,3 +472,12 @@ $$
 ---
 
 *本研究由千界花园学术系统支持完成，数值计算依托 TOE-SYLVA 形式化物理计算框架。*
+
+
+---
+
+## 补充arXiv引用
+
+- Kitaev (2003), Fault-tolerant quantum computation by anyons. Ann. Phys. 303, 2. arXiv:quant-ph/9707021
+- Nayak et al. (2008), Non-Abelian anyons and topological quantum computation. Rev. Mod. Phys. 80, 1083. arXiv:0707.1889
+- Freedman et al. (2002), Topological quantum computation. Bull. AMS 40, 31. arXiv:quant-ph/0101025
