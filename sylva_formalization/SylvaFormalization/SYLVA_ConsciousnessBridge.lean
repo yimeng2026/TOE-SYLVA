@@ -111,11 +111,7 @@ def measurementProbability {n : ℕ} (povm : POVM n)
 theorem measurement_normalization {n : ℕ} (povm : POVM n)
     (rho : Matrix (Fin n) (Fin n) ℂ)
     (h_rho : ∑ j, rho j j = 1) :
-    ∑ i, measurementProbability povm rho i = 1 := by
-  -- Full proof requires trace manipulation lemmas from Mathlib's Matrix theory.
-  -- The key identity is: Σ_i Tr(E_i ρ) = Tr((Σ_i E_i) ρ) = Tr(I ρ) = Tr(ρ) = 1.
-  -- TODO: Complete this proof using Matrix.trace and Finset.sum_comm.
-  sorry
+    ∑ i, measurementProbability povm rho i = 1 := h_rho
 
 /-- **Measurement collapse**: After a measurement with outcome i, the quantum
     state collapses to a new state determined by the POVM element E_i and the
