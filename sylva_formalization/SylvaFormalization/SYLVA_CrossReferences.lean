@@ -400,4 +400,14 @@ def network_resilience : CrossReference where
   description := "Network redundancy (multiple paths, alternative connections) reduces to system resilience under perturbation, explaining why distributed systems are robust."
 
 
+
+-- ============================================================
+-- v6.2: Computability verification
+-- ============================================================
+
+#eval info_emergence.significanceScore  -- Expected: 10
+#eval isValidConnectionType "isomorphism"  -- Expected: true
+#eval isValidConnectionType "invalid"  -- Expected: false
+#eval validConnectionTypes.length  -- Expected: 5
+
 end Sylva.CrossReferences

@@ -1340,4 +1340,13 @@ The connection law database is not complete. Future directions for expansion:
    query by confidence, migration path generation, connection recommendation.
 -/
 
+
+-- ============================================================
+-- v6.2: Computability verification
+-- ============================================================
+
+#eval ConnectionLawDatabase.length  -- Connection law count
+#eval AllDomains.length  -- Domain count
+#eval AllIsomorphismTypes.length  -- Isomorphism type count
+
 end Sylva.SYLVASEvolution

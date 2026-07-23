@@ -1238,4 +1238,13 @@ def crossModuleProblem_max_complexity : CrossModuleProblem :=
     significance := "This would connect black hole physics with algorithmic information theory, showing that physical systems have bounded computational complexity." }
 
 
+
+-- ============================================================
+-- v6.2: Computability verification
+-- ============================================================
+
+#eval AxiomConversionProblems.length  -- Axiom conversion problems
+#eval BoundaryProblems.length  -- Boundary problems
+#eval CrossModuleProblems.length  -- Cross-module problems
+
 end Sylva.ResearchProblems
