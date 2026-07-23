@@ -106,4 +106,6 @@ lean_lib «SylvaFormalization» where
     -- v7.0 Extension Modules
     `SYLVA_Sustainability,
     `SYLVA_Ethics,
+    `SYLVA_ComplexityTheory,
+    `SYLVA_QuantumGravity,
   ]

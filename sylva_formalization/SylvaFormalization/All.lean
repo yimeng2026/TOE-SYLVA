@@ -106,3 +106,5 @@ import SYLVA_DarkSector
 
 import SYLVA_Sustainability
 import SYLVA_Ethics
+import SYLVA_ComplexityTheory
+import SYLVA_QuantumGravity
