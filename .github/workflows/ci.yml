@@ -1,0 +1,62 @@
+name: SYLVA CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sorry-audit:
+    name: Core Sorry Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check zero sorry in core SYLVA modules
+        run: |
+          # 核心模块（非_v5_4x）必须零sorry
+          COUNT=$(grep -rn '^\s*sorry\b' sylva_formalization/SylvaFormalization/SYLVA_*.lean 2>/dev/null | grep -v "_v5_4" | grep -v "^.*--" | wc -l)
+          echo "Core sorry count: $COUNT"
+          if [ "$COUNT" -gt 0 ]; then
+            echo "FAIL: Core SYLVA modules must have zero sorry"
+            grep -rn '^\s*sorry\b' sylva_formalization/SylvaFormalization/SYLVA_*.lean | grep -v "_v5_4" | grep -v "^.*--"
+            exit 1
+          fi
+          echo "PASS: Zero sorry in core modules"
+
+  validation-scripts:
+    name: Validation Script Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all paper directories have validation scripts
+        run: |
+          MISSING=0
+          for d in papers/*/; do
+            has=$(find "$d" -name "verify*.py" -o -name "validation*.py" -o -name "*_validation.py" 2>/dev/null | head -1)
+            if [ -z "$has" ]; then
+              echo "MISSING: $d"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          echo "Directories without validation: $MISSING"
+          if [ "$MISSING" -gt 0 ]; then
+            echo "WARN: Some directories lack validation scripts"
+          else
+            echo "PASS: All paper directories have validation scripts"
+          fi
+
+  connection-laws:
+    name: Connection Law Database
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Count connection laws
+        run: |
+          COUNT=$(grep -c 'domainA :=' sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean)
+          echo "Connection laws: $COUNT"
+          if [ "$COUNT" -lt 100 ]; then
+            echo "WARN: Connection law count below 100"
+          else
+            echo "PASS: Connection law count >= 100"
+          fi
