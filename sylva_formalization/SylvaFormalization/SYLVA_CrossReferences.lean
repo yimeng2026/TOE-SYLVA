@@ -298,4 +298,106 @@ theorem high_significance_connections_exist :
   simp [info_emergence]
   all_goals try { trivial }
 
+
+/-- 18. Physics ↔ Biology: Quantum coherence in photosynthesis. -/
+
+def physics_biology_quantum : CrossReference where
+  sourceModule := "SYLVA_Information"
+  targetModule := "SYLVA_Life"
+  connectingTheorem := "quantum_coherence_in_photosynthesis"
+  connectionType := "bridge"
+  significanceScore := 9
+  description := "Quantum coherence (superposition, entanglement) plays a functional role in photosynthetic energy transfer (FMO complex), bridging quantum physics and biology."
+
+/-- 19. Biology ↔ Cognitive Science: Neural emergence from biological networks. -/
+
+def biology_cognition : CrossReference where
+  sourceModule := "SYLVA_Life"
+  targetModule := "SYLVA_Observation"
+  connectingTheorem := "neural_emergence_from_bio_networks"
+  connectionType := "reduction"
+  significanceScore := 8
+  description := "Cognitive states (memory, perception, consciousness) emerge from biological neural networks, reducing cognition to biology."
+
+/-- 20. Cognitive Science ↔ Society: Collective intelligence from individual cognition. -/
+
+def cognition_society : CrossReference where
+  sourceModule := "SYLVA_Observation"
+  targetModule := "SYLVA_CollectiveIntelligence"
+  connectingTheorem := "collective_intelligence_from_cognition"
+  connectionType := "bridge"
+  significanceScore := 7
+  description := "Collective intelligence (swarm behavior, wisdom of crowds) bridges individual cognition to social phenomena."
+
+/-- 21. Mathematics ↔ Physics: TQFT as bridge between topology and quantum field theory. -/
+
+def math_physics_tqft : CrossReference where
+  sourceModule := "SYLVA_Geometry"
+  targetModule := "SYLVA_UnifiedPhysics"
+  connectingTheorem := "tqft_bridge_topology_qft"
+  connectionType := "isomorphism"
+  significanceScore := 9
+  description := "Topological quantum field theory (TQFT) provides an isomorphism between topological invariants and quantum field theory partition functions."
+
+/-- 22. Information ↔ Physics: Landauer principle connects information erasure to thermodynamic cost. -/
+
+def info_physics_landauer : CrossReference where
+  sourceModule := "SYLVA_Information"
+  targetModule := "SYLVA_UnifiedPhysics"
+  connectingTheorem := "landauer_principle"
+  connectionType := "isomorphism"
+  significanceScore := 10
+  description := "Landauer principle (erasing 1 bit costs k_B T ln 2 energy) is an isomorphism between information theory and thermodynamics."
+
+/-- 23. Dynamics ↔ Economics: Replicator dynamics as gradient flow on fitness landscape. -/
+
+def dynamics_economics : CrossReference where
+  sourceModule := "SYLVA_Dynamics"
+  targetModule := "SYLVA_Evolution"
+  connectingTheorem := "replicator_as_gradient_flow"
+  connectionType := "reduction"
+  significanceScore := 8
+  description := "Replicator dynamics in evolutionary game theory reduces to gradient flow on the fitness landscape, connecting dynamics to economics."
+
+/-- 24. Symmetry ↔ Emergence: Spontaneous symmetry breaking generates emergent order. -/
+
+def symmetry_emergence : CrossReference where
+  sourceModule := "SYLVA_Symmetry"
+  targetModule := "SYLVA_Emergence"
+  connectingTheorem := "symmetry_breaking_generates_emergence"
+  connectionType := "bridge"
+  significanceScore := 10
+  description := "Spontaneous symmetry breaking (Higgs mechanism, phase transitions) is the bridge between fundamental symmetries and emergent ordered phases."
+
+/-- 25. Scale ↔ Complexity: Fractal scaling connects scale invariance to complexity. -/
+
+def scale_complexity : CrossReference where
+  sourceModule := "SYLVA_Scale"
+  targetModule := "SYLVA_Complexity"
+  connectingTheorem := "fractal_scaling_complexity"
+  connectionType := "analogy"
+  significanceScore := 7
+  description := "Fractal scaling (power-law, self-similarity) connects scale invariance to complexity theory, explaining why complex systems exhibit scale-free behavior."
+
+/-- 26. Causality ↔ Information: Causal entropy as information-theoretic arrow of time. -/
+
+def causality_info_entropy : CrossReference where
+  sourceModule := "SYLVA_Causality"
+  targetModule := "SYLVA_Information"
+  connectingTheorem := "causal_entropy_arrow"
+  connectionType := "isomorphism"
+  significanceScore := 9
+  description := "The causal arrow of time is isomorphic to the entropy arrow: causal entropy increase = information loss, unifying causality and information theory."
+
+/-- 27. Network ↔ Resilience: Network redundancy confers system resilience. -/
+
+def network_resilience : CrossReference where
+  sourceModule := "SYLVA_Network"
+  targetModule := "SYLVA_Resilience"
+  connectingTheorem := "network_redundancy_resilience"
+  connectionType := "reduction"
+  significanceScore := 8
+  description := "Network redundancy (multiple paths, alternative connections) reduces to system resilience under perturbation, explaining why distributed systems are robust."
+
+
 end Sylva.CrossReferences
