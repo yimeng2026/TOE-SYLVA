@@ -52,7 +52,7 @@ TOE-SYLVA/
 │       ├── All.lean               # 统一导入
 │       ├── SYLVA_*.lean           # 44 个核心模块 (含 v6 新增 5 个)
 │       └── archive/               # _v5_4x 版本化模块归档
-├── papers/                        # 中文综述论文 (30+ 篇)
+├── papers/                        # 中文综述论文 (143 篇)
 ├── sylva_papers/                  # 英文研究论文 (按学科分类)
 │   ├── mathematics/               # 千禧问题、希尔伯特问题、P vs NP
 │   ├── physics/                   # 宇宙学、量子引力、凝聚态
@@ -121,6 +121,18 @@ lake build
 
 - 中文综述: `papers/` 目录
 - 英文研究论文: `sylva_papers/{mathematics,physics,computation}/`
+
+### 5.4 重点系列
+
+以下系列代表本仓库近期的高质量深度综述，各附一句话简介，详见 [`papers/README.md`](papers/README.md) 对应条目：
+
+| 系列 | 简介 |
+|------|------|
+| [p-adic Hodge 理论交叉联系表](papers/README.md) | 以 p-adic Hodge 理论为主线，系统梳理其与复几何、表示论、自守形式、BSD 猜想等十余方向的交叉联系（21 文件 + 验证脚本）。 |
+| [核磁共振与磁共振成像物理综述 (v2.0)](papers/README.md) | 从自旋物理、布洛赫方程到 k 空间编码与脉冲序列的教科书级 NMR/MRI 综述（v2.0 增强版）。 |
+| [因果集理论与离散时空](papers/README.md) | 因果集理论的离散时空几何、Benincasa-Dowker 作用量与谱维度数值验证。 |
+| [张量网络方法与全息对偶](papers/README.md) | MPS/PEPS/MERA 张量网络与 AdS/CFT 全息对偶的面积律、Ryu-Takayanagi 公式验证。 |
+| [多体局域与无序量子系统](papers/README.md) | MBL 相的能级统计、纠缠动力学与 ETH 失效的数值模拟。 |
 
 ## 六、贡献方式
 
