@@ -108,4 +108,5 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Ethics,
     `SYLVA_ComplexityTheory,
     `SYLVA_QuantumGravity,
+    `SYLVA_CategoryTheory,
   ]
