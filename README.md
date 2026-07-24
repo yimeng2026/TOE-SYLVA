@@ -50,7 +50,7 @@ TOE-SYLVA/
 │   └── SylvaFormalization/
 │       ├── lakefile.lean          # 构建配置
 │       ├── All.lean               # 统一导入
-│       ├── SYLVA_*.lean           # 44 个核心模块 (含 v6 新增 5 个)
+│       ├── SYLVA_*.lean           # 43 个核心模块 (含 v6 新增 5 个)
 │       └── archive/               # _v5_4x 版本化模块归档
 ├── papers/                        # 中文综述论文 (143 篇)
 ├── sylva_papers/                  # 英文研究论文 (按学科分类)
@@ -72,30 +72,34 @@ TOE-SYLVA/
 
 ## 四、形式化核心 (Lean 4)
 
-形式化核心位于 `sylva_formalization/SylvaFormalization/`, 当前包含 **44 个 SYLVA 核心模块** (含 v6.0 新增 5 个) 和 30+ 个领域模块. 以下是最重要的 10 个模块:
+形式化核心位于 `sylva_formalization/SylvaFormalization/`, 当前包含 **44 个 SYLVA 核心模块** (含 v6.0 新增 5 个 + v7.0 新增 4 个) 和 30+ 个领域模块. 以下是最重要的 10 个模块:
 
 | 模块 | 行数 | 核心内容 |
 |------|------|----------|
-| `SYLVA_ConnectionLaws` | 1159 | 80 条跨域连接律, 形式化"层间耦合" |
+| `SYLVA_ConnectionLaws` | 1159 | 121 条跨域连接律, 形式化"层间耦合" |
 | `SYLVA_HierarchyOfSciences` | 1271 | 42 学科层级, 涌现度量化 |
-| `SYLVA_ResearchProblems` | 1012 | 78 开放研究问题, 按 7 大领域分类 |
+| `SYLVA_ResearchProblems` | 1012 | 125 开放研究问题, 按 7 大领域分类 |
 | `SYLVA_UnifiedPhysics` | 237 | 四力统一的形式化框架 |
 | `SYLVA_CrossModuleTheorems` | 247 | 跨模块定理, 连接不同 SYLVA 模块 |
-| `SYLVA_CrossReferences` | 301 | 17 跨域引用, 文献级溯源 |
+| `SYLVA_CrossReferences` | 301 | 37 跨域引用, 文献级溯源 |
 | `SYLVA_Emergence` | 833 | 涌现的形式化定义与定理 |
 | `SYLVA_Information` | 1069 | 信息-物理对应 |
 | `SYLVA_Incompleteness` | - | 哥德尔式不完备性的 SYLVA 推广 |
 | `SYLVA_QuantumChaos` | - | 量子-混沌对偶 |
 
-### v6.0 新增模块 (本次贡献)
+### v6.0-v7.0 新增模块
 
 | 模块 | 核心内容 |
 |------|----------|
-| `SYLVA_UniversalSymmetry` | 普适对称性原理: 统一规范对称性、全息对称性、涌现对称性 |
-| `SYLVA_ConsciousnessBridge` | 意识桥: 形式化"观察者参与原则", 连接量子测量与认知科学 |
-| `SYLVA_QuantumInformationUnity` | 量子-信息统一: 把 it-from-qubit 推广为 it-from-entangled-qubits |
-| `SYLVA_CosmologicalConstant` | 宇宙学常数问题: 从 SYLVA 涡旋结构推导 Λ 的观测值 |
-| `SYLVA_DarkSector` | 暗物质/暗能量: 作为 SYLVA 阴阳对偶中"阴" (不可见结构) 的形式化 |
+| `SYLVA_UniversalSymmetry` | 普适对称性原理: 统一规范、全息、涌现对称性 |
+| `SYLVA_ConsciousnessBridge` | 意识桥: 连接量子测量与认知科学 |
+| `SYLVA_QuantumInformationUnity` | 量子-信息统一: it-from-entangled-qubits |
+| `SYLVA_CosmologicalConstant` | 宇宙学常数: 从涡旋结构推导 Λ |
+| `SYLVA_DarkSector` | 暗扇区: 阴阳对偶中"阴"的形式化 |
+| `SYLVA_Sustainability` | 可持续性: 生态/经济/社会/技术 (v7.0) |
+| `SYLVA_Ethics` | 伦理学: 功利主义/义务论/AI对齐 (v7.0) |
+| `SYLVA_ComplexityTheory` | 计算复杂性: P/NP/BQP/熵间隙 (v7.0) |
+| `SYLVA_QuantumGravity` | 量子引力: Planck标度/黑洞/全息/ER=EPR (v7.0) |
 
 ## 五、快速开始
 

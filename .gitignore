@@ -39,3 +39,19 @@ desktop.ini
 *.tmp
 *.bak
 *.orig
+
+# Python cache (already there but ensure)
+*.pyc
+__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
