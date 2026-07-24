@@ -109,3 +109,7 @@ import SYLVA_Ethics
 import SYLVA_ComplexityTheory
 import SYLVA_QuantumGravity
 import SYLVA_CategoryTheory
+import SYLVA_HomotopyType
+import SYLVA_TensorNetwork
+import SYLVA_RenormalizationGroup
+import SYLVA_QuantumErrorCorrection

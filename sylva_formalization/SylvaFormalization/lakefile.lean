@@ -109,4 +109,8 @@ lean_lib «SylvaFormalization» where
     `SYLVA_ComplexityTheory,
     `SYLVA_QuantumGravity,
     `SYLVA_CategoryTheory,
+    `SYLVA_HomotopyType,
+    `SYLVA_TensorNetwork,
+    `SYLVA_RenormalizationGroup,
+    `SYLVA_QuantumErrorCorrection,
   ]
