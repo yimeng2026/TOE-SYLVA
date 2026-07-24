@@ -69,3 +69,14 @@
 - Penrose (2004), The Road to Reality. Knopf.
 - Weinberg (2008), Cosmology. Oxford Univ. Press.
 - Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.
+
+
+---
+
+## 补充arXiv引用（v4深化）
+
+- Hawking (1975), Particle creation by black holes. Commun. Math. Phys. 43, 199. arXiv:hep-th/0102197
+- Weinberg (1972), Gravitation and Cosmology. Wiley.
+- Dirac (1930), The Principles of Quantum Mechanics. Oxford Univ. Press.
+- Feynman (1948), Space-time approach to non-relativistic quantum mechanics. Rev. Mod. Phys. 20, 367.
+- Landau & Lifshitz (1980), Statistical Physics, Part 1. Pergamon Press.

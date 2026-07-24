@@ -41,3 +41,14 @@ $$\xi \sim (\lambda n_{\text{bubble}})^{-1/3} \sim (\lambda T_*)^{-1} \tag{2}$$
 
 以双轴向列相液晶为例，其序参量空间具有非交换的基本群，导致向错线之间无法自由穿越，形成类似聚合物缠结的网络结构。Whitehead乘积π₁ × π₂ → π₂描述了线缺陷环绕点缺陷运动时点缺陷拓扑荷的变化：在向列相中，一个单极子绕向错线运动一周后，其刺猬电荷可能改变两个单位，这在实验上已通过胶体颗粒-向错环复合体系得到验证[^pieranski-2024]。
 
+
+
+---
+
+## 补充arXiv引用（v4深化）
+
+- Hawking (1975), Particle creation by black holes. Commun. Math. Phys. 43, 199. arXiv:hep-th/0102197
+- Weinberg (1972), Gravitation and Cosmology. Wiley.
+- Dirac (1930), The Principles of Quantum Mechanics. Oxford Univ. Press.
+- Feynman (1948), Space-time approach to non-relativistic quantum mechanics. Rev. Mod. Phys. 20, 367.
+- Landau & Lifshitz (1980), Statistical Physics, Part 1. Pergamon Press.

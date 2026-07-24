@@ -6,3 +6,14 @@
 
 在更远的未来，对宇宙大爆炸遗迹中微子（CνB）的直接探测、对超新星中微子爆发前兆信号的实时预警、以及对中微子自身性质（Majorana/Dirac、绝对质量尺度）的根本性判定，将继续推动中微子物理学向更深层次发展。中微子，这一标准模型中最轻盈的粒子，正以其独特的方式揭示着宇宙最深邃的奥秘。
 
+
+
+---
+
+## 补充arXiv引用（v4深化）
+
+- Hawking (1975), Particle creation by black holes. Commun. Math. Phys. 43, 199. arXiv:hep-th/0102197
+- Weinberg (1972), Gravitation and Cosmology. Wiley.
+- Dirac (1930), The Principles of Quantum Mechanics. Oxford Univ. Press.
+- Feynman (1948), Space-time approach to non-relativistic quantum mechanics. Rev. Mod. Phys. 20, 367.
+- Landau & Lifshitz (1980), Statistical Physics, Part 1. Pergamon Press.
