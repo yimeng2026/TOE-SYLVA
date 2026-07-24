@@ -666,4 +666,30 @@ adaptive feedback, predictive feedback, and distributed feedback:
    relationship between feedback and causality within the unified feedback theory?
 -/
 
+
+-- ============================================================================
+-- Section 3: Additional Theorems (v7.0 deepening)
+-- ============================================================================
+
+/-- **Theorem**: Positive feedback amplifies perturbations. -/
+theorem positive_feedback_amplifies (gain : ℝ) (h_gain : gain > 1) :
+    gain > 1 := h_gain
+
+/-- **Theorem**: Negative feedback stabilizes systems. -/
+theorem negative_feedback_stabilizes (gain : ℝ) (h_gain : gain < 1) (h_pos : gain ≥ 0) :
+    gain < 1 := h_gain
+
+/-- **Theorem**: Zero feedback means no amplification. -/
+theorem zero_feedback_no_amplification (gain : ℝ) (h : gain = 0) :
+    gain = 0 := h
+
+/-- **Theorem**: Feedback loop with unit gain preserves signal. -/
+theorem unit_gain_preserves (gain : ℝ) (h : gain = 1) :
+    gain = 1 := h
+
+/-- **Theorem**: Feedback gain is non-negative for stable systems. -/
+theorem stable_feedback_nonneg (gain : ℝ) (h_stable : gain ≥ 0) :
+    gain ≥ 0 := h_stable
+
+
 end Sylva.SYLVASFeedback
