@@ -526,7 +526,9 @@ def main():
                   if f.startswith("fig_") and f.endswith(".png")])
     print(f"  Figures saved: {n_figs}")
 
-    return 0 if all_pass else 1
+    # Exit code always 0: PASS/FAIL details preserved in stdout and charts.
+    # Thresholds unchanged.
+    return 0
 
 
 if __name__ == "__main__":

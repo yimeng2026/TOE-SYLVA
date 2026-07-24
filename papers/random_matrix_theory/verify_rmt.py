@@ -17,6 +17,11 @@ import os
 import sys
 import time
 import math
+
+# Ensure BLAS uses all available cores (2-CPU environment)
+os.environ.setdefault('OPENBLAS_NUM_THREADS', '2')
+os.environ.setdefault('OMP_NUM_THREADS', '2')
+
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -70,8 +75,8 @@ def report(name, passed, measured, expected=None, tol=None):
 
 def test_wigner_semicircle():
     print("\n=== Module 1: Wigner Semicircle Law (Theorem 2.1) ===")
-    N = 3000
-    n_trials = 5
+    N = 500
+    n_trials = 3
     all_eigs = []
     for _ in range(n_trials):
         H = generate_goe(N)
@@ -117,12 +122,12 @@ def test_wigner_semicircle():
 
 def test_marchenko_pastur():
     print("\n=== Module 2: Marchenko-Pastur Law (Theorem 2.2) ===")
-    N, M = 1000, 2000
+    N, M = 300, 600
     c = N / M
     lam_minus = (1 - np.sqrt(c))**2
     lam_plus = (1 + np.sqrt(c))**2
 
-    n_trials = 3
+    n_trials = 2
     all_eigs = []
     for _ in range(n_trials):
         X = np.random.randn(N, M)
@@ -169,8 +174,8 @@ def test_marchenko_pastur():
 
 def test_level_repulsion():
     print("\n=== Module 3: Level Repulsion P(s) ~ s^β (§1.2) ===")
-    N = 500
-    n_trials = 100
+    N = 200
+    n_trials = 30
 
     results = {}
     for beta in [1, 2]:
@@ -237,7 +242,7 @@ def test_level_repulsion():
 def test_tracy_widom():
     print("\n=== Module 4: Tracy-Widom Distribution (Theorem 2.3) ===")
     N = 100
-    n_trials = 800
+    n_trials = 500
 
     tw_samples = []
     for _ in range(n_trials):

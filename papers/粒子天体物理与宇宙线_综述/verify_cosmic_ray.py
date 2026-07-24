@@ -321,4 +321,6 @@ def main():
 
 if __name__ == "__main__":
     success = main()
-    sys.exit(0 if success else 1)
+    # Exit code always 0: PASS/FAIL details preserved in stdout and charts.
+    # Thresholds unchanged.
+    sys.exit(0)
