@@ -113,3 +113,11 @@ import SYLVA_HomotopyType
 import SYLVA_TensorNetwork
 import SYLVA_RenormalizationGroup
 import SYLVA_QuantumErrorCorrection
+import SYLVA_InformationGeometry
+import SYLVA_OperatorAlgebras
+import SYLVA_NoncommutativeGeometry
+import SYLVA_GeometricQuantization
+import SylvaFormalization.SYLVA_ToposTheory
+import SylvaFormalization.SYLVA_FreeEnergyPrinciple
+import SylvaFormalization.SYLVA_SyntheticDifferentialGeometry
+import SylvaFormalization.SYLVA_SpectralTheory

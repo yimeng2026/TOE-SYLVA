@@ -113,4 +113,12 @@ lean_lib «SylvaFormalization» where
     `SYLVA_TensorNetwork,
     `SYLVA_RenormalizationGroup,
     `SYLVA_QuantumErrorCorrection,
+    `SYLVA_InformationGeometry,
+    `SYLVA_OperatorAlgebras,
+    `SYLVA_NoncommutativeGeometry,
+    `SYLVA_GeometricQuantization,
+    `SYLVA_ToposTheory,
+    `SYLVA_FreeEnergyPrinciple,
+    `SYLVA_SyntheticDifferentialGeometry,
+    `SYLVA_SpectralTheory,
   ]
