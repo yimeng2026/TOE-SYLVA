@@ -1,0 +1,120 @@
+% ============================================================================
+% 第六节：镜像对称与递归
+% ============================================================================
+
+\section{镜像对称与递归结构}\label{sec:mirror}
+
+镜像对称是计数几何最深刻的物理来源，
+也是递归结构的核心应用场景。
+本节阐述镜像对称如何通过微分方程与递归产生GW不变量。
+
+\subsection{镜像对称的数学表述}
+
+\begin{definition}[镜像对]\label{def:mirrorpair}
+Calabi--Yau三维簇$X$与$X^\vee$构成\textbf{镜像对}，若：
+\begin{enumerate}[label=(\arabic*)]
+\item $X$与$X^\vee$的Hodge数满足$h^{p,q}(X) = h^{3-p,q}(X^\vee)$；
+\item $X$的复结构形变对应$X^\vee$的Kähler形变（SYZ镜像对称）；
+\item $X$的A-模型（GW理论）对应$X^\vee$的B-模型（周期积分）。
+\end{enumerate}
+\end{definition}
+
+\subsection{Picard--Fuchs方程与$J$-函数}
+
+\begin{definition}[Picard--Fuchs方程]\label{def:pf}
+设$X^\vee \to \Delta$是镜像Calabi--Yau的复结构退化族，
+$\Delta \subset \C$是圆盘。
+周期积分$\Pi(t) = \int_{\gamma_t} \Omega_t$（$\Omega_t$是全纯3-形式）
+满足\textbf{Picard--Fuchs方程}：
+\begin{equation}\label{eq:pf}
+\mathcal{L} \Pi(t) = 0, \quad
+\mathcal{L} = \theta^N + \sum_{k=1}^N P_k(t) \theta^{N-k},
+\end{equation}
+其中$\theta = t \frac{d}{dt}$，$P_k$是多项式。
+\end{definition}
+
+\begin{definition}[$J$-函数]\label{def:jfunc}
+亏格0的$J$-函数定义为
+\begin{equation}\label{eq:jfunc}
+J(q) = q \cdot \exp\left( \frac{F_0(q)}{H} \right),
+\end{equation}
+其中$F_0(q) = \sum_\beta \GWinv_{0,1,\beta} q^\beta$是亏格0势函数。
+\end{definition}
+
+\begin{theorem}[镜像定理，精确形式]\label{thm:mirror2}
+$J$-函数等于Picard--Fuchs方程的特定解（$I$-函数）：
+\[
+J(q) = \frac{I(q)}{I_0(q)},
+\]
+其中$I_0$是$I$-函数的常数项。
+\end{theorem}
+
+\subsection{高亏格BCOV递归}
+
+Bershadsky--Cecotti--Ooguri--Vafa（BCOV）\cite{BCOV1994}
+提出了高亏格GW不变量的递归计算方案，
+基于镜像Calabi--Yau上的holomorphic anomaly equation。
+
+\begin{theorem}[BCOV holomorphic anomaly equation]\label{thm:bcov}
+亏格$g$的GW势函数$F_g$满足
+\begin{equation}\label{eq:bcov}
+\bar\partial_i \partial_{\bar j} F_g
+= \frac{1}{2} \ee^{2K} G_{i\bar j}^{a\bar b}
+\left( \partial_a \partial_{\bar b} F_{g-1}
++ \sum_{g_1+g_2=g} \partial_a F_{g_1} \cdot \partial_{\bar b} F_{g_2} \right),
+\end{equation}
+其中$G_{i\bar j}^{a\bar b}$是Weil--Petersson度量的联络，
+$K$是Kähler势。
+\end{theorem}
+
+BCOV方程\eqref{eq:bcov}与CEO递归\eqref{eq:toprec}具有相同的结构：
+\textbf{亏格$g$的量由亏格$g-1$和更低亏格的组合生成}。
+这一结构相似性不是巧合——
+CEO递归可视为BCOV方程的普适化、几何无关的形式。
+
+\subsection{局部镜像对称与精确解}
+
+对局部Calabi--Yau（如$\Ocal(-1) \oplus \Ocal(-1) \to \CP^1$，即resolved conifold），
+镜像对称可显式求解。
+
+\begin{theorem}[Resolved conifold的全亏格GW不变量]\label{thm:conifold}
+对resolved conifold $X = \Ocal(-1) \oplus \Ocal(-1) \to \CP^1$，
+亏格$g$、度数$d$的GW不变量为
+\begin{equation}\label{eq:conifold}
+\GWinv_{g, d} = \frac{(-1)^{g-1} |B_{2g}|}{2g \cdot (2g-2)! \cdot d^{2g-1}},
+\end{equation}
+其中$B_{2g}$是Bernoulli数。
+\end{theorem}
+
+这一公式由Fab--Pandharipande通过拓扑顶点方法证明，
+是高亏格GW理论的少数精确结果之一。
+它也是MNOP对应下DT不变量计算的基准。
+
+\subsection{Givental形式化与$R$-矩阵}
+
+Givental将镜像定理重新表述为半单Frobenius流形上的$R$-矩阵作用，
+这一形式化与CEO递归有深刻联系。
+
+\begin{definition}[Givental $R$-矩阵]\label{def:rmatrix}
+设$QH^*(X)$是半单量子上同调，
+在基$\{\Delta_a\}$下$\Delta_a \star \Delta_b = \delta_{ab} \Delta_a$。
+\textbf{$R$-矩阵}是形式级数
+\begin{equation}\label{eq:rmatrix}
+R(z) = \exp\left( \sum_{k=1}^\infty R_k z^{2k-1} \right),
+\end{equation}
+其中$R_k$是$H^*(X)$上的自同态。
+\end{definition}
+
+\begin{theorem}[Givental重建定理]\label{thm:givental}
+亏格$g$、$n$-点的GW不变量由
+\[
+\GWinv_{g,n} = \frac{1}{n!} \int_{\Mbar_{g,n}}
+\left( \sum_a \frac{T_a}{\sqrt{\Delta_a}} \right)^n
+\cdot R(\psi) \cdot \text{topological terms}
+\]
+给出，其中$R(\psi)$是$R$-矩阵在$\psi$-类上的作用。
+\end{theorem}
+
+Givental的$R$-矩阵与CEO递归的核$K_\alpha$通过\textbf{Dubrovin--Givental对应}关联：
+\textbf{$R$-矩阵的作用等价于在特定谱曲线上运行CEO递归}。
+这一对应是拓扑递归统一性的最精确表述。

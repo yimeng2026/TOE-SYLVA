@@ -1,0 +1,131 @@
+% ============================================================================
+% 第三节：Gromov-Witten 不变量
+% ============================================================================
+
+\section{Gromov--Witten 不变量}\label{sec:gw}
+
+Gromov--Witten（GW）不变量是现代计数几何的核心工具，
+由Kontsevich基于物理学家Witten、Dijkgraaf等人的拓扑弦理论严格化。
+它将"计算曲线数目"的问题转化为稳定映射模空间的相交数。
+
+\subsection{稳定映射模空间}
+
+\begin{definition}[稳定映射]\label{def:stablemap}
+设$X$是光滑射影簇，$\beta \in H_2(X, \Z)$是有效曲线类。
+\textbf{稳定映射}是数据$(C, p_1, \ldots, p_n, f)$，其中：
+\begin{enumerate}[label=(\arabic*)]
+\item $(C, p_1, \ldots, p_n)$是$n$-标记的nodal曲线（允许不可约分支相交于节点）；
+\item $f: C \to X$是满足$f_*[C] = \beta$的态射；
+\item 稳定性：每个不可约分支的亏格为0时至少有3个特殊点（标记点或节点），
+亏格为1时至少有1个特殊点。
+\end{enumerate}
+\end{definition}
+
+稳定映射的等价类构成\textbf{稳定映射模空间}$\Qbar_{g,n}(X, \beta)$，
+这是Kontsevich的奠基性构造\cite{Kontsevich1995}。
+
+\begin{theorem}[Kontsevich]\label{thm:konst}
+对任意光滑射影簇$X$、有效曲线类$\beta$、亏格$g \geq 0$、标记数$n \geq 0$，
+模空间$\Qbar_{g,n}(X, \beta)$是具有预期维数的Deligne--Mumford栈：
+\[
+\dim \Qbar_{g,n}(X, \beta) = (1-g)(\dim X - 3) - \int_\beta c_1(T_X) + n.
+\]
+\end{theorem}
+
+\subsection{GW不变量的定义}
+
+\begin{definition}[Gromov--Witten不变量]\label{def:gw}
+设$\alpha_1, \ldots, \alpha_n \in H^*(X, \Q)$，
+\textbf{Gromov--Witten不变量}定义为
+\[
+\GWinv_{g,n,\beta}(\alpha_1, \ldots, \alpha_n)
+= \int_{[\Qbar_{g,n}(X,\beta)]^{\mathrm{vir}}} \prod_{i=1}^n \ev_i^*(\alpha_i),
+\]
+其中$\ev_i: \Qbar_{g,n}(X,\beta) \to X$是第$i$个标记点的赋值映射，
+$[\Qbar_{g,n}(X,\beta)]^{\mathrm{vir}}$是虚拟基本类。
+\end{definition}
+
+虚拟基本类的引入是GW理论的关键技术突破，
+由Li--Tian、Behrend--Fantechi独立构造\cite{BF1997}。
+它解决了模空间$\Qbar_{g,n}(X,\beta)$可能非光滑、
+甚至非既约的困难，使积分仍然良定义。
+
+\begin{remark}[虚拟维数]\label{rmk:virtdim}
+虚拟基本类的度数等于虚拟维数
+$\mathrm{vdim} = (1-g)(\dim X - 3) - \int_\beta c_1(T_X) + n$。
+当$\sum \deg \alpha_i = 2\mathrm{vdim}$时，GW不变量非零；
+否则为零。这一"维数匹配"是相交数的自然推广。
+\end{remark}
+
+\subsection{GW不变量的公理与性质}
+
+GW不变量满足一组深刻的公理，由Kontsevich--Manin公理化\cite{KM1994}：
+
+\begin{theorem}[GW公理]\label{thm:gwaxiom}
+GW不变量满足以下公理：
+\begin{enumerate}[label=(\textbf{A\arabic*})]
+\item \textbf{对称性}：$\GWinv_{g,n,\beta}(\alpha_1, \ldots, \alpha_n)$
+关于$\alpha_i$的置换对称。
+\item \textbf{基类公理}：
+$\GWinv_{g,n,0}(\alpha_1, \ldots, \alpha_{n-1}, [pt]) = 0$（当$n \neq 2g-2$）。
+\item \textbf{除法公理}：
+$\GWinv_{g,n+1,\beta}(\alpha_1, \ldots, \alpha_n, \frac{[pt]}{2\pi\ii})$
+与$\GWinv_{g,n,\beta}$通过特定关系联系。
+\item \textbf{切割公理}：沿不可约曲线切割，
+GW不变量分解为低亏格不变量的乘积之和。
+\item \textbf{遗忘公理}：遗忘标记点，
+GW不变量与低标记数不变量通过$2g-2+n$因子联系。
+\end{enumerate}
+\end{theorem}
+
+这些公理不仅刻画了GW不变量的特征，
+更揭示了模空间的"因子化结构"——
+这正是递归关系的几何根源。
+
+\subsection{亏格0 GW不变量与量子上同调}
+
+亏格0的GW不变量具有特别丰富的代数结构。
+
+\begin{definition}[量子上同调环]\label{def:qcoh}
+设$X$光滑射影，$H^*(X, \Q)$有基$\{T_0=[pt], T_1, \ldots, T_N\}$。
+\textbf{量子上同调环}$(QH^*(X), \star)$是$H^*(X, \Q) \otimes \Q[q_1, \ldots, q_N]$
+上的$\Q$-代数，乘积由
+\[
+T_a \star T_b = \sum_{c, \beta} \GWinv_{0,3,\beta}(T_a, T_b, T_c^\vee) q^\beta T_c
+\]
+定义，其中$q^\beta = q_1^{d_1} \cdots q_N^{d_N}$对应$\beta = \sum d_i \beta_i$。
+\end{definition}
+
+\begin{theorem}[结合律]\label{thm:assoc}
+量子乘积$\star$满足结合律，等价于WDVV方程
+（Witten--Dijkgraaf--Verlinde--Verlinde）：
+\[
+\sum_{e, \beta_1+\beta_2=\beta}
+\GWinv_{0,3,\beta_1}(T_a, T_b, T_e^\vee) \cdot
+\GWinv_{0,3,\beta_2}(T_e, T_c, T_d^\vee)
+= (a \leftrightarrow c).
+\]
+\end{theorem}
+
+WDVV方程是亏格0 GW理论的核心递归关系，
+它将高阶不变量表示为低阶不变量的组合。
+这一递归结构是镜像定理的基础。
+
+\subsection{亏格0镜像定理}
+
+镜像对称预测：Calabi--Yau流形$X$的GW不变量
+可通过其"镜像"$X^\vee$上的周期积分计算。
+
+\begin{theorem}[镜像定理，Givental 1996, Lian--Liu--Yau 1997]\label{thm:mirror}
+设$X \subset \CP^{N-1}$是Calabi--Yau超曲面，
+$J(q)$是其$\Pic$--Fuchs方程的$J$-函数。
+则$X$的亏格0 GW不变量由
+\[
+\frac{1}{z} \sum_{\beta} \GWinv_{0,1,\beta}(\phi) q^\beta \cdot \ee^{-\int_\beta H/z}
+= \frac{J(q)}{z} \cdot \ee^{\int_\beta H/z}
+\]
+给出，其中$H$是超平面类。
+\end{theorem}
+
+镜像定理将困难的GW计算转化为微分方程的求解，
+是计数几何最深刻的成果之一。

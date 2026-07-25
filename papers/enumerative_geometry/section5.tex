@@ -1,0 +1,155 @@
+% ============================================================================
+% 第五节：拓扑递归（核心章节）
+% ============================================================================
+
+\section{Chekhov--Eynard--Orantin 拓扑递归}\label{sec:toprec}
+
+本节是本文的核心。
+Chekhov--Eynard--Orantin（CEO）拓扑递归\cite{EO2007, EO2015}
+最初源于随机矩阵理论，后被发现是计数几何的统一计算框架。
+我们将系统阐述其定义、性质，并展示它如何统一各类计数不变量。
+
+\subsection{谱曲线与基本数据}
+
+\begin{definition}[谱曲线]\label{def:spectral}
+\textbf{谱曲线}是数据$\mathcal{S} = (\Sigma, x, y, B)$，其中：
+\begin{enumerate}[label=(\arabic*)]
+\item $\Sigma$是Riemann曲面（不必紧致）；
+\item $x: \Sigma \to \CP^1$是度数$\geq 2$的亚纯函数；
+\item $y: \Sigma \to \CP^1$是亚纯函数，使$dx$在$\Sigma$上的零点与$dy$的极点不重合；
+\item $B$是$\Sigma \times \Sigma$上的双微分，在$z_1 = z_2$附近具有Bergman核行为
+$B(z_1, z_2) \sim \frac{dz_1 dz_2}{(z_1 - z_2)^2} + \text{正则}$。
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[分支点]\label{def:branch}
+$x$的简单临界点$\alpha \in \Sigma$（即$dx(\alpha) = 0$但$d^2x(\alpha) \neq 0$）
+称为\textbf{分支点}。在分支点附近，$x$局部为2对1映射。
+记分支点集合为$\mathcal{R} = \{\alpha_1, \ldots, \alpha_r\}$。
+\end{definition}
+
+\subsection{递归的核心构造}
+
+CEO拓扑递归从谱曲线$\mathcal{S}$出发，
+生成一系列多微分$\omega_{g,n}$（$g \geq 0$, $n \geq 1$），
+其中$\omega_{g,n} \in H^0(K_\Sigma^{\boxtimes n})$是对称的$n$-微分。
+
+\begin{definition}[初始数据]\label{def:initial}
+递归的初始数据为：
+\begin{align}
+\omega_{0,1}(z) &= y(z) \, dx(z), \label{eq:omega01} \\
+\omega_{0,2}(z_1, z_2) &= B(z_1, z_2). \label{eq:omega02}
+\end{align}
+\end{definition}
+
+\begin{definition}[核心递归公式]\label{def:toprec}
+对$(g, n) \neq (0, 1), (0, 2)$，多微分$\omega_{g,n}$由以下递归定义：
+\begin{equation}\label{eq:toprec}
+\omega_{g,n}(z_1, \ldots, z_n)
+= \sum_{\alpha \in \mathcal{R}} \operatorname*{Res}_{z \to \alpha}
+K_\alpha(z_1, z) \cdot \mathcal{R}_{g,n}(z, z_1, \ldots, z_n),
+\end{equation}
+其中\textbf{递归核}$K_\alpha$为
+\begin{equation}\label{eq:kernel}
+K_\alpha(z_1, z) = \frac{1}{2} \frac{\int_{\sigma_\alpha(z)}^z B(z_1, \cdot)}
+{(y(z) - y(\sigma_\alpha(z))) \, dx(z)},
+\end{equation}
+$\sigma_\alpha$是分支点$\alpha$附近的局部对合（$x(\sigma_\alpha(z)) = x(z)$），
+而\textbf{递归项}$\mathcal{R}_{g,n}$包含两部分：
+\begin{align}
+\mathcal{R}_{g,n}(z, z_1, \ldots, z_n)
+= &\, \omega_{g-1, n+1}(z, \sigma_\alpha(z), z_1, \ldots, z_n) \label{eq:recA} \\
+&+ \sum_{\substack{g_1+g_2=g \\ I_1 \sqcup I_2 = \{1,\ldots,n\}}}
+\omega_{g_1, |I_1|+1}(z, z_{I_1}) \cdot \omega_{g_2, |I_2|+1}(\sigma_\alpha(z), z_{I_2}). \label{eq:recB}
+\end{align}
+\end{definition}
+
+\begin{remark}[递归的几何意义]\label{rmk:recgeom}
+公式\eqref{eq:toprec}的几何意义是：
+\textbf{将亏格$g$、$n$个标记点的曲面，
+沿一条简单闭曲线切割为两部分}。
+式\eqref{eq:recA}对应切割后亏格减少1、标记点增加1的情形（"手柄切割"）；
+式\eqref{eq:recB}对应切割为两个低亏格曲面的情形（"分离切割"）。
+这一切割--粘合操作正是模空间$\Mcal_{g,n}$的因子化结构。
+\end{remark}
+
+\subsection{拓扑递归的基本性质}
+
+CEO拓扑递归具有一系列深刻性质，使其成为强大的计算工具。
+
+\begin{theorem}[对称性]\label{thm:sym}
+$\omega_{g,n}(z_1, \ldots, z_n)$关于$z_1, \ldots, z_n$完全对称。
+\end{theorem}
+
+\begin{theorem}[线性化]\label{thm:lin}
+$\omega_{g,n}$关于谱曲线的数据$(x, y, B)$是多重线性的：
+若$\mathcal{S} = \mathcal{S}_1 + \mathcal{S}_2$（在适当意义下），
+则$\omega_{g,n}(\mathcal{S}) = \omega_{g,n}(\mathcal{S}_1) + \omega_{g,n}(\mathcal{S}_2)$。
+\end{theorem}
+
+\begin{theorem}[投影性质]\label{thm:proj}
+对任意$g, n$，存在$\omega_{g,n}^\perp$使
+\[
+\omega_{g,n}(z_1, \ldots, z_n) = \omega_{g,n}^\perp(z_1, \ldots, z_n)
++ \delta_{g,0}\delta_{n,2} \frac{dx(z_1) dx(z_2)}{(x(z_1) - x(z_2))^2},
+\]
+其中$\omega_{g,n}^\perp$在$x(z_i) = x(z_j)$处无极点。
+\end{theorem}
+
+\subsection{与模空间相交数的联系}
+
+CEO拓扑递归与$\Mcal_{g,n}$上的相交数有精确对应。
+
+\begin{theorem}[Eynard--Orantin对应]\label{thm:EOcorrespond}
+设$\mathcal{S} = (\CP^1, x, y, B)$是谱曲线，
+其中$B = \frac{dz_1 dz_2}{(z_1-z_2)^2}$是标准Bergman核。
+则$\omega_{g,n}$在$z_i \to \infty$处的展开系数
+给出$\Mcal_{g,n}$上的相交数：
+\[
+\omega_{g,n}(z_1, \ldots, z_n)
+= \sum_{d_1, \ldots, d_n \geq 0}
+\left\langle \prod_{i=1}^n \tau_{d_i} \right\rangle_g
+\prod_{i=1}^n \frac{(2d_i+1)!! \, dx(z_i)}{x(z_i)^{2d_i+2}},
+\]
+其中$\langle \prod \tau_{d_i} \rangle_g = \int_{\Mbar_{g,n}} \prod \psi_i^{d_i}$
+是Witten--Kontsevich相交数。
+\end{theorem}
+
+\begin{corollary}[Witten--Kontsevich定理]\label{cor:WK}
+取谱曲线$y = x^2/2$（Airy曲线），
+则CEO递归生成$\Mcal_{g,n}$上的所有相交数，
+等价于Kontsevich的矩阵模型证明。
+\end{corollary}
+
+这一结果是拓扑递归作为计数几何统一框架的最有力证据：
+\textbf{相交数——最基础的计数几何量——
+是Airy谱曲线上拓扑递归的输出}。
+
+\subsection{CEO递归作为统一框架}
+
+下表总结CEO递归统一的主要计数理论：
+
+\begin{table}[h]
+\centering
+\caption{CEO拓扑递归统一的计数理论}
+\label{tab:unification}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{lXX}
+\toprule
+\textbf{计数理论} & \textbf{谱曲线$\mathcal{S}$} & \textbf{递归输出$\omega_{g,n}$} \\
+\midrule
+Witten--Kontsevich相交数 & Airy: $y = x^2/2$ & $\Mcal_{g,n}$上$\psi$-类相交数 \\
+Hurwitz数 & Lambert: $y = \ee^x$ & 单分支Hurwitz数$H_{g,n}$ \\
+Gromov--Witten（$\CP^1$） & 镜像曲线 & $\CP^1$上GW不变量 \\
+Gromov--Witten（toric CY3） & 镜像曲线（SYZ） & 全亏格GW不变量 \\
+Mirzakhani双曲体积 & $y = \sin(\sqrt{x})$ & $\Mcal_{g,n}$上Weil--Petersson体积 \\
+Kontsevich矩阵模型 & Airy + 边界条件 & 矩阵模型自由能 \\
+Givental $R$-矩阵作用 & $R$-变换的Airy & 广义相交数 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+这一统一性表明：
+\textbf{各类计数不变量虽然定义不同，
+但都遵循相同的递归生成机制}。
+这是本文核心论点的技术基础。

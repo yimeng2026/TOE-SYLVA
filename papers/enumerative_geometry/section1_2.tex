@@ -1,0 +1,137 @@
+% ============================================================================
+% 第一节：引言
+% ============================================================================
+
+\section{引言}\label{sec:intro}
+
+计数几何（Enumerative Geometry）是代数几何中最古老且最具生命力的分支之一，
+其核心任务是计算满足特定几何条件的代数对象（如曲线、曲面、向量丛等）的数目。
+这类问题最早可追溯至古希腊时期阿波罗尼奥斯关于相切圆的研究，
+而现代计数几何则起源于19世纪Schubert的演算几何（Calculus of Enumerative Geometry）
+和Hilbert第15问题对其严格基础的追问。
+
+\subsection{历史脉络与核心问题}
+
+计数几何的发展可大致划分为三个阶段。
+\textbf{第一阶段}是经典计数几何（19世纪--20世纪中叶），
+以Schubert的相交数演算为代表，
+典型问题包括：通过$\C\P^2$中5个一般点的圆锥曲线数目（1条）、
+一般三次曲面上直线的数目（27条）、
+与5个一般圆锥曲线相切的圆锥曲线数目（3264条）等。
+这些经典问题虽然表述初等，但其严格化需要深厚的代数几何工具。
+
+\textbf{第二阶段}是现代计数几何（20世纪80年代--21世纪初），
+以Gromov--Witten理论的建立为标志。
+Kontsevich引入的稳定模空间$\Qbar_{g,n}(X,\beta)$为计数曲线提供了严格的数学框架，
+而Witten的拓扑弦理论则将计数几何与物理紧密联系。
+这一阶段的核心成就是镜像对称猜想的数学化
+（Givental、Lian--Liu--Yau的镜像定理）
+以及Okounkov--Pandharipande关于Hurwitz数与GW不变量的对应。
+
+\textbf{第三阶段}是统一与递归阶段（21世纪初至今），
+以Donaldson--Thomas不变量、Pandharipande--Thomas不变量的引入
+和Chekhov--Eynard--Orantin拓扑递归的发现为标志。
+这一阶段的特征是：各类计数不变量被发现满足相同的递归结构，
+暗示着存在更深层的统一原理。
+
+\subsection{本文的主旨与组织}
+
+本文的主旨是阐述计数几何中的\textbf{递归结构}作为统一原理。
+我们认为，尽管Gromov--Witten、Donaldson--Thomas、Pandharipande--Thomas
+三类不变量定义在不同的模空间上（稳定映射模空间、Hilbert概形、稳定对模空间），
+它们却共享相同的递归生成机制——拓扑递归。
+这一观察不仅具有技术意义，更揭示了计数几何的深层统一性。
+
+本文组织如下。
+第\ref{sec:classical}节回顾经典计数几何的代表性问题及其现代解答。
+第\ref{sec:gw}节系统介绍Gromov--Witten不变量的定义、性质与计算方法。
+第\ref{sec:dt}节讨论Donaldson--Thomas与Pandharipande--Thomas不变量及其GW/DT/PT对应。
+第\ref{sec:toprec}节是本文的核心，阐述Chekhov--Eynard--Orantin拓扑递归
+及其作为统一计算框架的角色。
+第\ref{sec:mirror}节讨论镜像对称作为计数几何的核心对偶原理。
+第\ref{sec:unified}节提出统一视角：各类计数不变量作为谱曲线上的拓扑递归输出。
+第\ref{sec:applications}节给出具体应用与计算实例。
+第\ref{sec:conjectures}节提出开放问题与猜想。
+第\ref{sec:conclusion}节总结全文并展望未来方向。
+
+% ============================================================================
+% 第二节：经典计数几何
+% ============================================================================
+
+\section{经典计数几何}\label{sec:classical}
+
+本节回顾计数几何中若干经典问题，这些问题不仅是历史的起点，
+也是现代理论正确性的检验基准。
+
+\subsection{相交数与Schubert演算}
+
+\begin{definition}[相交数]\label{def:intersect}
+设$X$是光滑射影簇，$Z_1, \ldots, Z_k$是其上的闭子簇，
+满足$\codim Z_1 + \cdots + \codim Z_k = \dim X$。
+若$Z_i$处于一般位置，则它们的相交$Z_1 \cap \cdots \cap Z_k$是有限点集，
+其元素个数（计重数）称为\textbf{相交数}，记作
+\[
+\#(Z_1 \cap \cdots \cap Z_k) = \int_X [Z_1] \smile \cdots \smile [Z_k] \in \Z_{\geq 0}.
+\]
+\end{definition}
+
+\begin{example}[通过5个点的圆锥曲线]\label{ex:5conics}
+在$\CP^2$中，通过5个一般点的圆锥曲线数目为1。
+这是因为圆锥曲线由6维线性系$|\Ocal_{\CP^2}(2)|$参数化，
+通过一个点施加1个线性条件，故5个点留下$6-5=1$维空间，
+即唯一的圆锥曲线。
+\end{example}
+
+\begin{example}[三次曲面上的27条直线]\label{ex:27lines}
+Cayley与Salmon证明：光滑三次曲面$S \subset \CP^3$上恰好有27条直线。
+这是计数几何最著名的结果之一，其证明依赖于$S$的双有理几何
+（$S$双有理等价于$\CP^2$的6点爆破）。
+27条直线的相交模式构成丰富的组合结构，
+与$E_6$根系统、Weyl群$W(E_6)$紧密相关。
+\end{example}
+
+\begin{example}[3264条相切圆锥曲线]\label{ex:3264}
+Chasles证明：与5个一般圆锥曲线相切的圆锥曲线数目为3264。
+这一计算依赖于圆锥曲线的Grassmannian参数化
+和对特殊Schubert簇的相交数计算。
+2017年Eisenbud--Harris的专著\cite{EH2016}系统化了这一计算。
+\end{example}
+
+\subsection{Schubert演算的形式化}
+
+Schubert演算将相交数计算转化为上同调环的代数运算。
+
+\begin{definition}[Grassmannian与Schubert簇]\label{def:grassmannian}
+Grassmannian $\mathrm{Gr}(k, n)$参数化$n$维向量空间中$k$维子空间。
+相对于完整旗$\F_\bullet: 0 = F_0 \subset F_1 \subset \cdots \subset F_n = \C^n$，
+Schubert簇$\Omega_\lambda$由维度条件定义：
+\[
+\Omega_\lambda = \{V \in \mathrm{Gr}(k,n) : \dim(V \cap F_{n-k+i-\lambda_i}) \geq i\},
+\]
+其中$\lambda = (\lambda_1 \geq \cdots \geq \lambda_k \geq 0)$是分拆。
+\end{definition}
+
+Schubert簇的上同调类$[\Omega_\lambda]$构成$H^*(\mathrm{Gr}(k,n))$的$\Z$-基，
+其乘法由Littlewood--Richardson规则计算：
+
+\begin{theorem}[Littlewood--Richardson规则]\label{thm:LR}
+设$\lambda, \mu, \nu$是分拆，则结构常数
+$c_{\lambda\mu}^{\nu} = \int_{\mathrm{Gr}(k,n)} [\Omega_\lambda] \smile [\Omega_\mu] \smile [\Omega_{\nu^\vee}]$
+等于满足特定组合条件（LR表）的半标准Young表的数量。
+\end{theorem}
+
+这一规则将几何相交数转化为组合计数，
+是经典计数几何与现代表示论的桥梁。
+
+\subsection{从经典到现代：Hilbert第15问题}
+
+Hilbert第15问题要求"为Schubert的演算几何建立严格基础"。
+这一问题在20世纪通过van der Waerden、Weil、Hodge等人的工作得以解决，
+其核心是证明Schubert的"特征条件"确实对应于代数簇的相交，
+且相交数在一般位置下是良定义的。
+
+现代视角下，Hilbert第15问题的解决体现为：
+Schubert演算 = Grassmannian的上同调环 + Schubert类的乘法规则。
+这一等价不仅严格化了经典计算，
+更开启了将相交数推广到更一般模空间的方向——
+这正是Gromov--Witten理论的起点。

@@ -1,0 +1,105 @@
+% ============================================================================
+% 第四节：Donaldson-Thomas 与 Pandharipande-Thomas 不变量
+% ============================================================================
+
+\section{Donaldson--Thomas 与 Pandharipande--Thomas 不变量}\label{sec:dt}
+
+GW不变量虽然强大，但在正特征或非Calabi--Yau情形下面临困难。
+Donaldson--Thomas（DT）不变量和Pandharipande--Thomas（PT）不变量
+提供了替代的计数方案，三者通过GW/DT/PT对应深刻关联。
+
+\subsection{DT不变量：Hilbert概形上的计数}
+
+\begin{definition}[理想层与Hilbert概形]\label{def:hilb}
+设$X$是光滑射影三维簇，$\beta \in H_2(X, \Z)$，$n \in \Z$。
+\textbf{理想层}$\Ical \subset \Ocal_X$是余维数$\geq 2$的凝聚层，
+满足$\ch_2(\Ical) = -\beta$，$\chi(\Ical) = n$。
+所有理想层构成\textbf{Hilbert概形}$\Hilb^n(X, \beta)$。
+\end{definition}
+
+\begin{theorem}[Thomas, Behrend]\label{thm:dt}
+Hilbert概形$\Hilb^n(X, \beta)$上存在对称 obstruction 理论，
+从而定义虚拟基本类$[\Hilb^n(X,\beta)]^{\mathrm{vir}}$。
+\textbf{DT不变量}定义为
+\[
+\DTinv_{n,\beta} = \int_{[\Hilb^n(X,\beta)]^{\mathrm{vir}}} 1.
+\]
+更一般地，带插入的DT不变量通过tautological类的积分定义。
+\end{theorem}
+
+DT不变量的关键优势在于：
+\begin{enumerate}[label=(\arabic*)]
+\item 它是整数（GW不变量一般为有理数）；
+\item 在Calabi--Yau三维簇上，DT不变量具有良好的"墙穿越"行为；
+\item 通过MNOP猜想\cite{MNOP2006}与GW不变量精确对应。
+\end{enumerate}
+
+\subsection{PT不变量：稳定对的计数}
+
+Pandharipande--Thomas引入了稳定对模空间，
+作为DT理论的"约化"版本，避免了某些技术困难。
+
+\begin{definition}[稳定对]\label{def:pt}
+$X$上的\textbf{稳定对}是态射$s: \Ocal_C \to F$，
+其中$C \subset X$是纯1维子簇，$F$是纯1维层，
+$\mathrm{supp}(F) = C$，且$s$在一般点上是同构。
+稳定对由类$(\beta, n)$参数化，构成模空间$P_n(X, \beta)$。
+\end{definition}
+
+\begin{theorem}[Pandharipande--Thomas]\label{thm:pt}
+$P_n(X, \beta)$具有完美 obstruction 理论，
+\textbf{PT不变量}定义为
+\[
+\PTinv = \int_{[P_n(X,\beta)]^{\mathrm{vir}}} 1.
+\]
+PT不变量与DT不变量通过\textbf{DT/PT对应}关联。
+\end{theorem}
+
+\subsection{GW/DT/PT 三重对应}
+
+三类不变量之间的对应是计数几何最深刻的统一结果之一。
+
+\begin{theorem}[MNOP猜想，现已为定理]\label{thm:mnop}
+设$X$是Calabi--Yau三维簇。定义生成函数
+\begin{align*}
+Z_{\GW}(u, v) &= \sum_{g, \beta} \GWinv_{g, \beta} u^{2g-2} v^\beta, \\
+Z_{\DT}(q, v) &= \sum_{n, \beta} \DTinv_\beta q^n v^\beta, \\
+Z_{\PT}(q, v) &= \sum_{n, \beta} \PTinv q^n v^\beta.
+\end{align*}
+则：
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{GW/DT对应}：在变量替换$q = -\ee^{\ii u}$下，
+$Z_{\GW} = Z_{\DT}^{\mathrm{red}}$（约化DT不变量）。
+\item \textbf{DT/PT对应}：$Z_{\DT} / Z_{\PT} = Z_{\DT}(\Hilb^0(X))$，
+后者是0维DT不变量的生成函数（MacMahon函数的推广）。
+\end{enumerate}
+\end{theorem}
+
+MNOP定理的证明由Bridgeland、Toda、Stoppa--Thomas等人完成，
+其核心是稳定性的wall-crossing分析。
+
+\begin{remark}[对应的几何意义]\label{rmk:correspondence}
+GW/DT/PT对应揭示了一个深刻事实：
+\textbf{同一几何对象（曲线）可以通过不同模空间计数，
+但生成函数在适当变量替换下重合}。
+这暗示着存在更基本的"母不变量"，
+三类不变量都是其在不同"极化"下的投影。
+\end{remark}
+
+\subsection{DT不变量的局部模型}
+
+对局部Calabi--Yau三维簇$X = S \times \C$（$S$为曲面），
+DT不变量可显式计算，提供了理论的检验基准。
+
+\begin{example}[$\CP^2 \times \C$上的DT不变量]\label{ex:dtcp2}
+对$X = \CP^2 \times \C$，曲线类$\beta = d[\text{线}]$，
+约化DT不变量$\DTinv_{\beta}^{\mathrm{red}}$由公式
+\[
+\left.\DTinv_{\beta}\right|^{\mathrm{red}}_{\beta=d[\text{线}]} = \frac{(-1)^{d-1}}{2d^3} \binom{2d-1}{d-1}
+\]
+给出，这与$\CP^2$上亏格0 GW不变量$\GWinv_{0,d[\text{线}]}$在MNOP变量替换下一致。
+\end{example}
+
+这一计算依赖于$\CP^2$上Hilbert概形的组合结构
+（与Young表的钩长公式相关），
+体现了计数几何与组合学的深刻联系。

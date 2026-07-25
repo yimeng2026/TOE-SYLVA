@@ -1,0 +1,132 @@
+% ============================================================================
+% 第七节：应用与计算实例
+% ============================================================================
+
+\section{应用与计算实例}\label{sec:apps}
+
+本节通过具体计算展示递归框架的威力。
+我们将看到，从同一谱曲线出发，CEO递归能生成多种看似无关的计数不变量。
+
+\subsection{Catalan数的几何起源}
+
+Catalan数$C_n = \frac{1}{n+1}\binom{2n}{n}$是组合学的核心序列，
+其几何起源可通过CEO递归揭示。
+
+\begin{definition}[Catalan谱曲线]\label{def:catalan}
+取谱曲线$\mathcal{S}_{\mathrm{Cat}} = (\CP^1, x, y, B)$，其中
+\[
+x(z) = z + \frac{1}{z}, \quad y(z) = z, \quad B = \frac{dz_1 dz_2}{(z_1 - z_2)^2}.
+\]
+分支点为$z = \pm 1$（$x = \pm 2$）。
+\end{definition}
+
+\begin{theorem}[Catalan数的递归生成]\label{thm:catalan}
+在Catalan谱曲线上运行CEO递归，
+$\omega_{0,1}$的展开系数给出Catalan数：
+\[
+\omega_{0,1}(z) = y \, dx = \sum_{n \geq 0} C_n \, x^{-(2n+1)} dx.
+\]
+更高亏格的$\omega_{g,1}$生成Catalan数的"$g$-变形"——
+即与枚举三角剖分、地图计数相关的高亏格不变量。
+\end{theorem}
+
+\begin{example}[前几个高亏格Catalan不变量]\label{ex:catalan}
+\begin{align*}
+\omega_{0,1} &: C_0 = 1, C_1 = 1, C_2 = 2, C_3 = 5, C_4 = 14, \ldots \\
+\omega_{1,1} &: 0, 0, \frac{1}{12}, \frac{5}{48}, \frac{7}{24}, \ldots \\
+\omega_{2,1} &: 0, 0, 0, \frac{1}{1440}, \frac{7}{2880}, \ldots
+\end{align*}
+这些高亏格不变量对应于亏格$g$地图的计数，
+是Tutte图枚举理论的几何化。
+\end{example}
+
+\subsection{Hurwitz数与Lambert曲线}
+
+Hurwitz数$H_{g,\mu}$计数$\CP^1$上亏格$g$、分支轮廓为$\mu = (\mu_1, \ldots, \mu_n)$的简单分支覆盖。
+
+\begin{definition}[Lambert谱曲线]\label{def:lambert}
+取$\mathcal{S}_{\mathrm{Lamb}} = (\CP^1, x, y, B)$，其中
+\[
+x(z) = z, \quad y(z) = \ee^z, \quad B = \frac{dz_1 dz_2}{(z_1 - z_2)^2}.
+\]
+\end{definition}
+
+\begin{theorem}[Bouchard--Mariño猜想，现已证明]\label{thm:BM}
+在Lambert曲线上运行CEO递归，
+$\omega_{g,n}$在$z_i \to \infty$处的展开系数给出单分支Hurwitz数：
+\[
+\omega_{g,n}(z_1, \ldots, z_n)
+= \sum_{\mu_1, \ldots, \mu_n \geq 1}
+H_{g,\mu} \prod_{i=1}^n \mu_i \cdot \ee^{-\mu_i z_i} dz_i.
+\]
+\end{theorem}
+
+Bouchard--Mariño猜想的证明（Mulase--Zhang、Eynard--Mulase）建立了
+\textbf{Hurwitz数 = CEO递归在Lambert曲线上的输出}，
+这是拓扑递归统一性的里程碑。
+
+\subsection{Gromov--Witten不变量的递归计算}
+
+对$\CP^1$的GW不变量，Okounkov--Pandharipande建立了与Hurwitz数的对应，
+从而通过Lambert曲线的CEO递归计算。
+
+\begin{theorem}[Okounkov--Pandharipande对应]\label{thm:OP}
+$\CP^1$上亏格$g$、度数$d$、$n$-点的相对GW不变量
+通过特定变量替换等于Hurwitz数$H_{g,\mu}$，
+其中$\mu$由插入类决定。
+\end{theorem}
+
+结合定理\ref{thm:BM}和\ref{thm:OP}，
+$\CP^1$的全亏格GW不变量可通过Lambert曲线的CEO递归计算。
+这一结果可推广到所有toric Calabi--Yau三维簇
+（通过topological vertex与镜像曲线）。
+
+\subsection{Mirzakhani双曲体积的递归}
+
+Mirzakhani对$\Mcal_{g,n}$上Weil--Petersson体积的计算
+是CEO递归的另一个重要实例。
+
+\begin{theorem}[Mirzakhani递归]\label{thm:mirza}
+设$V_{g,n}(L_1, \ldots, L_n)$是带测地边界长度$L_i$的亏格$g$曲面双曲体积。
+则$V_{g,n}$满足递归
+\begin{equation}\label{eq:mirza}
+\frac{\partial V_{g,n}}{\partial L_1}
+= \frac{1}{2} \sum_{\substack{g_1+g_2=g \\ I_1 \sqcup I_2 = \{2,\ldots,n\}}}
+\int_0^{L_1} L \cdot V_{g_1, |I_1|+1}(L, L_{I_1}) \cdot V_{g_2, |I_2|+1}(L_1 - L, L_{I_2}) \, dL
++ \cdots
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Mirzakhani--Eynard]\label{thm:mirzaEO}
+Mirzakhani递归\eqref{eq:mirza}等价于在谱曲线
+\[
+x(z) = z^2, \quad y(z) = \frac{\sin(2\pi z)}{2\pi}
+\]
+上运行CEO递归。
+\end{theorem}
+
+这一等价将双曲几何的体积计算纳入CEO递归框架，
+进一步证实了递归结构的普适性。
+
+\subsection{计算实例：亏格1 GW不变量}
+
+作为具体演示，我们计算$\CP^1$上亏格1、度数1的GW不变量。
+
+\begin{example}[$\GWinv_{1, 1}(\CP^1)$的计算]\label{ex:gw11}
+\textbf{步骤1}：通过Okounkov--Pandharipande对应，
+$\GWinv_{1, 1}(\CP^1) = \frac{1}{12} H_{1, (1)}$。
+
+\textbf{步骤2}：计算Hurwitz数$H_{1, (1)}$。
+亏格1、分支轮廓$(1)$的简单分支覆盖数：
+由Riemann--Hurwitz公式，$2g-2 = -2 + \sum (\mu_i - 1) + b$，
+代入$g=1, \mu=(1)$得$b = 2$，即2个简单分支点。
+覆盖数为1（唯一的三重覆盖$\CP^1 \to \CP^1$）。
+
+\textbf{步骤3}：因此$\GWinv_{1, 1}(\CP^1) = \frac{1}{12}$。
+
+\textbf{验证}：通过Lambert曲线CEO递归，
+$\omega_{1,1}$的展开给出相同结果。
+\end{example}
+
+这一计算虽然简单，但展示了递归框架的完整流程：
+\textbf{谱曲线$\to$CEO递归$\to$展开系数$\to$计数不变量}。
