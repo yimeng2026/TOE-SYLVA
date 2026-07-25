@@ -111,6 +111,7 @@ import SylvaFormalization.SYLVA_CausalInference
 import SylvaFormalization.SYLVA_CausalSetTheory
 import SylvaFormalization.SYLVA_CausalTriangulation
 import SylvaFormalization.SYLVA_Causality
+import SylvaFormalization.SYLVA_CertifiedAlgorithms
 import SylvaFormalization.SYLVA_CertifiedComputation
 import SylvaFormalization.SYLVA_CircuitComplexity
 import SylvaFormalization.SYLVA_CollectiveIntelligence
@@ -132,6 +133,7 @@ import SylvaFormalization.SYLVA_Creativity
 import SylvaFormalization.SYLVA_CrossModuleConsistency
 import SylvaFormalization.SYLVA_CrossModuleTheorems
 import SylvaFormalization.SYLVA_CrossReferences
+import SylvaFormalization.SYLVA_CrossValidation
 import SylvaFormalization.SYLVA_DarkSector
 import SylvaFormalization.SYLVA_Decoherence
 import SylvaFormalization.SYLVA_DependentTypeTheory
@@ -146,7 +148,9 @@ import SylvaFormalization.SYLVA_ErgodicTheory
 import SylvaFormalization.SYLVA_Ethics
 import SylvaFormalization.SYLVA_Evolution
 import SylvaFormalization.SYLVA_ExperimentalPredictions
+import SylvaFormalization.SYLVA_ExperimentalVerification
 import SylvaFormalization.SYLVA_Falsifiability
+import SylvaFormalization.SYLVA_FalsifiabilityFormal
 import SylvaFormalization.SYLVA_Feedback
 import SylvaFormalization.SYLVA_FluidDynamics
 import SylvaFormalization.SYLVA_FormalVerification
@@ -188,6 +192,7 @@ import SylvaFormalization.SYLVA_Neuroscience
 import SylvaFormalization.SYLVA_NoncommutativeGeometry
 import SylvaFormalization.SYLVA_NumberTheory
 import SylvaFormalization.SYLVA_Observation
+import SylvaFormalization.SYLVA_ObservationalPredictions
 import SylvaFormalization.SYLVA_ObserverDependence
 import SylvaFormalization.SYLVA_Ontology
 import SylvaFormalization.SYLVA_Operads
@@ -199,10 +204,14 @@ import SylvaFormalization.SYLVA_PhilosophyOfMathematics
 import SylvaFormalization.SYLVA_PhilosophyOfMind
 import SylvaFormalization.SYLVA_PhilosophyOfPhysics
 import SylvaFormalization.SYLVA_PhilosophyOfScience
+import SylvaFormalization.SYLVA_PhysicalConstants
 import SylvaFormalization.SYLVA_PhysicalInterpretation
+import SylvaFormalization.SYLVA_PredictionCalculus
 import SylvaFormalization.SYLVA_ProbabilityTheory
 import SylvaFormalization.SYLVA_ProofAutomation
+import SylvaFormalization.SYLVA_ProofMetrics
 import SylvaFormalization.SYLVA_ProofTheory
+import SylvaFormalization.SYLVA_PublicationReady
 import SylvaFormalization.SYLVA_QuantumChaos
 import SylvaFormalization.SYLVA_QuantumComputing
 import SylvaFormalization.SYLVA_QuantumCryptography
@@ -226,6 +235,7 @@ import SylvaFormalization.SYLVA_Scale
 import SylvaFormalization.SYLVA_ScaleBridging
 import SylvaFormalization.SYLVA_Scaling
 import SylvaFormalization.SYLVA_SelfOrganizedCriticality
+import SylvaFormalization.SYLVA_SemiRigorousProofs
 import SylvaFormalization.SYLVA_SetTheory
 import SylvaFormalization.SYLVA_Space
 import SylvaFormalization.SYLVA_SpectralTheory
