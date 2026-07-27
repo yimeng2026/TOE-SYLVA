@@ -1068,4 +1068,13 @@ lean_lib «SylvaFormalization» where
     `SYLVA_NumberTheory11,
     `SYLVA_RealAnalysis9,
     `SYLVA_MillenniumModule,
+    `SYLVA_AlgebraicGeometry12,
+    `SYLVA_AlgebraicTopology13,
+    `SYLVA_ComplexAnalysis10,
+    `SYLVA_DifferentialGeometry12,
+    `SYLVA_FunctionalAnalysis12,
+    `SYLVA_GeometricAnalysis11,
+    `SYLVA_HarmonicAnalysis11,
+    `SYLVA_NumberTheory12,
+    `SYLVA_RealAnalysis10,
   ]
