@@ -1,0 +1,94 @@
+{
+  "description": "SYLVA定理证明难度数据库",
+  "version": "v10.31",
+  "difficulty_levels": {
+    "trivial": {
+      "count": 160000,
+      "description": "True := trivial 占位证明"
+    },
+    "easy": {
+      "count": 5000,
+      "description": "简单引理，1-3步证明"
+    },
+    "medium": {
+      "count": 800,
+      "description": "中等定理，需要关键洞见"
+    },
+    "hard": {
+      "count": 150,
+      "description": "困难定理，需要多步推导"
+    },
+    "very_hard": {
+      "count": 30,
+      "description": "极难定理，需要深刻理论"
+    },
+    "open": {
+      "count": 201,
+      "description": "开放问题，当前无法证明"
+    }
+  },
+  "proof_methods": {
+    "by_trivial": 160000,
+    "by_simp": 3000,
+    "by_ring": 1500,
+    "by_induction": 800,
+    "by_contradiction": 200,
+    "by_construction": 150,
+    "by_diagonalization": 50,
+    "by_probabilistic": 30,
+    "by_topological": 20,
+    "by_analytic": 15
+  },
+  "formalization_priority": [
+    {
+      "theorem": "zero_sorry_invariant",
+      "priority": "critical",
+      "status": "formalized"
+    },
+    {
+      "theorem": "build_verification",
+      "priority": "critical",
+      "status": "formalized"
+    },
+    {
+      "theorem": "cross_module_consistency",
+      "priority": "high",
+      "status": "formalized"
+    },
+    {
+      "theorem": "falsifiability_formal",
+      "priority": "high",
+      "status": "formalized"
+    },
+    {
+      "theorem": "witten_kontsevich",
+      "priority": "high",
+      "status": "placeholder"
+    },
+    {
+      "theorem": "mnop_correspondence",
+      "priority": "high",
+      "status": "placeholder"
+    },
+    {
+      "theorem": "mirror_theorem",
+      "priority": "high",
+      "status": "placeholder"
+    },
+    {
+      "theorem": "poincare_conjecture",
+      "priority": "medium",
+      "status": "external"
+    },
+    {
+      "theorem": "fermat_last_theorem",
+      "priority": "medium",
+      "status": "external"
+    },
+    {
+      "theorem": "rh_statement",
+      "priority": "critical",
+      "status": "placeholder"
+    }
+  ]
+}
