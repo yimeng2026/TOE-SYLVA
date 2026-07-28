@@ -1,0 +1,405 @@
+{
+  "problems": [
+    {
+      "id": "problem_001",
+      "title": "竞赛题1: 数论挑战",
+      "difficulty": "研究级",
+      "category": "数论",
+      "points": 96,
+      "solved": false
+    },
+    {
+      "id": "problem_002",
+      "title": "竞赛题2: 概率挑战",
+      "difficulty": "研究级",
+      "category": "概率",
+      "points": 22,
+      "solved": false
+    },
+    {
+      "id": "problem_003",
+      "title": "竞赛题3: 分析挑战",
+      "difficulty": "研究级",
+      "category": "物理",
+      "points": 28,
+      "solved": false
+    },
+    {
+      "id": "problem_004",
+      "title": "竞赛题4: 概率挑战",
+      "difficulty": "入门",
+      "category": "代数",
+      "points": 12,
+      "solved": false
+    },
+    {
+      "id": "problem_005",
+      "title": "竞赛题5: 概率挑战",
+      "difficulty": "高级",
+      "category": "概率",
+      "points": 21,
+      "solved": false
+    },
+    {
+      "id": "problem_006",
+      "title": "竞赛题6: 数论挑战",
+      "difficulty": "中级",
+      "category": "量子",
+      "points": 92,
+      "solved": false
+    },
+    {
+      "id": "problem_007",
+      "title": "竞赛题7: 范畴挑战",
+      "difficulty": "研究级",
+      "category": "几何",
+      "points": 79,
+      "solved": false
+    },
+    {
+      "id": "problem_008",
+      "title": "竞赛题8: 拓扑挑战",
+      "difficulty": "研究级",
+      "category": "物理",
+      "points": 67,
+      "solved": false
+    },
+    {
+      "id": "problem_009",
+      "title": "竞赛题9: 物理挑战",
+      "difficulty": "中级",
+      "category": "代数",
+      "points": 94,
+      "solved": false
+    },
+    {
+      "id": "problem_010",
+      "title": "竞赛题10: 物理挑战",
+      "difficulty": "中级",
+      "category": "分析",
+      "points": 72,
+      "solved": false
+    },
+    {
+      "id": "problem_011",
+      "title": "竞赛题11: 物理挑战",
+      "difficulty": "高级",
+      "category": "拓扑",
+      "points": 42,
+      "solved": false
+    },
+    {
+      "id": "problem_012",
+      "title": "竞赛题12: 分析挑战",
+      "difficulty": "高级",
+      "category": "代数",
+      "points": 99,
+      "solved": false
+    },
+    {
+      "id": "problem_013",
+      "title": "竞赛题13: 概率挑战",
+      "difficulty": "中级",
+      "category": "物理",
+      "points": 76,
+      "solved": false
+    },
+    {
+      "id": "problem_014",
+      "title": "竞赛题14: 概率挑战",
+      "difficulty": "中级",
+      "category": "数论",
+      "points": 99,
+      "solved": false
+    },
+    {
+      "id": "problem_015",
+      "title": "竞赛题15: 物理挑战",
+      "difficulty": "研究级",
+      "category": "拓扑",
+      "points": 82,
+      "solved": false
+    },
+    {
+      "id": "problem_016",
+      "title": "竞赛题16: 范畴挑战",
+      "difficulty": "入门",
+      "category": "计算",
+      "points": 80,
+      "solved": false
+    },
+    {
+      "id": "problem_017",
+      "title": "竞赛题17: 代数挑战",
+      "difficulty": "研究级",
+      "category": "计算",
+      "points": 39,
+      "solved": false
+    },
+    {
+      "id": "problem_018",
+      "title": "竞赛题18: 几何挑战",
+      "difficulty": "中级",
+      "category": "分析",
+      "points": 25,
+      "solved": false
+    },
+    {
+      "id": "problem_019",
+      "title": "竞赛题19: 概率挑战",
+      "difficulty": "研究级",
+      "category": "范畴",
+      "points": 67,
+      "solved": false
+    },
+    {
+      "id": "problem_020",
+      "title": "竞赛题20: 数论挑战",
+      "difficulty": "中级",
+      "category": "代数",
+      "points": 30,
+      "solved": false
+    },
+    {
+      "id": "problem_021",
+      "title": "竞赛题21: 概率挑战",
+      "difficulty": "中级",
+      "category": "量子",
+      "points": 95,
+      "solved": false
+    },
+    {
+      "id": "problem_022",
+      "title": "竞赛题22: 物理挑战",
+      "difficulty": "研究级",
+      "category": "计算",
+      "points": 22,
+      "solved": false
+    },
+    {
+      "id": "problem_023",
+      "title": "竞赛题23: 拓扑挑战",
+      "difficulty": "研究级",
+      "category": "分析",
+      "points": 85,
+      "solved": false
+    },
+    {
+      "id": "problem_024",
+      "title": "竞赛题24: 数论挑战",
+      "difficulty": "中级",
+      "category": "数论",
+      "points": 85,
+      "solved": false
+    },
+    {
+      "id": "problem_025",
+      "title": "竞赛题25: 数论挑战",
+      "difficulty": "研究级",
+      "category": "拓扑",
+      "points": 31,
+      "solved": false
+    },
+    {
+      "id": "problem_026",
+      "title": "竞赛题26: 数论挑战",
+      "difficulty": "中级",
+      "category": "概率",
+      "points": 85,
+      "solved": false
+    },
+    {
+      "id": "problem_027",
+      "title": "竞赛题27: 数论挑战",
+      "difficulty": "高级",
+      "category": "量子",
+      "points": 34,
+      "solved": false
+    },
+    {
+      "id": "problem_028",
+      "title": "竞赛题28: 计算挑战",
+      "difficulty": "中级",
+      "category": "几何",
+      "points": 74,
+      "solved": false
+    },
+    {
+      "id": "problem_029",
+      "title": "竞赛题29: 物理挑战",
+      "difficulty": "研究级",
+      "category": "量子",
+      "points": 95,
+      "solved": false
+    },
+    {
+      "id": "problem_030",
+      "title": "竞赛题30: 几何挑战",
+      "difficulty": "高级",
+      "category": "量子",
+      "points": 98,
+      "solved": false
+    },
+    {
+      "id": "problem_031",
+      "title": "竞赛题31: 范畴挑战",
+      "difficulty": "研究级",
+      "category": "概率",
+      "points": 29,
+      "solved": false
+    },
+    {
+      "id": "problem_032",
+      "title": "竞赛题32: 几何挑战",
+      "difficulty": "中级",
+      "category": "数论",
+      "points": 79,
+      "solved": false
+    },
+    {
+      "id": "problem_033",
+      "title": "竞赛题33: 范畴挑战",
+      "difficulty": "高级",
+      "category": "拓扑",
+      "points": 54,
+      "solved": false
+    },
+    {
+      "id": "problem_034",
+      "title": "竞赛题34: 概率挑战",
+      "difficulty": "研究级",
+      "category": "概率",
+      "points": 96,
+      "solved": false
+    },
+    {
+      "id": "problem_035",
+      "title": "竞赛题35: 概率挑战",
+      "difficulty": "研究级",
+      "category": "物理",
+      "points": 19,
+      "solved": false
+    },
+    {
+      "id": "problem_036",
+      "title": "竞赛题36: 物理挑战",
+      "difficulty": "研究级",
+      "category": "拓扑",
+      "points": 64,
+      "solved": false
+    },
+    {
+      "id": "problem_037",
+      "title": "竞赛题37: 代数挑战",
+      "difficulty": "中级",
+      "category": "概率",
+      "points": 84,
+      "solved": false
+    },
+    {
+      "id": "problem_038",
+      "title": "竞赛题38: 概率挑战",
+      "difficulty": "中级",
+      "category": "数论",
+      "points": 54,
+      "solved": false
+    },
+    {
+      "id": "problem_039",
+      "title": "竞赛题39: 分析挑战",
+      "difficulty": "高级",
+      "category": "分析",
+      "points": 57,
+      "solved": false
+    },
+    {
+      "id": "problem_040",
+      "title": "竞赛题40: 数论挑战",
+      "difficulty": "研究级",
+      "category": "物理",
+      "points": 93,
+      "solved": false
+    },
+    {
+      "id": "problem_041",
+      "title": "竞赛题41: 范畴挑战",
+      "difficulty": "高级",
+      "category": "概率",
+      "points": 70,
+      "solved": false
+    },
+    {
+      "id": "problem_042",
+      "title": "竞赛题42: 几何挑战",
+      "difficulty": "研究级",
+      "category": "概率",
+      "points": 83,
+      "solved": false
+    },
+    {
+      "id": "problem_043",
+      "title": "竞赛题43: 代数挑战",
+      "difficulty": "中级",
+      "category": "计算",
+      "points": 42,
+      "solved": false
+    },
+    {
+      "id": "problem_044",
+      "title": "竞赛题44: 分析挑战",
+      "difficulty": "研究级",
+      "category": "物理",
+      "points": 31,
+      "solved": false
+    },
+    {
+      "id": "problem_045",
+      "title": "竞赛题45: 拓扑挑战",
+      "difficulty": "中级",
+      "category": "拓扑",
+      "points": 99,
+      "solved": false
+    },
+    {
+      "id": "problem_046",
+      "title": "竞赛题46: 概率挑战",
+      "difficulty": "入门",
+      "category": "代数",
+      "points": 22,
+      "solved": false
+    },
+    {
+      "id": "problem_047",
+      "title": "竞赛题47: 几何挑战",
+      "difficulty": "入门",
+      "category": "分析",
+      "points": 88,
+      "solved": false
+    },
+    {
+      "id": "problem_048",
+      "title": "竞赛题48: 代数挑战",
+      "difficulty": "中级",
+      "category": "范畴",
+      "points": 71,
+      "solved": false
+    },
+    {
+      "id": "problem_049",
+      "title": "竞赛题49: 概率挑战",
+      "difficulty": "中级",
+      "category": "代数",
+      "points": 84,
+      "solved": false
+    },
+    {
+      "id": "problem_050",
+      "title": "竞赛题50: 分析挑战",
+      "difficulty": "入门",
+      "category": "分析",
+      "points": 17,
+      "solved": false
+    }
+  ],
+  "total": 50
+}

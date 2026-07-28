@@ -1,0 +1,65 @@
+{
+  "analogies": [
+    {
+      "concept_a": "量子纠缠",
+      "concept_b": "经典相关",
+      "description": "量子 vs 经典信息",
+      "strength": 5
+    },
+    {
+      "concept_a": "黑洞熵",
+      "concept_b": "热力学熵",
+      "description": "引力 vs 热力学",
+      "strength": 3
+    },
+    {
+      "concept_a": "Calabi-Yau",
+      "concept_b": "代数方程",
+      "description": "几何 vs 代数",
+      "strength": 3
+    },
+    {
+      "concept_a": "Langlands对应",
+      "concept_b": "翻译",
+      "description": "数论 vs 表示论",
+      "strength": 4
+    },
+    {
+      "concept_a": "神经网络",
+      "concept_b": "大脑",
+      "description": "AI vs 生物",
+      "strength": 4
+    },
+    {
+      "concept_a": "拓扑相",
+      "concept_b": "相变",
+      "description": "拓扑 vs 统计",
+      "strength": 5
+    },
+    {
+      "concept_a": "范畴论",
+      "concept_b": "面向对象",
+      "description": "数学 vs 编程",
+      "strength": 4
+    },
+    {
+      "concept_a": "路径积分",
+      "concept_b": "概率推理",
+      "description": "物理 vs AI",
+      "strength": 5
+    },
+    {
+      "concept_a": "AdS/CFT",
+      "concept_b": "全息投影",
+      "description": "引力 vs 场论",
+      "strength": 2
+    },
+    {
+      "concept_a": "自由能原理",
+      "concept_b": "预测编码",
+      "description": "神经 vs AI",
+      "strength": 4
+    }
+  ],
+  "total": 10
+}
