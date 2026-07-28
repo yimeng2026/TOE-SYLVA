@@ -1,0 +1,5 @@
+digraph SYLVA_DAG {
+  rankdir=LR;
+  node [shape=box, fontsize=10];
+
+}

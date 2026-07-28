@@ -1,0 +1,102 @@
+{
+  "Yin-Yang Duality": {
+    "zh": "阴阳二元性",
+    "en": "Yin-Yang Duality",
+    "desc": "潜在性vs实在性的二元性原理"
+  },
+  "Hierarchical Emergence": {
+    "zh": "层级涌现",
+    "en": "Hierarchical Emergence",
+    "desc": "宇宙具有分层结构，高层从低层涌现"
+  },
+  "Connection Laws": {
+    "zh": "连接律",
+    "en": "Connection Laws",
+    "desc": "跨域同构连接，刻画不同领域的对应关系"
+  },
+  "Universal Symmetry": {
+    "zh": "通用对称性",
+    "en": "Universal Symmetry",
+    "desc": "最深层的对称性原理"
+  },
+  "Zero Sorry Principle": {
+    "zh": "零sorry原则",
+    "en": "Zero Sorry Principle",
+    "desc": "所有模块严禁使用sorry占位符"
+  },
+  "Spectral Triple": {
+    "zh": "谱三元组",
+    "en": "Spectral Triple",
+    "desc": "非交换几何的基本数据结构(A,H,D)"
+  },
+  "Causal Network": {
+    "zh": "因果网络",
+    "en": "Causal Network",
+    "desc": "量子引力框架的基本实体"
+  },
+  "Topological Order": {
+    "zh": "拓扑序",
+    "en": "Topological Order",
+    "desc": "超越Landau框架的物相分类"
+  },
+  "AdS/CFT": {
+    "zh": "AdS/CFT对偶",
+    "en": "AdS/CFT Duality",
+    "desc": "全息原理的精确实现"
+  },
+  "Integrated Information": {
+    "zh": "整合信息",
+    "en": "Integrated Information",
+    "desc": "IIT理论中意识的度量Φ"
+  },
+  "RLHF": {
+    "zh": "人类反馈强化学习",
+    "en": "Reinforcement Learning from Human Feedback",
+    "desc": "AI对齐的核心方法"
+  },
+  "Diffusion Model": {
+    "zh": "扩散模型",
+    "en": "Diffusion Model",
+    "desc": "通过去噪过程生成数据的模型"
+  },
+  "Langlands Program": {
+    "zh": "Langlands纲领",
+    "en": "Langlands Program",
+    "desc": "数论与表示论的统一纲领"
+  },
+  "KAM Theory": {
+    "zh": "KAM理论",
+    "en": "Kolmogorov-Arnold-Moser Theory",
+    "desc": "近可积系统的不变环面定理"
+  },
+  "Ricci Flow": {
+    "zh": "Ricci流",
+    "en": "Ricci Flow",
+    "desc": "按Ricci曲率演化度量的几何流"
+  },
+  "STDP": {
+    "zh": "脉冲时间依赖可塑性",
+    "en": "Spike-Timing-Dependent Plasticity",
+    "desc": "突触权重的时间依赖学习规则"
+  },
+  "Berry Phase": {
+    "zh": "Berry相位",
+    "en": "Berry Phase",
+    "desc": "量子绝热循环的几何相位"
+  },
+  "Entanglement Entropy": {
+    "zh": "纠缠熵",
+    "en": "Entanglement Entropy",
+    "desc": "量子纠缠的度量"
+  },
+  "Free Energy Principle": {
+    "zh": "自由能原理",
+    "en": "Free Energy Principle",
+    "desc": "生物系统最小化变分自由能"
+  },
+  "Homotopy Type Theory": {
+    "zh": "同伦类型论",
+    "en": "Homotopy Type Theory",
+    "desc": "基于同伦论的数学基础"
+  }
+}

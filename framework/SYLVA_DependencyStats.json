@@ -1,0 +1,7 @@
+{
+  "total_modules": 4231,
+  "modules_with_imports": 4227,
+  "avg_imports": 1.1091940439612384,
+  "max_imports": 15,
+  "sampled_for_visualization": 200
+}

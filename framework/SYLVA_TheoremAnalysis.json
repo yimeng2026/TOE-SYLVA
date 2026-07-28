@@ -1,0 +1,20 @@
+{
+  "total_theorems": 90193,
+  "keyword_distribution": {
+    "existence": 2297,
+    "uniqueness": 2205,
+    "convergence": 2208,
+    "stability": 2209,
+    "symmetry": 2902,
+    "topology": 2281,
+    "algebra": 2270,
+    "analysis": 2264,
+    "geometry": 2252,
+    "probability": 2217
+  },
+  "analysis": {
+    "most_common_type": "symmetry",
+    "type_diversity": 10,
+    "coverage": "定理覆盖存在性/唯一性/收敛性/稳定性/对称性/拓扑/代数/分析/几何/概率等多个类型"
+  }
+}

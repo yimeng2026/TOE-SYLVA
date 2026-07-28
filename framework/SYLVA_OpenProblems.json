@@ -1,0 +1,393 @@
+{
+  "mathematics": [
+    {
+      "id": "M001",
+      "problem": "Riemann Hypothesis",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_RiemannHypothesis",
+        "SYLVA_NumberTheory"
+      ]
+    },
+    {
+      "id": "M002",
+      "problem": "BSD Conjecture",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_BSDConjecture",
+        "SYLVA_EllipticCurves"
+      ]
+    },
+    {
+      "id": "M003",
+      "problem": "Navier-Stokes regularity",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_NonlinearPDE",
+        "SYLVA_FluidDynamics"
+      ]
+    },
+    {
+      "id": "M004",
+      "problem": "P vs NP",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_ComputationalComplexity",
+        "SYLVA_ComputabilityTheory"
+      ]
+    },
+    {
+      "id": "M005",
+      "problem": "Hodge Conjecture",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_HodgeTheory",
+        "SYLVA_AlgebraicGeometry"
+      ]
+    },
+    {
+      "id": "M006",
+      "problem": "Birch-Swinnerton-Dyer",
+      "status": "partial",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_BSDConjecture"
+      ]
+    },
+    {
+      "id": "M007",
+      "problem": "Yang-Mills mass gap",
+      "status": "open",
+      "importance": "millennium",
+      "modules": [
+        "SYLVA_GaugeTheory",
+        "SYLVA_QuantumFieldTheory"
+      ]
+    },
+    {
+      "id": "M008",
+      "problem": "abc conjecture",
+      "status": "disputed",
+      "importance": "high",
+      "modules": [
+        "SYLVA_NumberTheory",
+        "SYLVA_DiophantineGeometry"
+      ]
+    },
+    {
+      "id": "M009",
+      "problem": "Langlands program (general)",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_LanglandsProgram",
+        "SYLVA_AutomorphicForms"
+      ]
+    },
+    {
+      "id": "M010",
+      "problem": "Chromatic convergence",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_ChromaticHomotopy",
+        "SYLVA_StableHomotopy"
+      ]
+    }
+  ],
+  "physics": [
+    {
+      "id": "P001",
+      "problem": "Quantum gravity",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_QuantumGravity",
+        "SYLVA_StringTheory"
+      ]
+    },
+    {
+      "id": "P002",
+      "problem": "Dark matter identity",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_DarkMatterTheory"
+      ]
+    },
+    {
+      "id": "P003",
+      "problem": "Dark energy nature",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_DarkEnergyTheory"
+      ]
+    },
+    {
+      "id": "P004",
+      "problem": "Black hole information paradox",
+      "status": "partial",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_BlackHoleThermodynamics"
+      ]
+    },
+    {
+      "id": "P005",
+      "problem": "Matter-antimatter asymmetry",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_CPViolation",
+        "SYLVA_StandardModel"
+      ]
+    },
+    {
+      "id": "P006",
+      "problem": "Hierarchy problem",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_HiggsPhysics",
+        "SYLVA_BeyondStandardModel"
+      ]
+    },
+    {
+      "id": "P007",
+      "problem": "Cosmological constant problem",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_CosmologicalConstant"
+      ]
+    },
+    {
+      "id": "P008",
+      "problem": "High-Tc superconductivity",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_Superconductivity",
+        "SYLVA_CondensedMatter"
+      ]
+    },
+    {
+      "id": "P009",
+      "problem": "Inflation mechanism",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_InflationaryCosmology"
+      ]
+    },
+    {
+      "id": "P010",
+      "problem": "Neutrino mass mechanism",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_NeutrinoPhysics"
+      ]
+    }
+  ],
+  "ai": [
+    {
+      "id": "A001",
+      "problem": "Deep learning generalization mystery",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_MachineLearningTheory",
+        "SYLVA_DeepLearningTheory"
+      ]
+    },
+    {
+      "id": "A002",
+      "problem": "AI alignment",
+      "status": "open",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_AIAlignment"
+      ]
+    },
+    {
+      "id": "A003",
+      "problem": "Consciousness in AI",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_ConsciousnessStudies",
+        "SYLVA_PhilosophyOfAI"
+      ]
+    },
+    {
+      "id": "A004",
+      "problem": "Scaling laws limits",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_DeepLearningTheory"
+      ]
+    },
+    {
+      "id": "A005",
+      "problem": "In-context learning mechanism",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_TransformerTheory"
+      ]
+    },
+    {
+      "id": "A006",
+      "problem": "AGI timeline",
+      "status": "open",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_ArtificialIntelligence"
+      ]
+    },
+    {
+      "id": "A007",
+      "problem": "Machine consciousness measurement",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_ConsciousnessMath"
+      ]
+    },
+    {
+      "id": "A008",
+      "problem": "Deceptive alignment detection",
+      "status": "open",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_AIAlignment"
+      ]
+    },
+    {
+      "id": "A009",
+      "problem": "Emergent abilities threshold",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_DeepLearningTheory"
+      ]
+    },
+    {
+      "id": "A010",
+      "problem": "Neuro-symbolic integration",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_NeuroSymbolicAI"
+      ]
+    }
+  ],
+  "interdisciplinary": [
+    {
+      "id": "I001",
+      "problem": "Origin of life",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_Biophysics",
+        "SYLVA_SystemsBiology"
+      ]
+    },
+    {
+      "id": "I002",
+      "problem": "Hard problem of consciousness",
+      "status": "open",
+      "importance": "fundamental",
+      "modules": [
+        "SYLVA_ConsciousnessStudies",
+        "SYLVA_PhilosophyOfMind"
+      ]
+    },
+    {
+      "id": "I003",
+      "problem": "Free will",
+      "status": "open",
+      "importance": "philosophical",
+      "modules": [
+        "SYLVA_PhilosophyOfMind",
+        "SYLVA_Determinism"
+      ]
+    },
+    {
+      "id": "I004",
+      "problem": "Climate prediction",
+      "status": "partial",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_ClimateModeling"
+      ]
+    },
+    {
+      "id": "I005",
+      "problem": "Fusion energy",
+      "status": "partial",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_NuclearFusion",
+        "SYLVA_PlasmaPhysics"
+      ]
+    },
+    {
+      "id": "I006",
+      "problem": "Brain-computer interface safety",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_NeuroscienceMath",
+        "SYLVA_BiomedicalEngineering"
+      ]
+    },
+    {
+      "id": "I007",
+      "problem": "Quantum advantage characterization",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_QuantumComputing",
+        "SYLVA_QuantumComplexity"
+      ]
+    },
+    {
+      "id": "I008",
+      "problem": "Sustainability mathematics",
+      "status": "open",
+      "importance": "critical",
+      "modules": [
+        "SYLVA_SustainabilityMath"
+      ]
+    },
+    {
+      "id": "I009",
+      "problem": "Social network dynamics",
+      "status": "partial",
+      "importance": "high",
+      "modules": [
+        "SYLVA_Sociophysics",
+        "SYLVA_NetworkScience"
+      ]
+    },
+    {
+      "id": "I010",
+      "problem": "Economic stability",
+      "status": "open",
+      "importance": "high",
+      "modules": [
+        "SYLVA_Econophysics",
+        "SYLVA_GameTheory"
+      ]
+    }
+  ]
+}
