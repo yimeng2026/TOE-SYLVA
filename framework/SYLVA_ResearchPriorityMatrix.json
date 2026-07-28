@@ -1,0 +1,82 @@
+{
+  "version": "v10.32",
+  "matrix": [
+    {
+      "area": "严格证明",
+      "impact": "极高",
+      "difficulty": "极高",
+      "priority": 1,
+      "timeline": "v11-v13"
+    },
+    {
+      "area": "Lean构建验证",
+      "impact": "极高",
+      "difficulty": "高",
+      "priority": 2,
+      "timeline": "v11"
+    },
+    {
+      "area": "连接律扩展",
+      "impact": "高",
+      "difficulty": "中",
+      "priority": 3,
+      "timeline": "v11-v12"
+    },
+    {
+      "area": "可证伪预测",
+      "impact": "高",
+      "difficulty": "中",
+      "priority": 4,
+      "timeline": "v12"
+    },
+    {
+      "area": "跨模块定理",
+      "impact": "高",
+      "difficulty": "高",
+      "priority": 5,
+      "timeline": "v12-v13"
+    },
+    {
+      "area": "知识图谱完善",
+      "impact": "中",
+      "difficulty": "低",
+      "priority": 6,
+      "timeline": "v11"
+    },
+    {
+      "area": "API实现",
+      "impact": "中",
+      "difficulty": "中",
+      "priority": 7,
+      "timeline": "v12"
+    },
+    {
+      "area": "教育课程",
+      "impact": "中",
+      "difficulty": "低",
+      "priority": 8,
+      "timeline": "v12-v13"
+    },
+    {
+      "area": "学术论文",
+      "impact": "高",
+      "difficulty": "高",
+      "priority": 9,
+      "timeline": "v13-v14"
+    },
+    {
+      "area": "社区建设",
+      "impact": "中",
+      "difficulty": "低",
+      "priority": 10,
+      "timeline": "v14+"
+    }
+  ],
+  "criteria": [
+    "影响力",
+    "难度",
+    "优先级",
+    "时间线"
+  ],
+  "notes": "优先级矩阵基于影响力和难度的综合评估。"
+}

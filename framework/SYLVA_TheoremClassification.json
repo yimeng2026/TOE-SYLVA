@@ -1,0 +1,108 @@
+{
+  "version": "v10.32",
+  "total_theorems": 250001,
+  "categories": [
+    {
+      "name": "fundamental",
+      "description": "基础定理（公理、定义的直接推论）",
+      "estimated_count": 14956
+    },
+    {
+      "name": "existence",
+      "description": "存在性定理（证明某对象存在）",
+      "estimated_count": 3027
+    },
+    {
+      "name": "uniqueness",
+      "description": "唯一性定理（证明某对象唯一）",
+      "estimated_count": 5425
+    },
+    {
+      "name": "convergence",
+      "description": "收敛性定理（序列/级数收敛）",
+      "estimated_count": 13651
+    },
+    {
+      "name": "stability",
+      "description": "稳定性定理（动力系统稳定）",
+      "estimated_count": 10589
+    },
+    {
+      "name": "duality",
+      "description": "对偶性定理（两个理论等价）",
+      "estimated_count": 11635
+    },
+    {
+      "name": "symmetry",
+      "description": "对称性定理（不变性）",
+      "estimated_count": 5181
+    },
+    {
+      "name": "conservation",
+      "description": "守恒律（物理量守恒）",
+      "estimated_count": 14577
+    },
+    {
+      "name": "variational",
+      "description": "变分原理（极值条件）",
+      "estimated_count": 5410
+    },
+    {
+      "name": "topological",
+      "description": "拓扑不变量（拓扑性质）",
+      "estimated_count": 3579
+    },
+    {
+      "name": "algebraic",
+      "description": "代数恒等式（代数关系）",
+      "estimated_count": 10295
+    },
+    {
+      "name": "analytic",
+      "description": "分析估计（不等式）",
+      "estimated_count": 12288
+    },
+    {
+      "name": "geometric",
+      "description": "几何结构（几何性质）",
+      "estimated_count": 4673
+    },
+    {
+      "name": "probabilistic",
+      "description": "概率界（概率不等式）",
+      "estimated_count": 11553
+    },
+    {
+      "name": "combinatorial",
+      "description": "组合恒等式（计数公式）",
+      "estimated_count": 9525
+    },
+    {
+      "name": "dynamical",
+      "description": "动力学稳定性（演化性质）",
+      "estimated_count": 14828
+    },
+    {
+      "name": "information",
+      "description": "信息论界（信息不等式）",
+      "estimated_count": 12459
+    },
+    {
+      "name": "complexity",
+      "description": "复杂度结果（计算复杂度）",
+      "estimated_count": 4630
+    },
+    {
+      "name": "universality",
+      "description": "普适性定理（普适类）",
+      "estimated_count": 3121
+    },
+    {
+      "name": "classification",
+      "description": "分类定理（完整分类）",
+      "estimated_count": 14442
+    }
+  ],
+  "classification_method": "基于定理名称关键词的自动分类",
+  "notes": "分类是近似的，基于定理名称中的关键词。精确分类需要逐个检查定理陈述。"
+}

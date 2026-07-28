@@ -1,0 +1,88 @@
+{
+  "version": "v10.32",
+  "total_debts": 10,
+  "debts": [
+    {
+      "id": "TD-001",
+      "description": "True := trivial 占位证明",
+      "severity": "高",
+      "count": "全部",
+      "status": "已知"
+    },
+    {
+      "id": "TD-002",
+      "description": "lake build 未验证",
+      "severity": "高",
+      "count": "1",
+      "status": "待解决"
+    },
+    {
+      "id": "TD-003",
+      "description": "连接律未形式化",
+      "severity": "中",
+      "count": "521",
+      "status": "已知"
+    },
+    {
+      "id": "TD-004",
+      "description": "跨模块定理未严格证明",
+      "severity": "中",
+      "count": "20+",
+      "status": "已知"
+    },
+    {
+      "id": "TD-005",
+      "description": "知识图谱未自动更新",
+      "severity": "低",
+      "count": "1",
+      "status": "待优化"
+    },
+    {
+      "id": "TD-006",
+      "description": "API未实现",
+      "severity": "中",
+      "count": "6类",
+      "status": "规划中"
+    },
+    {
+      "id": "TD-007",
+      "description": "tactic库未测试",
+      "severity": "中",
+      "count": "10",
+      "status": "待测试"
+    },
+    {
+      "id": "TD-008",
+      "description": "术语词典不完整",
+      "severity": "低",
+      "count": "20条",
+      "status": "扩展中"
+    },
+    {
+      "id": "TD-009",
+      "description": "学习路径未验证",
+      "severity": "低",
+      "count": "5条",
+      "status": "待验证"
+    },
+    {
+      "id": "TD-010",
+      "description": "实验路线图未对接实际实验",
+      "severity": "中",
+      "count": "15个",
+      "status": "规划中"
+    }
+  ],
+  "priority_order": [
+    "TD-001",
+    "TD-002",
+    "TD-003",
+    "TD-004",
+    "TD-006",
+    "TD-007",
+    "TD-010",
+    "TD-005",
+    "TD-008",
+    "TD-009"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "version": "v10.32",
+  "domains": [
+    "数学",
+    "物理",
+    "信息",
+    "计算",
+    "生物",
+    "哲学"
+  ],
+  "connections": [
+    {
+      "source": "数学",
+      "target": "物理",
+      "strength": 0.95,
+      "level": "极强"
+    },
+    {
+      "source": "数学",
+      "target": "信息",
+      "strength": 0.85,
+      "level": "强"
+    },
+    {
+      "source": "数学",
+      "target": "计算",
+      "strength": 0.9,
+      "level": "极强"
+    },
+    {
+      "source": "数学",
+      "target": "生物",
+      "strength": 0.6,
+      "level": "中"
+    },
+    {
+      "source": "数学",
+      "target": "哲学",
+      "strength": 0.7,
+      "level": "强"
+    },
+    {
+      "source": "物理",
+      "target": "信息",
+      "strength": 0.8,
+      "level": "强"
+    },
+    {
+      "source": "物理",
+      "target": "计算",
+      "strength": 0.75,
+      "level": "强"
+    },
+    {
+      "source": "物理",
+      "target": "生物",
+      "strength": 0.55,
+      "level": "中"
+    },
+    {
+      "source": "物理",
+      "target": "哲学",
+      "strength": 0.65,
+      "level": "中"
+    },
+    {
+      "source": "信息",
+      "target": "计算",
+      "strength": 0.95,
+      "level": "极强"
+    },
+    {
+      "source": "信息",
+      "target": "生物",
+      "strength": 0.5,
+      "level": "中"
+    },
+    {
+      "source": "信息",
+      "target": "哲学",
+      "strength": 0.45,
+      "level": "弱"
+    },
+    {
+      "source": "计算",
+      "target": "生物",
+      "strength": 0.65,
+      "level": "中"
+    },
+    {
+      "source": "计算",
+      "target": "哲学",
+      "strength": 0.5,
+      "level": "中"
+    },
+    {
+      "source": "生物",
+      "target": "哲学",
+      "strength": 0.55,
+      "level": "中"
+    }
+  ],
+  "method": "基于连接律数量和跨模块定理的连接强度评估"
+}
