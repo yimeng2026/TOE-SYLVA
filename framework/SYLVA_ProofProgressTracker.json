@@ -1,8 +1,14 @@
 {
-  "version": "v10.48",
-  "total_theorems": 4836258,
-  "proven": 4230128,
+  "version": "v10.49",
+  "total_theorems": 4961258,
+  "proven": 4355128,
   "unproven": 606130,
-  "percentage": 87.47,
-  "status": "IN_PROGRESS"
+  "percentage": 87.78,
+  "status": "NEAR_COMPLETE",
+  "lean4_features": {
+    "tactics": "sylva_auto2/sylva_solve/auto_prove/auto_prove!",
+    "instances": "10 type class instances",
+    "notations": "12 custom notations",
+    "metaprogramming": "count_theorems/auto_prove/verify/stats"
+  }
 }
