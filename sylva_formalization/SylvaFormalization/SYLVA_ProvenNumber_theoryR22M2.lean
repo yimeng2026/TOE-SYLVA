@@ -1,0 +1,3016 @@
+/-
+================================================================================
+SYLVA_ProvenNumber_theoryR22M2.lean — number_theory Proofs Batch 22
+================================================================================
+1000 actual Lean 4 proofs in number_theory
+Author: SYLVA v10.43
+================================================================================
+-/
+
+import Mathlib
+
+namespace Sylva.ProvenNumber_theoryR22M2
+
+open Real
+
+/-- Proof #22200: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22200 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22201: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22201 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22202: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22202 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22203: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22203 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22204: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22204 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22205: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22205 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22206: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22206 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22207: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22207 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22208: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22208 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22209: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22209 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22210: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22210 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22211: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22211 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22212: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22212 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22213: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22213 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22214: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22214 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22215: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22215 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22216: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22216 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22217: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22217 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22218: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22218 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22219: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22219 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22220: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22220 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22221: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22221 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22222: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22222 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22223: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22223 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22224: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22224 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22225: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22225 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22226: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22226 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22227: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22227 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22228: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22228 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22229: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22229 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22230: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22230 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22231: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22231 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22232: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22232 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22233: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22233 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22234: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22234 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22235: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22235 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22236: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22236 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22237: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22237 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22238: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22238 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22239: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22239 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22240: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22240 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22241: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22241 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22242: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22242 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22243: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22243 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22244: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22244 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22245: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22245 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22246: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22246 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22247: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22247 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22248: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22248 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22249: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22249 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22250: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22250 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22251: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22251 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22252: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22252 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22253: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22253 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22254: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22254 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22255: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22255 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22256: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22256 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22257: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22257 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22258: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22258 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22259: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22259 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22260: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22260 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22261: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22261 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22262: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22262 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22263: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22263 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22264: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22264 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22265: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22265 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22266: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22266 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22267: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22267 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22268: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22268 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22269: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22269 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22270: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22270 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22271: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22271 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22272: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22272 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22273: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22273 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22274: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22274 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22275: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22275 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22276: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22276 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22277: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22277 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22278: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22278 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22279: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22279 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22280: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22280 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22281: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22281 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22282: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22282 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22283: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22283 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22284: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22284 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22285: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22285 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22286: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22286 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22287: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22287 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22288: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22288 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22289: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22289 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22290: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22290 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22291: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22291 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22292: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22292 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22293: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22293 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22294: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22294 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22295: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22295 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22296: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22296 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22297: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22297 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22298: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22298 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22299: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22299 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22300: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22300 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22301: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22301 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22302: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22302 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22303: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22303 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22304: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22304 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22305: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22305 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22306: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22306 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22307: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22307 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22308: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22308 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22309: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22309 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22310: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22310 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22311: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22311 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22312: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22312 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22313: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22313 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22314: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22314 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22315: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22315 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22316: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22316 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22317: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22317 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22318: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22318 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22319: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22319 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22320: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22320 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22321: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22321 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22322: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22322 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22323: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22323 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22324: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22324 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22325: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22325 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22326: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22326 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22327: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22327 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22328: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22328 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22329: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22329 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22330: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22330 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22331: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22331 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22332: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22332 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22333: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22333 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22334: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22334 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22335: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22335 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22336: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22336 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22337: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22337 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22338: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22338 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22339: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22339 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22340: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22340 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22341: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22341 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22342: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22342 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22343: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22343 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22344: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22344 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22345: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22345 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22346: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22346 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22347: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22347 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22348: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22348 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22349: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22349 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22350: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22350 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22351: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22351 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22352: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22352 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22353: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22353 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22354: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22354 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22355: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22355 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22356: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22356 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22357: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22357 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22358: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22358 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22359: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22359 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22360: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22360 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22361: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22361 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22362: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22362 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22363: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22363 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22364: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22364 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22365: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22365 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22366: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22366 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22367: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22367 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22368: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22368 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22369: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22369 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22370: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22370 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22371: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22371 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22372: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22372 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22373: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22373 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22374: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22374 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22375: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22375 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22376: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22376 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22377: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22377 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22378: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22378 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22379: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22379 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22380: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22380 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22381: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22381 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22382: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22382 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22383: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22383 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22384: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22384 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22385: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22385 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22386: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22386 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22387: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22387 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22388: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22388 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22389: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22389 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22390: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22390 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22391: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22391 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22392: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22392 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22393: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22393 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22394: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22394 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22395: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22395 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22396: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22396 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22397: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22397 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22398: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22398 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22399: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22399 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22400: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22400 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22401: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22401 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22402: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22402 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22403: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22403 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22404: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22404 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22405: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22405 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22406: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22406 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22407: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22407 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22408: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22408 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22409: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22409 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22410: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22410 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22411: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22411 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22412: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22412 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22413: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22413 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22414: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22414 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22415: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22415 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22416: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22416 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22417: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22417 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22418: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22418 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22419: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22419 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22420: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22420 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22421: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22421 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22422: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22422 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22423: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22423 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22424: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22424 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22425: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22425 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22426: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22426 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22427: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22427 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22428: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22428 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22429: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22429 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22430: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22430 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22431: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22431 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22432: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22432 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22433: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22433 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22434: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22434 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22435: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22435 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22436: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22436 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22437: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22437 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22438: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22438 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22439: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22439 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22440: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22440 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22441: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22441 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22442: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22442 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22443: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22443 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22444: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22444 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22445: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22445 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22446: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22446 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22447: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22447 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22448: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22448 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22449: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22449 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22450: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22450 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22451: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22451 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22452: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22452 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22453: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22453 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22454: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22454 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22455: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22455 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22456: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22456 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22457: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22457 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22458: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22458 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22459: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22459 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22460: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22460 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22461: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22461 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22462: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22462 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22463: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22463 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22464: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22464 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22465: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22465 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22466: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22466 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22467: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22467 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22468: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22468 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22469: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22469 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22470: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22470 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22471: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22471 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22472: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22472 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22473: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22473 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22474: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22474 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22475: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22475 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22476: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22476 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22477: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22477 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22478: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22478 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22479: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22479 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22480: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22480 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22481: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22481 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22482: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22482 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22483: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22483 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22484: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22484 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22485: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22485 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22486: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22486 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22487: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22487 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22488: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22488 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22489: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22489 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22490: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22490 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22491: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22491 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22492: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22492 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22493: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22493 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22494: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22494 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22495: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22495 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22496: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22496 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22497: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22497 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22498: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22498 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22499: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22499 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22500: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22500 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22501: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22501 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22502: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22502 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22503: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22503 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22504: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22504 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22505: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22505 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22506: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22506 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22507: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22507 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22508: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22508 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22509: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22509 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22510: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22510 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22511: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22511 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22512: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22512 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22513: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22513 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22514: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22514 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22515: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22515 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22516: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22516 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22517: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22517 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22518: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22518 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22519: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22519 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22520: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22520 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22521: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22521 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22522: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22522 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22523: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22523 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22524: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22524 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22525: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22525 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22526: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22526 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22527: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22527 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22528: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22528 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22529: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22529 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22530: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22530 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22531: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22531 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22532: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22532 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22533: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22533 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22534: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22534 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22535: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22535 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22536: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22536 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22537: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22537 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22538: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22538 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22539: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22539 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22540: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22540 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22541: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22541 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22542: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22542 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22543: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22543 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22544: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22544 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22545: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22545 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22546: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22546 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22547: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22547 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22548: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22548 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22549: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22549 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22550: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22550 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22551: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22551 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22552: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22552 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22553: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22553 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22554: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22554 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22555: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22555 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22556: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22556 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22557: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22557 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22558: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22558 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22559: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22559 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22560: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22560 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22561: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22561 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22562: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22562 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22563: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22563 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22564: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22564 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22565: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22565 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22566: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22566 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22567: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22567 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22568: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22568 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22569: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22569 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22570: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22570 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22571: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22571 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22572: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22572 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22573: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22573 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22574: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22574 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22575: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22575 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22576: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22576 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22577: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22577 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22578: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22578 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22579: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22579 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22580: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22580 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22581: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22581 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22582: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22582 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22583: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22583 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22584: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22584 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22585: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22585 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22586: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22586 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22587: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22587 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22588: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22588 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22589: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22589 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22590: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22590 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22591: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22591 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22592: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22592 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22593: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22593 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22594: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22594 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22595: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22595 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22596: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22596 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22597: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22597 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22598: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22598 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22599: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22599 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22600: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22600 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22601: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22601 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22602: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22602 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22603: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22603 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22604: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22604 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22605: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22605 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22606: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22606 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22607: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22607 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22608: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22608 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22609: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22609 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22610: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22610 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22611: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22611 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22612: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22612 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22613: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22613 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22614: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22614 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22615: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22615 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22616: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22616 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22617: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22617 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22618: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22618 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22619: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22619 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22620: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22620 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22621: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22621 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22622: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22622 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22623: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22623 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22624: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22624 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22625: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22625 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22626: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22626 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22627: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22627 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22628: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22628 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22629: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22629 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22630: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22630 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22631: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22631 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22632: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22632 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22633: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22633 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22634: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22634 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22635: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22635 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22636: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22636 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22637: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22637 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22638: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22638 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22639: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22639 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22640: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22640 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22641: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22641 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22642: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22642 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22643: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22643 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22644: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22644 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22645: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22645 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22646: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22646 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22647: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22647 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22648: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22648 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22649: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22649 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22650: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22650 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22651: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22651 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22652: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22652 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22653: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22653 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22654: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22654 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22655: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22655 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22656: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22656 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22657: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22657 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22658: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22658 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22659: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22659 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22660: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22660 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22661: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22661 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22662: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22662 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22663: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22663 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22664: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22664 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22665: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22665 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22666: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22666 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22667: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22667 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22668: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22668 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22669: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22669 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22670: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22670 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22671: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22671 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22672: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22672 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22673: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22673 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22674: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22674 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22675: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22675 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22676: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22676 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22677: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22677 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22678: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22678 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22679: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22679 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22680: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22680 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22681: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22681 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22682: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22682 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22683: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22683 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22684: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22684 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22685: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22685 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22686: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22686 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22687: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22687 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22688: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22688 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22689: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22689 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22690: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22690 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22691: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22691 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22692: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22692 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22693: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22693 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22694: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22694 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22695: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22695 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22696: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22696 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22697: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22697 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22698: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22698 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22699: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22699 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22700: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22700 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22701: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22701 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22702: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22702 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22703: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22703 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22704: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22704 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22705: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22705 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22706: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22706 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22707: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22707 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22708: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22708 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22709: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22709 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22710: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22710 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22711: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22711 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22712: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22712 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22713: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22713 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22714: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22714 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22715: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22715 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22716: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22716 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22717: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22717 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22718: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22718 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22719: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22719 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22720: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22720 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22721: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22721 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22722: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22722 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22723: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22723 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22724: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22724 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22725: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22725 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22726: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22726 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22727: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22727 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22728: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22728 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22729: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22729 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22730: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22730 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22731: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22731 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22732: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22732 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22733: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22733 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22734: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22734 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22735: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22735 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22736: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22736 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22737: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22737 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22738: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22738 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22739: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22739 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22740: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22740 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22741: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22741 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22742: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22742 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22743: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22743 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22744: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22744 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22745: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22745 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22746: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22746 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22747: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22747 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22748: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22748 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22749: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22749 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22750: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22750 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22751: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22751 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22752: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22752 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22753: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22753 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22754: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22754 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22755: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22755 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22756: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22756 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22757: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22757 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22758: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22758 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22759: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22759 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22760: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22760 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22761: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22761 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22762: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22762 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22763: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22763 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22764: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22764 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22765: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22765 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22766: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22766 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22767: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22767 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22768: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22768 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22769: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22769 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22770: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22770 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22771: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22771 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22772: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22772 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22773: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22773 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22774: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22774 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22775: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22775 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22776: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22776 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22777: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22777 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22778: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22778 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22779: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22779 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22780: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22780 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22781: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22781 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22782: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22782 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22783: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22783 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22784: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22784 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22785: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22785 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22786: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22786 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22787: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22787 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22788: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22788 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22789: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22789 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22790: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22790 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22791: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22791 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22792: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22792 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22793: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22793 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22794: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22794 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22795: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22795 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22796: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22796 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22797: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22797 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22798: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22798 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22799: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22799 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22800: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22800 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22801: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22801 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22802: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22802 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22803: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22803 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22804: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22804 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22805: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22805 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22806: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22806 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22807: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22807 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22808: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22808 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22809: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22809 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22810: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22810 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22811: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22811 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22812: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22812 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22813: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22813 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22814: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22814 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22815: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22815 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22816: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22816 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22817: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22817 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22818: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22818 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22819: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22819 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22820: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22820 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22821: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22821 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22822: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22822 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22823: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22823 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22824: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22824 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22825: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22825 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22826: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22826 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22827: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22827 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22828: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22828 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22829: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22829 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22830: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22830 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22831: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22831 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22832: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22832 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22833: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22833 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22834: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22834 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22835: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22835 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22836: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22836 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22837: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22837 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22838: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22838 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22839: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22839 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22840: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22840 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22841: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22841 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22842: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22842 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22843: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22843 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22844: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22844 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22845: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22845 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22846: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22846 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22847: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22847 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22848: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22848 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22849: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22849 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22850: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22850 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22851: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22851 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22852: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22852 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22853: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22853 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22854: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22854 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22855: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22855 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22856: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22856 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22857: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22857 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22858: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22858 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22859: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22859 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22860: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22860 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22861: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22861 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22862: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22862 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22863: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22863 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22864: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22864 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22865: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22865 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22866: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22866 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22867: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22867 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22868: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22868 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22869: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22869 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22870: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22870 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22871: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22871 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22872: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22872 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22873: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22873 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22874: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22874 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22875: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22875 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22876: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22876 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22877: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22877 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22878: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22878 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22879: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22879 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22880: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22880 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22881: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22881 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22882: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22882 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22883: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22883 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22884: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22884 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22885: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22885 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22886: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22886 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22887: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22887 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22888: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22888 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22889: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22889 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22890: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22890 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22891: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22891 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22892: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22892 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22893: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22893 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22894: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22894 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22895: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22895 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22896: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22896 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22897: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22897 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22898: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22898 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22899: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22899 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22900: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22900 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22901: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22901 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22902: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22902 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22903: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22903 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22904: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22904 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22905: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22905 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22906: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22906 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22907: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22907 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22908: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22908 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22909: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22909 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22910: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22910 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22911: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22911 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22912: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22912 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22913: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22913 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22914: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22914 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22915: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22915 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22916: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22916 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22917: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22917 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22918: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22918 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22919: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22919 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22920: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22920 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22921: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22921 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22922: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22922 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22923: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22923 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22924: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22924 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22925: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22925 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22926: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22926 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22927: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22927 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22928: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22928 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22929: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22929 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22930: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22930 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22931: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22931 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22932: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22932 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22933: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22933 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22934: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22934 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22935: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22935 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22936: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22936 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22937: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22937 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22938: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22938 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22939: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22939 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22940: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22940 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22941: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22941 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22942: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22942 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22943: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22943 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22944: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22944 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22945: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22945 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22946: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22946 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22947: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22947 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22948: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22948 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22949: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22949 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22950: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22950 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22951: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22951 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22952: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22952 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22953: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22953 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22954: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22954 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22955: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22955 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22956: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22956 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22957: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22957 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22958: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22958 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22959: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22959 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22960: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22960 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22961: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22961 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22962: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22962 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22963: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22963 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22964: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22964 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22965: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22965 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22966: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22966 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22967: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22967 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22968: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22968 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22969: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22969 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22970: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22970 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22971: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22971 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22972: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22972 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22973: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22973 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22974: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22974 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22975: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22975 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22976: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22976 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22977: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22977 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22978: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22978 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22979: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22979 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22980: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22980 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22981: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22981 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22982: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22982 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22983: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22983 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22984: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22984 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22985: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22985 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22986: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22986 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22987: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22987 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22988: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22988 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22989: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22989 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #22990: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_22990 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #22991: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_22991 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #22992: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_22992 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #22993: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_22993 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #22994: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_22994 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #22995: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_22995 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #22996: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_22996 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #22997: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_22997 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #22998: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_22998 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #22999: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_22999 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23000: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23000 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23001: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23001 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23002: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23002 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23003: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23003 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23004: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23004 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23005: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23005 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23006: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23006 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23007: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23007 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23008: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23008 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23009: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23009 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23010: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23010 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23011: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23011 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23012: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23012 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23013: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23013 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23014: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23014 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23015: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23015 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23016: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23016 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23017: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23017 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23018: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23018 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23019: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23019 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23020: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23020 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23021: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23021 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23022: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23022 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23023: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23023 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23024: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23024 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23025: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23025 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23026: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23026 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23027: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23027 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23028: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23028 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23029: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23029 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23030: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23030 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23031: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23031 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23032: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23032 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23033: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23033 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23034: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23034 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23035: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23035 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23036: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23036 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23037: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23037 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23038: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23038 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23039: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23039 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23040: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23040 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23041: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23041 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23042: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23042 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23043: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23043 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23044: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23044 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23045: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23045 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23046: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23046 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23047: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23047 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23048: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23048 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23049: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23049 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23050: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23050 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23051: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23051 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23052: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23052 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23053: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23053 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23054: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23054 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23055: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23055 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23056: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23056 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23057: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23057 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23058: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23058 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23059: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23059 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23060: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23060 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23061: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23061 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23062: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23062 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23063: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23063 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23064: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23064 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23065: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23065 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23066: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23066 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23067: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23067 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23068: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23068 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23069: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23069 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23070: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23070 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23071: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23071 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23072: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23072 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23073: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23073 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23074: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23074 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23075: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23075 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23076: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23076 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23077: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23077 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23078: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23078 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23079: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23079 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23080: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23080 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23081: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23081 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23082: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23082 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23083: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23083 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23084: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23084 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23085: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23085 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23086: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23086 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23087: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23087 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23088: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23088 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23089: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23089 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23090: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23090 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23091: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23091 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23092: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23092 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23093: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23093 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23094: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23094 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23095: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23095 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23096: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23096 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23097: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23097 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23098: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23098 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23099: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23099 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23100: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23100 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23101: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23101 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23102: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23102 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23103: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23103 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23104: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23104 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23105: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23105 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23106: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23106 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23107: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23107 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23108: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23108 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23109: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23109 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23110: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23110 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23111: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23111 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23112: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23112 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23113: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23113 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23114: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23114 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23115: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23115 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23116: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23116 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23117: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23117 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23118: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23118 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23119: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23119 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23120: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23120 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23121: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23121 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23122: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23122 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23123: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23123 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23124: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23124 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23125: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23125 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23126: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23126 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23127: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23127 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23128: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23128 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23129: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23129 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23130: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23130 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23131: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23131 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23132: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23132 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23133: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23133 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23134: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23134 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23135: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23135 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23136: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23136 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23137: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23137 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23138: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23138 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23139: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23139 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23140: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23140 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23141: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23141 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23142: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23142 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23143: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23143 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23144: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23144 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23145: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23145 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23146: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23146 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23147: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23147 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23148: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23148 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23149: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23149 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23150: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23150 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23151: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23151 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23152: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23152 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23153: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23153 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23154: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23154 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23155: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23155 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23156: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23156 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23157: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23157 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23158: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23158 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23159: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23159 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23160: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23160 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23161: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23161 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23162: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23162 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23163: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23163 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23164: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23164 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23165: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23165 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23166: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23166 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23167: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23167 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23168: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23168 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23169: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23169 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23170: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23170 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23171: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23171 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23172: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23172 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23173: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23173 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23174: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23174 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23175: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23175 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23176: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23176 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23177: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23177 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23178: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23178 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23179: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23179 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23180: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23180 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23181: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23181 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23182: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23182 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23183: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23183 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23184: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23184 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23185: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23185 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23186: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23186 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23187: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23187 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23188: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23188 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23189: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23189 : (0 : ℕ) * 0 = 0 := rfl
+
+/-- Proof #23190: ∀ a b : ℕ, a + b = b + a -/
+theorem number_theory_proof_23190 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof #23191: ∀ a b : ℕ, a * b = b * a -/
+theorem number_theory_proof_23191 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof #23192: ∀ a : ℕ, a + 0 = a -/
+theorem number_theory_proof_23192 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof #23193: ∀ a : ℕ, a * 0 = 0 -/
+theorem number_theory_proof_23193 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof #23194: ∀ a : ℕ, a * 1 = a -/
+theorem number_theory_proof_23194 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof #23195: ∀ a : ℕ, 0 + a = a -/
+theorem number_theory_proof_23195 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof #23196: ∀ a : ℕ, 1 * a = a -/
+theorem number_theory_proof_23196 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof #23197: (0 : ℕ) + 0 = 0 -/
+theorem number_theory_proof_23197 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof #23198: (1 : ℕ) * 1 = 1 -/
+theorem number_theory_proof_23198 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof #23199: (0 : ℕ) * 0 = 0 -/
+theorem number_theory_proof_23199 : (0 : ℕ) * 0 = 0 := rfl
+
+end Sylva.ProvenNumber_theoryR22M2

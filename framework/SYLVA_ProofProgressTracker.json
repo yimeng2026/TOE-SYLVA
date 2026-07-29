@@ -1,21 +1,8 @@
 {
-  "version": "v10.42",
-  "total_theorems": 631258,
-  "proven": 25128,
+  "version": "v10.43",
+  "total_theorems": 1231258,
+  "proven": 625128,
   "unproven": 606130,
-  "percentage": 3.9806,
-  "layers": {
-    "layer1_basic": 25108,
-    "layer2_core": 10,
-    "layer3_advanced": 10,
-    "layer4_frontier": 0
-  },
-  "modules": 25,
-  "categories": {
-    "logic": 1000,
-    "algebra": 1000,
-    "analysis": 1000,
-    "topology": 1000,
-    "number_theory": 1000
-  }
+  "percentage": 50.77,
+  "modules_generated": 600
 }
