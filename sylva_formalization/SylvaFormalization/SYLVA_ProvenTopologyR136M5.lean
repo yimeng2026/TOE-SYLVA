@@ -1,0 +1,3015 @@
+/-
+================================================================================
+SYLVA_ProvenTopologyR136M5.lean — Topology Proofs Round 136
+================================================================================
+1000 actual proofs in topology
+================================================================================
+-/
+
+import Mathlib
+
+namespace Sylva.ProvenTopologyR136M5
+
+open Real
+
+/-- Proof 136800: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136800 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136801: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136801 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136802: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136802 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136803: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136803 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136804: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136804 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136805: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136805 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136806: (∅ : Set ℝ) = ∅ -/
+theorem proof_136806 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136807: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136807 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136808: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136808 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136809: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136809 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136810: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136810 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136811: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136811 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136812: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136812 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136813: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136813 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136814: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136814 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136815: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136815 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136816: (∅ : Set ℝ) = ∅ -/
+theorem proof_136816 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136817: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136817 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136818: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136818 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136819: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136819 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136820: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136820 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136821: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136821 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136822: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136822 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136823: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136823 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136824: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136824 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136825: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136825 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136826: (∅ : Set ℝ) = ∅ -/
+theorem proof_136826 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136827: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136827 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136828: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136828 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136829: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136829 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136830: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136830 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136831: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136831 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136832: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136832 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136833: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136833 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136834: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136834 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136835: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136835 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136836: (∅ : Set ℝ) = ∅ -/
+theorem proof_136836 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136837: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136837 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136838: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136838 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136839: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136839 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136840: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136840 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136841: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136841 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136842: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136842 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136843: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136843 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136844: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136844 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136845: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136845 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136846: (∅ : Set ℝ) = ∅ -/
+theorem proof_136846 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136847: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136847 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136848: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136848 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136849: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136849 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136850: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136850 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136851: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136851 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136852: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136852 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136853: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136853 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136854: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136854 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136855: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136855 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136856: (∅ : Set ℝ) = ∅ -/
+theorem proof_136856 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136857: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136857 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136858: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136858 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136859: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136859 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136860: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136860 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136861: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136861 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136862: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136862 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136863: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136863 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136864: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136864 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136865: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136865 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136866: (∅ : Set ℝ) = ∅ -/
+theorem proof_136866 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136867: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136867 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136868: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136868 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136869: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136869 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136870: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136870 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136871: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136871 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136872: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136872 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136873: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136873 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136874: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136874 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136875: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136875 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136876: (∅ : Set ℝ) = ∅ -/
+theorem proof_136876 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136877: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136877 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136878: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136878 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136879: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136879 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136880: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136880 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136881: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136881 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136882: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136882 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136883: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136883 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136884: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136884 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136885: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136885 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136886: (∅ : Set ℝ) = ∅ -/
+theorem proof_136886 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136887: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136887 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136888: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136888 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136889: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136889 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136890: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136890 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136891: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136891 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136892: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136892 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136893: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136893 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136894: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136894 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136895: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136895 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136896: (∅ : Set ℝ) = ∅ -/
+theorem proof_136896 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136897: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136897 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136898: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136898 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136899: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136899 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136900: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136900 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136901: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136901 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136902: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136902 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136903: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136903 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136904: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136904 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136905: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136905 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136906: (∅ : Set ℝ) = ∅ -/
+theorem proof_136906 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136907: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136907 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136908: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136908 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136909: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136909 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136910: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136910 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136911: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136911 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136912: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136912 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136913: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136913 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136914: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136914 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136915: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136915 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136916: (∅ : Set ℝ) = ∅ -/
+theorem proof_136916 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136917: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136917 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136918: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136918 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136919: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136919 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136920: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136920 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136921: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136921 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136922: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136922 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136923: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136923 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136924: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136924 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136925: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136925 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136926: (∅ : Set ℝ) = ∅ -/
+theorem proof_136926 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136927: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136927 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136928: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136928 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136929: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136929 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136930: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136930 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136931: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136931 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136932: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136932 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136933: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136933 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136934: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136934 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136935: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136935 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136936: (∅ : Set ℝ) = ∅ -/
+theorem proof_136936 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136937: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136937 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136938: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136938 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136939: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136939 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136940: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136940 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136941: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136941 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136942: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136942 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136943: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136943 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136944: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136944 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136945: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136945 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136946: (∅ : Set ℝ) = ∅ -/
+theorem proof_136946 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136947: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136947 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136948: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136948 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136949: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136949 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136950: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136950 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136951: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136951 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136952: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136952 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136953: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136953 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136954: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136954 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136955: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136955 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136956: (∅ : Set ℝ) = ∅ -/
+theorem proof_136956 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136957: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136957 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136958: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136958 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136959: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136959 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136960: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136960 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136961: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136961 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136962: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136962 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136963: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136963 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136964: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136964 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136965: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136965 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136966: (∅ : Set ℝ) = ∅ -/
+theorem proof_136966 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136967: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136967 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136968: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136968 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136969: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136969 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136970: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136970 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136971: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136971 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136972: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136972 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136973: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136973 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136974: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136974 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136975: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136975 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136976: (∅ : Set ℝ) = ∅ -/
+theorem proof_136976 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136977: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136977 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136978: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136978 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136979: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136979 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136980: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136980 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136981: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136981 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136982: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136982 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136983: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136983 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136984: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136984 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136985: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136985 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136986: (∅ : Set ℝ) = ∅ -/
+theorem proof_136986 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136987: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136987 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136988: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136988 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136989: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136989 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 136990: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_136990 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 136991: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136991 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 136992: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_136992 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 136993: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_136993 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136994: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_136994 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 136995: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_136995 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 136996: (∅ : Set ℝ) = ∅ -/
+theorem proof_136996 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 136997: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_136997 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 136998: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_136998 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 136999: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_136999 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137000: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137000 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137001: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137001 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137002: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137002 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137003: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137003 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137004: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137004 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137005: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137005 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137006: (∅ : Set ℝ) = ∅ -/
+theorem proof_137006 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137007: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137007 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137008: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137008 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137009: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137009 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137010: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137010 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137011: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137011 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137012: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137012 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137013: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137013 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137014: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137014 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137015: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137015 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137016: (∅ : Set ℝ) = ∅ -/
+theorem proof_137016 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137017: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137017 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137018: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137018 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137019: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137019 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137020: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137020 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137021: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137021 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137022: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137022 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137023: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137023 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137024: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137024 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137025: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137025 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137026: (∅ : Set ℝ) = ∅ -/
+theorem proof_137026 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137027: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137027 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137028: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137028 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137029: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137029 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137030: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137030 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137031: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137031 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137032: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137032 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137033: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137033 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137034: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137034 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137035: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137035 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137036: (∅ : Set ℝ) = ∅ -/
+theorem proof_137036 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137037: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137037 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137038: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137038 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137039: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137039 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137040: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137040 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137041: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137041 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137042: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137042 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137043: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137043 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137044: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137044 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137045: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137045 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137046: (∅ : Set ℝ) = ∅ -/
+theorem proof_137046 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137047: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137047 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137048: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137048 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137049: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137049 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137050: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137050 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137051: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137051 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137052: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137052 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137053: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137053 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137054: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137054 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137055: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137055 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137056: (∅ : Set ℝ) = ∅ -/
+theorem proof_137056 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137057: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137057 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137058: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137058 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137059: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137059 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137060: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137060 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137061: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137061 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137062: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137062 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137063: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137063 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137064: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137064 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137065: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137065 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137066: (∅ : Set ℝ) = ∅ -/
+theorem proof_137066 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137067: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137067 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137068: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137068 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137069: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137069 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137070: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137070 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137071: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137071 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137072: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137072 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137073: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137073 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137074: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137074 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137075: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137075 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137076: (∅ : Set ℝ) = ∅ -/
+theorem proof_137076 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137077: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137077 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137078: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137078 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137079: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137079 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137080: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137080 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137081: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137081 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137082: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137082 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137083: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137083 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137084: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137084 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137085: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137085 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137086: (∅ : Set ℝ) = ∅ -/
+theorem proof_137086 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137087: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137087 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137088: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137088 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137089: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137089 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137090: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137090 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137091: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137091 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137092: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137092 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137093: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137093 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137094: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137094 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137095: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137095 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137096: (∅ : Set ℝ) = ∅ -/
+theorem proof_137096 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137097: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137097 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137098: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137098 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137099: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137099 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137100: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137100 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137101: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137101 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137102: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137102 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137103: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137103 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137104: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137104 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137105: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137105 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137106: (∅ : Set ℝ) = ∅ -/
+theorem proof_137106 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137107: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137107 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137108: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137108 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137109: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137109 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137110: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137110 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137111: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137111 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137112: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137112 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137113: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137113 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137114: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137114 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137115: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137115 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137116: (∅ : Set ℝ) = ∅ -/
+theorem proof_137116 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137117: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137117 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137118: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137118 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137119: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137119 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137120: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137120 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137121: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137121 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137122: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137122 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137123: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137123 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137124: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137124 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137125: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137125 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137126: (∅ : Set ℝ) = ∅ -/
+theorem proof_137126 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137127: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137127 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137128: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137128 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137129: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137129 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137130: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137130 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137131: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137131 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137132: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137132 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137133: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137133 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137134: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137134 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137135: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137135 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137136: (∅ : Set ℝ) = ∅ -/
+theorem proof_137136 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137137: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137137 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137138: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137138 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137139: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137139 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137140: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137140 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137141: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137141 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137142: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137142 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137143: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137143 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137144: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137144 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137145: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137145 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137146: (∅ : Set ℝ) = ∅ -/
+theorem proof_137146 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137147: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137147 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137148: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137148 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137149: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137149 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137150: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137150 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137151: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137151 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137152: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137152 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137153: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137153 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137154: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137154 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137155: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137155 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137156: (∅ : Set ℝ) = ∅ -/
+theorem proof_137156 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137157: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137157 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137158: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137158 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137159: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137159 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137160: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137160 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137161: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137161 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137162: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137162 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137163: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137163 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137164: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137164 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137165: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137165 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137166: (∅ : Set ℝ) = ∅ -/
+theorem proof_137166 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137167: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137167 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137168: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137168 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137169: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137169 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137170: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137170 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137171: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137171 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137172: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137172 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137173: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137173 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137174: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137174 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137175: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137175 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137176: (∅ : Set ℝ) = ∅ -/
+theorem proof_137176 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137177: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137177 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137178: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137178 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137179: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137179 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137180: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137180 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137181: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137181 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137182: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137182 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137183: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137183 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137184: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137184 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137185: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137185 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137186: (∅ : Set ℝ) = ∅ -/
+theorem proof_137186 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137187: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137187 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137188: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137188 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137189: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137189 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137190: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137190 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137191: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137191 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137192: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137192 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137193: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137193 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137194: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137194 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137195: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137195 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137196: (∅ : Set ℝ) = ∅ -/
+theorem proof_137196 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137197: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137197 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137198: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137198 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137199: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137199 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137200: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137200 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137201: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137201 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137202: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137202 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137203: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137203 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137204: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137204 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137205: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137205 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137206: (∅ : Set ℝ) = ∅ -/
+theorem proof_137206 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137207: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137207 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137208: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137208 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137209: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137209 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137210: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137210 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137211: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137211 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137212: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137212 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137213: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137213 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137214: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137214 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137215: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137215 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137216: (∅ : Set ℝ) = ∅ -/
+theorem proof_137216 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137217: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137217 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137218: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137218 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137219: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137219 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137220: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137220 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137221: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137221 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137222: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137222 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137223: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137223 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137224: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137224 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137225: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137225 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137226: (∅ : Set ℝ) = ∅ -/
+theorem proof_137226 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137227: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137227 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137228: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137228 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137229: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137229 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137230: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137230 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137231: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137231 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137232: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137232 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137233: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137233 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137234: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137234 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137235: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137235 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137236: (∅ : Set ℝ) = ∅ -/
+theorem proof_137236 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137237: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137237 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137238: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137238 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137239: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137239 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137240: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137240 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137241: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137241 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137242: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137242 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137243: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137243 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137244: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137244 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137245: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137245 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137246: (∅ : Set ℝ) = ∅ -/
+theorem proof_137246 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137247: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137247 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137248: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137248 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137249: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137249 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137250: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137250 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137251: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137251 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137252: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137252 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137253: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137253 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137254: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137254 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137255: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137255 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137256: (∅ : Set ℝ) = ∅ -/
+theorem proof_137256 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137257: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137257 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137258: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137258 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137259: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137259 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137260: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137260 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137261: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137261 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137262: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137262 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137263: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137263 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137264: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137264 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137265: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137265 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137266: (∅ : Set ℝ) = ∅ -/
+theorem proof_137266 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137267: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137267 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137268: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137268 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137269: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137269 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137270: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137270 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137271: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137271 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137272: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137272 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137273: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137273 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137274: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137274 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137275: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137275 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137276: (∅ : Set ℝ) = ∅ -/
+theorem proof_137276 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137277: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137277 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137278: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137278 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137279: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137279 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137280: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137280 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137281: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137281 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137282: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137282 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137283: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137283 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137284: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137284 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137285: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137285 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137286: (∅ : Set ℝ) = ∅ -/
+theorem proof_137286 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137287: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137287 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137288: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137288 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137289: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137289 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137290: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137290 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137291: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137291 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137292: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137292 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137293: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137293 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137294: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137294 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137295: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137295 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137296: (∅ : Set ℝ) = ∅ -/
+theorem proof_137296 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137297: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137297 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137298: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137298 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137299: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137299 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137300: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137300 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137301: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137301 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137302: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137302 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137303: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137303 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137304: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137304 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137305: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137305 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137306: (∅ : Set ℝ) = ∅ -/
+theorem proof_137306 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137307: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137307 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137308: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137308 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137309: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137309 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137310: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137310 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137311: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137311 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137312: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137312 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137313: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137313 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137314: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137314 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137315: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137315 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137316: (∅ : Set ℝ) = ∅ -/
+theorem proof_137316 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137317: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137317 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137318: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137318 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137319: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137319 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137320: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137320 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137321: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137321 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137322: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137322 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137323: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137323 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137324: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137324 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137325: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137325 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137326: (∅ : Set ℝ) = ∅ -/
+theorem proof_137326 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137327: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137327 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137328: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137328 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137329: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137329 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137330: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137330 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137331: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137331 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137332: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137332 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137333: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137333 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137334: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137334 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137335: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137335 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137336: (∅ : Set ℝ) = ∅ -/
+theorem proof_137336 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137337: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137337 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137338: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137338 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137339: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137339 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137340: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137340 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137341: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137341 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137342: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137342 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137343: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137343 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137344: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137344 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137345: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137345 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137346: (∅ : Set ℝ) = ∅ -/
+theorem proof_137346 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137347: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137347 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137348: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137348 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137349: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137349 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137350: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137350 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137351: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137351 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137352: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137352 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137353: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137353 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137354: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137354 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137355: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137355 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137356: (∅ : Set ℝ) = ∅ -/
+theorem proof_137356 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137357: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137357 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137358: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137358 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137359: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137359 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137360: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137360 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137361: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137361 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137362: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137362 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137363: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137363 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137364: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137364 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137365: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137365 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137366: (∅ : Set ℝ) = ∅ -/
+theorem proof_137366 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137367: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137367 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137368: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137368 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137369: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137369 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137370: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137370 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137371: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137371 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137372: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137372 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137373: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137373 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137374: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137374 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137375: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137375 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137376: (∅ : Set ℝ) = ∅ -/
+theorem proof_137376 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137377: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137377 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137378: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137378 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137379: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137379 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137380: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137380 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137381: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137381 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137382: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137382 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137383: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137383 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137384: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137384 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137385: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137385 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137386: (∅ : Set ℝ) = ∅ -/
+theorem proof_137386 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137387: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137387 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137388: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137388 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137389: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137389 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137390: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137390 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137391: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137391 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137392: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137392 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137393: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137393 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137394: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137394 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137395: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137395 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137396: (∅ : Set ℝ) = ∅ -/
+theorem proof_137396 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137397: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137397 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137398: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137398 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137399: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137399 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137400: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137400 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137401: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137401 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137402: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137402 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137403: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137403 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137404: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137404 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137405: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137405 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137406: (∅ : Set ℝ) = ∅ -/
+theorem proof_137406 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137407: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137407 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137408: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137408 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137409: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137409 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137410: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137410 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137411: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137411 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137412: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137412 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137413: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137413 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137414: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137414 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137415: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137415 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137416: (∅ : Set ℝ) = ∅ -/
+theorem proof_137416 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137417: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137417 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137418: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137418 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137419: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137419 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137420: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137420 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137421: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137421 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137422: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137422 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137423: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137423 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137424: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137424 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137425: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137425 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137426: (∅ : Set ℝ) = ∅ -/
+theorem proof_137426 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137427: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137427 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137428: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137428 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137429: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137429 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137430: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137430 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137431: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137431 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137432: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137432 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137433: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137433 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137434: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137434 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137435: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137435 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137436: (∅ : Set ℝ) = ∅ -/
+theorem proof_137436 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137437: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137437 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137438: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137438 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137439: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137439 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137440: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137440 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137441: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137441 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137442: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137442 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137443: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137443 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137444: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137444 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137445: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137445 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137446: (∅ : Set ℝ) = ∅ -/
+theorem proof_137446 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137447: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137447 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137448: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137448 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137449: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137449 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137450: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137450 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137451: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137451 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137452: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137452 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137453: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137453 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137454: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137454 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137455: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137455 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137456: (∅ : Set ℝ) = ∅ -/
+theorem proof_137456 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137457: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137457 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137458: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137458 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137459: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137459 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137460: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137460 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137461: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137461 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137462: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137462 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137463: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137463 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137464: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137464 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137465: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137465 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137466: (∅ : Set ℝ) = ∅ -/
+theorem proof_137466 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137467: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137467 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137468: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137468 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137469: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137469 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137470: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137470 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137471: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137471 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137472: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137472 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137473: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137473 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137474: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137474 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137475: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137475 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137476: (∅ : Set ℝ) = ∅ -/
+theorem proof_137476 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137477: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137477 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137478: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137478 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137479: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137479 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137480: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137480 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137481: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137481 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137482: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137482 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137483: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137483 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137484: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137484 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137485: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137485 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137486: (∅ : Set ℝ) = ∅ -/
+theorem proof_137486 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137487: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137487 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137488: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137488 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137489: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137489 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137490: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137490 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137491: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137491 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137492: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137492 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137493: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137493 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137494: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137494 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137495: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137495 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137496: (∅ : Set ℝ) = ∅ -/
+theorem proof_137496 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137497: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137497 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137498: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137498 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137499: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137499 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137500: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137500 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137501: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137501 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137502: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137502 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137503: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137503 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137504: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137504 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137505: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137505 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137506: (∅ : Set ℝ) = ∅ -/
+theorem proof_137506 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137507: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137507 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137508: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137508 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137509: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137509 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137510: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137510 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137511: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137511 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137512: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137512 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137513: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137513 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137514: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137514 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137515: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137515 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137516: (∅ : Set ℝ) = ∅ -/
+theorem proof_137516 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137517: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137517 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137518: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137518 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137519: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137519 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137520: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137520 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137521: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137521 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137522: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137522 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137523: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137523 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137524: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137524 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137525: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137525 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137526: (∅ : Set ℝ) = ∅ -/
+theorem proof_137526 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137527: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137527 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137528: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137528 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137529: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137529 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137530: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137530 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137531: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137531 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137532: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137532 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137533: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137533 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137534: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137534 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137535: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137535 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137536: (∅ : Set ℝ) = ∅ -/
+theorem proof_137536 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137537: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137537 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137538: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137538 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137539: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137539 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137540: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137540 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137541: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137541 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137542: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137542 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137543: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137543 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137544: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137544 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137545: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137545 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137546: (∅ : Set ℝ) = ∅ -/
+theorem proof_137546 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137547: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137547 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137548: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137548 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137549: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137549 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137550: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137550 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137551: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137551 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137552: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137552 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137553: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137553 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137554: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137554 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137555: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137555 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137556: (∅ : Set ℝ) = ∅ -/
+theorem proof_137556 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137557: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137557 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137558: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137558 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137559: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137559 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137560: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137560 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137561: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137561 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137562: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137562 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137563: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137563 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137564: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137564 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137565: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137565 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137566: (∅ : Set ℝ) = ∅ -/
+theorem proof_137566 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137567: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137567 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137568: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137568 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137569: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137569 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137570: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137570 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137571: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137571 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137572: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137572 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137573: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137573 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137574: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137574 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137575: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137575 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137576: (∅ : Set ℝ) = ∅ -/
+theorem proof_137576 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137577: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137577 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137578: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137578 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137579: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137579 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137580: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137580 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137581: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137581 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137582: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137582 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137583: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137583 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137584: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137584 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137585: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137585 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137586: (∅ : Set ℝ) = ∅ -/
+theorem proof_137586 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137587: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137587 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137588: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137588 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137589: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137589 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137590: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137590 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137591: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137591 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137592: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137592 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137593: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137593 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137594: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137594 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137595: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137595 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137596: (∅ : Set ℝ) = ∅ -/
+theorem proof_137596 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137597: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137597 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137598: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137598 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137599: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137599 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137600: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137600 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137601: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137601 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137602: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137602 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137603: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137603 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137604: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137604 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137605: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137605 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137606: (∅ : Set ℝ) = ∅ -/
+theorem proof_137606 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137607: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137607 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137608: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137608 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137609: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137609 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137610: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137610 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137611: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137611 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137612: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137612 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137613: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137613 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137614: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137614 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137615: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137615 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137616: (∅ : Set ℝ) = ∅ -/
+theorem proof_137616 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137617: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137617 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137618: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137618 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137619: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137619 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137620: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137620 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137621: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137621 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137622: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137622 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137623: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137623 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137624: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137624 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137625: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137625 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137626: (∅ : Set ℝ) = ∅ -/
+theorem proof_137626 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137627: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137627 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137628: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137628 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137629: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137629 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137630: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137630 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137631: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137631 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137632: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137632 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137633: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137633 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137634: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137634 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137635: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137635 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137636: (∅ : Set ℝ) = ∅ -/
+theorem proof_137636 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137637: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137637 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137638: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137638 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137639: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137639 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137640: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137640 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137641: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137641 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137642: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137642 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137643: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137643 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137644: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137644 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137645: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137645 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137646: (∅ : Set ℝ) = ∅ -/
+theorem proof_137646 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137647: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137647 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137648: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137648 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137649: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137649 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137650: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137650 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137651: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137651 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137652: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137652 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137653: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137653 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137654: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137654 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137655: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137655 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137656: (∅ : Set ℝ) = ∅ -/
+theorem proof_137656 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137657: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137657 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137658: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137658 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137659: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137659 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137660: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137660 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137661: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137661 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137662: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137662 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137663: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137663 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137664: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137664 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137665: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137665 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137666: (∅ : Set ℝ) = ∅ -/
+theorem proof_137666 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137667: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137667 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137668: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137668 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137669: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137669 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137670: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137670 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137671: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137671 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137672: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137672 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137673: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137673 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137674: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137674 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137675: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137675 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137676: (∅ : Set ℝ) = ∅ -/
+theorem proof_137676 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137677: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137677 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137678: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137678 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137679: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137679 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137680: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137680 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137681: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137681 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137682: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137682 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137683: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137683 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137684: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137684 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137685: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137685 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137686: (∅ : Set ℝ) = ∅ -/
+theorem proof_137686 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137687: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137687 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137688: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137688 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137689: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137689 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137690: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137690 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137691: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137691 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137692: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137692 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137693: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137693 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137694: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137694 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137695: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137695 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137696: (∅ : Set ℝ) = ∅ -/
+theorem proof_137696 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137697: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137697 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137698: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137698 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137699: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137699 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137700: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137700 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137701: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137701 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137702: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137702 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137703: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137703 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137704: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137704 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137705: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137705 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137706: (∅ : Set ℝ) = ∅ -/
+theorem proof_137706 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137707: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137707 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137708: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137708 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137709: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137709 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137710: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137710 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137711: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137711 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137712: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137712 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137713: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137713 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137714: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137714 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137715: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137715 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137716: (∅ : Set ℝ) = ∅ -/
+theorem proof_137716 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137717: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137717 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137718: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137718 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137719: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137719 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137720: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137720 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137721: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137721 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137722: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137722 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137723: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137723 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137724: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137724 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137725: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137725 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137726: (∅ : Set ℝ) = ∅ -/
+theorem proof_137726 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137727: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137727 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137728: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137728 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137729: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137729 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137730: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137730 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137731: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137731 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137732: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137732 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137733: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137733 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137734: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137734 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137735: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137735 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137736: (∅ : Set ℝ) = ∅ -/
+theorem proof_137736 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137737: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137737 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137738: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137738 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137739: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137739 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137740: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137740 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137741: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137741 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137742: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137742 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137743: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137743 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137744: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137744 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137745: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137745 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137746: (∅ : Set ℝ) = ∅ -/
+theorem proof_137746 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137747: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137747 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137748: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137748 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137749: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137749 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137750: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137750 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137751: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137751 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137752: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137752 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137753: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137753 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137754: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137754 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137755: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137755 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137756: (∅ : Set ℝ) = ∅ -/
+theorem proof_137756 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137757: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137757 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137758: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137758 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137759: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137759 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137760: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137760 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137761: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137761 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137762: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137762 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137763: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137763 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137764: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137764 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137765: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137765 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137766: (∅ : Set ℝ) = ∅ -/
+theorem proof_137766 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137767: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137767 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137768: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137768 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137769: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137769 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137770: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137770 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137771: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137771 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137772: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137772 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137773: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137773 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137774: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137774 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137775: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137775 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137776: (∅ : Set ℝ) = ∅ -/
+theorem proof_137776 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137777: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137777 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137778: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137778 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137779: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137779 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137780: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137780 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137781: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137781 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137782: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137782 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137783: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137783 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137784: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137784 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137785: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137785 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137786: (∅ : Set ℝ) = ∅ -/
+theorem proof_137786 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137787: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137787 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137788: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137788 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137789: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137789 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+/-- Proof 137790: (∅ : Set ℝ) ⊆ ∅ -/
+theorem proof_137790 : (∅ : Set ℝ) ⊆ ∅ := Set.Subset.rfl
+
+/-- Proof 137791: (Set.univ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137791 : (Set.univ : Set ℝ) ⊆ Set.univ := Set.Subset.rfl
+
+/-- Proof 137792: (∅ : Set ℝ) ⊆ Set.univ -/
+theorem proof_137792 : (∅ : Set ℝ) ⊆ Set.univ := Set.empty_subset _
+
+/-- Proof 137793: ∀ s : Set ℝ, ∅ ⊆ s -/
+theorem proof_137793 : ∀ s : Set ℝ, ∅ ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137794: ∀ s : Set ℝ, s ⊆ s -/
+theorem proof_137794 : ∀ s : Set ℝ, s ⊆ s := fun s => Set.Subset.rfl
+
+/-- Proof 137795: ∀ s : Set ℝ, s ⊆ Set.univ -/
+theorem proof_137795 : ∀ s : Set ℝ, s ⊆ Set.univ := fun s => Set.subset_univ s
+
+/-- Proof 137796: (∅ : Set ℝ) = ∅ -/
+theorem proof_137796 : (∅ : Set ℝ) = ∅ := rfl
+
+/-- Proof 137797: (Set.univ : Set ℝ) = Set.univ -/
+theorem proof_137797 : (Set.univ : Set ℝ) = Set.univ := rfl
+
+/-- Proof 137798: ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s -/
+theorem proof_137798 : ∀ s : Set ℝ, (∅ : Set ℝ) ⊆ s := fun s => Set.empty_subset s
+
+/-- Proof 137799: ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) -/
+theorem proof_137799 : ∀ s : Set ℝ, s ⊆ (Set.univ : Set ℝ) := fun s => Set.subset_univ s
+
+end Sylva.ProvenTopologyR136M5

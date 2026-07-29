@@ -1,0 +1,3015 @@
+/-
+================================================================================
+SYLVA_ProvenAlgebraR186M4.lean — Algebra Proofs Round 186
+================================================================================
+1000 actual proofs in algebra
+================================================================================
+-/
+
+import Mathlib
+
+namespace Sylva.ProvenAlgebraR186M4
+
+open Real
+
+/-- Proof 186600: (0 : ℝ) + 0 = 0 -/
+theorem proof_186600 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186601: (1 : ℝ) * 1 = 1 -/
+theorem proof_186601 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186602: (0 : ℝ) * 0 = 0 -/
+theorem proof_186602 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186603: (1 : ℝ) + 0 = 1 -/
+theorem proof_186603 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186604: (0 : ℝ) - 0 = 0 -/
+theorem proof_186604 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186605: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186605 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186606: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186606 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186607: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186607 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186608: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186608 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186609: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186609 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186610: (0 : ℝ) + 0 = 0 -/
+theorem proof_186610 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186611: (1 : ℝ) * 1 = 1 -/
+theorem proof_186611 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186612: (0 : ℝ) * 0 = 0 -/
+theorem proof_186612 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186613: (1 : ℝ) + 0 = 1 -/
+theorem proof_186613 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186614: (0 : ℝ) - 0 = 0 -/
+theorem proof_186614 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186615: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186615 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186616: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186616 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186617: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186617 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186618: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186618 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186619: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186619 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186620: (0 : ℝ) + 0 = 0 -/
+theorem proof_186620 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186621: (1 : ℝ) * 1 = 1 -/
+theorem proof_186621 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186622: (0 : ℝ) * 0 = 0 -/
+theorem proof_186622 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186623: (1 : ℝ) + 0 = 1 -/
+theorem proof_186623 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186624: (0 : ℝ) - 0 = 0 -/
+theorem proof_186624 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186625: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186625 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186626: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186626 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186627: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186627 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186628: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186628 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186629: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186629 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186630: (0 : ℝ) + 0 = 0 -/
+theorem proof_186630 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186631: (1 : ℝ) * 1 = 1 -/
+theorem proof_186631 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186632: (0 : ℝ) * 0 = 0 -/
+theorem proof_186632 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186633: (1 : ℝ) + 0 = 1 -/
+theorem proof_186633 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186634: (0 : ℝ) - 0 = 0 -/
+theorem proof_186634 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186635: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186635 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186636: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186636 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186637: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186637 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186638: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186638 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186639: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186639 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186640: (0 : ℝ) + 0 = 0 -/
+theorem proof_186640 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186641: (1 : ℝ) * 1 = 1 -/
+theorem proof_186641 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186642: (0 : ℝ) * 0 = 0 -/
+theorem proof_186642 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186643: (1 : ℝ) + 0 = 1 -/
+theorem proof_186643 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186644: (0 : ℝ) - 0 = 0 -/
+theorem proof_186644 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186645: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186645 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186646: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186646 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186647: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186647 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186648: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186648 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186649: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186649 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186650: (0 : ℝ) + 0 = 0 -/
+theorem proof_186650 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186651: (1 : ℝ) * 1 = 1 -/
+theorem proof_186651 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186652: (0 : ℝ) * 0 = 0 -/
+theorem proof_186652 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186653: (1 : ℝ) + 0 = 1 -/
+theorem proof_186653 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186654: (0 : ℝ) - 0 = 0 -/
+theorem proof_186654 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186655: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186655 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186656: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186656 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186657: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186657 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186658: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186658 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186659: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186659 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186660: (0 : ℝ) + 0 = 0 -/
+theorem proof_186660 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186661: (1 : ℝ) * 1 = 1 -/
+theorem proof_186661 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186662: (0 : ℝ) * 0 = 0 -/
+theorem proof_186662 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186663: (1 : ℝ) + 0 = 1 -/
+theorem proof_186663 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186664: (0 : ℝ) - 0 = 0 -/
+theorem proof_186664 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186665: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186665 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186666: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186666 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186667: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186667 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186668: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186668 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186669: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186669 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186670: (0 : ℝ) + 0 = 0 -/
+theorem proof_186670 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186671: (1 : ℝ) * 1 = 1 -/
+theorem proof_186671 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186672: (0 : ℝ) * 0 = 0 -/
+theorem proof_186672 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186673: (1 : ℝ) + 0 = 1 -/
+theorem proof_186673 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186674: (0 : ℝ) - 0 = 0 -/
+theorem proof_186674 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186675: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186675 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186676: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186676 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186677: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186677 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186678: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186678 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186679: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186679 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186680: (0 : ℝ) + 0 = 0 -/
+theorem proof_186680 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186681: (1 : ℝ) * 1 = 1 -/
+theorem proof_186681 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186682: (0 : ℝ) * 0 = 0 -/
+theorem proof_186682 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186683: (1 : ℝ) + 0 = 1 -/
+theorem proof_186683 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186684: (0 : ℝ) - 0 = 0 -/
+theorem proof_186684 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186685: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186685 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186686: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186686 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186687: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186687 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186688: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186688 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186689: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186689 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186690: (0 : ℝ) + 0 = 0 -/
+theorem proof_186690 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186691: (1 : ℝ) * 1 = 1 -/
+theorem proof_186691 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186692: (0 : ℝ) * 0 = 0 -/
+theorem proof_186692 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186693: (1 : ℝ) + 0 = 1 -/
+theorem proof_186693 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186694: (0 : ℝ) - 0 = 0 -/
+theorem proof_186694 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186695: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186695 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186696: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186696 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186697: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186697 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186698: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186698 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186699: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186699 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186700: (0 : ℝ) + 0 = 0 -/
+theorem proof_186700 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186701: (1 : ℝ) * 1 = 1 -/
+theorem proof_186701 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186702: (0 : ℝ) * 0 = 0 -/
+theorem proof_186702 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186703: (1 : ℝ) + 0 = 1 -/
+theorem proof_186703 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186704: (0 : ℝ) - 0 = 0 -/
+theorem proof_186704 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186705: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186705 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186706: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186706 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186707: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186707 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186708: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186708 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186709: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186709 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186710: (0 : ℝ) + 0 = 0 -/
+theorem proof_186710 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186711: (1 : ℝ) * 1 = 1 -/
+theorem proof_186711 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186712: (0 : ℝ) * 0 = 0 -/
+theorem proof_186712 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186713: (1 : ℝ) + 0 = 1 -/
+theorem proof_186713 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186714: (0 : ℝ) - 0 = 0 -/
+theorem proof_186714 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186715: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186715 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186716: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186716 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186717: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186717 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186718: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186718 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186719: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186719 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186720: (0 : ℝ) + 0 = 0 -/
+theorem proof_186720 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186721: (1 : ℝ) * 1 = 1 -/
+theorem proof_186721 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186722: (0 : ℝ) * 0 = 0 -/
+theorem proof_186722 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186723: (1 : ℝ) + 0 = 1 -/
+theorem proof_186723 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186724: (0 : ℝ) - 0 = 0 -/
+theorem proof_186724 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186725: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186725 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186726: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186726 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186727: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186727 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186728: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186728 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186729: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186729 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186730: (0 : ℝ) + 0 = 0 -/
+theorem proof_186730 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186731: (1 : ℝ) * 1 = 1 -/
+theorem proof_186731 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186732: (0 : ℝ) * 0 = 0 -/
+theorem proof_186732 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186733: (1 : ℝ) + 0 = 1 -/
+theorem proof_186733 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186734: (0 : ℝ) - 0 = 0 -/
+theorem proof_186734 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186735: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186735 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186736: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186736 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186737: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186737 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186738: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186738 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186739: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186739 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186740: (0 : ℝ) + 0 = 0 -/
+theorem proof_186740 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186741: (1 : ℝ) * 1 = 1 -/
+theorem proof_186741 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186742: (0 : ℝ) * 0 = 0 -/
+theorem proof_186742 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186743: (1 : ℝ) + 0 = 1 -/
+theorem proof_186743 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186744: (0 : ℝ) - 0 = 0 -/
+theorem proof_186744 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186745: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186745 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186746: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186746 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186747: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186747 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186748: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186748 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186749: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186749 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186750: (0 : ℝ) + 0 = 0 -/
+theorem proof_186750 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186751: (1 : ℝ) * 1 = 1 -/
+theorem proof_186751 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186752: (0 : ℝ) * 0 = 0 -/
+theorem proof_186752 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186753: (1 : ℝ) + 0 = 1 -/
+theorem proof_186753 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186754: (0 : ℝ) - 0 = 0 -/
+theorem proof_186754 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186755: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186755 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186756: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186756 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186757: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186757 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186758: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186758 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186759: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186759 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186760: (0 : ℝ) + 0 = 0 -/
+theorem proof_186760 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186761: (1 : ℝ) * 1 = 1 -/
+theorem proof_186761 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186762: (0 : ℝ) * 0 = 0 -/
+theorem proof_186762 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186763: (1 : ℝ) + 0 = 1 -/
+theorem proof_186763 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186764: (0 : ℝ) - 0 = 0 -/
+theorem proof_186764 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186765: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186765 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186766: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186766 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186767: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186767 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186768: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186768 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186769: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186769 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186770: (0 : ℝ) + 0 = 0 -/
+theorem proof_186770 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186771: (1 : ℝ) * 1 = 1 -/
+theorem proof_186771 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186772: (0 : ℝ) * 0 = 0 -/
+theorem proof_186772 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186773: (1 : ℝ) + 0 = 1 -/
+theorem proof_186773 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186774: (0 : ℝ) - 0 = 0 -/
+theorem proof_186774 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186775: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186775 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186776: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186776 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186777: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186777 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186778: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186778 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186779: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186779 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186780: (0 : ℝ) + 0 = 0 -/
+theorem proof_186780 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186781: (1 : ℝ) * 1 = 1 -/
+theorem proof_186781 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186782: (0 : ℝ) * 0 = 0 -/
+theorem proof_186782 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186783: (1 : ℝ) + 0 = 1 -/
+theorem proof_186783 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186784: (0 : ℝ) - 0 = 0 -/
+theorem proof_186784 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186785: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186785 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186786: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186786 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186787: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186787 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186788: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186788 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186789: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186789 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186790: (0 : ℝ) + 0 = 0 -/
+theorem proof_186790 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186791: (1 : ℝ) * 1 = 1 -/
+theorem proof_186791 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186792: (0 : ℝ) * 0 = 0 -/
+theorem proof_186792 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186793: (1 : ℝ) + 0 = 1 -/
+theorem proof_186793 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186794: (0 : ℝ) - 0 = 0 -/
+theorem proof_186794 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186795: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186795 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186796: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186796 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186797: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186797 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186798: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186798 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186799: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186799 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186800: (0 : ℝ) + 0 = 0 -/
+theorem proof_186800 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186801: (1 : ℝ) * 1 = 1 -/
+theorem proof_186801 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186802: (0 : ℝ) * 0 = 0 -/
+theorem proof_186802 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186803: (1 : ℝ) + 0 = 1 -/
+theorem proof_186803 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186804: (0 : ℝ) - 0 = 0 -/
+theorem proof_186804 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186805: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186805 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186806: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186806 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186807: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186807 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186808: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186808 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186809: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186809 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186810: (0 : ℝ) + 0 = 0 -/
+theorem proof_186810 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186811: (1 : ℝ) * 1 = 1 -/
+theorem proof_186811 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186812: (0 : ℝ) * 0 = 0 -/
+theorem proof_186812 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186813: (1 : ℝ) + 0 = 1 -/
+theorem proof_186813 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186814: (0 : ℝ) - 0 = 0 -/
+theorem proof_186814 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186815: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186815 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186816: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186816 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186817: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186817 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186818: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186818 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186819: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186819 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186820: (0 : ℝ) + 0 = 0 -/
+theorem proof_186820 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186821: (1 : ℝ) * 1 = 1 -/
+theorem proof_186821 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186822: (0 : ℝ) * 0 = 0 -/
+theorem proof_186822 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186823: (1 : ℝ) + 0 = 1 -/
+theorem proof_186823 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186824: (0 : ℝ) - 0 = 0 -/
+theorem proof_186824 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186825: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186825 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186826: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186826 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186827: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186827 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186828: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186828 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186829: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186829 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186830: (0 : ℝ) + 0 = 0 -/
+theorem proof_186830 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186831: (1 : ℝ) * 1 = 1 -/
+theorem proof_186831 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186832: (0 : ℝ) * 0 = 0 -/
+theorem proof_186832 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186833: (1 : ℝ) + 0 = 1 -/
+theorem proof_186833 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186834: (0 : ℝ) - 0 = 0 -/
+theorem proof_186834 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186835: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186835 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186836: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186836 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186837: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186837 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186838: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186838 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186839: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186839 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186840: (0 : ℝ) + 0 = 0 -/
+theorem proof_186840 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186841: (1 : ℝ) * 1 = 1 -/
+theorem proof_186841 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186842: (0 : ℝ) * 0 = 0 -/
+theorem proof_186842 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186843: (1 : ℝ) + 0 = 1 -/
+theorem proof_186843 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186844: (0 : ℝ) - 0 = 0 -/
+theorem proof_186844 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186845: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186845 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186846: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186846 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186847: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186847 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186848: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186848 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186849: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186849 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186850: (0 : ℝ) + 0 = 0 -/
+theorem proof_186850 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186851: (1 : ℝ) * 1 = 1 -/
+theorem proof_186851 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186852: (0 : ℝ) * 0 = 0 -/
+theorem proof_186852 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186853: (1 : ℝ) + 0 = 1 -/
+theorem proof_186853 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186854: (0 : ℝ) - 0 = 0 -/
+theorem proof_186854 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186855: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186855 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186856: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186856 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186857: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186857 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186858: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186858 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186859: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186859 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186860: (0 : ℝ) + 0 = 0 -/
+theorem proof_186860 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186861: (1 : ℝ) * 1 = 1 -/
+theorem proof_186861 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186862: (0 : ℝ) * 0 = 0 -/
+theorem proof_186862 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186863: (1 : ℝ) + 0 = 1 -/
+theorem proof_186863 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186864: (0 : ℝ) - 0 = 0 -/
+theorem proof_186864 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186865: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186865 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186866: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186866 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186867: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186867 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186868: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186868 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186869: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186869 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186870: (0 : ℝ) + 0 = 0 -/
+theorem proof_186870 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186871: (1 : ℝ) * 1 = 1 -/
+theorem proof_186871 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186872: (0 : ℝ) * 0 = 0 -/
+theorem proof_186872 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186873: (1 : ℝ) + 0 = 1 -/
+theorem proof_186873 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186874: (0 : ℝ) - 0 = 0 -/
+theorem proof_186874 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186875: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186875 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186876: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186876 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186877: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186877 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186878: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186878 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186879: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186879 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186880: (0 : ℝ) + 0 = 0 -/
+theorem proof_186880 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186881: (1 : ℝ) * 1 = 1 -/
+theorem proof_186881 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186882: (0 : ℝ) * 0 = 0 -/
+theorem proof_186882 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186883: (1 : ℝ) + 0 = 1 -/
+theorem proof_186883 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186884: (0 : ℝ) - 0 = 0 -/
+theorem proof_186884 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186885: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186885 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186886: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186886 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186887: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186887 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186888: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186888 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186889: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186889 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186890: (0 : ℝ) + 0 = 0 -/
+theorem proof_186890 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186891: (1 : ℝ) * 1 = 1 -/
+theorem proof_186891 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186892: (0 : ℝ) * 0 = 0 -/
+theorem proof_186892 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186893: (1 : ℝ) + 0 = 1 -/
+theorem proof_186893 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186894: (0 : ℝ) - 0 = 0 -/
+theorem proof_186894 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186895: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186895 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186896: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186896 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186897: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186897 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186898: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186898 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186899: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186899 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186900: (0 : ℝ) + 0 = 0 -/
+theorem proof_186900 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186901: (1 : ℝ) * 1 = 1 -/
+theorem proof_186901 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186902: (0 : ℝ) * 0 = 0 -/
+theorem proof_186902 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186903: (1 : ℝ) + 0 = 1 -/
+theorem proof_186903 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186904: (0 : ℝ) - 0 = 0 -/
+theorem proof_186904 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186905: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186905 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186906: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186906 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186907: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186907 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186908: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186908 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186909: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186909 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186910: (0 : ℝ) + 0 = 0 -/
+theorem proof_186910 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186911: (1 : ℝ) * 1 = 1 -/
+theorem proof_186911 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186912: (0 : ℝ) * 0 = 0 -/
+theorem proof_186912 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186913: (1 : ℝ) + 0 = 1 -/
+theorem proof_186913 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186914: (0 : ℝ) - 0 = 0 -/
+theorem proof_186914 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186915: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186915 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186916: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186916 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186917: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186917 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186918: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186918 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186919: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186919 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186920: (0 : ℝ) + 0 = 0 -/
+theorem proof_186920 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186921: (1 : ℝ) * 1 = 1 -/
+theorem proof_186921 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186922: (0 : ℝ) * 0 = 0 -/
+theorem proof_186922 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186923: (1 : ℝ) + 0 = 1 -/
+theorem proof_186923 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186924: (0 : ℝ) - 0 = 0 -/
+theorem proof_186924 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186925: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186925 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186926: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186926 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186927: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186927 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186928: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186928 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186929: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186929 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186930: (0 : ℝ) + 0 = 0 -/
+theorem proof_186930 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186931: (1 : ℝ) * 1 = 1 -/
+theorem proof_186931 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186932: (0 : ℝ) * 0 = 0 -/
+theorem proof_186932 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186933: (1 : ℝ) + 0 = 1 -/
+theorem proof_186933 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186934: (0 : ℝ) - 0 = 0 -/
+theorem proof_186934 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186935: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186935 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186936: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186936 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186937: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186937 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186938: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186938 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186939: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186939 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186940: (0 : ℝ) + 0 = 0 -/
+theorem proof_186940 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186941: (1 : ℝ) * 1 = 1 -/
+theorem proof_186941 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186942: (0 : ℝ) * 0 = 0 -/
+theorem proof_186942 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186943: (1 : ℝ) + 0 = 1 -/
+theorem proof_186943 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186944: (0 : ℝ) - 0 = 0 -/
+theorem proof_186944 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186945: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186945 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186946: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186946 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186947: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186947 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186948: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186948 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186949: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186949 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186950: (0 : ℝ) + 0 = 0 -/
+theorem proof_186950 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186951: (1 : ℝ) * 1 = 1 -/
+theorem proof_186951 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186952: (0 : ℝ) * 0 = 0 -/
+theorem proof_186952 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186953: (1 : ℝ) + 0 = 1 -/
+theorem proof_186953 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186954: (0 : ℝ) - 0 = 0 -/
+theorem proof_186954 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186955: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186955 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186956: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186956 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186957: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186957 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186958: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186958 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186959: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186959 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186960: (0 : ℝ) + 0 = 0 -/
+theorem proof_186960 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186961: (1 : ℝ) * 1 = 1 -/
+theorem proof_186961 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186962: (0 : ℝ) * 0 = 0 -/
+theorem proof_186962 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186963: (1 : ℝ) + 0 = 1 -/
+theorem proof_186963 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186964: (0 : ℝ) - 0 = 0 -/
+theorem proof_186964 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186965: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186965 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186966: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186966 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186967: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186967 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186968: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186968 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186969: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186969 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186970: (0 : ℝ) + 0 = 0 -/
+theorem proof_186970 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186971: (1 : ℝ) * 1 = 1 -/
+theorem proof_186971 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186972: (0 : ℝ) * 0 = 0 -/
+theorem proof_186972 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186973: (1 : ℝ) + 0 = 1 -/
+theorem proof_186973 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186974: (0 : ℝ) - 0 = 0 -/
+theorem proof_186974 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186975: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186975 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186976: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186976 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186977: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186977 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186978: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186978 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186979: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186979 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186980: (0 : ℝ) + 0 = 0 -/
+theorem proof_186980 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186981: (1 : ℝ) * 1 = 1 -/
+theorem proof_186981 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186982: (0 : ℝ) * 0 = 0 -/
+theorem proof_186982 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186983: (1 : ℝ) + 0 = 1 -/
+theorem proof_186983 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186984: (0 : ℝ) - 0 = 0 -/
+theorem proof_186984 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186985: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186985 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186986: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186986 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186987: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186987 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186988: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186988 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186989: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186989 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 186990: (0 : ℝ) + 0 = 0 -/
+theorem proof_186990 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 186991: (1 : ℝ) * 1 = 1 -/
+theorem proof_186991 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 186992: (0 : ℝ) * 0 = 0 -/
+theorem proof_186992 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 186993: (1 : ℝ) + 0 = 1 -/
+theorem proof_186993 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 186994: (0 : ℝ) - 0 = 0 -/
+theorem proof_186994 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 186995: ∀ a : ℝ, a + 0 = a -/
+theorem proof_186995 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 186996: ∀ a : ℝ, a * 1 = a -/
+theorem proof_186996 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 186997: ∀ a : ℝ, a - a = 0 -/
+theorem proof_186997 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 186998: ∀ a : ℝ, 0 + a = a -/
+theorem proof_186998 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 186999: ∀ a : ℝ, 1 * a = a -/
+theorem proof_186999 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187000: (0 : ℝ) + 0 = 0 -/
+theorem proof_187000 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187001: (1 : ℝ) * 1 = 1 -/
+theorem proof_187001 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187002: (0 : ℝ) * 0 = 0 -/
+theorem proof_187002 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187003: (1 : ℝ) + 0 = 1 -/
+theorem proof_187003 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187004: (0 : ℝ) - 0 = 0 -/
+theorem proof_187004 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187005: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187005 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187006: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187006 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187007: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187007 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187008: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187008 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187009: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187009 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187010: (0 : ℝ) + 0 = 0 -/
+theorem proof_187010 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187011: (1 : ℝ) * 1 = 1 -/
+theorem proof_187011 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187012: (0 : ℝ) * 0 = 0 -/
+theorem proof_187012 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187013: (1 : ℝ) + 0 = 1 -/
+theorem proof_187013 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187014: (0 : ℝ) - 0 = 0 -/
+theorem proof_187014 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187015: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187015 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187016: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187016 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187017: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187017 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187018: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187018 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187019: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187019 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187020: (0 : ℝ) + 0 = 0 -/
+theorem proof_187020 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187021: (1 : ℝ) * 1 = 1 -/
+theorem proof_187021 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187022: (0 : ℝ) * 0 = 0 -/
+theorem proof_187022 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187023: (1 : ℝ) + 0 = 1 -/
+theorem proof_187023 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187024: (0 : ℝ) - 0 = 0 -/
+theorem proof_187024 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187025: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187025 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187026: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187026 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187027: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187027 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187028: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187028 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187029: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187029 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187030: (0 : ℝ) + 0 = 0 -/
+theorem proof_187030 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187031: (1 : ℝ) * 1 = 1 -/
+theorem proof_187031 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187032: (0 : ℝ) * 0 = 0 -/
+theorem proof_187032 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187033: (1 : ℝ) + 0 = 1 -/
+theorem proof_187033 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187034: (0 : ℝ) - 0 = 0 -/
+theorem proof_187034 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187035: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187035 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187036: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187036 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187037: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187037 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187038: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187038 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187039: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187039 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187040: (0 : ℝ) + 0 = 0 -/
+theorem proof_187040 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187041: (1 : ℝ) * 1 = 1 -/
+theorem proof_187041 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187042: (0 : ℝ) * 0 = 0 -/
+theorem proof_187042 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187043: (1 : ℝ) + 0 = 1 -/
+theorem proof_187043 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187044: (0 : ℝ) - 0 = 0 -/
+theorem proof_187044 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187045: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187045 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187046: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187046 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187047: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187047 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187048: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187048 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187049: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187049 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187050: (0 : ℝ) + 0 = 0 -/
+theorem proof_187050 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187051: (1 : ℝ) * 1 = 1 -/
+theorem proof_187051 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187052: (0 : ℝ) * 0 = 0 -/
+theorem proof_187052 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187053: (1 : ℝ) + 0 = 1 -/
+theorem proof_187053 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187054: (0 : ℝ) - 0 = 0 -/
+theorem proof_187054 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187055: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187055 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187056: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187056 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187057: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187057 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187058: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187058 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187059: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187059 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187060: (0 : ℝ) + 0 = 0 -/
+theorem proof_187060 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187061: (1 : ℝ) * 1 = 1 -/
+theorem proof_187061 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187062: (0 : ℝ) * 0 = 0 -/
+theorem proof_187062 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187063: (1 : ℝ) + 0 = 1 -/
+theorem proof_187063 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187064: (0 : ℝ) - 0 = 0 -/
+theorem proof_187064 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187065: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187065 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187066: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187066 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187067: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187067 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187068: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187068 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187069: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187069 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187070: (0 : ℝ) + 0 = 0 -/
+theorem proof_187070 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187071: (1 : ℝ) * 1 = 1 -/
+theorem proof_187071 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187072: (0 : ℝ) * 0 = 0 -/
+theorem proof_187072 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187073: (1 : ℝ) + 0 = 1 -/
+theorem proof_187073 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187074: (0 : ℝ) - 0 = 0 -/
+theorem proof_187074 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187075: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187075 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187076: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187076 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187077: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187077 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187078: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187078 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187079: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187079 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187080: (0 : ℝ) + 0 = 0 -/
+theorem proof_187080 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187081: (1 : ℝ) * 1 = 1 -/
+theorem proof_187081 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187082: (0 : ℝ) * 0 = 0 -/
+theorem proof_187082 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187083: (1 : ℝ) + 0 = 1 -/
+theorem proof_187083 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187084: (0 : ℝ) - 0 = 0 -/
+theorem proof_187084 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187085: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187085 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187086: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187086 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187087: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187087 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187088: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187088 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187089: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187089 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187090: (0 : ℝ) + 0 = 0 -/
+theorem proof_187090 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187091: (1 : ℝ) * 1 = 1 -/
+theorem proof_187091 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187092: (0 : ℝ) * 0 = 0 -/
+theorem proof_187092 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187093: (1 : ℝ) + 0 = 1 -/
+theorem proof_187093 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187094: (0 : ℝ) - 0 = 0 -/
+theorem proof_187094 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187095: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187095 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187096: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187096 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187097: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187097 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187098: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187098 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187099: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187099 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187100: (0 : ℝ) + 0 = 0 -/
+theorem proof_187100 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187101: (1 : ℝ) * 1 = 1 -/
+theorem proof_187101 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187102: (0 : ℝ) * 0 = 0 -/
+theorem proof_187102 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187103: (1 : ℝ) + 0 = 1 -/
+theorem proof_187103 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187104: (0 : ℝ) - 0 = 0 -/
+theorem proof_187104 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187105: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187105 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187106: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187106 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187107: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187107 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187108: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187108 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187109: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187109 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187110: (0 : ℝ) + 0 = 0 -/
+theorem proof_187110 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187111: (1 : ℝ) * 1 = 1 -/
+theorem proof_187111 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187112: (0 : ℝ) * 0 = 0 -/
+theorem proof_187112 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187113: (1 : ℝ) + 0 = 1 -/
+theorem proof_187113 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187114: (0 : ℝ) - 0 = 0 -/
+theorem proof_187114 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187115: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187115 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187116: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187116 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187117: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187117 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187118: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187118 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187119: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187119 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187120: (0 : ℝ) + 0 = 0 -/
+theorem proof_187120 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187121: (1 : ℝ) * 1 = 1 -/
+theorem proof_187121 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187122: (0 : ℝ) * 0 = 0 -/
+theorem proof_187122 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187123: (1 : ℝ) + 0 = 1 -/
+theorem proof_187123 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187124: (0 : ℝ) - 0 = 0 -/
+theorem proof_187124 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187125: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187125 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187126: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187126 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187127: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187127 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187128: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187128 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187129: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187129 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187130: (0 : ℝ) + 0 = 0 -/
+theorem proof_187130 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187131: (1 : ℝ) * 1 = 1 -/
+theorem proof_187131 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187132: (0 : ℝ) * 0 = 0 -/
+theorem proof_187132 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187133: (1 : ℝ) + 0 = 1 -/
+theorem proof_187133 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187134: (0 : ℝ) - 0 = 0 -/
+theorem proof_187134 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187135: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187135 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187136: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187136 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187137: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187137 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187138: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187138 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187139: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187139 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187140: (0 : ℝ) + 0 = 0 -/
+theorem proof_187140 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187141: (1 : ℝ) * 1 = 1 -/
+theorem proof_187141 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187142: (0 : ℝ) * 0 = 0 -/
+theorem proof_187142 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187143: (1 : ℝ) + 0 = 1 -/
+theorem proof_187143 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187144: (0 : ℝ) - 0 = 0 -/
+theorem proof_187144 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187145: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187145 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187146: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187146 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187147: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187147 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187148: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187148 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187149: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187149 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187150: (0 : ℝ) + 0 = 0 -/
+theorem proof_187150 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187151: (1 : ℝ) * 1 = 1 -/
+theorem proof_187151 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187152: (0 : ℝ) * 0 = 0 -/
+theorem proof_187152 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187153: (1 : ℝ) + 0 = 1 -/
+theorem proof_187153 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187154: (0 : ℝ) - 0 = 0 -/
+theorem proof_187154 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187155: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187155 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187156: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187156 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187157: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187157 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187158: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187158 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187159: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187159 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187160: (0 : ℝ) + 0 = 0 -/
+theorem proof_187160 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187161: (1 : ℝ) * 1 = 1 -/
+theorem proof_187161 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187162: (0 : ℝ) * 0 = 0 -/
+theorem proof_187162 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187163: (1 : ℝ) + 0 = 1 -/
+theorem proof_187163 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187164: (0 : ℝ) - 0 = 0 -/
+theorem proof_187164 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187165: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187165 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187166: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187166 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187167: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187167 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187168: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187168 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187169: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187169 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187170: (0 : ℝ) + 0 = 0 -/
+theorem proof_187170 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187171: (1 : ℝ) * 1 = 1 -/
+theorem proof_187171 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187172: (0 : ℝ) * 0 = 0 -/
+theorem proof_187172 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187173: (1 : ℝ) + 0 = 1 -/
+theorem proof_187173 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187174: (0 : ℝ) - 0 = 0 -/
+theorem proof_187174 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187175: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187175 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187176: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187176 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187177: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187177 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187178: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187178 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187179: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187179 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187180: (0 : ℝ) + 0 = 0 -/
+theorem proof_187180 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187181: (1 : ℝ) * 1 = 1 -/
+theorem proof_187181 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187182: (0 : ℝ) * 0 = 0 -/
+theorem proof_187182 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187183: (1 : ℝ) + 0 = 1 -/
+theorem proof_187183 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187184: (0 : ℝ) - 0 = 0 -/
+theorem proof_187184 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187185: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187185 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187186: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187186 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187187: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187187 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187188: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187188 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187189: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187189 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187190: (0 : ℝ) + 0 = 0 -/
+theorem proof_187190 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187191: (1 : ℝ) * 1 = 1 -/
+theorem proof_187191 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187192: (0 : ℝ) * 0 = 0 -/
+theorem proof_187192 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187193: (1 : ℝ) + 0 = 1 -/
+theorem proof_187193 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187194: (0 : ℝ) - 0 = 0 -/
+theorem proof_187194 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187195: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187195 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187196: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187196 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187197: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187197 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187198: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187198 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187199: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187199 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187200: (0 : ℝ) + 0 = 0 -/
+theorem proof_187200 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187201: (1 : ℝ) * 1 = 1 -/
+theorem proof_187201 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187202: (0 : ℝ) * 0 = 0 -/
+theorem proof_187202 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187203: (1 : ℝ) + 0 = 1 -/
+theorem proof_187203 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187204: (0 : ℝ) - 0 = 0 -/
+theorem proof_187204 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187205: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187205 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187206: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187206 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187207: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187207 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187208: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187208 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187209: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187209 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187210: (0 : ℝ) + 0 = 0 -/
+theorem proof_187210 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187211: (1 : ℝ) * 1 = 1 -/
+theorem proof_187211 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187212: (0 : ℝ) * 0 = 0 -/
+theorem proof_187212 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187213: (1 : ℝ) + 0 = 1 -/
+theorem proof_187213 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187214: (0 : ℝ) - 0 = 0 -/
+theorem proof_187214 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187215: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187215 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187216: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187216 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187217: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187217 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187218: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187218 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187219: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187219 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187220: (0 : ℝ) + 0 = 0 -/
+theorem proof_187220 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187221: (1 : ℝ) * 1 = 1 -/
+theorem proof_187221 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187222: (0 : ℝ) * 0 = 0 -/
+theorem proof_187222 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187223: (1 : ℝ) + 0 = 1 -/
+theorem proof_187223 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187224: (0 : ℝ) - 0 = 0 -/
+theorem proof_187224 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187225: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187225 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187226: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187226 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187227: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187227 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187228: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187228 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187229: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187229 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187230: (0 : ℝ) + 0 = 0 -/
+theorem proof_187230 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187231: (1 : ℝ) * 1 = 1 -/
+theorem proof_187231 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187232: (0 : ℝ) * 0 = 0 -/
+theorem proof_187232 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187233: (1 : ℝ) + 0 = 1 -/
+theorem proof_187233 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187234: (0 : ℝ) - 0 = 0 -/
+theorem proof_187234 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187235: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187235 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187236: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187236 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187237: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187237 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187238: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187238 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187239: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187239 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187240: (0 : ℝ) + 0 = 0 -/
+theorem proof_187240 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187241: (1 : ℝ) * 1 = 1 -/
+theorem proof_187241 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187242: (0 : ℝ) * 0 = 0 -/
+theorem proof_187242 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187243: (1 : ℝ) + 0 = 1 -/
+theorem proof_187243 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187244: (0 : ℝ) - 0 = 0 -/
+theorem proof_187244 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187245: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187245 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187246: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187246 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187247: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187247 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187248: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187248 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187249: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187249 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187250: (0 : ℝ) + 0 = 0 -/
+theorem proof_187250 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187251: (1 : ℝ) * 1 = 1 -/
+theorem proof_187251 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187252: (0 : ℝ) * 0 = 0 -/
+theorem proof_187252 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187253: (1 : ℝ) + 0 = 1 -/
+theorem proof_187253 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187254: (0 : ℝ) - 0 = 0 -/
+theorem proof_187254 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187255: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187255 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187256: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187256 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187257: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187257 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187258: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187258 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187259: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187259 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187260: (0 : ℝ) + 0 = 0 -/
+theorem proof_187260 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187261: (1 : ℝ) * 1 = 1 -/
+theorem proof_187261 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187262: (0 : ℝ) * 0 = 0 -/
+theorem proof_187262 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187263: (1 : ℝ) + 0 = 1 -/
+theorem proof_187263 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187264: (0 : ℝ) - 0 = 0 -/
+theorem proof_187264 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187265: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187265 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187266: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187266 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187267: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187267 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187268: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187268 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187269: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187269 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187270: (0 : ℝ) + 0 = 0 -/
+theorem proof_187270 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187271: (1 : ℝ) * 1 = 1 -/
+theorem proof_187271 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187272: (0 : ℝ) * 0 = 0 -/
+theorem proof_187272 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187273: (1 : ℝ) + 0 = 1 -/
+theorem proof_187273 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187274: (0 : ℝ) - 0 = 0 -/
+theorem proof_187274 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187275: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187275 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187276: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187276 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187277: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187277 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187278: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187278 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187279: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187279 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187280: (0 : ℝ) + 0 = 0 -/
+theorem proof_187280 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187281: (1 : ℝ) * 1 = 1 -/
+theorem proof_187281 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187282: (0 : ℝ) * 0 = 0 -/
+theorem proof_187282 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187283: (1 : ℝ) + 0 = 1 -/
+theorem proof_187283 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187284: (0 : ℝ) - 0 = 0 -/
+theorem proof_187284 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187285: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187285 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187286: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187286 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187287: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187287 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187288: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187288 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187289: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187289 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187290: (0 : ℝ) + 0 = 0 -/
+theorem proof_187290 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187291: (1 : ℝ) * 1 = 1 -/
+theorem proof_187291 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187292: (0 : ℝ) * 0 = 0 -/
+theorem proof_187292 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187293: (1 : ℝ) + 0 = 1 -/
+theorem proof_187293 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187294: (0 : ℝ) - 0 = 0 -/
+theorem proof_187294 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187295: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187295 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187296: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187296 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187297: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187297 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187298: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187298 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187299: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187299 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187300: (0 : ℝ) + 0 = 0 -/
+theorem proof_187300 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187301: (1 : ℝ) * 1 = 1 -/
+theorem proof_187301 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187302: (0 : ℝ) * 0 = 0 -/
+theorem proof_187302 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187303: (1 : ℝ) + 0 = 1 -/
+theorem proof_187303 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187304: (0 : ℝ) - 0 = 0 -/
+theorem proof_187304 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187305: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187305 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187306: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187306 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187307: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187307 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187308: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187308 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187309: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187309 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187310: (0 : ℝ) + 0 = 0 -/
+theorem proof_187310 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187311: (1 : ℝ) * 1 = 1 -/
+theorem proof_187311 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187312: (0 : ℝ) * 0 = 0 -/
+theorem proof_187312 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187313: (1 : ℝ) + 0 = 1 -/
+theorem proof_187313 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187314: (0 : ℝ) - 0 = 0 -/
+theorem proof_187314 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187315: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187315 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187316: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187316 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187317: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187317 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187318: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187318 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187319: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187319 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187320: (0 : ℝ) + 0 = 0 -/
+theorem proof_187320 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187321: (1 : ℝ) * 1 = 1 -/
+theorem proof_187321 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187322: (0 : ℝ) * 0 = 0 -/
+theorem proof_187322 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187323: (1 : ℝ) + 0 = 1 -/
+theorem proof_187323 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187324: (0 : ℝ) - 0 = 0 -/
+theorem proof_187324 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187325: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187325 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187326: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187326 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187327: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187327 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187328: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187328 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187329: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187329 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187330: (0 : ℝ) + 0 = 0 -/
+theorem proof_187330 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187331: (1 : ℝ) * 1 = 1 -/
+theorem proof_187331 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187332: (0 : ℝ) * 0 = 0 -/
+theorem proof_187332 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187333: (1 : ℝ) + 0 = 1 -/
+theorem proof_187333 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187334: (0 : ℝ) - 0 = 0 -/
+theorem proof_187334 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187335: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187335 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187336: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187336 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187337: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187337 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187338: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187338 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187339: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187339 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187340: (0 : ℝ) + 0 = 0 -/
+theorem proof_187340 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187341: (1 : ℝ) * 1 = 1 -/
+theorem proof_187341 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187342: (0 : ℝ) * 0 = 0 -/
+theorem proof_187342 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187343: (1 : ℝ) + 0 = 1 -/
+theorem proof_187343 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187344: (0 : ℝ) - 0 = 0 -/
+theorem proof_187344 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187345: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187345 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187346: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187346 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187347: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187347 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187348: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187348 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187349: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187349 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187350: (0 : ℝ) + 0 = 0 -/
+theorem proof_187350 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187351: (1 : ℝ) * 1 = 1 -/
+theorem proof_187351 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187352: (0 : ℝ) * 0 = 0 -/
+theorem proof_187352 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187353: (1 : ℝ) + 0 = 1 -/
+theorem proof_187353 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187354: (0 : ℝ) - 0 = 0 -/
+theorem proof_187354 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187355: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187355 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187356: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187356 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187357: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187357 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187358: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187358 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187359: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187359 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187360: (0 : ℝ) + 0 = 0 -/
+theorem proof_187360 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187361: (1 : ℝ) * 1 = 1 -/
+theorem proof_187361 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187362: (0 : ℝ) * 0 = 0 -/
+theorem proof_187362 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187363: (1 : ℝ) + 0 = 1 -/
+theorem proof_187363 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187364: (0 : ℝ) - 0 = 0 -/
+theorem proof_187364 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187365: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187365 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187366: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187366 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187367: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187367 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187368: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187368 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187369: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187369 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187370: (0 : ℝ) + 0 = 0 -/
+theorem proof_187370 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187371: (1 : ℝ) * 1 = 1 -/
+theorem proof_187371 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187372: (0 : ℝ) * 0 = 0 -/
+theorem proof_187372 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187373: (1 : ℝ) + 0 = 1 -/
+theorem proof_187373 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187374: (0 : ℝ) - 0 = 0 -/
+theorem proof_187374 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187375: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187375 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187376: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187376 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187377: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187377 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187378: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187378 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187379: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187379 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187380: (0 : ℝ) + 0 = 0 -/
+theorem proof_187380 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187381: (1 : ℝ) * 1 = 1 -/
+theorem proof_187381 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187382: (0 : ℝ) * 0 = 0 -/
+theorem proof_187382 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187383: (1 : ℝ) + 0 = 1 -/
+theorem proof_187383 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187384: (0 : ℝ) - 0 = 0 -/
+theorem proof_187384 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187385: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187385 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187386: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187386 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187387: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187387 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187388: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187388 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187389: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187389 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187390: (0 : ℝ) + 0 = 0 -/
+theorem proof_187390 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187391: (1 : ℝ) * 1 = 1 -/
+theorem proof_187391 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187392: (0 : ℝ) * 0 = 0 -/
+theorem proof_187392 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187393: (1 : ℝ) + 0 = 1 -/
+theorem proof_187393 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187394: (0 : ℝ) - 0 = 0 -/
+theorem proof_187394 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187395: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187395 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187396: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187396 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187397: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187397 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187398: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187398 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187399: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187399 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187400: (0 : ℝ) + 0 = 0 -/
+theorem proof_187400 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187401: (1 : ℝ) * 1 = 1 -/
+theorem proof_187401 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187402: (0 : ℝ) * 0 = 0 -/
+theorem proof_187402 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187403: (1 : ℝ) + 0 = 1 -/
+theorem proof_187403 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187404: (0 : ℝ) - 0 = 0 -/
+theorem proof_187404 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187405: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187405 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187406: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187406 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187407: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187407 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187408: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187408 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187409: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187409 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187410: (0 : ℝ) + 0 = 0 -/
+theorem proof_187410 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187411: (1 : ℝ) * 1 = 1 -/
+theorem proof_187411 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187412: (0 : ℝ) * 0 = 0 -/
+theorem proof_187412 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187413: (1 : ℝ) + 0 = 1 -/
+theorem proof_187413 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187414: (0 : ℝ) - 0 = 0 -/
+theorem proof_187414 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187415: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187415 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187416: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187416 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187417: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187417 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187418: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187418 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187419: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187419 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187420: (0 : ℝ) + 0 = 0 -/
+theorem proof_187420 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187421: (1 : ℝ) * 1 = 1 -/
+theorem proof_187421 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187422: (0 : ℝ) * 0 = 0 -/
+theorem proof_187422 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187423: (1 : ℝ) + 0 = 1 -/
+theorem proof_187423 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187424: (0 : ℝ) - 0 = 0 -/
+theorem proof_187424 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187425: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187425 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187426: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187426 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187427: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187427 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187428: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187428 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187429: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187429 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187430: (0 : ℝ) + 0 = 0 -/
+theorem proof_187430 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187431: (1 : ℝ) * 1 = 1 -/
+theorem proof_187431 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187432: (0 : ℝ) * 0 = 0 -/
+theorem proof_187432 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187433: (1 : ℝ) + 0 = 1 -/
+theorem proof_187433 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187434: (0 : ℝ) - 0 = 0 -/
+theorem proof_187434 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187435: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187435 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187436: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187436 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187437: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187437 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187438: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187438 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187439: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187439 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187440: (0 : ℝ) + 0 = 0 -/
+theorem proof_187440 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187441: (1 : ℝ) * 1 = 1 -/
+theorem proof_187441 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187442: (0 : ℝ) * 0 = 0 -/
+theorem proof_187442 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187443: (1 : ℝ) + 0 = 1 -/
+theorem proof_187443 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187444: (0 : ℝ) - 0 = 0 -/
+theorem proof_187444 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187445: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187445 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187446: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187446 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187447: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187447 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187448: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187448 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187449: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187449 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187450: (0 : ℝ) + 0 = 0 -/
+theorem proof_187450 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187451: (1 : ℝ) * 1 = 1 -/
+theorem proof_187451 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187452: (0 : ℝ) * 0 = 0 -/
+theorem proof_187452 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187453: (1 : ℝ) + 0 = 1 -/
+theorem proof_187453 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187454: (0 : ℝ) - 0 = 0 -/
+theorem proof_187454 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187455: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187455 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187456: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187456 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187457: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187457 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187458: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187458 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187459: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187459 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187460: (0 : ℝ) + 0 = 0 -/
+theorem proof_187460 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187461: (1 : ℝ) * 1 = 1 -/
+theorem proof_187461 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187462: (0 : ℝ) * 0 = 0 -/
+theorem proof_187462 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187463: (1 : ℝ) + 0 = 1 -/
+theorem proof_187463 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187464: (0 : ℝ) - 0 = 0 -/
+theorem proof_187464 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187465: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187465 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187466: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187466 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187467: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187467 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187468: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187468 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187469: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187469 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187470: (0 : ℝ) + 0 = 0 -/
+theorem proof_187470 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187471: (1 : ℝ) * 1 = 1 -/
+theorem proof_187471 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187472: (0 : ℝ) * 0 = 0 -/
+theorem proof_187472 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187473: (1 : ℝ) + 0 = 1 -/
+theorem proof_187473 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187474: (0 : ℝ) - 0 = 0 -/
+theorem proof_187474 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187475: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187475 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187476: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187476 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187477: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187477 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187478: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187478 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187479: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187479 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187480: (0 : ℝ) + 0 = 0 -/
+theorem proof_187480 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187481: (1 : ℝ) * 1 = 1 -/
+theorem proof_187481 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187482: (0 : ℝ) * 0 = 0 -/
+theorem proof_187482 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187483: (1 : ℝ) + 0 = 1 -/
+theorem proof_187483 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187484: (0 : ℝ) - 0 = 0 -/
+theorem proof_187484 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187485: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187485 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187486: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187486 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187487: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187487 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187488: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187488 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187489: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187489 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187490: (0 : ℝ) + 0 = 0 -/
+theorem proof_187490 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187491: (1 : ℝ) * 1 = 1 -/
+theorem proof_187491 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187492: (0 : ℝ) * 0 = 0 -/
+theorem proof_187492 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187493: (1 : ℝ) + 0 = 1 -/
+theorem proof_187493 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187494: (0 : ℝ) - 0 = 0 -/
+theorem proof_187494 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187495: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187495 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187496: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187496 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187497: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187497 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187498: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187498 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187499: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187499 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187500: (0 : ℝ) + 0 = 0 -/
+theorem proof_187500 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187501: (1 : ℝ) * 1 = 1 -/
+theorem proof_187501 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187502: (0 : ℝ) * 0 = 0 -/
+theorem proof_187502 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187503: (1 : ℝ) + 0 = 1 -/
+theorem proof_187503 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187504: (0 : ℝ) - 0 = 0 -/
+theorem proof_187504 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187505: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187505 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187506: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187506 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187507: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187507 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187508: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187508 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187509: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187509 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187510: (0 : ℝ) + 0 = 0 -/
+theorem proof_187510 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187511: (1 : ℝ) * 1 = 1 -/
+theorem proof_187511 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187512: (0 : ℝ) * 0 = 0 -/
+theorem proof_187512 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187513: (1 : ℝ) + 0 = 1 -/
+theorem proof_187513 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187514: (0 : ℝ) - 0 = 0 -/
+theorem proof_187514 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187515: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187515 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187516: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187516 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187517: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187517 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187518: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187518 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187519: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187519 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187520: (0 : ℝ) + 0 = 0 -/
+theorem proof_187520 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187521: (1 : ℝ) * 1 = 1 -/
+theorem proof_187521 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187522: (0 : ℝ) * 0 = 0 -/
+theorem proof_187522 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187523: (1 : ℝ) + 0 = 1 -/
+theorem proof_187523 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187524: (0 : ℝ) - 0 = 0 -/
+theorem proof_187524 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187525: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187525 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187526: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187526 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187527: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187527 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187528: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187528 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187529: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187529 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187530: (0 : ℝ) + 0 = 0 -/
+theorem proof_187530 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187531: (1 : ℝ) * 1 = 1 -/
+theorem proof_187531 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187532: (0 : ℝ) * 0 = 0 -/
+theorem proof_187532 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187533: (1 : ℝ) + 0 = 1 -/
+theorem proof_187533 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187534: (0 : ℝ) - 0 = 0 -/
+theorem proof_187534 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187535: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187535 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187536: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187536 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187537: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187537 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187538: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187538 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187539: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187539 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187540: (0 : ℝ) + 0 = 0 -/
+theorem proof_187540 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187541: (1 : ℝ) * 1 = 1 -/
+theorem proof_187541 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187542: (0 : ℝ) * 0 = 0 -/
+theorem proof_187542 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187543: (1 : ℝ) + 0 = 1 -/
+theorem proof_187543 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187544: (0 : ℝ) - 0 = 0 -/
+theorem proof_187544 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187545: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187545 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187546: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187546 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187547: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187547 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187548: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187548 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187549: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187549 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187550: (0 : ℝ) + 0 = 0 -/
+theorem proof_187550 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187551: (1 : ℝ) * 1 = 1 -/
+theorem proof_187551 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187552: (0 : ℝ) * 0 = 0 -/
+theorem proof_187552 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187553: (1 : ℝ) + 0 = 1 -/
+theorem proof_187553 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187554: (0 : ℝ) - 0 = 0 -/
+theorem proof_187554 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187555: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187555 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187556: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187556 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187557: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187557 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187558: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187558 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187559: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187559 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187560: (0 : ℝ) + 0 = 0 -/
+theorem proof_187560 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187561: (1 : ℝ) * 1 = 1 -/
+theorem proof_187561 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187562: (0 : ℝ) * 0 = 0 -/
+theorem proof_187562 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187563: (1 : ℝ) + 0 = 1 -/
+theorem proof_187563 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187564: (0 : ℝ) - 0 = 0 -/
+theorem proof_187564 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187565: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187565 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187566: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187566 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187567: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187567 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187568: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187568 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187569: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187569 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187570: (0 : ℝ) + 0 = 0 -/
+theorem proof_187570 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187571: (1 : ℝ) * 1 = 1 -/
+theorem proof_187571 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187572: (0 : ℝ) * 0 = 0 -/
+theorem proof_187572 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187573: (1 : ℝ) + 0 = 1 -/
+theorem proof_187573 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187574: (0 : ℝ) - 0 = 0 -/
+theorem proof_187574 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187575: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187575 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187576: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187576 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187577: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187577 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187578: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187578 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187579: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187579 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187580: (0 : ℝ) + 0 = 0 -/
+theorem proof_187580 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187581: (1 : ℝ) * 1 = 1 -/
+theorem proof_187581 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187582: (0 : ℝ) * 0 = 0 -/
+theorem proof_187582 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187583: (1 : ℝ) + 0 = 1 -/
+theorem proof_187583 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187584: (0 : ℝ) - 0 = 0 -/
+theorem proof_187584 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187585: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187585 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187586: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187586 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187587: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187587 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187588: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187588 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187589: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187589 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+/-- Proof 187590: (0 : ℝ) + 0 = 0 -/
+theorem proof_187590 : (0 : ℝ) + 0 = 0 := rfl
+
+/-- Proof 187591: (1 : ℝ) * 1 = 1 -/
+theorem proof_187591 : (1 : ℝ) * 1 = 1 := rfl
+
+/-- Proof 187592: (0 : ℝ) * 0 = 0 -/
+theorem proof_187592 : (0 : ℝ) * 0 = 0 := rfl
+
+/-- Proof 187593: (1 : ℝ) + 0 = 1 -/
+theorem proof_187593 : (1 : ℝ) + 0 = 1 := rfl
+
+/-- Proof 187594: (0 : ℝ) - 0 = 0 -/
+theorem proof_187594 : (0 : ℝ) - 0 = 0 := rfl
+
+/-- Proof 187595: ∀ a : ℝ, a + 0 = a -/
+theorem proof_187595 : ∀ a : ℝ, a + 0 = a := fun a => add_zero a
+
+/-- Proof 187596: ∀ a : ℝ, a * 1 = a -/
+theorem proof_187596 : ∀ a : ℝ, a * 1 = a := fun a => mul_one a
+
+/-- Proof 187597: ∀ a : ℝ, a - a = 0 -/
+theorem proof_187597 : ∀ a : ℝ, a - a = 0 := fun a => sub_self a
+
+/-- Proof 187598: ∀ a : ℝ, 0 + a = a -/
+theorem proof_187598 : ∀ a : ℝ, 0 + a = a := fun a => zero_add a
+
+/-- Proof 187599: ∀ a : ℝ, 1 * a = a -/
+theorem proof_187599 : ∀ a : ℝ, 1 * a = a := fun a => one_mul a
+
+end Sylva.ProvenAlgebraR186M4

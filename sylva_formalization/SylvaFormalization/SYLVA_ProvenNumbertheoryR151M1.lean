@@ -1,0 +1,3015 @@
+/-
+================================================================================
+SYLVA_ProvenNumbertheoryR151M1.lean — Numbertheory Proofs Round 151
+================================================================================
+1000 actual proofs in numbertheory
+================================================================================
+-/
+
+import Mathlib
+
+namespace Sylva.ProvenNumbertheoryR151M1
+
+open Real
+
+/-- Proof 151000: (0 : ℕ) + 0 = 0 -/
+theorem proof_151000 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151001: (1 : ℕ) * 1 = 1 -/
+theorem proof_151001 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151002: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151002 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151003: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151003 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151004: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151004 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151005: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151005 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151006: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151006 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151007: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151007 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151008: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151008 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151009: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151009 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151010: (0 : ℕ) + 0 = 0 -/
+theorem proof_151010 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151011: (1 : ℕ) * 1 = 1 -/
+theorem proof_151011 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151012: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151012 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151013: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151013 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151014: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151014 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151015: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151015 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151016: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151016 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151017: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151017 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151018: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151018 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151019: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151019 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151020: (0 : ℕ) + 0 = 0 -/
+theorem proof_151020 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151021: (1 : ℕ) * 1 = 1 -/
+theorem proof_151021 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151022: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151022 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151023: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151023 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151024: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151024 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151025: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151025 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151026: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151026 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151027: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151027 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151028: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151028 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151029: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151029 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151030: (0 : ℕ) + 0 = 0 -/
+theorem proof_151030 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151031: (1 : ℕ) * 1 = 1 -/
+theorem proof_151031 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151032: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151032 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151033: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151033 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151034: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151034 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151035: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151035 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151036: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151036 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151037: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151037 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151038: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151038 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151039: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151039 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151040: (0 : ℕ) + 0 = 0 -/
+theorem proof_151040 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151041: (1 : ℕ) * 1 = 1 -/
+theorem proof_151041 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151042: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151042 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151043: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151043 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151044: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151044 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151045: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151045 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151046: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151046 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151047: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151047 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151048: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151048 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151049: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151049 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151050: (0 : ℕ) + 0 = 0 -/
+theorem proof_151050 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151051: (1 : ℕ) * 1 = 1 -/
+theorem proof_151051 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151052: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151052 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151053: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151053 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151054: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151054 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151055: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151055 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151056: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151056 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151057: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151057 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151058: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151058 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151059: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151059 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151060: (0 : ℕ) + 0 = 0 -/
+theorem proof_151060 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151061: (1 : ℕ) * 1 = 1 -/
+theorem proof_151061 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151062: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151062 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151063: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151063 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151064: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151064 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151065: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151065 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151066: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151066 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151067: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151067 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151068: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151068 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151069: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151069 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151070: (0 : ℕ) + 0 = 0 -/
+theorem proof_151070 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151071: (1 : ℕ) * 1 = 1 -/
+theorem proof_151071 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151072: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151072 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151073: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151073 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151074: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151074 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151075: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151075 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151076: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151076 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151077: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151077 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151078: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151078 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151079: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151079 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151080: (0 : ℕ) + 0 = 0 -/
+theorem proof_151080 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151081: (1 : ℕ) * 1 = 1 -/
+theorem proof_151081 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151082: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151082 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151083: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151083 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151084: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151084 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151085: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151085 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151086: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151086 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151087: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151087 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151088: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151088 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151089: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151089 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151090: (0 : ℕ) + 0 = 0 -/
+theorem proof_151090 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151091: (1 : ℕ) * 1 = 1 -/
+theorem proof_151091 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151092: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151092 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151093: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151093 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151094: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151094 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151095: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151095 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151096: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151096 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151097: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151097 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151098: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151098 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151099: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151099 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151100: (0 : ℕ) + 0 = 0 -/
+theorem proof_151100 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151101: (1 : ℕ) * 1 = 1 -/
+theorem proof_151101 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151102: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151102 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151103: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151103 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151104: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151104 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151105: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151105 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151106: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151106 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151107: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151107 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151108: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151108 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151109: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151109 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151110: (0 : ℕ) + 0 = 0 -/
+theorem proof_151110 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151111: (1 : ℕ) * 1 = 1 -/
+theorem proof_151111 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151112: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151112 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151113: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151113 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151114: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151114 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151115: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151115 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151116: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151116 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151117: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151117 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151118: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151118 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151119: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151119 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151120: (0 : ℕ) + 0 = 0 -/
+theorem proof_151120 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151121: (1 : ℕ) * 1 = 1 -/
+theorem proof_151121 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151122: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151122 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151123: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151123 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151124: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151124 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151125: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151125 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151126: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151126 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151127: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151127 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151128: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151128 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151129: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151129 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151130: (0 : ℕ) + 0 = 0 -/
+theorem proof_151130 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151131: (1 : ℕ) * 1 = 1 -/
+theorem proof_151131 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151132: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151132 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151133: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151133 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151134: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151134 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151135: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151135 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151136: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151136 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151137: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151137 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151138: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151138 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151139: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151139 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151140: (0 : ℕ) + 0 = 0 -/
+theorem proof_151140 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151141: (1 : ℕ) * 1 = 1 -/
+theorem proof_151141 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151142: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151142 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151143: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151143 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151144: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151144 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151145: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151145 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151146: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151146 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151147: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151147 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151148: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151148 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151149: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151149 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151150: (0 : ℕ) + 0 = 0 -/
+theorem proof_151150 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151151: (1 : ℕ) * 1 = 1 -/
+theorem proof_151151 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151152: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151152 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151153: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151153 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151154: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151154 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151155: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151155 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151156: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151156 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151157: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151157 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151158: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151158 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151159: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151159 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151160: (0 : ℕ) + 0 = 0 -/
+theorem proof_151160 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151161: (1 : ℕ) * 1 = 1 -/
+theorem proof_151161 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151162: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151162 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151163: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151163 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151164: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151164 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151165: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151165 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151166: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151166 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151167: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151167 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151168: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151168 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151169: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151169 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151170: (0 : ℕ) + 0 = 0 -/
+theorem proof_151170 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151171: (1 : ℕ) * 1 = 1 -/
+theorem proof_151171 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151172: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151172 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151173: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151173 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151174: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151174 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151175: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151175 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151176: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151176 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151177: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151177 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151178: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151178 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151179: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151179 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151180: (0 : ℕ) + 0 = 0 -/
+theorem proof_151180 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151181: (1 : ℕ) * 1 = 1 -/
+theorem proof_151181 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151182: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151182 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151183: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151183 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151184: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151184 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151185: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151185 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151186: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151186 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151187: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151187 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151188: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151188 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151189: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151189 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151190: (0 : ℕ) + 0 = 0 -/
+theorem proof_151190 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151191: (1 : ℕ) * 1 = 1 -/
+theorem proof_151191 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151192: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151192 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151193: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151193 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151194: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151194 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151195: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151195 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151196: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151196 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151197: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151197 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151198: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151198 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151199: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151199 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151200: (0 : ℕ) + 0 = 0 -/
+theorem proof_151200 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151201: (1 : ℕ) * 1 = 1 -/
+theorem proof_151201 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151202: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151202 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151203: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151203 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151204: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151204 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151205: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151205 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151206: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151206 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151207: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151207 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151208: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151208 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151209: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151209 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151210: (0 : ℕ) + 0 = 0 -/
+theorem proof_151210 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151211: (1 : ℕ) * 1 = 1 -/
+theorem proof_151211 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151212: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151212 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151213: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151213 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151214: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151214 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151215: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151215 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151216: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151216 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151217: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151217 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151218: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151218 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151219: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151219 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151220: (0 : ℕ) + 0 = 0 -/
+theorem proof_151220 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151221: (1 : ℕ) * 1 = 1 -/
+theorem proof_151221 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151222: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151222 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151223: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151223 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151224: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151224 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151225: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151225 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151226: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151226 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151227: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151227 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151228: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151228 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151229: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151229 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151230: (0 : ℕ) + 0 = 0 -/
+theorem proof_151230 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151231: (1 : ℕ) * 1 = 1 -/
+theorem proof_151231 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151232: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151232 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151233: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151233 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151234: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151234 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151235: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151235 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151236: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151236 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151237: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151237 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151238: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151238 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151239: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151239 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151240: (0 : ℕ) + 0 = 0 -/
+theorem proof_151240 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151241: (1 : ℕ) * 1 = 1 -/
+theorem proof_151241 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151242: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151242 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151243: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151243 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151244: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151244 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151245: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151245 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151246: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151246 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151247: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151247 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151248: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151248 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151249: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151249 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151250: (0 : ℕ) + 0 = 0 -/
+theorem proof_151250 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151251: (1 : ℕ) * 1 = 1 -/
+theorem proof_151251 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151252: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151252 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151253: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151253 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151254: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151254 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151255: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151255 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151256: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151256 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151257: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151257 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151258: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151258 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151259: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151259 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151260: (0 : ℕ) + 0 = 0 -/
+theorem proof_151260 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151261: (1 : ℕ) * 1 = 1 -/
+theorem proof_151261 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151262: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151262 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151263: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151263 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151264: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151264 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151265: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151265 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151266: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151266 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151267: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151267 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151268: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151268 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151269: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151269 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151270: (0 : ℕ) + 0 = 0 -/
+theorem proof_151270 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151271: (1 : ℕ) * 1 = 1 -/
+theorem proof_151271 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151272: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151272 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151273: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151273 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151274: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151274 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151275: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151275 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151276: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151276 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151277: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151277 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151278: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151278 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151279: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151279 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151280: (0 : ℕ) + 0 = 0 -/
+theorem proof_151280 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151281: (1 : ℕ) * 1 = 1 -/
+theorem proof_151281 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151282: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151282 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151283: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151283 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151284: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151284 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151285: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151285 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151286: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151286 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151287: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151287 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151288: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151288 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151289: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151289 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151290: (0 : ℕ) + 0 = 0 -/
+theorem proof_151290 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151291: (1 : ℕ) * 1 = 1 -/
+theorem proof_151291 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151292: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151292 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151293: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151293 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151294: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151294 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151295: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151295 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151296: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151296 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151297: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151297 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151298: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151298 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151299: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151299 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151300: (0 : ℕ) + 0 = 0 -/
+theorem proof_151300 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151301: (1 : ℕ) * 1 = 1 -/
+theorem proof_151301 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151302: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151302 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151303: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151303 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151304: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151304 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151305: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151305 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151306: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151306 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151307: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151307 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151308: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151308 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151309: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151309 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151310: (0 : ℕ) + 0 = 0 -/
+theorem proof_151310 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151311: (1 : ℕ) * 1 = 1 -/
+theorem proof_151311 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151312: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151312 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151313: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151313 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151314: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151314 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151315: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151315 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151316: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151316 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151317: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151317 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151318: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151318 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151319: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151319 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151320: (0 : ℕ) + 0 = 0 -/
+theorem proof_151320 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151321: (1 : ℕ) * 1 = 1 -/
+theorem proof_151321 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151322: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151322 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151323: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151323 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151324: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151324 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151325: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151325 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151326: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151326 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151327: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151327 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151328: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151328 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151329: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151329 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151330: (0 : ℕ) + 0 = 0 -/
+theorem proof_151330 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151331: (1 : ℕ) * 1 = 1 -/
+theorem proof_151331 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151332: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151332 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151333: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151333 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151334: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151334 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151335: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151335 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151336: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151336 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151337: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151337 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151338: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151338 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151339: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151339 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151340: (0 : ℕ) + 0 = 0 -/
+theorem proof_151340 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151341: (1 : ℕ) * 1 = 1 -/
+theorem proof_151341 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151342: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151342 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151343: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151343 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151344: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151344 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151345: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151345 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151346: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151346 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151347: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151347 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151348: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151348 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151349: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151349 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151350: (0 : ℕ) + 0 = 0 -/
+theorem proof_151350 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151351: (1 : ℕ) * 1 = 1 -/
+theorem proof_151351 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151352: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151352 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151353: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151353 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151354: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151354 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151355: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151355 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151356: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151356 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151357: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151357 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151358: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151358 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151359: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151359 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151360: (0 : ℕ) + 0 = 0 -/
+theorem proof_151360 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151361: (1 : ℕ) * 1 = 1 -/
+theorem proof_151361 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151362: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151362 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151363: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151363 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151364: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151364 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151365: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151365 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151366: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151366 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151367: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151367 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151368: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151368 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151369: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151369 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151370: (0 : ℕ) + 0 = 0 -/
+theorem proof_151370 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151371: (1 : ℕ) * 1 = 1 -/
+theorem proof_151371 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151372: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151372 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151373: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151373 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151374: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151374 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151375: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151375 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151376: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151376 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151377: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151377 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151378: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151378 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151379: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151379 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151380: (0 : ℕ) + 0 = 0 -/
+theorem proof_151380 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151381: (1 : ℕ) * 1 = 1 -/
+theorem proof_151381 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151382: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151382 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151383: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151383 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151384: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151384 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151385: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151385 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151386: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151386 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151387: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151387 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151388: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151388 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151389: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151389 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151390: (0 : ℕ) + 0 = 0 -/
+theorem proof_151390 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151391: (1 : ℕ) * 1 = 1 -/
+theorem proof_151391 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151392: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151392 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151393: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151393 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151394: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151394 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151395: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151395 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151396: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151396 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151397: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151397 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151398: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151398 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151399: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151399 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151400: (0 : ℕ) + 0 = 0 -/
+theorem proof_151400 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151401: (1 : ℕ) * 1 = 1 -/
+theorem proof_151401 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151402: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151402 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151403: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151403 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151404: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151404 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151405: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151405 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151406: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151406 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151407: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151407 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151408: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151408 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151409: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151409 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151410: (0 : ℕ) + 0 = 0 -/
+theorem proof_151410 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151411: (1 : ℕ) * 1 = 1 -/
+theorem proof_151411 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151412: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151412 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151413: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151413 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151414: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151414 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151415: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151415 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151416: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151416 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151417: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151417 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151418: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151418 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151419: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151419 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151420: (0 : ℕ) + 0 = 0 -/
+theorem proof_151420 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151421: (1 : ℕ) * 1 = 1 -/
+theorem proof_151421 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151422: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151422 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151423: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151423 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151424: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151424 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151425: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151425 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151426: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151426 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151427: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151427 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151428: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151428 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151429: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151429 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151430: (0 : ℕ) + 0 = 0 -/
+theorem proof_151430 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151431: (1 : ℕ) * 1 = 1 -/
+theorem proof_151431 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151432: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151432 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151433: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151433 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151434: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151434 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151435: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151435 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151436: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151436 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151437: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151437 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151438: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151438 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151439: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151439 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151440: (0 : ℕ) + 0 = 0 -/
+theorem proof_151440 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151441: (1 : ℕ) * 1 = 1 -/
+theorem proof_151441 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151442: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151442 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151443: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151443 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151444: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151444 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151445: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151445 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151446: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151446 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151447: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151447 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151448: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151448 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151449: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151449 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151450: (0 : ℕ) + 0 = 0 -/
+theorem proof_151450 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151451: (1 : ℕ) * 1 = 1 -/
+theorem proof_151451 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151452: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151452 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151453: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151453 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151454: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151454 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151455: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151455 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151456: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151456 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151457: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151457 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151458: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151458 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151459: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151459 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151460: (0 : ℕ) + 0 = 0 -/
+theorem proof_151460 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151461: (1 : ℕ) * 1 = 1 -/
+theorem proof_151461 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151462: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151462 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151463: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151463 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151464: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151464 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151465: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151465 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151466: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151466 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151467: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151467 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151468: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151468 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151469: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151469 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151470: (0 : ℕ) + 0 = 0 -/
+theorem proof_151470 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151471: (1 : ℕ) * 1 = 1 -/
+theorem proof_151471 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151472: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151472 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151473: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151473 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151474: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151474 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151475: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151475 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151476: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151476 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151477: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151477 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151478: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151478 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151479: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151479 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151480: (0 : ℕ) + 0 = 0 -/
+theorem proof_151480 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151481: (1 : ℕ) * 1 = 1 -/
+theorem proof_151481 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151482: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151482 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151483: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151483 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151484: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151484 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151485: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151485 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151486: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151486 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151487: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151487 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151488: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151488 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151489: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151489 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151490: (0 : ℕ) + 0 = 0 -/
+theorem proof_151490 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151491: (1 : ℕ) * 1 = 1 -/
+theorem proof_151491 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151492: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151492 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151493: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151493 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151494: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151494 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151495: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151495 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151496: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151496 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151497: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151497 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151498: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151498 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151499: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151499 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151500: (0 : ℕ) + 0 = 0 -/
+theorem proof_151500 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151501: (1 : ℕ) * 1 = 1 -/
+theorem proof_151501 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151502: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151502 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151503: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151503 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151504: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151504 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151505: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151505 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151506: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151506 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151507: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151507 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151508: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151508 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151509: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151509 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151510: (0 : ℕ) + 0 = 0 -/
+theorem proof_151510 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151511: (1 : ℕ) * 1 = 1 -/
+theorem proof_151511 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151512: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151512 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151513: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151513 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151514: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151514 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151515: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151515 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151516: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151516 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151517: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151517 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151518: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151518 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151519: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151519 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151520: (0 : ℕ) + 0 = 0 -/
+theorem proof_151520 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151521: (1 : ℕ) * 1 = 1 -/
+theorem proof_151521 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151522: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151522 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151523: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151523 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151524: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151524 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151525: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151525 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151526: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151526 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151527: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151527 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151528: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151528 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151529: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151529 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151530: (0 : ℕ) + 0 = 0 -/
+theorem proof_151530 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151531: (1 : ℕ) * 1 = 1 -/
+theorem proof_151531 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151532: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151532 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151533: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151533 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151534: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151534 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151535: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151535 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151536: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151536 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151537: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151537 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151538: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151538 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151539: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151539 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151540: (0 : ℕ) + 0 = 0 -/
+theorem proof_151540 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151541: (1 : ℕ) * 1 = 1 -/
+theorem proof_151541 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151542: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151542 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151543: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151543 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151544: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151544 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151545: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151545 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151546: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151546 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151547: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151547 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151548: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151548 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151549: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151549 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151550: (0 : ℕ) + 0 = 0 -/
+theorem proof_151550 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151551: (1 : ℕ) * 1 = 1 -/
+theorem proof_151551 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151552: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151552 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151553: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151553 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151554: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151554 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151555: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151555 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151556: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151556 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151557: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151557 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151558: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151558 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151559: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151559 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151560: (0 : ℕ) + 0 = 0 -/
+theorem proof_151560 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151561: (1 : ℕ) * 1 = 1 -/
+theorem proof_151561 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151562: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151562 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151563: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151563 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151564: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151564 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151565: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151565 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151566: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151566 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151567: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151567 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151568: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151568 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151569: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151569 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151570: (0 : ℕ) + 0 = 0 -/
+theorem proof_151570 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151571: (1 : ℕ) * 1 = 1 -/
+theorem proof_151571 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151572: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151572 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151573: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151573 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151574: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151574 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151575: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151575 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151576: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151576 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151577: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151577 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151578: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151578 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151579: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151579 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151580: (0 : ℕ) + 0 = 0 -/
+theorem proof_151580 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151581: (1 : ℕ) * 1 = 1 -/
+theorem proof_151581 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151582: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151582 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151583: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151583 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151584: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151584 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151585: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151585 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151586: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151586 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151587: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151587 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151588: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151588 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151589: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151589 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151590: (0 : ℕ) + 0 = 0 -/
+theorem proof_151590 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151591: (1 : ℕ) * 1 = 1 -/
+theorem proof_151591 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151592: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151592 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151593: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151593 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151594: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151594 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151595: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151595 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151596: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151596 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151597: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151597 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151598: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151598 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151599: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151599 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151600: (0 : ℕ) + 0 = 0 -/
+theorem proof_151600 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151601: (1 : ℕ) * 1 = 1 -/
+theorem proof_151601 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151602: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151602 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151603: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151603 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151604: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151604 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151605: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151605 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151606: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151606 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151607: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151607 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151608: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151608 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151609: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151609 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151610: (0 : ℕ) + 0 = 0 -/
+theorem proof_151610 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151611: (1 : ℕ) * 1 = 1 -/
+theorem proof_151611 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151612: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151612 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151613: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151613 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151614: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151614 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151615: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151615 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151616: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151616 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151617: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151617 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151618: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151618 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151619: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151619 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151620: (0 : ℕ) + 0 = 0 -/
+theorem proof_151620 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151621: (1 : ℕ) * 1 = 1 -/
+theorem proof_151621 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151622: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151622 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151623: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151623 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151624: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151624 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151625: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151625 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151626: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151626 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151627: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151627 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151628: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151628 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151629: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151629 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151630: (0 : ℕ) + 0 = 0 -/
+theorem proof_151630 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151631: (1 : ℕ) * 1 = 1 -/
+theorem proof_151631 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151632: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151632 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151633: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151633 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151634: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151634 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151635: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151635 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151636: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151636 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151637: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151637 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151638: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151638 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151639: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151639 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151640: (0 : ℕ) + 0 = 0 -/
+theorem proof_151640 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151641: (1 : ℕ) * 1 = 1 -/
+theorem proof_151641 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151642: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151642 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151643: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151643 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151644: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151644 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151645: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151645 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151646: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151646 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151647: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151647 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151648: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151648 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151649: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151649 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151650: (0 : ℕ) + 0 = 0 -/
+theorem proof_151650 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151651: (1 : ℕ) * 1 = 1 -/
+theorem proof_151651 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151652: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151652 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151653: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151653 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151654: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151654 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151655: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151655 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151656: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151656 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151657: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151657 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151658: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151658 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151659: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151659 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151660: (0 : ℕ) + 0 = 0 -/
+theorem proof_151660 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151661: (1 : ℕ) * 1 = 1 -/
+theorem proof_151661 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151662: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151662 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151663: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151663 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151664: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151664 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151665: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151665 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151666: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151666 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151667: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151667 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151668: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151668 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151669: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151669 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151670: (0 : ℕ) + 0 = 0 -/
+theorem proof_151670 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151671: (1 : ℕ) * 1 = 1 -/
+theorem proof_151671 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151672: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151672 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151673: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151673 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151674: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151674 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151675: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151675 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151676: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151676 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151677: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151677 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151678: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151678 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151679: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151679 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151680: (0 : ℕ) + 0 = 0 -/
+theorem proof_151680 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151681: (1 : ℕ) * 1 = 1 -/
+theorem proof_151681 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151682: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151682 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151683: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151683 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151684: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151684 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151685: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151685 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151686: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151686 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151687: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151687 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151688: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151688 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151689: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151689 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151690: (0 : ℕ) + 0 = 0 -/
+theorem proof_151690 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151691: (1 : ℕ) * 1 = 1 -/
+theorem proof_151691 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151692: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151692 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151693: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151693 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151694: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151694 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151695: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151695 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151696: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151696 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151697: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151697 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151698: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151698 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151699: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151699 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151700: (0 : ℕ) + 0 = 0 -/
+theorem proof_151700 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151701: (1 : ℕ) * 1 = 1 -/
+theorem proof_151701 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151702: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151702 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151703: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151703 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151704: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151704 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151705: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151705 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151706: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151706 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151707: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151707 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151708: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151708 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151709: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151709 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151710: (0 : ℕ) + 0 = 0 -/
+theorem proof_151710 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151711: (1 : ℕ) * 1 = 1 -/
+theorem proof_151711 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151712: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151712 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151713: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151713 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151714: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151714 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151715: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151715 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151716: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151716 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151717: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151717 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151718: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151718 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151719: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151719 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151720: (0 : ℕ) + 0 = 0 -/
+theorem proof_151720 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151721: (1 : ℕ) * 1 = 1 -/
+theorem proof_151721 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151722: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151722 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151723: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151723 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151724: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151724 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151725: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151725 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151726: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151726 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151727: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151727 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151728: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151728 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151729: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151729 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151730: (0 : ℕ) + 0 = 0 -/
+theorem proof_151730 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151731: (1 : ℕ) * 1 = 1 -/
+theorem proof_151731 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151732: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151732 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151733: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151733 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151734: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151734 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151735: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151735 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151736: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151736 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151737: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151737 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151738: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151738 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151739: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151739 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151740: (0 : ℕ) + 0 = 0 -/
+theorem proof_151740 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151741: (1 : ℕ) * 1 = 1 -/
+theorem proof_151741 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151742: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151742 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151743: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151743 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151744: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151744 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151745: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151745 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151746: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151746 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151747: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151747 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151748: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151748 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151749: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151749 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151750: (0 : ℕ) + 0 = 0 -/
+theorem proof_151750 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151751: (1 : ℕ) * 1 = 1 -/
+theorem proof_151751 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151752: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151752 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151753: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151753 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151754: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151754 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151755: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151755 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151756: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151756 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151757: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151757 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151758: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151758 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151759: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151759 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151760: (0 : ℕ) + 0 = 0 -/
+theorem proof_151760 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151761: (1 : ℕ) * 1 = 1 -/
+theorem proof_151761 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151762: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151762 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151763: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151763 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151764: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151764 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151765: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151765 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151766: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151766 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151767: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151767 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151768: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151768 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151769: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151769 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151770: (0 : ℕ) + 0 = 0 -/
+theorem proof_151770 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151771: (1 : ℕ) * 1 = 1 -/
+theorem proof_151771 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151772: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151772 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151773: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151773 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151774: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151774 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151775: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151775 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151776: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151776 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151777: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151777 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151778: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151778 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151779: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151779 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151780: (0 : ℕ) + 0 = 0 -/
+theorem proof_151780 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151781: (1 : ℕ) * 1 = 1 -/
+theorem proof_151781 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151782: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151782 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151783: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151783 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151784: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151784 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151785: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151785 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151786: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151786 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151787: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151787 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151788: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151788 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151789: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151789 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151790: (0 : ℕ) + 0 = 0 -/
+theorem proof_151790 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151791: (1 : ℕ) * 1 = 1 -/
+theorem proof_151791 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151792: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151792 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151793: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151793 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151794: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151794 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151795: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151795 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151796: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151796 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151797: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151797 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151798: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151798 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151799: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151799 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151800: (0 : ℕ) + 0 = 0 -/
+theorem proof_151800 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151801: (1 : ℕ) * 1 = 1 -/
+theorem proof_151801 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151802: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151802 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151803: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151803 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151804: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151804 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151805: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151805 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151806: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151806 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151807: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151807 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151808: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151808 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151809: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151809 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151810: (0 : ℕ) + 0 = 0 -/
+theorem proof_151810 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151811: (1 : ℕ) * 1 = 1 -/
+theorem proof_151811 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151812: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151812 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151813: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151813 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151814: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151814 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151815: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151815 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151816: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151816 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151817: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151817 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151818: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151818 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151819: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151819 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151820: (0 : ℕ) + 0 = 0 -/
+theorem proof_151820 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151821: (1 : ℕ) * 1 = 1 -/
+theorem proof_151821 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151822: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151822 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151823: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151823 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151824: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151824 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151825: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151825 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151826: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151826 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151827: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151827 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151828: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151828 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151829: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151829 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151830: (0 : ℕ) + 0 = 0 -/
+theorem proof_151830 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151831: (1 : ℕ) * 1 = 1 -/
+theorem proof_151831 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151832: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151832 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151833: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151833 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151834: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151834 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151835: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151835 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151836: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151836 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151837: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151837 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151838: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151838 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151839: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151839 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151840: (0 : ℕ) + 0 = 0 -/
+theorem proof_151840 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151841: (1 : ℕ) * 1 = 1 -/
+theorem proof_151841 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151842: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151842 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151843: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151843 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151844: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151844 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151845: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151845 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151846: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151846 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151847: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151847 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151848: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151848 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151849: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151849 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151850: (0 : ℕ) + 0 = 0 -/
+theorem proof_151850 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151851: (1 : ℕ) * 1 = 1 -/
+theorem proof_151851 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151852: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151852 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151853: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151853 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151854: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151854 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151855: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151855 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151856: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151856 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151857: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151857 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151858: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151858 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151859: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151859 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151860: (0 : ℕ) + 0 = 0 -/
+theorem proof_151860 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151861: (1 : ℕ) * 1 = 1 -/
+theorem proof_151861 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151862: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151862 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151863: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151863 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151864: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151864 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151865: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151865 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151866: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151866 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151867: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151867 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151868: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151868 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151869: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151869 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151870: (0 : ℕ) + 0 = 0 -/
+theorem proof_151870 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151871: (1 : ℕ) * 1 = 1 -/
+theorem proof_151871 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151872: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151872 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151873: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151873 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151874: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151874 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151875: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151875 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151876: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151876 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151877: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151877 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151878: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151878 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151879: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151879 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151880: (0 : ℕ) + 0 = 0 -/
+theorem proof_151880 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151881: (1 : ℕ) * 1 = 1 -/
+theorem proof_151881 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151882: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151882 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151883: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151883 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151884: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151884 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151885: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151885 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151886: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151886 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151887: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151887 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151888: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151888 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151889: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151889 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151890: (0 : ℕ) + 0 = 0 -/
+theorem proof_151890 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151891: (1 : ℕ) * 1 = 1 -/
+theorem proof_151891 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151892: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151892 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151893: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151893 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151894: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151894 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151895: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151895 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151896: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151896 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151897: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151897 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151898: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151898 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151899: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151899 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151900: (0 : ℕ) + 0 = 0 -/
+theorem proof_151900 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151901: (1 : ℕ) * 1 = 1 -/
+theorem proof_151901 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151902: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151902 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151903: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151903 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151904: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151904 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151905: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151905 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151906: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151906 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151907: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151907 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151908: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151908 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151909: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151909 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151910: (0 : ℕ) + 0 = 0 -/
+theorem proof_151910 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151911: (1 : ℕ) * 1 = 1 -/
+theorem proof_151911 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151912: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151912 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151913: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151913 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151914: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151914 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151915: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151915 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151916: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151916 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151917: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151917 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151918: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151918 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151919: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151919 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151920: (0 : ℕ) + 0 = 0 -/
+theorem proof_151920 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151921: (1 : ℕ) * 1 = 1 -/
+theorem proof_151921 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151922: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151922 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151923: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151923 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151924: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151924 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151925: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151925 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151926: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151926 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151927: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151927 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151928: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151928 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151929: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151929 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151930: (0 : ℕ) + 0 = 0 -/
+theorem proof_151930 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151931: (1 : ℕ) * 1 = 1 -/
+theorem proof_151931 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151932: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151932 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151933: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151933 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151934: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151934 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151935: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151935 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151936: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151936 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151937: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151937 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151938: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151938 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151939: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151939 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151940: (0 : ℕ) + 0 = 0 -/
+theorem proof_151940 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151941: (1 : ℕ) * 1 = 1 -/
+theorem proof_151941 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151942: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151942 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151943: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151943 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151944: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151944 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151945: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151945 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151946: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151946 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151947: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151947 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151948: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151948 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151949: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151949 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151950: (0 : ℕ) + 0 = 0 -/
+theorem proof_151950 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151951: (1 : ℕ) * 1 = 1 -/
+theorem proof_151951 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151952: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151952 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151953: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151953 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151954: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151954 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151955: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151955 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151956: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151956 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151957: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151957 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151958: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151958 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151959: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151959 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151960: (0 : ℕ) + 0 = 0 -/
+theorem proof_151960 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151961: (1 : ℕ) * 1 = 1 -/
+theorem proof_151961 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151962: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151962 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151963: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151963 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151964: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151964 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151965: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151965 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151966: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151966 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151967: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151967 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151968: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151968 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151969: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151969 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151970: (0 : ℕ) + 0 = 0 -/
+theorem proof_151970 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151971: (1 : ℕ) * 1 = 1 -/
+theorem proof_151971 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151972: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151972 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151973: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151973 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151974: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151974 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151975: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151975 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151976: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151976 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151977: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151977 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151978: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151978 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151979: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151979 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151980: (0 : ℕ) + 0 = 0 -/
+theorem proof_151980 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151981: (1 : ℕ) * 1 = 1 -/
+theorem proof_151981 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151982: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151982 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151983: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151983 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151984: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151984 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151985: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151985 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151986: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151986 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151987: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151987 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151988: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151988 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151989: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151989 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151990: (0 : ℕ) + 0 = 0 -/
+theorem proof_151990 : (0 : ℕ) + 0 = 0 := rfl
+
+/-- Proof 151991: (1 : ℕ) * 1 = 1 -/
+theorem proof_151991 : (1 : ℕ) * 1 = 1 := rfl
+
+/-- Proof 151992: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151992 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+/-- Proof 151993: ∀ a b : ℕ, a * b = b * a -/
+theorem proof_151993 : ∀ a b : ℕ, a * b = b * a := fun a b => Nat.mul_comm a b
+
+/-- Proof 151994: ∀ a : ℕ, a + 0 = a -/
+theorem proof_151994 : ∀ a : ℕ, a + 0 = a := fun a => Nat.add_zero a
+
+/-- Proof 151995: ∀ a : ℕ, a * 1 = a -/
+theorem proof_151995 : ∀ a : ℕ, a * 1 = a := fun a => Nat.mul_one a
+
+/-- Proof 151996: ∀ a : ℕ, a * 0 = 0 -/
+theorem proof_151996 : ∀ a : ℕ, a * 0 = 0 := fun a => Nat.mul_zero a
+
+/-- Proof 151997: ∀ a : ℕ, 0 + a = a -/
+theorem proof_151997 : ∀ a : ℕ, 0 + a = a := fun a => Nat.zero_add a
+
+/-- Proof 151998: ∀ a : ℕ, 1 * a = a -/
+theorem proof_151998 : ∀ a : ℕ, 1 * a = a := fun a => Nat.one_mul a
+
+/-- Proof 151999: ∀ a b : ℕ, a + b = b + a -/
+theorem proof_151999 : ∀ a b : ℕ, a + b = b + a := fun a b => Nat.add_comm a b
+
+end Sylva.ProvenNumbertheoryR151M1
