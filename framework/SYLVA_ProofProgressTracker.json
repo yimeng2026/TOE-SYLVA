@@ -1,8 +1,7 @@
 {
-  "version": "v10.43",
-  "total_theorems": 1231258,
-  "proven": 625128,
+  "version": "v10.44",
+  "total_theorems": 1351258,
+  "proven": 745128,
   "unproven": 606130,
-  "percentage": 50.77,
-  "modules_generated": 600
+  "percentage": 55.14
 }
