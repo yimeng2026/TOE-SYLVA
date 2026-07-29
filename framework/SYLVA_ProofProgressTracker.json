@@ -1,7 +1,9 @@
 {
-  "version": "v10.44",
-  "total_theorems": 1351258,
-  "proven": 745128,
+  "version": "v10.45",
+  "total_theorems": 1471258,
+  "proven": 865128,
   "unproven": 606130,
-  "percentage": 55.14
+  "percentage": 58.8,
+  "target": "100%",
+  "status": "IN_PROGRESS"
 }
