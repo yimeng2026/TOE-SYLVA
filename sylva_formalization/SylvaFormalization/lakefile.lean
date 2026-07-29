@@ -22048,4 +22048,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_TypeIIBStringDeep,
     `SYLVA_TypeIStringDeep,
     `SYLVA_TypeTheoryDeep2,
+    `SYLVA_ProvenLayer1,
+    `SYLVA_ProvenLayer2,
+    `SYLVA_ProvenLayer3,
   ]
