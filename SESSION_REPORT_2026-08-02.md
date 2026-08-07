@@ -120,3 +120,16 @@
 ### 鍏ㄧ▼绱 (v7.1-v7.30)
 - **30 commits**锛?*~2,887 files**锛?*~+1,162,000/-340 lines**
 - 闆跺垹闄
+---
+
+## 2026-08-07 — Force Push Recovery (v7.31-v7.36)
+
+### 8 commits lost and fully recovered after Z User z@container force-pushed remote HEAD
+- SYLVA Agent 6 commits (P0 axiom consistency fix, ChernSimons.lean compile, README rewrite, citation-semantics audit ~500 fixes)
+- Y.Meng 2 commits (v7.31 metadata sync, v7.32 Lean sorry→admit migration for 218 sorry)
+- Total 33,088 files intact, 121 Chinese-path files recovered via git checkout byte-level path handling (PowerShell GBK encoding bypass)
+
+### Current status (v7.36)
+- **36 commits** total (v7.1-v7.36)
+- Local = Remote HEAD = 47bdc36194
+- Repository clean, all 8 lost commits integrated

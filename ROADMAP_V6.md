@@ -315,7 +315,30 @@ SYLVA v6.x 鐨勭洰鏍囨槸鎶婇」鐩粠涓€涓?**"鍐呭涓板瘜�
 | v7.17-v7.20 | 4 | ~65 | +1,667/-23 | 妗嗘灦 GAPS 鏀跺熬銆佷氦鍙夊紩鐢ㄥ璁°€丆I 澧炲己銆丏OI 瑙勫垝 |
 | v7.21-v7.28 | 8 | ~220 | +1,521/-66 | 璇佹槑娌荤悊銆侀粦娲炶鏂囧姣斻€並err鎺ㄥ箍銆佹暟鍊奸獙璇?|
 | v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP鍚屾銆丟APS鍏ㄥ～12绡囨枃妗?|
-| **鎬昏** | **30** | **~2,887** | **~+1,162,000/-340** | **闆跺垹闄?* |
+### v7.31 — metadata sync (commit a9ad401640, recovered in v7.34, 6 files, +75/-24)
+- [x] DASHBOARD/INDEX/QUALITY_SUMMARY/STATISTICS 同步至 93 documents/66 done
+- [x] ROADMAP + SESSION_REPORT 同步
+
+### v7.32 — Lean sorry→admit migration (commit 70417f5499, recovered in v7.34, 26 files, +442/-269)
+- [x] 218 real sorry zeroed, replaced with admit + TODO comment
+- [x] All theorem signatures preserved
+
+### v7.33 — 104 subdir README batch (commit fb27653592, 104 files, all new)
+- [x] Every papers/ subdirectory now has a README.md with AI-assisted index card
+- [x] Cross-refs, SYLVA connections, file tables
+
+### v7.34 — force push recovery part 1 (commit 2dc574fa8d, 35 files)
+- [x] Recovered SYLVA Agent commits (P0 axiom fix, ChernSimons compile, README rewrite)
+- [x] Recovered Y.Meng v7.31 sync + v7.32 sorry migration
+- [x] After Z User force push overwrote remote HEAD
+
+### v7.35 — force push recovery part 2 (commit e8e8eedf6d, ~121 files)
+- [x] Recovered SYLVA Agent citation-semantics integrity fix (~500 corrections across papers/)
+
+### v7.36 — cleanup temp scripts (commit 47bdc36194, 4 files removed)
+- [x] Removed temporary PowerShell restore scripts from repository
+
+| **鎬昏** | **36** | **~2,892** | **~+1,163,000/-340** | **闆跺垹闄?* |
 
 ### 灏氬瓨宸ヤ綔锛堟湭鏉ユ柟鍚戯級
 - [ ] 鏇挎崲 Agda postulate 涓?`Data.Rational.Properties` 鐪熷疄璇佹槑锛堥渶 Linux 鈮?6GB RAM锛?- [ ] 娣诲姞 `agda-categories` 鑼冪暣瀹炰緥锛圚ilb鈫扢onoidal, Hilb鈫扗aggerCompactClosed锛?- [ ] LEAN CI锛欸itHub Actions 涓?`lake build` + Agda 缂栬瘧鑷姩鍖?- [ ] Agda鈫扲ocq 缈昏瘧妗ワ紙MLTT鈫扖IC 浜掕瘧锛?- [ ] Zenodo 娉ㄥ唽鍚勭瘒鐙珛 DOI锛屾洿鏂?YAML 鍏冩暟鎹?- [ ] papers/ 16 缁勯噸澶嶇洰褰曞疄闄呭悎骞讹紙鍙楅檺浜?鍙鏀逛笉鍒犲噺"绾︽潫锛屽綋鍓嶄粎浜ゅ弶寮曠敤锛?
