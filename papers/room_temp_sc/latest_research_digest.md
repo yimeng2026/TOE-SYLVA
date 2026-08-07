@@ -242,7 +242,7 @@ LK-99 在 2023 年 7 月引发全球轰动，但随后数月内迅速被证伪�
 | 字段 | 内容 |
 |------|------|
 | **标题** | Optical probes of two-component pairing states in transition metal dichalcogenides |
-| **作者** | Roy, Siegl, Liu, Shaffer, Margalit 等 |
+| **作者** | Sánchez-Martínez, Muñoz-Segovia, de Juan |
 | **来源** | arXiv:2501.10085 (2025) |
 | **关键结论** | 在过渡金属硫族化合物（TMD）中，发现 E' 配对通道（双分量序参量）支持手性和向列基态。Ising 自旋轨道耦合下，Mz-偶宇称配对将系统置于拓扑类 AIII，具有 Z 不变量。 |
 

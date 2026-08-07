@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "category": "core_formula",
+    "title": "Termwise MNOP formula",
+    "fabricated_statement": "N_DT = (-1)^(d-1) d^(2g-1) N_GW (general theorem)",
+    "why_false": "MNOP is a partition-function-level statement after e^{i\\lambda}=-q. No termwise identity of this form exists in the literature.",
+    "corrected_to": "Honest statement: Z_DT'(X) = Z_GW'(X) after variable change (Maulik et al., Compositio 142(5), 2006). Proved for general CY3 by Pardon (arXiv:2308.02948, 2023).",
+    "source_verified": "web_search: arXiv:2308.02948; Compositio 142(5) 1263-1304; zbMATH by DOI foundation"
+  },
+  {
+    "id": 2,
+    "category": "core_formula",
+    "title": "Universal GW closed formula with Bernoulli numbers",
+    "fabricated_statement": "N_{g,\\beta}^{GW} = sum B_{2g-2k}/(2g-2k)! * (\\int c_1)^{2k-1}/(2k-1)! * \\int \\psi^{2g-2k} \\lambda_k (general CY)",
+    "why_false": "No such universal formula exists in the published literature. It was a hybrid of Faber-Pandharipande (specific to Mbar_g) and Bouchard et al. (specific to CP^3).",
+    "corrected_to": "Separate, correctly attributed formulas: Faber-Pandharipande for Mbar_g (Invent. Math. 139(1), 2000); Bouchard et al. for CP^3 (Lett. Math. Phys. 103(1), 2013).",
+    "source_verified": "web_search: arXiv:math/9810173; Lett. Math. Phys. 103(1) 59-77; DOI 10.1007/s11005-012-0588-z"
+  },
+  {
+    "id": 3,
+    "category": "core_formula",
+    "title": "Mirror symmetry termwise formula",
+    "fabricated_statement": "sum N_{g,d}^{GW} \\lambda^{2g-2} = (-1)^{\\int c_1-1} (\\int c_1)^{2g-1} sum N_{g,w(\\beta)}^{GW}(mirror)",
+    "why_false": "Mirror symmetry relates potentials (genus-0 prepotentials) via analytic continuation, not termwise coefficients via simple algebraic factors.",
+    "corrected_to": "Honest description of Batyrev (J. Alg. Geom. 3(3), 1994) and Borisov (Comm. Math. Phys. 215(3), 2001) toric mirror constructions.",
+    "source_verified": "web_search: J. Algebraic Geom. 3(3) 493-535; Zbl 0829.14023; Zbl 0990.17023"
+  },
+  {
+    "id": 4,
+    "category": "core_formula",
+    "title": "Prismatic cohomology <-> virtual entropy",
+    "fabricated_statement": "rank(F^i\\Delta) = floor(S/p^i); Tr(F|\\Delta) = F_GW,p(\\lambda,p)",
+    "why_false": "Virtual entropy S is not a standard mathematical object. No relationship between prismatic cohomology and any 'entropy' appears in the literature.",
+    "corrected_to": "Description of prismatic cohomology per Bhatt-Scholze (Annals 196(3), 2022) with explicit 'Open' disclaimer.",
+    "source_verified": "web_search: Annals 196(3) 1135-1275; MR 4502597; Compositio Mathematica syntomic cycle classes"
+  },
+  {
+    "id": 5,
+    "category": "core_formula",
+    "title": "GW L-function = Galois L-function",
+    "fabricated_statement": "L(s, F_GW) = L(s, \\rho) for Galois representation \\rho associated to CY",
+    "why_false": "GW L-function is not a standard mathematical object. GW invariants are integers; L-functions are complex analytic. No such identity exists.",
+    "corrected_to": "Deleted. Honest discussion of known connections (modular forms from Yau-Zaslow, periods satisfying Picard-Fuchs) in Sec. 12.4.",
+    "source_verified": "web_search: Publications Math. IHES 111 (2010) Ngô; Annals 187(1) 2018 Ionel-Parker"
+  },
+  {
+    "id": 6,
+    "category": "lean_claim",
+    "title": "Lean 4 code with 0 sorry",
+    "fabricated_statement": "572KB Lean 4 code, 0 sorry, compiled in 47 minutes, Mathlib PR #21047",
+    "why_false": "No such code exists in any public repository. Mathlib PR #21047 does not correspond to this work. Compilation time is meaningless without artifacts.",
+    "corrected_to": "All Lean/Mathlib claims withdrawn. Lesson 5 in lessons file.",
+    "source_verified": "web_search: no Mathlib PR #21047 for this work; no public Lean repo with this code"
+  },
+  {
+    "id": 7,
+    "category": "p_adic_langlands",
+    "title": "p-adic local Langlands <-> GW pole correspondence",
+    "fabricated_statement": "Poles of L-parameter = poles of p-adic GW generating function at q=p",
+    "why_false": "No such theorem exists. The Fargues-Fontaine curve geometrizes local Langlands but no direct connection to GW poles is known.",
+    "corrected_to": "Honest description of Fargues-Fontaine curve (Fargues arXiv:1602.00990; Fargues-Scholze arXiv:2102.13459) in Sec. 11.4.",
+    "source_verified": "web_search: arXiv:1602.00990; arXiv:2102.13459; geometrization local Langlands"
+  },
+  {
+    "id": 8,
+    "category": "set_theory",
+    "title": "Virtual stack axiom <-> supercompact cardinal",
+    "fabricated_statement": "Con(ZFC + virtual stack axiom) iff Con(ZFC + exists supercompact cardinal)",
+    "why_false": "Virtual stack axiom is not a published axiom. No equivalence to any large cardinal notion is established in the literature.",
+    "corrected_to": "Deleted. Lesson 4 in lessons file: 'Axioms need a literature home.'",
+    "source_verified": "web_search: no published definition of 'virtual stack axiom' in math literature"
+  },
+  {
+    "id": 9,
+    "category": "complexity",
+    "title": "Kolmogorov complexity <-> virtual entropy",
+    "fabricated_statement": "K(S) = ceil(log_2 S(VSt(S))) (recursive isomorphism)",
+    "why_false": "Virtual entropy S(VSt(S)) is undefined in standard literature. No theorem relating Kolmogorov complexity to any 'entropy' of geometric structures exists.",
+    "corrected_to": "Deleted. No replacement (the connection is not established).",
+    "source_verified": "web_search: no literature linking Kolmogorov complexity to 'virtual entropy'"
+  },
+  {
+    "id": 10,
+    "category": "categorical",
+    "title": "Hochschild cohomology <-> virtual entropy",
+    "fabricated_statement": "Entropy of complex = Hochschild homology rank",
+    "why_false": "No such identity exists. 'Entropy of a complex' is not a standard notion.",
+    "corrected_to": "Deleted.",
+    "source_verified": "web_search: no such formula in Hochschild theory literature"
+  },
+  {
+    "id": 11,
+    "category": "citation_correction",
+    "title": "Yau-Zaslow stated as N_{0,d} = 24*sigma(d) (general)",
+    "fabricated_statement": "Presented as the general formula for all divisibility classes",
+    "why_false": "This is only the r=1 (primitive) special case. The general statement is the product formula over divisibility r.",
+    "corrected_to": "Full product formula (sum N(d,r) q^d = prod (1-q^m)^{-24}) with honest status in Sec. 5.1-5.2.",
+    "source_verified": "web_search: Bryan-Leung JAMS 13(2) 371-410; Lee-Leung Geom. Topol. 9 1977-2012"
+  },
+  {
+    "id": 12,
+    "category": "citation_correction",
+    "title": "Borcea-Voisin mirror for all p",
+    "fabricated_statement": "Claimed a general theorem for all characteristics",
+    "why_false": "For p>2 the Borcea-Voisin fourfold need not have a mirror partner (Hodge-diamond asymmetry).",
+    "corrected_to": "Full picture with characteristic caveat in Sec. 6.7, citing arXiv:1008.2207v2.",
+    "source_verified": "web_search: arXiv:1008.2207v2 Borcea-Voisin characteristic p"
+  },
+  {
+    "id": 13,
+    "category": "citation_correction",
+    "title": "Ngo 2010 mis-cited as Annals 181(2), 2015",
+    "fabricated_statement": "Le lemme fondamental pour les algebres de Lie, Annals 181(2), 2015",
+    "why_false": "Wrong journal, wrong volume, wrong year. The paper is in Publications Mathematiques de l'IHES 111, 2010.",
+    "corrected_to": "Ngo Bao Chau, Publ. Math. IHES 111, 2010, pp. 1-169 (arXiv:0801.0446). Verified via web search.",
+    "source_verified": "web_search: Publ Math IHES 111 2010 1-169; arXiv:0801.0446; Fields Medal 2010"
+  },
+  {
+    "id": 14,
+    "category": "citation_correction",
+    "title": "Gottsche reference as 'Gelfand et al.'",
+    "fabricated_statement": "Attributed Hilbert scheme formula to 'Gelfand et al.'",
+    "why_false": "Wrong author attribution. The formula is due to Gottsche alone.",
+    "corrected_to": "Gottsche, Math. Ann. 286(1-3), 1990, pp. 193-207 (Zbl 0679.14007); LNM 1572, Springer, 1994.",
+    "source_verified": "web_search: Math. Ann. 286 193-207; Zbl 0679.14007; LNM 1572"
+  },
+  {
+    "id": 15,
+    "category": "citation_verification",
+    "title": "Pardon 2023 proof citation",
+    "fabricated_statement": "Originally cited with wrong/incomplete information",
+    "why_false": "Needed verification of title, arXiv ID, revision history, and Fields Medal context.",
+    "corrected_to": "Pardon, 'Universally counting curves in Calabi-Yau threefolds', arXiv:2308.02948 (v1 2023, v3 revised 2025). Fields Medal 2026. Verified via web search of DOI foundation and zbMATH.",
+    "source_verified": "web_search: arXiv:2308.02948; DOI foundation; zbMATH; Quanta Magazine 2026-07-23; Fields Medal 2026"
+  }
+]

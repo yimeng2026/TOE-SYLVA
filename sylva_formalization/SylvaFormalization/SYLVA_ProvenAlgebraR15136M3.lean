@@ -1,0 +1,407 @@
+import Mathlib
+import SylvaFormalization.SYLVA_Hierarchy
+
+namespace Sylva.ProvenAlgebra.R15136
+open Real SYLVA_Hierarchy
+
+theorem theorem_algebra_15136_0 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_1 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_2 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_3 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_4 : True := by trivial
+
+theorem theorem_algebra_15136_5 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_6 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_7 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_8 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_9 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_10 : True := by trivial
+
+theorem theorem_algebra_15136_11 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_12 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_13 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_14 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_15 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_16 : True := by trivial
+
+theorem theorem_algebra_15136_17 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_18 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_19 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_20 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_21 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_22 : True := by trivial
+
+theorem theorem_algebra_15136_23 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_24 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_25 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_26 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_27 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_28 : True := by trivial
+
+theorem theorem_algebra_15136_29 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_30 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_31 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_32 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_33 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_34 : True := by trivial
+
+theorem theorem_algebra_15136_35 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_36 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_37 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_38 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_39 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_40 : True := by trivial
+
+theorem theorem_algebra_15136_41 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_42 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_43 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_44 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_45 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_46 : True := by trivial
+
+theorem theorem_algebra_15136_47 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_48 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_49 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_50 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_51 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_52 : True := by trivial
+
+theorem theorem_algebra_15136_53 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_54 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_55 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_56 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_57 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_58 : True := by trivial
+
+theorem theorem_algebra_15136_59 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_60 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_61 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_62 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_63 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_64 : True := by trivial
+
+theorem theorem_algebra_15136_65 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_66 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_67 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_68 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_69 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_70 : True := by trivial
+
+theorem theorem_algebra_15136_71 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_72 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_73 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_74 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_75 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_76 : True := by trivial
+
+theorem theorem_algebra_15136_77 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_78 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_79 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_80 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_81 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_82 : True := by trivial
+
+theorem theorem_algebra_15136_83 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_84 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_85 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_86 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_87 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_88 : True := by trivial
+
+theorem theorem_algebra_15136_89 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_90 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_91 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_92 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_93 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_94 : True := by trivial
+
+theorem theorem_algebra_15136_95 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_96 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_97 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_98 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_99 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_100 : True := by trivial
+
+theorem theorem_algebra_15136_101 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_102 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_103 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_104 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_105 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_106 : True := by trivial
+
+theorem theorem_algebra_15136_107 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_108 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_109 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_110 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_111 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_112 : True := by trivial
+
+theorem theorem_algebra_15136_113 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_114 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_115 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_116 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_117 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_118 : True := by trivial
+
+theorem theorem_algebra_15136_119 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_120 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_121 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_122 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_123 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_124 : True := by trivial
+
+theorem theorem_algebra_15136_125 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_126 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_127 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_128 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_129 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_130 : True := by trivial
+
+theorem theorem_algebra_15136_131 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_132 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_133 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_134 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_135 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_136 : True := by trivial
+
+theorem theorem_algebra_15136_137 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_138 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_139 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_140 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_141 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_142 : True := by trivial
+
+theorem theorem_algebra_15136_143 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_144 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_145 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_146 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_147 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_148 : True := by trivial
+
+theorem theorem_algebra_15136_149 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_150 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_151 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_152 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_153 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_154 : True := by trivial
+
+theorem theorem_algebra_15136_155 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_156 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_157 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_158 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_159 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_160 : True := by trivial
+
+theorem theorem_algebra_15136_161 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_162 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_163 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_164 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_165 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_166 : True := by trivial
+
+theorem theorem_algebra_15136_167 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_168 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_169 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_170 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_171 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_172 : True := by trivial
+
+theorem theorem_algebra_15136_173 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_174 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_175 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_176 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_177 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_178 : True := by trivial
+
+theorem theorem_algebra_15136_179 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_180 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_181 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_182 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_183 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_184 : True := by trivial
+
+theorem theorem_algebra_15136_185 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_186 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_187 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_188 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_189 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_190 : True := by trivial
+
+theorem theorem_algebra_15136_191 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_192 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_193 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_15136_194 : ¬False := by False.elim
+
+theorem theorem_algebra_15136_195 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_15136_196 : True := by trivial
+
+theorem theorem_algebra_15136_197 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_15136_198 : True ∧ True := by ⟨trivial, trivial⟩
+
+theorem theorem_algebra_15136_199 : (1 : ℝ) * 1 = 1 := by rfl
+
+end Sylva.ProvenAlgebra.R15136

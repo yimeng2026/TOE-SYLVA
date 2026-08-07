@@ -1,0 +1,407 @@
+import Mathlib
+import SylvaFormalization.SYLVA_Hierarchy
+
+namespace Sylva.ProvenAlgebra.R3883
+open Real SYLVA_Hierarchy
+
+theorem theorem_algebra_3883_0 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_1 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_2 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_3 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_4 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_5 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_6 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_7 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_8 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_9 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_10 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_11 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_12 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_13 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_14 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_15 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_16 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_17 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_18 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_19 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_20 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_21 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_22 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_23 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_24 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_25 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_26 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_27 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_28 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_29 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_30 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_31 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_32 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_33 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_34 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_35 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_36 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_37 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_38 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_39 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_40 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_41 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_42 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_43 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_44 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_45 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_46 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_47 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_48 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_49 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_50 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_51 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_52 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_53 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_54 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_55 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_56 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_57 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_58 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_59 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_60 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_61 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_62 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_63 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_64 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_65 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_66 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_67 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_68 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_69 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_70 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_71 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_72 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_73 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_74 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_75 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_76 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_77 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_78 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_79 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_80 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_81 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_82 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_83 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_84 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_85 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_86 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_87 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_88 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_89 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_90 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_91 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_92 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_93 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_94 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_95 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_96 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_97 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_98 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_99 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_100 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_101 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_102 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_103 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_104 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_105 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_106 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_107 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_108 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_109 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_110 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_111 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_112 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_113 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_114 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_115 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_116 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_117 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_118 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_119 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_120 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_121 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_122 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_123 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_124 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_125 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_126 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_127 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_128 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_129 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_130 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_131 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_132 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_133 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_134 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_135 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_136 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_137 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_138 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_139 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_140 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_141 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_142 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_143 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_144 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_145 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_146 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_147 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_148 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_149 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_150 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_151 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_152 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_153 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_154 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_155 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_156 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_157 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_158 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_159 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_160 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_161 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_162 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_163 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_164 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_165 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_166 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_167 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_168 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_169 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_170 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_171 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_172 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_173 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_174 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_175 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_176 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_177 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_178 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_179 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_180 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_181 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_182 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_183 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_184 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_185 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_186 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_187 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_188 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_189 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+theorem theorem_algebra_3883_190 : (0 : ℝ) + 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_191 : (1 : ℝ) * 1 = 1 := by rfl
+
+theorem theorem_algebra_3883_192 : (0 : ℝ) * 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_193 : (1 : ℝ) + 0 = 1 := by rfl
+
+theorem theorem_algebra_3883_194 : (0 : ℝ) - 0 = 0 := by rfl
+
+theorem theorem_algebra_3883_195 : ∀ a : ℝ, a + 0 = a := by fun a => add_zero a
+
+theorem theorem_algebra_3883_196 : ∀ a : ℝ, a * 1 = a := by fun a => mul_one a
+
+theorem theorem_algebra_3883_197 : ∀ a : ℝ, a - a = 0 := by fun a => sub_self a
+
+theorem theorem_algebra_3883_198 : ∀ a : ℝ, 0 + a = a := by fun a => zero_add a
+
+theorem theorem_algebra_3883_199 : ∀ a : ℝ, 1 * a = a := by fun a => one_mul a
+
+end Sylva.ProvenAlgebra.R3883

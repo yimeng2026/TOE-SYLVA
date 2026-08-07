@@ -1,0 +1,3 @@
+name: sylva-agda
+depend: standard-library-3.0, agda-categories
+include: .

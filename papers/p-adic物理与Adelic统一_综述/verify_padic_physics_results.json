@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-08-03T10:07:22.206749",
+  "SYLVA_PHI_C": 3647.0,
+  "ALPHA_INV": 137.036,
+  "PRIME_CUTOFF": 137,
+  "results": {
+    "M1_padic_basics": {
+      "pass": true,
+      "error": null
+    },
+    "M2_bruhat_tits": {
+      "pass": true,
+      "error": null
+    },
+    "M3_ultrametricity": {
+      "pass": true,
+      "error": null
+    },
+    "M4_sylva_prime_cutoff": {
+      "pass": true,
+      "error": null
+    }
+  },
+  "overall_pass": true
+}

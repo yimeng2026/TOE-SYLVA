@@ -1,0 +1,3 @@
+# Prevent Agda compilation cache from being committed
+_build/
+*.agdai
