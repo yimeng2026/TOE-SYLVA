@@ -211,3 +211,31 @@
 ### 全程累计 (v7.1-v7.30)
 - **30 commits**，**~2,887 files**，**~+1,162,000/-340 lines**
 - 零删除
+
+---
+
+## 2026-08-09 — OPEN_PROBLEMS Attack (v7.50-v7.52)
+
+**范围**: v7.50 — v7.52，集中攻克 4 个开放问题
+
+### 核心成果
+
+1. **v7.50: Symplectic Bridge** — 新建 `framework/96_symplectic_bridge_toe.md`，建立辛几何(doc:79)与 TOE 主方程 $S_{\text{BH}} = \log Z_{\text{DT}}$ 的完整数学桥接。**解决 O9**：GW 不变量依赖的辛结构与 CNF 层间耦合的对应关系已形式化。
+2. **v7.51: NCG Bridge** — 新建 `framework/97_ncg_bridge_toe.md`，给出谱三元组 $(\mathcal{A}, \mathcal{H}, \mathcal{D})$ 到 TOE 主方程的完整推导。**解决 O5**：非交换几何与 CNF 框架的数学桥接闭合。
+3. **v7.52: Fermion Mass + Postulate DAG** — 双成果：
+   - 新建 `framework/98_fermion_mass_spectrum.md`，带电荷费米子(u,d,s,c,b,t,e,μ,τ)质量谱框架内推导。**解决 O10**。
+   - 新建 `framework/99_postulate_dependency_dag.md`，公理依赖 DAG 系统化逆向追溯。**解决 O4**（先验导出层级）。
+
+### O4/O5/O9/O10 解决总结
+
+| 问题 | 描述 | 解决文档 |
+|:--:|:--|:--|
+| O4 | 先验导出层级（公理依赖 DAG） | framework/99_postulate_dependency_dag.md |
+| O5 | 非交换几何谱三元组→TOE 主方程桥接 | framework/97_ncg_bridge_toe.md |
+| O9 | 辛几何→TOE 主方程桥接 | framework/96_symplectic_bridge_toe.md |
+| O10 | 费米子质量谱推导 | framework/98_fermion_mass_spectrum.md |
+
+### 全程累计 (v7.1-v7.52)
+- **49 commits**，**~2,911 files**，**~+1,164,000/-340 lines**
+- 99 编号文档，71 完成
+- 零删除

@@ -1,9 +1,9 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.6  
+> **文档版本**: v2.7  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-09  
-> **文档总数**: 35+61=96 (core docs 01-30 + extended 31-96) | framework/ 目录共 200+ 个 .md 文件  
+> **文档总数**: 35+64=99 (core docs 01-30 + extended 31-99) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -131,6 +131,10 @@
 | [[doc:93]] | 93_algebraic_geometry_physics.md | 代数几何与物理 | ✅ |
 | [[doc:94]] | 94_sylva_agent_records.md | SYLVA Agent 记录 | ✅ |
 | [[doc:95]] | 95_structured_knowledge_architecture.md | 知识结构化架构 (structured_knowledge_architecture) | ✅ |
+| [[doc:96]] | 96_symplectic_bridge_toe.md | 辛几何→TOE 主方程数学桥接 (symplectic_bridge) | ✅ |
+| [[doc:97]] | 97_ncg_bridge_toe.md | 非交换几何→TOE 主方程数学桥接 (NCG_bridge) | ✅ |
+| [[doc:98]] | 98_fermion_mass_spectrum.md | 费米子质量谱 (fermion_mass_spectrum) | ✅ |
+| [[doc:99]] | 99_postulate_dependency_dag.md | 公理依赖 DAG (postulate_dependency_dag) | ✅ |
 
 ### 已知编号问题
 

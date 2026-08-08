@@ -400,7 +400,8 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 | v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP同步、GAPS全填12篇文档 |
 | v7.45-v7.47 | 3 | ~8 | ~+500/-0 | CNFCategory编译、知识架构、force-push恢复 |
 | v7.48-v7.49b | 3 | ~3 | ~+200/-0 | 管理同步、doc:26全息原理v1.0+v2.0增强版 |
-| **总计** | **47** | **~2,905** | **~+1,163,200/-340** | **零删除** |
+| v7.50-v7.52 | 3 | ~6 | ~+800/-0 | 辛几何/NCG数学桥接、费米子质量谱、公理DAG |
+| **总计** | **49** | **~2,911** | **~+1,164,000/-340** | **零删除** |
 
 ### v7.45 — CNFCategory Agda 编译 (commit fc1ae385cf)
 - [x] CNFCategory.agda 在 Agda 2.8.0 下编译通过
@@ -433,6 +434,21 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 - [x] 新增：量子极值曲面（QES）、全息复杂性（CV/CA 猜想）
 - [x] 新增：实验验证方向（冷原子模拟 AdS、量子电路全息）
 - [x] 完善：SYK 模型与近 AdS₂/CFT₁ 对偶
+
+### v7.50 — Symplectic Bridge + Management Sync (commit, 2026-08-09)
+- [x] 新建 framework/96_symplectic_bridge_toe.md — 辛几何(doc:79)与 TOE 主方程的显式数学桥接
+- [x] 解决 O9 (辛几何桥接)：GW 不变量依赖的辛结构与 CNF 层间耦合的对应关系已建立
+- [x] 管理文件同步 (ROADMAP/SESSION_REPORT/DASHBOARD/INDEX/STATISTICS)
+
+### v7.51 — NCG Bridge (commit, 2026-08-09)
+- [x] 新建 framework/97_ncg_bridge_toe.md — 非交换几何(doc:27/39)谱三元组与 TOE 主方程的完整推导桥接
+- [x] 解决 O5 (NCG 桥接)：谱三元组 (A, H, D) → S_BH = log Z_DT 推导链闭合
+
+### v7.52 — Fermion Mass + Postulate DAG (commit, 2026-08-09)
+- [x] 新建 framework/98_fermion_mass_spectrum.md — 带电荷费米子质量谱框架内推导
+- [x] 解决 O10 (费米子质量谱)：建立 u/d/s/c/b/t/e/μ/τ 质量预言链
+- [x] 新建 framework/99_postulate_dependency_dag.md — 公理依赖 DAG
+- [x] 解决 O4 (先验导出层级)：系统化逆向追溯每个 Postulate 到不可再归约初设
 
 ---
 
