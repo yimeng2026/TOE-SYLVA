@@ -1,9 +1,9 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.7  
+> **文档版本**: v2.8  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-09  
-> **文档总数**: 35+64=99 (core docs 01-30 + extended 31-99) | framework/ 目录共 200+ 个 .md 文件  
+> **文档总数**: 35+68=103 (core docs 01-30 + extended 31-103) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -135,6 +135,10 @@
 | [[doc:97]] | 97_ncg_bridge_toe.md | 非交换几何→TOE 主方程数学桥接 (NCG_bridge) | ✅ |
 | [[doc:98]] | 98_fermion_mass_spectrum.md | 费米子质量谱 (fermion_mass_spectrum) | ✅ |
 | [[doc:99]] | 99_postulate_dependency_dag.md | 公理依赖 DAG (postulate_dependency_dag) | ✅ |
+| [[doc:100]] | 100_adelic_bridge.md | Adelic 统一桥接 (adelic_bridge) | ✅ |
+| [[doc:101]] | 101_alpha_inverse_tri_chain.md | α⁻¹ 三链推导 (alpha_inverse_tri_chain) | ✅ |
+| [[doc:102]] | 102_dark_energy_global_spectrum.md | 暗能量全局谱 (dark_energy_global_spectrum) | ✅ |
+| [[doc:103]] | 103_non_bps_black_hole_dt.md | 非 BPS 黑洞 DT 推广 (non_bps_black_hole_dt) | ✅ |
 
 ### 已知编号问题
 
