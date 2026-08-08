@@ -1,9 +1,9 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.5  
+> **文档版本**: v2.6  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-08  
-> **文档总数**: 35+60=95 (core docs 01-30 + extended 31-95) | framework/ 目录共 200+ 个 .md 文件  
+> **最后更新**: 2026-08-09  
+> **文档总数**: 35+61=96 (core docs 01-30 + extended 31-96) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -39,9 +39,9 @@
 | [[doc:23]] | 23_cosmological_constant_problem.md | 宇宙学常数 | ✅ |
 | [[doc:24]] | 24_quantum_measurement_layered.md | 量子测量 | ✅ |
 | [[doc:25]] | 25_string_theory_duality.md | 弦理论对偶 | ✅ |
-| [[doc:26]] | *(文件不存在)* | 全息原理 | ❌ |
+| [[doc:26]] | 26_holographic_principle.md | 全息原理 (holographic_principle) | 2026-08-09 | ✅ |
 
-> ℹ️ **关于 doc:26 (全息原理)**: 尚未创建独立文件。相关内容已部分覆盖于 `framework/58_quantum_gravity_holography.md` 和 `papers/TOE-SYLVA_Master_Academic.md §2-3`。参见 papers/ 目录中与全息对偶、AdS/CFT 相关的综述文献。
+> ℹ️ **关于 doc:26 (全息原理)**: 已于 2026-08-09 创建（v7.49 v1.0 → v7.49b v2.0 增强版 ~25KB）。内容涵盖 Bekenstein 前史、AdS/CFT 对应、Ryu-Takayanagi 公式、张量网络（MERA/HaPPY 码）、量子极值曲面（QES）、全息复杂性（CV/CA）、SYK 模型与实验验证方向。
 | [[doc:27]] | 27_noncommutative_geometry_physics.md | 非交换几何 | ✅ |
 | [[doc:28]] | 28_category_theory_layered.md | 范畴论 | ✅ |
 | [[doc:29]] | 29_random_matrix_universality.md | 随机矩阵 | ✅ |
@@ -145,7 +145,7 @@
 - `30_information_geometry_statmech.md` 与 `38_information_geometry_statmech.md` — 文件名相同，可能共享大量内容；需人工审查
 
 **编号缺口 (missing numbers):**
-- **编号 26**: 缺失（INDEX 中已标注为全息原理，内容覆盖于 `58_quantum_gravity_holography.md`）
+- **编号 26**: ✅ 已于 2026-08-09 填补（`26_holographic_principle.md`，全息原理 v1.0+v2.0 增强版 ~25KB）
 - **编号 36**: 缺失（未分配或文件未创建）
 - **编号 49**: 缺失（未分配或文件未创建）
 - **编号 66**: 仅存在 `.lean` 形式化文件，无对应 `.md` 正文
