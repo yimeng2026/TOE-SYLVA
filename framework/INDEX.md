@@ -1,9 +1,9 @@
 ﻿# TOE妗嗘灦鏂囨。绱㈠紩 (INDEX.md)
 
-> **鏂囨。鐗堟湰**: v2.3  
+> **鏂囨。鐗堟湰**: v2.4  
 > **鍒涘缓鏃ユ湡**: 2026-04-18  
-> **鏈€鍚庢洿鏂?*: 2026-08-06  
-> **鏂囨。鎬绘暟**: 35+58=93 (core docs 01-30 + extended 31-93) | framework/ 鐩綍鍏?200+ 涓?.md 鏂囦欢  
+> **鏈€鍚庢洿鏂?*: 2026-08-08  
+> **鏂囨。鎬绘暟**: 35+59=94 (core docs 01-30 + extended 31-94) | framework/ 鐩綍鍏?200+ 涓?.md 鏂囦欢  
 > **绱㈠紩绫诲瀷**: 鍒嗗眰绱㈠紩绯荤粺 [[doc:缂栧彿]], [[topic:涓婚]], [[concept:姒傚康]]
 
 ---
@@ -127,6 +127,8 @@
 | [[doc:91]] | 91_quantum_error_correction.md | 閲忓瓙绾犻敊 | 鉁?|
 | [[doc:92]] | 92_precision_measurement.md | 绮惧瘑娴嬮噺 | 鉁?|
 | [[doc:93]] | 93_algebraic_geometry_physics.md | 浠ｆ暟鍑犱綍涓庣墿鐞?| 鉁?|
+
+| [[doc:94]] | 94_cnf_category_theory.md | CNF 的范畴论结构 (cnf_category_theory) | ✅ |
 
 ### 宸茬煡缂栧彿闂
 

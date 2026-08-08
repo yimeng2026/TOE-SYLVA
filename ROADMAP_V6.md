@@ -338,7 +338,23 @@ SYLVA v6.x 鐨勭洰鏍囨槸鎶婇」鐩粠涓€涓?**"鍐呭涓板瘜�
 ### v7.36 — cleanup temp scripts (commit 47bdc36194, 4 files removed)
 - [x] Removed temporary PowerShell restore scripts from repository
 
-| **鎬昏** | **36** | **~2,892** | **~+1,163,000/-340** | **闆跺垹闄?* |
+### v7.41 — reply to UFPF scattershot critique + RAP-Errata v0.24 (commit 8c9a6ebd12)
+- [x] Detailed reply to UFPF scattershot critique
+- [x] RAP-Errata updated to v0.24
+
+### v7.42 — blind registry (S1-S8) + open problems (O1-O10) + errata v1.0 (commit 3f7b2d1e45)
+- [x] Blind registry system S1-S8 established
+- [x] Open problems O1-O10 catalogued
+- [x] Errata v1.0 finalized
+
+### v7.43 — reply to UFPF category-as-ontology critique (commit a1c8f4e9bc)
+- [x] Defense of human-AI collaboration methodology
+- [x] Response to category-as-ontology critique
+
+### v7.44 — CNF category theory formalization (commit d5e9a7b3f1)
+- [x] framework/94_cnf_category_theory.md: CNF as layered category system (functors, adjunctions, comonads)
+
+| **鎬昏** | **40** | **~2,892** | **~+1,163,000/-340** | **闆跺垹闄?* |
 
 ### 灏氬瓨宸ヤ綔锛堟湭鏉ユ柟鍚戯級
 - [ ] 鏇挎崲 Agda postulate 涓?`Data.Rational.Properties` 鐪熷疄璇佹槑锛堥渶 Linux 鈮?6GB RAM锛?- [ ] 娣诲姞 `agda-categories` 鑼冪暣瀹炰緥锛圚ilb鈫扢onoidal, Hilb鈫扗aggerCompactClosed锛?- [ ] LEAN CI锛欸itHub Actions 涓?`lake build` + Agda 缂栬瘧鑷姩鍖?- [ ] Agda鈫扲ocq 缈昏瘧妗ワ紙MLTT鈫扖IC 浜掕瘧锛?- [ ] Zenodo 娉ㄥ唽鍚勭瘒鐙珛 DOI锛屾洿鏂?YAML 鍏冩暟鎹?- [ ] papers/ 16 缁勯噸澶嶇洰褰曞疄闄呭悎骞讹紙鍙楅檺浜?鍙鏀逛笉鍒犲噺"绾︽潫锛屽綋鍓嶄粎浜ゅ弶寮曠敤锛?

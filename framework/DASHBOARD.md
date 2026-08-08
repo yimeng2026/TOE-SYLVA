@@ -1,9 +1,9 @@
-# TOE妗嗘灦杩涘害浠〃鏉?
+﻿# TOE妗嗘灦杩涘害浠〃鏉?
 > 鈿狅笍 **This dashboard was last fully updated on 2026-04-19.** Some statistics may not reflect the v7.x paper revisions and expanded papers/ directory. See `papers/CONTENTS.md` and `papers/README.md` for the latest paper inventory.
 
 > **鐢熸垚鏃ユ湡**: 2026-04-19 路 **瀹¤鏇存柊**: 2026-08-05
 >
-> **鏈€鍚庢洿鏂?*: 2026-08-07 (v7.30: GAPS 鍏ㄥ～, 93 缂栧彿鏂囨。)
+> **鏈€鍚庢洿鏂?*: 2026-08-08 (v7.30: GAPS 鍏ㄥ～, 93 缂栧彿鏂囨。)
 >
 > **浠〃鏉跨増鏈?*: v1.2 (frozen baseline + v7.x patch notes)
 
@@ -25,7 +25,7 @@
 ## 馃幆 鎬讳綋瀹屾垚搴?(鍘熷 + v7.x 杩藉姞)
 
 ```mermaid
-pie title 鏂囨。瀹屾垚鐘舵€佸垎甯?    "宸插畬鎴?鉁? : 66
+pie title 鏂囨。瀹屾垚鐘舵€佸垎甯?    "宸插畬鎴?鉁? : 67
     "杩涜涓?馃攧" : 3
     "寰呭惎鍔?鈴? : 3
 ```
@@ -38,7 +38,7 @@ pie title 鏂囨。瀹屾垚鐘舵€佸垎甯?    "宸插畬鎴?鉁? : 66
 
 ### 瀹屾垚杩涘害鏉?
 ```
-鎬昏繘搴? [鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻戔枒鈻戔枒鈻戔枒鈻戔枒鈻戔枒鈻戔枒] 71.0%
+鎬昏繘搴? [鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻戔枒鈻戔枒鈻戔枒鈻戔枒鈻戔枒鈻戔枒] 71.3%
 
 鎸夊眰绾?
 L1鏁板鍩虹: [鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枅鈻堚枒鈻戔枒] 92%  (7/7 + 鑽夌)
@@ -312,10 +312,11 @@ xychart-beta
 - **papers鐩綍宸插ぇ骞呮墿灞?*锛屽寘鍚害24绡囩洿鎺ユ枃浠?+ 绾?50绡囧瓙鐩綍缁艰堪
 - **涓夌増淇敼 (v7.1-v7.5)** 宸插畬鎴愯鏂囪瘹瀹炲璁′笌娣卞害淇锛堝弬瑙?`papers/AI_HALLUCINATION_REPORT_FINAL.md`锛?- **Agda 鍙屽舰寮忓寲 (v7.12-v7.16)** 鍏眰瀹屾垚锛圕auchy鈫扚ield鈫扥rder鈫扖omplete鈫扱uantum鈫扴pectrum锛?- **GAPS 鍏ㄦ竻闆?(v7.10-v7.17)** 7 澶х己澶变富棰樺叏閮ㄥ～琛?- **璇佹槑娌荤悊 (v7.22)** `proof_status.md` 寤虹珛鍥涚骇澹版槑鍒嗗眰銆佺湡瀹炶瘉鏄庣巼瀹氫箟
 - DASHBOARD.md銆丼TATISTICS.md銆丵UALITY_SUMMARY.md 宸蹭簬 2026-08-02 娣诲姞鍐荤粨璇存槑锛屾湰澶勪负 v7.30 鍚屾琛ヤ竵
-- v7.30: GAPS 全填, 93 编号文档, 66 完成 (71.0%)
+- v7.30: GAPS 全填, 94 编号文档, 67 完成 (71.3%)
+- v7.44: framework/94_cnf_category_theory.md (CNF as layered category system, functors/adjunctions/comonads)
 - v7.34-v7.35: force push 恢复，版本回溯，framework/ 文档均已还原至最新状态
 
 ---
 
 *浠〃鏉胯嚜鍔ㄦ洿鏂伴棿闅? 姣?灏忔椂*
-*鏈€鍚庢洿鏂? 2026-04-19 00:52 GMT+8 (v7.x patch notes: 2026-08-07)*
+*鏈€鍚庢洿鏂? 2026-04-19 00:52 GMT+8 (v7.x patch notes: 2026-08-08)*
