@@ -1,9 +1,14 @@
-﻿/-
-  TOE-SYLVA 鐮旂┒绾у懡棰樻眰瑙?(鎵归噺)
-  鏂囦欢: SYLVA_OptimalControl.lean 涓殑 5 涓懡棰?  闅惧害: 涓瓑 (~100h)
-  鍐呭: 鏈€浼樻帶鍒朵笌寮哄寲瀛︿範鐞嗚鍩虹
+/-
+  TOE-SYLVA 研究级命题求解 (批量)
+  文件: SYLVA_OptimalControl.lean 中的 5 个命题
+  难度: 中等 (~100h)
+  内容: 最优控制与强化学习理论基础
 
-  1. hjb_satisfaction: HJB 鏂圭▼鐨勭矘鎬цВ婊¤冻鏈€浼樺€煎嚱鏁?  2. value_iteration_convergence: 鍊艰凯浠ｆ敹鏁涙€?  3. q_learning_convergence: Q-learning 鏀舵暃鎬?  4. ramsey_golden_rule: Ramsey 妯″瀷绋虫€佸敮涓€鎬?  5. metabolic_control_summation: 浠ｈ阿鎺у埗绯绘暟姹傚拰涓?1
+  1. hjb_satisfaction: HJB 方程的粘性解满足最优值函数
+  2. value_iteration_convergence: 值迭代收敛性
+  3. q_learning_convergence: Q-learning 收敛性
+  4. ramsey_golden_rule: Ramsey 模型稳态唯一性
+  5. metabolic_control_summation: 代谢控制系数求和为 1
 -/
 
 import Mathlib
@@ -12,253 +17,276 @@ section
 
 /-
   =========================================
-  鍛介 1: hjb_satisfaction
-  HJB 鏂圭▼鐨勭矘鎬цВ婊¤冻鏈€浼樺€煎嚱鏁?  =========================================
+  命题 1: hjb_satisfaction
+  HJB 方程的粘性解满足最优值函数
+  =========================================
 
-  HJB 鏂圭▼:
-  -鈭俈/鈭倀 = min_u [L(x,u) + 鈭嘨 路 f(x,u)]
+  HJB 方程:
+  -∂V/∂t = min_u [L(x,u) + ∇V · f(x,u)]
   V(T,x) = g(x)
 
-  鍔ㄦ€佽鍒掑師鐞? V(t,x) = inf_u E[鈭玙t^T L ds + g(X_T)]
+  动态规划原理: V(t,x) = inf_u E[∫_t^T L ds + g(X_T)]
 -/
 
-/- 鐘舵€佺┖闂?-/
-variable {X U : Type} [NormedAddCommGroup X] [NormedSpace 鈩?X]
+/- 状态空间 -/
+variable {X U : Type} [NormedAddCommGroup X] [NormedSpace ℝ X]
   [TopologicalSpace U]
 
-/- 绯荤粺鍔ㄥ姏瀛?dx/dt = f(x,u) -/
-variable (f : X 鈫?U 鈫?X)
+/- 系统动力学 dx/dt = f(x,u) -/
+variable (f : X → U → X)
 
-/- 杩愯浠ｄ环 L(x,u) -/
-variable (L : X 鈫?U 鈫?鈩?
+/- 运行代价 L(x,u) -/
+variable (L : X → U → ℝ)
 
-/- 缁堢浠ｄ环 g(x) -/
-variable (g : X 鈫?鈩?
+/- 终端代价 g(x) -/
+variable (g : X → ℝ)
 
-/- 鍊煎嚱鏁?V(t,x) = inf_{u} J(t,x;u) -/
-variable (V : 鈩?鈫?X 鈫?鈩?
-
-/-
-  HJB 鏂圭▼ (缁忓吀褰㈠紡)
-  -鈭俈/鈭倀 = inf_u [L(x,u) + 鉄ㄢ垏V, f(x,u)鉄
--/
-def HJB_equation (V : 鈩?鈫?X 鈫?鈩? (t : 鈩? (x : X) : Prop :=
-  - fderiv 鈩?(V 路 x) t 1 = sInf {L x u + fderiv 鈩?(V t) x (f x u) | u : U}
+/- 值函数 V(t,x) = inf_{u} J(t,x;u) -/
+variable (V : ℝ → X → ℝ)
 
 /-
-  瀹氱悊: HJB 鏂圭▼鐨勮В婊¤冻鍔ㄦ€佽鍒掑師鐞?  (绮樻€цВ鐗堟湰鐨?HJB 瀹氱悊)
+  HJB 方程 (经典形式)
+  -∂V/∂t = inf_u [L(x,u) + ⟨∇V, f(x,u)⟩]
 -/
-theorem HJB_satisfaction (V : 鈩?鈫?X 鈫?鈩?
-    (h_solution : 鈭€ t x, HJB_equation f L V t x)
-    (h_terminal : 鈭€ x, V T x = g x) :
-    /- V 鏄渶浼樺€煎嚱鏁?-/
+def HJB_equation (V : ℝ → X → ℝ) (t : ℝ) (x : X) : Prop :=
+  - fderiv ℝ (V · x) t 1 = sInf {L x u + fderiv ℝ (V t) x (f x u) | u : U}
+
+/-
+  定理: HJB 方程的解满足动态规划原理
+  (粘性解版本的 HJB 定理)
+-/
+theorem HJB_satisfaction (V : ℝ → X → ℝ)
+    (h_solution : ∀ t x, HJB_equation f L V t x)
+    (h_terminal : ∀ x, V T x = g x) :
+    /- V 是最优值函数 -/
     True := by
-  /- 闇€瑕佺矘鎬цВ鐞嗚鐨勮缁嗗舰寮忓寲 -/
-  /- 鍏抽敭姝ラ:
-     1. 璇佹槑 V 鈮?鏈€浼樺€?(浣跨敤娴嬭瘯鍑芥暟鐨勫彉鍒?
-     2. 璇佹槑 V 鈮?鏈€浼樺€?(浣跨敤鍙嶉鎺у埗鏋勯€? -/
+  /- 需要粘性解理论的详细形式化 -/
+  /- 关键步骤:
+     1. 证明 V ≤ 最优值 (使用测试函数的变分)
+     2. 证明 V ≥ 最优值 (使用反馈控制构造) -/
   trivial
 
 /-
   =========================================
-  鍛介 2: value_iteration_convergence
-  鍊艰凯浠ｆ敹鏁涙€?(Banach 涓嶅姩鐐瑰畾鐞?
+  命题 2: value_iteration_convergence
+  值迭代收敛性 (Banach 不动点定理)
   =========================================
 
-  Bellman 绠楀瓙 T:
-  (TV)(x) = min_u [L(x,u) + 纬 E[V(f(x,u,尉))]]
+  Bellman 算子 T:
+  (TV)(x) = min_u [L(x,u) + γ E[V(f(x,u,ξ))]]
 
-  T 鏄?纬-鍘嬬缉鏄犲皠 (0 鈮?纬 < 1)
-  鐢?Banach 涓嶅姩鐐瑰畾鐞嗭紝鍊艰凯浠?V_{n+1} = TV_n 鏀舵暃鍒板敮涓€涓嶅姩鐐?V*
+  T 是 γ-压缩映射 (0 ≤ γ < 1)
+  由 Banach 不动点定理，值迭代 V_{n+1} = TV_n 收敛到唯一不动点 V*
 -/
 
-/- Bellman 绠楀瓙 -/
+/- Bellman 算子 -/
 def BellmanOperator {X U : Type} [MetricSpace X] [TopologicalSpace U]
-    (f : X 鈫?U 鈫?X) (L : X 鈫?U 鈫?鈩?
-    (gamma : 鈩? (hgamma : 0 鈮?gamma 鈭?gamma < 1)
-    (V : X 鈫?鈩? : X 鈫?鈩?:=
+    (f : X → U → X) (L : X → U → ℝ)
+    (gamma : ℝ) (hgamma : 0 ≤ gamma ∧ gamma < 1)
+    (V : X → ℝ) : X → ℝ :=
   fun x => sInf {L x u + gamma * V (f x u) | u : U}
 
 /-
-  瀹氱悊: Bellman 绠楀瓙鏄?纬-鍘嬬缉鏄犲皠
-  鈥朤V鈧?- TV鈧傗€朹鈭?鈮?纬 鈥朧鈧?- V鈧傗€朹鈭?-/
+  定理: Bellman 算子是 γ-压缩映射
+  ‖TV₁ - TV₂‖_∞ ≤ γ ‖V₁ - V₂‖_∞
+-/
 theorem BellmanOperator_contraction {X U : Type} [MetricSpace X] [TopologicalSpace U]
     [CompactSpace X] [CompactSpace U]
-    (f : X 鈫?U 鈫?X) (L : X 鈫?U 鈫?鈩?
-    (gamma : 鈩? (hgamma : 0 鈮?gamma 鈭?gamma < 1)
-    (V鈧?V鈧?: X 鈫?鈩? (hV : Continuous V鈧?鈭?Continuous V鈧? :
-    let TV鈧?:= BellmanOperator f L gamma hgamma V鈧?    let TV鈧?:= BellmanOperator f L gamma hgamma V鈧?    True := by
-  /- 璇佹槑:
-     |(TV鈧?(x) - (TV鈧?(x)|
-     = |min_u [L + 纬V鈧?f)] - min_u [L + 纬V鈧?f)]|
-     鈮?max_u 纬|V鈧?f) - V鈧?f)|
-     鈮?纬 鈥朧鈧?- V鈧傗€朹鈭?-/
+    (f : X → U → X) (L : X → U → ℝ)
+    (gamma : ℝ) (hgamma : 0 ≤ gamma ∧ gamma < 1)
+    (V₁ V₂ : X → ℝ) (hV : Continuous V₁ ∧ Continuous V₂) :
+    let TV₁ := BellmanOperator f L gamma hgamma V₁
+    let TV₂ := BellmanOperator f L gamma hgamma V₂
+    True := by
+  /- 证明:
+     |(TV₁)(x) - (TV₂)(x)|
+     = |min_u [L + γV₁(f)] - min_u [L + γV₂(f)]|
+     ≤ max_u γ|V₁(f) - V₂(f)|
+     ≤ γ ‖V₁ - V₂‖_∞ -/
   trivial
 
 /-
-  瀹氱悊: 鍊艰凯浠ｆ敹鏁?(Banach 涓嶅姩鐐瑰畾鐞嗙殑鐩存帴搴旂敤)
+  定理: 值迭代收敛 (Banach 不动点定理的直接应用)
 -/
 theorem value_iteration_convergence {X U : Type} [MetricSpace X] [TopologicalSpace U]
-    [CompactSpace X] [CompactSpace U] [CompleteSpace (X 鈫?鈩?]
-    (f : X 鈫?U 鈫?X) (L : X 鈫?U 鈫?鈩?
-    (gamma : 鈩? (hgamma : 0 鈮?gamma 鈭?gamma < 1)
-    (V鈧€ : X 鈫?鈩? (hV鈧€ : Continuous V鈧€) :
-    /- 搴忓垪 V_{n+1} = TV_n 鏀舵暃鍒板敮涓€涓嶅姩鐐?-/
-    鈭?Vstar, True := by
-  /- Banach 涓嶅姩鐐瑰畾鐞嗙殑鐩存帴搴旂敤 -/
-  use V鈧€
-  /- 瀹屾暣璇佹槑闇€瑕佸畬澶囧害閲忕┖闂翠腑鍘嬬缉鏄犲皠鐨勪笉鍔ㄧ偣瀹氱悊 -/
+    [CompactSpace X] [CompactSpace U] [CompleteSpace (X → ℝ)]
+    (f : X → U → X) (L : X → U → ℝ)
+    (gamma : ℝ) (hgamma : 0 ≤ gamma ∧ gamma < 1)
+    (V₀ : X → ℝ) (hV₀ : Continuous V₀) :
+    /- 序列 V_{n+1} = TV_n 收敛到唯一不动点 -/
+    ∃ Vstar, True := by
+  /- Banach 不动点定理的直接应用 -/
+  use V₀
+  /- 完整证明需要完备度量空间中压缩映射的不动点定理 -/
   trivial
 
 /-
   =========================================
-  鍛介 3: q_learning_convergence
-  Q-learning 鏀舵暃鎬?(Robbins-Monro 闅忔満閫艰繎)
+  命题 3: q_learning_convergence
+  Q-learning 收敛性 (Robbins-Monro 随机逼近)
   =========================================
 
-  Q-learning 鏇存柊:
-  Q_{n+1}(s,a) = Q_n(s,a) + 伪_n [r + 纬 max_a' Q_n(s',a') - Q_n(s,a)]
+  Q-learning 更新:
+  Q_{n+1}(s,a) = Q_n(s,a) + α_n [r + γ max_a' Q_n(s',a') - Q_n(s,a)]
 
-  Robbins-Monro 鏉′欢:
-  1. 危 伪_n = 鈭?  2. 危 伪_n虏 < 鈭?
-  鍦ㄨ繖浜涙潯浠朵笅锛孮_n 鈫?Q* (鍑犱箮蹇呯劧鏀舵暃)
+  Robbins-Monro 条件:
+  1. Σ α_n = ∞
+  2. Σ α_n² < ∞
+
+  在这些条件下，Q_n → Q* (几乎必然收敛)
 -/
 
-/- MDP 妯″瀷 -/
+/- MDP 模型 -/
 structure MDP (S A : Type) where
-  /-- 鐘舵€佺┖闂?-/
+  /-- 状态空间 -/
   states : Finset S
-  /-- 鍔ㄤ綔绌洪棿 -/
+  /-- 动作空间 -/
   actions : Finset A
-  /-- 杞Щ姒傜巼 P(s'|s,a) -/
-  transition : S 鈫?A 鈫?S 鈫?鈩?  /-- 濂栧姳鍑芥暟 -/
-  reward : S 鈫?A 鈫?鈩?  /-- 鎶樻墸鍥犲瓙 -/
-  gamma : 鈩?  hgamma : 0 鈮?gamma 鈭?gamma < 1
+  /-- 转移概率 P(s'|s,a) -/
+  transition : S → A → S → ℝ
+  /-- 奖励函数 -/
+  reward : S → A → ℝ
+  /-- 折扣因子 -/
+  gamma : ℝ
+  hgamma : 0 ≤ gamma ∧ gamma < 1
 
-/- Q-learning 鏇存柊 -/
+/- Q-learning 更新 -/
 def QlearningUpdate {S A : Type} (m : MDP S A)
-    (Q : S 鈫?A 鈫?鈩? (s : S) (a : A) (伪 : 鈩? : S 鈫?A 鈫?鈩?:=
-  let s' : S := s  -- 绠€鍖? 瀹為檯搴斾粠杞Щ姒傜巼閲囨牱
+    (Q : S → A → ℝ) (s : S) (a : A) (α : ℝ) : S → A → ℝ :=
+  let s' : S := s  -- 简化: 实际应从转移概率采样
   let r := m.reward s a
   let maxQ := Finset.sup m.actions (fun a' => Q s' a')
   fun s'' a'' =>
-    if s'' = s 鈭?a'' = a then
-      Q s a + 伪 * (r + m.gamma * maxQ - Q s a)
+    if s'' = s ∧ a'' = a then
+      Q s a + α * (r + m.gamma * maxQ - Q s a)
     else
       Q s'' a''
 
 /-
-  瀹氱悊: 鍦?Robbins-Monro 鏉′欢涓嬶紝Q-learning 鏀舵暃
+  定理: 在 Robbins-Monro 条件下，Q-learning 收敛
 -/
 theorem q_learning_convergence {S A : Type} [Fintype S] [Fintype A]
     (m : MDP S A)
-    (Q鈧€ : S 鈫?A 鈫?鈩?
-    (伪 : 鈩?鈫?鈩?
-    (h_robbins1 : 鈭?N, 鈭€ n 鈮?N, 伪 n 鈮?0)
-    (h_robbins2 : 鈭?n, 伪 n = 鈯? -- 危 伪_n = 鈭?    (h_robbins3 : 鈭?n, (伪 n)^2 < 鈯? : -- 危 伪_n虏 < 鈭?    /- Q_n 鈫?Q* 鍑犱箮蹇呯劧 -/
+    (Q₀ : S → A → ℝ)
+    (α : ℕ → ℝ)
+    (h_robbins1 : ∃ N, ∀ n ≥ N, α n ≥ 0)
+    (h_robbins2 : ∑ n, α n = ⊤) -- Σ α_n = ∞
+    (h_robbins3 : ∑ n, (α n)^2 < ⊤) : -- Σ α_n² < ∞
+    /- Q_n → Q* 几乎必然 -/
     True := by
-  /- 闇€瑕侀殢鏈洪€艰繎鐞嗚鐨勫舰寮忓寲 -/
-  /- 鍏抽敭姝ラ:
-     1. 璇佹槑鏇存柊绠楀瓙鏄帇缂╂槧灏?     2. 搴旂敤闅忔満閫艰繎鏀舵暃瀹氱悊 (Robbins-Monro)
-     3. 闉呮敹鏁涜璇?-/
+  /- 需要随机逼近理论的形式化 -/
+  /- 关键步骤:
+     1. 证明更新算子是压缩映射
+     2. 应用随机逼近收敛定理 (Robbins-Monro)
+     3. 鞅收敛论证 -/
   trivial
 
 /-
   =========================================
-  鍛介 4: ramsey_golden_rule
-  Ramsey 妯″瀷绋虫€佸敮涓€鎬?(榛勯噾娉曞垯)
+  命题 4: ramsey_golden_rule
+  Ramsey 模型稳态唯一性 (黄金法则)
   =========================================
 
-  Ramsey-Cass-Koopmans 妯″瀷:
-  max 鈭玙0^鈭?e^{-蟻t} u(c(t)) dt
-  s.t. dk/dt = f(k) - c - 未k
+  Ramsey-Cass-Koopmans 模型:
+  max ∫_0^∞ e^{-ρt} u(c(t)) dt
+  s.t. dk/dt = f(k) - c - δk
 
-  绋虫€佹潯浠?(榛勯噾娉曞垯):
-  f'(k*) = 蟻 + 未 (淇榛勯噾娉曞垯)
-  鎴?f'(k*) = 未 (绠€鍗曢粍閲戞硶鍒?
+  稳态条件 (黄金法则):
+  f'(k*) = ρ + δ (修正黄金法则)
+  或 f'(k*) = δ (简单黄金法则)
 
-  娆ф媺鏂圭▼: u''(c)/u'(c) 路 dc/dt = 蟻 + 未 - f'(k)
+  欧拉方程: u''(c)/u'(c) · dc/dt = ρ + δ - f'(k)
 -/
 
-/- 鐢熶骇鍑芥暟 -/
-variable (f : 鈩?鈫?鈩? /- f(k) = 浜у嚭 -/
+/- 生产函数 -/
+variable (f : ℝ → ℝ) /- f(k) = 产出 -/
 
-/- 鏁堢敤鍑芥暟 -/
-variable (u : 鈩?鈫?鈩? /- u(c) = 鏁堢敤 -/
+/- 效用函数 -/
+variable (u : ℝ → ℝ) /- u(c) = 效用 -/
 
-/- Ramsey 妯″瀷 -/
+/- Ramsey 模型 -/
 structure RamseyModel where
-  /-- 鎶樼幇鐜?-/
-  rho : 鈩?  /-- 鎶樻棫鐜?-/
-  delta : 鈩?  /-- 鐢熶骇鍑芥暟 -/
-  f : 鈩?鈫?鈩?  /-- 鏁堢敤鍑芥暟 -/
-  u : 鈩?鈫?鈩?
+  /-- 折现率 -/
+  rho : ℝ
+  /-- 折旧率 -/
+  delta : ℝ
+  /-- 生产函数 -/
+  f : ℝ → ℝ
+  /-- 效用函数 -/
+  u : ℝ → ℝ
+
 /-
-  瀹氱悊: 淇榛勯噾娉曞垯
-  绋虫€佹椂 f'(k*) = 蟻 + 未
+  定理: 修正黄金法则
+  稳态时 f'(k*) = ρ + δ
 -/
 theorem ramsey_modified_golden_rule (M : RamseyModel)
-    (f_diff : Differentiable 鈩?M.f)
-    (h_concave : 鈭€ k, iteratedDeriv 2 M.f k < 0) /- f 涓ユ牸鍑?-/
-    (k_star c_star : 鈩? :
-    /- 绋虫€佹潯浠?-/
+    (f_diff : Differentiable ℝ M.f)
+    (h_concave : ∀ k, iteratedDeriv 2 M.f k < 0) /- f 严格凹 -/
+    (k_star c_star : ℝ) :
+    /- 稳态条件 -/
     let k_dot := M.f k_star - c_star - M.delta * k_star
-    let c_dot := 0  /- dc/dt = 0 鍦ㄧǔ鎬?-/
-    k_dot = 0 鈫?c_dot = 0 鈫?    deriv M.f k_star = M.rho + M.delta := by
-  /- 浠庢鎷夋柟绋嬪湪绋虫€佺殑鏉′欢鎺ㄥ -/
-  /- dc/dt = 0 鏃? u'(c)/u''(c) [f'(k) - 未 - 蟻] = 0 -/
-  /- 鎵€浠?f'(k*) = 蟻 + 未 -/
+    let c_dot := 0  /- dc/dt = 0 在稳态 -/
+    k_dot = 0 → c_dot = 0 →
+    deriv M.f k_star = M.rho + M.delta := by
+  /- 从欧拉方程在稳态的条件推导 -/
+  /- dc/dt = 0 时: u'(c)/u''(c) [f'(k) - δ - ρ] = 0 -/
+  /- 所以 f'(k*) = ρ + δ -/
   admit  -- TODO: prove this, currently axiom-held
 
 /-
   =========================================
-  鍛介 5: metabolic_control_summation
-  浠ｈ阿鎺у埗绯绘暟姹傚拰涓?1
+  命题 5: metabolic_control_summation
+  代谢控制系数求和为 1
   =========================================
 
-  浠ｈ阿鎺у埗鍒嗘瀽 (MCA):
-  瀵逛簬绋虫€侀€氶噺 J锛屾帶鍒剁郴鏁?C_i^J = (鈭侸/鈭俥_i)(e_i/J)
-  鍏朵腑 e_i 鏄叾 i 鐨勬椿鎬?
-  姹傚拰瀹氱悊: 危_i C_i^J = 1
+  代谢控制分析 (MCA):
+  对于稳态通量 J，控制系数 C_i^J = (∂J/∂e_i)(e_i/J)
+  其中 e_i 是酶 i 的活性
 
-  璇佹槑: 浣跨敤娆ф媺榻愭鍑芥暟瀹氱悊
-  濡傛灉 J(e鈧?...,e鈧? 鏄浂娆￠綈娆″嚱鏁帮紝鍒?危 e_i 鈭侸/鈭俥_i = 0
-  鎺у埗绯绘暟 C_i^J = (鈭俵nJ/鈭俵ne_i) = (e_i/J)(鈭侸/鈭俥_i)
-  姹傚拰: 危 C_i^J = 危 (e_i/J)(鈭侸/鈭俥_i) = (1/J) 危 e_i 鈭侸/鈭俥_i
+  求和定理: Σ_i C_i^J = 1
 
-  瀵逛簬閫氶噺锛孞 鏄竴娆￠綈娆＄殑 (鎵€鏈夐叾鍔犲€?鈫?閫氶噺鍔犲€?
-  鎵€浠?危 e_i 鈭侸/鈭俥_i = J (娆ф媺瀹氱悊)
-  鍥犳 危 C_i^J = J/J = 1
+  证明: 使用欧拉齐次函数定理
+  如果 J(e₁,...,eₙ) 是零次齐次函数，则 Σ e_i ∂J/∂e_i = 0
+  控制系数 C_i^J = (∂lnJ/∂lne_i) = (e_i/J)(∂J/∂e_i)
+  求和: Σ C_i^J = Σ (e_i/J)(∂J/∂e_i) = (1/J) Σ e_i ∂J/∂e_i
+
+  对于通量，J 是一次齐次的 (所有酶加倍 → 通量加倍)
+  所以 Σ e_i ∂J/∂e_i = J (欧拉定理)
+  因此 Σ C_i^J = J/J = 1
 -/
 
-/- 浠ｈ阿缃戠粶 -/
-structure MetabolicNetwork (n : 鈩? where
-  /-- 閰舵椿鎬?-/
-  enzyme : Fin n 鈫?鈩?  /-- 绋虫€侀€氶噺 -/
-  flux : 鈩?  /-- 閫氶噺浣滀负閰舵椿鎬х殑鍑芥暟 -/
-  flux_fn : (Fin n 鈫?鈩? 鈫?鈩?  h_flux : flux = flux_fn enzyme
+/- 代谢网络 -/
+structure MetabolicNetwork (n : ℕ) where
+  /-- 酶活性 -/
+  enzyme : Fin n → ℝ
+  /-- 稳态通量 -/
+  flux : ℝ
+  /-- 通量作为酶活性的函数 -/
+  flux_fn : (Fin n → ℝ) → ℝ
+  h_flux : flux = flux_fn enzyme
 
-/- 閫氶噺鎺у埗绯绘暟 -/
-def fluxControlCoefficient {n : 鈩晑 (net : MetabolicNetwork n) (i : Fin n) : 鈩?:=
+/- 通量控制系数 -/
+def fluxControlCoefficient {n : ℕ} (net : MetabolicNetwork n) (i : Fin n) : ℝ :=
   let e_i := net.enzyme i
   let J := net.flux
-  let dJ_de := fderiv 鈩?(net.flux_fn) net.enzyme (Pi.single i 1)
+  let dJ_de := fderiv ℝ (net.flux_fn) net.enzyme (Pi.single i 1)
   (e_i / J) * dJ_de
 
 /-
-  瀹氱悊: 閫氶噺鎺у埗绯绘暟姹傚拰涓?1
+  定理: 通量控制系数求和为 1
 
-  鍏抽敭鍋囪: 閫氶噺鍑芥暟 J(e鈧?...,e鈧? 鏄竴娆￠綈娆＄殑
-  (鎵€鏈夐叾娲绘€у悓鏃剁缉鏀?位 鍊嶏紝閫氶噺涔熺缉鏀?位 鍊?
+  关键假设: 通量函数 J(e₁,...,eₙ) 是一次齐次的
+  (所有酶活性同时缩放 λ 倍，通量也缩放 λ 倍)
 -/
-theorem metabolic_control_summation {n : 鈩晑 (net : MetabolicNetwork n)
-    (h_homogeneous : 鈭€ (e : Fin n 鈫?鈩? (位 : 鈩?, 位 > 0 鈫?      net.flux_fn (位 鈥?e) = 位 * net.flux_fn e)
-    (h_diff : Differentiable 鈩?net.flux_fn)
-    (h_nonzero : net.flux 鈮?0) :
-    鈭?i, fluxControlCoefficient net i = 1 := by
-  /- 浣跨敤娆ф媺榻愭鍑芥暟瀹氱悊 -/
-  /- 濡傛灉 J 鏄竴娆￠綈娆＄殑锛屽垯 危 e_i 鈭侸/鈭俥_i = J -/
-  /- 鎺у埗绯绘暟姹傚拰 = (1/J) 危 e_i 鈭侸/鈭俥_i = J/J = 1 -/
+theorem metabolic_control_summation {n : ℕ} (net : MetabolicNetwork n)
+    (h_homogeneous : ∀ (e : Fin n → ℝ) (λ : ℝ), λ > 0 →
+      net.flux_fn (λ • e) = λ * net.flux_fn e)
+    (h_diff : Differentiable ℝ net.flux_fn)
+    (h_nonzero : net.flux ≠ 0) :
+    ∑ i, fluxControlCoefficient net i = 1 := by
+  /- 使用欧拉齐次函数定理 -/
+  /- 如果 J 是一次齐次的，则 Σ e_i ∂J/∂e_i = J -/
+  /- 控制系数求和 = (1/J) Σ e_i ∂J/∂e_i = J/J = 1 -/
   admit  -- TODO: prove this, currently axiom-held
 
 end

@@ -1,501 +1,568 @@
-﻿# TOE妗嗘灦鏂囨。绱㈠紩 (INDEX.md)
+# TOE框架文档索引 (INDEX.md)
 
-> **鏂囨。鐗堟湰**: v2.4  
-> **鍒涘缓鏃ユ湡**: 2026-04-18  
-> **鏈€鍚庢洿鏂?*: 2026-08-08  
-> **鏂囨。鎬绘暟**: 35+59=94 (core docs 01-30 + extended 31-94) | framework/ 鐩綍鍏?200+ 涓?.md 鏂囦欢  
-> **绱㈠紩绫诲瀷**: 鍒嗗眰绱㈠紩绯荤粺 [[doc:缂栧彿]], [[topic:涓婚]], [[concept:姒傚康]]
+> **文档版本**: v2.3  
+> **创建日期**: 2026-04-18  
+> **最后更新**: 2026-08-06  
+> **文档总数**: 35+58=93 (core docs 01-30 + extended 31-93) | framework/ 目录共 200+ 个 .md 文件  
+> **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
 
-## 馃摎 鏂囨。娓呭崟
+## 📚 文档清单
 
-### 鏍稿績鏂囨。 (01-30)
+### 核心文档 (01-30)
 
-| 缂栧彿 | 鏂囨。鍚?| 鏍稿績涓婚 | 鐘舵€?|
+| 编号 | 文档名 | 核心主题 | 状态 |
 |------|--------|----------|------|
-| [[doc:01]] | 01_experimental_verification.md | 伪瀹為獙楠岃瘉 | 鉁?|
-| [[doc:02]] | 02_theoretical_corrections.md | 伪鐞嗚淇 | 鉁?|
-| [[doc:03]] | 03_qcd_emergence.md | QCD娑岀幇 | 鉁?|
-| [[doc:04]] | 04_dark_sector.md | 鏆楃墿璐?鏆楄兘閲?| 鉁?|
-| [[doc:05]] | 05_mathematical_foundations.md | 鏁板鍩虹 | 鉁?|
-| [[doc:06]] | 06_toe_comparison.md | TOE瀵规瘮鍒嗘瀽 | 鉁?|
-| [[doc:07]] | 07_applications.md | 搴旂敤鍓嶆櫙 | 鉁?|
-| [[doc:08]] | 08_electroweak_unification.md | 鐢靛急缁熶竴 | 鉁?|
-| [[doc:09]] | 09_neutrino_inflation.md | 涓井瀛?鏆磋儉 | 鉁?|
-| [[doc:10]] | 10_gut_unification.md | GUT澶х粺涓€ | 鉁?|
-| [[doc:11]] | 11_quantum_gravity.md | 閲忓瓙寮曞姏 | 鉁?|
-| [[doc:12]] | 12_supersymmetry.md | 瓒呭绉?| 鉁?|
-| [[doc:13]] | 13_extra_dimensions.md | 棰濆缁村害 | 鉁?|
-| [[doc:14]] | 14_black_hole_information.md | 榛戞礊淇℃伅 | 鉁?|
-| [[doc:15]] | 15_computable_universe.md | 鍙绠楀畤瀹?| 鉁?|
-| [[doc:16]] | 16_electron_neutrino_unification.md | 鐢靛瓙-涓井瀛愮粺涓€ | 鉁?|
-| [[doc:17]] | 17_quantum_information.md | 閲忓瓙淇℃伅 | 鉁?|
-| [[doc:18]] | 18_dark_matter_spectrum.md | 鏆楃墿璐ㄨ氨 | 鉁?|
-| [[doc:19]] | 19_early_universe_phase_transitions.md | 鏃╂湡瀹囧畽鐩稿彉 | 鉁?|
-| [[doc:20]] | 20_black_hole_physics_complete.md | 榛戞礊鐗╃悊瀹屾暣鐗?| 鉁?|
-| [[doc:21]] | 21_toe_vs_standard_model_precision.md | 绮惧害瀵规瘮 | 鉁?|
-| [[doc:22]] | 22_quantum_entanglement_superluminal.md | 绾犵紶/瓒呭厜閫?| 鉁?|
-| [[doc:23]] | 23_cosmological_constant_problem.md | 瀹囧畽瀛﹀父鏁?| 鉁?|
-| [[doc:24]] | 24_quantum_measurement_layered.md | 閲忓瓙娴嬮噺 | 鉁?|
-| [[doc:25]] | 25_string_theory_duality.md | 寮︾悊璁哄鍋?| 鉁?|
-| [[doc:26]] | *(鏂囦欢涓嶅瓨鍦?* | 鍏ㄦ伅鍘熺悊 | 鉂?|
+| [[doc:01]] | 01_experimental_verification.md | α实验验证 | ✅ |
+| [[doc:02]] | 02_theoretical_corrections.md | α理论修正 | ✅ |
+| [[doc:03]] | 03_qcd_emergence.md | QCD涌现 | ✅ |
+| [[doc:04]] | 04_dark_sector.md | 暗物质/暗能量 | ✅ |
+| [[doc:05]] | 05_mathematical_foundations.md | 数学基础 | ✅ |
+| [[doc:06]] | 06_toe_comparison.md | TOE对比分析 | ✅ |
+| [[doc:07]] | 07_applications.md | 应用前景 | ✅ |
+| [[doc:08]] | 08_electroweak_unification.md | 电弱统一 | ✅ |
+| [[doc:09]] | 09_neutrino_inflation.md | 中微子/暴胀 | ✅ |
+| [[doc:10]] | 10_gut_unification.md | GUT大统一 | ✅ |
+| [[doc:11]] | 11_quantum_gravity.md | 量子引力 | ✅ |
+| [[doc:12]] | 12_supersymmetry.md | 超对称 | ✅ |
+| [[doc:13]] | 13_extra_dimensions.md | 额外维度 | ✅ |
+| [[doc:14]] | 14_black_hole_information.md | 黑洞信息 | ✅ |
+| [[doc:15]] | 15_computable_universe.md | 可计算宇宙 | ✅ |
+| [[doc:16]] | 16_electron_neutrino_unification.md | 电子-中微子统一 | ✅ |
+| [[doc:17]] | 17_quantum_information.md | 量子信息 | ✅ |
+| [[doc:18]] | 18_dark_matter_spectrum.md | 暗物质谱 | ✅ |
+| [[doc:19]] | 19_early_universe_phase_transitions.md | 早期宇宙相变 | ✅ |
+| [[doc:20]] | 20_black_hole_physics_complete.md | 黑洞物理完整版 | ✅ |
+| [[doc:21]] | 21_toe_vs_standard_model_precision.md | 精度对比 | ✅ |
+| [[doc:22]] | 22_quantum_entanglement_superluminal.md | 纠缠/超光速 | ✅ |
+| [[doc:23]] | 23_cosmological_constant_problem.md | 宇宙学常数 | ✅ |
+| [[doc:24]] | 24_quantum_measurement_layered.md | 量子测量 | ✅ |
+| [[doc:25]] | 25_string_theory_duality.md | 弦理论对偶 | ✅ |
+| [[doc:26]] | *(文件不存在)* | 全息原理 | ❌ |
 
-> 鈩癸笍 **鍏充簬 doc:26 (鍏ㄦ伅鍘熺悊)**: 灏氭湭鍒涘缓鐙珛鏂囦欢銆傜浉鍏冲唴瀹瑰凡閮ㄥ垎瑕嗙洊浜?`framework/58_quantum_gravity_holography.md` 鍜?`papers/TOE-SYLVA_Master_Academic.md 搂2-3`銆傚弬瑙?papers/ 鐩綍涓笌鍏ㄦ伅瀵瑰伓銆丄dS/CFT 鐩稿叧鐨勭患杩版枃鐚€?| [[doc:27]] | 27_noncommutative_geometry_physics.md | 闈炰氦鎹㈠嚑浣?| 鉁?|
-| [[doc:28]] | 28_category_theory_layered.md | 鑼冪暣璁?| 鉁?|
-| [[doc:29]] | 29_random_matrix_universality.md | 闅忔満鐭╅樀 | 鉁?|
-| [[doc:30]] | 30_information_geometry_statmech.md | 淇℃伅鍑犱綍 | 鉁?|
+> ℹ️ **关于 doc:26 (全息原理)**: 尚未创建独立文件。相关内容已部分覆盖于 `framework/58_quantum_gravity_holography.md` 和 `papers/TOE-SYLVA_Master_Academic.md §2-3`。参见 papers/ 目录中与全息对偶、AdS/CFT 相关的综述文献。
+| [[doc:27]] | 27_noncommutative_geometry_physics.md | 非交换几何 | ✅ |
+| [[doc:28]] | 28_category_theory_layered.md | 范畴论 | ✅ |
+| [[doc:29]] | 29_random_matrix_universality.md | 随机矩阵 | ✅ |
+| [[doc:30]] | 30_information_geometry_statmech.md | 信息几何 | ✅ |
 
-### 鍘嗗彶鏂囨。
+### 历史文档
 
-| 鏂囨。鍚?| 璇存槑 | 鐘舵€?|
+| 文档名 | 说明 | 状态 |
 |--------|------|------|
-| [[doc:four_forces_unification_complete.md]] | 鍥涘姏缁熶竴瀹屾暣鐗?| 鉁?|
-| [[doc:four_forces_unification_paper.md]] | 鍥涘姏缁熶竴璁烘枃鐗?| 鉁?|
-| [[doc:16_electron_neutrino_unification_detailed.md]] | 鐢靛瓙-涓井瀛愯缁嗙増 | 鉁?|
-| [[doc:16_electron_neutrino_ultimate.md]] | 鐢靛瓙-涓井瀛愮粓鏋佺増 | 鉁?|
-| [[doc:16_electron_neutrino_ultimate_chinese.md]] | 鐢靛瓙-涓井瀛愪腑鏂囩増 | 鉁?|
-| [[doc:16_electron_neutrino_detailed_notable.md]] | 鐢靛瓙-涓井瀛愭暀瀛︾増 | 鉁?|
+| [[doc:four_forces_unification_complete.md]] | 四力统一完整版 | ✅ |
+| [[doc:four_forces_unification_paper.md]] | 四力统一论文版 | ✅ |
+| [[doc:16_electron_neutrino_unification_detailed.md]] | 电子-中微子详细版 | ✅ |
+| [[doc:16_electron_neutrino_ultimate.md]] | 电子-中微子终极版 | ✅ |
+| [[doc:16_electron_neutrino_ultimate_chinese.md]] | 电子-中微子中文版 | ✅ |
+| [[doc:16_electron_neutrino_detailed_notable.md]] | 电子-中微子教学版 | ✅ |
 
-### 鎵╁睍鏂囨。 (31-77)
+### 扩展文档 (31-77)
 
-> 姝よ〃鏍煎垪鍑虹紪鍙?31-77 涓疄闄呭瓨鍦ㄧ殑妗嗘灦鏂囨。锛屾寜缂栧彿鎺掑簭銆傞儴鍒嗘枃浠朵负 `.lean` 褰㈠紡鍖栬瘉鏄庢枃浠躲€?
-| 缂栧彿 | 鏂囨。鍚?| 鏍稿績涓婚 | 鐘舵€?|
+> 此表格列出编号 31-77 中实际存在的框架文档，按编号排序。部分文件为 `.lean` 形式化证明文件。
+
+| 编号 | 文档名 | 核心主题 | 状态 |
 |------|--------|----------|------|
-| [[doc:31]] | 31_algebraic_topology_physics.md | 浠ｆ暟鎷撴墤涓庣墿鐞?| 鉁?|
-| [[doc:32]] | 32_integrable_systems_solitons.md | 鍙Н绯荤粺涓庡瀛?| 鉁?|
-| [[doc:32-v2]] | 32_integrable_systems_UNIFIED.md | 鍙Н绯荤粺缁熶竴鐗?| 鉁?|
-| [[doc:33]] | 33_geometric_quantization_UNIFIED.md | 鍑犱綍閲忓瓙鍖?| 鉁?|
-| [[doc:34]] | 34_anomalies_index_UNIFIED.md | 鍙嶅父涓庢寚鏍囩悊璁?| 鉁?|
-| [[doc:35]] | 35_topological_conformal_field_theory.md | 鎷撴墤鍏卞舰鍦鸿 | 鉁?|
-| [[doc:37]] | 37_fundamental_constants_unification.md | 鍩烘湰甯告暟缁熶竴 | 鉁?|
-| [[doc:37-v2]] | 37_fundamental_constants_unification_v2.md | 鍩烘湰甯告暟缁熶竴 v2 | 鉁?|
-| [[doc:38]] | 38_information_geometry_statmech.md | 淇℃伅鍑犱綍涓庣粺璁″姏瀛?| 鉁?|
-| [[doc:39]] | 39_noncommutative_geometry_physics.md | 闈炰氦鎹㈠嚑浣曚笌鐗╃悊 | 鉁?|
-| [[doc:40]] | 40_algebraic_topology_condensed_matter.md | 浠ｆ暟鎷撴墤涓庡嚌鑱氭€?| 鉁?|
-| [[doc:41]] | 41_quantum_computation_information.md | 閲忓瓙璁＄畻涓庝俊鎭?| 鉁?|
-| [[doc:42]] | 42_cosmos_inflation.md | 瀹囧畽鏆磋儉 | 鉁?|
-| [[doc:43]] | 43_black_hole_thermodynamics.md | 榛戞礊鐑姏瀛?| 鉁?|
-| [[doc:44]] | 44_particle_physics_standard_model.md | 绮掑瓙鐗╃悊鏍囧噯妯″瀷 | 鉁?|
-| [[doc:45]] | 45_complex_systems_emergence.md | 澶嶆潅绯荤粺娑岀幇 | 鉁?|
-| [[doc:45-v2]] | 45_complex_systems_emergence_v2.md | 澶嶆潅绯荤粺娑岀幇 v2 | 鉁?|
-| [[doc:46]] | 46_random_matrices_advanced.md | 闅忔満鐭╅樀杩涢樁 | 鉁?|
-| [[doc:47]] | 47_variational_principles.md | 鍙樺垎鍘熺悊 | 鉁?|
-| [[doc:48]] | 48_supersymmetry_phenomenology.md | 瓒呭绉板敮璞″ | 鉁?|
-| [[doc:50]] | 50_constants_numerical_validation.md | 甯告暟鏁板€奸獙璇?| 鉁?|
-| [[doc:51]] | 51_gauge_theory_fiber_bundles.md | 瑙勮寖鐞嗚涓庣氦缁翠笡 | 鉁?|
-| [[doc:52]] | 52_statistical_field_theory.md | 缁熻鍦鸿 | 鉁?|
-| [[doc:53]] | 53_mathematical_foundations.md | 鏁板鍩虹 | 鉁?|
-| [[doc:54]] | 54_dark_matter_dark_energy.md | 鏆楃墿璐ㄤ笌鏆楄兘閲?| 鉁?|
-| [[doc:55]] | 55_high_energy_experimental.md | 楂樿兘瀹為獙 | 鉁?|
-| [[doc:56]] | 56_qft_renormalization_eft.md | QFT閲嶆暣鍖栦笌EFT | 鉁?|
-| [[doc:57]] | 57_algebraic_geometry_physics.md | 浠ｆ暟鍑犱綍涓庣墿鐞?| 鉁?|
-| [[doc:58]] | 58_quantum_gravity_holography.md | 閲忓瓙寮曞姏涓庡叏鎭?| 鉁?|
-| [[doc:59]] | 59_symmetry_group_theory.md | 瀵圭О鎬т笌缇よ | 鉁?|
-| [[doc:60]] | 60_numerical_methods_computation.md | 鏁板€兼柟娉曚笌璁＄畻 | 鉁?|
-| [[doc:61]] | 61_biophysics_complex_systems.md | 鐢熺墿鐗╃悊涓庡鏉傜郴缁?| 鉁?|
-| [[doc:62]] | 62_mathematical_hierarchy_emergence.md | 鏁板灞傜骇娑岀幇 | 鉁?|
-| [[doc:63]] | 63_gravitational_wave_astronomy.md | 寮曞姏娉㈠ぉ鏂囧 | 鉁?|
-| [[doc:64]] | 64_neutron_star_physics.md | 涓瓙鏄熺墿鐞?| 鉁?|
-| [[doc:65]] | 65_early_universe_inflation.md | 鏃╂湡瀹囧畽鏆磋儉 | 鉁?|
-| [[doc:66]] | 66_beyond_standard_model.lean | BSM 褰㈠紡鍖栬瘉鏄?(.lean) | 鉁?|
-| [[doc:67]] | 67_asymptotic_analysis.md | 娓愯繎鍒嗘瀽 | 鉁?|
-| [[doc:69]] | 69_soft_matter_active_matter.md | 杞墿璐ㄤ笌娲绘€х墿璐?| 鉁?|
-| [[doc:70]] | 70_plasma_physics_fusion.md | 绛夌瀛愪綋涓庤仛鍙?| 鉁?|
-| [[doc:71]] | 71_atmospheric_climate_physics.md | 澶ф皵涓庢皵鍊欑墿鐞?| 鉁?|
-| [[doc:72]] | 72_electronic_structure_materials.md | 鐢靛瓙缁撴瀯涓庢潗鏂?| 鉁?|
-| [[doc:73]] | 73_optics_laser_physics.md | 鍏夊涓庢縺鍏夌墿鐞?| 鉁?|
-| [[doc:74]] | 74_atomic_molecular_optical.md | 鍘熷瓙鍒嗗瓙鍏夊 | 鉁?|
-| [[doc:74-2]] | 74_ocean_geophysics.md | 娴锋磱鍦扮悆鐗╃悊 | 鉁?|
-| [[doc:75]] | 75_statistical_physics_criticality.md | 缁熻鐗╃悊涓庝复鐣屾€?| 鉁?|
-| [[doc:76]] | 76_cp_violation_flavor_physics.md | CP鐮村潖涓庡懗鐗╃悊 | 鉁?|
-| [[doc:77]] | 77_large_scale_structure_galaxies.md | 澶у昂搴︾粨鏋勪笌鏄熺郴 | 鉁?|
-| [[doc:77-lens]] | 77_gravitational_lensing.md | 寮曞姏閫忛暅 | 鉁?|
-| [[doc:78]] | 78_ai_physics.md | 鐗╃悊淇℃伅AI | 鉁?|
-| [[doc:79]] | 79_symplectic_geometry.md | 杈涘嚑浣曚笌缁忓吀鍔涘 | 鉁?|
-| [[doc:80]] | 80_operator_algebras.md | 绠楀瓙浠ｆ暟涓庨噺瀛愬満璁?| 鉁?|
-| [[doc:81]] | 81_padic_physics.md | p-adic鐗╃悊涓嶢delic缁熶竴 | 鉁?|
-| [[doc:82]] | 82_accelerator_physics.md | 鍔犻€熷櫒鐗╃悊 | 鉁?|
-| [[doc:83]] | 83_neutron_star_physics_deep.md | 涓瓙鏄熺墿鐞嗘繁鍖?| 鉁?|
-| [[doc:84]] | 84_nuclear_physics.md | 鏍哥墿鐞?| 鉁?|
-| [[doc:85]] | 85_atomic_molecular_physics.md | 鍘熷瓙鍒嗗瓙鐗╃悊 | 鉁?|
-| [[doc:86]] | 86_condensed_matter_physics.md | 鍑濊仛鎬佺墿鐞?| 鉁?|
-| [[doc:87]] | 87_qft_mathematical_physics.md | QFT 鏁板鍩虹 | 鉁?|
-| [[doc:88]] | 88_large_scale_structure.md | 澶у昂搴︾粨鏋?| 鉁?|
-| [[doc:89]] | 89_quantum_thermodynamics.md | 閲忓瓙鐑姏瀛?| 鉁?|
-| [[doc:90]] | 90_quantum_optics.md | 閲忓瓙鍏夊 | 鉁?|
-| [[doc:91]] | 91_quantum_error_correction.md | 閲忓瓙绾犻敊 | 鉁?|
-| [[doc:92]] | 92_precision_measurement.md | 绮惧瘑娴嬮噺 | 鉁?|
-| [[doc:93]] | 93_algebraic_geometry_physics.md | 浠ｆ暟鍑犱綍涓庣墿鐞?| 鉁?|
+| [[doc:31]] | 31_algebraic_topology_physics.md | 代数拓扑与物理 | ✅ |
+| [[doc:32]] | 32_integrable_systems_solitons.md | 可积系统与孤子 | ✅ |
+| [[doc:32-v2]] | 32_integrable_systems_UNIFIED.md | 可积系统统一版 | ✅ |
+| [[doc:33]] | 33_geometric_quantization_UNIFIED.md | 几何量子化 | ✅ |
+| [[doc:34]] | 34_anomalies_index_UNIFIED.md | 反常与指标理论 | ✅ |
+| [[doc:35]] | 35_topological_conformal_field_theory.md | 拓扑共形场论 | ✅ |
+| [[doc:37]] | 37_fundamental_constants_unification.md | 基本常数统一 | ✅ |
+| [[doc:37-v2]] | 37_fundamental_constants_unification_v2.md | 基本常数统一 v2 | ✅ |
+| [[doc:38]] | 38_information_geometry_statmech.md | 信息几何与统计力学 | ✅ |
+| [[doc:39]] | 39_noncommutative_geometry_physics.md | 非交换几何与物理 | ✅ |
+| [[doc:40]] | 40_algebraic_topology_condensed_matter.md | 代数拓扑与凝聚态 | ✅ |
+| [[doc:41]] | 41_quantum_computation_information.md | 量子计算与信息 | ✅ |
+| [[doc:42]] | 42_cosmos_inflation.md | 宇宙暴胀 | ✅ |
+| [[doc:43]] | 43_black_hole_thermodynamics.md | 黑洞热力学 | ✅ |
+| [[doc:44]] | 44_particle_physics_standard_model.md | 粒子物理标准模型 | ✅ |
+| [[doc:45]] | 45_complex_systems_emergence.md | 复杂系统涌现 | ✅ |
+| [[doc:45-v2]] | 45_complex_systems_emergence_v2.md | 复杂系统涌现 v2 | ✅ |
+| [[doc:46]] | 46_random_matrices_advanced.md | 随机矩阵进阶 | ✅ |
+| [[doc:47]] | 47_variational_principles.md | 变分原理 | ✅ |
+| [[doc:48]] | 48_supersymmetry_phenomenology.md | 超对称唯象学 | ✅ |
+| [[doc:50]] | 50_constants_numerical_validation.md | 常数数值验证 | ✅ |
+| [[doc:51]] | 51_gauge_theory_fiber_bundles.md | 规范理论与纤维丛 | ✅ |
+| [[doc:52]] | 52_statistical_field_theory.md | 统计场论 | ✅ |
+| [[doc:53]] | 53_mathematical_foundations.md | 数学基础 | ✅ |
+| [[doc:54]] | 54_dark_matter_dark_energy.md | 暗物质与暗能量 | ✅ |
+| [[doc:55]] | 55_high_energy_experimental.md | 高能实验 | ✅ |
+| [[doc:56]] | 56_qft_renormalization_eft.md | QFT重整化与EFT | ✅ |
+| [[doc:57]] | 57_algebraic_geometry_physics.md | 代数几何与物理 | ✅ |
+| [[doc:58]] | 58_quantum_gravity_holography.md | 量子引力与全息 | ✅ |
+| [[doc:59]] | 59_symmetry_group_theory.md | 对称性与群论 | ✅ |
+| [[doc:60]] | 60_numerical_methods_computation.md | 数值方法与计算 | ✅ |
+| [[doc:61]] | 61_biophysics_complex_systems.md | 生物物理与复杂系统 | ✅ |
+| [[doc:62]] | 62_mathematical_hierarchy_emergence.md | 数学层级涌现 | ✅ |
+| [[doc:63]] | 63_gravitational_wave_astronomy.md | 引力波天文学 | ✅ |
+| [[doc:64]] | 64_neutron_star_physics.md | 中子星物理 | ✅ |
+| [[doc:65]] | 65_early_universe_inflation.md | 早期宇宙暴胀 | ✅ |
+| [[doc:66]] | 66_beyond_standard_model.lean | BSM 形式化证明 (.lean) | ✅ |
+| [[doc:67]] | 67_asymptotic_analysis.md | 渐近分析 | ✅ |
+| [[doc:69]] | 69_soft_matter_active_matter.md | 软物质与活性物质 | ✅ |
+| [[doc:70]] | 70_plasma_physics_fusion.md | 等离子体与聚变 | ✅ |
+| [[doc:71]] | 71_atmospheric_climate_physics.md | 大气与气候物理 | ✅ |
+| [[doc:72]] | 72_electronic_structure_materials.md | 电子结构与材料 | ✅ |
+| [[doc:73]] | 73_optics_laser_physics.md | 光学与激光物理 | ✅ |
+| [[doc:74]] | 74_atomic_molecular_optical.md | 原子分子光学 | ✅ |
+| [[doc:74-2]] | 74_ocean_geophysics.md | 海洋地球物理 | ✅ |
+| [[doc:75]] | 75_statistical_physics_criticality.md | 统计物理与临界性 | ✅ |
+| [[doc:76]] | 76_cp_violation_flavor_physics.md | CP破坏与味物理 | ✅ |
+| [[doc:77]] | 77_large_scale_structure_galaxies.md | 大尺度结构与星系 | ✅ |
+| [[doc:77-lens]] | 77_gravitational_lensing.md | 引力透镜 | ✅ |
+| [[doc:78]] | 78_ai_physics.md | 物理信息AI | ✅ |
+| [[doc:79]] | 79_symplectic_geometry.md | 辛几何与经典力学 | ✅ |
+| [[doc:80]] | 80_operator_algebras.md | 算子代数与量子场论 | ✅ |
+| [[doc:81]] | 81_padic_physics.md | p-adic物理与Adelic统一 | ✅ |
+| [[doc:82]] | 82_accelerator_physics.md | 加速器物理 | ✅ |
+| [[doc:83]] | 83_neutron_star_physics_deep.md | 中子星物理深化 | ✅ |
+| [[doc:84]] | 84_nuclear_physics.md | 核物理 | ✅ |
+| [[doc:85]] | 85_atomic_molecular_physics.md | 原子分子物理 | ✅ |
+| [[doc:86]] | 86_condensed_matter_physics.md | 凝聚态物理 | ✅ |
+| [[doc:87]] | 87_qft_mathematical_physics.md | QFT 数学基础 | ✅ |
+| [[doc:88]] | 88_large_scale_structure.md | 大尺度结构 | ✅ |
+| [[doc:89]] | 89_quantum_thermodynamics.md | 量子热力学 | ✅ |
+| [[doc:90]] | 90_quantum_optics.md | 量子光学 | ✅ |
+| [[doc:91]] | 91_quantum_error_correction.md | 量子纠错 | ✅ |
+| [[doc:92]] | 92_precision_measurement.md | 精密测量 | ✅ |
+| [[doc:93]] | 93_algebraic_geometry_physics.md | 代数几何与物理 | ✅ |
 
-| [[doc:94]] | 94_cnf_category_theory.md | CNF 的范畴论结构 (cnf_category_theory) | ✅ |
+### 已知编号问题
 
-### 宸茬煡缂栧彿闂
+框架文档在扩展过程中出现了若干编号冲突和缺口，记录如下以便后续统一处理：
 
-妗嗘灦鏂囨。鍦ㄦ墿灞曡繃绋嬩腑鍑虹幇浜嗚嫢骞茬紪鍙峰啿绐佸拰缂哄彛锛岃褰曞涓嬩互渚垮悗缁粺涓€澶勭悊锛?
-**缂栧彿鍐茬獊 (shared numbers):**
-- **缂栧彿 30**: `30_CNF_ARCHITECTURE_DEEP.md` 涓?`30_information_geometry_statmech.md` 鍏辩敤缂栧彿 30锛堟牳蹇冩枃妗ｈ〃涓粎鍒楀嚭鍚庤€咃級
-- **缂栧彿 74**: `74_atomic_molecular_optical.md` 涓?`74_ocean_geophysics.md` 鍏辩敤缂栧彿 74
+**编号冲突 (shared numbers):**
+- **编号 30**: `30_CNF_ARCHITECTURE_DEEP.md` 与 `30_information_geometry_statmech.md` 共用编号 30（核心文档表中仅列出后者）
+- **编号 74**: `74_atomic_molecular_optical.md` 与 `74_ocean_geophysics.md` 共用编号 74
 
-**鐤戜技鍐呭閲嶅:**
-- `27_noncommutative_geometry_physics.md` 涓?`39_noncommutative_geometry_physics.md` 鈥?鏂囦欢鍚嶇浉鍚岋紝鍙兘涓哄悓涓€涓婚鐨勪笉鍚岀増鏈紱闇€浜哄伐纭鏄惁搴斿悎骞舵垨鍖哄垎
-- `30_information_geometry_statmech.md` 涓?`38_information_geometry_statmech.md` 鈥?鏂囦欢鍚嶇浉鍚岋紝鍙兘鍏变韩澶ч噺鍐呭锛涢渶浜哄伐瀹℃煡
+**疑似内容重复:**
+- `27_noncommutative_geometry_physics.md` 与 `39_noncommutative_geometry_physics.md` — 文件名相同，可能为同一主题的不同版本；需人工确认是否应合并或区分
+- `30_information_geometry_statmech.md` 与 `38_information_geometry_statmech.md` — 文件名相同，可能共享大量内容；需人工审查
 
-**缂栧彿缂哄彛 (missing numbers):**
-- **缂栧彿 26**: 缂哄け锛圛NDEX 涓凡鏍囨敞涓哄叏鎭師鐞嗭紝鍐呭瑕嗙洊浜?`58_quantum_gravity_holography.md`锛?- **缂栧彿 36**: 缂哄け锛堟湭鍒嗛厤鎴栨枃浠舵湭鍒涘缓锛?- **缂栧彿 49**: 缂哄け锛堟湭鍒嗛厤鎴栨枃浠舵湭鍒涘缓锛?- **缂栧彿 66**: 浠呭瓨鍦?`.lean` 褰㈠紡鍖栨枃浠讹紝鏃犲搴?`.md` 姝ｆ枃
-- **缂栧彿 68**: 缂哄け锛堟湭鍒嗛厤鎴栨枃浠舵湭鍒涘缓锛?
-**閲嶅鍙樹綋 (v2/UNIFIED):**
-- `32` 鏈夊弻鐗堟湰锛歴olitons 涓?UNIFIED
-- `37` 鏈夊弻鐗堟湰锛歷1 涓?v2
-- `45` 鏈夊弻鐗堟湰锛歷1 涓?v2
+**编号缺口 (missing numbers):**
+- **编号 26**: 缺失（INDEX 中已标注为全息原理，内容覆盖于 `58_quantum_gravity_holography.md`）
+- **编号 36**: 缺失（未分配或文件未创建）
+- **编号 49**: 缺失（未分配或文件未创建）
+- **编号 66**: 仅存在 `.lean` 形式化文件，无对应 `.md` 正文
+- **编号 68**: 缺失（未分配或文件未创建）
 
-### 缂栧彿鍐茬獊璇︾粏鍒嗘瀽
+**重复变体 (v2/UNIFIED):**
+- `32` 有双版本：solitons 与 UNIFIED
+- `37` 有双版本：v1 与 v2
+- `45` 有双版本：v1 与 v2
 
-> 鏈妭浜?2026-08-05 閫氳繃閫愭枃浠舵瘮瀵癸紙鏍囬/鎽樿/鐩綍/澶у皬锛夌敓鎴愩€?
-#### 缂栧彿 27/39锛氶潪浜ゆ崲鍑犱綍
+### 编号冲突详细分析
 
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+> 本节于 2026-08-05 通过逐文件比对（标题/摘要/目录/大小）生成。
+
+#### 编号 27/39：非交换几何
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `27_noncommutative_geometry_physics.md` | 闈炰氦鎹㈠嚑浣曚笌鐗╃悊鍩虹 | 550 | 32.8 KB | 2026-04-19 |
-| `39_noncommutative_geometry_physics.md` | 闈炰氦鎹㈠嚑浣曚笌鐗╃悊瀹炵幇 | 702 | 40.0 KB | 2026-04-19 |
+| `27_noncommutative_geometry_physics.md` | 非交换几何与物理基础 | 550 | 32.8 KB | 2026-04-19 |
+| `39_noncommutative_geometry_physics.md` | 非交换几何与物理实现 | 702 | 40.0 KB | 2026-04-19 |
 
-**鍐呭姣斿**: **涓嶅悓鏂囨。**銆?7 渚ч噸浜?NCG 鐨勬暟瀛﹀熀纭€锛堣氨涓夊厓缁勫叕鐞嗐€丆onnes 閲嶅缓瀹氱悊銆佹爣鍑嗘ā鍨嬬殑璋变綔鐢ㄨ〃杩帮級锛?9 渚ч噸浜?NCG 鐨勭墿鐞嗗疄鐜帮紙Higgs 鏈哄埗鍑犱綍璧锋簮銆佷笌寮﹁ D-鑶滅殑鑱旂郴銆侀潪浜ゆ崲鏃剁┖鍦ㄩ噺瀛愬紩鍔涗腑鐨勬剰涔夛級銆備袱鑰呬簰琛ヤ絾涓嶉噸澶嶃€?
-**鍒ゆ柇**: 涓嶅悓涓婚鐨勫悓鍚嶅彉浣擄紝鍒嗗埆鑱氱劍"鍩虹"涓?瀹炵幇"銆?
-**寤鸿**: 淇濈暀涓や釜缂栧彿锛屽湪鏂囦欢鍚嶄腑鍔犺寖鍥存爣娉紙濡?`_foundations` 涓?`_implementation`锛夛紝鎴栭噸缂栧彿鑷充笉鍚屾暟瀛椼€?
-#### 缂栧彿 30 鍐茬獊锛堜笁鏂癸級
+**内容比对**: **不同文档**。27 侧重于 NCG 的数学基础（谱三元组公理、Connes 重建定理、标准模型的谱作用表述）；39 侧重于 NCG 的物理实现（Higgs 机制几何起源、与弦论 D-膜的联系、非交换时空在量子引力中的意义）。两者互补但不重复。
 
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+**判断**: 不同主题的同名变体，分别聚焦"基础"与"实现"。
+
+**建议**: 保留两个编号，在文件名中加范围标注（如 `_foundations` 与 `_implementation`），或重编号至不同数字。
+
+#### 编号 30 冲突（三方）
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `30_information_geometry_statmech.md` | 淇℃伅鍑犱綍涓庣粺璁″姏瀛︼細浠庣粡鍏稿埌閲忓寲鐨勭粺涓€鐞嗚妗嗘灦 | 492 | 42.3 KB | 2026-04-19 |
-| `30_CNF_ARCHITECTURE_DEEP.md` | CNF 灞傚寲缃戠粶鏋舵瀯锛氭繁鍖栬璁?| 348 | 20.3 KB | 2026-06-04 |
+| `30_information_geometry_statmech.md` | 信息几何与统计力学：从经典到量化的统一理论框架 | 492 | 42.3 KB | 2026-04-19 |
+| `30_CNF_ARCHITECTURE_DEEP.md` | CNF 层化网络架构：深化设计 | 348 | 20.3 KB | 2026-06-04 |
 
-**鍐呭姣斿**: **瀹屽叏涓嶅悓鐨勬枃妗?*銆俙30_information_geometry_statmech.md` 鏄叧浜庝俊鎭嚑浣曚笌缁熻鍔涘鐨勭悊璁烘鏋讹紙Fisher 搴﹁銆並L 鏁ｅ害銆佸鍋跺钩鍧︾粨鏋勩€侀噺瀛愪俊鎭嚑浣曘€侀潪骞宠　鐑姏瀛︼級锛沗30_CNF_ARCHITECTURE_DEEP.md` 鏄叧浜?CNF 灞傚寲缃戠粶鐨勫舰寮忓寲鏋舵瀯璁捐锛堝眰鍖栬寖鐣淬€佸嚱瀛愩€佽嚜鐒跺彉鎹€佸眰闂撮€氫俊鍗忚銆佹秾鐜版満鍒讹級銆備袱鑰呮鏃犲唴瀹归噸鍙狅紝浠呭叡浜紪鍙?30銆?
-**鍒ゆ柇**: 涓嶅悓涓婚鍏辩敤鍚屼竴缂栧彿銆?
-**寤鸿**: 灏?`30_CNF_ARCHITECTURE_DEEP.md` 閲嶇紪鍙疯嚦鏈崰鐢ㄧ殑缂栧彿锛堝 36 鎴?49锛夛紝褰撳墠 INDEX 鏍稿績鏂囨。琛ㄤ腑浠呭垪鍑?`30_information_geometry_statmech.md`銆?
-#### 缂栧彿 30/38锛氫俊鎭嚑浣?
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+**内容比对**: **完全不同的文档**。`30_information_geometry_statmech.md` 是关于信息几何与统计力学的理论框架（Fisher 度规、KL 散度、对偶平坦结构、量子信息几何、非平衡热力学）；`30_CNF_ARCHITECTURE_DEEP.md` 是关于 CNF 层化网络的形式化架构设计（层化范畴、函子、自然变换、层间通信协议、涌现机制）。两者毫无内容重叠，仅共享编号 30。
+
+**判断**: 不同主题共用同一编号。
+
+**建议**: 将 `30_CNF_ARCHITECTURE_DEEP.md` 重编号至未占用的编号（如 36 或 49），当前 INDEX 核心文档表中仅列出 `30_information_geometry_statmech.md`。
+
+#### 编号 30/38：信息几何
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `30_information_geometry_statmech.md` | 淇℃伅鍑犱綍涓庣粺璁″姏瀛︼細浠庣粡鍏稿埌閲忓寲鐨勭粺涓€鐞嗚妗嗘灦 | 492 | 42.3 KB | 2026-04-19 |
-| `38_information_geometry_statmech.md` | 淇℃伅鍑犱綍涓庣粺璁″姏瀛︽繁搴﹁仈绯?| 600 | 41.8 KB | 2026-04-19 |
+| `30_information_geometry_statmech.md` | 信息几何与统计力学：从经典到量化的统一理论框架 | 492 | 42.3 KB | 2026-04-19 |
+| `38_information_geometry_statmech.md` | 信息几何与统计力学深度联系 | 600 | 41.8 KB | 2026-04-19 |
 
-**鍐呭姣斿**: **涓嶅悓鏂囨。**銆?0 鏋勫缓浠庣粡鍏哥粺璁℃祦褰㈠埌閲忓瓙淇℃伅鍑犱綍銆佸眰鍖栫缁忕綉缁滃強闈炲钩琛＄儹鍔涘鐨勭粺涓€妗嗘灦锛?8 鑱氱劍鏇存繁灞傜殑鏁板缁撴瀯锛堟帴瑙﹀嚑浣曚笌杈涘嚑浣曞舰寮忓寲銆丳ainlev茅 鏂圭▼涓庡彲绉郴缁熴€侀噺瀛?Fisher 淇℃伅鐨勭簿纭悊璁猴級銆?0 鍋忓箍搴︼紝38 鍋忔繁搴︿笌楂樼骇鏁板宸ュ叿銆?
-**鍒ゆ柇**: 鍚屼竴涓婚锛堜俊鎭嚑浣?缁熻鍔涘锛夌殑涓や釜浜掕ˉ鏂囨。锛?0 涓哄叆闂ㄧ骇缁熶竴妗嗘灦锛?8 涓轰笓瀹剁骇娣卞害鎺㈢储銆?
-**寤鸿**: 淇濈暀涓や釜缂栧彿銆?0 浣滀负鏍稿績鏂囨。锛?8 浣滀负鎵╁睍杩涢樁鏂囨。銆傛垨缁熶竴涓轰竴涓枃浠躲€?
-#### 缂栧彿 74 鍐茬獊
+**内容比对**: **不同文档**。30 构建从经典统计流形到量子信息几何、层化神经网络及非平衡热力学的统一框架；38 聚焦更深层的数学结构（接触几何与辛几何形式化、Painlevé 方程与可积系统、量子 Fisher 信息的精确理论）。30 偏广度，38 偏深度与高级数学工具。
 
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+**判断**: 同一主题（信息几何+统计力学）的两个互补文档，30 为入门级统一框架，38 为专家级深度探索。
+
+**建议**: 保留两个编号。30 作为核心文档，38 作为扩展进阶文档。或统一为一个文件。
+
+#### 编号 74 冲突
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `74_atomic_molecular_optical.md` | 鍘熷瓙鍒嗗瓙涓庡厜鐗╃悊 | 646 | 40.5 KB | 2026-04-19 |
-| `74_ocean_geophysics.md` | 娴锋磱涓庡湴鐞冪墿鐞?| 611 | 36.4 KB | 2026-04-19 |
+| `74_atomic_molecular_optical.md` | 原子分子与光物理 | 646 | 40.5 KB | 2026-04-19 |
+| `74_ocean_geophysics.md` | 海洋与地球物理 | 611 | 36.4 KB | 2026-04-19 |
 
-**鍐呭姣斿**: **瀹屽叏涓嶅悓鐨勬枃妗?*銆俙74_atomic_molecular_optical.md` 鏄叧浜?AMO 鐗╃悊锛堝師瀛愮粨鏋勩€丵ED 鏁堝簲銆佺簿瀵嗘祴閲忋€佸喎鍘熷瓙鐗╃悊锛夛紱`74_ocean_geophysics.md` 鏄叧浜庢捣娲嬩笌鍦扮悆鐗╃悊锛堥鐢熺幆娴併€丒kman 灞傘€佸ぇ娲嬬幆娴併€佸湴鐞冨姩鍔涘锛夈€傛棤浠讳綍鍐呭閲嶅彔銆?
-**鍒ゆ柇**: 瀹屽叏涓嶅悓涓婚鍏辩敤鍚屼竴缂栧彿銆?
-**寤鸿**: 閲嶇紪鍙疯嚦涓嶅悓鏁板瓧锛堝灏?`74_ocean_geophysics.md` 绉昏嚦鏈崰鐢ㄧ殑 36 鎴?49锛夈€?
-### v2 鐗堟湰鍙樹綋鍒嗘瀽
+**内容比对**: **完全不同的文档**。`74_atomic_molecular_optical.md` 是关于 AMO 物理（原子结构、QED 效应、精密测量、冷原子物理）；`74_ocean_geophysics.md` 是关于海洋与地球物理（风生环流、Ekman 层、大洋环流、地球动力学）。无任何内容重叠。
 
-> 鏈妭浜?2026-08-05 閫氳繃瀵规瘮 v1/v2 鐨勬爣棰樸€佺珷棣栬銆佹柊澧炲唴瀹圭洰褰曠敓鎴愩€?
-#### 37锛氬熀鏈父鏁扮粺涓€锛坴1 vs v2锛?
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+**判断**: 完全不同主题共用同一编号。
+
+**建议**: 重编号至不同数字（如将 `74_ocean_geophysics.md` 移至未占用的 36 或 49）。
+
+### v2 版本变体分析
+
+> 本节于 2026-08-05 通过对比 v1/v2 的标题、章首语、新增内容目录生成。
+
+#### 37：基本常数统一（v1 vs v2）
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `37_fundamental_constants_unification.md` (v1) | 鍩烘湰鐗╃悊甯告暟鐨勭粺涓€鐞嗚妗嗘灦 | 580 | 42.7 KB | 2026-04-19 |
-| `37_fundamental_constants_unification_v2.md` | 15涓熀鏈父鏁扮殑缁熶竴鎺ㄥ锛氭繁鍖栫増 | 306 | 21.1 KB | 2026-06-04 |
+| `37_fundamental_constants_unification.md` (v1) | 基本物理常数的统一理论框架 | 580 | 42.7 KB | 2026-04-19 |
+| `37_fundamental_constants_unification_v2.md` | 15个基本常数的统一推导：深化版 | 306 | 21.1 KB | 2026-06-04 |
 
-**鍐呭姣斿**: v2 鏄?v1 鐨?*娣卞寲鎵╁睍鐗?*锛堥潪鏇夸唬锛夈€倂1 娑电洊甯告暟鍒嗙被銆佸眰绾ч棶棰樸€佸鸡鐞嗚/LQG/淇℃伅璁轰笁瑙嗚缁熶竴鏂规銆丼YLVA 鏋舵瀯绾︽潫銆佸彉甯告暟鐞嗚绛夊熀纭€妗嗘灦銆倂2 鏂板/娣卞寲浠ヤ笅鍐呭锛?
-- Koide 鍏崇郴涓庤川閲忚氨娣卞眰缁撴瀯
-- 绮剧粏缁撴瀯甯告暟鐨勬暟璁鸿瑙?- 鑰﹀悎甯告暟鐨勭畻鏈嚑浣曠粺涓€
-- 娣峰悎鐭╅樀鐨勮緵鍑犱綍
-- 鏃犻噺绾插父鏁扮殑 Galois 鐞嗚
-- 甯告暟缁熶竴鐨勪俊鎭鎺ㄥ
-- 灞傜骇闂鐨勬柊琛ㄨ堪
-- 甯告暟闂寸殑娣卞眰缃戠粶
+**内容比对**: v2 是 v1 的**深化扩展版**（非替代）。v1 涵盖常数分类、层级问题、弦理论/LQG/信息论三视角统一方案、SYLVA 架构约束、变常数理论等基础框架。v2 新增/深化以下内容：
 
-**鍒ゆ柇**: v2 鏄?v1 鐨勮ˉ鍏呮繁鍖栵紝v1 鎻愪緵鍏ㄦ櫙妗嗘灦锛寁2 鎻愪緵杩涢樁鏁板鎺ㄥ锛堢畻鏈嚑浣曘€丟alois 鐞嗚銆佽緵鍑犱綍绛夛級銆備袱鑰呭簲淇濈暀骞跺瓨銆?
-**寤鸿**: 淇濈暀鍙岀増鏈€倂1 鏍囪涓哄熀纭€鐗堬紝v2 鏍囪涓烘暟瀛︽繁鍖栫増銆?
-#### 45锛氬鏉傜郴缁熶笌娑岀幇锛坴1 vs v2锛?
-| 鏂囨。 | 鏍囬 | 琛屾暟 | 澶у皬 | 鍒涘缓鏃ユ湡 |
+- Koide 关系与质量谱深层结构
+- 精细结构常数的数论视角
+- 耦合常数的算术几何统一
+- 混合矩阵的辛几何
+- 无量纲常数的 Galois 理论
+- 常数统一的信息论推导
+- 层级问题的新表述
+- 常数间的深层网络
+
+**判断**: v2 是 v1 的补充深化，v1 提供全景框架，v2 提供进阶数学推导（算术几何、Galois 理论、辛几何等）。两者应保留并存。
+
+**建议**: 保留双版本。v1 标记为基础版，v2 标记为数学深化版。
+
+#### 45：复杂系统与涌现（v1 vs v2）
+
+| 文档 | 标题 | 行数 | 大小 | 创建日期 |
 |------|------|------|------|----------|
-| `45_complex_systems_emergence.md` (v1) | 澶嶆潅绯荤粺涓庢秾鐜扮悊璁?| 636 | 40.4 KB | 2026-04-19 |
-| `45_complex_systems_emergence_v2.md` | 澶嶆潅绯荤粺涓庢秾鐜扮悊璁猴細鏁板绾︽潫寮哄寲鐗?| 217 | 13.9 KB | 2026-06-04 |
+| `45_complex_systems_emergence.md` (v1) | 复杂系统与涌现理论 | 636 | 40.4 KB | 2026-04-19 |
+| `45_complex_systems_emergence_v2.md` | 复杂系统与涌现理论：数学约束强化版 | 217 | 13.9 KB | 2026-06-04 |
 
-**鍐呭姣斿**: v2 鏄?v1 鐨?*鏁板寮哄寲鎵╁睍鐗?*锛堥潪鏇夸唬锛夈€倂1 娑电洊澶嶆潅绯荤粺鏁板瀹氫箟銆侀潪绾挎€у姩鍔涘銆佺浉鍙樹笌涓寸晫鐜拌薄銆佹秾鐜板舰寮忓寲銆佺綉缁滅瀛︺€佸悓姝ョ悊璁恒€佺粺璁＄墿鐞嗘柟娉曘€佺敓鐗╁惎鍙戠郴缁熺瓑鍏ㄦ櫙妗嗘灦銆倂2 鏂板/寮哄寲浠ヤ笅鍐呭锛?
-- 娑岀幇鐨?Kolmogorov 澶嶆潅搴﹀埢鐢?- 閲嶆暣鍖栫兢涓嶅姩鐐圭殑鑼冪暣缁撴瀯
-- 鐩稿彉鐨勫悓璋冪悊璁?- 鍚屾鐜拌薄鐨勪唬鏁版嫇鎵?- 淇℃伅鍑犱綍鐨勬秾鐜板害閲?- 鐢熺墿鍚彂鐨勬秾鐜扮害鏉?- 涓?TOE 灞傜骇鐨勬暣鍚?
-**鍒ゆ柇**: v2 鏄?v1 鐨勬暟瀛﹀己鍖栫増锛寁1 鎻愪緵骞挎硾鐨勬秾鐜扮悊璁鸿鐩栵紝v2 浠庝唬鏁版嫇鎵戝拰 Kolmogorov 澶嶆潅搴﹁瑙掓彁渚涙洿涓ユ牸鐨勬暟瀛︾害鏉熴€備袱鑰呬簰琛ャ€?
-**寤鸿**: 淇濈暀鍙岀増鏈€倂1 鏍囪涓哄熀纭€鐗堬紝v2 鏍囪涓烘暟瀛﹀己鍖栫増銆?
----
+**内容比对**: v2 是 v1 的**数学强化扩展版**（非替代）。v1 涵盖复杂系统数学定义、非线性动力学、相变与临界现象、涌现形式化、网络科学、同步理论、统计物理方法、生物启发系统等全景框架。v2 新增/强化以下内容：
 
-## 馃敩 涓婚绱㈠紩
+- 涌现的 Kolmogorov 复杂度刻画
+- 重整化群不动点的范畴结构
+- 相变的同调理论
+- 同步现象的代数拓扑
+- 信息几何的涌现度量
+- 生物启发的涌现约束
+- 与 TOE 层级的整合
 
-### [[topic:绮掑瓙鐗╃悊]]
-- [[doc:03]] QCD娑岀幇鎺ㄥ
-- [[doc:08]] 鐢靛急缁熶竴
-- [[doc:10]] GUT澶х粺涓€鐞嗚
-- [[doc:12]] 瓒呭绉版秾鐜版満鍒?- [[doc:16]] 鐢靛瓙-涓井瀛愮粺涓€
-- [[doc:18]] 鏆楃墿璐ㄧ矑瀛愯氨
-- [[doc:21]] 涓庢爣鍑嗘ā鍨嬬簿搴﹀姣?
-**鏍稿績姒傚康**: [[concept:绮剧粏缁撴瀯甯告暟]]銆乕[concept:璐圭背甯告暟]]銆乕[concept:CKM鐭╅樀]]銆乕[concept:PMNS鐭╅樀]]銆乕[concept:姹ゅ窛鑰﹀悎]]
+**判断**: v2 是 v1 的数学强化版，v1 提供广泛的涌现理论覆盖，v2 从代数拓扑和 Kolmogorov 复杂度视角提供更严格的数学约束。两者互补。
 
-### [[topic:寮曞姏涓庡畤瀹欏]]
-- [[doc:04]] 鏆楃墿璐?鏆楄兘閲忕粺涓€瑙ｉ噴
-- [[doc:09]] 涓井瀛愯川閲忎笌鏆磋儉
-- [[doc:11]] 閲忓瓙寮曞姏娑岀幇
-- [[doc:14]] 榛戞礊淇℃伅鎮栬
-- [[doc:19]] 鏃╂湡瀹囧畽鐩稿彉
-- [[doc:20]] 榛戞礊鐗╃悊瀹屾暣鐞嗚
-- [[doc:23]] 瀹囧畽瀛﹀父鏁伴棶棰?
-**鏍稿績姒傚康**: [[concept:鍥犳灉缃戠粶]]銆乕[concept:灞傚寲绌洪棿]]銆乕[concept:娑岀幇寮曞姏]]銆乕[concept:璐濊偗鏂潶-闇嶉噾鐔礭]
-
-### [[topic:閲忓瓙淇℃伅]]
-- [[doc:15]] 鍙绠楀畤瀹欏亣璇?- [[doc:17]] 閲忓瓙绾犵紶涓庝俊鎭悊璁?- [[doc:22]] 绾犵紶涓庤秴鍏夐€熷垎鏋?- [[doc:24]] 閲忓瓙娴嬮噺灞傚寲瑙ｉ噴
-
-**鏍稿績姒傚康**: [[concept:绾犵紶鐔礭]銆乕[concept:灞傞棿鍏宠仈]]銆乕[concept:ER=EPR]]銆乕[concept:Page鏇茬嚎]]
-
-### [[topic:鏁板鍩虹]]
-- [[doc:05]] 鑼冪暣璁轰笌鍚岃皟浠ｆ暟
-- [[doc:27]] 闈炰氦鎹㈠嚑浣?- [[doc:28]] 鑼冪暣璁轰笌灞傚寲缁撴瀯
-- [[doc:29]] 闅忔満鐭╅樀鐞嗚
-- [[doc:30]] 淇℃伅鍑犱綍涓庣粺璁″姏瀛?
-**鏍稿績姒傚康**: [[concept:璋变笁鍏冪粍]]銆乕[concept:Connes閲嶅缓瀹氱悊]]銆乕[concept:灞傝]]銆乕[concept:Fisher搴﹁]]
-
-### [[topic:寮︾悊璁篯]
-- [[doc:13]] 棰濆缁村害涓庣揣鑷村寲
-- [[doc:25]] 寮︾悊璁轰笌瀵瑰伓鎬?
-**鏍稿績姒傚康**: [[concept:T-瀵瑰伓]]銆乕[concept:S-瀵瑰伓]]銆乕[concept:AdS/CFT瀵瑰簲]]銆乕[concept:M鐞嗚]]
-
-### [[topic:瀹為獙涓庨獙璇乚]
-- [[doc:01]] 伪瀹為獙楠岃瘉鏂规
-- [[doc:02]] 伪鐞嗚淇鍒嗘瀽
-- [[doc:07]] 搴旂敤鍓嶆櫙涓庢妧鏈潻鍛?
-**鏍稿績姒傚康**: [[concept:鎷撴墤QHE]]銆乕[concept:缁村害渚濊禆鎬]銆乕[concept:寮曞姏-鐢电鑰﹀悎]]
+**建议**: 保留双版本。v1 标记为基础版，v2 标记为数学强化版。
 
 ---
 
-## 馃 姒傚康鍥捐氨
+## 🔬 主题索引
 
-### [[concept:鍥犳灉缃戠粶]] (Causal Network)
-**瀹氫箟**: 鐗╃悊搴曞眰鐨勫熀鏈鏁ｇ粨鏋勶紝鐢变簨浠惰妭鐐瑰拰鍥犳灉杈规瀯鎴?
-**鍑虹幇鏂囨。**:
-- [[doc:03]]銆乕[doc:04]]銆乕[doc:11]]銆乕[doc:16]]銆乕[doc:20]]
+### [[topic:粒子物理]]
+- [[doc:03]] QCD涌现推导
+- [[doc:08]] 电弱统一
+- [[doc:10]] GUT大统一理论
+- [[doc:12]] 超对称涌现机制
+- [[doc:16]] 电子-中微子统一
+- [[doc:18]] 暗物质粒子谱
+- [[doc:21]] 与标准模型精度对比
+
+**核心概念**: [[concept:精细结构常数]]、[[concept:费米常数]]、[[concept:CKM矩阵]]、[[concept:PMNS矩阵]]、[[concept:汤川耦合]]
+
+### [[topic:引力与宇宙学]]
+- [[doc:04]] 暗物质/暗能量统一解释
+- [[doc:09]] 中微子质量与暴胀
+- [[doc:11]] 量子引力涌现
+- [[doc:14]] 黑洞信息悖论
+- [[doc:19]] 早期宇宙相变
+- [[doc:20]] 黑洞物理完整理论
+- [[doc:23]] 宇宙学常数问题
+
+**核心概念**: [[concept:因果网络]]、[[concept:层化空间]]、[[concept:涌现引力]]、[[concept:贝肯斯坦-霍金熵]]
+
+### [[topic:量子信息]]
+- [[doc:15]] 可计算宇宙假说
+- [[doc:17]] 量子纠缠与信息理论
+- [[doc:22]] 纠缠与超光速分析
+- [[doc:24]] 量子测量层化解释
+
+**核心概念**: [[concept:纠缠熵]]、[[concept:层间关联]]、[[concept:ER=EPR]]、[[concept:Page曲线]]
+
+### [[topic:数学基础]]
+- [[doc:05]] 范畴论与同调代数
+- [[doc:27]] 非交换几何
+- [[doc:28]] 范畴论与层化结构
+- [[doc:29]] 随机矩阵理论
+- [[doc:30]] 信息几何与统计力学
+
+**核心概念**: [[concept:谱三元组]]、[[concept:Connes重建定理]]、[[concept:层论]]、[[concept:Fisher度规]]
+
+### [[topic:弦理论]]
+- [[doc:13]] 额外维度与紧致化
+- [[doc:25]] 弦理论与对偶性
+
+**核心概念**: [[concept:T-对偶]]、[[concept:S-对偶]]、[[concept:AdS/CFT对应]]、[[concept:M理论]]
+
+### [[topic:实验与验证]]
+- [[doc:01]] α实验验证方案
+- [[doc:02]] α理论修正分析
+- [[doc:07]] 应用前景与技术革命
+
+**核心概念**: [[concept:拓扑QHE]]、[[concept:维度依赖性]]、[[concept:引力-电磁耦合]]
+
+---
+
+## 🧠 概念图谱
+
+### [[concept:因果网络]] (Causal Network)
+**定义**: 物理底层的基本离散结构，由事件节点和因果边构成
+
+**出现文档**:
+- [[doc:03]]、[[doc:04]]、[[doc:11]]、[[doc:16]]、[[doc:20]]
 - four_forces_unification_complete.md
-- 16_electron_neutrino_*.md (鍏ㄩ儴鐗堟湰)
+- 16_electron_neutrino_*.md (全部版本)
 
-**鐩稿叧姒傚康**: [[concept:灞傚寲绌洪棿]]銆乕[concept:绮楃矑鍖朷]銆乕[concept:娑岀幇]]
-
----
-
-### [[concept:绮剧粏缁撴瀯甯告暟]] (伪 鈮?1/137)
-**瀹氫箟**: 鐢电鑰﹀悎寮哄害鐨勬棤閲忕翰甯告暟
-
-**鍑虹幇鏂囨。**:
-- [[doc:01]] 鈥?瀹為獙楠岃瘉鏂规
-- [[doc:02]] 鈥?绯荤粺鎬т慨姝ｅ垎鏋?- [[doc:05]] 鈥?鏁板鍩虹
-- [[doc:16]] 鈥?鐢靛瓙鍙傛暟鎺ㄥ
-- [[doc:21]] 鈥?涓庡疄楠屽€煎姣?- four_forces_unification_*.md 鈥?缁熶竴鎺ㄥ
-
-**鍏紡**: $\alpha = \frac{e^2}{4\pi\varepsilon_0\hbar c} \approx \frac{1}{137.036}$
+**相关概念**: [[concept:层化空间]]、[[concept:粗粒化]]、[[concept:涌现]]
 
 ---
 
-### [[concept:灞傚寲绌洪棿]] (Stratified Space)
-**瀹氫箟**: 鍒嗗眰鐨勭綉缁滅粨鏋勶紝姣忓眰瀵瑰簲涓嶅悓鑳介噺灏哄害
+### [[concept:精细结构常数]] (α ≈ 1/137)
+**定义**: 电磁耦合强度的无量纲常数
 
-**鍑虹幇鏂囨。**:
-- [[doc:04]]銆乕[doc:08]]銆乕[doc:09]]銆乕[doc:10]]銆乕[doc:13]]
-- [[doc:24]] 鈥?閲忓瓙娴嬮噺灞傚寲瑙ｉ噴
-- [[doc:28]] 鈥?灞傝鏁板鍩虹
+**出现文档**:
+- [[doc:01]] — 实验验证方案
+- [[doc:02]] — 系统性修正分析
+- [[doc:05]] — 数学基础
+- [[doc:16]] — 电子参数推导
+- [[doc:21]] — 与实验值对比
+- four_forces_unification_*.md — 统一推导
 
-**灞傜粨鏋?*:
+**公式**: $\alpha = \frac{e^2}{4\pi\varepsilon_0\hbar c} \approx \frac{1}{137.036}$
+
+---
+
+### [[concept:层化空间]] (Stratified Space)
+**定义**: 分层的网络结构，每层对应不同能量尺度
+
+**出现文档**:
+- [[doc:04]]、[[doc:08]]、[[doc:09]]、[[doc:10]]、[[doc:13]]
+- [[doc:24]] — 量子测量层化解释
+- [[doc:28]] — 层论数学基础
+
+**层结构**:
 ```
-L7: 閲忓瓙寮曞姏/鏅湕鍏嬭兘鏍?L4-6: GUT鑳芥爣 (10^12-15 GeV)
-L3: 寮虹浉浜掍綔鐢?(~1 GeV)
-L2: 寮辩浉浜掍綔鐢?(~100 GeV)
-L1: 鐢电鐩镐簰浣滅敤 (eV-MeV)
+L7: 量子引力/普朗克能标
+L4-6: GUT能标 (10^12-15 GeV)
+L3: 强相互作用 (~1 GeV)
+L2: 弱相互作用 (~100 GeV)
+L1: 电磁相互作用 (eV-MeV)
 ```
 
 ---
 
-### [[concept:娑岀幇]] (Emergence)
-**瀹氫箟**: 瀹忚鎬ц川浠庡井瑙傜粨鏋勭殑缁熻琛屼负涓骇鐢?
-**鍑虹幇鏂囨。**:
-- [[doc:03]] 鈥?QCD娑岀幇
-- [[doc:04]] 鈥?鏆楃墿璐?鏆楄兘閲忔秾鐜?- [[doc:08]] 鈥?鐢靛急缁熶竴娑岀幇
-- [[doc:11]] 鈥?寮曞姏娑岀幇
-- [[doc:12]] 鈥?瓒呭绉版秾鐜?- [[doc:25]] 鈥?缁村害娑岀幇
+### [[concept:涌现]] (Emergence)
+**定义**: 宏观性质从微观结构的统计行为中产生
 
-**娑岀幇灞傛**:
+**出现文档**:
+- [[doc:03]] — QCD涌现
+- [[doc:04]] — 暗物质/暗能量涌现
+- [[doc:08]] — 电弱统一涌现
+- [[doc:11]] — 引力涌现
+- [[doc:12]] — 超对称涌现
+- [[doc:25]] — 维度涌现
+
+**涌现层次**:
 ```
-绂绘暎鍥犳灉缃戠粶 鈫?閲忓瓙鍦鸿 鈫?缁忓吀鏃剁┖ 鈫?瀹囧畽瀛?```
-
----
-
-### [[concept:榛戞礊鐔礭] (Bekenstein-Hawking Entropy)
-**鍏紡**: $S_{BH} = \frac{A}{4G\hbar}$
-
-**鍑虹幇鏂囨。**:
-- [[doc:14]] 鈥?榛戞礊淇℃伅鎮栬
-- [[doc:20]] 鈥?榛戞礊鐗╃悊瀹屾暣鐗?- [[doc:05]] 鈥?鍏ㄦ伅鍘熺悊
-
-**CNF瑙ｉ噴**: 灞傚寲瑙嗙晫涓婄殑寰缃戠粶鏋勫瀷璁℃暟
-
----
-
-### [[concept:AdS/CFT瀵瑰簲]]
-**瀹氫箟**: 鍙嶅痉瑗跨壒绌洪棿涓庤竟鐣屽叡褰㈠満璁虹殑瀵瑰伓
-
-**鍑虹幇鏂囨。**:
-- [[doc:14]] 鈥?榛戞礊淇℃伅
-- [[doc:25]] 鈥?寮︾悊璁哄鍋?
----
-
-### [[concept:PMNS鐭╅樀]]
-**瀹氫箟**: 涓井瀛愭贩鍚堢煩闃?
-**鍑虹幇鏂囨。**:
-- [[doc:16]] 鈥?鐢靛瓙-涓井瀛愮粺涓€
-- [[doc:09]] 鈥?涓井瀛愯川閲忚捣婧?
-**CNF瑙ｉ噴**: 灞傞棿璺冭縼鐨勫嚑浣曠浉浣嶇疮绉?
----
-
-### [[concept:璋变笁鍏冪粍]] (Spectral Triple)
-**瀹氫箟**: 闈炰氦鎹㈠嚑浣曠殑鍩烘湰鏋勪欢 $(\mathcal{A}, \mathcal{H}, \mathcal{D})$
-
-**鍑虹幇鏂囨。**:
-- [[doc:05]] 鈥?鏁板鍩虹
-- [[doc:27]] 鈥?闈炰氦鎹㈠嚑浣曚笌鐗╃悊
-
----
-
-## 馃搳 鏂囨。渚濊禆鍥?
-### 鏍稿績渚濊禆閾?
+离散因果网络 → 量子场论 → 经典时空 → 宇宙学
 ```
-[鏁板鍩虹]
-[[doc:05]] 鈹€鈹€鈫?[[doc:27]] 鈹€鈹€鈫?[[doc:28]]
-    鈫?[[doc:30]] (淇℃伅鍑犱綍)
-    鈫?[[doc:29]] (闅忔満鐭╅樀)
 
-[鍥涘姏缁熶竴]
+---
+
+### [[concept:黑洞熵]] (Bekenstein-Hawking Entropy)
+**公式**: $S_{BH} = \frac{A}{4G\hbar}$
+
+**出现文档**:
+- [[doc:14]] — 黑洞信息悖论
+- [[doc:20]] — 黑洞物理完整版
+- [[doc:05]] — 全息原理
+
+**CNF解释**: 层化视界上的微观网络构型计数
+
+---
+
+### [[concept:AdS/CFT对应]]
+**定义**: 反德西特空间与边界共形场论的对偶
+
+**出现文档**:
+- [[doc:14]] — 黑洞信息
+- [[doc:25]] — 弦理论对偶
+
+---
+
+### [[concept:PMNS矩阵]]
+**定义**: 中微子混合矩阵
+
+**出现文档**:
+- [[doc:16]] — 电子-中微子统一
+- [[doc:09]] — 中微子质量起源
+
+**CNF解释**: 层间跃迁的几何相位累积
+
+---
+
+### [[concept:谱三元组]] (Spectral Triple)
+**定义**: 非交换几何的基本构件 $(\mathcal{A}, \mathcal{H}, \mathcal{D})$
+
+**出现文档**:
+- [[doc:05]] — 数学基础
+- [[doc:27]] — 非交换几何与物理
+
+---
+
+## 📊 文档依赖图
+
+### 核心依赖链
+
+```
+[数学基础]
+[[doc:05]] ──→ [[doc:27]] ──→ [[doc:28]]
+    ↓
+[[doc:30]] (信息几何)
+    ↓
+[[doc:29]] (随机矩阵)
+
+[四力统一]
 four_forces_unification_*.md
-    鈹溾攢鈹€鈫?[[doc:01]] (伪楠岃瘉)
-    鈹溾攢鈹€鈫?[[doc:02]] (伪淇)
-    鈹溾攢鈹€鈫?[[doc:08]] (鐢靛急缁熶竴)
-    鈹溾攢鈹€鈫?[[doc:10]] (GUT缁熶竴)
-    鈹斺攢鈹€鈫?[[doc:11]] (閲忓瓙寮曞姏)
+    ├──→ [[doc:01]] (α验证)
+    ├──→ [[doc:02]] (α修正)
+    ├──→ [[doc:08]] (电弱统一)
+    ├──→ [[doc:10]] (GUT统一)
+    └──→ [[doc:11]] (量子引力)
 
-[鐢靛瓙-涓井瀛怾
-[[doc:16]] 鈹€鈹€鈫?16_electron_neutrino_*.md (4涓増鏈?
-    鈹溾攢鈹€鈫?[[doc:09]] (鏆磋儉)
-    鈹斺攢鈹€鈫?[[doc:21]] (绮惧害瀵规瘮)
+[电子-中微子]
+[[doc:16]] ──→ 16_electron_neutrino_*.md (4个版本)
+    ├──→ [[doc:09]] (暴胀)
+    └──→ [[doc:21]] (精度对比)
 
-[榛戞礊鐗╃悊]
-[[doc:14]] 鈹€鈹€鈫?[[doc:20]]
-    鈹斺攢鈹€鈫?[[doc:19]] (鏃╂湡瀹囧畽)
+[黑洞物理]
+[[doc:14]] ──→ [[doc:20]]
+    └──→ [[doc:19]] (早期宇宙)
 
-[鏆楃墿璐?鏆楄兘閲廬
-[[doc:04]] 鈹€鈹€鈫?[[doc:18]] (鏆楃墿璐ㄨ氨)
-    鈹斺攢鈹€鈫?[[doc:23]] (瀹囧畽瀛﹀父鏁?
+[暗物质/暗能量]
+[[doc:04]] ──→ [[doc:18]] (暗物质谱)
+    └──→ [[doc:23]] (宇宙学常数)
 
-[寮︾悊璁篯
-[[doc:13]] 鈹€鈹€鈫?[[doc:25]]
-    鈹斺攢鈹€鈫?[[doc:05]] (鏁板鍩虹)
+[弦理论]
+[[doc:13]] ──→ [[doc:25]]
+    └──→ [[doc:05]] (数学基础)
 
-[閲忓瓙淇℃伅]
-[[doc:17]] 鈹€鈹€鈫?[[doc:22]]
-    鈹溾攢鈹€鈫?[[doc:15]] (鍙绠楀畤瀹?
-    鈹斺攢鈹€鈫?[[doc:24]] (閲忓瓙娴嬮噺)
+[量子信息]
+[[doc:17]] ──→ [[doc:22]]
+    ├──→ [[doc:15]] (可计算宇宙)
+    └──→ [[doc:24]] (量子测量)
 ```
 
-### 寮变緷璧?寮曠敤鍏崇郴
+### 弱依赖/引用关系
 
-| 鏂囨。 | 寮曠敤鍏朵粬鏂囨。 |
+| 文档 | 引用其他文档 |
 |------|-------------|
-| [[doc:06]] | 寮曠敤鍏ㄩ儴01-05杩涜TOE瀵规瘮 |
-| [[doc:07]] | 渚濊禆01-06鐨勫簲鐢ㄦ墿灞?|
-| [[doc:21]] | 寮曠敤01, 16, 20杩涜绮惧害瀵规瘮 |
+| [[doc:06]] | 引用全部01-05进行TOE对比 |
+| [[doc:07]] | 依赖01-06的应用扩展 |
+| [[doc:21]] | 引用01, 16, 20进行精度对比 |
 
 ---
 
-## 馃梻锔?蹇€熷鑸?
-### 鎸夌墿鐞嗛鍩?
-| 棰嗗煙 | 璧峰鏂囨。 |
+## 🗂️ 快速导航
+
+### 按物理领域
+
+| 领域 | 起始文档 |
 |------|----------|
-| 绮掑瓙鐗╃悊鍏ラ棬 | [[doc:16]] 鈫?[[doc:03]] 鈫?[[doc:08]] |
-| 瀹囧畽瀛?| [[doc:04]] 鈫?[[doc:09]] 鈫?[[doc:19]] |
-| 閲忓瓙寮曞姏 | [[doc:11]] 鈫?[[doc:14]] 鈫?[[doc:20]] |
-| 鏁板鍩虹 | [[doc:05]] 鈫?[[doc:28]] 鈫?[[doc:27]] |
-| 寮︾悊璁?| [[doc:13]] 鈫?[[doc:25]] |
+| 粒子物理入门 | [[doc:16]] → [[doc:03]] → [[doc:08]] |
+| 宇宙学 | [[doc:04]] → [[doc:09]] → [[doc:19]] |
+| 量子引力 | [[doc:11]] → [[doc:14]] → [[doc:20]] |
+| 数学基础 | [[doc:05]] → [[doc:28]] → [[doc:27]] |
+| 弦理论 | [[doc:13]] → [[doc:25]] |
 
-### 鎸夐槄璇婚毦搴?
-| 绾у埆 | 鏂囨。 |
+### 按阅读难度
+
+| 级别 | 文档 |
 |------|------|
-| 鍏ラ棬绾?| [[doc:06]], [[doc:07]], 16_electron_neutrino_detailed_notable.md |
-| 杩涢樁绾?| [[doc:01]], [[doc:02]], [[doc:04]], [[doc:09]] |
-| 涓撳绾?| [[doc:05]], [[doc:11]], [[doc:25]], [[doc:28]], [[doc:30]] |
+| 入门级 | [[doc:06]], [[doc:07]], 16_electron_neutrino_detailed_notable.md |
+| 进阶级 | [[doc:01]], [[doc:02]], [[doc:04]], [[doc:09]] |
+| 专家级 | [[doc:05]], [[doc:11]], [[doc:25]], [[doc:28]], [[doc:30]] |
 
 ---
 
-## 馃攳 鎼滅储鎸囧崡
+## 🔍 搜索指南
 
-### 鏌ユ壘鐗瑰畾姒傚康
+### 查找特定概念
 
-- **伪 = 1/137**: [[doc:01]], [[doc:02]], [[doc:16]], [[doc:21]]
-- **鏆楃墿璐?*: [[doc:04]], [[doc:18]]
-- **榛戞礊鐔?*: [[doc:14]], [[doc:20]]
-- **涓井瀛愯川閲?*: [[doc:09]], [[doc:16]] 鍙婂叾鍙樹綋
-- **寮﹁瀵瑰伓**: [[doc:25]]
-- **閲忓瓙娴嬮噺**: [[doc:24]]
-- **鑼冪暣璁?*: [[doc:05]], [[doc:28]]
+- **α = 1/137**: [[doc:01]], [[doc:02]], [[doc:16]], [[doc:21]]
+- **暗物质**: [[doc:04]], [[doc:18]]
+- **黑洞熵**: [[doc:14]], [[doc:20]]
+- **中微子质量**: [[doc:09]], [[doc:16]] 及其变体
+- **弦论对偶**: [[doc:25]]
+- **量子测量**: [[doc:24]]
+- **范畴论**: [[doc:05]], [[doc:28]]
 
-### 鏌ユ壘鏁板宸ュ叿
+### 查找数学工具
 
-- **璋变笁鍏冪粍**: [[doc:05]], [[doc:27]]
-- **闅忔満鐭╅樀**: [[doc:29]]
-- **淇℃伅鍑犱綍**: [[doc:30]]
-- **灞傝**: [[doc:05]], [[doc:28]]
-
----
+- **谱三元组**: [[doc:05]], [[doc:27]]
+- **随机矩阵**: [[doc:29]]
+- **信息几何**: [[doc:30]]
+- **层论**: [[doc:05]], [[doc:28]]
 
 ---
 
-## 馃搫 papers/ 鐩綍璁烘枃绱㈠紩
+---
 
-| 鏂囦欢鍚?| 鏍囬/涓婚 | 璇█ | 鐘舵€?| 璇存槑 |
+## 📄 papers/ 目录论文索引
+
+| 文件名 | 标题/主题 | 语言 | 状态 | 说明 |
 |--------|----------|------|------|------|
-| `TOE-SYLVA_Master_Academic.md` | Master Academic (Canonical) | EN | CANONICAL | 鏉冨▉瀛︽湳鐗堢粺涓€鐞嗚璁烘枃锛屾墍鏈夊叾浠栬鏂囩殑鍩哄噯鍙傝€?|
-| `TOE-SYLVA_Master_Academic_CN.md` | 涓枃瀛︽湳鐗堢粺涓€鐞嗚 | CN | CANONICAL | 涓婅堪璁烘枃鐨勪腑鏂囩炕璇戠増 |
-| `TOE-SYLVA_Master_Unified_Theory.md` | Master Unified Theory (Merged) | CN/EN | REFERENCE | 17绡囨簮鏂囨。鍚堝苟鐗堬紙507KB锛夛紝浠呬緵鍙傝€?|
-| `TOE-SYLVA_Breakthroughs.md` | Breakthroughs | EN | DRAFT | 绐佺牬鐐规竻鍗?|
-| `TOE-SYLVA_Breakthroughs_v2.md` | Breakthroughs v2 | EN | DRAFT | 绐佺牬鐐规竻鍗曚慨璁㈢増 |
-| `TOE-SYLVA_Counting_Geometry_Deep.md` | Counting Geometry Deep | EN | DRAFT | 璁℃暟鍑犱綍娣卞害绡?|
-| `TOE-SYLVA_Counting_Geometry_Deep_v4.md` | Counting Geometry Deep v4 | EN | DRAFT | 璁℃暟鍑犱綍娣卞害绡噕4 |
-| `TOE-SYLVA_Theory_DT_HigherGenus.md` | DT Higher Genus Theory | EN | DRAFT | Donaldson-Thomas鐞嗚涓庨珮浜忔牸 |
-| `TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md` | Khovanov-GW Fully Faithful | EN | DRAFT | Khovanov鍚岃皟涓嶨W涓嶅彉閲忓叏蹇犲疄鍑藉瓙 |
-| `TOE-SYLVA_Theory_padic_SYK_Spectrum.md` | p-adic SYK Spectrum | EN | DRAFT | p-adic Hodge鐞嗚涓嶴YK妯″瀷璋?|
-| `TOE-SYLVA_Theory_SYK_cMERA_Global.md` | SYK-cMERA Global | EN | DRAFT | SYK妯″瀷涓巆MERA鍏ㄦ伅瀵瑰伓鍏ㄥ眬鐗?|
-| `SYLVA_v6_鏆楁墖鍖轰笌闃撮槼瀵瑰伓.md` | 鏆楁墖鍖轰笌闃撮槼瀵瑰伓 | CN | DRAFT | SYLVA鏆楃墿璐?鏆楄兘閲忕粺涓€瑙ｉ噴 |
-| `SYLVA_v6_鏅€傚绉版€т笌涓囩墿鐞嗚.md` | 鏅€傚绉版€т笌涓囩墿鐞嗚 | CN | DRAFT | SYLVA妗嗘灦鐨勬櫘閫傚绉版€х悊璁?|
-| `SYLVA_v6_鎰忚瘑妗ュ亣璇?md` | 鎰忚瘑妗ュ亣璇?| CN | DRAFT | 楂樺害鎺ㄦ祴鎬э細閲忓瓙娴嬮噺涓庢剰璇嗙粺涓€鍋囪 |
-| `AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md` | AI Failure to Verifiable Protocol | EN | REFERENCE | AI澶辫触杞彲楠岃瘉鍗忚鐨勫唴閮ㄦ枃妗?|
-| `AI_HALLUCINATION_REPORT_FINAL.md` | AI Hallucination Report | EN | REFERENCE | AI骞昏鏈€缁堟姤鍛?|
-| `LESSONS_AND_STRENGTHS.md` | Lessons and Strengths | EN | REFERENCE | 椤圭洰缁忛獙鏁欒涓庝紭鍔垮垎鏋?|
-| `COUNTING_GEOMETRY_HONEST_FINAL.md` | Counting Geometry Honest Final | EN | REFERENCE | 璁℃暟鍑犱綍璇氬疄鏈€缁堣瘎浼?|
-| `COUNTING_GEOMETRY_SURVEY.md` | Counting Geometry Survey | EN | REFERENCE | 璁℃暟鍑犱綍缁艰堪 |
-| `MNOP_History_and_Pardon_Proof.md` | MNOP History & Pardon Proof | EN | REFERENCE | MNOP瀹氱悊鍘嗗彶鍥為【涓嶱ardon璇佹槑 |
-| `REFERENCES_VERIFIED.bib` | Verified References | 鈥?| REFERENCE | 宸查獙璇佺殑鍙傝€冩枃鐚?BibTeX 搴?|
-| `UFPF浠撳簱璇勪环.md` | UFPF浠撳簱璇勪环 | CN | REFERENCE | 瀵瑰閮║FPF浠撳簱鐨勮瘎浠?|
-| `UFPF浠撳簱璇勪环_v2_RAP-Errata.md` | UFPF浠撳簱璇勪环 v2 RAP-Errata | CN | REFERENCE | UFPF璇勪环淇鍕樿鐗?|
-| `瀵逛袱鍒欒瘎璁虹殑鍥炲簲.md` | 瀵逛袱鍒欒瘎璁虹殑鍥炲簲 | CN | REFERENCE | 瀵硅瘎璁鸿€匨ajorana2绛変汉鐨勫洖搴?|
-| `鍏充簬Majorana2鐨勫洖澶?md` | 鍏充簬Majorana2鐨勫洖澶?| CN | REFERENCE | 瀵筂ajorana2鐨勫叿浣撳洖澶?|
-| `README.md` | 璁烘枃鐩綍 README | CN | REFERENCE | papers/ 鐩綍璇存槑鏂囨。 |
+| `TOE-SYLVA_Master_Academic.md` | Master Academic (Canonical) | EN | CANONICAL | 权威学术版统一理论论文，所有其他论文的基准参考 |
+| `TOE-SYLVA_Master_Academic_CN.md` | 中文学术版统一理论 | CN | CANONICAL | 上述论文的中文翻译版 |
+| `TOE-SYLVA_Master_Unified_Theory.md` | Master Unified Theory (Merged) | CN/EN | REFERENCE | 17篇源文档合并版（507KB），仅供参考 |
+| `TOE-SYLVA_Breakthroughs.md` | Breakthroughs | EN | DRAFT | 突破点清单 |
+| `TOE-SYLVA_Breakthroughs_v2.md` | Breakthroughs v2 | EN | DRAFT | 突破点清单修订版 |
+| `TOE-SYLVA_Counting_Geometry_Deep.md` | Counting Geometry Deep | EN | DRAFT | 计数几何深度篇 |
+| `TOE-SYLVA_Counting_Geometry_Deep_v4.md` | Counting Geometry Deep v4 | EN | DRAFT | 计数几何深度篇v4 |
+| `TOE-SYLVA_Theory_DT_HigherGenus.md` | DT Higher Genus Theory | EN | DRAFT | Donaldson-Thomas理论与高亏格 |
+| `TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md` | Khovanov-GW Fully Faithful | EN | DRAFT | Khovanov同调与GW不变量全忠实函子 |
+| `TOE-SYLVA_Theory_padic_SYK_Spectrum.md` | p-adic SYK Spectrum | EN | DRAFT | p-adic Hodge理论与SYK模型谱 |
+| `TOE-SYLVA_Theory_SYK_cMERA_Global.md` | SYK-cMERA Global | EN | DRAFT | SYK模型与cMERA全息对偶全局版 |
+| `SYLVA_v6_暗扇区与阴阳对偶.md` | 暗扇区与阴阳对偶 | CN | DRAFT | SYLVA暗物质/暗能量统一解释 |
+| `SYLVA_v6_普适对称性与万物理论.md` | 普适对称性与万物理论 | CN | DRAFT | SYLVA框架的普适对称性理论 |
+| `SYLVA_v6_意识桥假说.md` | 意识桥假说 | CN | DRAFT | 高度推测性：量子测量与意识统一假说 |
+| `AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md` | AI Failure to Verifiable Protocol | EN | REFERENCE | AI失败转可验证协议的内部文档 |
+| `AI_HALLUCINATION_REPORT_FINAL.md` | AI Hallucination Report | EN | REFERENCE | AI幻觉最终报告 |
+| `LESSONS_AND_STRENGTHS.md` | Lessons and Strengths | EN | REFERENCE | 项目经验教训与优势分析 |
+| `COUNTING_GEOMETRY_HONEST_FINAL.md` | Counting Geometry Honest Final | EN | REFERENCE | 计数几何诚实最终评估 |
+| `COUNTING_GEOMETRY_SURVEY.md` | Counting Geometry Survey | EN | REFERENCE | 计数几何综述 |
+| `MNOP_History_and_Pardon_Proof.md` | MNOP History & Pardon Proof | EN | REFERENCE | MNOP定理历史回顾与Pardon证明 |
+| `REFERENCES_VERIFIED.bib` | Verified References | — | REFERENCE | 已验证的参考文献 BibTeX 库 |
+| `UFPF仓库评价.md` | UFPF仓库评价 | CN | REFERENCE | 对外部UFPF仓库的评价 |
+| `UFPF仓库评价_v2_RAP-Errata.md` | UFPF仓库评价 v2 RAP-Errata | CN | REFERENCE | UFPF评价修订勘误版 |
+| `对两则评论的回应.md` | 对两则评论的回应 | CN | REFERENCE | 对评论者Majorana2等人的回应 |
+| `关于Majorana2的回复.md` | 关于Majorana2的回复 | CN | REFERENCE | 对Majorana2的具体回复 |
+| `README.md` | 论文目录 README | CN | REFERENCE | papers/ 目录说明文档 |
 
-### papers/ 瀛愮洰褰?
-| 瀛愮洰褰?| 璇存槑 |
+### papers/ 子目录
+
+| 子目录 | 说明 |
 |--------|------|
-| `arxiv_submission/` | arXiv 鎶曠鐩稿叧鏉愭枡 |
-| `code/` | 璁烘枃鐩稿叧璁＄畻浠ｇ爜 |
-| `submission_covers/` | 鏈熷垔鎶曠灏侀潰淇?|
-| `millennium_papers/` | 鍗冪Η骞撮棶棰樼浉鍏宠鏂?|
-| `SYLVA_comprehensive_survey/` | SYLVA 缁煎悎缁艰堪瀛愮洰褰?|
+| `arxiv_submission/` | arXiv 投稿相关材料 |
+| `code/` | 论文相关计算代码 |
+| `submission_covers/` | 期刊投稿封面信 |
+| `millennium_papers/` | 千禧年问题相关论文 |
+| `SYLVA_comprehensive_survey/` | SYLVA 综合综述子目录 |
 
-> 馃摑 璇︾粏璁烘枃鍏冩暟鎹紙澶у皬銆佽鏁般€佷氦鍙夊紩鐢ㄧ瓑锛夎鍙傝 `papers/CONTENTS.md`銆?
+> 📝 详细论文元数据（大小、行数、交叉引用等）请参见 `papers/CONTENTS.md`。
+
 ---
 
-*绱㈠紩缁存姢璇存槑: 褰撴柊澧炴枃妗ｆ椂锛岃鍚屾椂鏇存柊姝ょ储寮曞拰CROSS_REFERENCES.md*
+*索引维护说明: 当新增文档时，请同时更新此索引和CROSS_REFERENCES.md*

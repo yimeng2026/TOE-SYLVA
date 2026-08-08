@@ -1,7 +1,7 @@
-﻿/-
+/-
   TOE-SYLVA: SYLVA_Dynamics.lean
-  鍛介: 9涓畧鎭掑緥 (鐗涢】鍔ㄩ噺/鍝堝瘑椤胯兘閲?钖涘畾璋斾繚鑼冩暟/涓绘柟绋嬫鐜囧畧鎭?...)
-  鐘舵€? 绠€鍗曞畧鎭掑緥鍙瘉, H瀹氱悊闇€Boltzmann纰版挒绉垎
+  命题: 9个守恒律 (牛顿动量/哈密顿能量/薛定谔保范数/主方程概率守恒/...)
+  状态: 简单守恒律可证, H定理需Boltzmann碰撞积分
 -/
 
 import Mathlib
@@ -13,97 +13,104 @@ namespace TOESylva.Dynamics
    dH/dt = {H,H} = 0
    ================================================ -/
 theorem hamiltonian_energy_conservation
-    (H : 鈩?鈫?鈩? (h_const : 鈭?E, 鈭€ t, H t = E) :
-    鈭€ t, deriv H t = 0 := by
+    (H : ℝ → ℝ) (h_const : ∃ E, ∀ t, H t = E) :
+    ∀ t, deriv H t = 0 := by
   intro t
-  rcases h_const with 鉄‥, hE鉄?  have h1 : H = fun _ => E := by funext s; exact hE s
+  rcases h_const with ⟨E, hE⟩
+  have h1 : H = fun _ => E := by funext s; exact hE s
   rw [h1]; simp
 
 /-- ================================================
    THEOREM 2: schrodinger_norm_preservation
-   d/dt 鉄ㄏ坾蠄鉄?= 0 (鐢盚鍘勭背鎬?
+   d/dt ⟨ψ|ψ⟩ = 0 (由H厄米性)
    ================================================ -/
 theorem schrodinger_norm_constant
-    {Hilbert : Type} [NormedAddCommGroup Hilbert] [InnerProductSpace 鈩?Hilbert]
-    (蠄 : 鈩?鈫?Hilbert) (H : Hilbert 鈫扡[鈩俔 Hilbert)
-    (hH : 鈭€ x y, 鉄狧 x, y鉄玙鈩?= 鉄獂, H y鉄玙鈩?
-    (h_const : 鈭€ t, 鈥栂?t鈥?= 鈥栂?0鈥? :
-    鈭€ t, 鈥栂?t鈥?= 鈥栂?0鈥?:= h_const
+    {Hilbert : Type} [NormedAddCommGroup Hilbert] [InnerProductSpace ℂ Hilbert]
+    (ψ : ℝ → Hilbert) (H : Hilbert →L[ℂ] Hilbert)
+    (hH : ∀ x y, ⟪H x, y⟫_ℂ = ⟪x, H y⟫_ℂ)
+    (h_const : ∀ t, ‖ψ t‖ = ‖ψ 0‖) :
+    ∀ t, ‖ψ t‖ = ‖ψ 0‖ := h_const
 
 /-- ================================================
    THEOREM 3: master_equation_probability_conservation
-   d/dt Tr(蟻) = 0
+   d/dt Tr(ρ) = 0
    ================================================ -/
 theorem master_equation_trace_preservation
-    {n : 鈩晑 (rho : 鈩?鈫?Matrix (Fin n) (Fin n) 鈩?
-    (h_const : 鈭€ t, (rho t).trace = (rho 0).trace)
+    {n : ℕ} (rho : ℝ → Matrix (Fin n) (Fin n) ℂ)
+    (h_const : ∀ t, (rho t).trace = (rho 0).trace)
     (h_init : (rho 0).trace = 1) :
-    鈭€ t, (rho t).trace = 1 := by
+    ∀ t, (rho t).trace = 1 := by
   intro t
   rw [h_const t, h_init]
 
 /-- ================================================
    THEOREM 4: newton_momentum_conservation
-   鍐呭姏鎴愬鎶垫秷 鉄?鎬诲姩閲忓畧鎭?   ================================================ -/
+   内力成对抵消 ⟹ 总动量守恒
+   ================================================ -/
 theorem newton_momentum_conservation
-    {n : 鈩晑 (p : Fin n 鈫?鈩? (F : Fin n 鈫?Fin n 鈫?鈩?
-    (h_newton3 : 鈭€ i j, i 鈮?j 鈫?F i j = - F j i) :
-    鈭?i, 鈭?j, F i j = 0 := by
-  have h1 : 鈭?i, 鈭?j, F i j = 鈭?i, F i i + 鈭?i, 鈭?j with hneq, F i j := by
-    admit  -- TODO: prove this, currently axiom-held; 闇€瑕佸垎绂诲瑙掔嚎椤?  admit  -- TODO: prove this, currently axiom-held
+    {n : ℕ} (p : Fin n → ℝ) (F : Fin n → Fin n → ℝ)
+    (h_newton3 : ∀ i j, i ≠ j → F i j = - F j i) :
+    ∑ i, ∑ j, F i j = 0 := by
+  have h1 : ∑ i, ∑ j, F i j = ∑ i, F i i + ∑ i, ∑ j with hneq, F i j := by
+    admit  -- TODO: prove this, currently axiom-held; 需要分离对角线项
+  admit  -- TODO: prove this, currently axiom-held
 
 /-- ================================================
    THEOREM 5: lagrangian_hamiltonian_equivalence
-   Legendre鍙樻崲涓嬬殑绛変环鎬?   ================================================ -/
+   Legendre变换下的等价性
+   ================================================ -/
 theorem Legendre_transform_equivalence
-    (L : 鈩?鈫?鈩?鈫?鈩? (H : 鈩?鈫?鈩?鈫?鈩?
-    (h_Legendre : 鈭€ q p, H q p = p * q - L q p) :
-    True := by trivial  -- 瀹氫箟鎬х瓑浠?
-/-- ================================================
-   THEOREM 6: schrodinger_heisenberg_equivalence
-   鏈熸湜鍊煎湪涓や釜缁樻櫙涓浉绛?   ================================================ -/
-theorem picture_equivalence
-    {Hilbert : Type} [NormedAddCommGroup Hilbert] [InnerProductSpace 鈩?Hilbert]
-    (A : Hilbert 鈫扡[鈩俔 Hilbert) (蠄0 : Hilbert)
-    (h : 鉄?, A 蠄0鉄玙鈩?= 鉄?, A 蠄0鉄玙鈩? :
-    True := by trivial  -- 鏄剧劧鑷弽
+    (L : ℝ → ℝ → ℝ) (H : ℝ → ℝ → ℝ)
+    (h_Legendre : ∀ q p, H q p = p * q - L q p) :
+    True := by trivial  -- 定义性等价
 
 /-- ================================================
-   THEOREM 7: gibbs_entropy_constant (瀛ょ珛绯荤粺)
+   THEOREM 6: schrodinger_heisenberg_equivalence
+   期望值在两个绘景中相等
+   ================================================ -/
+theorem picture_equivalence
+    {Hilbert : Type} [NormedAddCommGroup Hilbert] [InnerProductSpace ℂ Hilbert]
+    (A : Hilbert →L[ℂ] Hilbert) (ψ0 : Hilbert)
+    (h : ⟪ψ0, A ψ0⟫_ℂ = ⟪ψ0, A ψ0⟫_ℂ) :
+    True := by trivial  -- 显然自反
+
+/-- ================================================
+   THEOREM 7: gibbs_entropy_constant (孤立系统)
    ================================================ -/
 theorem gibbs_entropy_conservation
-    {n : 鈩晑 (rho : 鈩?鈫?Matrix (Fin n) (Fin n) 鈩?
-    (h_unitary : 鈭?U, 鈭€ t, rho t = U * rho 0 * U岽? :
-    True := by trivial  -- 骞烘婕斿寲淇濈喌
+    {n : ℕ} (rho : ℝ → Matrix (Fin n) (Fin n) ℂ)
+    (h_unitary : ∃ U, ∀ t, rho t = U * rho 0 * Uᴴ) :
+    True := by trivial  -- 幺正演化保熵
 
 /-- ================================================
    THEOREM 8: boltzmann_h_nonnegative
-   H = 鈭?f log f 鈮?0
+   H = ∫ f log f ≥ 0
    ================================================ -/
 theorem boltzmann_H_nonneg
-    {V : Type} [Fintype V] (f : V 鈫?鈩?
-    (hf : 鈭€ v, f v 鈮?0) (h_norm : 鈭?v, f v = 1) :
-    鈭?v, f v * Real.log (f v) 鈮?- Real.log (Fintype.card V : 鈩? := by
-  -- 绛変环浜? -鈭?f log f 鈮?log|X|
-  -- 鍗抽鍐滅喌涓婄晫
-  let H := - 鈭?v, f v * Real.log (f v)
+    {V : Type} [Fintype V] (f : V → ℝ)
+    (hf : ∀ v, f v ≥ 0) (h_norm : ∑ v, f v = 1) :
+    ∑ v, f v * Real.log (f v) ≥ - Real.log (Fintype.card V : ℝ) := by
+  -- 等价于: -∑ f log f ≤ log|X|
+  -- 即香农熵上界
+  let H := - ∑ v, f v * Real.log (f v)
   let n := Fintype.card V
-  have : H 鈮?Real.log (n : 鈩? := by
-    -- 浣跨敤KL鏁ｅ害闈炶礋鎬?    admit  -- TODO: prove this, currently axiom-held; 闇€瑕佸紩鐢↖nfoGeometry涓殑瀹氱悊
+  have : H ≤ Real.log (n : ℝ) := by
+    -- 使用KL散度非负性
+    admit  -- TODO: prove this, currently axiom-held; 需要引用InfoGeometry中的定理
   linarith
 
 /-- ================================================
-   THEOREM 9: H瀹氱悊 (鐔靛)
-   dH/dt 鈮?0
+   THEOREM 9: H定理 (熵增)
+   dH/dt ≤ 0
    ================================================ -/
 proof_wanted H_theorem
-    (f : 鈩澛?鈫?鈩?鈫?鈩?
-    (h_nonneg : 鈭€ v t, f v t 鈮?0)
-    (h_norm : 鈭€ t, 鈭?v, f v t = 1) :
-    鈭€ t, deriv (fun s => 鈭?v, f v s * Real.log (f v s)) t 鈮?0
--- 璇佹槑绛栫暐:
--- 1. 婕傜Щ椤?= 0 (鏁ｅ害瀹氱悊)
--- 2. 纰版挒椤?鈮?0 (Boltzmann H-寮曠悊 + 缁嗚嚧骞宠　)
--- 鎵€闇€鍩虹璁炬柦: Boltzmann纰版挒绉垎褰㈠紡鍖?(~100h)
+    (f : ℝ³ → ℝ → ℝ)
+    (h_nonneg : ∀ v t, f v t ≥ 0)
+    (h_norm : ∀ t, ∫ v, f v t = 1) :
+    ∀ t, deriv (fun s => ∫ v, f v s * Real.log (f v s)) t ≤ 0
+-- 证明策略:
+-- 1. 漂移项 = 0 (散度定理)
+-- 2. 碰撞项 ≤ 0 (Boltzmann H-引理 + 细致平衡)
+-- 所需基础设施: Boltzmann碰撞积分形式化 (~100h)
 
 end TOESylva.Dynamics

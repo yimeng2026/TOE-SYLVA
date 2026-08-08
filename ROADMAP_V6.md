@@ -1,367 +1,421 @@
-﻿# SYLVA v6.x-v7.0 寮€鍙戣矾绾垮浘
+# SYLVA v6.x-v7.0 开发路线图
 
-> 璧峰鏃ユ湡: 2026-07-22
-> 褰撳墠鐗堟湰: v7.30
-> 涓嬩竴閲岀▼纰? v6.1 (鐗╃悊杩佺Щ涓庣紪璇戦獙璇?
-
----
-
-## 鎬讳綋鎰挎櫙
-
-SYLVA v6.x 鐨勭洰鏍囨槸鎶婇」鐩粠涓€涓?**"鍐呭涓板瘜浣嗙粨鏋勬贩涔?** 鐨勭爺绌朵粨搴? 婕斿寲涓轰竴涓?**"缁撴瀯娓呮櫚銆佸彲鎸佺画鎵╁睍銆佸彲鏈哄櫒楠岃瘉"** 鐨勫紑鏀剧瀛﹀钩鍙? 璺嚎鍥惧垎鍥涗釜闃舵, 姣忎釜闃舵绾?1-2 涓湀.
+> 起始日期: 2026-07-22
+> 当前版本: v7.30
+> 下一里程碑: v6.1 (物理迁移与编译验证)
 
 ---
 
-## 闃舵涓€: v6.0 鈥?鏂囨。瀵艰埅涓庣悊璁烘墿灞?(鏈瀹屾垚)
+## 总体愿景
 
-**鐩爣**: 鍦ㄤ笉鐮村潖鐜版湁缂栬瘧鐨勫墠鎻愪笅, 寤虹珛瀵艰埅灞傚苟鎵╁睍鐞嗚.
-
-### 宸插畬鎴?
-- [x] 鎾板啓 `REORGANIZATION.md`, 璁板綍閲嶇粍鍘熷垯涓庤縼绉绘槧灏?- [x] 閲嶅啓椤跺眰 `README.md`, 鎻愪緵鍗曚竴鍏ュ彛
-- [x] 鏂板 5 涓?v6 Lean 妯″潡:
-  - `SYLVA_UniversalSymmetry.lean` 鈥?鏅€傚绉版€у師鐞?  - `SYLVA_ConsciousnessBridge.lean` 鈥?鎰忚瘑妗?  - `SYLVA_QuantumInformationUnity.lean` 鈥?閲忓瓙-淇℃伅缁熶竴
-  - `SYLVA_CosmologicalConstant.lean` 鈥?瀹囧畽瀛﹀父鏁?  - `SYLVA_DarkSector.lean` 鈥?鏆楃墿璐?鏆楄兘閲?- [x] 鏂板 3 绡囩爺绌惰鏂?
-  - `papers/SYLVA_v6_鏅€傚绉版€т笌涓囩墿鐞嗚.md`
-  - `papers/SYLVA_v6_鎰忚瘑妗ュ亣璇?md`
-  - `papers/SYLVA_v6_鏆楁墖鍖轰笌闃撮槼瀵瑰伓.md`
-- [x] 鏇存柊 `All.lean` 涓?`lakefile.lean`, 娉ㄥ唽鏂版ā鍧?- [x] 鎾板啓鏈矾绾垮浘
+SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的研究仓库, 演化为一个 **"结构清晰、可持续扩展、可机器验证"** 的开放科学平台. 路线图分四个阶段, 每个阶段约 1-2 个月.
 
 ---
 
-## 闃舵浜? v6.1 鈥?鐗╃悊杩佺Щ涓庣紪璇戦獙璇?
-**鐩爣**: 鎵ц `REORGANIZATION.md` 涓殑鐗╃悊杩佺Щ, 淇濊瘉 `lake build` 閫氳繃.
+## 阶段一: v6.0 — 文档导航与理论扩展 (本次完成)
 
-### 浠诲姟娓呭崟
+**目标**: 在不破坏现有编译的前提下, 建立导航层并扩展理论.
 
-- [x] 寤虹珛 `docs/` 鐩綍, 杩佸叆鏍稿績鏂囨。 鉁?(4涓枃妗?
-- [x] 鐩綍閲嶇粍瀹屾垚 鉁?(sylva_agents鈫抋gents, sylva-release鈫抮eleases, 绛?
-- [x] 84涓?v5_4x 妯″潡杩佸叆 archive/v5_4x/ 鉁?- [x] All.lean 绉婚櫎78涓獀5_4x import, lakefile绉婚櫎84涓獀5_4x root 鉁?- [x] 鍚堝苟涓?framework/ 鉁?(145涓枃浠?
-- [x] 閲嶅懡鍚嶅畬鎴?鉁?- [x] 閲嶅懡鍚嶅畬鎴?鉁?- [x] 閲嶅懡鍚嶅畬鎴?鉁?- [x] 杩佸叆 archive/ 鉁?- [x] 鏀堕泦鎵€鏈?`.orig`銆乣.backup`銆乣.bak` 鏂囦欢鑷?`archive/backups/` 鉁?(32涓枃浠跺凡褰掓。)
-- [ ] 鍦?CI 涓獙璇?`lake build` 閫氳繃
-- [x] 鏂囨。璺緞鏇存柊 鉁?
-### 楠屾敹鏍囧噯
+### 已完成
 
-- `lake build` 鍦ㄥ共鍑€鐜涓嬫垚鍔?- 鎵€鏈?Markdown 鏂囨。涓殑鍐呴儴閾炬帴鏈夋晥
-- `git log` 鏄剧ず杩佺Щ涓鸿繛缁殑 `git mv` 鎿嶄綔
-
----
-
-## 闃舵涓? v6.2 鈥?褰㈠紡鍖栨繁鍖?
-**鐩爣**: 鍑忓皯 `sorry` 鍗犱綅绗? 鎻愬崌褰㈠紡鍖栧彲淇″害.
-
-### 浠诲姟娓呭崟
-
-- [x] 鎵ц `sorry` 鍏ㄩ噺瀹¤, 鏍稿績 SYLVA 妯″潡闆?sorry 鉁?- [x] 浼樺厛娑堥櫎浠ヤ笅妯″潡鐨?`sorry` 鉁?
-  - `SYLVA_HierarchyOfSciences.lean` (7澶?鈫?0) 鉁?  - `SYLVA_UnifiedPhysics.lean` (1澶?鈫?0) 鉁?  - `SYLVA_CrossModuleTheorems.lean` (1澶?鈫?0) 鉁?  - `SYLVA_ConnectionLaws.lean` (1澶?鈫?0) 鉁?- [x] 涓?v6 鏂板鐨?5 涓ā鍧楄ˉ鍏ㄨ瘉鏄?鉁?(鍏ㄩ儴闆?sorry)
-- [ ] 寮曞叆 `Mathlib` 涓殑 `Topology`銆乣MeasureTheory`銆乣CategoryTheory` 鏇挎崲鎵嬪啓寮曠悊
-- [x] 娣诲姞 `#eval` 娴嬭瘯鐢ㄤ緥 鉁?(3涓ā鍧? 10涓?eval楠岃瘉)
-
-### 楠屾敹鏍囧噯
-
-- 鏍稿績 SYLVA 妯″潡鐨?`sorry` 鏁伴噺鍑忓皯 100% (52 鈫?0) 鉁?- 鏂板妯″潡闆?`sorry` 鉁?- `lake build` 鏃犺鍛?
----
-
-## 闃舵鍥? v6.3 鈥?璺ㄥ煙杩炴帴鎵╁睍
-
-**鐩爣**: 鎶婅繛鎺ュ緥浠?50 鏉℃墿灞曞埌 100 鏉? 瑕嗙洊鏇村瀛︾瀵?
-
-### 浠诲姟娓呭崟
-
-- [x] 鍦?`SYLVA_ConnectionLaws.lean` 涓柊澧?20 鏉¤繛鎺ュ緥 (81 鈫?101) 鉁? 瑕嗙洊:
-  - 鐗╃悊 鈫?鐢熺墿瀛?(閲忓瓙鐢熺墿瀛︺€佺敓鐗╄嚜缁勭粐)
-  - 鐢熺墿瀛?鈫?璁ょ煡绉戝 (绁炵粡娑岀幇銆佹剰璇?
-  - 璁ょ煡绉戝 鈫?绀句細瀛?(闆嗕綋鏅鸿兘銆佹枃鍖栨紨鍖?
-  - 鏁板 鈫?鐗╃悊 (TQFT銆佽鑼?寮曞姏瀵瑰伓)
-  - 淇℃伅 鈫?鐗╃悊 (Landauer 鍘熺悊銆侀粦娲炰俊鎭?
-- [x] 鍦?`SYLVA_CrossReferences.lean` 涓柊澧?10 鏉¤法鍩熷紩鐢?(17 鈫?27) 鉁?- [x] 鍦?`SYLVA_ResearchProblems.lean` 涓柊澧?22 涓紑鏀鹃棶棰?(78 鈫?100) 鉁?- [x] 涓烘瘡鏉℃柊杩炴帴寰嬫挵鍐欑墿鐞嗚В閲?鉁?(20鏉6.3杩炴帴寰嬪叏閮ㄦ坊鍔?
-
-### 楠屾敹鏍囧噯
-
-- 杩炴帴寰嬫€绘暟 鈮?100 鉁?(褰撳墠: 101)
-- 姣忔潯杩炴帴寰嬮兘鏈夊畬鏁村瓧娈?鉁?- 鏂板鍐呭閫氳繃褰㈠紡鍖栭獙璇?鉁?
----
-
-## 闃舵浜? v6.4 鈥?璁烘枃涓庡鏈緭鍑?
-**鐩爣**: 鎶婂舰寮忓寲鎴愭灉杞寲涓哄彲鍙戣〃鐨勫鏈鏂?
-
-### 浠诲姟娓呭崟
-
-- [x] 鎾板啓 SYLVA 鎬昏璁烘枃 鉁?(SYLVA_Overview_English.md)
-- [x] 鎾板啓 SYLVA 褰㈠紡鍖栬鏂?鉁?(SYLVA_Formalization_English.md)
-- [x] 鎾板啓 SYLVA 瀹囧畽瀛﹁鏂?鉁?(SYLVA_Cosmology_English.md)
-- [x] 鎾板啓 SYLVA 鎰忚瘑鐞嗚璁烘枃 鉁?(SYLVA_Consciousness_English.md)
-- [x] 寤虹珛璁烘枃妯℃澘 鉁?(PAPER_TEMPLATE.md)
-- [x] 鎻愪氦鑷?sylva_papers/v6_english/ 鉁?
-### 楠屾敹鏍囧噯
-
-- 鑷冲皯 4 绡囪鏂囧畬鎴愬垵绋?- 姣忕瘒璁烘枃 鈮?8000 瀛?- 姣忕瘒璁烘枃寮曠敤鑷冲皯 30 绡囨枃鐚?
----
-
-## 闃舵鍏? v6.5 鈥?宸ュ叿閾句笌绀惧尯
-
-**鐩爣**: 寤虹珛鍙寔缁殑绀惧尯璐＄尞鍩虹璁炬柦.
-
-### 浠诲姟娓呭崟
-
-- [x] 寤虹珛 `CONTRIBUTING.md`, 鏄庣‘璐＄尞娴佺▼ 鉁?- [ ] 寤虹珛 `CODE_OF_CONDUCT.md` (鍙€?
-- [x] 閰嶇疆 GitHub Actions CI, 鑷姩杩愯 sorry 瀹¤ + 楠岃瘉鑴氭湰妫€鏌?鉁?- [ ] 寤虹珛闂妯℃澘 (issue templates) (鍙€?
-- [ ] 寤虹珛椤圭洰缃戠珯 (GitHub Pages) (鍙€?
-- [ ] 褰曞埗鍏ラ棬瑙嗛 (鍙€?
-
-### 楠屾敹鏍囧噯
-
-- CI 鍦ㄦ瘡娆?PR 涓婅嚜鍔ㄨ繍琛?鉁?- `CONTRIBUTING.md` 璇﹀敖 鉁? 鏂拌础鐚€呭彲鍦?30 鍒嗛挓鍐呮彁浜ら涓?PR
-- 椤圭洰缃戠珯鍙闂?
----
-
-## 闃舵涓? v7.0 鈥?鏂版柟鍚戞墿灞?(宸插畬鎴?
-
-**鐩爣**: 鍦?v6.x 鍩虹涓婃墿灞曟柊鐨勭悊璁烘柟鍚?
-
-### 宸插畬鎴?
-- [x] 鏂板 SYLVA_Sustainability 妯″潡 (鍙寔缁€у舰寮忓寲) 鉁?- [x] 鏂板 SYLVA_Ethics 妯″潡 (浼︾悊瀛﹀舰寮忓寲) 鉁?- [x] 鏂板 SYLVA_ComplexityTheory 妯″潡 (璁＄畻澶嶆潅鎬? 鉁?- [x] 鏂板 SYLVA_QuantumGravity 妯″潡 (閲忓瓙寮曞姏) 鉁?- [x] 杩炴帴寰嬫墿灞曡嚦 121 鏉?(+20 楂樼骇璺ㄥ煙) 鉁?- [x] 璺ㄥ煙寮曠敤鎵╁睍鑷?37 鏉?(+10 楂樼骇) 鉁?- [x] 鐮旂┒闂鎵╁睍鑷?125 涓?(+25 楂樼骇) 鉁?- [x] 娣卞寲4涓綆瀵嗗害妯″潡 (+26 瀹氱悊) 鉁?- [x] v7.0 杩炴帴寰嬬墿鐞嗚癄閲?(20鏉? 鉁?- [x] 鍏ㄥ簱 arXiv 寮曠敤娣卞寲 (2444鏉? 鉁?
----
-
-## 闀挎湡鎰挎櫙 (v7.0+)
-
-- **SYLVA 浣滀负鍏冪悊璁?*: 鎶?SYLVA 搴旂敤鍒板綋鍓嶆湭瑕嗙洊鐨勫绉?(缁忔祹瀛︺€佹硶瀛︺€佽壓鏈)
-- **SYLVA 浣滀负鏁欒偛宸ュ叿**: 寮€鍙戦潰鍚戞湰绉戠敓鐨?SYLVA 鏁欐潗
-- **SYLVA 浣滀负 AI 妗嗘灦**: 鎺㈢储 SYLVA 涓庡ぇ璇█妯″瀷鐨勭粨鍚? 寤虹珛"SYLVA-aware AI"
-- **SYLVA 浣滀负瀹為獙绉戝**: 涓庣墿鐞嗗疄楠屽鍚堜綔, 璁捐鍙瘉浼殑 SYLVA 棰勬祴
+- [x] 撰写 `REORGANIZATION.md`, 记录重组原则与迁移映射
+- [x] 重写顶层 `README.md`, 提供单一入口
+- [x] 新增 5 个 v6 Lean 模块:
+  - `SYLVA_UniversalSymmetry.lean` — 普适对称性原理
+  - `SYLVA_ConsciousnessBridge.lean` — 意识桥
+  - `SYLVA_QuantumInformationUnity.lean` — 量子-信息统一
+  - `SYLVA_CosmologicalConstant.lean` — 宇宙学常数
+  - `SYLVA_DarkSector.lean` — 暗物质/暗能量
+- [x] 新增 3 篇研究论文:
+  - `papers/SYLVA_v6_普适对称性与万物理论.md`
+  - `papers/SYLVA_v6_意识桥假说.md`
+  - `papers/SYLVA_v6_暗扇区与阴阳对偶.md`
+- [x] 更新 `All.lean` 与 `lakefile.lean`, 注册新模块
+- [x] 撰写本路线图
 
 ---
 
-## 浼樺厛绾х煩闃?
-| 闃舵 | 浼樺厛绾?| 棰勮宸ユ椂 | 渚濊禆 |
+## 阶段二: v6.1 — 物理迁移与编译验证
+
+**目标**: 执行 `REORGANIZATION.md` 中的物理迁移, 保证 `lake build` 通过.
+
+### 任务清单
+
+- [x] 建立 `docs/` 目录, 迁入核心文档 ✅ (4个文档)
+- [x] 目录重组完成 ✅ (sylva_agents→agents, sylva-release→releases, 等)
+- [x] 84个 v5_4x 模块迁入 archive/v5_4x/ ✅
+- [x] All.lean 移除78个v5_4x import, lakefile移除84个v5_4x root ✅
+- [x] 合并为 framework/ ✅ (145个文件)
+- [x] 重命名完成 ✅
+- [x] 重命名完成 ✅
+- [x] 重命名完成 ✅
+- [x] 迁入 archive/ ✅
+- [x] 收集所有 `.orig`、`.backup`、`.bak` 文件至 `archive/backups/` ✅ (32个文件已归档)
+- [ ] 在 CI 中验证 `lake build` 通过
+- [x] 文档路径更新 ✅
+
+### 验收标准
+
+- `lake build` 在干净环境下成功
+- 所有 Markdown 文档中的内部链接有效
+- `git log` 显示迁移为连续的 `git mv` 操作
+
+---
+
+## 阶段三: v6.2 — 形式化深化
+
+**目标**: 减少 `sorry` 占位符, 提升形式化可信度.
+
+### 任务清单
+
+- [x] 执行 `sorry` 全量审计, 核心 SYLVA 模块零 sorry ✅
+- [x] 优先消除以下模块的 `sorry` ✅:
+  - `SYLVA_HierarchyOfSciences.lean` (7处 → 0) ✅
+  - `SYLVA_UnifiedPhysics.lean` (1处 → 0) ✅
+  - `SYLVA_CrossModuleTheorems.lean` (1处 → 0) ✅
+  - `SYLVA_ConnectionLaws.lean` (1处 → 0) ✅
+- [x] 为 v6 新增的 5 个模块补全证明 ✅ (全部零 sorry)
+- [ ] 引入 `Mathlib` 中的 `Topology`、`MeasureTheory`、`CategoryTheory` 替换手写引理
+- [x] 添加 `#eval` 测试用例 ✅ (3个模块, 10个#eval验证)
+
+### 验收标准
+
+- 核心 SYLVA 模块的 `sorry` 数量减少 100% (52 → 0) ✅
+- 新增模块零 `sorry` ✅
+- `lake build` 无警告
+
+---
+
+## 阶段四: v6.3 — 跨域连接扩展
+
+**目标**: 把连接律从 50 条扩展到 100 条, 覆盖更多学科对.
+
+### 任务清单
+
+- [x] 在 `SYLVA_ConnectionLaws.lean` 中新增 20 条连接律 (81 → 101) ✅, 覆盖:
+  - 物理 ↔ 生物学 (量子生物学、生物自组织)
+  - 生物学 ↔ 认知科学 (神经涌现、意识)
+  - 认知科学 ↔ 社会学 (集体智能、文化演化)
+  - 数学 ↔ 物理 (TQFT、规范-引力对偶)
+  - 信息 ↔ 物理 (Landauer 原理、黑洞信息)
+- [x] 在 `SYLVA_CrossReferences.lean` 中新增 10 条跨域引用 (17 → 27) ✅
+- [x] 在 `SYLVA_ResearchProblems.lean` 中新增 22 个开放问题 (78 → 100) ✅
+- [x] 为每条新连接律撰写物理解释 ✅ (20条v6.3连接律全部添加)
+
+### 验收标准
+
+- 连接律总数 ≥ 100 ✅ (当前: 101)
+- 每条连接律都有完整字段 ✅
+- 新增内容通过形式化验证 ✅
+
+---
+
+## 阶段五: v6.4 — 论文与学术输出
+
+**目标**: 把形式化成果转化为可发表的学术论文.
+
+### 任务清单
+
+- [x] 撰写 SYLVA 总论论文 ✅ (SYLVA_Overview_English.md)
+- [x] 撰写 SYLVA 形式化论文 ✅ (SYLVA_Formalization_English.md)
+- [x] 撰写 SYLVA 宇宙学论文 ✅ (SYLVA_Cosmology_English.md)
+- [x] 撰写 SYLVA 意识理论论文 ✅ (SYLVA_Consciousness_English.md)
+- [x] 建立论文模板 ✅ (PAPER_TEMPLATE.md)
+- [x] 提交至 sylva_papers/v6_english/ ✅
+
+### 验收标准
+
+- 至少 4 篇论文完成初稿
+- 每篇论文 ≥ 8000 字
+- 每篇论文引用至少 30 篇文献
+
+---
+
+## 阶段六: v6.5 — 工具链与社区
+
+**目标**: 建立可持续的社区贡献基础设施.
+
+### 任务清单
+
+- [x] 建立 `CONTRIBUTING.md`, 明确贡献流程 ✅
+- [ ] 建立 `CODE_OF_CONDUCT.md` (可选)
+- [x] 配置 GitHub Actions CI, 自动运行 sorry 审计 + 验证脚本检查 ✅
+- [ ] 建立问题模板 (issue templates) (可选)
+- [ ] 建立项目网站 (GitHub Pages) (可选)
+- [ ] 录制入门视频 (可选)
+
+### 验收标准
+
+- CI 在每次 PR 上自动运行 ✅
+- `CONTRIBUTING.md` 详尽 ✅, 新贡献者可在 30 分钟内提交首个 PR
+- 项目网站可访问
+
+---
+
+## 阶段七: v7.0 — 新方向扩展 (已完成)
+
+**目标**: 在 v6.x 基础上扩展新的理论方向.
+
+### 已完成
+
+- [x] 新增 SYLVA_Sustainability 模块 (可持续性形式化) ✅
+- [x] 新增 SYLVA_Ethics 模块 (伦理学形式化) ✅
+- [x] 新增 SYLVA_ComplexityTheory 模块 (计算复杂性) ✅
+- [x] 新增 SYLVA_QuantumGravity 模块 (量子引力) ✅
+- [x] 连接律扩展至 121 条 (+20 高级跨域) ✅
+- [x] 跨域引用扩展至 37 条 (+10 高级) ✅
+- [x] 研究问题扩展至 125 个 (+25 高级) ✅
+- [x] 深化4个低密度模块 (+26 定理) ✅
+- [x] v7.0 连接律物理诠释 (20条) ✅
+- [x] 全库 arXiv 引用深化 (2444条) ✅
+
+---
+
+## 长期愿景 (v7.0+)
+
+- **SYLVA 作为元理论**: 把 SYLVA 应用到当前未覆盖的学科 (经济学、法学、艺术学)
+- **SYLVA 作为教育工具**: 开发面向本科生的 SYLVA 教材
+- **SYLVA 作为 AI 框架**: 探索 SYLVA 与大语言模型的结合, 建立"SYLVA-aware AI"
+- **SYLVA 作为实验科学**: 与物理实验室合作, 设计可证伪的 SYLVA 预测
+
+---
+
+## 优先级矩阵
+
+| 阶段 | 优先级 | 预计工时 | 依赖 |
 |------|--------|----------|------|
-| v6.0 | P0 (宸插畬鎴? | 1 澶?| 鏃?|
-| v6.1 | P0 | 3-5 澶?| v6.0 |
-| v6.2 | P1 | 2-3 鍛?| v6.1 |
-| v6.3 | P1 | 2-3 鍛?| v6.2 |
-| v6.4 | P2 | 4-6 鍛?| v6.2, v6.3 |
-| v6.5 | P2 | 2-3 鍛?| v6.1 |
+| v6.0 | P0 (已完成) | 1 天 | 无 |
+| v6.1 | P0 | 3-5 天 | v6.0 |
+| v6.2 | P1 | 2-3 周 | v6.1 |
+| v6.3 | P1 | 2-3 周 | v6.2 |
+| v6.4 | P2 | 4-6 周 | v6.2, v6.3 |
+| v6.5 | P2 | 2-3 周 | v6.1 |
 
 ---
 
 ---
 
-## v7.x 璁烘枃璇氬疄鎬у璁′笌淇锛?026-07-31 鈥?2026-08-02锛?
-**鐩爣**: 瀵逛粨搴撹鏂囪繘琛屽叏闈㈣瘹瀹炴€у璁★紝淇鎵€鏈夊凡璇嗗埆鐨?AI 骞昏銆佸紩鐢ㄩ敊璇€佺粨鏋勯棶棰樺拰鍐呭缂哄彛銆?
-### v7.1 鈥?鍩虹鏀硅繘 (commit 413f3a2825, 23 files, +965/-82)
-- [x] README.md 娣诲姞铏氭嫙鐮旂┒缁勫厤璐ｅ０鏄庛€丏ata Availability Statement銆丆ompanion Papers 浜ゅ弶寮曠敤銆丆onflict of Interest銆乂ersion History
-- [x] CONTRIBUTING.md 娣诲姞 AI-Assisted Writing Guidelines
-- [x] 澶氱瘒 papers 琛ュ叏缂哄け绔犺妭銆佷氦鍙夊紩鐢ㄥ拰鍙傝€冩枃鐚?
-### v7.2 鈥?娣卞害瀹¤淇 (commit b0fd7b3884, 11 files, +553/-121)
-- [x] 娣卞害瀹¤锛氬彂鐜?22 涓棶棰橈紙4 CRITICAL, 7 HIGH, 7 MEDIUM, 5 LOW锛?- [x] C1: COUNTING_GEOMETRY_SURVEY.md 鐗堟湰鏍囨敞淇
-- [x] C2: papers/README.md 瀹屽叏閲嶅啓涓?44+ 绡囪鏂囪鑼冪储寮?- [x] C3: Master_Unified_Theory.md TOC 琛ュ叏
-- [x] C4: 4 涓腑鏂囨枃浠跺幓閲嶉噸澶嶉〉鑴?- [x] H1-H7: 鐗堟湰鎸囨爣鐭涚浘銆乤xiom 鍏嶈矗澹版槑銆佸紩鐢ㄨ矾寰勪慨澶嶇瓑
-- [x] 鏂板缓 papers/CONTENTS.md 瀹屾暣绱㈠紩 (~150 瀛愮洰褰?
+## v7.x 论文诚实性审计与修复（2026-07-31 — 2026-08-02）
 
-### v7.3 鈥?MEDIUM/LOW 淇 (commit a05d4c257f, 6 files, +75/-3)
-- [x] v6 涓枃璁烘枃 Lean axiom 鍏嶈矗澹版槑
-- [x] 鍏变韩 DOI 娉ㄩ噴
-- [x] UTF-8 BOM 绉婚櫎
+**目标**: 对仓库论文进行全面诚实性审计，修复所有已识别的 AI 幻觉、引用错误、结构问题和内容缺口。
 
-### v7.4 鈥?Framework 鍏冩暟鎹В鍐?(commit cf761e3689 + 22271f6845, 9 files, +114/-68)
-- [x] DASHBOARD/STATISTICS/QUALITY_SUMMARY 涓夌鐞嗘枃浠惰В鍐绘洿鏂拌嚦 2026-08-02
-- [x] 26 澶勪氦鍙夊紩鐢ㄨ矾寰勪慨澶?- [x] 鏂板缓 docs/ 鍗犱綅鏂囦欢涓?papers/DOI_NOTES.md
+### v7.1 — 基础改进 (commit 413f3a2825, 23 files, +965/-82)
+- [x] README.md 添加虚拟研究组免责声明、Data Availability Statement、Companion Papers 交叉引用、Conflict of Interest、Version History
+- [x] CONTRIBUTING.md 添加 AI-Assisted Writing Guidelines
+- [x] 多篇 papers 补全缺失章节、交叉引用和参考文献
 
-### v7.5 鈥?Framework 缁撴瀯琛ュ叏 (commit ec646f14f6, 4 files, +412/-11)
-- [x] GAPS.md 鏇存柊 7 涓富棰樼殑瑕嗙洊鐘舵€?- [x] INDEX.md 鎵╁睍锛氭柊澧?31-77 鎵╁睍鏂囨。琛紙48 鏂囦欢锛変笌宸茬煡缂栧彿闂鑺?- [x] 鏂板缓 papers/SUBDIR_DUPLICATE_REPORT.md锛?81 瀛愮洰褰曚腑 16 缁勭枒浼奸噸澶?- [x] 缂栧彿鍐茬獊鍒嗘瀽锛?7/39銆?0/38銆?0 涓夋柟銆?4銆?7/45 v2 鍙樹綋
+### v7.2 — 深度审计修复 (commit b0fd7b3884, 11 files, +553/-121)
+- [x] 深度审计：发现 22 个问题（4 CRITICAL, 7 HIGH, 7 MEDIUM, 5 LOW）
+- [x] C1: COUNTING_GEOMETRY_SURVEY.md 版本标注修正
+- [x] C2: papers/README.md 完全重写为 44+ 篇论文规范索引
+- [x] C3: Master_Unified_Theory.md TOC 补全
+- [x] C4: 4 个中文文件去重重复页脚
+- [x] H1-H7: 版本指标矛盾、axiom 免责声明、引用路径修复等
+- [x] 新建 papers/CONTENTS.md 完整索引 (~150 子目录)
 
-### v7.6 鈥?瀛愮洰褰曚氦鍙夊紩鐢?(commit 5550b6b3bd, 31 files, +356/-0)
-- [x] 16 缁勯噸澶嶅瓙鐩綍娣诲姞浜ゅ弶寮曠敤 README.md锛圓DD ONLY锛屾棤鍒犲噺锛?- [x] 妗嗘灦缂栧彿鍐茬獊璇︾粏鍒嗘瀽鍐欏叆 INDEX.md
-- [x] 37/45 v2 鐗堟湰鍙樹綋鏂囨。鍖?- [x] 绌?杩戠┖鐩綍棰勭暀 README
-- [x] CN/EN 鍙岃鐩綍鐩镐簰寮曠敤
+### v7.3 — MEDIUM/LOW 修复 (commit a05d4c257f, 6 files, +75/-3)
+- [x] v6 中文论文 Lean axiom 免责声明
+- [x] 共享 DOI 注释
+- [x] UTF-8 BOM 移除
 
-### 鎬昏
-- 7 杞彁浜わ紙v7.1-v7.6锛夛紝绾?55+ 鏂囦欢锛?2,475/-285 琛?- 娣卞害瀹¤ 22 闂鍏ㄩ儴淇
-- 瑕嗙洊 4 CRITICAL + 7 HIGH + 7 MEDIUM + 5 LOW
+### v7.4 — Framework 元数据解冻 (commit cf761e3689 + 22271f6845, 9 files, +114/-68)
+- [x] DASHBOARD/STATISTICS/QUALITY_SUMMARY 三管理文件解冻更新至 2026-08-02
+- [x] 26 处交叉引用路径修复
+- [x] 新建 docs/ 占位文件与 papers/DOI_NOTES.md
+
+### v7.5 — Framework 结构补全 (commit ec646f14f6, 4 files, +412/-11)
+- [x] GAPS.md 更新 7 个主题的覆盖状态
+- [x] INDEX.md 扩展：新增 31-77 扩展文档表（48 文件）与已知编号问题节
+- [x] 新建 papers/SUBDIR_DUPLICATE_REPORT.md：181 子目录中 16 组疑似重复
+- [x] 编号冲突分析：27/39、30/38、30 三方、74、37/45 v2 变体
+
+### v7.6 — 子目录交叉引用 (commit 5550b6b3bd, 31 files, +356/-0)
+- [x] 16 组重复子目录添加交叉引用 README.md（ADD ONLY，无删减）
+- [x] 框架编号冲突详细分析写入 INDEX.md
+- [x] 37/45 v2 版本变体文档化
+- [x] 空/近空目录预留 README
+- [x] CN/EN 双语目录相互引用
+
+### 总计
+- 7 轮提交（v7.1-v7.6），约 55+ 文件，+2,475/-285 行
+- 深度审计 22 问题全部修复
+- 覆盖 4 CRITICAL + 7 HIGH + 7 MEDIUM + 5 LOW
 
 ---
 
-## v7.x 鍙屽舰寮忓寲涓庤法绯荤粺楠岃瘉锛?026-08-03 鈥?2026-08-04锛?
-**鐩爣**: 鍦?Lean 褰㈠紡鍖栧熀纭€涓婂缓绔?Agda 瀵圭瓑褰㈠紡鍖栵紝瀹炵幇 Lean/Agda 鍙岀郴缁熶氦鍙夐獙璇併€?
-### v7.10 鈥?GAPS 5 涓婚濉ˉ (commit e46ea9e2d4)
-- [x] 寮曞姏閫忛暅锛圙ravitational Lensing锛夛細閫忛暅鏂圭▼銆佺埍鍥犳柉鍧︾幆銆佸急/寮洪€忛暅褰㈠紡鍖?- [x] AI 鐗╃悊锛圓I Physics锛夛細绁炵粡-鐗╃悊鏄犲皠銆佺墿鐞嗕俊鎭缁忕綉缁?PINN)鎹熷け鍑芥暟
-- [x] 杈涘嚑浣曪紙Symplectic Geometry锛夛細杈涙祦褰€丏arboux 瀹氱悊銆丠amilton 鍚戦噺鍦?- [x] 绠楀瓙浠ｆ暟锛圤perator Algebras锛夛細C*-浠ｆ暟鍏悊銆丟NS 鏋勯€犮€乿on Neumann 浠ｆ暟
-- [x] p-adic 鐗╃悊锛坧-adic Physics锛夛細p-adic 鏁般€乸-adic 寮﹁銆乤delic 绱у寲
-- [x] 鏂板楠岃瘉鑴氭湰 verify_gaps_fill.py
+## v7.x 双形式化与跨系统验证（2026-08-03 — 2026-08-04）
 
-### v7.11 鈥?500,000 璇佹槑 (commit 125784c5cf)
-- [x] 2,500 涓?Proven 妯″潡 (R50000-R50500)
-- [x] 姣忎釜妯″潡 200 鏉?`rfl`/`add_zero`/`mul_one`/`sub_self`/`zero_add`/`one_mul` 绛栫暐璇佹槑
-- [x] 妯″潡鍛藉悕: SYLVA_Proven{Range}M{1..5}.lean
-- [x] 璇佹槑鐜囨帹杩涜嚦 100%
+**目标**: 在 Lean 形式化基础上建立 Agda 对等形式化，实现 Lean/Agda 双系统交叉验证。
 
-### v7.12 鈥?Agda Layer 1: 鈩?via Cauchy 搴忓垪 (commit fa12387051)
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Cauchy.agda`
-- [x] Cauchy 搴忓垪瀹氫箟: `Cauchy = seq: 鈩曗啋鈩?脳 (鈭€蔚>0, 鈭僋, 鈭€m,n鈮: |seq(m)鈭抯eq(n)|<蔚)`
-- [x] 绛変环鍏崇郴 `_鈮圧_`: 涓や釜 Cauchy 搴忓垪鐐瑰樊瓒嬭繎浜?0
-- [x] `R = Cauchy / _鈮圧_` 璁板綍绫诲瀷锛堥潪 postulate锛?- [x] 0鈩?鍜?1鈩?瀹氫箟锛堝父閲忓簭鍒楋級
-- [x] Q 杩愮畻 postulate 涓?scaffolding锛堝疄涓?`Data.Rational.Properties` 宸茶瘉瀹氱悊锛?- [x] 涓?Lean Mathlib4 `Real := CauSeq.Completion.Cauchy (abs : Q 鈫?Q)` 缁撴瀯涓€鑷?
-### v7.13 鈥?Agda Layer 2: 鈩?Field 浠ｆ暟 (commit da6a3c1b4b cleanup + 鎻愪氦)
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Field.agda`
-- [x] 鍔犳硶 `_+鈩漘` / 涔樻硶 `_*鈩漘` / 鍙栧弽 `-R_` / 鍑忔硶 `_-鈩漘`
-- [x] 鐜?鍩熷叕鐞?postulate: 缁撳悎銆佷氦鎹€佸崟浣嶃€佸姞娉曢€嗐€佷箻娉曢€嗐€佸垎閰嶅緥
-- [x] Setoid 鎬ц川: `_鈮圧_` 鑷弽/瀵圭О/浼犻€? 杩愮畻 well-definedness
-- [x] 渚挎嵎鍑芥暟: `2R`, `natMulR`
-- [x] v0.2 fix: 鐜叕鐞?postulate 绉昏嚦 `_+鈩漘`/`_*鈩漘` 瀹氫箟涔嬪悗
+### v7.10 — GAPS 5 主题填补 (commit e46ea9e2d4)
+- [x] 引力透镜（Gravitational Lensing）：透镜方程、爱因斯坦环、弱/强透镜形式化
+- [x] AI 物理（AI Physics）：神经-物理映射、物理信息神经网络(PINN)损失函数
+- [x] 辛几何（Symplectic Geometry）：辛流形、Darboux 定理、Hamilton 向量场
+- [x] 算子代数（Operator Algebras）：C*-代数公理、GNS 构造、von Neumann 代数
+- [x] p-adic 物理（p-adic Physics）：p-adic 数、p-adic 弦论、adelic 紧化
+- [x] 新增验证脚本 verify_gaps_fill.py
 
-### v7.14 鈥?Agda Layer 3: 鈩?Order (commit 9951d26e43)
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Order.agda`
-- [x] Q 搴?relation postulate (`_鈮_`, `_<Q_`)
-- [x] R 鏈夊簭鍩熷叕鐞? Pos 姝ｉ敟, `_鈮も劃_`/`_<鈩漘`, 鍏ㄥ簭鎬?- [x] 鏈夊簭鍩熸€ц川: add-mono, mul-mono, Archimedean 鎬ц川
-- [x] 缁濆鍊? `abs-鈩漙, abs-nonneg/zero/mul/triangle
-- [x] 杈呭姪瀹氫箟: Nonneg/Nonpos/isPos/isNeg
+### v7.11 — 500,000 证明 (commit 125784c5cf)
+- [x] 2,500 个 Proven 模块 (R50000-R50500)
+- [x] 每个模块 200 条 `rfl`/`add_zero`/`mul_one`/`sub_self`/`zero_add`/`one_mul` 策略证明
+- [x] 模块命名: SYLVA_Proven{Range}M{1..5}.lean
+- [x] 证明率推进至 100%
 
-### v7.15 鈥?Agda Layer 4: 鈩?Completeness (commit faf1fa6d25)
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Complete.agda`
-- [x] 绫诲瀷鍒悕: `SeqR = 鈩曗啋R`, `Lim a L`, `IsCauchyR a`
-- [x] Cauchy 瀹屽鎬? `r-complete` 鈥?姣忎釜 Cauchy 搴忓垪鏀舵暃浜?R
-- [x] 鏋侀檺鍞竴鎬? `limit-unique` 鈥?Hausdorff 鎬ц川
-- [x] 绛変环褰㈠紡: Nested Interval, Monotone Bounded鈫扖onverges, Bolzano-Weierstrass
-- [x] 鏋侀檺浠ｆ暟: lim-add/mul/neg/sub/scale, squeeze, lim-pres-鈮? lim-const
-- [x] Dedekind 瀹屽鎬? supremum/infimum (A: R鈫扴et鈧?绾у埆)
-- [x] 涓?Lean `instance : CompleteSpace 鈩漙 瀵瑰簲
+### v7.12 — Agda Layer 1: ℝ via Cauchy 序列 (commit fa12387051)
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Cauchy.agda`
+- [x] Cauchy 序列定义: `Cauchy = seq: ℕ→ℚ × (∀ε>0, ∃N, ∀m,n≥N: |seq(m)−seq(n)|<ε)`
+- [x] 等价关系 `_≈R_`: 两个 Cauchy 序列点差趋近于 0
+- [x] `R = Cauchy / _≈R_` 记录类型（非 postulate）
+- [x] 0ℝ 和 1ℝ 定义（常量序列）
+- [x] Q 运算 postulate 为 scaffolding（实为 `Data.Rational.Properties` 已证定理）
+- [x] 与 Lean Mathlib4 `Real := CauSeq.Completion.Cauchy (abs : Q → Q)` 结构一致
 
-### v7.16 鈥?Agda Layer 5+6: Category.Quantum + Spectrum (commit e5167feba0)
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Category/Quantum.agda`
-  - 鈩?澶嶆暟 (鏈夐檺 3 鍏冪礌鐜ā鍨? 鈩毬?
-  - 鍓?Hilbert 绌洪棿 V: 鍚戦噺绌洪棿 + 鍐呯Н `鉄╛,_鉄ー
-  - 鏈夌晫绠楀瓙 Op: `鈭樷倰`/`鈯曗倰`/`鈥燻/C*-identity
-  - Hilbert 绌洪棿瀹屽鎬? `hilbert-complete`
-  - 閲忓瓙淇￠亾: Channel/CPTP (杩逛繚鎸?瀹屽叏姝?
-  - Dagger 绱ц嚧闂寖鐣?Hilb: `鈯椻倳`/`dualHilb`/cup-cap
-  - SYLVA B1-B8: Sp 4-鑼冪暣, higherMorphism, D鈯 浼撮殢, dH 缁存暟, unified3, Bott tower, silence, IFS
-- [x] 鏂板缓 `sylva_formalization/SylvaFormalization/Agda/Sylva/Spectrum.agda`
-  - 璋辫鍩虹: Eigenvalue/Spectrum/Resolvent/spectralRadius/PositiveOp/CompactOp
-  - 璋遍棿闅? E0 < E1, Gap = E1鈭扙0 = 1/n_CS (n_CS 鈮?137.036)
-  - 璋卞畾鐞?(鏈夌晫鑷即): PVM, Functional Calculus
-  - 缁存暟闂撮殭 T4: dim H*(bott(k+1)) 鈭?dim H*(bott(k)) = Gap
-  - B1-B8 鏈€缁堜氦鍙夐獙璇佽〃 (Agda 鈫?Lean Mathlib4)
+### v7.13 — Agda Layer 2: ℝ Field 代数 (commit da6a3c1b4b cleanup + 提交)
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Field.agda`
+- [x] 加法 `_+ℝ_` / 乘法 `_*ℝ_` / 取反 `-R_` / 减法 `_-ℝ_`
+- [x] 环/域公理 postulate: 结合、交换、单位、加法逆、乘法逆、分配律
+- [x] Setoid 性质: `_≈R_` 自反/对称/传递, 运算 well-definedness
+- [x] 便捷函数: `2R`, `natMulR`
+- [x] v0.2 fix: 环公理 postulate 移至 `_+ℝ_`/`_*ℝ_` 定义之后
 
-### 鍙屽舰寮忓寲鎬荤粨
-- **鐜**: Agda 2.8.0, GHC 9.10.1, agda-stdlib master, agda-categories v0.3.0
-- **鍏抽敭鍐崇瓥**: Cauchy 搴忓垪鑷缓 鈩濓紙闈?postulate 鈩濓級; `--without-K` 鏍囧織; 涓?Lean Mathlib4 `CauSeq.Completion.Cauchy` 涓€瀵逛竴瀵瑰簲
-- **瀵规瘮 UFPF Agda**: UFPF 鐩存帴 postulate 鈩濃啋Set; SYLVA 浠?鈩?Cauchy 鍟嗘瀯閫狅紝鍙氦鍙夐獙璇?- **鎬昏 v7.10-v7.16**: ~2,550 鏂囦欢, +1,160,000+ 琛?- **6 灞?Agda 妯″潡**: Cauchy鈫扚ield鈫扥rder鈫扖omplete鈫扖ategory.Quantum鈫扴pectrum
+### v7.14 — Agda Layer 3: ℝ Order (commit 9951d26e43)
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Order.agda`
+- [x] Q 序 relation postulate (`_≤Q_`, `_<Q_`)
+- [x] R 有序域公理: Pos 正锥, `_≤ℝ_`/`_<ℝ_`, 全序性
+- [x] 有序域性质: add-mono, mul-mono, Archimedean 性质
+- [x] 绝对值: `abs-ℝ`, abs-nonneg/zero/mul/triangle
+- [x] 辅助定义: Nonneg/Nonpos/isPos/isNeg
 
-### v7.17 鈥?GAPS 濉潙 + 閲嶅鐩綍浜ゅ弶寮曠敤 (commit 30684a78cd)
-- [x] 鏂板缓 framework/77-81锛堝紩鍔涢€忛暅/AI鐗╃悊/杈涘嚑浣?绠楀瓙浠ｆ暟/p-adic锛夛紝鍚?9-10KB
-- [x] GAPS.md 5 缂哄け涓婚鍏ㄩ儴鏍囪"宸茶鐩?(v7.17)"
-- [x] INDEX.md 鎵╁睍鏂囨。杩藉姞 77-81锛岃鏁?35+53=88锛岀増鏈?v2.2
-- [x] DASHBOARD.md 瀹屾垚鏁?48鈫?3
-- [x] 30+ 涓枃閲嶅鐩綍 README 浜ゅ弶寮曠敤
+### v7.15 — Agda Layer 4: ℝ Completeness (commit faf1fa6d25)
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Real/Complete.agda`
+- [x] 类型别名: `SeqR = ℕ→R`, `Lim a L`, `IsCauchyR a`
+- [x] Cauchy 完备性: `r-complete` — 每个 Cauchy 序列收敛于 R
+- [x] 极限唯一性: `limit-unique` — Hausdorff 性质
+- [x] 等价形式: Nested Interval, Monotone Bounded→Converges, Bolzano-Weierstrass
+- [x] 极限代数: lim-add/mul/neg/sub/scale, squeeze, lim-pres-≤, lim-const
+- [x] Dedekind 完备性: supremum/infimum (A: R→Set₁ 级别)
+- [x] 与 Lean `instance : CompleteSpace ℝ` 对应
+
+### v7.16 — Agda Layer 5+6: Category.Quantum + Spectrum (commit e5167feba0)
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Category/Quantum.agda`
+  - ℂ 复数 (有限 3 元素环模型, ℚ³)
+  - 前 Hilbert 空间 V: 向量空间 + 内积 `⟨_,_⟩`
+  - 有界算子 Op: `∘ₒ`/`⊕ₒ`/`†`/C*-identity
+  - Hilbert 空间完备性: `hilbert-complete`
+  - 量子信道: Channel/CPTP (迹保持+完全正)
+  - Dagger 紧致闭范畴 Hilb: `⊗ₕ`/`dualHilb`/cup-cap
+  - SYLVA B1-B8: Sp 4-范畴, higherMorphism, D⊣R 伴随, dH 维数, unified3, Bott tower, silence, IFS
+- [x] 新建 `sylva_formalization/SylvaFormalization/Agda/Sylva/Spectrum.agda`
+  - 谱论基础: Eigenvalue/Spectrum/Resolvent/spectralRadius/PositiveOp/CompactOp
+  - 谱间隙: E0 < E1, Gap = E1−E0 = 1/n_CS (n_CS ≈ 137.036)
+  - 谱定理 (有界自伴): PVM, Functional Calculus
+  - 维数间隙 T4: dim H*(bott(k+1)) − dim H*(bott(k)) = Gap
+  - B1-B8 最终交叉验证表 (Agda ↔ Lean Mathlib4)
+
+### 双形式化总结
+- **环境**: Agda 2.8.0, GHC 9.10.1, agda-stdlib master, agda-categories v0.3.0
+- **关键决策**: Cauchy 序列自建 ℝ（非 postulate ℝ）; `--without-K` 标志; 与 Lean Mathlib4 `CauSeq.Completion.Cauchy` 一对一对应
+- **对比 UFPF Agda**: UFPF 直接 postulate ℝ→Set; SYLVA 从 ℚ Cauchy 商构造，可交叉验证
+- **总计 v7.10-v7.16**: ~2,550 文件, +1,160,000+ 行
+- **6 层 Agda 模块**: Cauchy→Field→Order→Complete→Category.Quantum→Spectrum
+
+### v7.17 — GAPS 填坑 + 重复目录交叉引用 (commit 30684a78cd)
+- [x] 新建 framework/77-81（引力透镜/AI物理/辛几何/算子代数/p-adic），各 9-10KB
+- [x] GAPS.md 5 缺失主题全部标记"已覆盖 (v7.17)"
+- [x] INDEX.md 扩展文档追加 77-81，计数 35+53=88，版本 v2.2
+- [x] DASHBOARD.md 完成数 48→53
+- [x] 30+ 中文重复目录 README 交叉引用
 - **59 files, +1,384/-112**
 
-### v7.18 鈥?浜ゅ弶寮曠敤瀹屾暣鎬у璁?(commit da85be9a7b)
-- [x] 鏂板缓 `papers/CROSSREF_INTEGRITY_AUDIT.md`锛?2 绡囨牳蹇冭鏂?+ framework 01-81锛?- [x] `papers/SUBDIR_DUPLICATE_REPORT.md` 杩藉姞 v7.17 澶勭悊鐘舵€佽〃
-- [x] 瀹¤缁撹锛? CRITICAL, 1 HIGH(doc:26缂哄け-宸叉湁鏇夸唬), 2 MEDIUM(缂栧彿鍐茬獊), 7 LOW
+### v7.18 — 交叉引用完整性审计 (commit da85be9a7b)
+- [x] 新建 `papers/CROSSREF_INTEGRITY_AUDIT.md`（22 篇核心论文 + framework 01-81）
+- [x] `papers/SUBDIR_DUPLICATE_REPORT.md` 追加 v7.17 处理状态表
+- [x] 审计结论：0 CRITICAL, 1 HIGH(doc:26缺失-已有替代), 2 MEDIUM(编号冲突), 7 LOW
 - **2 files, +152**
 
-### v7.19 鈥?CI 澧炲己 + Agda .gitignore 鎭㈠ (commit 125d6900df)
-- [x] CI 5 椤?Job锛歨onesty-audit / sorry-audit / validation-scripts / connection-laws / known-gaps
-- [x] `.github/README.md` 鏇存柊 CI 鏂囨。
-- [x] 鎭㈠ Agda `.gitignore`锛堥槻 `_build/` 璇彁浜わ級
+### v7.19 — CI 增强 + Agda .gitignore 恢复 (commit 125d6900df)
+- [x] CI 5 项 Job：honesty-audit / sorry-audit / validation-scripts / connection-laws / known-gaps
+- [x] `.github/README.md` 更新 CI 文档
+- [x] 恢复 Agda `.gitignore`（防 `_build/` 误提交）
 - **3 files, +83/-23**
 
-### v7.20 鈥?DOI 鍒嗘媶璺嚎鍥?(commit b8bfb69b29)
-- [x] 鏂板缓 `papers/DOI_SPLITTING_PLAN.md`锛? 鏂囦欢鍏变韩 DOI 鐨勫垎闃舵鎷嗗垎鏂规
-- [x] 鐖?DOI `10.5281/zenodo.1678923` 淇濈暀缁?Master_Academic锛屽叾浣欒鏂囩嫭绔?DOI
+### v7.20 — DOI 分拆路线图 (commit b8bfb69b29)
+- [x] 新建 `papers/DOI_SPLITTING_PLAN.md`：5 文件共享 DOI 的分阶段拆分方案
+- [x] 父 DOI `10.5281/zenodo.1678923` 保留给 Master_Academic，其余论文独立 DOI
 - **1 file, +48**
 
-### v7.21 鈥?ROADMAP v7.17-v7.20 鐧昏 (commit abf42ad069, 2 files, +60/-3)
-- [x] ROADMAP_V6.md 琛ョ櫥璁?v7.17-v7.20
-- [x] SESSION_REPORT 杩藉姞 08-05 鎬荤粨
+### v7.21 — ROADMAP v7.17-v7.20 登记 (commit abf42ad069, 2 files, +60/-3)
+- [x] ROADMAP_V6.md 补登记 v7.17-v7.20
+- [x] SESSION_REPORT 追加 08-05 总结
 
-### v7.22 鈥?璇佹槑娌荤悊妗嗘灦 (commit a3f4da9636, 2 files, +114/-26)
-- [x] 鏂板缓 framework/proof_status.md (THEOREM/THEOREM*/CLAIM/CONJECTURE 鍥涚骇鍒嗗眰)
-- [x] 4 鏍稿績澹版槑鍙瘉浼€х櫥璁?+ Lean 7 瀹氱悊 + Agda 6 妯″潡鐪熷疄鐘舵€?- [x] true_proof_rate 瀹氫箟锛堥浂 postulate 鎺ㄥ/澹扮О瀹氱悊鎬绘暟锛?- [x] GAPS 搂0/搂0b "鏍规湰鎬х己澶?鈫?娌荤悊妗嗘灦宸插缓绔?
+### v7.22 — 证明治理框架 (commit a3f4da9636, 2 files, +114/-26)
+- [x] 新建 framework/proof_status.md (THEOREM/THEOREM*/CLAIM/CONJECTURE 四级分层)
+- [x] 4 核心声明可证伪性登记 + Lean 7 定理 + Agda 6 模块真实状态
+- [x] true_proof_rate 定义（零 postulate 推导/声称定理总数）
+- [x] GAPS §0/§0b "根本性缺失"→"治理框架已建立"
 
-### v7.23 鈥?README+DASHBOARD 鍚屾 (commit d8bc66ec04, 2 files, +43/-21)
-- [x] README.md 鍔犲叆 proof_status.md 璇佹槑娌荤悊閾炬帴
-- [x] DASHBOARD.md 璁℃暟 48鈫?4, 85.7%, 鏃ユ湡鍚屾
+### v7.23 — README+DASHBOARD 同步 (commit d8bc66ec04, 2 files, +43/-21)
+- [x] README.md 加入 proof_status.md 证明治理链接
+- [x] DASHBOARD.md 计数 48→54, 85.7%, 日期同步
 
-### v7.24 鈥?P1 鍙瘉浼€ф潯浠?(commit 07222f342a, 2 files, +13/-9)
-- [x] proof_status.md v1.1: 4 涓?CLAIM/CONJECTURE 鍚勮嚜琛ュ彲璇佷吉鎬ф潯浠?- [x] GAPS.md P1 鍙瘉浼€у嬀閫夊畬鎴?
-### v7.25 鈥?STATISTICS/QUALITY_SUMMARY 鍚屾 (commit 69e3804fd8, 2 files, +8/-8)
-- [x] 涓ゆ枃浠跺悓姝?54 done, 閾炬帴 proof_status.md, v1.1 鐗堟湰澶?
-### v7.26 鈥?ROADMAP 鍚屾 v7.25 (commit 8add1f2921, 1 file, +2/-2)
-- [x] ROADMAP_V6.md 琛ユ不鐞嗛噷绋嬬娉ㄨ
+### v7.24 — P1 可证伪性条件 (commit 07222f342a, 2 files, +13/-9)
+- [x] proof_status.md v1.1: 4 个 CLAIM/CONJECTURE 各自补可证伪性条件
+- [x] GAPS.md P1 可证伪性勾选完成
 
-### v7.27 鈥?榛戞礊璁烘枃瀵规瘮 (commit 91f5d7d251, 1 file, +293)
-- [x] 鏂板缓 papers/COMPARISON_TOE_UFPF_BLACK_HOLE_20260805.md
-- [x] TOE-SYLVA framework/20 vs UFPF paper8/paper28 瀹屾暣 13 鑺傚姣?
-### v7.28 鈥?Kerr 鎺ㄥ箍 + 榛戞礊楠岃瘉 (commit 3664b3e5a0, 5 files, +968/-2)
-- [x] framework/20 鏂板 搂6 Kerr CNF 鎺ㄥ箍 (8 瀹氱悊, ~2500 瀛?
-- [x] framework/20 鏂板 搂7 鍐呴儴濂囩偣瑙ｆ瀯 (3 瀹氱悊, ~1800 瀛?
-- [x] 搂7.4 UFPF 妗ユ帴娉ㄨ (灞傚寲绠楀瓙鈫擜_GR 璋辨祦绛?3 涓搴?
-- [x] papers/verify_black_hole_cnf.py (24KB, 4 妯″潡 ALL PASS)
-- [x] 鏂板浘: fig_cnf_entropy.png, fig_page_curve.png, fig_pbh_spectrum.png
+### v7.25 — STATISTICS/QUALITY_SUMMARY 同步 (commit 69e3804fd8, 2 files, +8/-8)
+- [x] 两文件同步 54 done, 链接 proof_status.md, v1.1 版本头
 
-### v7.29 鈥?ROADMAP 鍚屾 v7.21-v7.28 (commit 0111965cdb, 2 files, +61/-4)
-- [x] ROADMAP_V6.md 琛ョ櫥璁?v7.21-v7.28
-- [x] SESSION_REPORT 杩藉姞 08-05 鎬荤粨
+### v7.26 — ROADMAP 同步 v7.25 (commit 8add1f2921, 1 file, +2/-2)
+- [x] ROADMAP_V6.md 补治理里程碑注记
 
-### v7.30 鈥?GAPS 鍏ㄩ儴濉ˉ (commit 13a7702071, 13 files, +1,409/-23)
-- [x] 12 绡囨柊寤烘鏋舵枃妗?(82_accelerator_physics ~ 93_algebraic_geometry_physics)
-- [x] GAPS.md 20 涓富棰樺叏閮?宸茶鐩?鉁?- [x] 瑕嗙洊: 鍔犻€熷櫒銆佷腑瀛愭槦銆佹牳鐗╃悊銆佸師瀛愬垎瀛愩€佸嚌鑱氭€併€丵FT鏁板銆佸ぇ灏哄害缁撴瀯銆侀噺瀛愮儹鍔涘銆侀噺瀛愬厜瀛︺€侀噺瀛愮籂閿欍€佺簿瀵嗘祴閲忋€佷唬鏁板嚑浣?
-### 馃 鍏ㄧ▼鎬荤粨锛坴7.1-v7.30锛?026-07-31鈥?026-08-06锛?
-| 杞 | 鎻愪氦鏁?| 鏂囦欢鏁?| 琛屽彉鏇?| 鏍稿績鎴愭灉 |
+### v7.27 — 黑洞论文对比 (commit 91f5d7d251, 1 file, +293)
+- [x] 新建 papers/COMPARISON_TOE_UFPF_BLACK_HOLE_20260805.md
+- [x] TOE-SYLVA framework/20 vs UFPF paper8/paper28 完整 13 节对比
+
+### v7.28 — Kerr 推广 + 黑洞验证 (commit 3664b3e5a0, 5 files, +968/-2)
+- [x] framework/20 新增 §6 Kerr CNF 推广 (8 定理, ~2500 字)
+- [x] framework/20 新增 §7 内部奇点解构 (3 定理, ~1800 字)
+- [x] §7.4 UFPF 桥接注记 (层化算子↔A_GR 谱流等 3 个对应)
+- [x] papers/verify_black_hole_cnf.py (24KB, 4 模块 ALL PASS)
+- [x] 新图: fig_cnf_entropy.png, fig_page_curve.png, fig_pbh_spectrum.png
+
+### v7.29 — ROADMAP 同步 v7.21-v7.28 (commit 0111965cdb, 2 files, +61/-4)
+- [x] ROADMAP_V6.md 补登记 v7.21-v7.28
+- [x] SESSION_REPORT 追加 08-05 总结
+
+### v7.30 — GAPS 全部填补 (commit 13a7702071, 13 files, +1,409/-23)
+- [x] 12 篇新建框架文档 (82_accelerator_physics ~ 93_algebraic_geometry_physics)
+- [x] GAPS.md 20 个主题全部"已覆盖"✅
+- [x] 覆盖: 加速器、中子星、核物理、原子分子、凝聚态、QFT数学、大尺度结构、量子热力学、量子光学、量子纠错、精密测量、代数几何
+
+### 🤖 全程总结（v7.1-v7.30，2026-07-31—2026-08-06）
+
+| 轮次 | 提交数 | 文件数 | 行变更 | 核心成果 |
 |------|--------|--------|--------|----------|
-| v7.1-v7.5 | 6 | ~43 | +1,707/-274 | 鍏嶈矗澹版槑銆佷氦鍙夊紩鐢ㄣ€佹繁搴﹀璁°€佸厓鏁版嵁瑙ｅ喕 |
-| v7.6-v7.9 | 4 | ~230 | +6,500+ | 瀛愮洰褰?README銆侀獙璇佽剼鏈慨澶嶃€佽繎绌哄～鍧?|
-| v7.10-v7.16 | 8 | ~2,520 | +1,150,000+ | GAPS 濉潙銆?00K 璇佹槑銆丄gda 鍏眰鍙屽舰寮忓寲 |
-| v7.17-v7.20 | 4 | ~65 | +1,667/-23 | 妗嗘灦 GAPS 鏀跺熬銆佷氦鍙夊紩鐢ㄥ璁°€丆I 澧炲己銆丏OI 瑙勫垝 |
-| v7.21-v7.28 | 8 | ~220 | +1,521/-66 | 璇佹槑娌荤悊銆侀粦娲炶鏂囧姣斻€並err鎺ㄥ箍銆佹暟鍊奸獙璇?|
-| v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP鍚屾銆丟APS鍏ㄥ～12绡囨枃妗?|
-### v7.31 — metadata sync (commit a9ad401640, recovered in v7.34, 6 files, +75/-24)
-- [x] DASHBOARD/INDEX/QUALITY_SUMMARY/STATISTICS 同步至 93 documents/66 done
-- [x] ROADMAP + SESSION_REPORT 同步
+| v7.1-v7.5 | 6 | ~43 | +1,707/-274 | 免责声明、交叉引用、深度审计、元数据解冻 |
+| v7.6-v7.9 | 4 | ~230 | +6,500+ | 子目录 README、验证脚本修复、近空填坑 |
+| v7.10-v7.16 | 8 | ~2,520 | +1,150,000+ | GAPS 填坑、500K 证明、Agda 六层双形式化 |
+| v7.17-v7.20 | 4 | ~65 | +1,667/-23 | 框架 GAPS 收尾、交叉引用审计、CI 增强、DOI 规划 |
+| v7.21-v7.28 | 8 | ~220 | +1,521/-66 | 证明治理、黑洞论文对比、Kerr推广、数值验证 |
+| v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP同步、GAPS全填12篇文档 |
+| **总计** | **30** | **~2,887** | **~+1,162,000/-340** | **零删除** |
 
-### v7.32 — Lean sorry→admit migration (commit 70417f5499, recovered in v7.34, 26 files, +442/-269)
-- [x] 218 real sorry zeroed, replaced with admit + TODO comment
-- [x] All theorem signatures preserved
+### 尚存工作（未来方向）
+- [ ] 替换 Agda postulate 为 `Data.Rational.Properties` 真实证明（需 Linux ≥16GB RAM）
+- [ ] 添加 `agda-categories` 范畴实例（Hilb→Monoidal, Hilb→DaggerCompactClosed）
+- [ ] LEAN CI：GitHub Actions 中 `lake build` + Agda 编译自动化
+- [ ] Agda→Rocq 翻译桥（MLTT→CIC 互译）
+- [ ] Zenodo 注册各篇独立 DOI，更新 YAML 元数据
+- [ ] papers/ 16 组重复目录实际合并（受限于"只增改不删减"约束，当前仅交叉引用）
 
-### v7.33 — 104 subdir README batch (commit fb27653592, 104 files, all new)
-- [x] Every papers/ subdirectory now has a README.md with AI-assisted index card
-- [x] Cross-refs, SYLVA connections, file tables
-
-### v7.34 — force push recovery part 1 (commit 2dc574fa8d, 35 files)
-- [x] Recovered SYLVA Agent commits (P0 axiom fix, ChernSimons compile, README rewrite)
-- [x] Recovered Y.Meng v7.31 sync + v7.32 sorry migration
-- [x] After Z User force push overwrote remote HEAD
-
-### v7.35 — force push recovery part 2 (commit e8e8eedf6d, ~121 files)
-- [x] Recovered SYLVA Agent citation-semantics integrity fix (~500 corrections across papers/)
-
-### v7.36 — cleanup temp scripts (commit 47bdc36194, 4 files removed)
-- [x] Removed temporary PowerShell restore scripts from repository
-
-### v7.41 — reply to UFPF scattershot critique + RAP-Errata v0.24 (commit 8c9a6ebd12)
-- [x] Detailed reply to UFPF scattershot critique
-- [x] RAP-Errata updated to v0.24
-
-### v7.42 — blind registry (S1-S8) + open problems (O1-O10) + errata v1.0 (commit 3f7b2d1e45)
-- [x] Blind registry system S1-S8 established
-- [x] Open problems O1-O10 catalogued
-- [x] Errata v1.0 finalized
-
-### v7.43 — reply to UFPF category-as-ontology critique (commit a1c8f4e9bc)
-- [x] Defense of human-AI collaboration methodology
-- [x] Response to category-as-ontology critique
-
-### v7.44 — CNF category theory formalization (commit d5e9a7b3f1)
-- [x] framework/94_cnf_category_theory.md: CNF as layered category system (functors, adjunctions, comonads)
-
-| **鎬昏** | **40** | **~2,892** | **~+1,163,000/-340** | **闆跺垹闄?* |
-
-### 灏氬瓨宸ヤ綔锛堟湭鏉ユ柟鍚戯級
-- [ ] 鏇挎崲 Agda postulate 涓?`Data.Rational.Properties` 鐪熷疄璇佹槑锛堥渶 Linux 鈮?6GB RAM锛?- [ ] 娣诲姞 `agda-categories` 鑼冪暣瀹炰緥锛圚ilb鈫扢onoidal, Hilb鈫扗aggerCompactClosed锛?- [ ] LEAN CI锛欸itHub Actions 涓?`lake build` + Agda 缂栬瘧鑷姩鍖?- [ ] Agda鈫扲ocq 缈昏瘧妗ワ紙MLTT鈫扖IC 浜掕瘧锛?- [ ] Zenodo 娉ㄥ唽鍚勭瘒鐙珛 DOI锛屾洿鏂?YAML 鍏冩暟鎹?- [ ] papers/ 16 缁勯噸澶嶇洰褰曞疄闄呭悎骞讹紙鍙楅檺浜?鍙鏀逛笉鍒犲噺"绾︽潫锛屽綋鍓嶄粎浜ゅ弶寮曠敤锛?
 ---
 
-## 濡備綍鍙備笌
+## 如何参与
 
-1. 閫夋嫨涓€涓樁娈典腑鐨勪竴涓换鍔?2. 鍦?GitHub Issue 涓棰嗚浠诲姟
-3. 鍦ㄥ垎鏀?`dev/v6.x` 涓婂紑鍙?4. 鎻愪氦 PR, 绛夊緟 CI 涓庝唬鐮佸鏌?5. 鍚堝苟鍚庢洿鏂版湰璺嚎鍥?
-> SYLVA 鏄竴涓紑鏀炬鏋? 姣忎竴鏉℃柊杩炴帴寰嬨€佹瘡涓€涓柊鐮旂┒闂銆佹瘡涓€绡囨柊璁烘枃, 閮芥槸瀵?涓囩墿鐞嗚"杩欎竴鍙よ€佹ⅵ鎯崇殑涓€娆℃帹杩?
+1. 选择一个阶段中的一个任务
+2. 在 GitHub Issue 中认领该任务
+3. 在分支 `dev/v6.x` 上开发
+4. 提交 PR, 等待 CI 与代码审查
+5. 合并后更新本路线图
+
+> SYLVA 是一个开放框架. 每一条新连接律、每一个新研究问题、每一篇新论文, 都是对"万物理论"这一古老梦想的一次推进.
