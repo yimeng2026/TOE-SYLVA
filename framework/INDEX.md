@@ -1,9 +1,9 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.3  
+> **文档版本**: v2.5  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-06  
-> **文档总数**: 35+58=93 (core docs 01-30 + extended 31-93) | framework/ 目录共 200+ 个 .md 文件  
+> **最后更新**: 2026-08-08  
+> **文档总数**: 35+60=95 (core docs 01-30 + extended 31-95) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -129,6 +129,8 @@
 | [[doc:91]] | 91_quantum_error_correction.md | 量子纠错 | ✅ |
 | [[doc:92]] | 92_precision_measurement.md | 精密测量 | ✅ |
 | [[doc:93]] | 93_algebraic_geometry_physics.md | 代数几何与物理 | ✅ |
+| [[doc:94]] | 94_sylva_agent_records.md | SYLVA Agent 记录 | ✅ |
+| [[doc:95]] | 95_structured_knowledge_architecture.md | 知识结构化架构 (structured_knowledge_architecture) | ✅ |
 
 ### 已知编号问题
 

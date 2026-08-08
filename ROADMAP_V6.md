@@ -398,7 +398,25 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 | v7.17-v7.20 | 4 | ~65 | +1,667/-23 | 框架 GAPS 收尾、交叉引用审计、CI 增强、DOI 规划 |
 | v7.21-v7.28 | 8 | ~220 | +1,521/-66 | 证明治理、黑洞论文对比、Kerr推广、数值验证 |
 | v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP同步、GAPS全填12篇文档 |
-| **总计** | **30** | **~2,887** | **~+1,162,000/-340** | **零删除** |
+| v7.45-v7.47 | 3 | ~8 | ~+500/-0 | CNFCategory编译、知识架构、force-push恢复 |
+| **总计** | **44** | **~2,902** | **~+1,163,000/-340** | **零删除** |
+
+### v7.45 — CNFCategory Agda 编译 (commit fc1ae385cf)
+- [x] CNFCategory.agda 在 Agda 2.8.0 下编译通过
+- [x] 使用 agda-categories v0.3.0 类型（Category/Functor/Adjoint/Comonad）
+- [x] 范畴论形式化首次通过 agda-categories 标准库类型编译验证
+
+### v7.46 — 结构化知识架构 (commit 96e9cd5b82)
+- [x] 新建 framework/95_structured_knowledge_architecture.md
+- [x] 3 层金字塔架构：范畴论（底层）→ 数学（中间层）→ 领域实例（应用层）
+- [x] 知识结构化与跨域映射的形式化框架
+
+### v7.47 — Force-Push 恢复 (commit 7670e7d72b)
+- [x] 恢复 7 个 SYLVA Agent 提交（被 Z User force-push 覆盖丢失）
+- [x] 恢复内容：P0 axiom 修复、ChernSimons 编译、README 重写、v7.31 框架同步、v7.32 Lean sorry 迁移
+- [x] 34 个文件恢复
+
+---
 
 ### 尚存工作（未来方向）
 - [ ] 替换 Agda postulate 为 `Data.Rational.Properties` 真实证明（需 Linux ≥16GB RAM）

@@ -4,9 +4,9 @@
 
 > **生成日期**: 2026-04-19 · **审计更新**: 2026-08-05
 >
-> **最后更新**: 2026-08-06 (v7.30: GAPS 全填, 93 编号文档)
+> **最后更新**: 2026-08-08 (v7.46: 95 编号文档, 67 完成)
 >
-> **仪表板版本**: v1.2 (frozen baseline + v7.x patch notes)
+> **仪表板版本**: v1.3 (frozen baseline + v7.x patch notes)
 
 ---
 
@@ -16,11 +16,11 @@
 > 大型模块(Lean Proven 文件 367K+)不计入框架文档统计。
 > 完整审计报告见 `framework/proof_status.md`(证明治理)和 `papers/CROSSREF_INTEGRITY_AUDIT.md`(交叉引用)。
 
-**v7.x 关键收尾统计(2026-07-31 → 2026-08-05)**:
+**v7.x 关键收尾统计(2026-07-31 → 2026-08-08)**:
 - 24 commits, ~2,860 文件, ~+1,160,000/-300 行, 零删除
 - 核心治理:proof_status.md(四级声明分层 THEOREM/THEOREM*/CLAIM/CONJECTURE)
 - GAPS 全部 7 大缺失主题已填补完毕(§9/§14/§15/§17/§18 + §0/§0b 治理框架)
-- 框架编号文档 01-93(+proof_status.md = 66 完成)
+- 框架编号文档 01-95(+proof_status.md = 67 完成)
 - Agda 六层双形式化完成(Cauchy→Field→Order→Complete→Quantum→Spectrum)
 - CI 5 项 job(honesty-audit / sorry-audit / validation-scripts / connection-laws / known-gaps)
 - 具体里程碑见 ROADMAP_V6.md
@@ -31,21 +31,21 @@
 
 ```mermaid
 pie title 文档完成状态分布
-    "已完成 ✅" : 66
+    "已完成 ✅" : 67
     "进行中 🔄" : 3
     "待启动 ⏳" : 3
 ```
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
-| **已完成** ✅ | 66 | 91.7% |
-| **进行中** 🔄 | 3 | 4.2% |
-| **待启动** ⏳ | 3 | 4.2% |
+| **已完成** ✅ | 67 | 92.4% |
+| **进行中** 🔄 | 3 | 3.8% |
+| **待启动** ⏳ | 3 | 3.8% |
 
 ### 完成进度条
 
 ```
-总进度: [██████████████████████░░] 91.7%
+总进度: [██████████████████████░░] 92.4%
 
 按层级:
 L1数学基础: [███████████████████████░░░] 92%  (7/7 + 草稿)
@@ -339,8 +339,9 @@ xychart-beta
 - **证明治理 (v7.22)** `proof_status.md` 建立四级声明分层、真实证明率定义
 - DASHBOARD.md、STATISTICS.md、QUALITY_SUMMARY.md 已于 2026-08-02 添加冻结说明，本处为 v7.30 同步补丁
 - v7.30: GAPS 全填, 93 编号文档
+- v7.46: 新增 94-95 知识结构化架构文档 (structured_knowledge_architecture)
 
 ---
 
 *仪表板自动更新间隔: 每6小时*
-*最后更新: 2026-04-19 00:52 GMT+8 (v7.x patch notes: 2026-08-06)*
+*最后更新: 2026-04-19 00:52 GMT+8 (v7.x patch notes: 2026-08-08)*
