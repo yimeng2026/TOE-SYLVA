@@ -1,0 +1,169 @@
+{
+  "module": "verify_condensed_matter_cnf",
+  "framework_ref": "36_condensed_matter_physics.md",
+  "pass": 32,
+  "fail": 0,
+  "total": 32,
+  "results": [
+    {
+      "test": "Tc(g=0.2)=2.3K <= 125.8K",
+      "status": "PASS",
+      "detail": "Tc=2.30K, max=125.81K"
+    },
+    {
+      "test": "Tc(g=0.3)=12.2K <= 125.8K",
+      "status": "PASS",
+      "detail": "Tc=12.20K, max=125.81K"
+    },
+    {
+      "test": "Tc(g=0.5)=46.3K <= 125.8K",
+      "status": "PASS",
+      "detail": "Tc=46.28K, max=125.81K"
+    },
+    {
+      "test": "Tc(g=0.8)=98.0K <= 125.8K",
+      "status": "PASS",
+      "detail": "Tc=97.98K, max=125.81K"
+    },
+    {
+      "test": "Tc(g=0.9)=119.4K <= 125.8K",
+      "status": "PASS",
+      "detail": "Tc=119.36K, max=125.81K"
+    },
+    {
+      "test": "Tc(g=1.0)=125.81K matches Tc_max",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "T_BKT(L=5um) drift=2.00nK > 0",
+      "status": "PASS",
+      "detail": "T_BKT(L)=98.00nK, drift=2.00nK"
+    },
+    {
+      "test": "T_BKT(L=10um) drift=0.50nK > 0",
+      "status": "PASS",
+      "detail": "T_BKT(L)=99.50nK, drift=0.50nK"
+    },
+    {
+      "test": "drift(L=10) ∝ 1/L^2 (ratio close to 1)",
+      "status": "PASS",
+      "detail": "ratio=1.0000"
+    },
+    {
+      "test": "T_BKT(L=20um) drift=0.12nK > 0",
+      "status": "PASS",
+      "detail": "T_BKT(L)=99.88nK, drift=0.12nK"
+    },
+    {
+      "test": "drift(L=20) ∝ 1/L^2 (ratio close to 1)",
+      "status": "PASS",
+      "detail": "ratio=1.0000"
+    },
+    {
+      "test": "T_BKT(L=50um) drift=0.02nK > 0",
+      "status": "PASS",
+      "detail": "T_BKT(L)=99.98nK, drift=0.02nK"
+    },
+    {
+      "test": "drift(L=50) ∝ 1/L^2 (ratio close to 1)",
+      "status": "PASS",
+      "detail": "ratio=1.0000"
+    },
+    {
+      "test": "d=2 (z=4): CNF [6.0,8.0] overlaps QMC [6.0,8.0]",
+      "status": "PASS",
+      "detail": "CNF [6.0,8.0] vs QMC [6.0,8.0]"
+    },
+    {
+      "test": "d=3 (z=6): CNF [9.0,12.0] overlaps QMC [9.0,12.0]",
+      "status": "PASS",
+      "detail": "CNF [9.0,12.0] vs QMC [9.0,12.0]"
+    },
+    {
+      "test": "DMFT correction 1/z_net for d=2: 0.250 (should be 0.250)",
+      "status": "PASS",
+      "detail": "O(1/z) = 0.250 for d=2"
+    },
+    {
+      "test": "DMFT correction 1/z_net for d=3: 0.167 (should be 0.167)",
+      "status": "PASS",
+      "detail": "O(1/z) = 0.167 for d=3"
+    },
+    {
+      "test": "3D DMFT deviation prediction: 1/6 ≈ 16.7%",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "IcRn (AB) = 2.20 mV vs expected ~2.2 mV",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "I_c(A=0.01 um^2) = 1000.00 uA (∝ area)",
+      "status": "PASS",
+      "detail": "I_c = 1000.00 uA"
+    },
+    {
+      "test": "I_c(A=0.10 um^2) = 10000.00 uA (∝ area)",
+      "status": "PASS",
+      "detail": "I_c = 10000.00 uA"
+    },
+    {
+      "test": "I_c(A=1.00 um^2) = 100000.00 uA (∝ area)",
+      "status": "PASS",
+      "detail": "I_c = 100000.00 uA"
+    },
+    {
+      "test": "I_c(A=10.00 um^2) = 1000000.00 uA (∝ area)",
+      "status": "PASS",
+      "detail": "I_c = 1000000.00 uA"
+    },
+    {
+      "test": "I_c(A=100.00 um^2) = 10000000.00 uA (∝ area)",
+      "status": "PASS",
+      "detail": "I_c = 10000000.00 uA"
+    },
+    {
+      "test": "I_c ∝ A (constant J_c)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "Unitary xi = 0.37 within [0.34, 0.40] of experiment (0.37)",
+      "status": "PASS",
+      "detail": "xi_exp=0.37, xi_theory range=[0.34,0.40]"
+    },
+    {
+      "test": "BCS -0.5 -> -1.0: E/E_FG decreases",
+      "status": "PASS",
+      "detail": "E/E_FG(-2.0)=0.96 -> (-1.0)=0.78"
+    },
+    {
+      "test": "BCS -1.0 -> -2.0: E/E_FG decreases",
+      "status": "PASS",
+      "detail": "E/E_FG(-1.0)=0.78 -> (-0.5)=0.55"
+    },
+    {
+      "test": "BCS -2.0 -> unitary: E/E_FG decreases",
+      "status": "PASS",
+      "detail": "E/E_FG(-0.5)=0.55 -> (0.0)=0.37"
+    },
+    {
+      "test": "unitary -> 2.0: trend continuation",
+      "status": "PASS",
+      "detail": "E/E_FG(0.0)=0.37 -> (0.5)=0.48"
+    },
+    {
+      "test": "BEC 2.0 -> 1.0: trend continuation",
+      "status": "PASS",
+      "detail": "E/E_FG(0.5)=0.48 -> (1.0)=0.55"
+    },
+    {
+      "test": "BEC 1.0 -> 0.5: trend continuation",
+      "status": "PASS",
+      "detail": "E/E_FG(1.0)=0.55 -> (2.0)=0.60"
+    }
+  ]
+}
