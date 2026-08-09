@@ -18,9 +18,11 @@ open import Sylva.Real.Cauchy
 open Cauchy
 open import Sylva.Real.Field
   using (_+ℝ_; _*ℝ_; _-ℝ_; -R_; _+R_; _*R_; 2R; natMulR)
-open import Data.Nat using (ℕ; _≤_; _⊔_)
-open import Data.Nat.Properties using (≤-refl; ≤-trans)
-open import Data.Rational.Base using (ℚ)
+open import Data.Nat using (ℕ; _⊔_)
+open import Data.Nat.Properties using ()
+open import Data.Rational.Base using (ℚ; _≤_)
+open import Data.Rational.Properties
+  using (≤-refl; ≤-trans; ≤-total; ≤-antisym)
 open import Data.Product using (Σ; _,_; _×_; proj₁; proj₂)
 open import Data.Sum using (_⊎_; inj₁; inj₂)
 open import Data.Empty using (⊥; ⊥-elim)
@@ -35,13 +37,12 @@ private
 -- Q ORDERING (postulates — provable from Data.Rational.Properties)
 ------------------------------------------------------------------------
 
-postulate
-  _≤Q_ : ℚ → ℚ → Set
-  ≤Q-refl  : {a : ℚ} → a ≤Q a
-  ≤Q-trans : {a b c : ℚ} → a ≤Q b → b ≤Q c → a ≤Q c
-  <Q-trans : {a b c : ℚ} → 0Q <Q a → 0Q <Q b → 0Q <Q (a +Q b)
-  ≤Q-total : (a b : ℚ) → (a ≤Q b) ⊎ (b ≤Q a)
-  ≤Q-antisym : {a b : ℚ} → a ≤Q b → b ≤Q a → a ≡ b
+-- Q ordering: IMPORTED from Data.Rational.Properties (stdlib — NOT postulated)
+-- _≤_ : ℚ → ℚ → Set  is the stdlib ordering
+-- ≤-refl, ≤-trans, ≤-total, ≤-antisym all come from stdlib
+
+≤Q-total : (a b : ℚ) → (a ≤ b) ⊎ (b ≤ a)
+≤Q-total = ≤-total
 
 ------------------------------------------------------------------------
 -- ORDERED FIELD AXIOMS ON R
