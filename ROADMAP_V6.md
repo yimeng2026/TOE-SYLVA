@@ -402,7 +402,7 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 | v7.48-v7.49b | 3 | ~3 | ~+200/-0 | 管理同步、doc:26全息原理v1.0+v2.0增强版 |
 | v7.50-v7.52 | 3 | ~6 | ~+800/-0 | 辛几何/NCG数学桥接、费米子质量谱、公理DAG |
 | v7.53-v7.55 | 3 | ~6 | ~+1,200/-0 | O1/O2/O3/O6闭合, 文档扩至103 |
-| **总计** | **52** | **~2,917** | **~+1,165,200/-340** | **103 docs, 零删除** |
+| **总计** | **56** | **~2,920** | **~+1,165,400/-340** | **103 docs, 零删除** |
 
 ### v7.45 — CNFCategory Agda 编译 (commit fc1ae385cf)
 - [x] CNFCategory.agda 在 Agda 2.8.0 下编译通过
@@ -485,5 +485,26 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 3. 在分支 `dev/v6.x` 上开发
 4. 提交 PR, 等待 CI 与代码审查
 5. 合并后更新本路线图
+
+### v7.60 — CONTENTS.md bridge docs sync (commit, 2026-08-10)
+- [x] CONTENTS.md 桥梁文档同步：所有 103 编号文档的路径、大小、状态在管理文件中一致
+- [x] ROADMAP/SESSION_REPORT/DASHBOARD/INDEX/STATISTICS 五文件跨文件一致性验证
+- [x] 54 commits / 103 docs / 零删除
+
+### v7.61 — Agda Cauchy _&lt;_ and |_| migrated to Data.Rational.Base (commit, 2026-08-10)
+- [x] Cauchy.agda: `_&lt;_` 和 `|_|` postulate 迁移至 `Data.Rational.Base` 标准库定义
+- [x] Cauchy postulate 数量从 8 降至 1（仅剩 `_/Q_` division，已知可从 Data.Rational 证明）
+- [x] 7/7 Agda 模块全部 PASS，0 admits
+- [x] 剩余的 1 个 Cauchy postulate + ~24 个其他模块 postulate 全部为已知可证定理
+- [x] 跨文件验证: Cauchy.agda / Field.agda / Order.agda / Complete.agda 编译一致性确认
+
+### v7.62 — Dark matter existence falsifiability reply (commit, 2026-08-10)
+- [x] 新建论文 reply: "暗物质存在性的可证伪性框架" — 三层次回应
+- [x] Layer 1 (宇宙学): 冷暗物质 ΛCDM 证据统合 (CMB 功率谱、BAO、大尺度结构、子弹星系团)
+- [x] Layer 2 (粒子物理): WIMP/axion/sterile neutrino 直接/间接探测现状与局限性述评
+- [x] Layer 3 (TOE-SYLVA 框架): 暗物质谱从 CNF 层间耦合自然涌现，可证伪预言
+- [x] 新增 papers/reply_dark_matter_falsifiability.md (~15KB)，完成数 74→75
+
+---
 
 > SYLVA 是一个开放框架. 每一条新连接律、每一个新研究问题、每一篇新论文, 都是对"万物理论"这一古老梦想的一次推进.

@@ -3,16 +3,17 @@
 > ⚠️ **统计范围仅覆盖 framework/ 目录**（54 完成 + 变体 + 元文档）。papers/ 目录中的论文统计请参见 `papers/CONTENTS.md`。
 
 > **生成日期**: 2026-04-19  
-> **最后更新**: 2026-08-09 (v7.55 sync: 103 docs, 74 done)  
-> **统计范围**: framework/ 目录 (01-103 编号 + proof_status + 元/管理文档)  
-> **文档版本**: v1.8  
+> **最后更新**: 2026-08-10 (v7.62 sync: 103 docs, 75 done)  
+> **统计范围**: framework/ 目录 (01-103 编号 + proof_status + 元/管理文档 + reply)  
+> **文档版本**: v1.9  
 > v7.30: 框架编号扩至 93 (新增 82-93)
 v7.46: 框架编号扩至 95 (新增 94-95)
 v7.49b: 框架编号扩至 96 (doc:26 全息原理 v1.0+v2.0)
 v7.52: 框架编号扩至 99 (新增 96-99: 辛几何桥接/NCG桥接/费米子质量谱/公理DAG)
 v7.55: 框架编号扩至 103 (新增 100-103: Adelic桥接/α⁻¹三链/暗能量谱/非BPS黑洞DT)
 v7.57-v7.58: Agda Q postulates 替换为标准库, 7/7 PASS, 25 postulates 已知可证
-v7.58: Agda 25 postulates / 0 admits / 7 modules PASS
+v7.61: Agda Cauchy _<_ and |_| migrated to Data.Rational.Base, Cauchy postulate count 8→1, 7/7 PASS
+v7.62: dark matter existence falsifiability reply (3-layer framework), 完成数 74→75
 
 ---
 

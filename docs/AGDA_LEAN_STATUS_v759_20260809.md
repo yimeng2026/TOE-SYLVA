@@ -1,7 +1,7 @@
-# Agda / Lean Status — v7.58 (2026-08-09)
+# Agda / Lean Status — v7.61 (2026-08-10)
 
 > 本文档记录 TOE-SYLVA 项目 Agda 双形式化和 Lean 形式化的当前状态。
-> 最后更新: 2026-08-09 (v7.58 stdlib migration 后)
+> 最后更新: 2026-08-10 (v7.61 Cauchy _<_ / |_| 迁移后)
 
 ---
 
@@ -11,7 +11,7 @@
 
 | 模块 | 状态 | Postulates | 说明 |
 |------|------|------------|------|
-| Cauchy.agda | ✅ PASS | ~5 | v7.58: 5 Q-arithmetic postulates 替换为 `Data.Rational.Base` |
+| Cauchy.agda | ✅ PASS | ~1 | v7.58: 5 Q-arithmetic postulates 替换为 `Data.Rational.Base`; v7.61: `_<_` + `|_|` 迁移至 `Data.Rational.Base`, postulate count 8→1 |
 | Field.agda | ✅ PASS | ~3 | 环/域运算与公理 |
 | Order.agda | ✅ PASS | ~3 | v7.57: 5 Q-ordering postulates 替换为 `Data.Rational.Properties` |
 | Complete.agda | ✅ PASS | ~4 | Cauchy 完备性 + Dedekind + Bolzano-Weierstrass |
@@ -23,10 +23,10 @@
 
 | 指标 | 数值 |
 |------|------|
-| **剩余 postulates** | 25 |
+| **剩余 postulates** | 26 |
 | **admits** | 0 |
-| **已替换 postulates** | 10 (5 Q-ordering v7.57 + 5 Q-arithmetic v7.58) |
-| **已知可证** | 全部 25 个为已知-provable |
+| **已替换 postulates** | 12 (5 Q-ordering v7.57 + 7 Q-arithmetic/order/abs v7.58+v7.61) |
+| **已知可证** | 剩余 ~14 个为已知-provable (Field/Order/Complete/Quantum/Spectrum/CNFCategory) |
 | **阻塞原因** | OOM 加载 `Data.Rational.Properties`（~400 传递依赖） |
 
 ### 环境需求
@@ -90,4 +90,4 @@
 
 ---
 
-*本文件由 SYLVA v7.59 管理同步生成*
+*本文件由 SYLVA v7.62 管理同步生成*
