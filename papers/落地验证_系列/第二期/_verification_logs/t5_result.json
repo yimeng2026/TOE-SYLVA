@@ -1,0 +1,101 @@
+{
+  "track": "T5",
+  "object": "CNF WIMP SI 截面预言 (framework/18_dark_matter_spectrum.md §二.1)",
+  "epistemic_grade": "唯象估计：定义选择(T_{2,3}, m_χ)+后验拟合(κ, G_F链) 驱动, 非第一性预言",
+  "inputs": {
+    "m_chi_central_GeV": 52.0,
+    "m_chi_range_GeV": [
+      20,
+      200
+    ],
+    "G_F_meas_GeV^-2": 1.1663787e-05,
+    "G_F_lean_GeV^-2": 1.6524555489457325e-07,
+    "T_doc": 0.01,
+    "T_lean": 0.09999999999999998,
+    "alpha_weak": 0.03333333333333333,
+    "mu_n_central_GeV": 0.9223445852773947,
+    "GEV2_to_cm2": 3.8937937193781977e-28
+  },
+  "sigma_SI_cm2_by_variant": {
+    "A 中心参数化 (doc18口径: f_N=G_F实测, T=1e-2)": 1.4344606290542069e-46,
+    "B Lean锚定 (f_N=G_F^Lean, T=ℱ(1)=0.1)": 2.8791815073940706e-46,
+    "C 混合 (f_N=G_F实测, T=ℱ(1)=0.1)": 1.4344606290542053e-42,
+    "D 混合 (f_N=G_F^Lean, T=1e-2)": 2.879181507394073e-50
+  },
+  "sigma_LZ_cm2": 2.2e-48,
+  "exclusion_factor_central": 65.2027558661003,
+  "exclusion_factors_all": {
+    "A 中心参数化 (doc18口径: f_N=G_F实测, T=1e-2)": 65.2027558661003,
+    "B Lean锚定 (f_N=G_F^Lean, T=ℱ(1)=0.1)": 130.87188669973048,
+    "C 混合 (f_N=G_F实测, T=ℱ(1)=0.1)": 652027.5586610024,
+    "D 混合 (f_N=G_F^Lean, T=1e-2)": 0.013087188669973058
+  },
+  "sweeps": {
+    "m_chi_sweep": {
+      "range_GeV": [
+        20,
+        200
+      ],
+      "sigma_range_cm2": [
+        1.3563804760914024e-46,
+        1.4728717434511166e-46
+      ]
+    },
+    "T_sweep": {
+      "range": [
+        0.003,
+        0.03
+      ],
+      "sigma_range_cm2": [
+        1.1619131095339074e-48,
+        1.1619131095339072e-44
+      ]
+    },
+    "sensitivity_lnm": 0.03578340059416023,
+    "sensitivity_lnT": 3.999999999999999,
+    "dominant_uncertainty": "T_{2,3} (4次方依赖, 且为文档级直接赋值, 无 Lean 锚定)"
+  },
+  "survival_window": {
+    "T_max_survive": 0.003519115427463148,
+    "T_relic_required": 0.14438689487971204,
+    "conflict_factor": 41.029314853647,
+    "omega_overproduce_at_Tmax": 1683.4046773596988,
+    "conclusion": "同一参数 T 同时锁定遗迹密度与直接探测截面, 无共同存活窗口"
+  },
+  "docstring_discrepancy": {
+    "lean_line": "FourForcesUnification.lean:412",
+    "claimed": "~1.166e-5 GeV^-2",
+    "computed": 1.6524555489457325e-07,
+    "relative_deviation": 0.985832598375247,
+    "factor_off": 70.58457340920003
+  },
+  "checks": [
+    {
+      "test": "T5-1 自洽核对: σ_SI(中心) 落在 doc18 自报区间 [1e-48,1e-46] ±1dex 内",
+      "status": "PASS",
+      "detail": "σ_SI = 1.434e-46 cm^2 (doc18 自报 1e-46~1e-48, 实算靠近其上端)"
+    },
+    {
+      "test": "T5-2 排除判定: σ_SI(中心) > σ_LZ, 排除因子量化",
+      "status": "PASS",
+      "detail": "σ_SI = 1.434e-46 > LZ 2.2e-48, 排除因子 65.2× —— 当前参数化被排除"
+    },
+    {
+      "test": "T5-3 主导不确定度: T 的敏感度(4) > m_χ 的敏感度",
+      "status": "PASS",
+      "detail": "|∂lnσ/∂lnT| = 4.0 ≫ |∂lnσ/∂lnm_χ| ≈ 0.04; T 主导"
+    },
+    {
+      "test": "T5-4 遗迹密度冲突: T_relic > T_max (参数无存活窗口)",
+      "status": "PASS",
+      "detail": "T_relic = 1.44e-01 > T_max = 3.52e-03, 冲突 41.0×"
+    },
+    {
+      "test": "T5-5 docstring 核对已执行且发现不符即登记",
+      "status": "PASS",
+      "detail": "G_F^Lean = 1.652e-07 vs 实测 1.166e-05: 偏差 98.6% (70.6×), 已登记 [DOCSTRING-DISCREPANCY]"
+    }
+  ],
+  "pass": 5,
+  "fail": 0
+}

@@ -1,0 +1,114 @@
+{
+  "track": "T6",
+  "object": "框架自有暗能量状态方程 w(z) 结构",
+  "structures_cataloged": [
+    {
+      "id": "A",
+      "doc": "framework/102_dark_energy_toe_bridge.md",
+      "anchor": "S18, line 148-152",
+      "claim": "w ≡ -1 精确, 所有红移 (静态残余拓扑曲率); 冻结证伪线: z<2 内 >3σ 测得 w≠-1 → Postulate 102.2 排除",
+      "grade": "公设级结构断言 [定义选择: '静态缺陷'性质 + 洛伦兹对称性论证]; 无拟合, 锋利可证伪"
+    },
+    {
+      "id": "B",
+      "doc": "framework/04_dark_sector.md",
+      "anchor": "§2.2-2.3 line 624-755; 预言5 line 881-887",
+      "claim": "全息视界 ρ_Λ=α·R_h^-2: 辐射期 ρ_Λ∝a^-4 (w_eff≈1/3), 物质期 ∝a^-3 (w_eff≈0), 现今→常数 (w→-1); dΛ/Λ~-1e-120·H₀",
+      "grade": "启发式推导草图 [定义选择: 粒子视界约定 + 未闭合系数α + 未形式化]; 与结构A'绝对无演化'直接矛盾"
+    },
+    {
+      "id": "C",
+      "doc": "framework/23_cosmological_constant_problem.md",
+      "anchor": "§6.1 line 469-539",
+      "claim": "Λ 微弱时间演化, DESI/LSST 可检性 ~1e-3 (定性, 未闭合量级)",
+      "grade": "定性声明 [定义选择]; 同样与结构A矛盾"
+    }
+  ],
+  "desi_inputs": {
+    "dr1_const_w": [
+      -0.99,
+      0.15,
+      0.13
+    ],
+    "dr1_significances": {
+      "DESI+CMB": 2.6,
+      "+Pantheon+": 2.5,
+      "+Union3": 3.5,
+      "+DES-SN5YR": 3.9
+    },
+    "dr2_bao_cmb": 3.1,
+    "dr2_sn_range": [
+      2.8,
+      4.2
+    ],
+    "bao_cmb_tension_sigma": 2.3,
+    "verification": "arXiv:2404.03002 / 2503.14738 摘要原文, 第一期 2026-08-10 引擎核验"
+  },
+  "s18_line_test": {
+    "frozen_line_sigma": 3.0,
+    "scope_limit": "z<2 (S18 原文)",
+    "combinations_touching": 3,
+    "verdict": "字面触及存在; 因 z<2 限定与四点保留, 裁决悬置 (既不宣告排除, 也不宣告干净存活)"
+  },
+  "structureB_cmb_test": {
+    "formula": "ρ_Λ(z)=ρ_Λ0·(1+z)^3 (doc04 line 749)",
+    "bound": "ρ_Λ(z=1100)<0.01·ρ_crit (doc04 line 755 自引)",
+    "rho_l_cmb_GeV4": 3.381109591407177e-38,
+    "rho_tot_cmb_GeV4": 2.0235221885040617e-38,
+    "ratio": 1.6709031463137773,
+    "exclusion_factor": 167.09031463137774,
+    "verdict": "结构B 被 CMB 早期暗能量约束排除 (按框架自引公式与自引约束)"
+  },
+  "doc04_numeracy_erratum": {
+    "claim": "z=1100 辐射密度 ~1e8 GeV^4 (line 751)",
+    "computed_GeV4": 4.9713942913748846e-39,
+    "orders_of_magnitude_off": 46.30352179071786,
+    "secondary": "doc 的'Λ≪ρ_r 相容'结论亦不成立 (实算 ρ_Λ/ρ_r=6.8)"
+  },
+  "holographic_illustrative": {
+    "convention": "未来事件视界 (文献标准公式, 框架未指定, 标注为示意变体)",
+    "w0": -0.8866666666666665,
+    "deviation_from_dr1_sigma": 0.7380952380952392,
+    "cpl_quadrant": "w₀>-1 ✓ 同向; w_a>0 ✗ 与 DESI 偏好 (w_a<0) 方向相反"
+  },
+  "open_derivation_gaps": [
+    "G1 真空能洛伦兹不变性定理 (w=-1 的合法性前提)",
+    "G2 视界选择的导出 (粒子/哈勃/未来事件视界给出不同 w(z))",
+    "G3 Ω_Λ(z) 演化闭合方程与全息系数 α 的导出",
+    "G4 doc102 与 doc04/23 的权威协调 (框架对'Λ是否演化'无唯一立场)"
+  ],
+  "checks": [
+    {
+      "test": "T6-1 编目完整性: ≥2 个自有 w(z) 结构定位、引用锚点、成色分级",
+      "status": "PASS",
+      "detail": "定位 3 个结构 (A/B/C), 全部含文档+行号锚点与成色"
+    },
+    {
+      "test": "T6-2 S18 证伪线触及性: ≥1 个 DESI 组合显著性 ≥3σ, 触及事实成立并登记悬置理由",
+      "status": "PASS",
+      "detail": "3 个组合 ≥3σ (DR1 Union3/DES-SN5YR, DR2 BAO+CMB 3.1σ; DR2+SN 高端 4.2σ); 悬置理由: ①S18 限定 z<2 而 DESI 偏好来自全程 CPL 拟合(0.1<z<4.2); ②四点保留(样本依赖/参数化响应/共享系统误差/未达5σ)"
+    },
+    {
+      "test": "T6-3 结构B CMB 检验: ρ_Λ(z=1100)/ρ_tot 超 doc04 自引约束 0.01 → 排除事实成立",
+      "status": "PASS",
+      "detail": "比值 1.67 ≫ 0.01, 超界 167× —— 结构B 按其自引公式与自引约束被 CMB 早期暗能量界限排除"
+    },
+    {
+      "test": "T6-4 doc04 数值勘误: 实算辐射密度与 doc 声称 1e8 GeV^4 相差 >10 个数量级",
+      "status": "PASS",
+      "detail": "doc 声称 ~1e8 GeV^4 vs 实算 4.97e-39 GeV^4, 相差 46.3 个数量级; 且'Λ≪ρ_r'的相容性结论亦不成立 (实为 ρ_Λ/ρ_r=6.8)"
+    },
+    {
+      "test": "T6-5 全息示意 w₀ 与 DR1 常数-w 相容 (<1.5σ), CPL 符号张力登记",
+      "status": "PASS",
+      "detail": "w₀^holo=-0.887 vs -0.99: 0.74σ 相容; 但 w_a 符号与 DESI 偏好相反 (holo>0 vs DESI<0)"
+    },
+    {
+      "test": "T6-6 [OPEN-DERIVATION] 缺口清单登记",
+      "status": "PASS",
+      "detail": "缺口1: 真空能洛伦兹不变性定理(w=-1 的合法性前提); 缺口2: 视界选择的导出(粒子/哈勃/未来事件视界给出不同w(z)); 缺口3: Ω_Λ(z) 演化闭合方程与系数α的导出; 缺口4: doc102 与 doc04/23 的权威协调(演化 vs 不演化, 框架无唯一立场)"
+    }
+  ],
+  "pass": 6,
+  "fail": 0
+}

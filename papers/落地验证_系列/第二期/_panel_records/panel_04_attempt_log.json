@@ -1,0 +1,15 @@
+{
+  "doc": "04_总报告.md",
+  "attempt": "千界花园 panels API (localhost:3001) 标准路径",
+  "panel_id": "041df189-5a30-47d4-a26a-d192eab4ee4d",
+  "member_ids": [
+    "b89ab676-13e1-439f-b4f5-4989e1860cbe",
+    "a2372a66-2eb6-4e58-b846-acb64ad07ff5",
+    "646a3c84-816f-41be-87e1-d83df3cbd00b"
+  ],
+  "outcome": "execute 路由真实 LLM 调用全部失败，3/3 步回退【模拟响应】，usage_total=0",
+  "cause": "execute 路由默认 provider=zhipu；当前环境 ZHIPU_API_KEY/GLM51_API_KEY_1/GLM_API_KEY 均未配置（.env 为空、进程环境无）",
+  "guard_action": "run_panel_review.py 检出回退标记，按真数据红线拒绝存档模拟评审（exit 2，未写入任何伪造记录）",
+  "fallback": "评审改经 SylvaEngine /v1/chat 真实 Kimi 网关执行（panel_04_review.json），专家设定与 prompt 与 panels 设计一致",
+  "timestamp": "2026-08-10"
+}
