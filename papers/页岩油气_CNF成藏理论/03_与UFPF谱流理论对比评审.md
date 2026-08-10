@@ -1,7 +1,8 @@
 # 与 UFPF 谱流理论对比评审（千界花园 panels 正式评审）
 
-> **论文编号**：TOE-SYLVA-SHALE-CNF-01 · 评审篇 v1.0
+> **论文编号**：TOE-SYLVA-SHALE-CNF-01 · 评审篇 v1.0（评审记录定稿）+ v1.1 执行注记
 > **日期**：2026-08-10 · **版本哈希**：`1101630d0eb289239f02c4d3ac98865e346e2b67`
+> **v1.1 执行注记（2026-08-10）**：本报告 §二"本项目回应"中承诺的三项修订已全部执行——①`01` §3.4 方向对应规则独立假设化（含可判失效观测条件，议题 1 回应落地）；②P2 改 τ=0.90 分位数回归重算，**维持存活**（S1+S2 = 5.098·TOC − 1.626，伪 R¹ = 0.9755，议题 2 回应落地）；③P3 改 Type-II 模型选择框架措辞（议题 2/3 回应落地）。修订记录见 README 修订表与 `_panel_records/revision_v1.1_note.md`。
 > **评审平台**：千界花园 `research/panels`（本地 dev 服务器 `http://localhost:3001`，Kimi 网关 LLM）
 > **议题**：CNF 成藏理论 vs UFPF 谱流理论：机制、可证伪性、同数据表现
 > **原始记录**：`_panel_records/`（req_panel/req_member1-3/req_execute.json、resp_execute_raw.json、panel_review_fulltext.txt）

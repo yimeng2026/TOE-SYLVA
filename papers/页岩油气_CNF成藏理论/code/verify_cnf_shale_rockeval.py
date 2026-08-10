@@ -11,13 +11,20 @@ verify_cnf_shale_rockeval.py — CNF 页岩成藏理论 Rock-Eval 数据验证�
 4. 判据（预登记，死刑条款）：
    - P1a: 长7段 S1~TOC OLS 截距 b < -0.05 mg/g
    - P1b: TOC 下半区 S1 均值 / 上半区 S1 均值 < 0.35
-   - P2 : 合并 n=18，分 6 箱取箱内 S1+S2 最大值点作上包络 OLS，|b_env| <= 2.0 且 R2_env >= 0.90
+   - P2 : 合并 n=18 的上包络线判定。v1.0 方法（预登记原文）：分 6 箱取箱内 S1+S2 最大值点
+         作上包络 OLS，|b_env| <= 2.0 且 R2_env >= 0.90。
+         **v1.1 修订（千界花园评审 R3 采纳，POST-HOC 方法变更登记）**：改用 τ=0.90 分位数回归
+         （全数据 n=18，不再只取 6 个包络点；纯手写：固定斜率 a 时最优截距 = 残差 y-a·x 的
+         τ 分位数，斜率网格扫描 + 黄金分割精化求精确最小化 pinball 损失），判定量改为
+         |b_q| <= 2.0 且 Koenker-Machado 伪 R1 >= 0.90（阈值沿用冻结数值，方法变更如实登记）；
+         同时输出斜率敏感性区间（损失 <= 1.05×最小值的斜率范围）。
    - S1(健全性): 长7段 S1+S2~TOC OLS R2 > 0.95（管线真实性核对，UFPF M5 声称 0.9990，独立重算）
    - S2(健全性): 青山口 HI 中位 < 长7段 HI 中位（成熟度方向，UFPF M6 声称 349<410，独立重算）
 5. 依赖：numpy + 标准库 csv（托管 Python 无 scipy，统计量手写）
 6. 输出：check 计数 + 汇总行 n/N 检查通过 + JSON 写 _verification_logs/
 7. 清理：仅写 _verification_logs/verify_cnf_shale_rockeval.json，无其他产物
 8. 作者与日期：页岩油气成藏理论搭建师（AI 代理），2026-08-10；版本哈希 1101630d0eb289239f02c4d3ac98865e346e2b67
+   v1.1 修订日期：2026-08-10（评审意见 R3 驱动，修订记录见 README 修订表）
 """
 import sys, os, csv, json, math, datetime
 
@@ -69,7 +76,7 @@ def ols(x, y):
     return a, b, r2, se_b, t_b
 
 def envelope_ols(toc, y, n_bins=6):
-    """上包络 OLS（预登记方法）：按 TOC 升序分 n_bins 个等样本连续箱，
+    """上包络 OLS（v1.0 预登记方法，保留作对照）：按 TOC 升序分 n_bins 个等样本连续箱，
     取每箱 y 最大值点（TOC, y_max），对这些包络点做 OLS。"""
     order = np.argsort(toc)
     toc_s = np.asarray(toc, float)[order]; y_s = np.asarray(y, float)[order]
@@ -80,6 +87,74 @@ def envelope_ols(toc, y, n_bins=6):
         env_x.append(toc_s[j]); env_y.append(y_s[j])
     a, b, r2, se_b, t_b = ols(env_x, env_y)
     return a, b, r2, env_x, env_y
+
+# ---------- v1.1 新增：分位数回归（τ=0.90，纯手写精确解） ----------
+
+def _pinball(u, tau):
+    return np.where(u >= 0, tau * u, (tau - 1.0) * u)
+
+def _qreg_loss(x, y, a, b, tau):
+    return float(_pinball(np.asarray(y) - a * np.asarray(x) - b, tau).sum())
+
+def _tau_quantile(v, tau):
+    """线性插值分位数（与 numpy.percentile 'linear' 一致）。"""
+    v = np.sort(np.asarray(v, float))
+    h = tau * (len(v) - 1)
+    lo = int(np.floor(h)); hi = int(np.ceil(h))
+    if lo == hi:
+        return float(v[lo])
+    return float(v[lo] + (v[hi] - v[lo]) * (h - lo))
+
+def quantile_reg(x, y, tau=0.90, a_lo=0.0, a_hi=10.0):
+    """τ 分位数回归 y = a*x + b（精确解）：
+    固定斜率 a 时最优截距 b*(a) = τ-quantile(y - a*x)（Koenker 定理），
+    故问题化为一维最小化 L(a) = Σρ_τ(y - a*x - b*(a))。
+    先粗网格扫描定位，再黄金分割精化。返回 (a, b, loss)。"""
+    x = np.asarray(x, float); y = np.asarray(y, float)
+    def loss_a(a):
+        b = _tau_quantile(y - a * x, tau)
+        return _qreg_loss(x, y, a, b, tau), b
+    # 粗网格扫描
+    grid = np.linspace(a_lo, a_hi, 2001)
+    losses = [loss_a(a)[0] for a in grid]
+    i0 = int(np.argmin(losses))
+    lo = grid[max(i0 - 1, 0)]; hi = grid[min(i0 + 1, len(grid) - 1)]
+    # 黄金分割精化
+    gr = (math.sqrt(5.0) - 1.0) / 2.0
+    c = hi - gr * (hi - lo); d = lo + gr * (hi - lo)
+    fc = loss_a(c)[0]; fd = loss_a(d)[0]
+    for _ in range(200):
+        if abs(hi - lo) < 1e-10:
+            break
+        if fc < fd:
+            hi, d, fd = d, c, fc
+            c = hi - gr * (hi - lo); fc = loss_a(c)[0]
+        else:
+            lo, c, fc = c, d, fd
+            d = lo + gr * (hi - lo); fd = loss_a(d)[0]
+    a_opt = (lo + hi) / 2.0
+    b_opt = _tau_quantile(y - a_opt * x, tau)
+    l_opt = _qreg_loss(x, y, a_opt, b_opt, tau)
+    return a_opt, b_opt, l_opt
+
+def qreg_pseudo_r2(x, y, a, b, tau):
+    """Koenker-Machado 伪 R1 = 1 - L_model / L_null，
+    L_null 为仅以 τ 分位数常数拟合的损失。"""
+    y = np.asarray(y, float)
+    l_model = _qreg_loss(x, y, a, b, tau)
+    q_const = _tau_quantile(y, tau)
+    l_null = float(_pinball(y - q_const, tau).sum())
+    return 1.0 - l_model / l_null
+
+def slope_sensitivity(x, y, a_opt, l_opt, tau, tol=1.05, a_lo=0.0, a_hi=10.0):
+    """斜率敏感性区间：损失 <= tol × 最小损失 的斜率范围。"""
+    grid = np.linspace(a_lo, a_hi, 4001)
+    ok = []
+    for a in grid:
+        b = _tau_quantile(np.asarray(y, float) - a * np.asarray(x, float), tau)
+        if _qreg_loss(x, y, a, b, tau) <= tol * l_opt:
+            ok.append(a)
+    return (float(min(ok)), float(max(ok))) if ok else (a_opt, a_opt)
 
 print("=" * 72)
 print("CNF 页岩成藏理论 · Rock-Eval 验证（P1 渗流阈值 / P2 楔形上包络）")
@@ -117,15 +192,23 @@ print(f"[T2] 低半区 S1 均值 {low_s1.mean():.3f} / 高半区 {high_s1.mean()
 check("P1b 低端趋零：低/高半区 S1 均值比 < 0.35",
       ratio < 0.35, f"ratio={ratio:.3f}, 判据 <0.35")
 
-# ---------- T3 (P2): 合并 n=18 楔形上包络 ----------
+# ---------- T3 (P2): 合并 n=18 楔形上包络（v1.1：τ=0.90 分位数回归） ----------
 all_toc = np.concatenate([c7_toc, qk_toc])
 all_s1s2 = np.concatenate([c7_s1s2, qk_s1s2])
+# v1.0 预登记方法（OLS 包络点，保留对照）
 a_e, b_e, r2_e, env_x, env_y = envelope_ols(all_toc, all_s1s2, n_bins=6)
-print(f"[T3] 上包络线 S1+S2 = {a_e:.3f}*TOC {'+' if b_e>=0 else ''}{b_e:.3f}  (R2={r2_e:.4f}, 包络点 n={len(env_x)})")
-print(f"     包络点: {[(round(x,2), round(y,2)) for x, y in zip(env_x, env_y)]}")
-check("P2 连通容量上包络：|b_env| <= 2.0 且 R2_env >= 0.90（楔形过原点）",
-      abs(b_e) <= 2.0 and r2_e >= 0.90,
-      f"b_env={b_e:.3f}, R2_env={r2_e:.4f}")
+print(f"[T3·v1.0 对照] OLS 包络线 S1+S2 = {a_e:.3f}*TOC {'+' if b_e>=0 else ''}{b_e:.3f}  (R2={r2_e:.4f}, 包络点 n={len(env_x)})")
+# v1.1 修订方法（τ=0.90 分位数回归，全数据）
+TAU = 0.90
+a_q, b_q, l_q = quantile_reg(all_toc, all_s1s2, tau=TAU)
+r1_q = qreg_pseudo_r2(all_toc, all_s1s2, a_q, b_q, TAU)
+s_lo, s_hi = slope_sensitivity(all_toc, all_s1s2, a_q, l_q, TAU)
+print(f"[T3·v1.1] τ=0.90 分位数回归 S1+S2 = {a_q:.3f}*TOC {'+' if b_q>=0 else ''}{b_q:.3f}")
+print(f"          Koenker-Machado 伪 R1 = {r1_q:.4f}；pinball 损失 = {l_q:.3f}")
+print(f"          斜率敏感性区间（损失<=1.05×min）：a ∈ [{s_lo:.3f}, {s_hi:.3f}]")
+check("P2 连通容量上包络（v1.1 分位数回归口径）：|b_q| <= 2.0 且 伪 R1 >= 0.90",
+      abs(b_q) <= 2.0 and r1_q >= 0.90,
+      f"b_q={b_q:.3f}, 伪R1={r1_q:.4f}（v1.0 OLS 对照: b={b_e:.3f}, R2={r2_e:.4f}）")
 
 # ---------- T4 (健全性 S1): 长7段 S1+S2~TOC 高线性 ----------
 a4, b4, r2_4, _, _ = ols(c7_toc, c7_s1s2)
@@ -152,7 +235,9 @@ log = {
     "numerics": {
         "T1_S1_TOC": {"a": a1, "b": b1, "R2": r2_1, "t_b": t_b1},
         "T2_lowhigh_ratio": ratio,
-        "T3_envelope": {"a": a_e, "b": b_e, "R2": r2_e, "points": list(zip(env_x, env_y))},
+        "T3_envelope_v10": {"a": a_e, "b": b_e, "R2": r2_e, "points": list(zip(env_x, env_y))},
+        "T3_qreg_v11": {"tau": TAU, "a": a_q, "b": b_q, "pseudo_R1": r1_q,
+                        "pinball_loss": l_q, "slope_sensitivity": [s_lo, s_hi]},
         "T4_S1S2_TOC": {"a": a4, "b": b4, "R2": r2_4},
         "T5_HI_median": {"chang7": hi_c7, "qingshankou": hi_qk},
     },
