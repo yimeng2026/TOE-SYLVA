@@ -184,3 +184,43 @@ sys.exit(0 if FAIL_COUNT == 0 else 1)
 ---
 
 > ⚠️ **透明度金律**: 验证基础设施的价值在于"让失败可见"。一个全 PASS 的回归报告如果不能区分"真通过"与"被放宽/被回退/被静默的假通过"，它比没有报告更糟。本协议的所有条款都服务于一件事：任何人 clone 仓库、运行 `python framework/verify_run_all.py`，看到的 `n/N` 与 `verify_report.json` 就是仓库验证状态的全部真相。
+
+---
+
+## 八、置信度分级与验证结果标准（借鉴 PFE，2026-08-10 并入）
+
+> 来源：姊妹项目 PFE（Precision Fitting Engineering）调研（`PFE_调研报告.md`）。以下标准直接借鉴其成熟设计，与本协议 check() 范式配合使用。
+
+### 8.1 置信度四级（ConfidenceLevel）
+
+| 级别 | 含义 | 判定 |
+|---|---|---|
+| **L4 机器验证** | Lean/Agda 编译通过（零 sorry、公理白名单内） | `#print axioms` 仅三件套 |
+| **L3 数值验证** | 脚本 check() 全过 + 与公开数据/已知值对比达标 | 含对比表与来源 |
+| **L2 半唯象** | 推导链完整但含拟合参数或未闭环假设 | 必须在 PARAMETER_DISCIPLINE 登记 |
+| **L1 开放** | 猜想/路线图阶段 | 必须有证伪条款（联动 BLIND_PREDICTIONS） |
+
+**双条件判定**：任何验证结论的置信度 = min（方法级别，证据级别）——方法再强，证据（数据/文献）不足即降级；反之亦然。
+
+### 8.2 VerificationResult 标准格式
+
+每个验证脚本的 check() 输出与 verify_report.json 条目统一为：
+
+```json
+{
+  "name": "检查名",
+  "passed": true,
+  "confidence": "L3",
+  "detail": "数值/对比摘要",
+  "source": "数据来源（arXiv/DOI/文件路径）",
+  "timestamp": "ISO8601"
+}
+```
+
+### 8.3 BridgeStatus 五态（模块/猜想健康度，用于 verify_report.json 汇总与 papers 索引标注）
+
+`VERIFIED（全过） → PARTIAL（部分通过） → UNVERIFIED（未验证） → FAILED（有失败） → BROKEN（不编译/不运行）`——verify_run_all 的 per-directory 汇总按此五态输出；BROKEN 触发勘误登记（联动 ERRATA_AND_NEGATIVE_RESULTS）。
+
+### 8.4 八要素注释规范（借鉴 PFE/千界花园注释块）
+
+新写验证脚本时，文件头须含八要素：**目的 / 验证对象（定理或数据） / 数据来源 / 判据（容差与死刑线） / 依赖（仅用可用包） / 输出（check 计数+json） / 清理（产物处置） / 作者与日期**。渐进改造（§五）以此模板为最终形态。
