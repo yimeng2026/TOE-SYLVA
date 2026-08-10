@@ -1,0 +1,23 @@
+{
+  "track": "T1",
+  "delta": 0.03599908399999663,
+  "delta_ppm": 262.6980081192388,
+  "sigma_level": 1714242.0952379347,
+  "bound": 0.04,
+  "verdict_A_pass": true,
+  "sigma_integer_reading": 1714242.0952379347,
+  "pass": 2,
+  "fail": 0,
+  "results": [
+    {
+      "test": "判据A: 有界近似 |alpha^-1 - 137| < 0.04 (BP-1 冻结容差)",
+      "status": "PASS",
+      "detail": "Δ=0.035999 vs 界 0.04"
+    },
+    {
+      "test": "判据B: σ 水平可定量登记 (整数精确读法承压事实已记录)",
+      "status": "PASS",
+      "detail": "1.7142e+06σ —— 整数精确读法相对 CODATA 不确定度被高度排除, n_CS=137 仅在有界近似(0.04 界)读法下存活"
+    }
+  ]
+}

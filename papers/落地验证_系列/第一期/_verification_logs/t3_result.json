@@ -1,0 +1,32 @@
+{
+  "track": "T3",
+  "improve_factor": 4.181818181818182,
+  "exposure_ratio": 4.666666666666667,
+  "bg_limited_expect": 2.160246899469287,
+  "gap_to_fog_lz": 22.000000000000004,
+  "gap_to_fog_xn": 170.00000000000003,
+  "pass": 4,
+  "fail": 0,
+  "results": [
+    {
+      "test": "T3-1: LZ 2024 相对 LZ 2022 截面限确有收紧 (改进因子 > 1)",
+      "status": "PASS",
+      "detail": "4.18×"
+    },
+    {
+      "test": "T3-2: 改进幅度超过纯背景缩放律 (含分析技术改进贡献)",
+      "status": "PASS",
+      "detail": "4.18× > 2.16×"
+    },
+    {
+      "test": "T3-3: 最强 SI 上限距中微子雾量级仍有 >10× 差距 (行刑未竟, 诚实登记)",
+      "status": "PASS",
+      "detail": "22×"
+    },
+    {
+      "test": "T3-4: 两台独立实验上限同量级交叉一致 (LZ/XENONnT 比值在 10× 内)",
+      "status": "PASS",
+      "detail": "比值 0.13"
+    }
+  ]
+}

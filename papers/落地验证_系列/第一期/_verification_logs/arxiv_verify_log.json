@@ -1,0 +1,71 @@
+{
+  "T3": [
+    {
+      "id": "2410.17036",
+      "expect": "LZ 2024, 4.2 t·yr, σ_SI<2.2e-48 cm² @40GeV",
+      "ok": true,
+      "title": "Dark Matter Search Results from 4.2 Tonne-Years of Exposure of the LUX-ZEPLIN (LZ) Experiment",
+      "published": "2024-10-22T14:07:18Z",
+      "summary_head": "We report results of a search for nuclear recoils induced by weakly interacting massive particle (WIMP) dark matter using the LUX-ZEPLIN (LZ) two-phase xenon time projection chamber. This analysis uses a total exposure of $4.2\\pm0.1$ tonne-years from 280 live days of LZ operation, of which $3.3\\pm0.1$ tonne-years and 220 live days are new. A technique to actively tag background electronic recoils from $^{214}$Pb $β$ decays is featured for the first time. Enhanced electron-ion recombination is observed in two-neutrino double electron capture decays of $^{124}$Xe, representing a noteworthy new b"
+    },
+    {
+      "id": "2502.18005",
+      "expect": "XENONnT 3.1 t·yr, σ_SI<1.7e-47 cm² @30GeV",
+      "ok": true,
+      "title": "WIMP Dark Matter Search using a 3.1 Tonne-Year Exposure of the XENONnT Experiment",
+      "published": "2025-02-25T09:10:47Z",
+      "summary_head": "We report on a search for weakly interacting massive particle (WIMP) dark matter (DM) via elastic DM-xenon-nucleus interactions in the XENONnT experiment. We combine datasets from the first and second science campaigns resulting in a total exposure of 3.1 tonne-years. In a blind analysis of nuclear recoil events with energies above $3.8\\,\\mathrm{keV_{NR}}$, we find no significant excess above background. We set new upper limits on the spin-independent WIMP-nucleon scattering cross section for WIMP masses above $10\\,\\mathrm{GeV}/c^2$ with a minimum of $1.7\\,\\times\\,10^{-47}\\,\\mathrm{cm^2}$ at $"
+    },
+    {
+      "id": "2407.10892",
+      "expect": "PandaX-4T 太阳B-8 CEνNS 首迹象 2.64σ",
+      "ok": true,
+      "title": "First Indication of Solar $^8$B Neutrino Flux through Coherent Elastic Neutrino-Nucleus Scattering in PandaX-4T",
+      "published": "2024-07-15T16:40:46Z",
+      "summary_head": "The PandaX-4T liquid xenon detector at the China Jinping Underground Laboratory is used to measure the solar $^8$B neutrino flux by detecting neutrinos through coherent scattering with xenon nuclei. Data samples requiring the coincidence of scintillation and ionization signals (paired), as well as unpaired ionization-only signals (US2), are selected with energy threshold of approximately 1.1 keV (0.33 keV) nuclear recoil energy. Combining the commissioning run and the first science run of PandaX-4T, a total exposure of 1.20 and 1.04 tonne$\\cdot$year are collected for the paired and US2, respec"
+    },
+    {
+      "id": "2408.02877",
+      "expect": "XENONnT 太阳B-8 CEνNS 首迹象 2.73σ",
+      "ok": true,
+      "title": "First Indication of Solar $^8$B Neutrinos via Coherent Elastic Neutrino-Nucleus Scattering with XENONnT",
+      "published": "2024-08-06T00:57:03Z",
+      "summary_head": "We present the first measurement of nuclear recoils from solar $^8$B neutrinos via coherent elastic neutrino-nucleus scattering with the XENONnT dark matter experiment. The central detector of XENONnT is a low-background, two-phase time projection chamber with a 5.9 t sensitive liquid xenon target. A blind analysis with an exposure of 3.51 t$\\times$yr resulted in 37 observed events above 0.5 keV, with ($26.4^{+1.4}_{-1.3}$) events expected from backgrounds. The background-only hypothesis is rejected with a statistical significance of 2.73 $σ$. The measured $^8$B solar neutrino flux of $(4.7_{-"
+    },
+    {
+      "id": "2404.19524",
+      "expect": "DARWIN/XLZD 观测站概念",
+      "ok": true,
+      "title": "DARWIN/XLZD: a future xenon observatory for dark matter and other rare interactions",
+      "published": "2024-04-30T12:50:29Z",
+      "summary_head": "The DARWIN/XLZD experiment is a next-generation dark matter detector with a multi-ten-ton liquid xenon time projection chamber at its core. Its principal goal will be to explore the experimentally accessible parameter space for Weakly Interacting Massive Particles (WIMPs) in a wide mass-range, until interactions of astrophysical neutrinos will become an irreducible background. The prompt scintillation light and the charge signals induced by particle interactions in the liquid xenon target will be observed by VUV-sensitive, ultra-low background photosensors. Besides its excellent sensitivity to"
+    }
+  ],
+  "T4": [
+    {
+      "id": "2404.03002",
+      "expect": "DESI 2024 VI (DR1) BAO 宇宙学约束",
+      "ok": true,
+      "title": "DESI 2024 VI: Cosmological Constraints from the Measurements of Baryon Acoustic Oscillations",
+      "published": "2024-04-03T18:41:51Z",
+      "summary_head": "We present cosmological results from the measurement of baryon acoustic oscillations (BAO) in galaxy, quasar and Lyman-$α$ forest tracers from the first year of observations from the Dark Energy Spectroscopic Instrument (DESI), to be released in the DESI Data Release 1. DESI BAO provide robust measurements of the transverse comoving distance and Hubble rate, or their combination, relative to the sound horizon, in seven redshift bins from over 6 million extragalactic objects in the redshift range $0.1<z<4.2$. DESI BAO data alone are consistent with the standard flat $Λ$CDM cosmological model wi"
+    },
+    {
+      "id": "2503.14738",
+      "expect": "DESI DR2 II BAO 与宇宙学约束",
+      "ok": true,
+      "title": "DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints",
+      "published": "2025-03-18T21:14:12Z",
+      "summary_head": "We present baryon acoustic oscillation (BAO) measurements from more than 14 million galaxies and quasars drawn from the Dark Energy Spectroscopic Instrument (DESI) Data Release 2 (DR2), based on three years of operation. For cosmology inference, these galaxy measurements are combined with DESI Lyman-$α$ forest BAO results presented in a companion paper. The DR2 BAO results are consistent with DESI DR1 and SDSS, and their distance-redshift relationship matches those from recent compilations of supernovae (SNe) over the same redshift range. The results are well described by a flat $Λ$CDM model, "
+    },
+    {
+      "id": "2503.14739",
+      "expect": "DESI DR2 I Lyα 森林 BAO",
+      "ok": true,
+      "error": "timed out",
+      "title": "DESI DR2 Results I: Baryon Acoustic Oscillations from the Lyman Alpha Forest",
+      "published": "2025-03-18T21:14:13Z",
+      "summary_head": "We present the Baryon Acoustic Oscillation (BAO) measurements with the Lyman-alpha (LyA) forest from the second data release (DR2) of the Dark Energy Spectroscopic Instrument (DESI) survey. Our BAO measurements include both the auto-correlation of the LyA forest absorption observed in the spectra of high-redshift quasars and the cross-correlation of the absorption with the quasar positions. The total sample size is approximately a factor of two larger than the DR1 dataset, with forest measurements in over 820,000 quasar spectra and the positions of over 1.2 million quasars. We describe several significant improvements to our analysis in this paper, and two supporting papers describe improvements to the synthetic datasets that we use for validation and how we identify damped LyA absorbers. Our main result is that we have measured the BAO scale with a statistical precision of 1.1% along and 1.3% transverse to the line of sight, for a combined precision of 0.65% on the isotropic BAO scale at $z_{eff} = 2.33$. This excellent precision, combined with recent theoretical studies of the BAO shift due to nonlinear growth, motivated us to include a systematic error term in LyA BAO analysis for the first time. We measure the ratios $D_H(z_{eff})/r_d = 8.632 \\pm 0.098 \\pm 0.026$ and $D_M(z_{eff})/r_d = 38.99 \\pm 0.52 \\pm 0.12$, where $D_H = c/H(z)$ is the Hubble distance, $D_M$ is the transverse comoving distance, $r_d$ is the sound horizon at the drag epoch, and we quote both the statistical and the theoretical systematic uncertainty. The companion paper presents the BAO measurements at lower redshifts from the same dataset and the cosmological interpretation."
+    }
+  ]
+}

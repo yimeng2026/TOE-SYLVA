@@ -1,0 +1,28 @@
+{
+  "track": "T2",
+  "RK_def": 25812.807459304513,
+  "inv_2eps0calpha": 25812.8074592841,
+  "abs_u_combined": 5.4782107899637596e-06,
+  "rel_err_ppm": -7.907973248850782e-07,
+  "sigma_dev": 0.0037261616738056623,
+  "nominal_rel_ppm": 0.00036046109300334164,
+  "pass": 3,
+  "fail": 0,
+  "results": [
+    {
+      "test": "T2-1: 1/(2 eps0 c alpha) 与 h/e^2 偏差在 3σ 合成不确定度内",
+      "status": "PASS",
+      "detail": "σ_dev=0.0037, Δrel=-0.000 ppm"
+    },
+    {
+      "test": "T2-2: 相对偏差 |Δrel| < 5×合成相对不确定度 (异常系统误差排查)",
+      "status": "PASS",
+      "detail": "|Δrel|=7.908e-13 vs 5σ_rel=1.061e-09"
+    },
+    {
+      "test": "T2-3: h/e^2 定义值与 R_K 实测标称 25812.80745 Ω 相对偏差 < 0.1 ppm",
+      "status": "PASS",
+      "detail": "0.0004 ppm —— 标称截断所致, 非物理分歧"
+    }
+  ]
+}
