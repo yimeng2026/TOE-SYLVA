@@ -136,16 +136,25 @@ theorem K_J_flux_relation :
   field_simp
   <;> ring_nf
 
-/-- 冯·克利青常数与精细结构常数的关系。
-    在 SI 单位制中，R_K = h / e² 且 α = e² / (4πε₀ℏc)。
-    R_K 与 α 的精确关系涉及真空磁导率 μ₀ = 1/(ε₀c²) 和 R_K = μ₀c / (2α)。
-    由于该关系涉及多个电磁学中间常数，且需要额外的电磁学恒等式，
-    在 Lean 中保留为 axiom，待完整电磁学单位形式化后证明。
-    待证路径：建立 μ₀ = 1/(ε₀c²) 与 R_K = μ₀c/(2α) 的精确推导。
-    预计工作量：~50h（需要电磁学单位制框架）。 -/
-@[simp]
-axiom R_K_alpha_relation :
-  R_K = (4 * π * ε₀ * ℏ * c) / (e^2 * α) * α / α
+/-- 冯·克利青常数与精细结构常数的精确关系：R_K = 1/(2ε₀cα)。
+
+    **P0 修复（2026-08-06）**：原 axiom `R_K = (4πε₀ℏc)/(e²α)·α/α` 化简后为
+    R_K = 1/α² ≈ 18779，与 R_K = h/e² ≈ 25813 矛盾——命题为假（可推 False），
+    且被误加 @[simp]。正确推导（纯代数，无需新公理）：
+    2ε₀cα = 2ε₀c·e²/(4πε₀ℏc) = e²/(2πℏ) = e²/h（因 2πℏ = h），
+    故 1/(2ε₀cα) = h/e² = R_K。原 docstring 的"待证路径"提到的 μ₀ 绕路
+    其实不必需——直接经 2πℏ = h 即可闭环。 -/
+theorem R_K_alpha_relation :
+    R_K = 1 / (2 * ε₀ * c * α) := by
+  have he : (e : ℝ) ≠ 0 := by unfold e; norm_num
+  have hε₀ : (ε₀ : ℝ) ≠ 0 := by unfold ε₀; norm_num
+  have hc : (c : ℝ) ≠ 0 := by unfold c; norm_num
+  have hh : (h : ℝ) ≠ 0 := by unfold h; norm_num
+  have hπ : (π : ℝ) ≠ 0 := Real.pi_ne_zero
+  unfold R_K α
+  rw [hbar_def]
+  field_simp
+  ring
 
 /-- 精细结构常数在SI中为无量纲的证明框架 -/
 -- 注意：由于使用的是定义值，无量纲性体现在公式的结构上
@@ -251,10 +260,11 @@ noncomputable def fromUnitSystem (system : UnitSystem) (value : ℝ) (dimension 
 @[simp]
 theorem alpha_planck :
   α = (e / PlanckUnits.q_P)^2 := by
-  rw [alpha_def, PlanckUnits.q_P]
-  field_simp
-  <;> ring_nf
-  <;> simp [mul_assoc]
+  have hε₀ : (0:ℝ) < ε₀ := by unfold ε₀; norm_num
+  have hc : (0:ℝ) < c := by unfold c; norm_num
+  have hℏ : (0:ℝ) < ℏ := by unfold ℏ h; positivity
+  have hpos : (0:ℝ) ≤ 4 * π * ε₀ * ℏ * c := by positivity
+  rw [alpha_def, PlanckUnits.q_P, div_pow, Real.sq_sqrt hpos]
 
 /-- 磁通量子在SI中的值：约 2.067833848... × 10⁻¹⁵ Wb -/
 @[simp]
@@ -288,10 +298,10 @@ theorem h_hbar_relation : h = 2 * π * ℏ := by
 @[simp]
 theorem K_J_R_K_product :
   K_J * R_K = 2 / e := by
+  have he : (e : ℝ) ≠ 0 := by unfold e; norm_num
+  have hh : (h : ℝ) ≠ 0 := by unfold h; norm_num
   rw [josephson_def, von_klitzing_def]
   field_simp
-  <;> ring_nf
-  <;> simp [mul_assoc]
 
 /-- 磁通量子与约瑟夫森常数的关系：Φ₀ = 1/K_J。
     Φ₀ = h / (2e), K_J = 2e / h。
@@ -402,10 +412,14 @@ theorem R_infty_alpha_consistency :
 theorem alpha_running_denominator_positive
   (Q : ℝ) (hQ : Q > 0) (hQ_lt : Q < m_e * Real.exp (3 * π / (2 * α))) :
   1 - (2 * α / (3 * π)) * log (Q / m_e) > 0 := by
-  have h1 : α > 0 := by positivity
+  have he : (0:ℝ) < e := by unfold e; norm_num
+  have hε₀ : (0:ℝ) < ε₀ := by unfold ε₀; norm_num
+  have hc : (0:ℝ) < c := by unfold c; norm_num
+  have hℏ : (0:ℝ) < ℏ := by unfold ℏ h; positivity
+  have h1 : α > 0 := by unfold α; positivity
+  have h4 : m_e > 0 := by unfold m_e; norm_num
   have h2 : log (Q / m_e) < 3 * π / (2 * α) := by
     have h3 : Q / m_e < Real.exp (3 * π / (2 * α)) := by
-      have h4 : m_e > 0 := by positivity
       apply (div_lt_iff₀ h4).mpr
       linarith [hQ_lt]
     have h5 : log (Q / m_e) < log (Real.exp (3 * π / (2 * α))) := by
@@ -420,7 +434,7 @@ theorem alpha_running_denominator_positive
     have h9 : (2 * α / (3 * π)) * log (Q / m_e) < (2 * α / (3 * π)) * (3 * π / (2 * α)) := by
       apply mul_lt_mul_of_pos_left
       · linarith
-      · positivity
+      · exact div_pos (by linarith [h1]) (by positivity)
     have h10 : (2 * α / (3 * π)) * (3 * π / (2 * α)) = 1 := by
       field_simp
       <;> ring_nf
@@ -443,11 +457,10 @@ theorem neutrino_mass_seesaw_bound
     这是 metrology 中通过 von Klitzing 和 Josephson 效应精确测量 e 的理论基础。 -/
 theorem elementary_charge_from_quantized_constants :
   e = 2 / (K_J * R_K) := by
-  have h1 : K_J * R_K = 2 / e := K_J_R_K_product
-  have h2 : e ≠ 0 := by positivity
-  field_simp at h1
+  have he : (0:ℝ) < e := by unfold e; norm_num
+  have hne : (e : ℝ) ≠ 0 := ne_of_gt he
+  rw [K_J_R_K_product]
   field_simp
-  linarith
 
 -- ============================================================
 -- 结束

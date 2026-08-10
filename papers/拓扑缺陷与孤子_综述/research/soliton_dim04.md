@@ -41,14 +41,14 @@ AdS/CFT对应为研究拓扑缺陷提供了新的理论工具。全息框架下�
 
 [^tHooft-1976]: 't Hooft G. Symmetry breaking through Bell-Jackiw anomalies[J]. Physical Review Letters, 1976, 37(1): 8-11. https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.37.8
 
-[^farina-2018]: Farina M, et al. Cosmological aspects of the clockwork axion[J]. Journal of High Energy Physics, 2018, 2018(7): 66. https://arxiv.org/abs/1803.07086
+[^farina-2018]: Long A J. Cosmological aspects of the clockwork axion[J]. Journal of High Energy Physics, 2018, 2018(7): 66. https://arxiv.org/abs/1803.07086
 
-[^jensen-2015]: Jensen K, et al. Holographic entanglement entropy in AdS₄/BCFT₃[J]. Journal of High Energy Physics, 2013, 2013(7): 102. https://arxiv.org/abs/1303.4815
+[^jensen-2015]: Jensen K, et al. Holographic entanglement entropy in AdS₄/BCFT₃[J]. Journal of High Energy Physics, 2013, 2013(7): 102.（著录待核实）
 
 [^dalibard-2011]: Dalibard J, et al. Artificial gauge potentials for neutral atoms[J]. Reviews of Modern Physics, 2011, 83(4): 1523-1543. https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.83.1523
 
 [^cooper-2019]: Cooper N R, et al. Topological bands for ultracold atoms[J]. Reviews of Modern Physics, 2019, 91(1): 015005. https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.91.015005
 
-[^gangui-2002]: Gangui A. Cosmic defects and cosmology[J]. arXiv:astro-ph/0002030, 2002. https://arxiv.org/abs/astro-ph/0002030
+[^gangui-2002]: Magueijo J, Brandenberger R. Cosmic defects and cosmology[J]. arXiv:astro-ph/0002030, 2000. https://arxiv.org/abs/astro-ph/0002030
 
 [^nanograv-2023]: NANOGrav Collaboration. The NANOGrav 15-year data set: Evidence for a gravitational-wave background[J]. The Astrophysical Journal Letters, 2023, 951(1): L8. https://iopscience.iop.org/article/10.3847/2041-8213/acdac6

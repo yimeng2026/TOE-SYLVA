@@ -1,4 +1,4 @@
-# 对 Gitee 仓库 universal_fixed_point_framework 的详细评价
+﻿# 对 Gitee 仓库 universal_fixed_point_framework 的详细评价
 
 ## Detailed Review of Gitee Repository: universal_fixed_point_framework
 
@@ -175,3 +175,11 @@ UFPF是一个**有真正理论创新**的跨学科研究项目。其核心思想
 
 *评价版本：v1.0 | 评价日期：2026-07-27*
 *评价基于：Gitee仓库README.md（2026-07-19版本）*
+---
+
+## 相关论文 / Related Papers
+
+本文是 TOE-SYLVA 框架内部的评论与回应。主要相关文献：
+- papers/TOE-SYLVA_Master_Academic.md — TOE-SYLVA 主统一理论（英文）
+- papers/AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md — AI辅助研究的失败模式与可验证协议
+- papers/AI_HALLUCINATION_REPORT_FINAL.md — AI幻觉审计报告

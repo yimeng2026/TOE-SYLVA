@@ -359,7 +359,7 @@ IBM 的研究方向是**近似 MWPM（Approximate MWPM）**：通过预计算 sy
 
 [19] Meinerz, K., Boes, P., & Eisert, J. "Scalable neural decoder for topological surface codes." *Physical Review Letters* 128, 090501 (2022).
 
-[20] Higgott, O., & Gullans, M. "Sparse blossom: correcting a million errors per core second with minimum-weight matching." *arXiv:2303.15933* (2023).
+[20] Higgott, O., & Gidney, C. "Sparse blossom: correcting a million errors per core second with minimum-weight matching." *arXiv:2303.15933* (2023).
 
 ---
 

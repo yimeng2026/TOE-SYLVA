@@ -8,7 +8,7 @@
 
 ## 1. Hubbard模型全景综述 (2021)
 
-**来源**: E.W. Huang et al., "The significance of 'stripes' in the physics of the cuprates, the Hubbard model, and other highly correlated electronic systems", arXiv:2103.12097
+**来源**: E.W. Huang et al., "Stripe order from the perspective of the Hubbard model", npj Quantum Materials 3, 22 (2018), arXiv:1709.02398
 **引用**: 163次（Stripe order from the perspective of the Hubbard model, npj Quantum Materials 3, 22 (2018)）
 
 ### 核心结论
@@ -122,7 +122,7 @@
 
 ## 可直接使用的引用
 
-1. **Huang et al. (2018/2021)**: "Stripe order from the perspective of the Hubbard model", npj Quantum Materials 3, 22 (2018). arXiv:2103.12097.
+1. **Huang et al. (2018)**: "Stripe order from the perspective of the Hubbard model", npj Quantum Materials 3, 22 (2018). arXiv:1709.02398.
 2. **DMRG综述 (2025)**: "The significance of 'stripes' in the physics of the cuprates...", arXiv:2501.15709.
 3. **Yao Wang (2023)**: "Enhanced superconductivity by near-neighbor attraction in the doped extended Hubbard model", PRL/PRB (2023).
 4. **Chen et al. (2024)**: "Global phase diagram of D-wave superconductivity in...", PMC/PRB (2024).

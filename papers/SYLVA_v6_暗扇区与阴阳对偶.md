@@ -85,6 +85,8 @@ SYLVA 框架提出一个不同的视角: 暗扇区不是"缺失的物质", 而�
 
 我们在 Lean 4 中定义暗扇区为一个包含暗物质和暗能量的结构:
 
+> **Note**: The following Lean 4 code uses `axiom` declarations (unproven assumptions) rather than `theorem` declarations. Axioms are valid Lean syntax but represent hypotheses that have not been formally proven in any verification system. The code serves as a specification of the model rather than a verified proof.
+
 ```lean
 structure DarkSector where
   darkMatter : DarkMatter
@@ -248,3 +250,5 @@ SYLVA 模型做出两个明确的、可检验的预测: (1) 暗物质不参与�
 10. SYLVA 研究组 (2026). "SYLVA 架构 V2." `docs/ARCHITECTURE_V2.md`.
 11. Peebles, P. J. E. & Ratra, B. (2003). "The Cosmological Constant and Dark Energy." Rev. Mod. Phys. 75: 559-606.
 12. Bertone, G., Hooper, D. & Silk, J. (2005). "Particle Dark Matter: Evidence, Candidates and Constraints." Phys. Rep. 405: 279-390.
+
+> **Note**: Referenced files `docs/SYLVA_MANIFESTO.md` and `docs/ARCHITECTURE_V2.md` (references 9 and 10) could not be verified to exist in the current repository. The paths may refer to documents not yet published.

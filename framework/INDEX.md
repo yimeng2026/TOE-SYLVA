@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.1  
+> **文档版本**: v2.3  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-10 (v7.62 sync)  
-> **文档总数**: 35 + 72 = 107 (core docs 01-30 + extended 31-103) + 1 reply paper = 104 total | framework/ 目录共 200+ 个 .md 文件  
+> **最后更新**: 2026-08-06  
+> **文档总数**: 35+58=93 (core docs 01-30 + extended 31-93) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -39,9 +39,9 @@
 | [[doc:23]] | 23_cosmological_constant_problem.md | 宇宙学常数 | ✅ |
 | [[doc:24]] | 24_quantum_measurement_layered.md | 量子测量 | ✅ |
 | [[doc:25]] | 25_string_theory_duality.md | 弦理论对偶 | ✅ |
-| [[doc:26]] | 26_holographic_principle.md | 全息原理 (holographic_principle) | 2026-08-10 | ✅ |
+| [[doc:26]] | *(文件不存在)* | 全息原理 | ❌ |
 
-> ℹ️ **关于 doc:26 (全息原理)**: 已于 2026-08-10 创建（v7.49 v1.0 → v7.49b v3.1 增强版 ~25KB）。内容涵盖 Bekenstein 前史、AdS/CFT 对应、Ryu-Takayanagi 公式、张量网络（MERA/HaPPY 码）、量子极值曲面（QES）、全息复杂性（CV/CA）、SYK 模型与实验验证方向。
+> ℹ️ **关于 doc:26 (全息原理)**: 尚未创建独立文件。相关内容已部分覆盖于 `framework/58_quantum_gravity_holography.md` 和 `papers/TOE-SYLVA_Master_Academic.md §2-3`。参见 papers/ 目录中与全息对偶、AdS/CFT 相关的综述文献。
 | [[doc:27]] | 27_noncommutative_geometry_physics.md | 非交换几何 | ✅ |
 | [[doc:28]] | 28_category_theory_layered.md | 范畴论 | ✅ |
 | [[doc:29]] | 29_random_matrix_universality.md | 随机矩阵 | ✅ |
@@ -129,16 +129,6 @@
 | [[doc:91]] | 91_quantum_error_correction.md | 量子纠错 | ✅ |
 | [[doc:92]] | 92_precision_measurement.md | 精密测量 | ✅ |
 | [[doc:93]] | 93_algebraic_geometry_physics.md | 代数几何与物理 | ✅ |
-| [[doc:94]] | 94_sylva_agent_records.md | SYLVA Agent 记录 | ✅ |
-| [[doc:95]] | 95_structured_knowledge_architecture.md | 知识结构化架构 (structured_knowledge_architecture) | ✅ |
-| [[doc:96]] | 96_symplectic_bridge_toe.md | 辛几何→TOE 主方程数学桥接 (symplectic_bridge) | ✅ |
-| [[doc:97]] | 97_ncg_bridge_toe.md | 非交换几何→TOE 主方程数学桥接 (NCG_bridge) | ✅ |
-| [[doc:98]] | 98_fermion_mass_spectrum.md | 费米子质量谱 (fermion_mass_spectrum) | ✅ |
-| [[doc:99]] | 99_postulate_dependency_dag.md | 公理依赖 DAG (postulate_dependency_dag) | ✅ |
-| [[doc:100]] | 100_adelic_bridge.md | Adelic 统一桥接 (adelic_bridge) | ✅ |
-| [[doc:101]] | 101_alpha_inverse_tri_chain.md | α⁻¹ 三链推导 (alpha_inverse_tri_chain) | ✅ |
-| [[doc:102]] | 102_dark_energy_global_spectrum.md | 暗能量全局谱 (dark_energy_global_spectrum) | ✅ |
-| [[doc:103]] | 103_non_bps_black_hole_dt.md | 非 BPS 黑洞 DT 推广 (non_bps_black_hole_dt) | ✅ |
 
 ### 已知编号问题
 
@@ -153,7 +143,7 @@
 - `30_information_geometry_statmech.md` 与 `38_information_geometry_statmech.md` — 文件名相同，可能共享大量内容；需人工审查
 
 **编号缺口 (missing numbers):**
-- **编号 26**: ✅ 已于 2026-08-10 填补（`26_holographic_principle.md`，全息原理 v1.0+v3.1 增强版 ~25KB）
+- **编号 26**: 缺失（INDEX 中已标注为全息原理，内容覆盖于 `58_quantum_gravity_holography.md`）
 - **编号 36**: 缺失（未分配或文件未创建）
 - **编号 49**: 缺失（未分配或文件未创建）
 - **编号 66**: 仅存在 `.lean` 形式化文件，无对应 `.md` 正文
@@ -572,22 +562,6 @@ four_forces_unification_*.md
 | `SYLVA_comprehensive_survey/` | SYLVA 综合综述子目录 |
 
 > 📝 详细论文元数据（大小、行数、交叉引用等）请参见 `papers/CONTENTS.md`。
-
----
-
----
-
-## 🤖 Agda 形式化状态 (v7.58)
-
-> ⚠️ 此节于 2026-08-10 添加，记录 Agda 双形式化最新状态。
-
-- **Agda 7/7 模块全部通过**: Cauchy/Field/Order/Complete/Quantum/Spectrum/CNFCategory
-- **25 postulates / 0 admits**: 所有剩余 postulate 为已知可从 `Data.Rational.Properties` 证明的定理
-- **v7.57-v7.58 stdlib migration**: 10 postulates replaced with stdlib (5 Q-ordering in Order.agda via Data.Rational.Properties, 5 Q-arithmetic in Cauchy.agda via Data.Rational.Base), all 7 modules compile PASS (exit 0)
-- **v7.61: Cauchy _<_ / |_| migrated to Data.Rational.Base**: Cauchy postulate count 8→1, 7/7 PASS, 0 admits
-- **受阻**: Windows 16GB RAM 加载 `Data.Rational.Properties`（~400 传递依赖）OOM，全量编译需 Linux ≥16GB RAM
-- **LEAN lake update 受阻**: 925KB lakefile recursion overflow（已知问题）
-- **O7/O8 状态**: 需要 Linux ≥16GB RAM 环境完成 Agda 最终全量验证 + LEAN lake build
 
 ---
 

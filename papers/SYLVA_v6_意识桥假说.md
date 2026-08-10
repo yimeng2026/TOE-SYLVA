@@ -1,11 +1,16 @@
 # SYLVA v6.0: 意识桥假说 — 量子测量与整合信息理论的统一
 
+> ⚠️ **免责声明**: 本文是高度推测性的哲学假说，尚未经过实验验证。请以批判性思维阅读。
+
+> 📎 **相关英文论文**: 本文的英文对应内容可参考 `TOE-SYLVA_Master_Academic.md`，其中包含量子测量与意识相关章节的英文论述。
+
 > **论文编号**: SYLVA-v6-P002
 > **作者**: SYLVA 研究组
 > **日期**: 2026-07-22
 > **版本**: v6.0
 > **状态**: 初稿
 > **形式化模块**: `SYLVA_ConsciousnessBridge.lean`
+> **相关英文论文**: [`TOE-SYLVA_Theory_SYK_cMERA_Global.md`](./TOE-SYLVA_Theory_SYK_cMERA_Global.md), [`SYLVA_v6_普适对称性与万物理论.md`](./SYLVA_v6_普适对称性与万物理论.md)
 
 ---
 

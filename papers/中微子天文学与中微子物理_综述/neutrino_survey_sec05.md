@@ -23,5 +23,5 @@ IceCube-Gen2的规划进一步提升了多信使观测的潜力。该升级方�
 [^agostini-2020-pone]: M. Agostini et al. (P-ONE Collaboration). The Pacific Ocean Neutrino Experiment. Nature Astron. 4, 913 (2020). https://doi.org/10.1038/s41550-020-1182-4
 [^ye-2023]: Z. P. Ye et al. (TRIDENT Collaboration). A multi-cubic-kilometre neutrino telescope in the western Pacific Ocean. Nature Astron. 7, 1497 (2023). https://doi.org/10.1038/s41550-023-02062-1
 [^icecube-2022-lorentz]: R. Abbasi et al. (IceCube Collaboration). Test of quantum gravity with neutrino oscillations using IceCube. Phys. Rev. D 106, 072006 (2022). https://doi.org/10.1103/PhysRevD.106.072006
-[^collin-2019]: C. A. Argüelles et al. (IceCube Collaboration). Constraints on eV-scale Lorentz-invariance violation in the neutrino sector from IceCube. Phys. Rev. D 99, 032016 (2019). https://doi.org/10.1103/PhysRevD.99.032016
+[^collin-2019]: G. H. Collin, C. A. Argüelles, J. M. Conrad and M. H. Shaevitz. First constraints on the complete neutrino mixing matrix with a sterile neutrino. Phys. Rev. Lett. 117, 221801 (2016). https://doi.org/10.1103/PhysRevLett.117.221801
 [^arguelles-2022-dm]: C. A. Argüelles et al. Constraints on dark matter-neutrino interactions with IceCube. Phys. Rev. Lett. 129, 011101 (2022). https://doi.org/10.1103/PhysRevLett.129.011101

@@ -317,7 +317,7 @@ TOE-SYLVA将继续跟踪Langlands纲领的进展，并探索其在数学统一�
 
 [11] Kapustin A, Witten E. Electric-magnetic duality and the geometric Langlands program. Communications in Number Theory and Physics, 2007, 1(1): 1-236.
 
-[12] Breuil C. Vers le socle de la catégorie des représentations p-adiques de $GL_2(F)$. arXiv:2006.09606, 2020.
+[12] Breuil C. Vers le socle localement analytique pour $GL_n$, I. Annales de l'Institut Fourier, 2016, 66(2): 633-685.
 
 [13] Colmez P. Représentations triangulines et représentations de dimension 2. Astérisque, 2008, 319: 59-148.
 
@@ -373,7 +373,7 @@ TOE-SYLVA将继续跟踪Langlands纲领的进展，并探索其在数学统一�
 
 [arXiv:1] Fargues L, Scholze P. Geometrization of the local Langlands correspondence. arXiv:2102.13459 [math.NT], 2021. —— Fargues-Scholze使用perfectoid空间和diamonds对局部Langlands对应进行几何化的奠基性工作。
 
-[arXiv:2] Gaitsgory D, Raskin S. Proof of the geometric Langlands conjecture I: Construction of the functor. arXiv:2405.18268 [math.AG], 2024. —— Gaitsgory-Raskin证明几何Langlands猜想系列论文的第一部分。
+[arXiv:2] Gaitsgory D, Raskin S. Proof of the geometric Langlands conjecture I: Construction of the functor. arXiv:2405.03599 [math.AG], 2024. —— Gaitsgory-Raskin证明几何Langlands猜想系列论文的第一部分。
 
 [arXiv:3] Gaitsgory D, Raskin S. Proof of the geometric Langlands conjecture V: The multiplicity one theorem. arXiv:2409.09856 [math.AG], 2024. —— 几何Langlands猜想证明的第五部分，唯一性定理。
 
@@ -389,7 +389,7 @@ TOE-SYLVA将继续跟踪Langlands纲领的进展，并探索其在数学统一�
 
 [arXiv:9] Tong X. ∞-Categorical Generalized Langlands Program I: Mixed-Parity Modules and Sheaves. arXiv:2311.10019 [math.NT], 2023. —— ∞-范畴广义Langlands纲领，涉及p-adic Hodge理论和mixed-parity模。
 
-[arXiv:10] Colmez P. On the geometrization of the p-adic local Langlands correspondence. arXiv:2408.02358 [math.NT], 2024. —— Colmez关于p-adic局部Langlands对应几何化的综述。
+[arXiv:10] Colmez P, Dospinescu G, Nizioł W. On the geometrization of the p-adic local Langlands correspondence. arXiv:2408.02358 [math.NT], 2024. —— Colmez等关于p-adic局部Langlands对应几何化的综述。
 
 [arXiv:11] Imai N. On the geometrization of the local Langlands correspondence. arXiv:2408.16571 [math.NT], 2024. —— Fargues-Scholze局部Langlands对应几何化的综述论文。
 

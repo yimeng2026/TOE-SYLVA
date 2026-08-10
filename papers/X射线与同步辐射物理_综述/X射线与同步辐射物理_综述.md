@@ -102,7 +102,7 @@ XANES区域（吸收边附近约50 eV范围内）涉及多重散射过程和芯�
 
 衍射极限储存环是第四代同步辐射光源的核心技术方向。对于波长为 $\lambda$ 的光子束，其衍射极限发射度约为 $\lambda/(4\pi)$。对于1 Å的硬X射线，对应的衍射极限发射度约为80 pm·rad[^einfeld-2014]。
 
-MBA结构通过在储存环的一个单元中增加弯转磁铁数量（从传统的二极消色散结构扩展至七极或更多），在保持消色散条件的同时显著降低水平发射度。发射度 $\varepsilon_x$ 与单元中弯转磁铁数目 $N$ 的关系近似为 $\varepsilon_x \propto 1/N^3$，因此增加弯转磁铁数目是实现超低发射度的有效途径[^levacq-2003]。
+MBA结构通过在储存环的一个单元中增加弯转磁铁数量（从传统的二极消色散结构扩展至七极或更多），在保持消色散条件的同时显著降低水平发射度。发射度 $\varepsilon_x$ 与单元中弯转磁铁数目 $N$ 的关系近似为 $\varepsilon_x \propto 1/N^3$，因此增加弯转磁铁数目是实现超低发射度的有效途径[^einfeld-1993]。
 
 2016年，瑞典MAX IV光源的成功建成标志着世界光源领域正式进入第四代时代。此后，巴西Sirius（2020年）、欧洲ESRF-EBS升级（2020年）、美国APS-U（2024年）等相继投入运行或调试[^raimondi-2023]。中国的高能同步辐射光源（HEPS，北京，6 GeV，目标发射度≤60 pm·rad）和合肥先进光源（HALF，低能区）正在建设中，HEPS已于2025年成功实现储存环束流联合调试，发射度达到93 pm·rad，标志着亚洲首台第四代同步辐射光源取得关键突破[^heps-2025]。
 
@@ -140,7 +140,7 @@ XANES谱则对吸收原子的化学价态和局域对称性高度敏感。近边
 
 ### 4.3 X射线成像技术
 
-同步辐射X射线成像利用X射线与物质相互作用产生的吸收、折射和散射信号实现样品内部结构的非破坏性可视化[^bonse-1996]。
+同步辐射X射线成像利用X射线与物质相互作用产生的吸收、折射和散射信号实现样品内部结构的非破坏性可视化[^bonse-1970]。
 
 相位衬度成像利用X射线穿过样品时产生的相移来增强成像对比度。对于轻元素材料（如生物软组织），相位衬度可比吸收衬度高2—3个数量级。Talbot-Lau干涉仪通过光栅剪切干涉实现相位信息的定量提取，已在医学成像和材料科学中获得广泛应用[^pfeiffer-2006]。
 
@@ -166,13 +166,13 @@ $$ I(q) = I(0) \exp\left(-\frac{q^2 R_g^2}{3}\right) \tag{13} $$
 
 ### 5.2 能源材料与催化科学
 
-同步辐射原位/工况（operando）表征技术为能源材料和催化反应机理研究提供了独特的实验手段。利用同步辐射X射线，科学家可在真实反应条件下（高温、高压、电化学极化等）实时追踪催化剂活性位点的局域结构演化、反应中间体的形成与转化，以及电极材料在充放电过程中的相变与应力分布[^grunwaldt-2015]。
+同步辐射原位/工况（operando）表征技术为能源材料和催化反应机理研究提供了独特的实验手段。利用同步辐射X射线，科学家可在真实反应条件下（高温、高压、电化学极化等）实时追踪催化剂活性位点的局域结构演化、反应中间体的形成与转化，以及电极材料在充放电过程中的相变与应力分布[^grunwaldt-2013]。
 
-在锂离子电池研究中，同步辐射X射线断层成像和衍射技术已被广泛用于可视化电极材料在循环过程中的结构退化、锂枝晶生长和界面演化，为开发高能量密度、长寿命电池提供了微观尺度的机理解释[^michael-2015]。
+在锂离子电池研究中，同步辐射X射线断层成像和衍射技术已被广泛用于可视化电极材料在循环过程中的结构退化、锂枝晶生长和界面演化，为开发高能量密度、长寿命电池提供了微观尺度的机理解释[^ebner-2013]。
 
 ### 5.3 生命科学
 
-同步辐射在结构生物学中的应用极为广泛且深入。多波长反常衍射（MAD）和单波长反常衍射（SAD）技术利用同步辐射波长可调性，通过在不同波长下收集数据并比较反常散射信号的差异，实现了蛋白质晶体学中相位问题的系统解决[^hendrickson-1991]。
+同步辐射在结构生物学中的应用极为广泛且深入。多波长反常衍射（MAD）和单波长反常衍射（SAD）技术利用同步辐射波长可调性，通过在不同波长下收集数据并比较反常散射信号的差异，实现了蛋白质晶体学中相位问题的系统解决[^hendrickson-1989]。
 
 时间分辨X射线晶体学和Laue衍射技术利用同步辐射的短脉冲时间结构，可捕捉蛋白质在催化反应过程中的瞬时中间态结构，时间分辨率达到毫秒甚至微秒量级[^schotte-2003]。近年来，XFEL驱动的串行飞秒晶体学（SFX）技术进一步将时间分辨率推进至飞秒量级，使得"衍射先于破坏"（diffraction before destruction）的室温结构测定成为可能，彻底改变了辐射敏感蛋白和微晶结构解析的范式[^chapman-2011]。超快X射线衍射与散射诊断的光源技术与实验方法详见[^chen-2020]。
 
@@ -247,7 +247,7 @@ X射线与同步辐射物理在过去七十余年间经历了从"意外发现"�
 
 [^einfeld-2014]: Einfeld D. EBS storage ring technical design report[R]. Grenoble: European Synchrotron Radiation Facility, 2014.
 
-[^levacq-2003]: Le Bec G. Fourth generation storage ring light sources[J]. Europhysics News, 2003, 34(6): 226-228.
+[^einfeld-1993]: Einfeld D, Plesko M. A modified QBA optics for low emittance storage rings[J]. Nuclear Instruments and Methods in Physics Research Section A, 1993, 335(2-3): 402-416.
 
 [^raimondi-2023]: Raimondi P, Benabderrahmane C, Berkvens P, et al. The extremely brilliant source storage ring of the European Synchrotron Radiation Facility[J]. Communications Physics, 2023, 6: 82.
 
@@ -271,7 +271,7 @@ X射线与同步辐射物理在过去七十余年间经历了从"意外发现"�
 
 [^solomon-2005]: Solomon E I, Hedman B, Hodgson K O, et al. Ligand K-edge x-ray absorption spectroscopy: covalency of ligand-metal bonds[J]. Coordination Chemistry Reviews, 2005, 249(1-2): 97-129.
 
-[^bonse-1996]: Bonse U, Hart M. X-ray holography[J]. Physics Today, 1996, 49(9): 26-31.
+[^bonse-1970]: Hart M, Bonse U. Interferometry with x rays[J]. Physics Today, 1970, 23(8): 26-31.
 
 [^pfeiffer-2006]: Pfeiffer F, Weitkamp T, Bunk O, et al. Phase retrieval and differential phase-contrast imaging with low-brilliance X-ray sources[J]. Nature Physics, 2006, 2(4): 258-261.
 
@@ -287,11 +287,11 @@ X射线与同步辐射物理在过去七十余年间经历了从"意外发现"�
 
 [^ament-2011]: Ament L J P, van Veenendaal M, Devereaux T P, et al. Resonant inelastic x-ray scattering studies of elementary excitations[J]. Reviews of Modern Physics, 2011, 83(2): 705-767.
 
-[^grunwaldt-2015]: Grunwaldt J D, Wagner J B, Dunin-Borkowski R E. Imaging catalysts at work: a hierarchical approach from the macro- to the meso- and nano-scale[J]. ChemCatChem, 2015, 7(19): 3078-3088.
+[^grunwaldt-2013]: Grunwaldt J D, Wagner J B, Dunin-Borkowski R E. Imaging catalysts at work: a hierarchical approach from the macro- to the meso- and nano-scale[J]. ChemCatChem, 2013, 5(1): 62-80.
 
-[^michael-2015]: Liu Y, Liu Q, Xin L, et al. Making Li-air batteries rechargeable: material challenges[J]. Advanced Materials, 2015, 27(20): 3165-3180.
+[^ebner-2013]: Ebner M, Marone F, Stampanoni M, et al. Visualization and quantification of electrochemical and mechanical degradation in Li-ion batteries[J]. Science, 2013, 342(6159): 716-720.
 
-[^hendrickson-1991]: Hendrickson W A, Pähler A, Smith J L, et al. Crystal structure of core streptavidin determined from multiwavelength anomalous diffraction of synchrotron radiation[J]. Proceedings of the National Academy of Sciences, 1991, 88(6): 2460-2464.
+[^hendrickson-1989]: Hendrickson W A, Pähler A, Smith J L, et al. Crystal structure of core streptavidin determined from multiwavelength anomalous diffraction of synchrotron radiation[J]. Proceedings of the National Academy of Sciences, 1989, 86(7): 2190-2194.
 
 [^schotte-2003]: Schotte F, Lim M, Jackson T A, et al. Watching a protein as it functions with 150-ps time-resolved x-ray crystallography[J]. Science, 2003, 300(5627): 1944-1947.
 

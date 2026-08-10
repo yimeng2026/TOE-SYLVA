@@ -527,7 +527,7 @@ TOE-SYLVA将继续跟踪p-adic Hodge理论的进展，并探索其在物理形�
 
 [36] Caraiani M, Emerton M, Gee T, et al. Patching and the p-adic local Langlands correspondence. Cambridge Journal of Mathematics, 2016, 4(2): 197-287. arXiv:1310.0831 [math.NT]. —— 通过patching方法建立p-adic局部Langlands对应。
 
-[37] Niziol W. p-adic Hodge theory: an overview. arXiv:2005.07919 [math.NT], 2020. —— p-adic Hodge理论的现代综述，涵盖比较定理的历史与最新进展。
+[37] Niziol W. Hodge Theory of p-adic varieties: a survey. arXiv:2005.07919 [math.NT], 2020. —— p-adic Hodge理论的现代综述，涵盖比较定理的历史与最新进展。
 
 [38] Faltings G. Almost étale extensions. Astérisque, 2002, 279: 185-270. —— Almost étale理论的开创性工作，为比较定理提供了关键工具。
 
@@ -569,7 +569,7 @@ TOE-SYLVA将继续跟踪p-adic Hodge理论的进展，并探索其在物理形�
 
 [57] Anschütz J, Le Bras A C. Prismatic Dieudonné theory. Forum of Mathematics, Pi, 2023, 11: e2. —— Prismatic Dieudonné理论，连接prismatic上同调与p-divisible groups。
 
-[58] Du H, Liu T, et al. Completed prismatic F-crystals and crystalline $\mathbb{Z}_p$-local systems. Compositio Mathematica, 2024, 160(5): 1101-1166. arXiv:2303.17545 [math.NT]. —— 完备prismatic F-crystals与晶体局部系统。
+[58] Du H, Liu T, et al. Completed prismatic F-crystals and crystalline $\mathbb{Z}_p$-local systems. Compositio Mathematica, 2024, 160(5): 1101-1166. arXiv:2203.03444 [math.NT]. —— 完备prismatic F-crystals与晶体局部系统。
 
 ---
 

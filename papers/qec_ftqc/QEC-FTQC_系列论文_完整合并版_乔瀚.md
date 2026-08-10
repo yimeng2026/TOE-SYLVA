@@ -3985,7 +3985,7 @@ IBM 的研究方向是**近似 MWPM（Approximate MWPM）**：通过预计算 sy
 
 [19] Meinerz, K., Boes, P., & Eisert, J. "Scalable neural decoder for topological surface codes." *Physical Review Letters* 128, 090501 (2022).
 
-[20] Higgott, O., & Gullans, M. "Sparse blossom: correcting a million errors per core second with minimum-weight matching." *arXiv:2303.15933* (2023).
+[20] Higgott, O., & Gidney, C. "Sparse blossom: correcting a million errors per core second with minimum-weight matching." *arXiv:2303.15933* (2023).
 
 ---
 
@@ -8642,7 +8642,7 @@ $$
 
 [25] Cross A W, Bishop L S, Sheldon S, et al. Validating quantum computers using randomized model circuits[J]. Physical Review A, 2019, 100(3): 032328.
 
-[26] Wack A, Paik H, Javadi-Abhari A, et al. Quality, speed, and scale: three key attributes to measure the performance of near-term quantum computers[J]. arXiv:2310.02199, 2023.
+[26] Wack A, Paik H, Javadi-Abhari A, et al. Quality, speed, and scale: three key attributes to measure the performance of near-term quantum computers[J]. arXiv:2110.14108, 2021.
 
 [27] Delfosse N, Nickerson N H. Almost-linear time decoding algorithm for topological codes[J]. Quantum, 2021, 5: 595.
 

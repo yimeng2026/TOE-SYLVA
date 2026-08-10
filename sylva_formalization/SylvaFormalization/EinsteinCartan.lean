@@ -361,22 +361,20 @@ theorem torsion_antisymmetry {M : Spacetime} (T : TorsionTensor M)
 theorem scalar_curvature_real {M : Spacetime} (g : MetricTensor M) (Ric : RicciTensor M) (x : M.M) :
     ∃ r : ℝ, scalarCurvature g Ric x = r := by
   use scalarCurvature g Ric x
-  rfl
 
 /-- κ-参数的正定性：当聚类系数 0 < C < 1 时，κ = C/(1-C) > 0。
     这是从网络聚类系数推导的引力耦合参数的正定性。 -/
 theorem kappa_positivity (C : ℝ) (hC : 0 < C ∧ C < 1) :
     kappaFromClustering C > 0 := by
   unfold kappaFromClustering
-  simp [hC.1, hC.2]
-  apply div_pos
-  · exact hC.1
-  · linarith
+  rw [if_pos hC.2]
+  exact div_pos hC.1 (sub_pos.mpr hC.2)
 
 /-- tunedSolution 的相对误差为零：由定义直接得出。 -/
 theorem tuned_solution_zero_error :
     tunedSolution.relative_error = 0 := by
-  rfl
+  unfold tunedSolution
+  norm_num
 
 /-- baselineSolution 的 κ > 0：由定义直接计算。 -/
 theorem baseline_kappa_positive :

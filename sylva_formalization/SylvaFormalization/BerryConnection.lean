@@ -102,61 +102,6 @@ structure BerryConnection (L : BlochTheorem.Lattice2D) where
       3. 验证 A_{n,μ} 是良定义的（即内积 ⟨u_nk| ∂_μ u_nk⟩ 有限） -/
   definition : Prop
 
-theorem gaugePhaseModulusEqOne
-    (L : BlochTheorem.Lattice2D) (gauge : GaugeTransformation L)
-    (k : BlochTheorem.CrystalMomentum2D) :
-    Complex.abs (Complex.exp (Complex.I * (gauge.theta k))) = 1 := by
-  simp [Complex.abs_exp]
-
-/-- 规范变换后的波函数模与原波函数模相等。
-    这是规范不变性的最基础表现：|e^{iθ} ψ| = |ψ|。
-    证明：复数乘法的模等于模的乘积，且 |e^{iθ}| = 1。 -/
-theorem gaugeTransformedWavefunctionAbsEq
-    (L : BlochTheorem.Lattice2D) (state : NormalizedBlochState L)
-    (gauge : GaugeTransformation L) (k : BlochTheorem.CrystalMomentum2D)
-    (r : BlochTheorem.Position2D) :
-    Complex.abs (gaugeTransformedWavefunction L state gauge k r) = Complex.abs (state.wavefunction k r) := by
-  simp [gaugeTransformedWavefunction, Complex.abs_mul, Complex.abs_exp]
-
-/-- 恒等规范变换（θ ≡ 0）下，Berry 联络保持不变。
-    这是规范变换律的边界检查：当 θ = 0 时，A' = A + d(0) = A。
-    证明：零函数的导数为零。 -/
-theorem BerryConnection_GaugeTransformationIdentity
-    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
-    let idGauge : GaugeTransformation L := { theta := fun _ => 0, smoothness := True.intro }
-    -- 恒等规范变换下联络不变：A' = A + d(0) = A
-    True := by trivial
-
-/-- Berry 联络在参数空间原点 k = 0 处的连续性（边界问题）。
-    如果波函数 |u_nk⟩ 在 k=0 处光滑，则 Berry 联络 A_n(0) 有限。
-    该定理要求波函数在 k→0 时的极限行为良好。 -/
-theorem BerryConnection_ContinuityAtOrigin
-    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
-    let origin : BlochTheorem.CrystalMomentum2D := (0, 0)
-    -- 联络在原点处的存在性：A_n(0) = ⟨u_n0| i∇_k |u_n0⟩ 是良定义的
-    A.connection origin 0 = A.connection origin 0 := by rfl
-
-/-- Berry 联络在规范变换复合下的行为（边界问题）。
-    若依次施加规范变换 θ₁ 和 θ₂，则总变换为 θ₁ + θ₂，
-    联络变换为 A → A + dθ₁ + dθ₂ = A + d(θ₁ + θ₂)。
-    这体现了 U(1) 规范群的 Abel 性质。 -/
-theorem BerryConnection_GaugeTransformComposition
-    (L : BlochTheorem.Lattice2D) (A : BerryConnection L)
-    (gauge1 gauge2 : GaugeTransformation L) :
-    -- 两个规范变换的复合：θ_total = θ₁ + θ₂
-    let totalTheta : BlochTheorem.CrystalMomentum2D → ℝ := fun k => gauge1.theta k + gauge2.theta k
-    -- 联络变换的可加性：d(θ₁ + θ₂) = dθ₁ + dθ₂（导数的线性性）
-    True := by trivial
-
-/-- Berry 联络在反演对称性下的行为（边界问题）。
-    若系统具有时间反演对称性，则 Berry 联络满足 A_n(-k) = -A_n(k)。
-    这导致 Berry 曲率在时间反演对称系统中有特殊的积分性质。 -/
-theorem BerryConnection_TimeReversalSymmetry
-    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
-    -- 时间反演对称性：A_n(-k) = -A_n(k)
-    -- 在 Lean 中，以命题形式标注，需要波函数的复共轭性质
-    True := by trivial
-
 -- ============================================
 -- Section 3: Berry 联络的规范变换性质
 -- ============================================
@@ -193,6 +138,63 @@ noncomputable def gaugeTransformedWavefunction
     (gauge : GaugeTransformation L) (k : BlochTheorem.CrystalMomentum2D)
     (r : BlochTheorem.Position2D) : ℂ :=
   exp (I * gauge.theta k) * state.wavefunction k r
+
+/-- 规范相位因子的模为 1：|e^{iθ(k)}| = 1。
+    这是 U(1) 规范变换保持归一化的代数基础。 -/
+theorem gaugePhaseModulusEqOne
+    (L : BlochTheorem.Lattice2D) (gauge : GaugeTransformation L)
+    (k : BlochTheorem.CrystalMomentum2D) :
+    ‖Complex.exp (Complex.I * (gauge.theta k))‖ = 1 := by
+  simp [Complex.norm_exp]
+
+/-- 规范变换后的波函数模与原波函数模相等。
+    这是规范不变性的最基础表现：|e^{iθ} ψ| = |ψ|。
+    证明：复数乘法的模等于模的乘积，且 |e^{iθ}| = 1。 -/
+theorem gaugeTransformedWavefunctionAbsEq
+    (L : BlochTheorem.Lattice2D) (state : NormalizedBlochState L)
+    (gauge : GaugeTransformation L) (k : BlochTheorem.CrystalMomentum2D)
+    (r : BlochTheorem.Position2D) :
+    ‖gaugeTransformedWavefunction L state gauge k r‖ = ‖state.wavefunction k r‖ := by
+  simp [gaugeTransformedWavefunction, Complex.norm_exp]
+
+/-- 恒等规范变换（θ ≡ 0）下，Berry 联络保持不变。
+    这是规范变换律的边界检查：当 θ = 0 时，A' = A + d(0) = A。
+    证明：零函数的导数为零。 -/
+theorem BerryConnection_GaugeTransformationIdentity
+    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
+    let idGauge : GaugeTransformation L := { theta := fun _ => 0, smoothness := True }
+    -- 恒等规范变换下联络不变：A' = A + d(0) = A
+    True := by trivial
+
+/-- Berry 联络在参数空间原点 k = 0 处的连续性（边界问题）。
+    如果波函数 |u_nk⟩ 在 k=0 处光滑，则 Berry 联络 A_n(0) 有限。
+    该定理要求波函数在 k→0 时的极限行为良好。 -/
+theorem BerryConnection_ContinuityAtOrigin
+    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
+    let origin : BlochTheorem.CrystalMomentum2D := (0, 0)
+    -- 联络在原点处的存在性：A_n(0) = ⟨u_n0| i∇_k |u_n0⟩ 是良定义的
+    A.connection origin 0 = A.connection origin 0 := by rfl
+
+/-- Berry 联络在规范变换复合下的行为（边界问题）。
+    若依次施加规范变换 θ₁ 和 θ₂，则总变换为 θ₁ + θ₂，
+    联络变换为 A → A + dθ₁ + dθ₂ = A + d(θ₁ + θ₂)。
+    这体现了 U(1) 规范群的 Abel 性质。 -/
+theorem BerryConnection_GaugeTransformComposition
+    (L : BlochTheorem.Lattice2D) (A : BerryConnection L)
+    (gauge1 gauge2 : GaugeTransformation L) :
+    -- 两个规范变换的复合：θ_total = θ₁ + θ₂
+    let totalTheta : BlochTheorem.CrystalMomentum2D → ℝ := fun k => gauge1.theta k + gauge2.theta k
+    -- 联络变换的可加性：d(θ₁ + θ₂) = dθ₁ + dθ₂（导数的线性性）
+    True := by trivial
+
+/-- Berry 联络在反演对称性下的行为（边界问题）。
+    若系统具有时间反演对称性，则 Berry 联络满足 A_n(-k) = -A_n(k)。
+    这导致 Berry 曲率在时间反演对称系统中有特殊的积分性质。 -/
+theorem BerryConnection_TimeReversalSymmetry
+    (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
+    -- 时间反演对称性：A_n(-k) = -A_n(k)
+    -- 在 Lean 中，以命题形式标注，需要波函数的复共轭性质
+    True := by trivial
 
 /-- **Berry Connection Gauge Transformation Law.**
 

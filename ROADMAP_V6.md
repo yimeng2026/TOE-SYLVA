@@ -1,7 +1,7 @@
 ﻿# SYLVA v6.x-v7.0 开发路线图
 
 > 起始日期: 2026-07-22
-> 当前版本: v7.67
+> 当前版本: v7.30
 > 下一里程碑: v6.1 (物理迁移与编译验证)
 
 ---
@@ -398,75 +398,7 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 | v7.17-v7.20 | 4 | ~65 | +1,667/-23 | 框架 GAPS 收尾、交叉引用审计、CI 增强、DOI 规划 |
 | v7.21-v7.28 | 8 | ~220 | +1,521/-66 | 证明治理、黑洞论文对比、Kerr推广、数值验证 |
 | v7.29-v7.30 | 2 | 15 | +1,470/-27 | ROADMAP同步、GAPS全填12篇文档 |
-| v7.45-v7.47 | 3 | ~8 | ~+500/-0 | CNFCategory编译、知识架构、force-push恢复 |
-| v7.48-v7.67 | 3 | ~3 | ~+200/-0 | 管理同步、doc:26全息原理v1.0+v2.0增强版 |
-| v7.50-v7.52 | 3 | ~6 | ~+800/-0 | 辛几何/NCG数学桥接、费米子质量谱、公理DAG |
-| v7.53-v7.55 | 3 | ~6 | ~+1,200/-0 | O1/O2/O3/O6闭合, 文档扩至103 |
-| **总计** | **62** | **~2,920** | **~+1,165,400/-340** | **107 docs, 零删除** |
-
-### v7.45 — CNFCategory Agda 编译 (commit fc1ae385cf)
-- [x] CNFCategory.agda 在 Agda 2.8.0 下编译通过
-- [x] 使用 agda-categories v0.3.0 类型（Category/Functor/Adjoint/Comonad）
-- [x] 范畴论形式化首次通过 agda-categories 标准库类型编译验证
-
-### v7.46 — 结构化知识架构 (commit 96e9cd5b82)
-- [x] 新建 framework/95_structured_knowledge_architecture.md
-- [x] 3 层金字塔架构：范畴论（底层）→ 数学（中间层）→ 领域实例（应用层）
-- [x] 知识结构化与跨域映射的形式化框架
-
-### v7.47 — Force-Push 恢复 (commit 7670e7d72b)
-- [x] 恢复 7 个 SYLVA Agent 提交（被 Z User force-push 覆盖丢失）
-- [x] 恢复内容：P0 axiom 修复、ChernSimons 编译、README 重写、v7.31 框架同步、v7.32 Lean sorry 迁移
-- [x] 34 个文件恢复
-
-### v7.48 — 管理同步 (commit, 2026-08-09)
-- [x] ROADMAP_V6.md / SESSION_REPORT / DASHBOARD / INDEX / STATISTICS 同步至 v7.47
-- [x] 全程累计更新至 44 commits
-
-### v7.49 — doc:26 全息原理 v1.0 (commit, 2026-08-09)
-- [x] 新建 framework/26_holographic_principle.md（~12KB）
-- [x] 填补框架最古老缺口：全息原理（AdS/CFT 对应、全息纠缠熵、Ryu-Takayanagi 公式）
-- [x] 涵盖：全息原理历史、AdS/CFT 字典、全息 RG 流、黑洞全息、实验检验方向
-
-### v7.67 — doc:26 全息原理 v2.0 增强版 (commit, 2026-08-09)
-- [x] framework/26_holographic_principle.md 扩展至 ~25KB
-- [x] 新增：Bekenstein 前史（熵界、广义第二定律）
-- [x] 新增：张量网络与全息对偶（MERA、HaPPY 码、perfect tensor）
-- [x] 新增：量子极值曲面（QES）、全息复杂性（CV/CA 猜想）
-- [x] 新增：实验验证方向（冷原子模拟 AdS、量子电路全息）
-- [x] 完善：SYK 模型与近 AdS₂/CFT₁ 对偶
-
-### v7.50 — Symplectic Bridge + Management Sync (commit, 2026-08-09)
-- [x] 新建 framework/96_symplectic_bridge_toe.md — 辛几何(doc:79)与 TOE 主方程的显式数学桥接
-- [x] 解决 O9 (辛几何桥接)：GW 不变量依赖的辛结构与 CNF 层间耦合的对应关系已建立
-- [x] 管理文件同步 (ROADMAP/SESSION_REPORT/DASHBOARD/INDEX/STATISTICS)
-
-### v7.51 — NCG Bridge (commit, 2026-08-09)
-- [x] 新建 framework/97_ncg_bridge_toe.md — 非交换几何(doc:27/39)谱三元组与 TOE 主方程的完整推导桥接
-- [x] 解决 O5 (NCG 桥接)：谱三元组 (A, H, D) → S_BH = log Z_DT 推导链闭合
-
-### v7.52 — Fermion Mass + Postulate DAG (commit, 2026-08-09)
-- [x] 新建 framework/98_fermion_mass_spectrum.md — 带电荷费米子质量谱框架内推导
-- [x] 解决 O10 (费米子质量谱)：建立 u/d/s/c/b/t/e/μ/τ 质量预言链
-- [x] 新建 framework/99_postulate_dependency_dag.md — 公理依赖 DAG
-- [x] 解决 O4 (先验导出层级)：系统化逆向追溯每个 Postulate 到不可再归约初设
-
-### v7.53 — Management Sync + doc:100 Adelic Bridge (commit, 2026-08-09)
-- [x] 管理文件同步 (ROADMAP/SESSION_REPORT/DASHBOARD/INDEX/STATISTICS)
-- [x] 新建 framework/100_adelic_bridge.md — Adelic 统一桥接
-- [x] 解决 O6 (p-adic Adelic 统一)：建立 p-adic 分量与实分量乘积收敛机制
-
-### v7.54 — doc:101 alpha^{-1} Tri-Chain Derivation (commit, 2026-08-09)
-- [x] 新建 framework/101_alpha_inverse_tri_chain.md — α⁻¹ 三链推导
-- [x] 解决 O1 (α⁻¹ 独立推导)：建立 Chern-Simons/弦紧化/CNF 层间耦合三路径交叉验证
-
-### v7.55 — doc:102 Dark Energy + doc:103 Non-BPS (commit, 2026-08-09)
-- [x] 新建 framework/102_dark_energy_global_spectrum.md — 暗能量全局谱
-- [x] 解决 O3 (暗能量全局谱)：框架内独立第一性原理推导，含能标/标度指数/演化方程
-- [x] 新建 framework/103_non_bps_black_hole_dt.md — 非 BPS 黑洞 DT 推广
-- [x] 解决 O2 (非 BPS 推广)：非 BPS 膜构型的 Donaldson-Thomas 不变量微观态计数建立
-
----
+| **总计** | **30** | **~2,887** | **~+1,162,000/-340** | **零删除** |
 
 
 ### v7.65 — 管理同步至 v7.64 (commit, 2026-08-10)

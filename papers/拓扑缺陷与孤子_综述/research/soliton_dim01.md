@@ -23,7 +23,7 @@ Toulouse-Kleman分类方案是有序介质中拓扑缺陷分类的基础理论�
 
 在宇宙学相变中，拓扑缺陷的形成遵循Kibble机制[^kibble-1976]。因果效应只能以光速c传播，因此在时刻t，距离超过d = ct的区域无法相互通信。当对称性破缺相变发生时，不同区域随机选择不同的真空态，拓扑缺陷即形成于这些区域之间的边界。
 
-初始缺陷密度与关联长度ξ相关：ξ ~ (λn_bubble)^{1/3} ~ (λT_*)^{-1}[^maartens-2001]。
+初始缺陷密度与关联长度ξ相关：ξ ~ (λn_bubble)^{1/3} ~ (λT_*)^{-1}[^kibble-1976]。
 
 ## 1.4 缺陷相互作用与动力学
 
@@ -39,12 +39,10 @@ Whitehead乘积描述了π₁与π₂之间的相互作用：当单极子绕向�
 
 [^kleman-1983]: Kléman M. Points, lines and walls: in liquid crystals, magnetic systems and various ordered media[M]. John Wiley & Sons, 1983.
 
-[^alexander-2022]: Alexander G P, et al. The topological classification of defects in ordered media[J]. arXiv:2203.07311, 2022. https://arxiv.org/abs/2203.07311
+[^alexander-2022]: Alexander G P, Kamien R D. Entanglements and Whitehead products: generalizing Kleman's construction to higher-dimensional defects[J]. arXiv:2203.07311, 2022. https://arxiv.org/abs/2203.07311
 
 [^sethna]: Sethna J P. Statistical Mechanics: Entropy, Order Parameters, and Complexity[M]. Oxford University Press, 2006. http://home.ustc.edu.cn/~lxsphys/2021-5-20/SoftMatterPhysicsAnIntroduction.pdf
 
 [^kibble-1976]: Kibble T W B. Topology of cosmic domains and strings[J]. Journal of Physics A, 1976, 9(8): 1387-1398. https://iopscience.iop.org/article/10.1088/0305-4470/9/8/029
-
-[^maartens-2001]: Maartens R, et al. Brane-world cosmology and topological defects[J]. arXiv:hep-ph/0012223, 2001. https://arxiv.org/abs/hep-ph/0012223
 
 [^pieranski-2024]: Pieranski P, Godinho M H. The Toulouse-Kleman homotopic classification of topological defects[J]. Comptes Rendus Physique, 2024. https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.206.pdf

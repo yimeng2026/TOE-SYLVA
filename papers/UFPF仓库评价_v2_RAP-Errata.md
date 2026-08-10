@@ -1,4 +1,4 @@
-# UFPF仓库更新评价（RAP-Errata v0.3）
+﻿# UFPF仓库更新评价（RAP-Errata v0.3）
 
 ## Updated Review of UFPF Repository (RAP-Errata v0.3)
 
@@ -159,3 +159,11 @@ SYLVA框架应学习UFPF的勘误机制，建立自己的文档对齐和版本�
 *评价版本：v2.0 | 评价日期：2026-07-30*
 *基于：RAP-Errata v0.3（用户提供的更新信息）*
 *前次评价：v1.0（2026-07-27，基于v0.1版README）*
+---
+
+## 相关论文 / Related Papers
+
+本文是 TOE-SYLVA 框架内部的评论与回应。主要相关文献：
+- papers/TOE-SYLVA_Master_Academic.md — TOE-SYLVA 主统一理论（英文）
+- papers/AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md — AI辅助研究的失败模式与可验证协议
+- papers/AI_HALLUCINATION_REPORT_FINAL.md — AI幻觉审计报告

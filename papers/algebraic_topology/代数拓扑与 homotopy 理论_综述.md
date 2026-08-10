@@ -327,16 +327,16 @@ $$d_B(D_k(X), D_k(Y)) \leq d_{GH}(X, Y)$$
 50. H. Y. Zhang, "K-theoretic Global Symmetry in String-constructed QFT and T-duality," arXiv:2404.16097 [hep-th] (2024). — 提出弦构造QFT中的广义对称性由扭曲K理论描述，与T-对偶相容。
 51. Z. Xu et al., "The Adams differentials on the classes $h_j^3$," arXiv:2302.11869 [math.AT] (2023). — 利用 motivic 稳定同伦论与合成同伦论证明 Adams 谱序列中 $h_j^3$ 的非平凡微分。
 52. L. Hesselholt, "Dirac geometry II: Coherent cohomology," arXiv:2303.13444 [math.AG] (2023). — 发展 Dirac 叠的凝聚上同调理论，应用于稳定同伦论中 MU 与 $\mathbb{F}_p$ 的 Dirac 叠对应。
-53. Z. Duan et al., "The vanishing of the Tate spectral sequence," arXiv:2204.08600 [math.AT] (2022). — 证明 Tate 谱序列的消失性，导出同伦不动点谱序列中的强水平消失线。
-54. Z. Duan et al., "Equivariant homotopy fixed points of Morava E-theory," arXiv:2209.01830 [math.AT] (2022). — 完全计算 $Q_8$ 等有限群作用下 Morava E-理论的等变同伦不动点。
-55. I. Bobkova et al., "Picard spectral sequence and homotopy fixed points," arXiv:2403.15572 [math.AT] (2024). — 比较 Picard 谱序列与同伦不动点谱序列，推广 Mathew-Stojanoska 比较工具。
+53. Z. Duan et al., "Vanishing lines in chromatic homotopy theory," arXiv:2204.08600 [math.AT] (2022). — 证明 Tate 谱序列的消失性，导出同伦不动点谱序列中的强水平消失线。
+54. Z. Duan et al., "$RO(G)$-graded homotopy fixed point spectral sequence for height $2$ Morava $E$-theory," arXiv:2209.01830 [math.AT] (2022). — 完全计算 $Q_8$ 等有限群作用下 Morava E-理论的等变同伦不动点。
+55. I. Bobkova et al., "Bounding the $K(p-1)$-local exotic Picard group at $p>3$," arXiv:2403.15572 [math.AT] (2024). — 给出 $p>3$ 时 $K(p-1)$-局部反常 Picard 群的界，发展了 Picard 谱序列的计算工具。
 56. J. Treviño-Marroquín, "Semi-coarse Spaces, Homotopy and Homology," arXiv:2210.02569 [math.AT] (2022). — 研究半粗空间的代数拓扑，建立 Vietoris-Rips 同调的同伦不变性定理。
 57. S. B. Smith, "The homotopy theory of function spaces: a survey," arXiv:1009.0804 [math.AT] (2010). — 综述函数空间 $map(X,Y)$ 的同伦理论，包括自等价群与自由环路空间。
-58. W. Lück, "Proper equivariant stable homotopy theory," arXiv:1901.00827 [math.AT] (2019). — 建立 proper 等变稳定同伦论的公理化框架，发表于 Memoirs of the AMS 288 (2023)。
-59. M. Behrens et al., "On the ring of cooperations for 2-primary connective topological modular forms," arXiv:2007.00482 [math.AT] (2020). — 研究 tmf 的 2-初级 cooperations 环结构。
+58. D. Degrijse et al., "Proper equivariant stable homotopy theory," arXiv:1908.00779 [math.AT] (2019). — 建立 proper 等变稳定同伦论的公理化框架，发表于 Memoirs of the AMS 288 (2023)。
+59. M. Behrens et al., "On the ring of cooperations for 2-primary connective topological modular forms," arXiv:1501.01050 [math.AT] (2015). — 研究 tmf 的 2-初级 cooperations 环结构。
 60. A. Hedenlund and J. Rognes, "A multiplicative Tate spectral sequence for compact Lie group actions," arXiv:2411.17441 [math.AT] (2024). — 紧 Lie 群作用下的乘法 Tate 谱序列，发表于 AMS Memoirs 294 (2024)。
 61. D. Kubrak et al., "Derived binomial rings I: Integral Betti cohomology of log schemes," arXiv:2308.01110 [math.AG] (2023). — 导出二项式环与 log 方案的整 Betti 上同调。
-62. T. Bachmann et al., "The Chow t-structure on the $\infty$-category of motivic spectra," arXiv:2207.04291 [math.AG] (2022). —  motivic 谱的 $\infty$-范畴上的 Chow t-结构，发表于 Annals of Mathematics 195 (2022)。
+62. T. Bachmann et al., "The Chow t-structure on the $\infty$-category of motivic spectra," arXiv:2012.02687 [math.AG] (2020). —  motivic 谱的 $\infty$-范畴上的 Chow t-结构，发表于 Annals of Mathematics 195 (2022)。
 63. J. Latschev and A. Oancea, "BV bialgebra structures in Floer theory and string topology," arXiv:2402.16794 [math.SG] (2024). — Floer 理论与弦拓扑中的 BV 双代数结构。
 64. F. Naef and P. Safronov, "Simple homotopy invariance of the loop coproduct," arXiv:2406.19326 [math.AT] (2024). — 环路余积的简单同伦不变性。
 

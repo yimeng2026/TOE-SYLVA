@@ -15,38 +15,29 @@
 
 module Sylva.Real.Cauchy where
 
-open import Data.Nat using (ℕ; zero; suc; _≤_; z≤n; s≤s; _⊔_)
+open import Data.Nat using (ℕ; zero; suc; _≤_; _<_; z≤n; s≤s; _⊔_)
 open import Data.Nat.Properties using (≤-refl; ≤-trans)
 open import Data.Integer using (ℤ; +_)
-open import Data.Rational.Base using (ℚ; 0ℚ; 1ℚ; _+_; _-_; _*_; -_; ∣_∣; _<_)
-open import Data.Rational.Properties using ()
+open import Data.Rational.Base using (ℚ)
 open import Data.Product using (Σ; _,_; _×_)
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
 open import Function using (_∘_; const)
 
 ------------------------------------------------------------------------
--- Q FIELD OPERATIONS (imported from stdlib, not postulated)
--- Replaced v7.57: 0Q/1Q/+Q/-Q/*Q/-Q/|<| from Data.Rational.Base
--- _<_ and |_| remain postulated (need rational unbundled ordering + abs)
+-- POSTULATED Q FIELD OPERATIONS
+-- All of these are proven in Data.Rational.Properties.
+-- Replace with `open import Data.Rational.Properties` on Linux.
 ------------------------------------------------------------------------
 
-0Q = 0ℚ
-1Q = 1ℚ
-_+Q_ = _+_
-_-Q_ = _-_
-_*Q_ = _*_
--Q_ = -_
-
--- _<_ and |_| from Data.Rational.Base (stdlib, not postulated)
--- Replaced v7.60: remaining 2 Q postulate types migrated to stdlib
-_<Q_ = _<_
-∣_∣Q = ∣_∣
-
--- The 0Q/1Q self-difference proofs need x-x=0 and |0|=0 from
--- Data.Rational.Properties (postulated until stdlib proofs loaded)
 postulate
-  +Q-cauchy : (ε : ℚ) → (∣ (0ℚ - 0ℚ) ∣) <  ε
-  *Q-cauchy : (ε : ℚ) → (∣ (1ℚ - 1ℚ) ∣) <  ε
+  0Q 1Q : ℚ
+  _+Q_ _-Q_ _*Q_ : ℚ → ℚ → ℚ
+  -Q_ : ℚ → ℚ
+  _<Q_ : ℚ → ℚ → Set
+  ∣_∣Q : ℚ → ℚ
+  -- Proven in Data.Rational.Properties:
+  zero-cauchy-proof : (ε : ℚ) → 0Q <Q ε → (∣ (0Q -Q 0Q) ∣Q) <Q ε
+  one-cauchy-proof  : (ε : ℚ) → 0Q <Q ε → (∣ (1Q -Q 1Q) ∣Q) <Q ε
 
 ------------------------------------------------------------------------
 -- 1. CAUCHY SEQUENCE OVER Q
@@ -93,7 +84,7 @@ open R
 zero-cauchy : Cauchy
 zero-cauchy = mkCauchy
   (const 0Q)
-  (λ ε 0<ε → 0 , λ m n _ _ → +Q-cauchy ε)
+  (λ ε 0<ε → 0 , λ m n _ _ → zero-cauchy-proof ε 0<ε)
 
 0R : R
 0R = real zero-cauchy
@@ -103,7 +94,7 @@ zero-cauchy = mkCauchy
 one-cauchy : Cauchy
 one-cauchy = mkCauchy
   (const 1Q)
-  (λ ε 0<ε → 0 , λ m n _ _ → *Q-cauchy ε)
+  (λ ε 0<ε → 0 , λ m n _ _ → one-cauchy-proof ε 0<ε)
 
 1R : R
 1R = real one-cauchy

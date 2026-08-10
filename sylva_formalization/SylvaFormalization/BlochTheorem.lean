@@ -62,71 +62,6 @@ def LatticeSite (L : Lattice2D) : Type := ℤ × ℤ
 noncomputable def LatticePosition (L : Lattice2D) (site : LatticeSite L) : ℝ × ℝ :=
   (site.1 * L.a1.1 + site.2 * L.a2.1, site.1 * L.a1.2 + site.2 * L.a2.2)
 
-/-- 晶格平移算子的交换性（简单性质）。
-    对任意两个格点 R₁, R₂，先平移 R₁ 再平移 R₂ 等价于先平移 R₂ 再平移 R₁。
-    这对应于 Abel 平移群的结构。 -/
-theorem LatticeTranslation_Commutativity
-    (L : Lattice2D) (r : Position2D) (site1 site2 : LatticeSite L) :
-    let R1 := LatticePosition L site1
-    let R2 := LatticePosition L site2
-    let r1 := (r.1 + R1.1 + R2.1, r.2 + R1.2 + R2.2)
-    let r2 := (r.1 + R2.1 + R1.1, r.2 + R2.2 + R1.2)
-    r1 = r2 := by
-  simp only [Prod.ext_iff]
-  ring
-
-/-- 零格点 (0,0) 的平移是恒等操作（简单性质）。
-    晶格平移群中，零元对应不移动。 -/
-theorem LatticePosition_zeroIsIdentity
-    (L : Lattice2D) (r : Position2D) :
-    let zeroSite : LatticeSite L := (0, 0)
-    let R := LatticePosition L zeroSite
-    (r.1 + R.1, r.2 + R.2) = (r.1, r.2) := by
-  simp only [LatticePosition, zeroSite, mul_zero, add_zero, Prod.mk.injEq, and_true]
-
-/-- Bloch 波函数在零动量 k = 0 时的行为（简单性质）。
-    当 k = 0 时，平面波因子 e^{ik·r} = 1，Bloch 波函数退化为纯周期函数 u_n0(r)。 -/
-theorem BlochWavefunction_zeroMomentum
-    (L : Lattice2D) (u : PeriodicBlochFunction L) (r : Position2D) :
-    let zeroK : CrystalMomentum2D := (0, 0)
-    BlochWavefunction L u zeroK r = u.u r := by
-  simp [BlochWavefunction, zeroK, Complex.exp_zero, one_mul]
-
-/-- Bloch 定理在周期势为零时的退化为自由粒子（边界问题）。
-    当 V(r) ≡ 0 时，薛定谔方程的解是平面波 ψ_k(r) = e^{ik·r}，
-    对应 u_nk(r) = 1（常数），且 E_n(k) = |k|²/(2m)。
-    此定理检查 Bloch 框架在自由粒子极限下的自洽性。 -/
-theorem BlochTheorem_FreeParticleLimit
-    (L : Lattice2D) (u : PeriodicBlochFunction L) (k : CrystalMomentum2D) (r : Position2D) :
-    -- 当 V = 0 时，周期函数 u_nk 退化为常数（可规范选择为 1）
-    -- 平面波 ψ = e^{ik·r} 是自由粒子薛定谔方程的解
-    let potentialFree : Position2D → ℝ := fun _ => 0
-    -- 此时 Bloch 波函数就是纯平面波
-    True := by trivial
-
-/-- 能带在布里渊区边界处的简并（边界问题）。
-    在布里渊区边界 k = ±π/a 处，周期性边界条件导致
-    k 和 k + G 等价，可能产生能带交叉或简并。
-    这是能带结构中普遍存在的现象（如石墨烯的狄拉克锥）。 -/
-theorem BrillouinZone_BoundaryDegeneracy
-    (L : Lattice2D) (BZ : BrillouinZone2D L) (E : BandEnergy L) :
-    -- 在布里渊区边界 k_x = π/a 处，k 与 k - G 等价
-    -- 能带 E_n(k) = E_n(k + G)，可能导致能带交叉
-    let boundaryK : CrystalMomentum2D := (Real.pi / BZ.a, 0)
-    -- 简并条件：E_n(boundaryK) = E_m(boundaryK) 对某些 n ≠ m
-    True := by trivial
-
-/-- 布里渊区边界点的等价性（边界问题）。
-    在矩形晶格中，BZ 的对边是等价的：k_x = -π/a ~ k_x = π/a，
-    k_y = -π/a ~ k_y = π/a。这导致环面 T² 拓扑。 -/
-theorem BrillouinZone_BoundaryIdentification
-    (L : Lattice2D) (BZ : BrillouinZone2D L) :
-    -- 边界点的等价性：(-π/a, k_y) ~ (π/a, k_y)
-    let leftBoundary  : CrystalMomentum2D := (-Real.pi / BZ.a, 0)
-    let rightBoundary : CrystalMomentum2D := ( Real.pi / BZ.a, 0)
-    -- 在环面拓扑中，这两个点是同一回事
-    True := by trivial
-
 -- ============================================
 -- Section 2: Bloch 波函数
 -- ============================================
@@ -164,6 +99,48 @@ noncomputable def BlochWavefunction (L : Lattice2D) (u : PeriodicBlochFunction L
   let phase : ℂ := exp (I * (k.1 * r.1 + k.2 * r.2))
   let modulated : ℂ := u.u r
   phase * modulated
+
+/-- 晶格平移算子的交换性（简单性质）。
+    对任意两个格点 R₁, R₂，先平移 R₁ 再平移 R₂ 等价于先平移 R₂ 再平移 R₁。
+    这对应于 Abel 平移群的结构。 -/
+theorem LatticeTranslation_Commutativity
+    (L : Lattice2D) (r : Position2D) (site1 site2 : LatticeSite L) :
+    let R1 := LatticePosition L site1
+    let R2 := LatticePosition L site2
+    let r1 := (r.1 + R1.1 + R2.1, r.2 + R1.2 + R2.2)
+    let r2 := (r.1 + R2.1 + R1.1, r.2 + R2.2 + R1.2)
+    r1 = r2 := by
+  simp only [Prod.ext_iff]
+  constructor <;> ring
+
+/-- 零格点 (0,0) 的平移是恒等操作（简单性质）。
+    晶格平移群中，零元对应不移动。 -/
+theorem LatticePosition_zeroIsIdentity
+    (L : Lattice2D) (r : Position2D) :
+    let zeroSite : LatticeSite L := (0, 0)
+    let R := LatticePosition L zeroSite
+    (r.1 + R.1, r.2 + R.2) = (r.1, r.2) := by
+  simp only [LatticePosition, Prod.mk.injEq, Int.cast_zero, zero_mul, add_zero]
+
+/-- Bloch 波函数在零动量 k = 0 时的行为（简单性质）。
+    当 k = 0 时，平面波因子 e^{ik·r} = 1，Bloch 波函数退化为纯周期函数 u_n0(r)。 -/
+theorem BlochWavefunction_zeroMomentum
+    (L : Lattice2D) (u : PeriodicBlochFunction L) (r : Position2D) :
+    let zeroK : CrystalMomentum2D := (0, 0)
+    BlochWavefunction L u zeroK r = u.u r := by
+  simp [BlochWavefunction]
+
+/-- Bloch 定理在周期势为零时的退化为自由粒子（边界问题）。
+    当 V(r) ≡ 0 时，薛定谔方程的解是平面波 ψ_k(r) = e^{ik·r}，
+    对应 u_nk(r) = 1（常数），且 E_n(k) = |k|²/(2m)。
+    此定理检查 Bloch 框架在自由粒子极限下的自洽性。 -/
+theorem BlochTheorem_FreeParticleLimit
+    (L : Lattice2D) (u : PeriodicBlochFunction L) (k : CrystalMomentum2D) (r : Position2D) :
+    -- 当 V = 0 时，周期函数 u_nk 退化为常数（可规范选择为 1）
+    -- 平面波 ψ = e^{ik·r} 是自由粒子薛定谔方程的解
+    let potentialFree : Position2D → ℝ := fun _ => 0
+    -- 此时 Bloch 波函数就是纯平面波
+    True := by trivial
 
 /-- Bloch 波函数在晶格平移下的行为：
     ψ_nk(r + R) = e^{ik·R} ψ_nk(r)
@@ -297,6 +274,29 @@ structure BrillouinZone2D (L : Lattice2D) where
     k ∈ [-π/a, π/a] × [-π/a, π/a] -/
 def inBrillouinZone (L : Lattice2D) (BZ : BrillouinZone2D L) (k : CrystalMomentum2D) : Prop :=
   k.1 ∈ BZ.kxRange ∧ k.2 ∈ BZ.kyRange
+
+/-- 能带在布里渊区边界处的简并（边界问题）。
+    在布里渊区边界 k = ±π/a 处，周期性边界条件导致
+    k 和 k + G 等价，可能产生能带交叉或简并。
+    这是能带结构中普遍存在的现象（如石墨烯的狄拉克锥）。 -/
+theorem BrillouinZone_BoundaryDegeneracy
+    (L : Lattice2D) (BZ : BrillouinZone2D L) (E : BandEnergy L) :
+    -- 在布里渊区边界 k_x = π/a 处，k 与 k - G 等价
+    -- 能带 E_n(k) = E_n(k + G)，可能导致能带交叉
+    let boundaryK : CrystalMomentum2D := (Real.pi / BZ.a, 0)
+    -- 简并条件：E_n(boundaryK) = E_m(boundaryK) 对某些 n ≠ m
+    True := by trivial
+
+/-- 布里渊区边界点的等价性（边界问题）。
+    在矩形晶格中，BZ 的对边是等价的：k_x = -π/a ~ k_x = π/a，
+    k_y = -π/a ~ k_y = π/a。这导致环面 T² 拓扑。 -/
+theorem BrillouinZone_BoundaryIdentification
+    (L : Lattice2D) (BZ : BrillouinZone2D L) :
+    -- 边界点的等价性：(-π/a, k_y) ~ (π/a, k_y)
+    let leftBoundary  : CrystalMomentum2D := (-Real.pi / BZ.a, 0)
+    let rightBoundary : CrystalMomentum2D := ( Real.pi / BZ.a, 0)
+    -- 在环面拓扑中，这两个点是同一回事
+    True := by trivial
 
 /-- 布里渊区作为环面 T² 的拓扑结构：
     BZ ≅ T² = S¹ × S¹，因为：

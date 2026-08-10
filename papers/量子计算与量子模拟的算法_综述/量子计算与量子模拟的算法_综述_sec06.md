@@ -12,7 +12,7 @@ TOE-SYLVA（Theory of Everything - Synthetic Unity of Laws, Variables and Axioms
 
 量子机器学习算法与SYLVA_StatisticalLearning和SYLVA_MachineLearning模块构成双向联系。一方面，统计学习理论中的Rademacher复杂度、VC维及泛化界限等概念被拓展至量子假设空间，用于分析QNN和QSVM的样本复杂度[^biamonte-2017]。另一方面，量子算法为经典机器学习提供了新的计算工具：量子核方法可高效计算高维特征空间的内积；量子优化算法可加速训练过程中的参数更新。这种交叉融合催生了量子增强学习、量子强化学习等新兴方向。
 
-NISQ时代的错误缓解与量子纠错研究直接对应SYLVA_QEC（Quantum Error Correction）和SYLVA_ControlTheory模块。表面码（surface code）等拓扑纠错编码的理论分析依赖于低维拓扑的数学结构；动态解耦技术源于量子控制理论中的平均哈密顿量方法；而错误缓解中的准概率分解与量子信道的准概率表示具有深刻的数学同源性。此外，量子反馈控制、最优控制理论及量子滤波等技术在提高NISQ设备性能方面发挥着日益重要的作用[^doucet-2001]。
+NISQ时代的错误缓解与量子纠错研究直接对应SYLVA_QEC（Quantum Error Correction）和SYLVA_ControlTheory模块。表面码（surface code）等拓扑纠错编码的理论分析依赖于低维拓扑的数学结构；动态解耦技术源于量子控制理论中的平均哈密顿量方法；而错误缓解中的准概率分解与量子信道的准概率表示具有深刻的数学同源性。此外，量子反馈控制、最优控制理论及量子滤波等技术在提高NISQ设备性能方面发挥着日益重要的作用[^wiseman-2010]。
 
 Shor算法对密码学的冲击和Grover算法对对称密码的影响，使量子计算与SYLVA_NumberTheory和SYLVA_Cryptography模块产生了深刻的交叉。Shor算法将整数分解和离散对数问题约化至周期寻找，而周期寻找的有效性依赖于数论中连分数展开和模运算的代数结构。在密码学层面，量子安全密码（后量子密码）的研究——包括基于格的密码、编码密码、多变量密码及哈希签名——直接回应了量子算法对现有公钥体系的威胁[^bernstein-2017]。Grover算法的二次加速意味着对称密钥长度需要加倍以维持同等安全级别，这一结论已纳入NIST后量子密码标准的考量范围。
 
@@ -39,5 +39,7 @@ Shor算法对密码学的冲击和Grover算法对对称密码的影响，使量�
 
 [^toe-sylva]: TOE-SYLVA Research Group. Theory of Everything - Synthetic Unity of Laws, Variables and Axioms: A Unified Framework for Physical and Mathematical Sciences. *TOE-SYLVA Technical Report*, 2024.
 [^cirac-2012]: J. I. Cirac and P. Zoller. Goals and opportunities in quantum simulation. *Nature Physics*, 8(4):264-266, 2012. https://doi.org/10.1038/nphys2275
-[^doucet-2001]: A. Doucet, N. de Freitas, and N. Gordon. *Sequential Monte Carlo Methods in Practice*. Springer, 2001. https://doi.org/10.1007/978-1-4757-3437-9
+[^wiseman-2010]: H. M. Wiseman and G. J. Milburn. *Quantum Measurement and Control*. Cambridge University Press, 2010. https://doi.org/10.1017/CBO9780511813948
 [^bernstein-2017]: D. J. Bernstein and T. Lange. Post-quantum cryptography. *Nature*, 549(7671):188-194, 2017. https://doi.org/10.1038/nature23461
+[^nielsen-2010]: M. A. Nielsen and I. L. Chuang. *Quantum Computation and Quantum Information*. Cambridge University Press, 10th anniversary edition, 2010. https://doi.org/10.1017/CBO9780511976667
+[^biamonte-2017]: J. Biamonte et al. Quantum machine learning. *Nature*, 549(7671):195-202, 2017. https://doi.org/10.1038/nature23474

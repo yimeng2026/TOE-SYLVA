@@ -105,8 +105,6 @@ AI_HALLUCINATION_REPORT_FINAL.md ← AI幻觉最终报告
 | `关于Majorana2的回复.md` | 关于 Majorana 2 的具体回复 | CN | — | **REFERENCE** |
 | `UFPF仓库评价.md` | UFPF 仓库评价 | CN | — | **REFERENCE** |
 | `UFPF仓库评价_v2_RAP-Errata.md` | UFPF 仓库评价 v2（含 RAP 勘误） | CN | — | **REFERENCE** |
-| `REPLY_UFPF_RAP_Errata_v024_20260808.md` | 对 UFPF RAP-Errata v0.24 回复 | CN | — | **REFERENCE** (v7.41) |
-| `REPLY_UFPF_CATEGORY_VS_CAUSALITY_20260808.md` | 范畴论 vs 因果 回复 | CN | — | **REFERENCE** (v7.43) |
 
 ---
 
@@ -338,21 +336,15 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 
 | 类别 | 数量 |
 |------|------|
-| CANONICAL 论文 | 18 |
+| CANONICAL 论文 | 8 |
 | DRAFT 论文 | 7 |
 | DEPRECATED 论文 | 2 |
-| REFERENCE 文档 | 13 |
-| **Markdown 文件合计** | **40** |
-| framework/ 桥接文档 | 10 (doc:94-103) |
-| 验证脚本 | 3 |
-| 元文档 | 3 (BLIND_REGISTRY, OPEN_PROBLEMS, ERRATA) |
+| REFERENCE 文档 | 7 |
+| **Markdown 文件合计** | **24** |
 | 子目录（综述类） | ~100+ |
 | 子目录（投稿类） | 12 |
 | 子目录（核心领域类） | ~20 |
 | 子目录（其他） | 5 |
-| **Git 提交总数** | **54** |
-| **仓库文件总数** | **~2,919** |
-| **编号文档状态** | **103 编号, 74 done** |
 
 ---
 
@@ -470,79 +462,3 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 > - 综述类（7）：`AdS_CFT与强耦合物理_综述/README.md`、`Donaldson-Thomas与Gopakumar-Vafa不变量_综述/README.md`、`Kontsevich积分与Witten猜想_综述/README.md`、`Schubert演算与旗流形计数_综述/README.md`、`热带几何与组合计数_综述/README.md`、`量子计算复杂性理论_综述/README.md`、`镜像对称与Picard-Fuchs方程_综述/README.md`
 >
 > **每个 README 均包含**：当前内容说明、⚠️ 占位符/待补通知、规划扩展内容提纲、相关目录链接、状态标注。
-
----
-
-## 十一、framework/ 结构化知识架构 (v7.60)
-
-> 本系列位于 `framework/` 目录，构成 TOE-SYLVA 的结构化知识体系。
-> 其中 doc:96-103 为"桥接文档"，将外部数学/物理框架桥接到 TOE-SYLVA CNF 体系中。
-
-### 架构基础 (doc:94-95)
-
-| 文件名 | 标题/主题 | 语言 | 大小 | 状态 |
-|--------|----------|------|------|------|
-| `framework/94_cnf_category_theory.md` | CNF 范畴论结构 | EN/CN | ~15 KB | **CANONICAL** |
-| `framework/95_structured_knowledge_architecture.md` | 三层结构化知识架构 | CN | ~14 KB | **CANONICAL** |
-
-### 桥接文档 (doc:96-103)
-
-| 文件名 | 标题/主题 | 语言 | 大小 | OPEN_PROBLEM | 状态 |
-|--------|----------|------|------|--------------|------|
-| `framework/96_symplectic_geometry_to_toe_bridge.md` | 辛几何→TOE 桥接 | CN | ~17 KB | O9 (辛几何与量子化桥接) | **CANONICAL** |
-| `framework/97_noncommutative_geometry_to_toe_bridge.md` | 非交换几何→TOE 桥接 | CN | ~19 KB | O5 (非交换几何的物理实现) | **CANONICAL** |
-| `framework/98_fermion_mass_spectrum.md` | 费米子质量谱 CNF 推导 | EN/CN | ~13 KB | O10 (费米子质量层级) | **CANONICAL** |
-| `framework/99_postulate_dependency_dag.md` | 公理依赖 DAG | EN/CN | ~10 KB | O4 (公理体系最小化) | **CANONICAL** |
-| `framework/100_padic_adelic_to_toe_bridge.md` | p-adic Adelic 统一桥接 | EN/CN | ~16 KB | O6 (p-adic/Adelic 统一) | **CANONICAL** |
-| `framework/101_fine_structure_constant_derivation.md` | α⁻¹ 三链独立推导 | EN/CN | ~14 KB | O1 (精细结构常数α) | **CANONICAL** |
-| `framework/102_dark_energy_toe_bridge.md` | 暗能量全局谱 TOE 桥接 | EN/CN | ~11 KB | O3 (暗能量本质) | **CANONICAL** |
-| `framework/103_non_bps_black_hole_generalization.md` | 非 BPS 黑洞推广 | EN/CN | ~10 KB | O2 (黑洞微观态计数) | **CANONICAL** |
-
-### framework/ 交叉引用
-
-```
-framework/94_cnf_category_theory.md ← CNF 范畴论基础
-├── framework/95_structured_knowledge_architecture.md ← 三层架构
-├── framework/99_postulate_dependency_dag.md ← 公理 DAG (O4)
-├── framework/101_fine_structure_constant_derivation.md ← α⁻¹ 推导 (O1)
-├── framework/98_fermion_mass_spectrum.md ← 费米子谱 (O10)
-├── framework/96_symplectic_geometry_to_toe_bridge.md ← 辛几何桥接 (O9)
-├── framework/97_noncommutative_geometry_to_toe_bridge.md ← NCG 桥接 (O5)
-├── framework/100_padic_adelic_to_toe_bridge.md ← p-adic 桥接 (O6)
-├── framework/102_dark_energy_toe_bridge.md ← 暗能量桥接 (O3)
-└── framework/103_non_bps_black_hole_generalization.md ← 非 BPS 黑洞 (O2)
-```
-
----
-
-## 十二、元文档与验证脚本 (v7.60)
-
-| 文件名 | 标题/主题 | 语言 | 大小 | 状态 |
-|--------|----------|------|------|------|
-| `BLIND_REGISTRY.md` | 盲登记预言注册表 | EN/CN | ~8 KB | **REFERENCE** (v7.42) |
-| `OPEN_PROBLEMS.md` | 十大开放问题 | EN/CN | ~10 KB | **REFERENCE** (v7.42) |
-| `ERRATA.md` | 勘误表 | EN/CN | ~6 KB | **REFERENCE** (v7.42) |
-| `verify_black_hole_cnf.py` | 黑洞 CNF 验证脚本 (20/20 PASS) | EN | ~15 KB | **REFERENCE** |
-| `verify_kerr_cnf.py` | Kerr CNF 验证脚本 (3/3 PASS) | EN | ~8 KB | **REFERENCE** |
-| `verify_condensed_matter_cnf.py` | 凝聚态 CNF 验证脚本 (32/32 PASS) | EN | ~18 KB | **REFERENCE** |
-
----
-
-## 十三、版本历史
-
-| 版本 | 日期 | 变更 |
-|------|------|------|
-| v7.0 | 2026-08-01 | 初始创建 |
-| v7.8 | 2026-08-02 | 近空目录审计 + README |
-| v7.17 | 2026-08-04 | 重复目录交叉引用 |
-| v7.41 | 2026-08-07 | UFPF RAP-Errata 回复 |
-| v7.42 | 2026-08-07 | BLIND_REGISTRY, OPEN_PROBLEMS, ERRATA |
-| v7.43 | 2026-08-08 | UFPF 范畴论 vs 因果 回复 |
-| v7.59 | 2026-08-09 | 统计数字更新：54 commits, ~2,919 files, 103 docs, 74 done |
-| **v7.60** | **2026-08-10** | **bridge docs 96-103, framework 94-95, verify scripts, meta docs 索引** |
-
----
-
-*本索引随 papers/ 目录同步更新。若发现遗漏或不一致，请提交 issue。*
-
-*最后更新: 2026-08-10 | 仓库版本: v7.60 | 总提交数: 54*

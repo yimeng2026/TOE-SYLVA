@@ -1,0 +1,130 @@
+{
+ "panelId": "eb7fa839-e9ab-415c-8311-232841c2ee76",
+ "key": "11_bloch",
+ "create": {
+  "success": true,
+  "data": {
+   "id": "eb7fa839-e9ab-415c-8311-232841c2ee76",
+   "name": "SYLVA模块强化评议组·布洛赫定理",
+   "description": "TOE-SYLVA 模块强化第二批评议组：SYLVA模块强化评议组·布洛赫定理",
+   "domain": "condensed_matter_physics",
+   "status": "active",
+   "strategy": "{\"mode\":\"parallel\"}",
+   "createdAt": "2026-08-06T08:27:29.127Z",
+   "updatedAt": "2026-08-06T08:27:29.127Z",
+   "members": []
+  }
+ },
+ "members": [
+  {
+   "success": true,
+   "data": {
+    "id": "93a65f6d-aea0-4e00-8aa6-b20a8eabfba9",
+    "panelId": "eb7fa839-e9ab-415c-8311-232841c2ee76",
+    "role": "chair",
+    "specialty": "condensed_matter_physics",
+    "weight": 1,
+    "systemPrompt": "你是凝聚态物理专家，精通固体物理、能带理论、Bloch 定理与晶格周期性体系，同时了解 Lean 4 形式化。评估物理模块的公理化是否诚实、定义是否有物理内容。严格基于给定材料，不要虚构模块中不存在的内容。回答控制在 1500 字以内，直接给评议正文。",
+    "model": "kimi-for-coding",
+    "createdAt": "2026-08-06T08:27:29.933Z"
+   },
+   "templateUsed": null
+  },
+  {
+   "success": true,
+   "data": {
+    "id": "a6de514c-4bed-4456-99e9-c9edd733757f",
+    "panelId": "eb7fa839-e9ab-415c-8311-232841c2ee76",
+    "role": "reviewer",
+    "specialty": "formal_verification",
+    "weight": 1,
+    "systemPrompt": "你是 Lean 4 形式化验证专家，精通依赖类型理论、Mathlib 库与证明工程。评估模块中公理/占位定义/平凡定理的认识论债务，给出具体可操作的清偿路径与工作量估计。严格基于给定材料，不要虚构模块中不存在的内容。回答控制在 1500 字以内，直接给评议正文。",
+    "model": "kimi-for-coding",
+    "createdAt": "2026-08-06T08:27:30.045Z"
+   },
+   "templateUsed": null
+  }
+ ],
+ "execute": {
+  "success": true,
+  "data": {
+   "mode": "parallel",
+   "topic": "TOE-SYLVA 仓库 Lean 4 模块 BlochTheorem.lean（375 行，import Mathlib，TKNN B 方案 L1 层）的评议与加强研讨。真实声明清单（逐行核对）：第35行 structure Lattice2D（含线性无关约束 linIndep）；第47行 ReciprocalLattice2D（orthogonality : Prop 未填充）；第58/62行 LatticeSite/LatticePosition；第80行 structure PeriodicBlochFunction（含真实周期性约束 periodicity）；第97行 BlochWavefunction := exp(i k·r) * u（真实定义）；第106/118/127行 theorem LatticeTranslation_Commutativity/LatticePosition_zeroIsIdentity/BlochWavefunction_zeroMomentum（真定理，ring/simp 级）；第137行 theorem BlochTheorem_FreeParticleLimit（证明体 True := by trivial，名不副实）；第160行 axiom BlochTheorem_TranslationBehavior（ψ(r+R)=e^{ik·R}ψ(r)，docstring 自承 2-5 小时可证：展开 exp(i k·(r+R)) 并用 periodicity）；第179行 structure Hamiltonian2D（含 potentialPeriodic 真实约束）；第200/211行 BandEnergy/BandEigenstate（periodicityInK/normalization 均为未填充 Prop）；第235行 axiom SchrodingerEquation_BlochBasis（陈述体就是 True，docstring 估 200-300h 需 Sobolev/自伴算子谱定理）；第260行 structure BrillouinZone2D（torusTopology : Prop 未填充）；第275行 def inBrillouinZone（真实集合成员判定）；第282/293行 theorem BrillouinZone_BoundaryDegeneracy/BoundaryIdentification（均为 True := by trivial）；第316行 axiom BrillouinZone_IsTorus（陈述体 True，docstring 估 50-100h）；第327/342行 Occupation/BandInsulator（bandGap/insulating 未填充 Prop）。全模块 3 条 axiom、0 个 sorry。该模块刚经历编译修复（commit b029baa8d8：6 个前向引用定理按依赖序重排，Prod/let-binding/simp 参数修复，20 错→0）。请评议：(1) BlochTheorem_TranslationBehavior 是全模块唯一一条'看起来可立即清偿'的公理——exp 加法公式 + periodicity 代入，评估该估计是否现实、在 Mathlib 中证明 exp(I*(a+b)) = exp(I*a)*exp(I*b) 再约去的确切路径；(2) SchrodingerEquation_BlochBasis 与 BrillouinZone_IsTorus 两条公理的陈述体都是字面量 True——它们还算不算'公理'？这种 True-axiom 与占位 theorem（True := by trivial）在认识论上有何区别；(3) 三个 trivial 定理（FreeParticleLimit、BoundaryDegeneracy、BoundaryIdentification）顶着物理名字，应改名、删除还是充实；(4) 全模块 11 个未填充 Prop 字段（orthogonality、periodicityInK、normalization、torusTopology、bandGap、insulating 等）的结构化影响：这种'Prop 字段占位'模式与 axiom 相比哪个更诚实。",
+   "panelId": "eb7fa839-e9ab-415c-8311-232841c2ee76",
+   "panelName": "SYLVA模块强化评议组·布洛赫定理",
+   "members": [
+    {
+     "id": "93a65f6d-aea0-4e00-8aa6-b20a8eabfba9",
+     "role": "chair",
+     "specialty": "condensed_matter_physics",
+     "weight": 1,
+     "systemPrompt": "你是凝聚态物理专家，精通固体物理、能带理论、Bloch 定理与晶格周期性体系，同时了解 Lean 4 形式化。评估物理模块的公理化是否诚实、定义是否有物理内容。严格基于给定材料，不要虚构模块中不存在的内容。回答控制在 1500 字以内，直接给评议正文。",
+     "model": "kimi-for-coding"
+    },
+    {
+     "id": "a6de514c-4bed-4456-99e9-c9edd733757f",
+     "role": "reviewer",
+     "specialty": "formal_verification",
+     "weight": 1,
+     "systemPrompt": "你是 Lean 4 形式化验证专家，精通依赖类型理论、Mathlib 库与证明工程。评估模块中公理/占位定义/平凡定理的认识论债务，给出具体可操作的清偿路径与工作量估计。严格基于给定材料，不要虚构模块中不存在的内容。回答控制在 1500 字以内，直接给评议正文。",
+     "model": "kimi-for-coding"
+    }
+   ],
+   "stages": [
+    {
+     "name": "并行分析",
+     "description": "所有专家同时从各自专长角度对议题进行独立分析",
+     "assigneeRoles": [
+      "contributor",
+      "chair",
+      "reviewer"
+     ],
+     "expectedOutput": "各专家独立分析报告"
+    },
+    {
+     "name": "汇总整合",
+     "description": "主席或协调员将各专家的独立分析整合为综合报告",
+     "assigneeRoles": [
+      "chair"
+     ],
+     "expectedOutput": "综合整合报告"
+    }
+   ],
+   "meta": {
+    "totalMembers": 2,
+    "chairCount": 1,
+    "reviewerCount": 1,
+    "contributorCount": 0,
+    "totalWeight": 2
+   },
+   "steps": [
+    {
+     "memberId": "93a65f6d-aea0-4e00-8aa6-b20a8eabfba9",
+     "role": "chair",
+     "specialty": "condensed_matter_physics",
+     "content": "**TOE-SYLVA 跨学科学术顾问委员会**\n**审议编号：** CMT-2024-Bloch-01  \n**审议模块：** `BlochTheorem.lean`（commit `b029baa8d8`）  \n**主席：** 凝聚态物理专家组  \n**日期：** 2024年\n\n---\n\n## 一、对四项具体议题的审议意见\n\n### (1) 关于 `BlochTheorem_TranslationBehavior` 公理的可清偿性评估\n\n**结论：** docstring 所估“2–5 小时”在技术上**现实甚至偏保守**，前提是复指数函数方程与周期性约束的接口已被清晰隔离。\n\n**详细分析：**\n\n该命题的物理内容对应于布洛赫波函数定义的直接代数推论。若 `BlochWavefunction` 已严格定义为 $\\psi_{\\mathbf{k}}(\\mathbf{r}) = e^{i\\mathbf{k}\\cdot\\mathbf{r}} u(\\mathbf{r})$，且 `PeriodicBlochFunction` 已提供 `periodicity : ∀ R ∈ Lattice, u (r + R) = u r`，则证明路径仅依赖以下数学事实的链式调用：\n\n1. **内积（或坐标双线性型）对加法的分配律**：$\\mathbf{k}\\cdot(\\mathbf{r}+\\mathbf{R}) = \\mathbf{k}\\cdot\\mathbf{r} + \\mathbf{k}\\cdot\\mathbf{R}$。在 Lean 中，这由 `ring` 或 `simp [add_mul]` 处理，前提是 `k·r` 被展开为坐标线性组合（如 `k.1 * r.1 + k.2 * r.2`）。\n2. **复指数的函数方程**：$\\exp(z+w) = \\exp(z)\\exp(w)$。在 Mathlib 中，对应定理为 `Complex.exp_add`（`Mathlib.Data.Complex.Exponential`）。\n3. **周期性格言的代入**：`u (r + R) = u r`。\n\n**确切证明骨架（Lean 4 可编译）：**\n\n```lean\nimport Mathlib.Data.Complex.Exponential\nimport Mathlib.Tactic\n\n-- 假设已有定义（与模块第80/97行对应）\nstructure PeriodicBlochFunction where\n  val : ℝ → ℝ → ℂ\n  periodicity : ∀ (r1 r2 : ℝ) (R1 R2 : ℝ), val (r1 + R1) (r2 + R2) = val r1 r2\n\ndef BlochWavefunction (k1 k2 : ℝ) (u : PeriodicB",
+     "latencyMs": 145073,
+     "model": "kimi-for-coding",
+     "usage": {
+      "prompt_tokens": 998,
+      "completion_tokens": 4096,
+      "total_tokens": 5094
+     }
+    },
+    {
+     "memberId": "a6de514c-4bed-4456-99e9-c9edd733757f",
+     "role": "reviewer",
+     "specialty": "formal_verification",
+     "content": "**评议意见：TOE-SYLVA / `BlochTheorem.lean` 之形式验证审计**\n\n---\n\n## 1. 执行摘要\n\n从形式验证（formal verification）与数学基础之视角审视，`BlochTheorem.lean`",
+     "latencyMs": 153808,
+     "model": "kimi-for-coding",
+     "usage": {
+      "prompt_tokens": 995,
+      "completion_tokens": 4096,
+      "total_tokens": 5091
+     }
+    }
+   ]
+  }
+ }
+}

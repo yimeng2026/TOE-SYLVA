@@ -1,0 +1,13 @@
+=== ZpCourse 实证文件编译日志 ===
+日期: 2026-08-06 19:57:21    
+工具链: Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)
+mathlib rev: 8a178386ffc0f5fef0b77738bb5449d50efeea95 (lake-manifest.json)
+工作目录: D:\TOE-SYLVA-pull\sylva_formalization\SylvaFormalization
+LEAN_PATH: packages/{mathlib,batteries,aesop,Qq,plausible,importGraph,LeanSearchClient,proofwidgets}/.lake/build/lib/lean
+命令: lean.exe TmpZpCourseProbe.lean
+退出状态与输出:
+'ZpCourse.qpadic_norm_add_le_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZpCourse.zpadic_norm_add_le_max' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZpCourse.zpadic_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ZpCourse.zpadic_tendsto_pow_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit_code=0

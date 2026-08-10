@@ -470,7 +470,7 @@ $$
 
 [25] Cross A W, Bishop L S, Sheldon S, et al. Validating quantum computers using randomized model circuits[J]. Physical Review A, 2019, 100(3): 032328.
 
-[26] Wack A, Paik H, Javadi-Abhari A, et al. Quality, speed, and scale: three key attributes to measure the performance of near-term quantum computers[J]. arXiv:2310.02199, 2023.
+[26] Wack A, Paik H, Javadi-Abhari A, et al. Quality, speed, and scale: three key attributes to measure the performance of near-term quantum computers[J]. arXiv:2110.14108, 2021.
 
 [27] Delfosse N, Nickerson N H. Almost-linear time decoding algorithm for topological codes[J]. Quantum, 2021, 5: 595.
 

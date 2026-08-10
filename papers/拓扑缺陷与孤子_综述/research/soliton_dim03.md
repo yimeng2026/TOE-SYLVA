@@ -33,13 +33,13 @@
 
 ## 参考文献
 
-[^alexander-2022]: Alexander G P, et al. The topological classification of defects in ordered media[J]. arXiv:2203.07311, 2022. https://arxiv.org/abs/2203.07311
+[^alexander-2022]: Alexander G P, Kamien R D. Entanglements and Whitehead products: generalizing Kleman's construction to higher-dimensional defects[J]. arXiv:2203.07311, 2022. https://arxiv.org/abs/2203.07311
 
 [^pieranski-2024]: Pieranski P, Godinho M H. The Toulouse-Kleman homotopic classification of topological defects[J]. Comptes Rendus Physique, 2024. https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.206.pdf
 
 [^abrikosov-1957]: Abrikosov A A. On the magnetic properties of superconductors of the second group[J]. Soviet Physics JETP, 1957, 5(6): 1174-1182. https://www.jetp.ac.ru/cgi-bin/e/index/e/5/6/p1174?a=list
 
-[^gangui-2002]: Gangui A. Topological defects in cosmology[J]. arXiv:astro-ph/0002030, 2002. https://arxiv.org/abs/astro-ph/0002030
+[^gangui-2002]: Magueijo J, Brandenberger R. Cosmic defects and cosmology[J]. arXiv:astro-ph/0002030, 2000. https://arxiv.org/abs/astro-ph/0002030
 
 [^vachaspati-2015]: Vachaspati T. Kinks and Domain Walls: An Introduction to Classical and Quantum Solitons[M]. Cambridge University Press, 2015.
 

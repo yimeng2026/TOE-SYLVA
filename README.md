@@ -70,6 +70,7 @@ SYLVA 框架建立在五条元原则之上，它们既是哲学立场，也是�
 TOE-SYLVA/
 ├── README.md                      # 本文件 — 项目全景入口
 ├── ROADMAP_V6.md                  # v6.x 开发路线图
+├── DEVELOPMENT_DIRECTIONS.md      # 发展战略：现状诚实评估、数学基础强化、五大新方向、工具链与治理 (2026-08-06)
 ├── REORGANIZATION.md              # 仓库重组报告 (v6.0)
 ├── SYLVA_PFE_UNIFIED_INDEX.md     # SYLVA-PFE 统一索引
 ├── SESSION_REPORT_2026-06-30.md   # 会话工作报告
@@ -101,7 +102,7 @@ TOE-SYLVA/
 
 `papers/` 是本仓库的论文主体，共 **140 个主题目录**，由 [papers/README.md](papers/README.md) 统一索引为 **119 个系列**，覆盖：
 
-- **数学核心**：千禧年难题七系列（[P vs NP、霍奇猜想、黎曼假设、NS 方程、BSD、庞加莱、杨-米尔斯](papers/millennium_papers/)）、[Langlands 纲领](papers/langlands_program/)、[数论与算术几何](papers/number_theory_arithmetic/)、[代数几何基础](papers/algebraic_geometry/)、[非交换几何](papers/noncommutative_geometry/)、[辛几何与经典力学](papers/symplectic_geometry/)、[随机矩阵理论](papers/random_matrix_theory/)；
+- **数学核心**：千禧年难题七系列（[P vs NP、霍奇猜想、黎曼假设、NS 方程、BSD、庞加莱、杨-米尔斯](papers/millennium_papers/)）、[Langlands 纲领](papers/langlands_program/)、[数论与算术几何](papers/number_theory_arithmetic/)、[代数几何基础](papers/algebraic_geometry/)、[非交换几何](papers/noncommutative_geometry/)、[辛几何与经典力学](papers/symplectic_geometry/)、[随机矩阵理论](papers/random_matrix_theory/)、[数学基础强化系列](papers/数学基础强化_系列/)（公理审计与分层、课程式形式化路线，对接 [DEVELOPMENT_DIRECTIONS.md](DEVELOPMENT_DIRECTIONS.md) 第二节）；
 - **量子与信息**：[量子信息与量子计算](papers/quantum_info_computing/)、[量子纠错与容错计算 (QEC-FTQC)](papers/qec_ftqc/)（15 篇 + 综述）、[拓扑量子互联网](papers/topo_quantum_internet/)（14 篇 + 综述）、量子光学/量子模拟/量子传感等 30+ 个综述目录；
 - **凝聚态与材料**：[凝聚态物理](papers/condensed_matter/)、[强关联电子系统与量子磁性](papers/强关联电子系统与量子磁性_综述/)、[超导物理与低温物理](papers/超导物理与低温物理_综述/)、[二维材料与范德华异质结](papers/二维材料与范德华异质结_综述/)、[室温超导](papers/room_temp_sc/)；
 - **宇宙学与引力**：[宇宙学与天体物理](papers/cosmology_astrophysics/)、[量子引力](papers/quantum_gravity/)、[引力波天体物理学](papers/引力波天体物理学_综述/)、[因果集理论与离散时空](papers/因果集理论与离散时空/)、[暗物质与暗能量探测](papers/暗物质与暗能量探测_综述/)；
@@ -167,6 +168,7 @@ TOE-SYLVA/
 - [AI 幻觉审计报告](papers/AI_HALLUCINATION_REPORT_FINAL.md)（15 处虚构主张的识别与修复记录）
 - [经验教训与优势总结](papers/LESSONS_AND_STRENGTHS.md)
 - [证明治理登记表](framework/proof_status.md)（Proven / CLAIM / CONJECTURE 分级）
+- [发展战略与方向](DEVELOPMENT_DIRECTIONS.md)（现状诚实评估、数学基础强化计划、五大新方向、治理度量口径）
 - [版本路线图](ROADMAP_V6.md)
 
 ## 十、快速开始
@@ -177,6 +179,7 @@ TOE-SYLVA/
 2. [docs/ARCHITECTURE_V2.md](docs/ARCHITECTURE_V2.md) — 理解技术蓝图
 3. [papers/README.md](papers/README.md) — 119 个论文系列总索引
 4. [ROADMAP_V6.md](ROADMAP_V6.md) — 开发路线与优先级
+5. [DEVELOPMENT_DIRECTIONS.md](DEVELOPMENT_DIRECTIONS.md) — 发展战略：现状评估、数学基础强化与新方向（2026-08-06）
 
 ### 10.2 编译 Lean 形式化
 >4b2cbb0f9b (docs: README 全面重写——远程v10.x数据核对、四轮质量工程记录、34个链接全部验证)
@@ -226,3 +229,99 @@ SYLVA 项目由 yimeng2026 / TOE-SYLVA Working Group 发起，继承的思想传
 > "道可道，非常道；名可名，非常名。"
 > SYLVA 不是"常道"，而是一条通往"常道"的可形式化路径。
 >4b2cbb0f9b (docs: README 全面重写——远程v10.x数据核对、四轮质量工程记录、34个链接全部验证)
+
+---
+
+## 附录：Paper Index 与验证指南（恢复自远程 v7.23 README，2026-08-10 内容恢复）
+
+## 📑 Paper Index
+
+### Core Framework Papers
+
+| Paper | Path | Status | Description |
+|-------|------|--------|-------------|
+| Master Academic Paper | `papers/TOE-SYLVA_Master_Academic.md` | ✅ Active | Main unified theory paper (canonical version) |
+| Master Academic (CN) | `papers/TOE-SYLVA_Master_Academic_CN.md` | ✅ Active | Chinese translation |
+| Master Unified Theory | `papers/TOE-SYLVA_Master_Unified_Theory.md` | ✅ Active | Extended unified framework |
+| Breakthroughs | `papers/TOE-SYLVA_Breakthroughs.md` | ✅ Active | Key breakthroughs summary |
+| Breakthroughs v2 | `papers/TOE-SYLVA_Breakthroughs_v2.md` | ✅ Active | Updated breakthroughs |
+| 暗扇区与阴阳对偶 | `papers/SYLVA_v6_暗扇区与阴阳对偶.md` | ✅ Active | Dark sector & yin-yang duality |
+| 普适对称性与万物理论 | `papers/SYLVA_v6_普适对称性与万物理论.md` | ✅ Active | Universal symmetries & TOE |
+| 意识桥假说 | `papers/SYLVA_v6_意识桥假说.md` | ⚠️ Speculative | Consciousness bridge hypothesis |
+
+### Counting Geometry (Audited)
+
+| Paper | Path | Status | Description |
+|-------|------|--------|-------------|
+| Counting Geometry Survey | `papers/COUNTING_GEOMETRY_SURVEY.md` | ✅ Audited | 15-chapter survey (~17,000 words) |
+| Honest Final | `papers/COUNTING_GEOMETRY_HONEST_FINAL.md` | ✅ Audited | Clean version after hallucination removal |
+| Deep v4 | `papers/TOE-SYLVA_Counting_Geometry_Deep_v4.md` | ✅ Audited | Deep dive into counting geometry |
+| MNOP & Pardon Proof | `papers/MNOP_History_and_Pardon_Proof.md` | ✅ Audited | MNOP conjecture & Pardon's 2023 proof |
+| DT Higher Genus | `papers/TOE-SYLVA_Theory_DT_HigherGenus.md` | ⚠️ Draft | DT theory at higher genus |
+| Khovanov-GW | `papers/TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md` | ⚠️ Draft | Khovanov-GW fully faithful conjecture |
+| p-adic SYK Spectrum | `papers/TOE-SYLVA_Theory_padic_SYK_Spectrum.md` | ⚠️ Draft | p-adic SYK model spectrum |
+| SYK cMERA Global | `papers/TOE-SYLVA_Theory_SYK_cMERA_Global.md` | ⚠️ Draft | SYK cMERA holography |
+
+### Audit & Meta Papers
+
+| Paper | Path | Status | Description |
+|-------|------|--------|-------------|
+| AI Hallucination Report | `papers/AI_HALLUCINATION_REPORT_FINAL.md` | ✅ Final | Full audit: 15 deleted claims, reasons, corrections |
+| Failure → Verifiable Protocol | `papers/AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md` | ✅ Final | **Key contribution**: failure-mode taxonomy + writing protocol |
+| Lessons & Strengths | `papers/LESSONS_AND_STRENGTHS.md` | ✅ Final | Lessons about AI-assisted mathematical writing |
+| References (Verified) | `papers/REFERENCES_VERIFIED.bib` | ✅ Final | BibTeX (63 entries, web-search verified) |
+| UFPF Evaluation | `papers/UFPF仓库评价.md` | ✅ Final | Repository evaluation |
+| UFPF Evaluation v2 | `papers/UFPF仓库评价_v2_RAP-Errata.md` | ✅ Final | Errata & updated evaluation |
+
+### Framework Documentation (framework/)
+
+| Document | Path | Status | Description |
+|----------|------|--------|-------------|
+| Master Framework | `framework/TOE_MASTER_FRAMEWORK.md` | ✅ Active | Overall TOE framework |
+| Dashboard | `framework/DASHBOARD.md` | ✅ Active | Progress tracking & quality ratings |
+| Index | `framework/INDEX.md` | ✅ Active | Document index & cross-references |
+| Gaps Analysis | `framework/GAPS.md` | ✅ Active | Missing topic areas |
+| Canonical Paper (v1) | `framework/Paper_Final.md` | ⚠️ Deprecated v1 | Older version → see `papers/TOE-SYLVA_Master_Academic.md` |
+| PRD Submission (v1) | `framework/Paper_Final_PRD.md` | ⚠️ Deprecated v1 | LaTeX PRD version → see canonical |
+| Paper v2 | `framework/Paper_Final_v2.md` | ⚠️ Deprecated v2 | Superseded → see canonical |
+
+### Survey Papers (papers/*/ directories)
+
+Over 120+ topic-specific survey directories covering physics, mathematics, and interdisciplinary domains. Each typically contains a `*_综述.md` file, `verify_*.py` scripts, and generated figures. These are **exploratory surveys, not peer-reviewed publications**.
+
+---
+
+## The genuine contribution
+
+The single real output of this entire project is the failure-mode taxonomy and the "verifiable writing loop" protocol in `papers/AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md`. It was extracted from 15 fabricated claims and their corrections, and it is the only piece of work here that did not exist before this project started.
+
+## How to verify
+
+```bash
+python3 scripts/verify_honest_repo.py
+```
+
+Expected final line:
+
+```
+✅ ALL CHECKS PASSED. Repository is honest and self-consistent.
+```
+
+## Survey chapter list
+
+1. Introduction and Historical Context (Gromov 1985, Kontsevich 1994, Donaldson-Thomas 1998)
+2. Gromov-Witten Invariants (Behrend-Fantechi, virtual classes, quantum cohomology, WDVV)
+3. The MNOP Conjecture (Maulik-Nekrasov-Okounkov-Pandharipande 2006; Pardon 2023)
+4. Hodge Integrals (Faber-Pandharipande, Bouchard et al.)
+5. Gopakumar-Vafa Invariants and the Conifold (Ionel-Parker 2018)
+6. Yau-Zaslow and K3 Surfaces (Bryan-Leung, Lee-Leung, Gottsche)
+7. Mirror Symmetry (Candelas 1991, Batyrev 1994, Borisov 2001)
+8. Homological Mirror Symmetry (Kontsevich 1994)
+9. DT and PT Theories (Bridgeland, Pandharipande-Thomas)
+10. Degeneration, Relative, and Logarithmic GW Theory
+11. Tropical Geometry and Mirror Symmetry
+12. Quantum K-Theory
+13. p-adic Cohomology (Deligne, crystalline, prismatic Bhatt-Scholze 2022)
+14. Arithmetic Langlands (Ngo 2010, Fargues-Fontaine curve)
+15. AI Hallucination Audit and Lessons
+

@@ -6,6 +6,7 @@
 > **版本**: v6.0
 > **状态**: 初稿
 > **形式化模块**: `SYLVA_UniversalSymmetry.lean`
+> **相关英文论文**: [`TOE-SYLVA_Theory_DT_HigherGenus.md`](./TOE-SYLVA_Theory_DT_HigherGenus.md), [`TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md`](./TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md), [`TOE-SYLVA_Theory_SYK_cMERA_Global.md`](./TOE-SYLVA_Theory_SYK_cMERA_Global.md), [`TOE-SYLVA_Theory_padic_SYK_Spectrum.md`](./TOE-SYLVA_Theory_padic_SYK_Spectrum.md)
 
 ---
 
@@ -58,6 +59,8 @@ SYLVA 框架提出一个更激进的假说: 所有对称性 — 不仅是基本�
 ### 3.1 普适对称性群的结构
 
 我们在 Lean 4 中定义普适对称性群为一个包含四个分量的结构:
+
+> **Note**: The following Lean 4 code uses `axiom` declarations (unproven assumptions) rather than `theorem` declarations. Axioms are valid Lean syntax but represent hypotheses that have not been formally proven in any verification system. The code serves as a specification of the model rather than a verified proof.
 
 ```lean
 structure UniversalSymmetry where

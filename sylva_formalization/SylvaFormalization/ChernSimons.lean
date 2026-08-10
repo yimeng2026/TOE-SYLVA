@@ -31,9 +31,11 @@ yields n_CS = 137 ± 2, consistent with α⁻¹ = 137.036.
 ================================================================================
 -/
 
-import Mathlib
 import Mathlib.Geometry.Manifold.VectorBundle.Basic
 import Mathlib.LinearAlgebra.CliffordAlgebra.Basic
+import Mathlib.Data.Real.Basic
+import Mathlib.Combinatorics.SimpleGraph.Basic
+import Mathlib.Tactic.Common
 
 namespace Sylva
 namespace ChernSimons
@@ -59,10 +61,10 @@ instance : Group U1 where
     | U1.exp θ₁, U1.exp θ₂ => U1.exp (θ₁ + θ₂)
   one := U1.exp 0
   inv a := match a with | U1.exp θ => U1.exp (-θ)
-  mul_assoc := by rintro ⟨a⟩ ⟨b⟩ ⟨c⟩; simp; rfl
-  one_mul := by rintro ⟨a⟩; simp; rfl
-  mul_one := by rintro ⟨a⟩; simp; rfl
-  inv_mul_cancel := by rintro ⟨a⟩; simp; rfl
+  mul_assoc := by rintro ⟨a⟩ ⟨b⟩ ⟨c⟩; exact congrArg U1.exp (add_assoc a b c)
+  one_mul := by rintro ⟨a⟩; exact congrArg U1.exp (zero_add a)
+  mul_one := by rintro ⟨a⟩; exact congrArg U1.exp (add_zero a)
+  inv_mul_cancel := by rintro ⟨a⟩; exact congrArg U1.exp (neg_add_cancel a)
 
 /-- Principal G-bundle over a manifold M.
     Framework: the full definition requires fiber bundles, local trivializations,
@@ -107,8 +109,7 @@ noncomputable def curvature2Form {M G} [GaugeGroup G] {P : PrincipalBundle M G}
 theorem U1_mul_commutative (a b : U1) : a * b = b * a := by
   rcases a with ⟨θ₁⟩
   rcases b with ⟨θ₂⟩
-  simp [HMul.hMul, mul]
-  rw [add_comm]
+  exact congrArg U1.exp (add_comm θ₁ θ₂)
 
 /-- 曲率 2-形式的反对称性（简单性质）：
     F_{μν} = A_ν - A_μ，因此 F_{νμ} = -(F_{μν})。
@@ -117,7 +118,23 @@ theorem curvature2Form_antisymmetric
     {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) (x : M) (μ ν : Fin 4) :
     curvature2Form A x ν μ = - (curvature2Form A x μ ν) := by
   simp [curvature2Form]
-  ring
+
+/-- Chern-Simons level (Conjecture 3.2 in Paper_Final.md):
+    n_CS = (1/4π) ∫_M Tr(A ∧ dA + 2/3 A ∧ A ∧ A)
+
+    For U(1): n_CS = (1/4π) ∫_M A ∧ dA = (1/4π) ∫_M A ∧ F
+
+    Key property: n_CS ∈ ℤ (topological quantization).
+    This follows from the fact that the Chern-Simons action is
+    the integral of a characteristic class modulo 2π.
+-/
+noncomputable def chernSimonsLevel {M G} [GaugeGroup G] {P : PrincipalBundle M G}
+    (A : Connection M G P) (M_compact : True) : ℝ :=
+  -- Placeholder: requires integration theory on manifolds
+  -- For U(1) on a 3-manifold Σ:
+  -- n_CS = (1/4π) ∫_Σ A ∧ dA
+  -- For the emergent gauge theory, numerical simulation yields n_CS ≈ 137
+  137
 
 /-- Chern-Simons level 的数值定义（简单性质）：
     chernSimonsLevel 对任意输入都返回 137（作为占位定义）。 -/
@@ -125,6 +142,54 @@ theorem chernSimonsLevel_value
     {M G} [GaugeGroup G] {P : PrincipalBundle M G} (A : Connection M G P) :
     chernSimonsLevel A (by trivial) = 137 := by
   rfl
+
+/-- **Chern-Simons Level Quantization (Chern-Weil Theorem).**
+
+    **Standard name:** Chern-Simons level quantization, topological quantization of the Chern-Simons action.
+    For U(1): n_CS = c_1(E) ∈ H²(M, ℤ), the first Chern class.
+    For SU(N): n_CS is related to the instanton number (second Chern class).
+
+    **Proof path:**
+    1. Chern-Simons form: CS(A) = Tr(A ∧ dA + 2/3 A ∧ A ∧ A) is a 3-form on a 3-manifold Σ.
+    2. The level is defined as n_CS = (1/4π) ∫_Σ CS(A).
+    3. For a U(1) bundle, the first Chern class c_1(E) ∈ H²(M, ℤ) is an integer cohomology class.
+    4. By Chern-Weil theory, the integral of the curvature form over a closed surface gives 2πi × c_1,
+       so n_CS = c_1(E) ∈ ℤ.
+    5. For SU(N), the level is similarly quantized by the second Chern class c_2(E).
+    See Nakahara (2003) Chapter 10; Freed (1995) "Classical Chern-Simons theory"; Witten (1989).
+
+    **Mathlib status:** Not formalized. Mathlib has:
+    - `Mathlib.Geometry.Manifold.VectorBundle.Basic` (vector bundles)
+    - `Mathlib.LinearAlgebra.CliffordAlgebra.Basic` (Clifford algebra)
+    - But no formalization of Chern-Weil theory, characteristic classes, or Chern-Simons forms.
+    The full theory requires differential geometry, algebraic topology, and gauge theory.
+
+    **Why axiom is reasonable:** The Chern-Simons level quantization is a deep theorem from
+    algebraic topology (Chern-Weil homomorphism). The proof requires:
+    - Principal bundles and connections (partially available in Mathlib)
+    - Characteristic classes (Chern classes, not in Mathlib)
+    - de Rham cohomology and integration on manifolds (partially available)
+    - Chern-Weil homomorphism (not in Mathlib)
+    This is a standard theorem in mathematical physics but not yet in Mathlib.
+
+    **References:**
+    - Witten, E. (1989). "Quantum field theory and the Jones polynomial." *CMP* 121(3), 351–399.
+    - Freed, D. S. (1995). "Classical Chern-Simons theory, part 1." *Adv. Math.* 113(2), 237–303.
+    - Nakahara, M. (2003). *Geometry, Topology and Physics*, 2nd ed., Ch. 10.
+    - Donaldson, S. K. & Kronheimer, P. B. (1990). *The Geometry of Four-Manifolds*, §2.
+
+    **Difficulty to theorem:** Hard (requires characteristic class formalization in Mathlib, ~500h).
+    
+    -- 待证明：需要 Chern-Weil 理论、特征类形式化、主丛联络理论。
+    -- 当前 Mathlib 缺少 Chern 类、陈-韦伊同态、以及流形上微分形式的完整积分理论，预计工作量 500+ 小时。
+    -/
+
+theorem chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
+    (A : Connection M G P) :
+    ∃ (n : ℤ), chernSimonsLevel A (by trivial) = (n : ℝ) := by
+  -- P0 修复（2026-08-06）：原 axiom 在占位定义下可一行证明，降级为 theorem。
+  exact ⟨137, by rw [chernSimonsLevel_value]; norm_num⟩
+
 
 /-- Chern-Simons 作用量在规范变换下的不变性（边界问题）。
     在 U(1) 规范理论中，Chern-Simons 作用量（及其能级）在规范变换下保持不变。
@@ -186,74 +251,13 @@ structure ChernSimonsForm (M : Type) where
   integrand : M → (Fin 4 → Fin 4 → Fin 4 → ℝ)
   -- The integrand is a 3-form: CS_{μνρ} dx^μ ∧ dx^ν ∧ dx^ρ
 
-/-- Chern-Simons level (Conjecture 3.2 in Paper_Final.md):
-    n_CS = (1/4π) ∫_M Tr(A ∧ dA + 2/3 A ∧ A ∧ A)
 
-    For U(1): n_CS = (1/4π) ∫_M A ∧ dA = (1/4π) ∫_M A ∧ F
-
-    Key property: n_CS ∈ ℤ (topological quantization).
-    This follows from the fact that the Chern-Simons action is
-    the integral of a characteristic class modulo 2π.
--/
-noncomputable def chernSimonsLevel {M G} [GaugeGroup G] {P : PrincipalBundle M G}
-    (A : Connection M G P) (M_compact : True) : ℝ :=
-  -- Placeholder: requires integration theory on manifolds
-  -- For U(1) on a 3-manifold Σ:
-  -- n_CS = (1/4π) ∫_Σ A ∧ dA
-  -- For the emergent gauge theory, numerical simulation yields n_CS ≈ 137
-  137
-
-/-- **Chern-Simons Level Quantization (Chern-Weil Theorem).**
-
-    **Standard name:** Chern-Simons level quantization, topological quantization of the Chern-Simons action.
-    For U(1): n_CS = c_1(E) ∈ H²(M, ℤ), the first Chern class.
-    For SU(N): n_CS is related to the instanton number (second Chern class).
-
-    **Proof path:**
-    1. Chern-Simons form: CS(A) = Tr(A ∧ dA + 2/3 A ∧ A ∧ A) is a 3-form on a 3-manifold Σ.
-    2. The level is defined as n_CS = (1/4π) ∫_Σ CS(A).
-    3. For a U(1) bundle, the first Chern class c_1(E) ∈ H²(M, ℤ) is an integer cohomology class.
-    4. By Chern-Weil theory, the integral of the curvature form over a closed surface gives 2πi × c_1,
-       so n_CS = c_1(E) ∈ ℤ.
-    5. For SU(N), the level is similarly quantized by the second Chern class c_2(E).
-    See Nakahara (2003) Chapter 10; Freed (1995) "Classical Chern-Simons theory"; Witten (1989).
-
-    **Mathlib status:** Not formalized. Mathlib has:
-    - `Mathlib.Geometry.Manifold.VectorBundle.Basic` (vector bundles)
-    - `Mathlib.LinearAlgebra.CliffordAlgebra.Basic` (Clifford algebra)
-    - But no formalization of Chern-Weil theory, characteristic classes, or Chern-Simons forms.
-    The full theory requires differential geometry, algebraic topology, and gauge theory.
-
-    **Why axiom is reasonable:** The Chern-Simons level quantization is a deep theorem from
-    algebraic topology (Chern-Weil homomorphism). The proof requires:
-    - Principal bundles and connections (partially available in Mathlib)
-    - Characteristic classes (Chern classes, not in Mathlib)
-    - de Rham cohomology and integration on manifolds (partially available)
-    - Chern-Weil homomorphism (not in Mathlib)
-    This is a standard theorem in mathematical physics but not yet in Mathlib.
-
-    **References:**
-    - Witten, E. (1989). "Quantum field theory and the Jones polynomial." *CMP* 121(3), 351–399.
-    - Freed, D. S. (1995). "Classical Chern-Simons theory, part 1." *Adv. Math.* 113(2), 237–303.
-    - Nakahara, M. (2003). *Geometry, Topology and Physics*, 2nd ed., Ch. 10.
-    - Donaldson, S. K. & Kronheimer, P. B. (1990). *The Geometry of Four-Manifolds*, §2.
-
-    **Difficulty to theorem:** Hard (requires characteristic class formalization in Mathlib, ~500h).
-    
-    -- 待证明：需要 Chern-Weil 理论、特征类形式化、主丛联络理论。
-    -- 当前 Mathlib 缺少 Chern 类、陈-韦伊同态、以及流形上微分形式的完整积分理论，预计工作量 500+ 小时。
-    -/
-theorem chernSimonsLevelInteger {M G} [GaugeGroup G] {P : PrincipalBundle M G}
-    (A : Connection M G P) :
-    ∃ (n : ℤ), chernSimonsLevel A (by trivial) = (n : ℝ) := by
-  -- P0 修复（2026-08-06）：原 axiom 在占位定义下可一行证明，降级为 theorem。
-  exact ⟨137, by rw [chernSimonsLevel_value]; norm_num⟩
 
 -- ============================================================
 -- Section 4: α⁻¹ = n_CS Identification (Core Postulate)
 -- ============================================================
 
-/-- **Fine-Structure Constant as Chern-Simons Level (SYLVA Core Postulate).**
+/- **Fine-Structure Constant as Chern-Simons Level (SYLVA Core Postulate).**（历史文档，原精确等同公设的文档，已被 P0 修复替换，仅存档）
 
     **Standard name:** α⁻¹ = n_CS identification (SYLVA Conjecture 3.2).
     Not a standard theorem in the literature; this is a framework-specific claim.
@@ -435,8 +439,8 @@ structure DarkEnergyPrediction where
     **证明**：直接证明 3 是奇数（3 % 2 = 1），这是 Chern-Simons 理论定义
     的维度前提。 -/
 theorem ChernSimons_odd_dimension_only :
-    Nat.odd 3 = true := by
-  decide
+    Odd 3 := by
+  exact ⟨1, rfl⟩
 
 /-- **Boundary Theorem 5: Chern-Simons 能级是严格正整数**。
     Chern-Simons 能级 n_CS 是拓扑量子化的正整数（n_CS > 0）。

@@ -4,7 +4,7 @@
 
 NISQ（Noisy Intermediate-Scale Quantum）设备指含噪声的中等规模量子处理器，通常具有50-1000个量子比特，但门错误率仍在 $10^{-3}$ 量级且缺乏完整的量子纠错能力[^preskill-2018]。在这一硬件约束下，量子算法的设计必须优先考虑浅层电路和噪声鲁棒性。变分量子算法（VQA）家族——包括VQE、QAOA及量子机器学习模型——正是为适应NISQ约束而发展出的核心方法论。
 
-浅层电路的表达能力与可训练性之间存在深刻的理论权衡。一方面，研究表明具有多项式深度的随机参数化电路可实现幺正群的稠密采样，具备通用近似能力[^harrow-2019]。另一方面，电路深度增加会加剧噪声累积和梯度消失问题。近期工作尝试通过电路架构设计（如张量网络结构[^huggins-2019]、对称性保持电路[^grimsley-2019]）在表达能力和可训练性之间寻求平衡。
+浅层电路的表达能力与可训练性之间存在深刻的理论权衡。一方面，研究表明具有多项式深度的随机参数化电路可实现幺正群的稠密采样，具备通用近似能力[^harrow-2019]。另一方面，电路深度增加会加剧噪声累积和梯度消失问题。近期工作尝试通过电路架构设计（如张量网络结构[^huggins-2019]、对称性保持电路[^gard-2019]）在表达能力和可训练性之间寻求平衡。
 
 ### 5.2 量子错误缓解技术
 
@@ -26,22 +26,25 @@ $$
 
 其中系数 $\eta_\alpha$ 可为负值。通过以概率 $|\eta_\alpha|/\gamma$ 采样实现信道 $\mathcal{B}_\alpha$（$\gamma = \sum_\alpha |\eta_\alpha|$ 为采样开销），并将测量结果乘以符号 $\mathrm{sgn}(\eta_\alpha)$，PEC可无偏估计无噪声期望值。然而，采样开销 $\gamma$ 随电路深度指数增长，限制了PEC在深电路上的适用性。
 
-动态解耦（Dynamical Decoupling）和错误抑制策略从硬件层面减轻噪声影响。通过在高速门操作之间插入精心设计的脉冲序列（如Carr-Purcell-Meiboom-Gill序列），动态解耦可有效抑制低频退相干噪声[^souza-2012]。近期研究还将机器学习技术应用于最优解耦序列的自动发现[^qiu-2023]。
+动态解耦（Dynamical Decoupling）和错误抑制策略从硬件层面减轻噪声影响。通过在高速门操作之间插入精心设计的脉冲序列（如Carr-Purcell-Meiboom-Gill序列），动态解耦可有效抑制低频退相干噪声[^souza-2012]。近期研究还将动态解耦技术应用于抑制超导量子平台中的相干双比特错误[^qiu-2023]。
 
 [^harrow-2019]: A. W. Harrow and R. Montanaro. Quantum computational supremacy. *Nature*, 549(7671):203-209, 2017. https://doi.org/10.1038/nature23458
 [^huggins-2019]: W. Huggins et al. Towards quantum machine learning with tensor networks. *Quantum Science and Technology*, 4(2):024001, 2019. https://doi.org/10.1088/2058-9565/aaeb64
-[^grimsley-2019]: H. R. Grimsley et al. An adaptive variational algorithm for exact molecular simulations on a quantum computer. *Nature Communications*, 10(1):3007, 2019. https://doi.org/10.1038/s41467-019-10988-2
+[^gard-2019]: B. T. Gard, L. Zhu, G. S. Barron, et al. Efficient symmetry-preserving state preparation circuits for the variational quantum eigensolver algorithm. *npj Quantum Information*, 6:10, 2020. https://doi.org/10.1038/s41534-019-0240-1
 [^endo-2021]: S. Endo, Z. Cai, S. C. Benjamin, and X. Yuan. Hybrid quantum-classical algorithms and quantum error mitigation. *Journal of the Physical Society of Japan*, 90(3):032001, 2021. https://doi.org/10.7566/JPSJ.90.032001
 [^li-2017]: Y. Li and S. C. Benjamin. Efficient variational quantum simulator incorporating active error minimization. *Physical Review X*, 7(2):021050, 2017. https://doi.org/10.1103/PhysRevX.7.021050
 [^temme-2017]: K. Temme, S. Bravyi, and J. M. Gambetta. Error mitigation for short-depth quantum circuits. *Physical Review Letters*, 119(18):180509, 2017. https://doi.org/10.1103/PhysRevLett.119.180509
 [^souza-2012]: A. M. Souza, G. A. Álvarez, and D. Suter. Robust dynamical decoupling for quantum computing and quantum memory. *Physical Review Letters*, 106(24):240501, 2011. https://doi.org/10.1103/PhysRevLett.106.240501
-[^qiu-2023]: J. Qiu et al. Suppressing coherent two-qubit errors via dynamical decoupling. *Physical Review Applied*, 19(3):034063, 2023. https://doi.org/10.1103/PhysRevApplied.19.034063
+[^qiu-2023]: J. Qiu, Y. Zhou, C.-K. Hu, et al. Suppressing coherent two-qubit errors via dynamical decoupling. *Physical Review Applied*, 16(5):054047, 2021. https://doi.org/10.1103/PhysRevApplied.16.054047
 
+[^preskill-2018]: J. Preskill. Quantum computing in the NISQ era and beyond. *Quantum*, 2:79, 2018. https://doi.org/10.22331/q-2018-08-06-79
 
 ---
 
 ## 补充arXiv引用（v3）
 
 - Penrose (2004), The Road to Reality. Knopf.
+
 - Weinberg (2008), Cosmology. Oxford Univ. Press.
+
 - Zee (2016), Group Theory in a Nutshell for Physicists. Princeton Univ. Press.
