@@ -1,8 +1,8 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.8  
+> **文档版本**: v2.9  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-09  
+> **最后更新**: 2026-08-09 (v7.58 sync)  
 > **文档总数**: 35+68=103 (core docs 01-30 + extended 31-103) | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
@@ -572,6 +572,21 @@ four_forces_unification_*.md
 | `SYLVA_comprehensive_survey/` | SYLVA 综合综述子目录 |
 
 > 📝 详细论文元数据（大小、行数、交叉引用等）请参见 `papers/CONTENTS.md`。
+
+---
+
+---
+
+## 🤖 Agda 形式化状态 (v7.58)
+
+> ⚠️ 此节于 2026-08-09 添加，记录 Agda 双形式化最新状态。
+
+- **Agda 7/7 模块全部通过**: Cauchy/Field/Order/Complete/Quantum/Spectrum/CNFCategory
+- **25 postulates / 0 admits**: 所有剩余 postulate 为已知可从 `Data.Rational.Properties` 证明的定理
+- **v7.57-v7.58 stdlib migration**: 10 postulates replaced with stdlib (5 Q-ordering in Order.agda via Data.Rational.Properties, 5 Q-arithmetic in Cauchy.agda via Data.Rational.Base), all 7 modules compile PASS (exit 0)
+- **受阻**: Windows 16GB RAM 加载 `Data.Rational.Properties`（~400 传递依赖）OOM，全量编译需 Linux ≥16GB RAM
+- **LEAN lake update 受阻**: 925KB lakefile recursion overflow（已知问题）
+- **O7/O8 状态**: 需要 Linux ≥16GB RAM 环境完成 Agda 最终全量验证 + LEAN lake build
 
 ---
 

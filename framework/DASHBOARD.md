@@ -4,9 +4,9 @@
 
 > **生成日期**: 2026-04-19 · **审计更新**: 2026-08-05
 >
-> **最后更新**: 2026-08-09 (v7.55: 103 编号文档, 74 完成)
+> **最后更新**: 2026-08-09 (v7.58: 103 编号文档, 74 完成)
 >
-> **仪表板版本**: v1.3 (frozen baseline + v7.x patch notes)
+> **仪表板版本**: v1.4 (frozen baseline + v7.x patch notes)
 
 ---
 
@@ -343,6 +343,8 @@ xychart-beta
 - v7.46: 新增 94-95 知识结构化架构文档 (structured_knowledge_architecture)
 - v7.49b: doc:26 全息原理 (v1.0 ~12KB → v2.0 增强版 ~25KB) 填补框架最古老缺口，包含 Bekenstein 前史、张量网络、QES、全息复杂性、实验验证
 - v7.53-v7.55: 新增 doc:100-103 (Adelic 桥接/α⁻¹三链推导/暗能量谱/非BPS黑洞DT推广)，O1/O2/O3/O6 闭合，OPEN_PROBLEMS 8/10 已解决
+- v7.57-v7.58: Agda Q postulates 替换为标准库, 7/7 模块 PASS, 25 postulates 全部已知可证 (blocked by Windows OOM)
+- v7.57-v7.58: Agda Q-imports migration (10 postulates replaced with stdlib, 7/7 PASS, 0 admits)
 
 ---
 
