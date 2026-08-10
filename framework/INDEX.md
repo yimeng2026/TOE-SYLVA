@@ -1,9 +1,9 @@
-# TOE框架文档索引 (INDEX.md)
+﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.0  
+> **文档版本**: v3.1  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-10 (v7.62 sync)  
-> **文档总数**: 35+68=103 (core docs 01-30 + extended 31-103) + 1 reply paper = 104 total | framework/ 目录共 200+ 个 .md 文件  
+> **文档总数**: 35 + 70 = 105 (core docs 01-30 + extended 31-103) + 1 reply paper = 104 total | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -39,9 +39,9 @@
 | [[doc:23]] | 23_cosmological_constant_problem.md | 宇宙学常数 | ✅ |
 | [[doc:24]] | 24_quantum_measurement_layered.md | 量子测量 | ✅ |
 | [[doc:25]] | 25_string_theory_duality.md | 弦理论对偶 | ✅ |
-| [[doc:26]] | 26_holographic_principle.md | 全息原理 (holographic_principle) | 2026-08-09 | ✅ |
+| [[doc:26]] | 26_holographic_principle.md | 全息原理 (holographic_principle) | 2026-08-10 | ✅ |
 
-> ℹ️ **关于 doc:26 (全息原理)**: 已于 2026-08-09 创建（v7.49 v1.0 → v7.49b v2.0 增强版 ~25KB）。内容涵盖 Bekenstein 前史、AdS/CFT 对应、Ryu-Takayanagi 公式、张量网络（MERA/HaPPY 码）、量子极值曲面（QES）、全息复杂性（CV/CA）、SYK 模型与实验验证方向。
+> ℹ️ **关于 doc:26 (全息原理)**: 已于 2026-08-10 创建（v7.49 v1.0 → v7.49b v3.1 增强版 ~25KB）。内容涵盖 Bekenstein 前史、AdS/CFT 对应、Ryu-Takayanagi 公式、张量网络（MERA/HaPPY 码）、量子极值曲面（QES）、全息复杂性（CV/CA）、SYK 模型与实验验证方向。
 | [[doc:27]] | 27_noncommutative_geometry_physics.md | 非交换几何 | ✅ |
 | [[doc:28]] | 28_category_theory_layered.md | 范畴论 | ✅ |
 | [[doc:29]] | 29_random_matrix_universality.md | 随机矩阵 | ✅ |
@@ -153,7 +153,7 @@
 - `30_information_geometry_statmech.md` 与 `38_information_geometry_statmech.md` — 文件名相同，可能共享大量内容；需人工审查
 
 **编号缺口 (missing numbers):**
-- **编号 26**: ✅ 已于 2026-08-09 填补（`26_holographic_principle.md`，全息原理 v1.0+v2.0 增强版 ~25KB）
+- **编号 26**: ✅ 已于 2026-08-10 填补（`26_holographic_principle.md`，全息原理 v1.0+v3.1 增强版 ~25KB）
 - **编号 36**: 缺失（未分配或文件未创建）
 - **编号 49**: 缺失（未分配或文件未创建）
 - **编号 66**: 仅存在 `.lean` 形式化文件，无对应 `.md` 正文
@@ -166,7 +166,7 @@
 
 ### 编号冲突详细分析
 
-> 本节于 2026-08-05 通过逐文件比对（标题/摘要/目录/大小）生成。
+> 本节于 2026-08-10 通过逐文件比对（标题/摘要/目录/大小）生成。
 
 #### 编号 27/39：非交换几何
 
@@ -222,7 +222,7 @@
 
 ### v2 版本变体分析
 
-> 本节于 2026-08-05 通过对比 v1/v2 的标题、章首语、新增内容目录生成。
+> 本节于 2026-08-10 通过对比 v1/v2 的标题、章首语、新增内容目录生成。
 
 #### 37：基本常数统一（v1 vs v2）
 
@@ -579,7 +579,7 @@ four_forces_unification_*.md
 
 ## 🤖 Agda 形式化状态 (v7.58)
 
-> ⚠️ 此节于 2026-08-09 添加，记录 Agda 双形式化最新状态。
+> ⚠️ 此节于 2026-08-10 添加，记录 Agda 双形式化最新状态。
 
 - **Agda 7/7 模块全部通过**: Cauchy/Field/Order/Complete/Quantum/Spectrum/CNFCategory
 - **25 postulates / 0 admits**: 所有剩余 postulate 为已知可从 `Data.Rational.Properties` 证明的定理
@@ -592,3 +592,6 @@ four_forces_unification_*.md
 ---
 
 *索引维护说明: 当新增文档时，请同时更新此索引和CROSS_REFERENCES.md*
+
+| doc:49 | [49_gravitational_wave_astronomy_cnf.md](49_gravitational_wave_astronomy_cnf.md) | 引力波天文学 CNF 桥接 | 2026-08-10 |
+| doc:104 | [104_cnf_empirical_validation_protocol.md](104_cnf_empirical_validation_protocol.md) | CNF 经验验证协议 | 2026-08-10 |

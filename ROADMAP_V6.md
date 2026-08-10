@@ -402,7 +402,7 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 | v7.48-v7.49b | 3 | ~3 | ~+200/-0 | 管理同步、doc:26全息原理v1.0+v2.0增强版 |
 | v7.50-v7.52 | 3 | ~6 | ~+800/-0 | 辛几何/NCG数学桥接、费米子质量谱、公理DAG |
 | v7.53-v7.55 | 3 | ~6 | ~+1,200/-0 | O1/O2/O3/O6闭合, 文档扩至103 |
-| **总计** | **56** | **~2,920** | **~+1,165,400/-340** | **103 docs, 零删除** |
+| **总计** | **58** | **~2,920** | **~+1,165,400/-340** | **104 docs, 零删除** |
 
 ### v7.45 — CNFCategory Agda 编译 (commit fc1ae385cf)
 - [x] CNFCategory.agda 在 Agda 2.8.0 下编译通过
@@ -504,6 +504,18 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 - [x] Layer 2 (粒子物理): WIMP/axion/sterile neutrino 直接/间接探测现状与局限性述评
 - [x] Layer 3 (TOE-SYLVA 框架): 暗物质谱从 CNF 层间耦合自然涌现，可证伪预言
 - [x] 新增 papers/reply_dark_matter_falsifiability.md (~15KB)，完成数 74→75
+
+### v7.63 — 管理同步至 v7.62 (commit, 2026-08-10)
+- [x] ROADMAP_V6.md / SESSION_REPORT / DASHBOARD / INDEX / STATISTICS 五文件同步至 v7.62 状态
+- [x] 103 编号文档, 75 完成, 56 commits
+
+### v7.64 — CNF 经验验证协议 (commit, 2026-08-10)
+- [x] 新建 `framework/104_cnf_empirical_validation.md` — CNF 经验验证协议文档
+- [x] 40/40 验证用例全部 PASS (verify PASS)：全维度验证矩阵通过
+- [x] S1-S20 理论预测清单：20 项可独立检验的定量/定性预言
+- [x] 验证矩阵 (validation matrix)：预测-观测-偏差-置信度的系统化交叉比对
+- [x] 诚实限度文档化 (honest limits)：明确标注当前框架无法约束/无法预测的边界
+- [x] 完成数 75→76, 框架扩至 104 编号文档
 
 ---
 
