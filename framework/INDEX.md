@@ -3,7 +3,7 @@
 > **文档版本**: v3.1  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-10 (v7.62 sync)  
-> **文档总数**: 35 + 70 = 105 (core docs 01-30 + extended 31-103) + 1 reply paper = 104 total | framework/ 目录共 200+ 个 .md 文件  
+> **文档总数**: 35 + 72 = 107 (core docs 01-30 + extended 31-103) + 1 reply paper = 104 total | framework/ 目录共 200+ 个 .md 文件  
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -596,3 +596,5 @@ four_forces_unification_*.md
 | doc:49 | [49_gravitational_wave_astronomy_cnf.md](49_gravitational_wave_astronomy_cnf.md) | 引力波天文学 CNF 桥接 | 2026-08-10 |
 | doc:104 | [104_cnf_empirical_validation_protocol.md](104_cnf_empirical_validation_protocol.md) | CNF 经验验证协议 | 2026-08-10 |
 | doc:68 | [68_nonlinear_dynamics_pattern_formation.md](68_nonlinear_dynamics_pattern_formation.md) | 非线性动力学与斑图形成 CNF 桥接 | 2026-08-10 |
+| doc:66 | [66_beyond_standard_model_cnf.md](66_beyond_standard_model_cnf.md) | 超越标准模型 CNF 桥接 (BSM) | 2026-08-10 |
+| doc:105 | [105_cnf_standard_model_unification.md](105_cnf_standard_model_unification.md) | CNF 标准模型统一方案 | 2026-08-10 |

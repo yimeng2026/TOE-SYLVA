@@ -328,4 +328,4 @@ pie title 公式分布 (估计 3,497+ 公式)
 
 ---
 
-*v7.66: +doc:49 (引力波天文学 CNF), 104 编号文档. Agda Cauchy 8->1 postulate, 7/7 PASS, 0 admits*
+*v7.66: +doc:49 (引力波天文学 CNF), 107 编号文档. Agda Cauchy 8->1 postulate, 7/7 PASS, 0 admits*

@@ -397,3 +397,10 @@ ho_{\Lambda}=0$）。**解决 O3**。
 - Agda: Cauchy postulate 8→1, 7/7 PASS, 0 admits
 - 验证脚本: 40/40 PASS (BH/Kerr/CM/MNOP/honest)
 - 可证伪预测: S1-S24（独立预言 S9+ 共 16 项）
+
+### v7.66-v7.69 — 框架编号缺口清零 + SM 统一 (2026-08-10 下午)
+- v7.66: doc:49 引力波天文学 CNF 桥接
+- v7.67: doc:68 非线性动力学与斑图形成 CNF 桥接
+- v7.68: 管理同步
+- v7.69: doc:66 BSM CNF 桥接 + doc:105 SM 三规范群统一
+- 累计: 62 commits, 107 编号文档, 编号 1-105 全覆盖
