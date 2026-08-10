@@ -15,10 +15,10 @@
 
 module Sylva.Real.Cauchy where
 
-open import Data.Nat using (ℕ; zero; suc; _≤_; _<_; z≤n; s≤s; _⊔_)
+open import Data.Nat using (ℕ; zero; suc; _≤_; z≤n; s≤s; _⊔_)
 open import Data.Nat.Properties using (≤-refl; ≤-trans)
 open import Data.Integer using (ℤ; +_)
-open import Data.Rational.Base using (ℚ; 0ℚ; 1ℚ; _+_; _-_; _*_; -_)
+open import Data.Rational.Base using (ℚ; 0ℚ; 1ℚ; _+_; _-_; _*_; -_; ∣_∣; _<_)
 open import Data.Rational.Properties using ()
 open import Data.Product using (Σ; _,_; _×_)
 open import Relation.Binary.PropositionalEquality using (_≡_; refl)
@@ -37,11 +37,16 @@ _-Q_ = _-_
 _*Q_ = _*_
 -Q_ = -_
 
+-- _<_ and |_| from Data.Rational.Base (stdlib, not postulated)
+-- Replaced v7.60: remaining 2 Q postulate types migrated to stdlib
+_<Q_ = _<_
+∣_∣Q = ∣_∣
+
+-- The 0Q/1Q self-difference proofs need x-x=0 and |0|=0 from
+-- Data.Rational.Properties (postulated until stdlib proofs loaded)
 postulate
-  _<Q_ : ℚ → ℚ → Set
-  ∣_∣Q : ℚ → ℚ
-  +Q-cauchy : (ε : ℚ) → (∣ (0ℚ - 0ℚ) ∣Q) <Q ε
-  *Q-cauchy : (ε : ℚ) → (∣ (1ℚ - 1ℚ) ∣Q) <Q ε
+  +Q-cauchy : (ε : ℚ) → (∣ (0ℚ - 0ℚ) ∣) <  ε
+  *Q-cauchy : (ε : ℚ) → (∣ (1ℚ - 1ℚ) ∣) <  ε
 
 ------------------------------------------------------------------------
 -- 1. CAUCHY SEQUENCE OVER Q
