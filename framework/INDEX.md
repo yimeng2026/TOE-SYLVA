@@ -595,3 +595,4 @@ four_forces_unification_*.md
 
 | doc:49 | [49_gravitational_wave_astronomy_cnf.md](49_gravitational_wave_astronomy_cnf.md) | 引力波天文学 CNF 桥接 | 2026-08-10 |
 | doc:104 | [104_cnf_empirical_validation_protocol.md](104_cnf_empirical_validation_protocol.md) | CNF 经验验证协议 | 2026-08-10 |
+| doc:68 | [68_nonlinear_dynamics_pattern_formation.md](68_nonlinear_dynamics_pattern_formation.md) | 非线性动力学与斑图形成 CNF 桥接 | 2026-08-10 |
