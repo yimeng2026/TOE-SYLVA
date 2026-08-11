@@ -443,6 +443,17 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 - [x] doc:119: 金融 CNF（系统性风险/危机临界崩塌/S66-S75 新预言）
 - [x] 121 编号文档, 65 commits, S66-S75
 
+### v7.74 — Merge v7.48 (Lean 治理) + v7.73a (CONTENTS sync) (2026-08-11)
+- [x] 17 文件 merge（无 force push，线性历史）
+
+### v7.75 — Merge auth probe 保留 (2026-08-11)
+- [x] 线性 push 历史，无覆盖
+
+### v7.76 — Agda Order.agda v7.57 优化恢复 (2026-08-11)
+- [x] 5 Q-ordering postulates → 1 via Data.Rational.Properties+Base imports
+- [x] 7/7 PASS, 0 admits
+- [x] 修复 Z User sync commit 0e2c830b5c 覆盖问题
+
 ### 尚存工作（未来方向）
 - [ ] 替换 Agda postulate 为 `Data.Rational.Properties` 真实证明（需 Linux ≥16GB RAM）
 - [ ] 添加 `agda-categories` 范畴实例（Hilb→Monoidal, Hilb→DaggerCompactClosed）
