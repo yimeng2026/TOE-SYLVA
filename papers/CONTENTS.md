@@ -1,4 +1,4 @@
-# papers/ 目录完整索引 — COMPREHENSIVE CONTENTS
+﻿# papers/ 目录完整索引 — COMPREHENSIVE CONTENTS
 
 > **维护者**: TOE-SYLVA Working Group
 > **创建日期**: 2026-08-01
@@ -462,3 +462,29 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 > - 综述类（7）：`AdS_CFT与强耦合物理_综述/README.md`、`Donaldson-Thomas与Gopakumar-Vafa不变量_综述/README.md`、`Kontsevich积分与Witten猜想_综述/README.md`、`Schubert演算与旗流形计数_综述/README.md`、`热带几何与组合计数_综述/README.md`、`量子计算复杂性理论_综述/README.md`、`镜像对称与Picard-Fuchs方程_综述/README.md`
 >
 > **每个 README 均包含**：当前内容说明、⚠️ 占位符/待补通知、规划扩展内容提纲、相关目录链接、状态标注。
+
+## v7.71-v7.73 新增桥接文档 (2026-08-11)
+
+### 物理/数学桥接 (96-110)
+| 编号 | 文件 | 主题 |
+|:--|:--|:--|
+| 106 | 106_deep_learning_neural_network_cnf.md | 深度学习 CNF: MLP→因果网络,反向传播→层间修正,Transformer→动态因果 |
+| 107 | 107_quantum_gravity_phenomenology.md | 量子引力唯象学: LIV/GUP/时空泡沫/CMB, S39-S42 |
+| 108 | 108_early_universe_inflation_cnf.md | 暴胀 CNF: 无序→有序相变, n_s=0.965, r=0.0027 |
+| 109 | 109_renormalization_group_cnf.md | RG CNF: 层间信息压缩, c-定理=因果不可逆 |
+| 110 | 110_string_theory_landscape_cnf.md | 弦景观 CNF: 10^500解空间, 层化稳定性选者 |
+
+### 跨学科桥接 (111-119)
+| 编号 | 文件 | 主题 |
+|:--|:--|:--|
+| 111 | 111_biological_evolution_cnf.md | 生物进化 CNF: 突变→边重连, Fisher/Price方程 |
+| 112 | 112_consciousness_cnf.md | 意识 CNF: 自指回路假说, $Phi$-CNF=IIT映射 |
+| 113 | 113_quantum_biology_cnf.md | 量子生物学: 相干保护壳, 光合/磁导航/酶催化 |
+| 114 | 114_climate_earth_system_cnf.md | 气候/地球系统 CNF: 五层慢快网络, 15临界点 |
+| 115 | 115_network_science_complex_networks_cnf.md | 网络科学: BA/SW/Wigner半圆律 CNF统一 |
+| 116 | 116_quantum_computing_cnf.md | 量子计算: Shor→周期检测,量子优势→层间并行 |
+| 117 | 117_materials_metamaterials_cnf.md | 超材料: CNF反向工程 |
+| 118 | 118_nuclear_physics_cnf.md | 核物理: 色禁闭残余, Yukawa, 壳模型 |
+| 119 | 119_financial_economic_cnf.md | 金融/经济 CNF: 系统性风险, 危机前兆谱分析 |
+
+### 统计: 121 编号文档, 65 commits, S9-S75 可证伪预测, 零删除

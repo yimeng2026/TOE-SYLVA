@@ -161,3 +161,7 @@
 - Agda 7/7 PASS, Cauchy 8→1 postulate, ~51 total postulates
 - S36-S52 新可证伪预测
 - 累计: 63 commits, 112 编号文档
+
+### v7.73 — 5 bridge docs (continue, 2026-08-11)
+- docs 115-119: Network Science / Quantum Computing / Materials / Nuclear / Finance CNF
+- 121 numbered docs, 65 commits, S66-S75
