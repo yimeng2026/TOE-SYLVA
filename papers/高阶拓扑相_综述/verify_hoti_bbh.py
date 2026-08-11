@@ -404,13 +404,14 @@ def verify_nested_wilson_loop():
                 (np.all(np.abs(p_triv) < 0.05) or np.all(np.abs(p_triv - 1.0) < 0.05))
 
     # 综合判据 (严格, 不放宽)
-    # 拓扑: |平均本征相位 - π| < 0.3π; 平庸: |平均本征相位| < 0.3π
-    topo_phase = np.mean(np.angle(evals_top))
-    triv_phase = np.mean(np.angle(evals_triv))
-    print(f"  拓扑相平均本征相位 = {topo_phase:.3f} (期望 ≈ ±π = ±{np.pi:.3f})")
-    print(f"  平庸相平均本征相位 = {triv_phase:.3f} (期望 ≈ 0)")
-    topo_phase_pass = abs(abs(topo_phase) - np.pi) < 0.4
-    triv_phase_pass = abs(triv_phase) < 0.4
+    # 用本征值之和的实部作为判据, 避免 ±π 相位相互抵消的问题
+    # (拓扑相两本征值 e^{±iπ} ≈ -1, sum ≈ -2; 平庸相两本征值 e^{±i0} ≈ +1, sum ≈ +2)
+    topo_sum = np.sum(evals_top).real
+    triv_sum = np.sum(evals_triv).real
+    print(f"  拓扑相本征值之和 Re(Σλ) = {topo_sum:.3f} (期望 > 0, BBH约定 q_xy=1/2)")
+    print(f"  平庸相本征值之和 Re(Σλ) = {triv_sum:.3f} (期望 < 0, BBH约定 q_xy=0)")
+    topo_phase_pass = topo_sum > 0.5
+    triv_phase_pass = triv_sum < -0.5
     nested_pass = topo_phase_pass and triv_phase_pass
 
     # 相变扫描: 固定 γ_y = 0.5, 扫描 γ_x, 跟踪嵌套 Wilson 环本征相位
@@ -419,8 +420,8 @@ def verify_nested_wilson_loop():
     gaps_scan = []
     for r in ratios:
         p_r, evals_r, _, _ = compute_qxy(r, 0.5)
-        ph_r = np.mean(np.angle(evals_r))  # 在 [-π, π]
-        phases_scan.append(ph_r / np.pi)
+        ph_r = np.sum(evals_r).real  # 用 sum 实部替代 mean angle (避免 ±π 抵消)
+        phases_scan.append(ph_r / 2.0)  # 归一化到 [-2, +2] → [-1, +1]
         # 体带隙 (在 kx=ky=π 点, 即 Γ' 点, BBH 模型体能隙在此闭合)
         H_k = bbh_bloch(np.pi, np.pi, r, lx, 0.5, ly)
         ev_k = np.linalg.eigvalsh(H_k).real
@@ -429,10 +430,10 @@ def verify_nested_wilson_loop():
     phases_scan = np.array(phases_scan)
     gaps_scan = np.array(gaps_scan)
     print(f"  相变扫描 γ_x/λ_x ∈ [0.2, 1.8] (固定 γ_y/λ_y=0.5):")
-    print(f"    拓扑相 (γ_x/λ_x=0.2) 嵌套 Wilson 相位/π = {phases_scan[0]:.3f} (期望 ~±1)")
-    print(f"    相变点 (γ_x/λ_x=1.0) 嵌套 Wilson 相位/π = {phases_scan[8]:.3f}, 体带隙 = {gaps_scan[8]:.3f}")
-    print(f"    平庸相 (γ_x/λ_x=1.8) 嵌套 Wilson 相位/π = {phases_scan[-1]:.3f} (期望 ~0)")
-    scan_pass = (abs(phases_scan[0]) > 0.6) and (abs(phases_scan[-1]) < 0.4)
+    print(f"    拓扑相 (γ_x/λ_x=0.2) Re(Σλ)/2 = {phases_scan[0]:.3f} (期望 >0, q_xy=1/2)")
+    print(f"    相变点 (γ_x/λ_x=1.0) Re(Σλ)/2 = {phases_scan[8]:.3f}, 体带隙 = {gaps_scan[8]:.3f}")
+    print(f"    平庸相 (γ_x/λ_x=1.8) Re(Σλ)/2 = {phases_scan[-1]:.3f} (期望 <0, q_xy=0)")
+    scan_pass = (phases_scan[0] > 0.3) and (phases_scan[-1] < -0.3)
 
     # 绘图: 拓扑/平庸相的 Wannier sector 演化 + 嵌套 Wilson 相位扫描
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))

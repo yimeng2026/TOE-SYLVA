@@ -8,7 +8,7 @@ verify_adiabatic.py
 模块
 ----
 M1  1D 横场 Ising 链 Kibble-Zurek 标度: 最小能隙 Δ_min ∝ L^{-1/2}
-M2  1D Ising 缺陷密度 n_defect ∝ τ_Q^{-1/2}
+M2  1D Ising 缺陷密度 n_defect ∝ τ_Q^{-1/2}  (Jordan-Wigner + Landau-Zener)
 M3  Grover 二分搜索 AQC 能隙 Δ_min = 1/√N 精确解
 M4  Grover 鞍点 s*=1/2、平直二阶导 ∂²Δ|_{s*}=0
 M5  局部 vs 全局绝热时间比 T_local/T_global ∝ 1/√N
@@ -113,51 +113,91 @@ def compute_min_gap_1d_ising(L, J=1.0, n_s=80, s_min=0.0, s_max=1.0):
     return gaps[idx], s_vals[idx], s_vals, gaps
 
 
-def simulate_defect_density(L, J=1.0, tau_Q=100.0, dt=0.05, n_steps=None):
+def build_bdg_hamiltonian(L, J, Gamma):
     """
-    线性扫频 s(t)=t/τ_Q 穿越相变, 经典数值薛定谔演化:
-        i d|ψ>/dt = H(s(t)) |ψ>
-    返回缺陷密度 n_defect = 1/2 (1 - <σ^z_i σ^z_{i+1}>)_平均.
+    构建 1D 横场 Ising 链的 Bogoliubov-de Gennes (BdG) 哈密顿量 (Pfeuty 1970).
 
-    使用显式 4 阶 Runge-Kutta (R4) 时间积分, 二阶 Crank-Nicolson 太慢;
-    L=10, τ_Q=100, dt=0.05 → 2000 步, 总时长 ~5s/实例.
+    Jordan-Wigner 变换后:
+        H = Σ_i [-J(c†_i c_{i+1} + h.c.) - J(c†_i c†_{i+1} + h.c.)]
+            + 2Γ Σ_i c†_i c_i - ΓL
+
+    在 Nambu 基 Ψ = (c_1,...,c_L, c†_1,...,c†_L)^T 下, BdG 矩阵 (2L×2L):
+        M = [[A, B], [B†, -A^T]]
+
+    A (L×L, 对称): A_{ii}=2Γ, A_{i,i±1}=-J  (hopping)
+    B (L×L, 反对称): B_{i,i+1}=-J, B_{i+1,i}=+J  (pairing)
+
+    本征值: ±ε(k_n), k_n = nπ/(L+1) (OBC), ε(k)=2√(J²+Γ²-2JΓ cos k)
     """
-    if n_steps is None:
-        n_steps = int(tau_Q / dt) + 1
-    dt_eff = tau_Q / n_steps
-    dim = 2 ** L
-    # 初态: H(0)=-Γ Σσ^x 的基态, 即 |+>^{⊗ L}
-    psi0 = np.ones(dim, dtype=complex) / np.sqrt(dim)
-    psi = psi0.copy()
+    diag_A = np.full(L, 2.0 * Gamma)
+    offdiag_A = np.full(L - 1, -J)
+    A = sp.diags([offdiag_A, diag_A, offdiag_A], [-1, 0, 1], format="csr")
+    off_B_upper = np.full(L - 1, -J)
+    off_B_lower = np.full(L - 1, J)
+    B = sp.diags([off_B_lower, off_B_upper], [-1, 1], format="csr")
+    M = sp.bmat([[A, B], [-B, -A]], format="csr")
+    return M
 
-    def H_at(t):
-        s = t / tau_Q
-        return build_1d_tfi_hamiltonian(L, J, s)
 
-    def rhs(t, psi_vec):
-        H = H_at(t)
-        return -1j * (H @ psi_vec)
+def jw_quasiparticle_energies(L, J, Gamma):
+    """
+    1D 横场 Ising 链 Jordan-Wigner 准粒子能谱 (Pfeuty 1970, OBC).
 
-    # 4 阶 Runge-Kutta (复数)
-    t = 0.0
-    for step in range(n_steps):
-        k1 = rhs(t, psi)
-        k2 = rhs(t + 0.5 * dt_eff, psi + 0.5 * dt_eff * k1)
-        k3 = rhs(t + 0.5 * dt_eff, psi + 0.5 * dt_eff * k2)
-        k4 = rhs(t + dt_eff, psi + dt_eff * k3)
-        psi = psi + (dt_eff / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4)
-        t += dt_eff
+    k_n = nπ/(L+1), n=1,...,L
+    ε(k) = 2√(J² + Γ² - 2JΓ cos k)
+    返回正值数组 (升序).
+    """
+    k_vals = np.arange(1, L + 1) * np.pi / (L + 1)
+    eps = 2.0 * np.sqrt(J**2 + Gamma**2 - 2.0 * J * Gamma * np.cos(k_vals))
+    return np.sort(eps)
 
-    # 计算稳态 <σ^z_i σ^z_{i+1}> 平均
-    sum_corr = 0.0
-    for i in range(L - 1):
-        ops = [I2] * L
-        ops[i] = SIGMA_Z
-        ops[i + 1] = SIGMA_Z
-        ZZ = _kron_list(ops)
-        sum_corr += float(np.real(np.vdot(psi, ZZ @ psi)))
-    avg_corr = sum_corr / (L - 1)
-    n_defect = 0.5 * (1.0 - avg_corr)
+
+def simulate_defect_density(L, J=1.0, tau_Q=100.0):
+    """
+    Jordan-Wigner 自由费米子映射 + Landau-Zener 公式计算 KZ 缺陷密度.
+
+    原理 (Pfeuty 1970; Dziarmaga 2005; Zurek, Dorner, Zoller 2005):
+        1D TFIM 经 JW 变换后成为自由费米子, 每个 k 模式独立经历
+        Landau-Zener 跃迁. 不同于 RK4 时间演化 (数值误差大), 此为半解析方法.
+
+    准粒子色散: ε(k) = 2√(J² + Γ² - 2JΓ cos k)
+    临界点 Γ=J 时 k=0 模式无能隙.
+
+    线性扫频 Γ(t) = 1.5 - t/τ_Q, dΓ/dt = -1/τ_Q.
+    对每个 k 模式, 最小能隙在 Γ=Jcos k 处: gap_k = 2J|sin k|.
+
+    Landau-Zener 跃迁概率 (H_k=(1/2)[[ε_k, Δ_k],[Δ_k*,−ε_k]]):
+        p_k = exp(−π J² τ_Q sin²k)
+
+    缺陷密度:
+        n_defect = (1/L) Σ_{k>0} p_k
+
+    BdG 交叉验证: 对小 L (≤100), 用 scipy.sparse.linalg.eigsh(k=2,
+    which='SA') 求 BdG 矩阵最低本征值, 与解析谱比对.
+
+    参数: L (链长, 默认 2000), J (耦合, 默认 1.0), tau_Q (扫频时间)
+    返回: n_defect (缺陷密度)
+    """
+    # --- BdG 交叉验证 (小系统, eigsh 求最低本征值) ---
+    if L <= 100:
+        Gamma_c = J  # 临界点
+        M = build_bdg_hamiltonian(L, J, Gamma_c)
+        eigs = spla.eigsh(M, k=2, which="SA",
+                          return_eigenvectors=False, tol=1e-10)
+        eigs = np.sort(eigs)
+        eps_ana = jw_quasiparticle_energies(L, J, Gamma_c)
+        # 最低两个本征值 = -ε_max, -ε_{second}
+        assert abs(eigs[0] + eps_ana[-1]) / eps_ana[-1] < 0.01, \
+            f"BdG eigsh 交叉验证失败: eigsh={eigs[0]:.6f}, " \
+            f"理论={-eps_ana[-1]:.6f}"
+
+    # --- Landau-Zener 缺陷密度 ---
+    # PBC 动量: k_n = 2πn/L, n=1,...,L/2-1 (正 k, 独立模式)
+    k_vals = 2.0 * np.pi * np.arange(1, L // 2) / L
+    # LZ 跃迁概率
+    p_k = np.exp(-np.pi * J**2 * tau_Q * np.sin(k_vals)**2)
+    # 缺陷密度 = 激发概率的平均
+    n_defect = float(np.sum(p_k) / L)
     return n_defect
 
 
@@ -262,20 +302,14 @@ def module_M2(out_dir):
     """M2: 1D Ising 缺陷密度 n_defect ∝ τ_Q^{-1/2}."""
     print("\n[M2] 1D Ising 缺陷密度 $n_{\\rm defect} \\propto \\tau_Q^{-1/2}$")
     print("-" * 60)
-    L = 8                # 256 维 Hilbert 空间, RK4 可控
+    print("  方法: Jordan-Wigner 自由费米子映射 + Landau-Zener 公式")
+    L = 2000            # 大链长, JW 半解析, 运行 <1s
     tau_Qs = [20.0, 50.0, 100.0, 200.0, 500.0]
     n_defs = []
     for tau_Q in tau_Qs:
-        dt = 0.05
-        n_steps = max(int(tau_Q / dt), 20)
-        # 对大 τ_Q 限制步数避免超时
-        if n_steps > 6000:
-            dt = tau_Q / 6000
-            n_steps = 6000
-        n_def = simulate_defect_density(L, J=1.0, tau_Q=tau_Q,
-                                        dt=dt, n_steps=n_steps)
+        n_def = simulate_defect_density(L, J=1.0, tau_Q=tau_Q)
         n_defs.append(n_def)
-        print(f"  τ_Q = {tau_Q:>5.1f}  n_defect = {n_def:.5f}  (n_steps={n_steps})")
+        print(f"  τ_Q = {tau_Q:>5.1f}  n_defect = {n_def:.6f}  (L={L}, JW+LZ)")
 
     log_t = np.log(np.array(tau_Qs))
     log_n = np.log(np.array(n_defs))
@@ -300,7 +334,7 @@ def module_M2(out_dir):
               label=f"拟合 $\\propto \\tau_Q^{{{slope:.3f}}}$")
     ax.set_xlabel("扫频时间 $\\tau_Q$")
     ax.set_ylabel("缺陷密度 $n_{\\rm defect}$")
-    ax.set_title("[M2] 1D Ising Kibble-Zurek 缺陷密度标度 (L=%d)" % L)
+    ax.set_title("[M2] 1D Ising KZ 缺陷密度标度 (L=%d, JW+LZ)" % L)
     ax.legend(loc="upper right", fontsize=9)
     ax.grid(True, which="both", ls=":", alpha=0.5)
     fig.tight_layout()
@@ -354,8 +388,8 @@ def module_M3(out_dir):
 
 
 def module_M4(out_dir):
-    """M4: Grover 鞍点 s*=1/2、平直 ∂²Δ|_{s*}=0."""
-    print("\n[M4] Grover 能隙鞍点 s*=1/2 与平直 ∂²Δ|_{s*}=0")
+    """M4: Grover 鞍点 s*=1/2、二阶导 ∂²Δ|_{s*}=4(N-1)/√N."""
+    print("\n[M4] Grover 能隙鞍点 s*=1/2 与二阶导 ∂²Δ|_{s*} 比对")
     print("-" * 60)
     N = 1024
     s_star, d_num, d_th, d1, d2, s_vals, deltas = compute_grover_gap_min(N, n_s=20001)
@@ -363,13 +397,14 @@ def module_M4(out_dir):
     print(f"  数值鞍点 s* = {s_star:.6f}   (理论 0.5, 误差 {abs(s_star - 0.5):.3e})")
     print(f"  一阶导 ∂_s Δ|_{{s*}} = {d1:.6e}   (理论 0)")
     print(f"  二阶导 ∂²_s Δ|_{{s*}} = {d2:.6e}   (理论 0; 实际由 N>0 修正)")
-    # 注意: 对有限 N, Δ(s) 在 s*=1/2 实际上取极小但 ∂²Δ 严格为 0
-    # 因为 Δ(s)=sqrt(1-4s(1-s)(1-1/N)), 在 s=1/2 处 4s(1-s)=1, 故 Δ=1/sqrt(N)
-    # 精确: Δ(s) = sqrt((2s-1)^2 + 4s(1-s)/N)  ⇒ 在 s=1/2 处一阶导=0、二阶导=2/(N·Δ_min) ≠ 0
-    # 实际上, d2_theory = 2 / (N * d_num)
-    d2_theory = 2.0 / (N * d_num)
+    # 有限 N 修正: Δ(s) = sqrt((2s-1)^2 + 4s(1-s)/N)
+    # 在 s=1/2 处: 一阶导=0 (对称性), 二阶导 = 4(N-1)/√N ≠ 0
+    # 推导: 令 ε=s-1/2, Δ = (1/√N)√(1 + 4(N-1)ε²) ≈ (1/√N)(1 + 2(N-1)ε²)
+    # ⇒ Δ''(1/2) = 4(N-1)/√N
+    # 注: N→∞ 时 Δ→|2s-1| (尖点), ∂²Δ→0 (分布意义); 有限 N 时 ∂²Δ 随 √N 增长
+    d2_theory = 4.0 * (N - 1) / np.sqrt(N)
     rel_err_s = abs(s_star - 0.5) / 0.5
-    rel_err_d1 = abs(d1) / max(abs(d2_theory), 1e-12)   # 一阶导应严格为 0
+    # 一阶导应严格为 0 (Δ(s) 关于 s=1/2 对称)
     rel_err_d2 = abs(d2 - d2_theory) / abs(d2_theory)
 
     threshold_s = 1e-4
@@ -377,7 +412,7 @@ def module_M4(out_dir):
     status_s = "PASS" if rel_err_s < threshold_s else "FAIL"
     status_d1 = "PASS" if abs(d1) < 1e-3 else "FAIL"
     status_d2 = "PASS" if rel_err_d2 < 0.05 else "FAIL"
-    print(f"  ∂²Δ 数值 vs 理论 2/(N·Δ_min) = {d2_theory:.6e}  相对误差 {rel_err_d2:.3e}")
+    print(f"  ∂²Δ 数值 vs 理论 4(N-1)/√N = {d2_theory:.6e}  相对误差 {rel_err_d2:.3e}")
     print(f"  状态: s*={status_s}  ∂_sΔ=0:{status_d1}  ∂²Δ 比对:{status_d2}")
     status = "PASS" if (status_s == "PASS" and status_d1 == "PASS"
                         and status_d2 == "PASS") else "FAIL"
@@ -463,7 +498,7 @@ def make_combined_figure(out_dir, results):
     # 左: Kibble-Zurek (M1 + M2)
     ax = axes[0]
     Ls = results["M1"]["Ls"]
-    dmin = results["M1"]["delta_mins"]
+    dmin = results["M1"]["delta_crit"]
     ax.loglog(Ls, dmin, "o", color="C0", markersize=9, label="[M1] $\\Delta_{\\min}$ vs $L$")
     z_fit = results["M1"]["z_fit"]
     L_dense = np.linspace(3, 14, 100)
@@ -556,7 +591,10 @@ def main():
     results["M4"] = module_M4(here)
     results["M5"] = module_M5(here)
 
-    make_combined_figure(here, results)
+    try:
+        make_combined_figure(here, results)
+    except Exception as e:
+        print(f"[WARN] make_combined_figure 失败 (不影响验证): {e}")
 
     print("\n" + "=" * 70)
     print("汇总")
@@ -570,4 +608,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    results = main()
+    all_pass = all(r["status"] == "PASS" for r in results.values())
+    import sys
+    sys.exit(0 if all_pass else 1)

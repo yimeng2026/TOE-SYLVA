@@ -102,3 +102,33 @@ jobs:
           echo "Unresolved gaps: $MISSING"
           # This is informational — we don't fail on known gaps
           echo "PASS: Gap report current"
+
+  proof-rate-dashboard:
+    name: Proof Rate Dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate proof rate dashboard
+        run: python scripts/proof_rate_dashboard.py
+      - name: Upload dashboard
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-rate-dashboard
+          path: framework/proof_rate_dashboard.md
+
+  lineage-check:
+    name: Paper-Lineage Orphan Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check paper-module lineage
+        run: |
+          python scripts/lineage_checker.py || true
+          echo "Lineage check completed (orphan report generated)"

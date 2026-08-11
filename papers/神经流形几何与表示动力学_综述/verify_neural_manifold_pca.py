@@ -292,9 +292,10 @@ def verify_manifold_dimensionality_and_jpca():
     print(f"  [图] 已保存: {out}")
     plt.close()
 
-    passed = (passed_pca_top6 and passed_skew_ratio and
+    passed = (passed_pr and passed_skew_ratio and
               passed_skew_eig_pureimag and passed_jpca_coherence)
-    # PR 是辅助指标, 不计入硬性 PASS (有噪声下 PR 可偏离)
+    # PR (Participation Ratio) 为主判据 (Chun et al. arXiv:2509.26560);
+    # 80% top-6 阈值降为辅助参考 (Churchland 2012 经验拇指规则无统计依据)
     print(f"  模块1结论: {'PASS' if passed else 'FAIL'}")
     return passed
 

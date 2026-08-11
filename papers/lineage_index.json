@@ -1,0 +1,7 @@
+[
+  {
+    "paper_dir": "papers/qec_ftqc",
+    "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+    "verify_script": "papers/qec_ftqc/verify_qec_ftqc.py"
+  }
+]
