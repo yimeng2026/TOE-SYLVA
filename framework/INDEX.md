@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.3  
+> **文档版本**: v3.4  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-11  
-> **文档总数**: 35+77=112 (core docs 01-30 + extended 31-110) | framework/ 目录共 200+ 个 .md 文件
+> **文档总数**: 35+81=116 (core docs 01-30 + extended 31-114) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -577,3 +577,7 @@ four_forces_unification_*.md
 | doc:108 | [108_early_universe_inflation_cnf.md](108_early_universe_inflation_cnf.md) | 早期宇宙与暴胀 CNF 相变理论 | 2026-08-11 |
 | doc:109 | [109_renormalization_group_cnf.md](109_renormalization_group_cnf.md) | 重整化群 CNF 层间信息压缩 | 2026-08-11 |
 | doc:110 | [110_string_theory_landscape_cnf.md](110_string_theory_landscape_cnf.md) | 弦景观 CNF 解空间与选者原理 | 2026-08-11 |
+| doc:111 | [111_biological_evolution_cnf.md](111_biological_evolution_cnf.md) | 生物进化 CNF 自适应重构 | 2026-08-11 |
+| doc:112 | [112_consciousness_cnf.md](112_consciousness_cnf.md) | 意识 CNF 自指回路假说 | 2026-08-11 |
+| doc:113 | [113_quantum_biology_cnf.md](113_quantum_biology_cnf.md) | 量子生物学 CNF 脆弱相干 | 2026-08-11 |
+| doc:114 | [114_climate_earth_system_cnf.md](114_climate_earth_system_cnf.md) | 气候/地球系统 CNF 层次化因果 | 2026-08-11 |
