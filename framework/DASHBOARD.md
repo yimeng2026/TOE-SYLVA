@@ -349,3 +349,4 @@ xychart-beta
 
 *v7.69: doc:66 BSM CNF + doc:105 SM 统一. 框架编号 1-105 全覆盖.
 v7.x 远程更新: 页岩油气 CNF, 层化陈数, PFE 验证标准*
+* v7.71: docs 106-110 (Deep Learning CNF / QG Phenomenology / Inflation CNF / RG CNF / String Landscape CNF), S36-S52 predictions*

@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.2  
+> **文档版本**: v3.3  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-11  
-> **文档总数**: 35+72=107 (core docs 01-30 + extended 31-105) | framework/ 目录共 200+ 个 .md 文件
+> **文档总数**: 35+77=112 (core docs 01-30 + extended 31-110) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -572,3 +572,8 @@ four_forces_unification_*.md
 | doc:68 | [68_nonlinear_dynamics_pattern_formation.md](68_nonlinear_dynamics_pattern_formation.md) | 非线性动力学与斑图形成 CNF 桥接 | 2026-08-11 |
 | doc:66 | [66_beyond_standard_model_cnf.md](66_beyond_standard_model_cnf.md) | 超越标准模型 CNF 桥接 (BSM) | 2026-08-11 |
 | doc:105 | [105_cnf_standard_model_unification.md](105_cnf_standard_model_unification.md) | CNF 标准模型统一方案 | 2026-08-11 |
+| doc:106 | [106_deep_learning_neural_network_cnf.md](106_deep_learning_neural_network_cnf.md) | 深度学习与神经网络 CNF 统一表述 | 2026-08-11 |
+| doc:107 | [107_quantum_gravity_phenomenology.md](107_quantum_gravity_phenomenology.md) | 量子引力唯象学 (LIV/GUP/时空泡沫/CMB) | 2026-08-11 |
+| doc:108 | [108_early_universe_inflation_cnf.md](108_early_universe_inflation_cnf.md) | 早期宇宙与暴胀 CNF 相变理论 | 2026-08-11 |
+| doc:109 | [109_renormalization_group_cnf.md](109_renormalization_group_cnf.md) | 重整化群 CNF 层间信息压缩 | 2026-08-11 |
+| doc:110 | [110_string_theory_landscape_cnf.md](110_string_theory_landscape_cnf.md) | 弦景观 CNF 解空间与选者原理 | 2026-08-11 |
