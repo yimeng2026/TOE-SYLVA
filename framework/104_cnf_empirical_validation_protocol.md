@@ -4,8 +4,8 @@
 
 > **⚠️ AI 辅助生成声明**: 本文由 AI 辅助生成，内容用于组织 SYLVA 框架内已有的验证脚本结果与可证伪预测。所有引用的验证脚本均在 `papers/` 目录下，可独立复现。
 
-> **文档状态**: v1.0 DRAFT (v7.64, 2026-08-10)
-> **交叉引用**: BLIND_REGISTRY.md、OPEN_PROBLEMS.md、ERRATA.md、MILESTONE_OPEN_PROBLEMS_COMPLETE_v1.0
+> **文档状态**: v1.1 DRAFT (v7.79, 2026-08-11)
+> **交叉引用**: BLIND_REGISTRY.md、OPEN_PROBLEMS.md、ERRATA.md、MILESTONE_OPEN_PROBLEMS_COMPLETE_v1.0、papers/CONTENTS_verify_scripts.md（完整 296 脚本索引）、framework/120_postulate_reduction_roadmap.md（Agda O7 路线图）
 
 ---
 
@@ -78,6 +78,26 @@
 
 **运行方式**: `python scripts/verify_honest_repo.py`
 **状态**: ✅ 全 PASS
+
+### §1.6 全部验证脚本全景
+
+**核心脚本**（已在上文详细列出）：5 个，共 42+ 测试，全 PASS
+
+**完整索引**（296 个脚本，156 个物理/数学子领域）：见 `papers/CONTENTS_verify_scripts.md`
+
+| 分类 | 脚本数 | 代表性覆盖 |
+|:--|:--|:--|
+| 量子热力学（validation 子目录） | 8 | Jarzynski 等式、Otto 循环、热力学不确定性 |
+| 落地验证第一/二期 | 13 | arXiv ID、精细结构常数、von Klitzing、Dark WIMP |
+| 统计物理与相变 | 3 | Ising MC、量子统计 |
+| 量子光学（含多个子目录） | 25+ | 量子纠缠、压缩、非经典态 |
+| 量子计算与量子模拟 | 20+ | QEC、FTQC、算法 |
+| 代数几何与数论 | 5+ | Langlands、p-adic Hodge、正则特征 |
+| 凝聚态物理 | 15+ | 超导、Mott、拓扑物态 |
+| 量子引力与黑洞 | 5 | Page 曲线、replica wormhole |
+| **总计** | **296** | **156 个子领域** |
+
+> **⚠️ 重要诚实声明**：296 个脚本并非全部针对 CNF 框架预言。部分脚本是独立数学/物理验证（复现已有文献数值、验证恒等式等），用于证明仓库的学术严谨性。与 CNF 预言 S1-S75 直接关联的核心脚本已在上文 1.1-1.5 列出。完整脚本索引见 `papers/CONTENTS_verify_scripts.md`。
 
 ---
 
@@ -202,5 +222,7 @@
 
 ---
 
-*SYLVA v7.64 | 2026-08-10*
-*验证脚本位置: papers/verify_*.py（全 PASS）*
+*SYLVA v7.79 | 2026-08-11*
+*核心验证脚本: papers/verify_*.py（5 个核心脚本，42+ 测试，全 PASS）*
+*完整脚本索引: papers/CONTENTS_verify_scripts.md（296 个脚本，156 个子领域）*
+*Agda 形式化路线图: framework/120_postulate_reduction_roadmap.md（28 postulates / 0 admits，7/7 PASS）*
