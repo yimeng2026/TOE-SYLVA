@@ -1,0 +1,22 @@
+{
+  "batch": {
+    "files": 119859,
+    "theorems": 25553938,
+    "trivial": 25553938,
+    "real_proofs": 0
+  },
+  "handcrafted": {
+    "files": 22296,
+    "theorems": 571611,
+    "axioms": 467,
+    "postulates": 119,
+    "sorrys": 5115,
+    "trivial": 544168,
+    "real_proofs": 22328
+  },
+  "template": {
+    "files": 32,
+    "theorems": 411,
+    "trivial": 1
+  }
+}
