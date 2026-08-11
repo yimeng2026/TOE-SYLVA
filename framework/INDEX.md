@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v2.3  
+> **文档版本**: v3.2  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-06  
-> **文档总数**: 35+58=93 (core docs 01-30 + extended 31-93) | framework/ 目录共 200+ 个 .md 文件  
+> **最后更新**: 2026-08-11  
+> **文档总数**: 35+72=107 (core docs 01-30 + extended 31-105) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -156,7 +156,7 @@
 
 ### 编号冲突详细分析
 
-> 本节于 2026-08-10 通过逐文件比对（标题/摘要/目录/大小）生成。
+> 本节于 2026-08-11 通过逐文件比对（标题/摘要/目录/大小）生成。
 
 #### 编号 27/39：非交换几何
 
@@ -212,7 +212,7 @@
 
 ### v2 版本变体分析
 
-> 本节于 2026-08-10 通过对比 v1/v2 的标题、章首语、新增内容目录生成。
+> 本节于 2026-08-11 通过对比 v1/v2 的标题、章首语、新增内容目录生成。
 
 #### 37：基本常数统一（v1 vs v2）
 
@@ -567,8 +567,8 @@ four_forces_unification_*.md
 
 *索引维护说明: 当新增文档时，请同时更新此索引和CROSS_REFERENCES.md*
 
-| doc:49 | [49_gravitational_wave_astronomy_cnf.md](49_gravitational_wave_astronomy_cnf.md) | 引力波天文学 CNF 桥接 | 2026-08-10 |
-| doc:104 | [104_cnf_empirical_validation_protocol.md](104_cnf_empirical_validation_protocol.md) | CNF 经验验证协议 | 2026-08-10 |
-| doc:68 | [68_nonlinear_dynamics_pattern_formation.md](68_nonlinear_dynamics_pattern_formation.md) | 非线性动力学与斑图形成 CNF 桥接 | 2026-08-10 |
-| doc:66 | [66_beyond_standard_model_cnf.md](66_beyond_standard_model_cnf.md) | 超越标准模型 CNF 桥接 (BSM) | 2026-08-10 |
-| doc:105 | [105_cnf_standard_model_unification.md](105_cnf_standard_model_unification.md) | CNF 标准模型统一方案 | 2026-08-10 |
+| doc:49 | [49_gravitational_wave_astronomy_cnf.md](49_gravitational_wave_astronomy_cnf.md) | 引力波天文学 CNF 桥接 | 2026-08-11 |
+| doc:104 | [104_cnf_empirical_validation_protocol.md](104_cnf_empirical_validation_protocol.md) | CNF 经验验证协议 | 2026-08-11 |
+| doc:68 | [68_nonlinear_dynamics_pattern_formation.md](68_nonlinear_dynamics_pattern_formation.md) | 非线性动力学与斑图形成 CNF 桥接 | 2026-08-11 |
+| doc:66 | [66_beyond_standard_model_cnf.md](66_beyond_standard_model_cnf.md) | 超越标准模型 CNF 桥接 (BSM) | 2026-08-11 |
+| doc:105 | [105_cnf_standard_model_unification.md](105_cnf_standard_model_unification.md) | CNF 标准模型统一方案 | 2026-08-11 |
