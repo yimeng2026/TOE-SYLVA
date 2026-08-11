@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.4  
+> **文档版本**: v3.5  
 > **创建日期**: 2026-04-18  
 > **最后更新**: 2026-08-11  
-> **文档总数**: 35+81=116 (core docs 01-30 + extended 31-114) | framework/ 目录共 200+ 个 .md 文件
+> **文档总数**: 35+86=121 (core docs 01-30 + extended 31-119) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -581,3 +581,8 @@ four_forces_unification_*.md
 | doc:112 | [112_consciousness_cnf.md](112_consciousness_cnf.md) | 意识 CNF 自指回路假说 | 2026-08-11 |
 | doc:113 | [113_quantum_biology_cnf.md](113_quantum_biology_cnf.md) | 量子生物学 CNF 脆弱相干 | 2026-08-11 |
 | doc:114 | [114_climate_earth_system_cnf.md](114_climate_earth_system_cnf.md) | 气候/地球系统 CNF 层次化因果 | 2026-08-11 |
+| doc:115 | [115_network_science_complex_networks_cnf.md](115_network_science_complex_networks_cnf.md) | 网络科学 CNF 生长动力学 | 2026-08-11 |
+| doc:116 | [116_quantum_computing_cnf.md](116_quantum_computing_cnf.md) | 量子计算 CNF 复杂性 | 2026-08-11 |
+| doc:117 | [117_materials_metamaterials_cnf.md](117_materials_metamaterials_cnf.md) | 材料/超材料 CNF 反向工程 | 2026-08-11 |
+| doc:118 | [118_nuclear_physics_cnf.md](118_nuclear_physics_cnf.md) | 核物理 CNF 色禁闭残余 | 2026-08-11 |
+| doc:119 | [119_financial_economic_cnf.md](119_financial_economic_cnf.md) | 金融/经济 CNF 多资产因果 | 2026-08-11 |

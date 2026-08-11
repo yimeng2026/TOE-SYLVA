@@ -3,10 +3,10 @@
 > ⚠️ **统计范围仅覆盖 framework/ 目录**（54 完成 + 变体 + 元文档）。papers/ 目录中的论文统计请参见 `papers/CONTENTS.md`。
 
 > **生成日期**: 2026-04-19  
-> **最后更新**: 2026-08-11 (v2.3 sync: 54 done, proof_status added)  
+> **最后更新**: 2026-08-11 (v2.4 sync: 54 done, proof_status added)  
 > **统计范围**: framework/ 目录 (01-93 编号 + proof_status + 元/管理文档)  
-> **文档版本**: v2.3  
-> v2.3: 框架编号扩至 93 (新增 82-93)
+> **文档版本**: v2.4  
+> v2.4: 框架编号扩至 93 (新增 82-93)
 
 ---
 
@@ -321,6 +321,6 @@ pie title 公式分布 (估计 3,497+ 公式)
 
 ---
 
-*v2.3: +doc:49 (引力波天文学 CNF), 116 编号文档. Agda Cauchy 8->1 postulate, 7/7 PASS, 0 admits*
-*v2.3: 116 编号文档, framework 1-105 complete.
+*v2.4: +doc:49 (引力波天文学 CNF), 121 编号文档. Agda Cauchy 8->1 postulate, 7/7 PASS, 0 admits*
+*v2.4: 121 编号文档, framework 1-105 complete.
 Remote additions: 页岩油气 CNF, 层化陈数形式化, PFE 验证并入*
