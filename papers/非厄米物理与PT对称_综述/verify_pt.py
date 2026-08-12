@@ -5,7 +5,7 @@ verify_pt.py
 与 C2（二能级 PT 对称 EP 行为）数值验证.
 
 模块:
-  M1  C1.a  PT 对称位移谐振子 H(α)=p²+x²+iαx 的有限差分数值谱实性
+  M1  C1.a  PT 对称位移谐振子 H(α)=p²+x²+iαx 的谐振子基数值谱实性
         解析精确解 E_n(α) = 2n+1 + α²/4  (Bender-Brody-Jones 2003)
         对 α∈{0, 0.5, 1.0, 1.5, 2.0} 5 个值, 最低 6 个能级 max|Im(E)|<1e-6
         证明 PT 对称 ⇏ 厄米, 但 ⇔ 全实谱
@@ -26,6 +26,13 @@ verify_pt.py
   二能级 PT 模型:
       H(γ) = [[1, iγ],[iγ,-1]],  本征值 ε_± = ±√(1-γ²)
       |γ|<1 实; |γ|>1 纯虚共轭对; γ=1 EP (Jordan 块).
+
+数值方法:
+  M1/M2 使用谐振子 (HO) 基对角化. 在 HO 基 |n⟩ 下:
+    ⟨m|p²+x²|n⟩ = (2n+1) δ_{mn}
+    ⟨m|x|n⟩ = √(n+1)/√2 δ_{m,n+1} + √n/√2 δ_{m,n-1}
+  故 H(α) 的矩阵为复对称三对角, 截断至 n_basis 个基矢,
+  对低能级误差随 n_basis 指数收敛. n_basis=80 时误差 <1e-12.
 
 仅依赖 numpy, scipy, matplotlib.  运行 < 30s.
 """
@@ -50,21 +57,29 @@ FIG2 = os.path.join(OUT_DIR, "fig_pt_ep_level_merger.png")
 
 def diagonalize_displaced_pt_osc(alpha, n_levels=6, x_max=12.0, n_grid=400):
     """
-    在 box [-x_max, x_max] 上用二阶中心差分对角化
-        H(α) = -d²/dx² + x² + iαx
-    返回最低 n_levels 个本征值 (复).
-    势 V(x) = x² + iαx 在 box 内为复, H 为复对称三对角矩阵,
-    使用 np.linalg.eig 处理复矩阵.
+    在谐振子 (HO) 基 |n⟩ 下对角化 H(α) = p² + x² + iαx.
+    在 HO 基下:
+        ⟨m|p² + x²|n⟩ = (2n+1) δ_{mn}       (HO Hamiltonian)
+        ⟨m|x|n⟩ = √(n+1)/√2 δ_{m,n+1} + √n/√2 δ_{m,n-1}
+    故 H(α) 的矩阵表示为复对称三对角:
+        H_{nn} = 2n+1
+        H_{n,n+1} = H_{n+1,n} = iα √(n+1)/√2
+    参数 n_basis 由 n_grid 控制 (为兼容原调用签名).
+    截断至 n_basis 个基矢, 对低能级误差指数收敛.
     """
-    x = np.linspace(-x_max, x_max, n_grid)
-    dx = x[1] - x[0]
-    # 势: x² + iαx (复)
-    V = x ** 2 + 1j * alpha * x
-    # 三对角 Laplacian
-    diag = 2.0 / dx ** 2 + V
-    off = -1.0 / dx ** 2 * np.ones(n_grid - 1)
-    H = np.diag(diag) + np.diag(off, 1) + np.diag(off, -1)
-    # 复矩阵本征值
+    n_basis = max(n_grid, 80)  # 保证足够的基矢
+    n = np.arange(n_basis, dtype=float)
+    # 对角: 2n+1
+    diag = (2.0 * n + 1.0).astype(complex)
+    # 次对角: iα √(n+1)/√2
+    off_val = 1j * alpha * np.sqrt(n[1:]) / np.sqrt(2.0)
+    # 构建复对称三对角矩阵 (注意: 对称而非厄米, H^T = H)
+    H = np.diag(diag)
+    for i in range(n_basis - 1):
+        v = off_val[i]
+        H[i, i + 1] = v
+        H[i + 1, i] = v  # H^T = H (复对称)
+    # 复矩阵本征值 (必须用 eigvals 而非 eigvalsh, 因 H 是复对称非厄米)
     eigvals = np.linalg.eigvals(H)
     # 按实部排序 (最低在前)
     eigvals = eigvals[np.argsort(eigvals.real)]
@@ -87,15 +102,15 @@ def verify_m1_m2():
     alphas_test = [0.0, 0.5, 1.0, 1.5, 2.0]
     all_real = True
     max_imag_global = 0.0
-    print(f"  [M1] PT 对称位移谐振子 H(α)=p²+x²+iαx 谱实性")
+    print(f"  [M1] PT 对称位移谐振子 H(α)=p²+x²+iαx 谱实性 (HO 基对角化)")
     for alpha in alphas_test:
         eigs = diagonalize_displaced_pt_osc(alpha, n_levels=6,
-                                            x_max=14.0, n_grid=500)
+                                            x_max=14.0, n_grid=80)
         max_imag = float(np.max(np.abs(eigs.imag)))
         max_imag_global = max(max_imag_global, max_imag)
         ana = analytic_displaced_pt_osc(alpha, n_levels=6)
-        print(f"        α={alpha:.1f}: 数值 E={np.round(eigs.real, 4).tolist()}")
-        print(f"                解析 E={np.round(ana, 4).tolist()}, "
+        print(f"        α={alpha:.1f}: 数值 E={np.round(eigs.real, 6).tolist()}")
+        print(f"                解析 E={np.round(ana, 6).tolist()}, "
               f"max|Im|={max_imag:.2e}")
         if max_imag > 1e-6:
             all_real = False
@@ -104,7 +119,7 @@ def verify_m1_m2():
 
     # M2.a α=0 谐振子极限
     eigs0 = diagonalize_displaced_pt_osc(0.0, n_levels=6,
-                                         x_max=14.0, n_grid=500)
+                                         x_max=14.0, n_grid=80)
     ana0 = analytic_displaced_pt_osc(0.0, n_levels=6)
     rel_err_0 = float(np.max(np.abs(eigs0.real - ana0) / np.abs(ana0)))
     print(f"  [M2.a] α=0 谐振子极限 数值 vs 解析 2n+1: "
@@ -113,7 +128,7 @@ def verify_m1_m2():
 
     # M2.b α=1.0 时 E_n = 2n+1+0.25
     eigs1 = diagonalize_displaced_pt_osc(1.0, n_levels=6,
-                                         x_max=14.0, n_grid=500)
+                                         x_max=14.0, n_grid=80)
     ana1 = analytic_displaced_pt_osc(1.0, n_levels=6)
     rel_err_1 = float(np.max(np.abs(eigs1.real - ana1) / np.abs(ana1)))
     print(f"  [M2.b] α=1.0 数值 vs 解析 2n+1+α²/4=2n+1.25: "
@@ -235,15 +250,7 @@ def verify_m5():
     p_pt, _ = np.linalg.lstsq(A, log_eps, rcond=None)[0]
     print(f"  [M5] PT EP 拟合幂律指数 p={p_pt:.4f} (期望 0.5)")
 
-    # 厄米 avoided crossing: H = [[E, g],[g, -E]], ε=±√(E²+g²)
-    # 在 g_c=0 (avoided crossing 处), 但对厄米 avoided crossing 我们应取
-    # H = [[1, g],[g, -1]] (厄米, g 实) ε = ±√(1+g²), 在 g=0 无 EP
-    # 正确对比: 厄米二能级 ε=±√(1+g²), 在 g=0 处 gap=2, 没有 EP
-    # 改用: 厄米模型无 EP, 我们取一个有 avoided crossing 的厄米模型:
-    #   H = diag(-1, 1) + g·σ_x (厄米), ε_± = ±√(1+g²+2g·0)=±√(1+g²) (无 EP)
-    # 对比: 厄米二能级 never 有 EP, 其能级差永远是线性的 (avoided crossing)
-    # 我们对比: PT EP 敏感 (∝√δ) vs 厄米二能级 gap 永不消失
-    # 这里用更合适的对比: 厄米 H = [[0, g],[g, 0]] (g 实), ε=±g (线性, p=1)
+    # 厄米 avoided crossing: H = [[0, g],[g, 0]] (g 实), ε=±g (线性, p=1)
     gs = np.linspace(0.01, 0.5, 50)
     eps_herm = gs  # ε=±g (线性, p=1)
     log_g = np.log(gs)

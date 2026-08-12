@@ -321,7 +321,9 @@ def verify_rsa_representational_geometry():
         n_neurons=n_neurons, n_time=n_time, n_conditions=n_conditions,
         d_latent=d_latent_true, dt=0.02, noise_std=0.5
     )
-    print(f"  数据形状: R={R.shape} (K, T, N), K={n_conditions} conditions")
+    n_trials = R_trials.shape[1]
+    print(f"  数据形状: R={R.shape} (K, T, N), K={n_conditions} conditions, "
+          f"n_trials={n_trials}")
 
     # --- 1. 计算每个条件的平均神经活动向量 (population vector) ---
     # 取 t = T/2 附近 20 bins 的平均 (避免起始暂态)
@@ -353,31 +355,39 @@ def verify_rsa_representational_geometry():
 
     print(f"  Mantel 相关 (观测 RDM vs 预测 RDM): {mantel_corr:.3f} (阈值 0.7)")
 
-    # --- 5. RDM 第一特征向量 vs cos(theta_k) ---
-    evals_rdm, vecs_rdm = np.linalg.eigh(RDM)
-    # 最大特征值对应的特征向量
-    v1 = vecs_rdm[:, -1]
-    # 与 cos(theta_k) 的相关
+    # --- 5. 经典 MDS 第一坐标 vs cos(theta_k) ---
+    # RDM 是距离矩阵, 其原始第一特征向量通常是常数模 (所有条件等距的均值分量),
+    # 与 cos(theta) 必然无关. 使用经典 MDS (双中心化) 提取表示坐标:
+    #   B = -1/2 * J * RDM * J,  其中 J = I - (1/K) * ones
+    # B 的最大特征值对应特征向量 = 第一 MDS 坐标, 应与角度相关.
+    n_cond = RDM.shape[0]
+    J = np.eye(n_cond) - np.ones((n_cond, n_cond)) / n_cond
+    B = -0.5 * J @ RDM @ J  # 双中心化 Gram 矩阵
+    evals_mds, evecs_mds = np.linalg.eigh(B)
+    # 第一 MDS 坐标 (最大特征值)
+    v1_mds = evecs_mds[:, -1]
     cos_theta = np.cos(theta_k)
-    corr_v1_cos = abs(np.corrcoef(v1, cos_theta)[0, 1])
+    corr_v1_cos = abs(np.corrcoef(v1_mds, cos_theta)[0, 1])
 
-    print(f"  RDM 第一特征向量 vs cos(theta_k) 相关: {corr_v1_cos:.3f} (阈值 0.7)")
+    print(f"  MDS 第一坐标 vs cos(theta_k) 相关: {corr_v1_cos:.3f} (阈值 0.7)")
 
-    # --- 6. 条件内 vs 条件间距离 ---
-    # 取同条件的不同 trial (用 t=0 与 t=T/4 的 PV)
-    PV_early = R[:, 0, :]  # 起始时刻
-    PV_late = R[:, -1, :]  # 结束时刻
+    # --- 6. 条件内 vs 条件间距离 (使用不同 trial, 同一时间窗) ---
+    # 条件内: 同一条件的不同 trial 之间的距离 (噪声变异)
+    # 条件间: 不同条件 (trial 平均) 之间的距离 (信号变异)
+    PV_trials = R_trials[:, :, t_center, :].mean(axis=2)  # (K, n_trials, N)
 
-    # 同条件内距离 (PV_early vs PV_late, 同 k)
-    intra_dist = []
+    # 条件内距离: 同条件不同 trial 的两两距离
+    intra_dists = []
     for k in range(n_conditions):
-        v1 = PV_early[k] - PV_early[k].mean()
-        v2 = PV_late[k] - PV_late[k].mean()
-        cos_sim = (v1 @ v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-12)
-        intra_dist.append(1 - cos_sim)
-    intra_mean = np.mean(intra_dist)
+        for tr1 in range(n_trials):
+            for tr2 in range(tr1 + 1, n_trials):
+                v1_ = PV_trials[k, tr1] - PV_trials[k, tr1].mean()
+                v2_ = PV_trials[k, tr2] - PV_trials[k, tr2].mean()
+                cos_sim = (v1_ @ v2_) / (np.linalg.norm(v1_) * np.linalg.norm(v2_) + 1e-12)
+                intra_dists.append(1 - cos_sim)
+    intra_mean = np.mean(intra_dists)
 
-    # 条件间距离 (RDM 上三角平均)
+    # 条件间距离: 不同条件 (trial 平均) 的两两距离
     inter_mean = np.mean(rdm_obs)
 
     print(f"  条件内平均距离: {intra_mean:.3f}")
@@ -390,7 +400,7 @@ def verify_rsa_representational_geometry():
     passed_intra_inter = intra_mean < 0.7 * inter_mean
 
     print(f"  ✓ Mantel 相关 PASS={passed_mantel} | "
-          f"RDM-v1 vs cos(theta) PASS={passed_v1_cos} | "
+          f"MDS-v1 vs cos(theta) PASS={passed_v1_cos} | "
           f"条件内 < 条件间 PASS={passed_intra_inter}")
 
     # --- 绘图 ---

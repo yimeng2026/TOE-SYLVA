@@ -205,10 +205,14 @@ def verify_log_scaling_critical():
     print(f"  Calabrese-Cardy prediction (half-chain, c=1/2): a = c/6 = {1/6:.4f}")
     print(f"  (Note: using log2 and half-chain => a = c/(6*ln2) = {1/(6*np.log(2)):.4f})")
 
-    # For half-chain with log2: S = (c / (6 * ln(2))) * log2(N) + const
-    # c = 1/2 => a_theory = 1/(12*ln2) ≈ 0.1201
-    a_theory = 0.5 / (6 * np.log(2))
-    print(f"  Theoretical slope a_theory = {a_theory:.4f}")
+    # Calabrese-Cardy formula for PBC ring of N sites, block L=N/2:
+    #   S(L, N) = (c/3) * ln((N/π) * sin(πL/N)) + s_1
+    # For L = N/2: sin(π/2) = 1, so S = (c/3) * ln(N/π) + s_1
+    # Converting to bits (log2): S = (c/3) * log2(N/π) + const
+    # Slope vs log2(N) = c/3.
+    # For Ising c = 1/2: a_theory = c/3 = 1/6 ≈ 0.1667
+    a_theory = 0.5 / 3.0
+    print(f"  Theoretical slope a_theory = {a_theory:.4f}  (c/3 for PBC half-chain, c=1/2)")
     print(f"  Relative error: {abs(a_fit - a_theory)/a_theory:.4f}")
 
     # Plot
@@ -219,7 +223,7 @@ def verify_log_scaling_critical():
     ax.plot(N_fit, a_fit * N_fit + b_fit, '-', color='steelblue', lw=2,
             label=f'Fit: $S = {a_fit:.3f} \\log_2 N + {b_fit:.3f}$')
     ax.plot(N_fit, a_theory * N_fit + b_fit, '--', color='red', lw=1.5,
-            label=f'Calabrese-Cardy: $a = c/(6\\ln 2) = {a_theory:.3f}$')
+            label=f'Calabrese-Cardy: $a = c/3 = {a_theory:.3f}$ (PBC)')
     ax.set_xlabel('$\\log_2 N$', fontsize=13)
     ax.set_ylabel('Half-chain entropy $S$ (bits)', fontsize=13)
     ax.set_title('Logarithmic Scaling: Critical Ising Model ($c=1/2$)', fontsize=14)
@@ -356,7 +360,8 @@ def verify_rt_formula_happy():
         evals = evals[evals > 1e-14]
         S = -np.sum(evals * np.log2(evals))
         # RT prediction: min(k, 1) * log2(2) = min(k,1)
-        S_rt = min(k, 1) * np.log2(leg_dim)
+        # RT prediction: for AME(6,2), any bipartition k|6-k gives S=min(k,6-k)
+        S_rt = min(k, n_legs - k) * np.log2(leg_dim)
         results.append((k, S, S_rt))
         print(f"  |A|={k}:  S(A) = {S:.4f} bits,  RT prediction = {S_rt:.4f}")
 
@@ -428,12 +433,20 @@ def verify_rt_formula_happy():
         # The RT surface for region {first k legs of T1} crosses min(k, 1) bonds
         # if k <= 5 (all in T1): min(k, 1) bond
         # if k > 5: crosses into T2, additional bonds
+        # RT minimal cut for a chain of 3 AME(6,2) perfect tensors:
+        # T1 has 5 boundary + 1 internal (to T2) = 6 legs
+        # T2 has 4 boundary + 2 internal (to T1,T3) = 6 legs
+        # T3 has 5 boundary + 1 internal (to T2) = 6 legs
+        # For region A = first k boundary legs:
+        #   k<=5: within T1. RT = min(k, 6-k)  [6-k = (5-k) boundary + 1 internal]
+        #   6<=k<=9: spans T1+part T2. RT = min(k-4, 10-k)  [k-4 = (k-5) T2 bnd + 1 int]
+        #   k>=10: spans T1+T2+part T3. RT = min(k-8, 14-k)  [k-8 = (k-9) T3 bnd + 1 int]
         if k <= 5:
-            rt_cut = min(k, 1)  # at most 1 bond (T1-T2)
+            rt_cut = min(k, 6 - k)
         elif k <= 9:
-            rt_cut = 2  # crosses T1-T2 and potentially T2-T3
+            rt_cut = min(k - 4, 10 - k)
         else:
-            rt_cut = min(k, n_boundary - k)
+            rt_cut = min(k - 8, n_boundary - k)
         S_rt = rt_cut * np.log2(2)
         rt_results.append((k, S_ent, S_rt))
         print(f"  |A|={k:2d}:  S(A) = {S_ent:.4f} bits,  RT cut = {rt_cut} bonds = {S_rt:.4f}")

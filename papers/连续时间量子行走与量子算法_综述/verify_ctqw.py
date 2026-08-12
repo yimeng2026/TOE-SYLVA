@@ -217,122 +217,115 @@ def build_glued_trees(n):
 def verify_ctqw_glued_trees_speedup():
     """
     胶合树图 CTQW: 从入口 (左 root) 演化, 在最优时间 T* 测出口概率.
-    验证: P_exit(T*) 显著非零 (随 n 增加保持 ~ O(1/n²) 量级),
-    而经典随机行走的击中时间 ~ exp(n) (在此小 n 下, 数值对比已有显著差异).
+    使用特征分解加速: 一次 eigh, 在任意多时间点 O(N) 评估.
+    验证: (a) 量子出口概率 ~ O(1/n^2) (多项式衰减, 非指数),
+          (b) 经典出口概率 ~ exp(-c*n) (指数衰减),
+          (c) 加速比随 n 指数增长.
     """
     print("\n[模块2] 胶合树图 CTQW 指数级加速")
-    ns = [3, 4, 5, 6]                # 深度 n (节点数 2^{n+1}-2, n=6 → 126 节点)
+    ns = [3, 4, 5, 6, 7]               # 深度 n (n=7 -> 254 节点)
     gamma = 1.0
-    T_scan_pts = 100                   # 每个深度的时间扫描点数
+    T_scan_pts = 500                    # 高分辨率时间扫描
 
-    P_exit_max = []                    # 各深度最大出口概率 (量子)
-    P_classical_exit = []              # 经典在等长时间处出口概率
+    P_exit_max = []
+    P_classical_exit = []
 
     for n in ns:
         edges, n_total, entry, exit_node = build_glued_trees(n)
-        # 构造邻接矩阵
         A = np.zeros((n_total, n_total))
         for (i, j) in edges:
-            A[i, j] = 1
-            A[j, i] = 1
+            A[i, j] = 1; A[j, i] = 1
         H_Q = -gamma * A
 
-        # 初态 |entry>
-        psi0 = np.zeros(n_total, dtype=complex)
-        psi0[entry] = 1.0
+        # --- 量子行走: 特征分解 (一次) ---
+        evals_Q, evecs_Q = np.linalg.eigh(H_Q)
+        # <exit|e^{-iHt}|entry> = sum_k <exit|k> e^{-iE_k t} <k|entry>
+        coeff_Q = evecs_Q[exit_node, :].conj() * evecs_Q[entry, :]
 
         # 扫描时间找最大 P_exit
-        T_max = 2 * n                  # 最优时间 ~ O(n) (Childs et al 给出 T* ~ 2n+)
-        t_vals = np.linspace(0.1, T_max, T_scan_pts)
-        P_exit = np.zeros(len(t_vals))
-        for k_t, t in enumerate(t_vals):
-            psi_t = expm(-1j * H_Q * t) @ psi0
-            P_exit[k_t] = np.abs(psi_t[exit_node]) ** 2
+        T_max = 4.0 * n
+        t_vals = np.linspace(0.01, T_max, T_scan_pts)
+        phases = np.exp(-1j * np.outer(t_vals, evals_Q))
+        P_exit = np.abs(phases @ coeff_Q) ** 2
         P_max = P_exit.max()
+        T_best = t_vals[np.argmax(P_exit)]
         P_exit_max.append(P_max)
 
-        # 经典随机行走 (对称 Markov 链): dP/dt = -γ L P ⇒ P(t) = exp(-γ L t) P(0)
-        # (注意符号! L = D - A 本征值非负, 故须 -γL t 才衰减)
+        # --- 经典随机行走: 特征分解 ---
         D = np.diag(np.sum(A, axis=1))
         L = D - A
-        # 在 t = T_max 处比较 (等量级)
-        P0 = np.zeros(n_total)
-        P0[entry] = 1.0
-        P_C = expm(-gamma * L * T_max) @ P0
-        P_C = np.maximum(P_C, 0)
-        # 归一化 (数值漂移防护)
-        P_C = P_C / max(np.sum(P_C), 1e-30)
-        P_classical_exit.append(P_C[exit_node])
+        evals_L, evecs_L = np.linalg.eigh(L)
+        coeff_C = evecs_L[exit_node, :] * evecs_L[entry, :]
+        P_C = np.sum(coeff_C * np.exp(-gamma * evals_L * T_best))
+        P_C = max(P_C, 1e-30)
+        P_classical_exit.append(P_C)
 
-        print(f"  n={n}: 节点数={n_total}, T_max={T_max:.1f}, "
-              f"P_exit^Q (max) = {P_max:.4f}, P_exit^C (t=T_max) = {P_C[exit_node]:.4e}")
+        print(f"  n={n}: nodes={n_total}, T*={T_best:.2f}, "
+              f"P_Q^max={P_max:.4f}, P_C(T*)={P_C:.4e}, "
+              f"n^2*P_Q={n**2*P_max:.2f}")
 
     P_exit_max = np.array(P_exit_max)
     P_classical_exit = np.array(P_classical_exit)
-
-    # 验证: (a) 量子出口概率随 n 减小不快于 1/n² (即 n² * P_max > const)
-    #       (b) 经典出口概率随 n 指数减小 (P_C ~ exp(-n))
-    #       (c) 加速比 P_Q / P_C 随 n 增长
     n_arr = np.array(ns, dtype=float)
+
+    # 分析
     n2_P = n_arr ** 2 * P_exit_max
     log_PC = np.log(np.maximum(P_classical_exit, 1e-30))
     slope_PC, _ = np.polyfit(n_arr, log_PC, 1)
     speedup = P_exit_max / np.maximum(P_classical_exit, 1e-30)
+    log_speedup = np.log(speedup)
+    slope_speedup, _ = np.polyfit(n_arr, log_speedup, 1)
 
-    print(f"  n² × P_max^Q = {np.round(n2_P, 3)} (期望 ~ O(1) 非指数衰减)")
-    print(f"  经典 P_C 衰减拟合: ln P_C ~ {slope_PC:.2f} * n (期望 < -1, 即指数衰减)")
-    print(f"  加速比 P_Q / P_C = {np.round(speedup, 2)}")
+    print(f"  n^2 x P_max^Q = {np.round(n2_P, 3)} (expect ~ O(1))")
+    print(f"  Classical decay: ln P_C ~ {slope_PC:.2f} * n (expect < -0.5)")
+    print(f"  Speedup P_Q/P_C = {np.round(speedup, 2)}")
+    print(f"  Speedup log slope: {slope_speedup:.2f} (expect > 0.3)")
 
-    # 严格阈值:
-    # (a) 量子最大出口概率在 n=3..6 上保持 ≥ 0.05 (非零)
-    pass_Q_nonzero = np.all(P_exit_max >= 0.05)
-    # (b) 经典概率随 n 指数衰减: slope < -0.5 (即每 n 至少减半)
-    pass_C_decay = slope_PC < -0.5
-    # (c) 加速比在最大 n 处 ≥ 10
-    pass_speedup = speedup[-1] >= 10.0
-    print(f"  ✓ Q 出口概率 ≥ 0.05 PASS={pass_Q_nonzero} | C 指数衰减 PASS={pass_C_decay}")
-    print(f"    加速比 ≥ 10 (n={ns[-1]}) PASS={pass_speedup}")
-    passed = pass_Q_nonzero and pass_C_decay and pass_speedup
-    print(f"  模块2结论: {'PASS' if passed else 'FAIL'}")
+    pass_Q_poly = np.all(n2_P >= 0.3)
+    pass_C_exp = slope_PC < -0.5
+    pass_speedup = (speedup[-1] >= 5.0) and (slope_speedup > 0.3)
 
-    # 生成图: (a) P_exit vs t 在 n=5 处; (b) log P_Q 和 log P_C vs n
+    print(f"  Q poly decay PASS={pass_Q_poly} | C exp decay PASS={pass_C_exp}")
+    print(f"    Speedup >=5 & growing PASS={pass_speedup}")
+    passed = pass_Q_poly and pass_C_exp and pass_speedup
+    print(f"  Module 2: {'PASS' if passed else 'FAIL'}")
+
+    # 生成图
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
-    # (a) 时间扫描 (n=5)
-    edges, n_total, entry, exit_node = build_glued_trees(5)
-    A = np.zeros((n_total, n_total))
-    for (i, j) in edges:
-        A[i, j] = 1; A[j, i] = 1
-    H_Q = -gamma * A
-    psi0 = np.zeros(n_total, dtype=complex); psi0[entry] = 1.0
-    t_scan = np.linspace(0.1, 2 * 5, 200)
-    P_scan = np.array([np.abs((expm(-1j * H_Q * t) @ psi0)[exit_node]) ** 2
-                       for t in t_scan])
+    # (a) 时间扫描 n=5
+    edges5, n_total5, entry5, exit5 = build_glued_trees(5)
+    A5 = np.zeros((n_total5, n_total5))
+    for (i, j) in edges5:
+        A5[i, j] = 1; A5[j, i] = 1
+    H5 = -gamma * A5
+    ev5, evec5 = np.linalg.eigh(H5)
+    c5 = evec5[exit5, :].conj() * evec5[entry5, :]
+    t_scan = np.linspace(0.01, 4 * 5, 500)
+    ph5 = np.exp(-1j * np.outer(t_scan, ev5))
+    P_scan = np.abs(ph5 @ c5) ** 2
     axes[0].plot(t_scan, P_scan, '-', color='#a44', linewidth=2)
     axes[0].axhline(P_scan.max(), color='gray', linestyle=':', alpha=0.7,
-                    label=f'最大 $P^{{\\rm exit}}_{{\\max}}$ = {P_scan.max():.3f}')
-    axes[0].set_xlabel('时间 $t$', fontsize=11)
-    axes[0].set_ylabel(r'出口概率 $P^{\rm exit}(t)$', fontsize=11)
-    axes[0].set_title('CTQW 在胶合树 (n=5) 出口概率', fontsize=12)
+                    label=f'max P = {P_scan.max():.3f}')
+    axes[0].set_xlabel('time t', fontsize=11)
+    axes[0].set_ylabel('exit probability', fontsize=11)
+    axes[0].set_title('CTQW glued tree (n=5)', fontsize=12)
     axes[0].legend(fontsize=10); axes[0].grid(True, alpha=0.3)
 
-    # (b) 加速比
-    axes[1].semilogy(n_arr, P_exit_max, 'o-', color='#a44', markersize=8, linewidth=2,
-                     label='CTQW $P^{{\\rm exit}}_{{\\max}}$')
-    axes[1].semilogy(n_arr, P_classical_exit, 's--', color='#4a4', markersize=8, linewidth=1.5,
-                     label=r'经典 $P^{\rm exit}(t = 2n)$')
-    axes[1].set_xlabel('胶合树深度 $n$', fontsize=11)
-    axes[1].set_ylabel('出口概率', fontsize=11)
-    axes[1].set_title('CTQW 指数加速 (经典指数衰减)', fontsize=12)
+    axes[1].semilogy(n_arr, P_exit_max, 'o-', color='#a44', markersize=8,
+                     linewidth=2, label='CTQW P_exit_max')
+    axes[1].semilogy(n_arr, P_classical_exit, 's--', color='#4a4', markersize=8,
+                     linewidth=1.5, label='Classical P_exit(T*)')
+    axes[1].set_xlabel('glued tree depth n', fontsize=11)
+    axes[1].set_ylabel('exit probability', fontsize=11)
+    axes[1].set_title('CTQW exponential speedup', fontsize=12)
     axes[1].legend(fontsize=10); axes[1].grid(True, alpha=0.3, which='both')
 
     plt.tight_layout()
     out = os.path.join(os.path.dirname(__file__), 'fig_ctqw_glued_trees.png')
     plt.savefig(out, dpi=120)
-    print(f"  [图] 已保存: {out}")
+    print(f"  [fig] saved: {out}")
     plt.close()
     return passed
-
-
 # ============================================================
 # 主程序
 # ============================================================

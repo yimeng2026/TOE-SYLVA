@@ -7,12 +7,13 @@ Claim (Cohen et al. 2019, arXiv:1902.04615):
         Phi(g . f) = g . Phi(f)
     where g acts as a gauge transformation (a position-dependent
     automorphism of the fiber). For a discrete 2D grid with SO(2)
-    fibers, the gauge transformation is g(x) in SO(2), acting on the
+    fibers, the gauge transformation g(x) = R(phi(x)) acts on the
     fiber by rotation. The action is:
-        (g . f)(x) = R(-theta(x)) * f(x)
+        (g . f)(x) = R(phi(x)) * f(x)
     where R is the rotation in the fiber.
+    The connection theta(x) also transforms: theta'(x) = theta(x) + phi(x).
 
-    Parallel transport P_{x->y}: V_y -> V_x is the gauge-covariant
+    Parallel transport P_{y->x}: V_y -> V_x is the gauge-covariant
     operation that maps a fiber vector at y to a fiber vector at x
     by the rotation R(theta(x) - theta(y)).
 
@@ -48,18 +49,26 @@ def rot2(theta):
     return np.array([[c, -s], [s, c]])
 
 
-def apply_gauge(fiber_field, theta_field):
-    """Apply gauge transformation g(x) = R(theta(x)) to fiber field.
+def apply_gauge(fiber_field, phi_field):
+    """Apply active gauge transformation g(x) = R(phi(x)) to fiber field.
 
     fiber_field: shape (H, W, 2) - 2D vector at each grid point.
-    theta_field: shape (H, W) - gauge angle at each point.
-    Returns: (g . f)(x) = R(-theta(x)) * f(x), shape (H, W, 2).
+    phi_field: shape (H, W) - gauge rotation angle at each point.
+    Returns: (g . f)(x) = R(phi(x)) * f(x), shape (H, W, 2).
+
+    Under this active gauge transformation g(x) = R(phi(x)):
+      - Field transforms: f'(x) = R(phi(x)) f(x)
+      - Connection (theta) transforms: theta'(x) = theta(x) + phi(x)
+      - Parallel transport transforms covariantly:
+        P'_{y->x} = R(theta'_x - theta'_y) = R(phi_x) R(theta_x-theta_y) R(-phi_y)
+                   = g(x) P_{y->x} g(y)^{-1}
+      - Equivariance: Phi_{theta'}(f') = g . Phi_theta(f)  [exact for any phi(x)]
     """
     H, W, _ = fiber_field.shape
     out = np.zeros_like(fiber_field)
     for i in range(H):
         for j in range(W):
-            out[i, j] = rot2(-theta_field[i, j]) @ fiber_field[i, j]
+            out[i, j] = rot2(phi_field[i, j]) @ fiber_field[i, j]
     return out
 
 
@@ -118,6 +127,8 @@ def module1_flat_gauge():
     # Phi(f) with flat gauge
     phi_f = gauge_equivariant_conv(fiber_field, theta_const, weight)
     # Apply gauge transformation g = R(theta_const), then Phi
+    # For flat gauge: theta'=theta+theta_const, but P=R(theta'-theta')=R(0)=I
+    # So Phi_{theta'}(g.f) = naive_conv(g.f) = R(theta_const)*naive_conv(f) = g.Phi(f)
     g_f = apply_gauge(fiber_field, theta_const)
     phi_g_f = gauge_equivariant_conv(g_f, theta_const, weight)
     # Apply gauge transformation to Phi(f)
@@ -132,31 +143,57 @@ def module1_flat_gauge():
 
 
 def module2_smoothly_varying_gauge():
-    """M2: Smoothly varying gauge - gauge-aware conv is equivariant;
-    naive conv is NOT."""
-    print("--- Module 2: Smoothly varying gauge (linear in x) ---")
+    """M2: Smoothly varying gauge - proper equivariance test.
+
+    A gauge transformation g(x) = R(phi(x)) acts on BOTH the field and
+    the connection:
+      f'(x) = R(phi(x)) f(x)
+      theta'(x) = theta(x) + phi(x)
+    Equivariance: Phi_{theta'}(f') = R(phi) . Phi_theta(f)
+
+    The gauge-aware conv (with parallel transport) satisfies this exactly.
+    The naive conv (no parallel transport) does NOT, because it ignores
+    the connection transformation.
+    """
+    print("--- Module 2: Smoothly varying gauge (proper equivariance test) ---")
     H = W = 8
     rng = np.random.default_rng(11)
     fiber_field = rng.standard_normal((H, W, 2))
     weight = {(1, 0): 0.5, (-1, 0): 0.3, (0, 1): -0.2, (0, -1): 0.7}
-    # Varying gauge: theta(x) = 0.1 * x (linear)
+    # Original connection (gauge field): theta(x) = 0.1*(i+j)
     theta_var = np.zeros((H, W))
     for i in range(H):
         for j in range(W):
             theta_var[i, j] = 0.1 * (i + j)
-    # Gauge-equivariant conv: should be equivariant
+    # Gauge transformation: phi(x) = 0.07*(i^2 + j) — smoothly varying
+    phi_field = np.zeros((H, W))
+    for i in range(H):
+        for j in range(W):
+            phi_field[i, j] = 0.07 * (i ** 2 + j)
+
+    # Original conv: Phi_theta(f)
     phi_f = gauge_equivariant_conv(fiber_field, theta_var, weight)
-    g_f = apply_gauge(fiber_field, theta_var)
-    phi_g_f = gauge_equivariant_conv(g_f, theta_var, weight)
-    g_phi_f = apply_gauge(phi_f, theta_var)
-    err_gauge = float(np.linalg.norm(phi_g_f - g_phi_f)
-                       / (np.linalg.norm(phi_g_f) + 1e-12))
+
+    # Transformed field: f' = R(phi) f
+    f_prime = apply_gauge(fiber_field, phi_field)
+    # Transformed connection: theta' = theta + phi
+    theta_prime = theta_var + phi_field
+
+    # Gauge-equivariant conv on transformed inputs: Phi_{theta'}(f')
+    phi_f_prime = gauge_equivariant_conv(f_prime, theta_prime, weight)
+
+    # g . Phi_theta(f) = R(phi) * Phi_theta(f)
+    g_phi_f = apply_gauge(phi_f, phi_field)
+
+    err_gauge = float(np.linalg.norm(phi_f_prime - g_phi_f)
+                       / (np.linalg.norm(phi_f_prime) + 1e-12))
+
     # Naive conv (no parallel transport): should NOT be equivariant
     nai_f = naive_conv(fiber_field, weight)
-    nai_g_f = naive_conv(g_f, weight)
-    g_nai_f = apply_gauge(nai_f, theta_var)
-    err_naive = float(np.linalg.norm(nai_g_f - g_nai_f)
-                      / (np.linalg.norm(nai_g_f) + 1e-12))
+    nai_f_prime = naive_conv(f_prime, weight)  # naive ignores theta entirely
+    g_nai_f = apply_gauge(nai_f, phi_field)
+    err_naive = float(np.linalg.norm(nai_f_prime - g_nai_f)
+                      / (np.linalg.norm(nai_f_prime) + 1e-12))
     print(f"  gauge-aware:  rel err = {err_gauge:.6e}  "
           f"-> {'PASS' if err_gauge < 1e-9 else 'FAIL'}")
     print(f"  gauge-naive:  rel err = {err_naive:.6e}  "
@@ -188,7 +225,7 @@ def main():
     bars = ax1.bar(labels, errs, color=colors, alpha=0.8)
     ax1.set_yscale('log')
     ax1.set_ylabel('rel err ||Phi(g.f) - g.Phi(f)||')
-    ax1.set_title('Gauge equivariance test\n(smoothly varying gauge theta(x)=0.1(x+y))')
+    ax1.set_title('Gauge equivariance test\n(smoothly varying gauge phi(x)=0.07(x^2+y))')
     ax1.axhline(1e-9, color='green', ls='--', label='PASS threshold (1e-9)')
     ax1.axhline(1e-3, color='red', ls='--', label='FAIL threshold (1e-3)')
     ax1.legend(fontsize=8)

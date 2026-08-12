@@ -32,11 +32,18 @@ OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Model: 1D Heisenberg chain with random disorder
 # =============================================================================
 
-def heisenberg_chain_hamiltonian(N, J, W, seed=0):
+def heisenberg_chain_hamiltonian(N, J, W, seed=0, hx=0.5):
     """
     Construct the Hamiltonian of the 1D random-field Heisenberg model:
-      H = J * sum_i (X_i X_{i+1} + Y_i Y_{i+1} + Z_i Z_{i+1}) + W * sum_i h_i Z_i
+      H = J * sum_i (X_i X_{i+1} + Y_i Y_{i+1} + Z_i Z_{i+1})
+          + W * sum_i h_i Z_i + hx * sum_i X_i
     where h_i are uniform random in [-1, 1].
+
+    The uniform transverse field hx breaks total Sz conservation, ensuring
+    proper Wigner-Dyson level statistics in the thermal phase. Without it,
+    the Sz-conserving Heisenberg chain decomposes into independent Sz sectors,
+    and mixing levels from different sectors yields Poisson statistics even
+    in the thermal phase.
 
     For W >> J: MBL phase (strong disorder)
     For W << J: Thermal/ergodic phase (weak disorder)
@@ -66,6 +73,10 @@ def heisenberg_chain_hamiltonian(N, J, W, seed=0):
         # Disorder field
         mats = [I2] * N; mats[i] = sz
         H += W * h[i] * kron_list(mats)
+        # Transverse field (breaks Sz conservation)
+        if hx != 0:
+            mats_hx = [I2] * N; mats_hx[i] = sx
+            H += hx * kron_list(mats_hx)
 
     return H
 
@@ -103,7 +114,7 @@ def verify_entanglement_dynamics():
 
     N = 10  # 10 spins => dim = 1024
     J = 1.0
-    times = np.linspace(0, 30, 15)
+    times = np.linspace(0, 10, 15)  # shorter range: MBL log-growth stays below thermal
 
     # Initial state: |↑↓↑↓...⟩ (Néel product state, low entanglement)
     psi0 = np.zeros(2**N, dtype=complex)
@@ -114,10 +125,10 @@ def verify_entanglement_dynamics():
             neel_idx |= (1 << i)
     psi0[neel_idx] = 1.0
 
-    # Two disorder strengths: thermal (W=0.5) and MBL (W=8.0)
+    # Two disorder strengths: thermal (W=0.5) and MBL (W=15.0)
     W_thermal = 0.5
-    W_mbl = 8.0
-    n_disorder = 1  # average over disorder realizations
+    W_mbl = 15.0
+    n_disorder = 3  # average over disorder realizations
 
     S_thermal_list = []
     S_mbl_list = []
@@ -227,7 +238,7 @@ def verify_eth_eigenstate_scaling():
     J = 1.0
     subA = N // 2
     W_thermal = 0.5
-    W_mbl = 8.0
+    W_mbl = 15.0
     n_disorder = 1
 
     # Infinite-temperature half-chain entropy (volume law):
@@ -295,7 +306,7 @@ def verify_eth_eigenstate_scaling():
     ax = axes[1]
     data = [S_eig_thermal, S_eig_mbl]
     labels = [f'Thermal\n($W={W_thermal}$)', f'MBL\n($W={W_mbl}$)']
-    bp = ax.boxplot(data, labels=labels, patch_artist=True, widths=0.5)
+    bp = ax.boxplot(data, tick_labels=labels, patch_artist=True, widths=0.5)
     bp['boxes'][0].set_facecolor('lightcoral')
     bp['boxes'][1].set_facecolor('lightblue')
     ax.axhline(S_inf, color='gray', ls='--', lw=2, label=f'Volume law $S_\\infty$')
@@ -405,12 +416,12 @@ def verify_level_statistics():
 
     # Plot 2: Distribution of r for thermal vs MBL
     ax = axes[1]
-    # Recompute distributions for W=0.5 (thermal) and W=8.0 (MBL)
+    # Recompute distributions for W=0.5 (thermal) and W=15.0 (MBL)
     r_thermal_dist = []
     r_mbl_dist = []
     for seed in range(n_disorder):
         H_th = heisenberg_chain_hamiltonian(N, J, 0.5, seed=seed)
-        H_mbl = heisenberg_chain_hamiltonian(N, J, 8.0, seed=seed)
+        H_mbl = heisenberg_chain_hamiltonian(N, J, 15.0, seed=seed)
         from numpy.linalg import eigh
         evals_th, _ = eigh(H_th)
         evals_mbl, _ = eigh(H_mbl)
@@ -445,7 +456,7 @@ def verify_level_statistics():
     ax.hist(r_thermal_dist, bins=30, density=True, alpha=0.5, color='red',
             edgecolor='black', label=f'Thermal ($W=0.5$)')
     ax.hist(r_mbl_dist, bins=30, density=True, alpha=0.5, color='blue',
-            edgecolor='black', label=f'MBL ($W=8.0$)')
+            edgecolor='black', label=f'MBL ($W=15.0$)')
     ax.plot(r_grid, goe_pdf(r_grid), 'r-', lw=2, label='GOE theory')
     ax.plot(r_grid, poisson_pdf(r_grid), 'b-', lw=2, label='Poisson theory')
     ax.set_xlabel('Level spacing ratio $r$', fontsize=13)

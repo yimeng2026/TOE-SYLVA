@@ -316,18 +316,19 @@ def verify_string_tension():
     """
     print("模块 2: 弦张力 — 禁闭 vs 解禁闭相判定")
 
-    m = 0.5
-    # 禁闭相: U 大 J 小 (电场能主导)
-    J_conf, U_conf = 0.1, 1.0
-    # 解禁闭相: J 大 U 小 (跃迁主导, matter 凝结屏蔽弦)
-    J_deconf, U_deconf = 3.0, 0.1
+    # 禁闭相: U 大 J 小, 且 m >> U (重物质, 弦不断裂, σ ≈ 2U)
+    #   物理原因: m >> U 时 σ^x 冻结在 +1 (翻转代价 2m >> 2U·R),
+    #   电场弦 τ^z=-1 为主线态, V(R) ≈ 2U·R
+    J_conf, U_conf, m_conf = 0.1, 1.0, 10.0
+    # 解禁闭相: J 大 U 小, m 小 (轻物质, Higgs 机制屏蔽弦)
+    J_deconf, U_deconf, m_deconf = 3.0, 0.1, 0.5
 
     R_values = list(range(1, 5))  # R = 1, 2, 3, 4 (n_sites 最大 5 → 全空间 2^9=512, 物理子空间 2^5=32)
-    V_conf = [string_potential(R, J_conf, m, U_conf) for R in R_values]
-    V_deconf = [string_potential(R, J_deconf, m, U_deconf) for R in R_values]
+    V_conf = [string_potential(R, J_conf, m_conf, U_conf) for R in R_values]
+    V_deconf = [string_potential(R, J_deconf, m_deconf, U_deconf) for R in R_values]
 
-    print(f"  禁闭相   (J={J_conf}, U={U_conf}): V(R) = {['%.3f' % v for v in V_conf]}")
-    print(f"  解禁闭相 (J={J_deconf}, U={U_deconf}): V(R) = {['%.3f' % v for v in V_deconf]}")
+    print(f"  禁闭相   (J={J_conf}, U={U_conf}, m={m_conf}): V(R) = {['%.3f' % v for v in V_conf]}")
+    print(f"  解禁闭相 (J={J_deconf}, U={U_deconf}, m={m_deconf}): V(R) = {['%.3f' % v for v in V_deconf]}")
 
     # 线性拟合 V(R) = σ·R + const
     R_arr = np.array(R_values, dtype=float)
@@ -347,9 +348,9 @@ def verify_string_tension():
     # 绘图
     fig, ax = plt.subplots(figsize=(7.5, 4.8))
     ax.plot(R_values, V_conf, 'rs-', lw=2, ms=9,
-            label=f'禁闭相 ($J={J_conf}, U={U_conf}$)')
+            label=f'禁闭相 ($J={J_conf}, U={U_conf}, m={m_conf}$)')
     ax.plot(R_values, V_deconf, 'bo-', lw=2, ms=9,
-            label=f'解禁闭相 ($J={J_deconf}, U={U_deconf}$)')
+            label=f'解禁闭相 ($J={J_deconf}, U={U_deconf}, m={m_deconf}$)')
     R_fit = np.linspace(0.5, 4.5, 100)
     ax.plot(R_fit, sigma_conf * R_fit + const_conf, 'r--', lw=1.2, alpha=0.6,
             label=f'禁闭相线性拟合 $\\sigma={sigma_conf:.3f}$')
