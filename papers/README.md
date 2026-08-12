@@ -120,3 +120,5 @@ TOE-SYLVA_Master_Academic.md (主理论)
 ---
 
 *本仓库致力于诚实呈现已知数学物理结果的状态——已知的不夸大，未知的不虚报。*
+
+> 📇 子目录查重：papers/ 现有 16 组重复/近重复子目录（涉及 42 个），各组 canonical 版本、保留/待合并/历史状态与合并建议见 [DUPLICATE_INDEX.md](DUPLICATE_INDEX.md)（2026-08-12 实测复核版；只增改不删减，未删除任何目录）。
