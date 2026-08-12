@@ -1,0 +1,66 @@
+{
+  "script": "check_photon_classical_consistency.py",
+  "scope": "Maxwell 涌现一致性 + 无能隙色散↔E=pc 判别性结构（经典一致性复核，非新预言）",
+  "constants_source": "CODATA 2018（h,c SI 精确；μ0,ε0 推荐值）",
+  "results": [
+    {
+      "test": "T1 U(1) Abel 性：e^{iθ1}e^{iθ2}=e^{iθ2}e^{iθ1}（无自相互作用的代数根源）",
+      "status": "PASS",
+      "detail": "residual=0.00e+00"
+    },
+    {
+      "test": "T2 Abel ⟹ 真空线性叠加：F[A1+A2]=F[A1]+F[A2]（Maxwell 线性的来源）",
+      "status": "PASS",
+      "detail": "恒等式构造性成立"
+    },
+    {
+      "test": "T3a 曲率反对称 F_{μν}=−F_{νμ}（镜像 CS:117 curvature2Form_antisymmetric）",
+      "status": "PASS",
+      "detail": "max|F+Fᵀ|=0.00e+00"
+    },
+    {
+      "test": "T3b Bianchi/二阶导可交换（dF=0 的微分形式根基）",
+      "status": "PASS",
+      "detail": "residual=0.00e+00"
+    },
+    {
+      "test": "T4 c=1/√(μ0ε0) 与 CODATA c 一致（rel<1e-9）",
+      "status": "PASS",
+      "detail": "c_em=299792458.000006, rel=2.17e-14"
+    },
+    {
+      "test": "T5 无能隙色散 ⟹ v_g=c（01 号文件 §6、04 号文件 A-2 的判别结构）",
+      "status": "PASS",
+      "detail": "max_err=1.22e-04"
+    },
+    {
+      "test": "T6 E=pc 于 |k|=1.0e+06（rel<1e-12）",
+      "status": "PASS",
+      "detail": "rel=1.90e-16"
+    },
+    {
+      "test": "T6 E=pc 于 |k|=3.7e+08（rel<1e-12）",
+      "status": "PASS",
+      "detail": "rel=0.00e+00"
+    },
+    {
+      "test": "T7a 有质量对照：低 k 时 v_g<c（判别性）",
+      "status": "PASS",
+      "detail": "v_g/c=0.001000"
+    },
+    {
+      "test": "T7b 有质量对照：高 k 时 v_g→c 但不等（|v_g/c−1|>0 且 <0.01）",
+      "status": "PASS",
+      "detail": "v_g/c=0.999999995"
+    },
+    {
+      "test": "T8 无框架后验参数参与（honesty guard：本验证不依赖 p=0.52/ℱ/N_eff）",
+      "status": "PASS",
+      "detail": "frame_params=[]"
+    }
+  ],
+  "pass": 11,
+  "fail": 0,
+  "confidence": "L3（数值验证，已知物理复核）",
+  "timestamp": "2026-08-12T00:00:00+08:00"
+}

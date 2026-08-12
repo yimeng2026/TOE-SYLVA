@@ -1,0 +1,13 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://198.18.0.1:3001
+- Environments: .env
+✓ Ready in 851ms
+
+ GET /api/research/panels 200 in 425ms (next.js: 270ms, application-code: 155ms)
+[ResearchLLM] answered by provider=kimi model=kimi-for-coding latency=163708ms
+[ResearchLLM] answered by provider=kimi model=kimi-for-coding latency=188232ms
+ POST /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925/execute 200 in 4.8min (next.js: 730ms, application-code: 4.8min)
+ DELETE /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925 200 in 989ms (next.js: 956ms, application-code: 33ms)
+ GET /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925 200 in 97ms (next.js: 80ms, application-code: 17ms)
+[?25h

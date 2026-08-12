@@ -1,0 +1,76 @@
+{
+  "script": "check_photon_thermo_interception.py",
+  "scope": "Planck 谱/光子气体热力学 + Compton + hν=ΔE 拦截条件量纲一致性（经典一致性复核）",
+  "constants_source": "CODATA 2018；CMB T=2.725 K；Ly-α 121.567 nm（实验参考）",
+  "results": [
+    {
+      "test": "T1 Planck 积分 ∫x³/(eˣ−1)dx=π⁴/15（rel<1e-6，截断 x=60）",
+      "status": "PASS",
+      "detail": "num=6.49393940, exact=6.49393940, rel=1.37e-16"
+    },
+    {
+      "test": "T2 σ=2π⁵k⁴/(15h³c²) 与 CODATA 一致（rel<1e-9）",
+      "status": "PASS",
+      "detail": "σ=5.670374419e-08, CODATA=5.670374419e-08, rel=3.25e-11"
+    },
+    {
+      "test": "T3a Wien 常数 b=hc/(yk) 与 CODATA 一致（(5−y)eʸ=5 波长版，rel<1e-9）",
+      "status": "PASS",
+      "detail": "y=4.9651142317443, b=2.897771955e-03, rel=6.39e-11"
+    },
+    {
+      "test": "T3b 频率峰 (3−x)eˣ=3 → x=2.821439372（与波长版 y=4.965 明确区分）",
+      "status": "PASS",
+      "detail": "x=2.8214393721221"
+    },
+    {
+      "test": "T4 CMB 光子数密度 ≈410.7 cm⁻³（ζ(3) 级数自算，rel<1e-3）",
+      "status": "PASS",
+      "detail": "n_γ=410.50 cm⁻³, ζ(3)=1.202056903"
+    },
+    {
+      "test": "T5 光子气体 P=u/3（无化学势玻色气状态方程结构）",
+      "status": "PASS",
+      "detail": "u=8.432594e-01 J/m³, P=2.810865e-01 Pa"
+    },
+    {
+      "test": "T6 Compton 波长 λ_e=h/(m_ec) 与 CODATA 一致（rel<1e-9）",
+      "status": "PASS",
+      "detail": "λ_e=2.4263102387e-12, rel=5.40e-12"
+    },
+    {
+      "test": "T7 Compton 重推 θ=30°：运动学解=λ+λ_e(1−cosθ)（rel<1e-12）",
+      "status": "PASS",
+      "detail": "λ'=7.0325063935e-11, 公式=7.0325063935e-11, rel=9.19e-16"
+    },
+    {
+      "test": "T7 Compton 重推 θ=90°：运动学解=λ+λ_e(1−cosθ)（rel<1e-12）",
+      "status": "PASS",
+      "detail": "λ'=7.2426310239e-11, 公式=7.2426310239e-11, rel=2.50e-15"
+    },
+    {
+      "test": "T7 Compton 重推 θ=180°：运动学解=λ+λ_e(1−cosθ)（rel<1e-12）",
+      "status": "PASS",
+      "detail": "λ'=7.4852620477e-11, 公式=7.4852620477e-11, rel=1.38e-15"
+    },
+    {
+      "test": "T8 hν=ΔE（Ly-α：λ=121.567 nm，rel<1e-3）",
+      "status": "PASS",
+      "detail": "λ=121.5023 nm, rel=5.32e-04"
+    },
+    {
+      "test": "T9 σ_abs 量纲合成=[M0 L2 T0]（面积）",
+      "status": "PASS",
+      "detail": "dim=[0, 2, 0]"
+    },
+    {
+      "test": "T10 模密度因子 8π=2×4π（两偏振=两手性扇区，结构对应非推导）",
+      "status": "PASS",
+      "detail": "整数恒等"
+    }
+  ],
+  "pass": 13,
+  "fail": 0,
+  "confidence": "L3（数值验证，已知物理复核）",
+  "timestamp": "2026-08-12T00:00:00+08:00"
+}

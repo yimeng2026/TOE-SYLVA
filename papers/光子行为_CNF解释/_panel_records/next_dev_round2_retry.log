@@ -1,0 +1,16 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://198.18.0.1:3001
+- Environments: .env
+✓ Ready in 594ms
+
+ GET /api/research/panels 200 in 378ms (next.js: 241ms, application-code: 137ms)
+ POST /api/research/panels 201 in 33ms (next.js: 3ms, application-code: 30ms)
+ POST /api/research/panels/c23cbd67-c4bc-49a3-996f-49eb1135f834/members?template=interdisciplinary 201 in 772ms (next.js: 739ms, application-code: 34ms)
+ POST /api/research/panels/c23cbd67-c4bc-49a3-996f-49eb1135f834/members?template=quantum_mechanics 201 in 104ms (next.js: 70ms, application-code: 33ms)
+ POST /api/research/panels/c23cbd67-c4bc-49a3-996f-49eb1135f834/members?template=statistical_mechanics 201 in 42ms (next.js: 3ms, application-code: 40ms)
+[ResearchLLM] answered by provider=kimi model=kimi-for-coding latency=145021ms
+[ResearchLLM] answered by provider=kimi model=kimi-for-coding latency=218816ms
+[ResearchLLM] answered by provider=kimi model=kimi-for-coding latency=246350ms
+ POST /api/research/panels/c23cbd67-c4bc-49a3-996f-49eb1135f834/execute 200 in 4.1min (next.js: 770ms, application-code: 4.1min)
+ DELETE /api/research/panels/c23cbd67-c4bc-49a3-996f-49eb1135f834 200 in 772ms (next.js: 735ms, application-code: 37ms)

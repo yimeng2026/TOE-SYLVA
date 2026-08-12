@@ -1,0 +1,12 @@
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://198.18.0.1:3001
+- Environments: .env
+✓ Ready in 747ms
+
+ GET /api/research/panels 200 in 502ms (next.js: 350ms, application-code: 152ms)
+ POST /api/research/panels 201 in 36ms (next.js: 3ms, application-code: 33ms)
+ POST /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925/members?template=interdisciplinary 201 in 740ms (next.js: 716ms, application-code: 24ms)
+ POST /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925/members?template=quantum_mechanics 201 in 83ms (next.js: 68ms, application-code: 14ms)
+ POST /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925/members?template=statistical_mechanics 201 in 20ms (next.js: 2ms, application-code: 18ms)
+ POST /api/research/panels/0f804b78-bc4b-4fc3-8e2a-66d3454e4925/execute 200 in 3.3min (next.js: 707ms, application-code: 3.3min)

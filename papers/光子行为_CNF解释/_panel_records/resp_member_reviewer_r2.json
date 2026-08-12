@@ -1,0 +1,1 @@
+{"success":true,"data":{"id":"c6e3e412-5337-4fbb-a48f-5c0800db5322","panelId":"c23cbd67-c4bc-49a3-996f-49eb1135f834","role":"reviewer","specialty":"quantum_mechanics","weight":1.2,"systemPrompt":"你是量子力学专家，精通量子场论、路径积分、对称性和重整化。你擅长将量子力学的基本原理应用于凝聚态物理、粒子物理和量子信息。你能够深入理解量子纠缠、超导和量子相变等现象。","model":"glm-5.1","createdAt":"2026-08-12T07:49:41.797Z"},"templateUsed":"quantum_mechanics"}
