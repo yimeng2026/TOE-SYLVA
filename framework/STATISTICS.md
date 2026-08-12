@@ -1,11 +1,11 @@
-﻿# TOE框架全局统计报告
+# TOE框架全局统计报告
 
 > ⚠️ **统计范围仅覆盖 framework/ 目录**（54 完成 + 变体 + 元文档）。papers/ 目录中的论文统计请参见 `papers/CONTENTS.md`。
 
 > **生成日期**: 2026-04-19  
-> **最后更新**: 2026-08-11 (v2.4 sync: 54 done, proof_status added)  
-> **统计范围**: framework/ 目录 (01-93 编号 + proof_status + 元/管理文档)  
-> **文档版本**: v2.4  
+> **最后更新**: 2026-08-12 (v2.5 sync: 121 编号文档 0-120 全覆盖, papers 249 顶层条目, 验证基线 228/28/1, mathlib 缓存移植)  
+> **统计范围**: framework/ 目录 (编号 0-120 + proof_status + 元/管理文档)  
+> **文档版本**: v2.5  
 > v2.4: 框架编号扩至 93 (新增 82-93)
 
 ---
@@ -324,3 +324,41 @@ pie title 公式分布 (估计 3,497+ 公式)
 *v2.4: +doc:49 (引力波天文学 CNF), 121 编号文档. Agda Cauchy 8->1 postulate, 7/7 PASS, 0 admits*
 *v2.4: 121 编号文档, framework 1-105 complete.
 Remote additions: 页岩油气 CNF, 层化陈数形式化, PFE 验证并入*
+
+---
+
+## 📡 v2.5 全仓实测补丁 (2026-08-12)
+
+> 以下数据为 2026-08-12 仓库现状实测（HEAD `abe8c3aa1c`），替代上方 2026-04 冻结基线作为当前口径；冻结区数据保留备查。
+
+### 文档规模
+
+| 指标 | 实测值 | 口径 |
+|------|--------|------|
+| framework 编号文档 | **121**（编号 0–120，1–120 无缺号） | 146 个数字开头 .md 去重编号实测 |
+| papers/ 顶层条目 | **249**（44 直接 .md + 205 子目录） | 实测；递归 .md 总数 **688** |
+| papers/CONTENTS.md 登记 | 302 数据行 | 表格行实测 |
+| 可证伪预测 | **75**（S1–S75） | S1-S20 (doc:104) + S21-S35 (docs 49/66/68) + S36-S75 (docs 105-119) |
+| 新论文系列（2026-08） | 7 系列 **77 篇** .md | 热点议题 5 / 落地验证 14 / 数学基础强化 7 / 模块强化 31 / 页岩油气 6 / 光子 8 / 回应评论 6 |
+
+### 形式化与验证
+
+| 指标 | 实测值 | 来源 |
+|------|--------|------|
+| Agda 模块 | **7/7 PASS, 0 admits**（postulate 合计 56） | v7.76/v7.80 恢复后 |
+| Lean lakefile roots | **1,092**（唯一模块名） | `lakefile.lean` roots 数组实测 |
+| mathlib 缓存移植 | **7,878** 个 .olean 就位（P0 编译阻塞解除） | `.lake/packages/mathlib` 实测 |
+| Lean 模块编译打样 | ChernSimons (2,332 jobs) / StandardModel (8,248 jobs) 零错误成功；BlochTheorem / EinsteinCartan 失败待修 | `build_verify_*.txt` 如实登记（成功 2 / 失败 2） |
+| 验证脚本（扫描口径） | **250** 个 .py | verify/validate/validation/check 实测 |
+| 回归基线（首跑 2026-08-10） | **257 扫描 / 228 通过 / 28 失败 / 1 超时** | `framework/verify_report.json` |
+| CI 修复（v7.81+v7.83） | 15 个 Validation Scripts 全 exit 0 | commits 2e475efc3b / 86adeaaa7b |
+| GitHub CI | 最近 3 次运行全 success | Actions API 2026-08-12 实测 |
+| 预测验证脚本（2026-08-12 新增） | S17 `verify_dark_energy_w.py` 12/12 PASS；S62-S65 `verify_climate_cnf.py` 14/14 PASS + 4 项 [DATA-MISSING] | 两脚本均 exit 0 |
+
+### 统计方法说明（v2.5 补丁）
+
+1. 编号覆盖：`ls framework | grep '^[0-9]'` 去重编号计数；
+2. papers 条目：`find papers -maxdepth 1`（顶层 .md + 子目录）与递归 `.md` 全计数并存；
+3. roots：解析 `lakefile.lean` roots 数组反引号条目（1,092，无重复）；
+4. olean：`find .lake/packages/mathlib/.lake/build/lib -name '*.olean' | wc -l` = 7,878；
+5. CI：GitHub Actions API 匿名读取（public repo），最近 5 次运行中最新 3 次 success。

@@ -1,12 +1,35 @@
-﻿# TOE框架进度仪表板
+# TOE框架进度仪表板
 
 > ⚠️ **This dashboard was last fully updated on 2026-04-19.** Some statistics may not reflect the v7.x paper revisions and expanded papers/ directory. See `papers/CONTENTS.md` and `papers/README.md` for the latest paper inventory.
 
 > **生成日期**: 2026-04-19 · **审计更新**: 2026-08-11
 >
-> **最后更新**: 2026-08-11 (v7.30: GAPS 全填, 93 编号文档)
+> **最后更新**: 2026-08-12 (v7.83 同步：121 编号文档、验证基线 228/28/1、CI 全绿、mathlib 缓存移植)
 >
 > **仪表板版本**: v1.2 (frozen baseline + v7.x patch notes)
+
+---
+
+## 📡 v7.77–v7.83 同步补丁 (2026-08-12 实测)
+
+> 以下数据为 2026-08-12 仓库现状实测（HEAD `abe8c3aa1c`），不沿用 2026-04 冻结基线。
+
+| 指标 | 实测值 | 口径/来源 |
+|------|--------|-----------|
+| 框架编号文档 | **121**（0–120 全覆盖，无缺号） | `framework/` 实测 distinct 编号 |
+| papers/ 顶层条目 | **249**（44 直接 .md + 205 子目录） | `papers/` 实测；递归 .md 总数 688 |
+| CONTENTS.md 登记条目 | 302 行（数据行） | `papers/CONTENTS.md` 实测 |
+| 可证伪预测 | **75**（S1–S75） | doc:104 + docs 49/66/68/105-119 |
+| 验证脚本（扫描口径） | **250** 个 .py | verify/validate/validation/check 实测 |
+| 回归基线（2026-08-10 首跑） | **257 扫描 / 228 通过 / 28 失败 / 1 超时** | `framework/verify_report.json` |
+| CI 修复（v7.81+v7.83） | 15 个 Validation Scripts 全 exit 0（Py 3.10+3.12） | commits 2e475efc3b / 86adeaaa7b |
+| GitHub CI | **最近 3 次运行全 success**（86adeaaa7b/0f450a8116/abe8c3aa1c） | Actions API 2026-08-12 实测 |
+| Agda 形式化 | **7/7 PASS，0 admits**（postulate 共 56） | v7.76/v7.80 恢复后状态 |
+| Lean lakefile roots | **1,092** 个模块（唯一名实测） | `lakefile.lean` roots 数组 |
+| mathlib 缓存移植（P0 解阻塞） | **7,878 个 .olean 就位** | `.lake/packages/mathlib` 实测 |
+| Lean 模块编译打样 | ChernSimons / StandardModel 零错误成功；BlochTheorem / EinsteinCartan 失败待修 | `build_verify_*.txt` 如实登记 |
+| 新论文系列（2026-08） | 7 个系列目录共 **77 篇** .md | 热点议题 5 / 落地验证 14 / 数学基础强化 7 / 模块强化 31 / 页岩油气 6 / 光子 8 / 回应评论 6 |
+| 预测验证新基线 | S17 `verify_dark_energy_w.py` **12/12 PASS**；S62-S65 `verify_climate_cnf.py` **14/14 PASS + 4 项 [DATA-MISSING]** | 2026-08-12 新增，exit 0 |
 
 ---
 

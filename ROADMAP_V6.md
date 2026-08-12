@@ -1,4 +1,4 @@
-﻿# SYLVA v6.x-v7.0 开发路线图
+# SYLVA v6.x-v7.0 开发路线图
 
 > 起始日期: 2026-07-22
 > 当前版本: v7.30
@@ -454,10 +454,52 @@ SYLVA v6.x 的目标是把项目从一个 **"内容丰富但结构混乱"** 的�
 - [x] 7/7 PASS, 0 admits
 - [x] 修复 Z User sync commit 0e2c830b5c 覆盖问题
 
+### v7.77 — 296 验证脚本完整索引 (commit d1c0c2378b, 2026-08-11)
+- [x] `papers/CONTENTS_verify_scripts.md`：296 个 verify 脚本 × 156 个子领域完整索引（对照 doc:104 仅引用 5 个核心脚本）
+
+### v7.78 — Agda postulate 削减路线图 (commit 91da3e7691, 2026-08-11)
+- [x] `framework/120_postulate_reduction_roadmap.md`：28→2 削减路径（Linux 16GB+ RAM + stdlib `Data.Rational.Properties`）
+
+### v7.79 — doc:104 v1.1 + 脚本总览 (commit 7c41e78829, 2026-08-11)
+- [x] doc:104 升级 v1.1：296 脚本总览 + CONTENTS_verify_scripts 交叉引用 + roadmap 交叉引用
+
+### v7.80 — Agda Cauchy 修复 + 版本错位 incident 记录 (commits 593700ddba, d14491267c, 2026-08-12)
+- [x] Cauchy.agda GBK 编码乱码修复，恢复 v7.61 削减（8→2 postulate，仅剩 `+Q-cauchy`/`*Q-cauchy`），7/7 PASS
+- [x] `framework/incident_version_misalignment.md`：记录 v7.48/v7.73 rebase 错位、零 force-push 约束、从 v7.80 重新对齐
+
+### v7.81 — CI 失败脚本第一批修复 (commit 2e475efc3b, 2026-08-12)
+- [x] 6 个 CI 失败 verify 脚本修复（f-string 反斜杠 / FileNotFoundError / NameError），Python 3.10+3.12 全部 exit 0
+
+### v7.82 — auth-probe 形式 revert (commit 05d15d61de, 2026-08-12)
+- [x] `git revert 2bcb47a14`（空 auth-probe 测试提交）——审计轨迹正式反向提交，零 force-push
+
+### v7.83 — CI 失败脚本第二批修复，Validation Scripts 全绿 (commit 86adeaaa7b, 2026-08-12)
+- [x] 9 个 CI 失败 verify 脚本数值精度修复（ETH 共轭转置+σ_x+分箱、规范等变、MBL 破 Sz 守恒、张量网络对数标度+RT、Z2 规范弦张力、神经流形 RSA MDS、CTQW 胶合树、PT 对称 HO 基对角化、HOTI BBH 实空间 q_xy）
+- [x] 15 个 Validation Scripts 在 Python 3.10+3.12 全部 exit 0
+
+### 未编号 — 光子行为 CNF 解释 (commit 0f450a8116, 2026-08-12)
+- [x] `papers/光子行为_CNF解释/`：光子行为的 CNF 解释 + 双理论批判重构（答王斌之问）
+
+### 未编号 — 回应与评论系列全集 (commit abe8c3aa1c, 2026-08-12, HEAD)
+- [x] `papers/回应与评论/` 6 封全集（含此前未推送 4 封 + 最终答复）
+
+### 对接会话近期工作补充登记 (2026-08-06 → 2026-08-12)
+- [x] **四轮质量工程**（2026-08）：1,943 个 arXiv ID 全量核验、25 个失败验证脚本清零（修真实物理 bug 而非放宽断言）、约 500 处引用-论述语义一致性修复、README 全面重写（commit 4b2cbb0f9b；`DEVELOPMENT_DIRECTIONS.md` 记录在案）
+- [x] **验证基础设施四件套**（commit e6a98c1d0a，借鉴 UFPF 学术诚实体系）：`VERIFICATION_PROTOCOL.md` + `verify_run_all.py` + `BLIND_PREDICTIONS.md` + `ERRATA_AND_NEGATIVE_RESULTS.md`（+`PARAMETER_DISCIPLINE.md`）；首跑基线 257 扫描 / 228 通过 / 28 失败 / 1 超时（`framework/verify_report.json`）
+- [x] **落地验证两期**（`papers/落地验证_系列/`，实测 14 篇）：第一期盲登记行刑 + 第二期 T5/T6/T9 实算（T6 w(z) 三结构编目 6/6 PASS，结构 A 悬置 / 结构 B 排除 167× / 结构 C 降级）
+- [x] **页岩油气 CNF 成藏理论 v1.1**（commit 5427be576c）：采纳千界花园评审全部批评
+- [x] **第三期前置治理整改 M4-M6 + 模块强化论文第四批 26-30**（commit 6d4dd98740）
+- [x] **lakefile.lean 重建**（2026-08-06）：roots 从 ~30 万模块名裁剪至实测 1,092 个（解 lake 求值 whnf 心跳超时）；3 个不编译模块（TopologicalStatMech/QuantumBiologyBridge/NumberTheoryPhysics）透明移出 roots（ERRATA 登记，非隐藏）
+- [x] **mathlib 缓存移植解 P0 阻塞**：`.lake/packages/mathlib` 就位，实测 7,878 个 .olean；移植后模块编译打样——ChernSimons（2,332 jobs）与 StandardModel（8,248 jobs）零错误成功，BlochTheorem/EinsteinCartan 失败待修（build_verify_*.txt 如实登记）；数学基础强化系列 Zp 课程模块与 StratifiedChernNumber 本机零错误编译日志在案
+- [x] **CI 全绿**：SYLVA CI 最近三次运行（86adeaaa7b / 0f450a8116 / abe8c3aa1c）全部 success（GitHub Actions API 2026-08-12 实测）
+
 ### 尚存工作（未来方向）
 - [ ] 替换 Agda postulate 为 `Data.Rational.Properties` 真实证明（需 Linux ≥16GB RAM）
 - [ ] 添加 `agda-categories` 范畴实例（Hilb→Monoidal, Hilb→DaggerCompactClosed）
 - [ ] LEAN CI：GitHub Actions 中 `lake build` + Agda 编译自动化
+- [ ] BlochTheorem / EinsteinCartan 编译修复后加回 roots（mathlib 缓存已就位，见 v7.83 补充登记）
+- [ ] S17（w=-1）跟踪：Euclid / DESI 终版 z<2 限定数据到达后复裁（`papers/暗物质与暗能量探测_综述/verify_dark_energy_w.py` 已建基线）
+- [ ] S62-S65 气候 CNF：CMIP7 / RAPID 26°N / GCP 数据到达后回填 `papers/地球物理学_综述/verify_climate_cnf.py` 的 4 项 [DATA-MISSING]
 - [ ] Agda→Rocq 翻译桥（MLTT→CIC 互译）
 - [ ] Zenodo 注册各篇独立 DOI，更新 YAML 元数据
 - [ ] papers/ 16 组重复目录实际合并（受限于"只增改不删减"约束，当前仅交叉引用）
