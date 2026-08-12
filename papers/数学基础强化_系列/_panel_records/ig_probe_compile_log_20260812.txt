@@ -1,0 +1,12 @@
+'SylvaIGProbe.fisherPSD_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.fisherMetric_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.deriv_psiToy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.fisher_toy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.bregmanToy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.bregmanToy_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SylvaIGProbe.legendre_dual_toy' depends on axioms: [propext, Classical.choice, Quot.sound]
+---
+环境: Lean v4.29.0 (elan leanprover--lean4---v4.29.0), mathlib4 olean 缓存 (lake-manifest 登记 rev 8a178386)
+编译方式: lean.exe 直编, LEAN_PATH=9 个依赖包的 .lake/build/lib/lean
+结果: 退出码 0, 零错误零 sorry (grep 计数: 0), 7 条定理 #print axioms 均仅标准三件套
+时长: 约 53 s
