@@ -409,8 +409,8 @@ noncomputable def weakCouplingG : ℝ := 0.65
 
 /-- Fermi coupling constant G_F emerges from inter-layer tunneling:
     G_F/ℏ³ = g² / (8 × M_W²) = ℱ_tunnel² / E_char²
-    Framework value: ~1.166 × 10^(-5) GeV^(-2)
-    Experimental: 1.1663787(6) × 10^(-5) GeV^(-2) -/
+    Computed: 1.6525 × 10^(-7) GeV^(-2) (κ = ln 10 → ℱ(1) = 0.1, v = 246 GeV)
+    Experimental: 1.1663787(6) × 10^(-5) — 实算值小 70.6×；勘误 FW-1，映射待审 -/
 noncomputable def emergentFermiConstant : ℝ :=
   let tunneling := InterLayerTransition.tunnelingFactorFormula 1
   tunneling ^ 2 / higgsVEV ^ 2

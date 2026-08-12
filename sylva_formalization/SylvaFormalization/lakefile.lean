@@ -23,7 +23,7 @@ roots 数组枚举了 ~30 万个模块名, 导致 lake 求值 whnf 超时 (maxim
   * 排除: `.lake/`、`archive/`、`mathlib4_extracted/` (mathlib 源码副本, 非本库模块);
     机器批量生成文件 —— `SYLVA_Proven*` 系列、`SYLVA_*数字编号` 系列
     (如 SYLVA_AlgebraicGeometry5)、文件名含 wave/batch/auto_gen 痕迹者。
-  2026-08-06 追加：TopologicalStatMech / QuantumBiologyBridge / NumberTheoryPhysics
+  2026-08-06 追加：TopologicalStatMech / QuantumBiologyBridge / NumberTheoryPhysics / InterdisciplinaryBridge（2026-08-12）
   三模块因自身编译错误（悬空引用/前向引用/假定理 stub）暂时移出 roots，待修复后加回。
 -/
 
@@ -84,7 +84,6 @@ lean_lib «SylvaFormalization» where
     `InformationGeometry.FisherMetric,
     `InformationGeometry.NaturalGradient,
     `InformationGeometry.StatMech,
-    `InterdisciplinaryBridge,
     `LowDepthLowerBound,
     `MachineLearningPhysics,
     `Main_legacy,

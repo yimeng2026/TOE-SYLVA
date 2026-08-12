@@ -27,6 +27,7 @@
 - **已有文档**: `framework/01_experimental_verification.md`
 - **Tag**: CLAIM → THEOREM\* 需要独立 α⁻¹ 推导链
 - **可证伪性(Falsifiability)**: ① n_CS 离散群依赖非固定值 → "精确对应"不成立；② α⁻¹ 实验测量精度突破 0.001 且与 137 偏差 ≥5σ → 定量预言排空
+- **治理注记（2026-08-11）**: BP-1 判据 \|α⁻¹−137\|<0.04 的成色经落地验证第二期 T9 审计更正为"**后验冻结线**"（origin：2026-08-06 P0 修复日按实测偏差 0.036 反推取整、留 10% 余量）；更正仅涉成色标注，数值与证伪条件不动，CLAIM 级别不变。联动：`framework/BLIND_PREDICTIONS.md` BP-1（v1.1）
 
 ### CLAIM 2: S_BH = log Z_DT
 - **当前状态**: CLAIM（黑洞熵 = Donaldson-Thomas 配分函数对数，有 BPS 态与 Strominger-Vafa (1996) 微观计数先例支撑）

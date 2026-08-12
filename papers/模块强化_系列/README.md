@@ -1,7 +1,7 @@
 # 模块强化论文系列 · README
 
 > 系列名称：TOE-SYLVA Lean 模块强化（模块强化_系列）
-> 生成日期：2026-08-05（第一批 01–10）；2026-08-06（第二批 11–20、第三批 21–25）
+> 生成日期：2026-08-05（第一批 01–10）；2026-08-06（第二批 11–20、第三批 21–25）；2026-08-10（第四批 26–30）
 > 生产管线：千界花园系统（research/panels 群智评议，Kimi 网关真实 LLM 输出）
 > + 人工逐行核对 .lean 源文件（grep 声明提取 + 关键证明体原文复核）
 > 论文目录：`D:\TOE-SYLVA-pull\papers\模块强化_系列\`
@@ -123,6 +123,43 @@
 >   **独立 dev.db 副本**）启动 `http://localhost:3002` 完成全部调用；
 >   产出完成后该运行目录整体删除，5 个 panel 及其 10 名成员随隔离
 >   数据库一并移除，不残留于系统数据库（与前两批等效清理）。
+
+## 二-D、第四批论文清单与一句话核心（26–30，2026-08-10 产出）
+
+| # | 文件 | 模块（行数） | 公理 | sorry | 一句话核心 |
+|---|---|---|---|---|---|
+| 26 | `26_NavierStokes_DEEP_COMPLETED_NS深度版.md` | NavierStokes_DEEP_COMPLETED.lean（547） | 9 | 0 | 04 号模块的"诚实化重写"：docstring 质量全仓库最高档且明言不构成千禧年通解，但循环核原样保留（522 号定理仍是一行 `exact @sylva_ns_regularity`），并新增全仓库第三例可证伪公理 smooth_compact_support_bounded（1e8 固定界，大鼓包即成反例）；"弱化版"有名无实——ε<1e-6 只约束 SYLVA 参数，对初值无小量条件。 |
+| 27 | `27_GraphTheoreticCharge_图论电荷.md` | GraphTheoreticCharge.lean（387） | 4 | 0 | "谱界 Theorem 3.1"的双重空载体：谱半径 maxEigenvalue:=0 零占位 + 四条谱界公理全是 True；completeGraph_uniformCharge 为 rfl 见证漏洞（以被约束变量为见证）；10 条非负性真定理证明工程质量不差，List-based 可计算定义层健康。 |
+| 28 | `28_QuantumChemistry_HuckelModel_休克尔模型.md` | QuantumChemistry/HuckelModel.lean（480） | 0 | 0 | 全系列首例"答案键 def"：苯环本征值/系数硬编码进 orbitalEnergies/orbitalCoefficients（n≠6 返回 0），验证定理退化为同义反复；真正的数学是 112 号正则图 H=(α+βd)I−βL 与 315 号键级 2/3 真计算（架在答案键上的半真定理）；循环矩阵 DFT 清偿路径最清晰。 |
+| 29 | `29_QuantumChemistry_PartitionFunction_配分函数.md` | QuantumChemistry/PartitionFunction.lean（489） | 1 | 0 | "四科占位同堂"教科书案例：4 处零占位 def + 3 条 trivial 定理 + 1 条 True-axiom + 1 条启发式分段函数冒名"熵"；对角系综核六个 def 公式教科书正确、Ising 位运算构造真实；449 行 Fisher 单位矩阵与 19 号 Fisher 零矩阵互为镜像，坐实占位随意性。 |
+| 30 | `30_InterdisciplinaryBridge_学科桥.md` | InterdisciplinaryBridge.lean（391） | 0 | 0 | 第四例"融合模块"病灶（与 21/22/23 同源，Fusion Agent v1.0）：0 公理 0 sorry 但预期不编译，10 条定理全是 simp+try 残片，≥9 处悬空引用（含把别模块 def 当字段用、函数缺参调用两新科目）；deficiency=cyclomatic 命题本身可疑（CRNT 层面可能为假）；已被 All.lean 第 37 行纳入默认构建，阻塞名单三变四。 |
+
+> 第四批补充说明：
+> - **选题说明**：Hodge 与 NavierStokes.lean 已分别为第 05/04 篇，
+>   本批从 `SylvaFormalization/` 目录未被 01–25 覆盖的模块中选取
+>   文件较大/较重要的五个：NavierStokes_DEEP_COMPLETED（547 行，
+>   独立文件）、GraphTheoreticCharge（387）、QuantumChemistry/
+>   HuckelModel（480）、QuantumChemistry/PartitionFunction（489）、
+>   InterdisciplinaryBridge（391）。
+> - **新病种两例**：(a) 28 号"答案键 def"——解析答案硬编码进定义
+>   再自证，比常值占位更隐蔽（条件分支内，lint 难识别）；
+>   (b) 29 号"启发式函数冒名"——分段线性插值命名"熵"。
+> - **第三例可证伪公理**：26 号 smooth_compact_support_bounded
+>   （固定 1e8 界）与 15 号（数值 1.22=0.65）、24 号（18779≠25813）
+>   构成"可推 False 公理"系列，26 号是首例函数空间版。
+> - **更正痕迹**：26 号评议 topic 初稿误写"8 条公理"，reviewer
+>   当场纠正为 9 条，已在论文 §3 保留更正记录。
+> - **截断**：本批 10 份成员输出全部因 4096 completion 上限截断；
+>   最严重为 28 号 chair 仅存 2583 字符（约全文三分之一），
+>   均已在各篇 §4/§8 如实标注。
+> - **计量**：5 次 execute × 2 成员 = **10 次真实 LLM 调用**
+>   （Kimi 网关 `kimi-for-coding`），单次延迟 139209–157570ms，
+>   usage total_tokens 4816–4993/次，无一次 fallback/模拟内容。
+> - **panel id 对照**（原始记录见 `_panel_records/26_*.json … 30_*.json`）：
+>   ns_deep `6dbb39c2…` / graphcharge `c1610d0d…` / huckel `c1c6da74…` /
+>   partition `624a2549…` / bridge `96fc0bc2…`。
+> - **测试数据清理**：第四批 5 个 panel 及其 10 名成员已在产出完成后
+>   从系统数据库中删除（与前三批同一清理规程）。
 
 ## 三、横断结论：全仓库公理债务地图
 

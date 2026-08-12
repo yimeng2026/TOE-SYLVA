@@ -61,7 +61,7 @@
 | `emergentG` | `FourForcesUnification.lean:361` | (ℓ_P²/λ_C²)·f_G | 测量×拟合(f_G) | **后验**——注释自承 "Framework value: ~6.674×10⁻¹¹, CODATA 2018: 6.67430(15)×10⁻¹¹" 的吻合由 f_G=0.01 保证 |
 | `chiralConnectivity` | `FourForcesUnification.lean:380` | (2p−1)·√k̄ | 拟合(p)×拟合(k̄) | **后验** |
 | `emergentAlpha` | `FourForcesUnification.lean:390` | C²/(4π·N_eff)·f_topo | 拟合(C)×测量(N_eff)×拟合(f_topo) | **后验**——"~1/136.99 vs 实验 1/137.036" 的吻合由三个拟合参数联合保证 |
-| `emergentFermiConstant` | `FourForcesUnification.lean:414` | ℱ_tunnel²/v² | 拟合(ℱ)×测量(v) | **后验** |
+| `emergentFermiConstant` | `FourForcesUnification.lean:414` | ℱ_tunnel²/v² | 拟合(ℱ)×测量(v) | **后验**——⚠️ 勘误 **FW-1**：docstring 声称值（~1.166×10⁻⁵）与实算值（1.6525×10⁻⁷）差 70.6×，docstring 已于 2026-08-11 更正为实算一致值（定义不动）；ℱ²/v² 与物理 G_F 的对应式本身待审，见 `framework/ERRATA_AND_NEGATIVE_RESULTS.md` FW-1 |
 | `emergentStrongCoupling` | `FourForcesUnification.lean:426` | (3/4π)/ℱ_tunnel(能标) | 定义×拟合(κ) | **后验** |
 | `alpha_s_at_MZ` | `FourForcesUnification.lean:432` | emergentStrongCoupling 91 | 同上 | **后验**——注释自承 "~0.1179 vs 实验 0.1179±0.0010" |
 | `protonLifetimePrediction` | `FourForcesUnification.lean:731`（theorem） | τ_p = 1/ℱ(L3→L7)⁹ ∈ (1e34, 1e36] | 拟合(κ)×定义(层距) | **后验**——是已证 Lean 定理，但其前提含拟合参数，故数值结论仍为后验 |
@@ -97,6 +97,7 @@
 | 版本 | 日期 | 变更 |
 |:--|:--|:--|
 | v1.0 | 2026-08-10 | 初始登记。四分类定义；总表 25 项（测量 4 / 定义 4 / 拟合 7 / 推导 10），全部含文件行号，提取自 HEAD `2a1a7023` 实测；标注规则 §四。 |
+| v1.1 | 2026-08-11 | §2.4 `emergentFermiConstant` 行同步标注勘误 **FW-1**（docstring 声称值与实算值差 70.6×；docstring 已更正为实算一致值，数值定义不动；ℱ²/v² 与物理 G_F 的对应式待审）。依据：落地验证第二期 M4 整改，`framework/ERRATA_AND_NEGATIVE_RESULTS.md` v1.1。 |
 
 ---
 
