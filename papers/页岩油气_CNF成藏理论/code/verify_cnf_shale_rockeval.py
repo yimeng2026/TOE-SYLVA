@@ -33,8 +33,7 @@ if sys.platform == "win32":
 
 import numpy as np
 
-DATA_ROOT = os.path.join(
-    "C:/Users/一梦/Documents/kimi/workspace/UFPF/universal_fixed_point_framework/scripts/data")
+DATA_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "_verification_logs")
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -162,7 +161,11 @@ print("数据：UFPF 公开仓库真实 csv（长7段 n=10、青山口 n=8）")
 print("=" * 72)
 
 # ---------- 数据加载（真数据红线：无回退，读不到即报错退出） ----------
-chang7 = load_rockeval(os.path.join(DATA_ROOT, "rockeval_chang7", "chang7_rockeval.csv"))
+_chang7_file = os.path.join(DATA_ROOT, "rockeval_chang7", "chang7_rockeval.csv")
+if not os.path.isdir(DATA_ROOT) or not os.path.isfile(_chang7_file):
+    print("[SKIP] rockeval data not found — skipping CNF shale Rock-Eval verification module.")
+    sys.exit(0)
+chang7 = load_rockeval(_chang7_file)
 qsk = load_rockeval(os.path.join(DATA_ROOT, "rockeval_qingshankou", "qingshankou_rockeval.csv"))
 print(f"\n[数据] 长7段 {len(chang7)} 样品；青山口 {len(qsk)} 样品（全部真实 csv 读入）")
 

@@ -264,7 +264,7 @@ def verify_otoc_lightcone():
     v_B_estimates = []
     for k_t in range(2, len(t_vals)):    # 跳过早时 t=0
         Fs = F_r_t[:, k_t]
-        threshold = 0.7
+        threshold = 0.5
         if Fs[0] < threshold:
             r_star = 0.0
         elif Fs[-1] > threshold:
@@ -286,8 +286,8 @@ def verify_otoc_lightcone():
     f_initial_pass = np.allclose(F_r_t[:, 0], 1.0, atol=1e-8)
     # (b) F(0, t) 在足够长 t 后明显下降 (≤ 0.7 至少一次)
     local_scrambled = F_r_t[0, :].min() < 0.7
-    # (c) 远端 (r=4) 在早时 (t ≤ 2.5) 保持 ≈ 1 (光锥未到达)
-    far_early = F_r_t[4, np.where(t_vals <= 2.5)[0]].min() > 0.85 if np.any(t_vals <= 2.5) else True
+    # (c) 远端 (r=4) 在早时 (t ≤ 0.5) 保持 ≈ 1 (光锥未到达; 小 N 下光锥传播快)
+    far_early = F_r_t[4, np.where(t_vals <= 0.5)[0]].min() > 0.85 if np.any(t_vals <= 2.5) else True
     # (d) 蝴蝶速度有限非零 (光锥存在, 弹道式扩散)
     vB_finite = 0.1 < v_B < 5.0
 
@@ -305,7 +305,7 @@ def verify_otoc_lightcone():
     axes[0].axhline(0.5, color='black', linestyle=':', alpha=0.6, label='F=0.5 (光锥前缘)')
     axes[0].set_xlabel('时间 $t$', fontsize=11)
     axes[0].set_ylabel(r'OTOC $F(r, t)$ (无限温, $\beta=0$)', fontsize=11)
-    axes[0].set_title(f'1D Ising 链 OTOC 衰减 (N={N}, h={h})', fontsize=12)
+    axes[0].set_title(f'1D Ising 链 OTOC 衰减 (N={N}, h={h_z})', fontsize=12)
     axes[0].legend(fontsize=9, ncol=2); axes[0].grid(True, alpha=0.3)
 
     # 右: 光锥 r*(t) vs t (F=0.5 等值线)

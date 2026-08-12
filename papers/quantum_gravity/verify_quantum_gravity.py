@@ -402,8 +402,10 @@ def verify_ads_cft_duality():
     N_vals = np.array([10, 100, 1000, 10000, 100000])
     lambda_vals = np.array([1.0, 10.0, 100.0, 1000.0, 10000.0])
 
+    _hdr_r4 = "R^4/α'^2"
+    _hdr_ar = "α'/R^2"
     print(f"  {'N':>8}  {'λ':>8}  {'g_YM':>10}  {'g_s':>10}  "
-          f"{'R^4/α\'^2':>12}  {'α\'/R^2':>10}  {'classical?':>10}")
+          f"{_hdr_r4:>12}  {_hdr_ar:>10}  {'classical?':>10}")
     for N, lam in zip(N_vals, lambda_vals):
         g_YM = np.sqrt(lam / N)
         g_s = g_YM**2

@@ -297,7 +297,8 @@ def verify_surface_code_threshold():
     print(f"表面码阈值: p_th = {p_th*100:.2f}%")
     print(f"")
     print(f"逻辑错误率 p_L 随码距 d 的变化:")
-    print(f"{'p \\ d':<8}", end='')
+    _hdr_pd = "p \\ d"
+    print(f"{_hdr_pd:<8}", end='')
     for d in distances:
         print(f"{d:<12}", end='')
     print()

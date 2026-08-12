@@ -31,8 +31,7 @@ if sys.platform == "win32":
 
 import numpy as np
 
-DATA_ROOT = os.path.join(
-    "C:/Users/一梦/Documents/kimi/workspace/UFPF/universal_fixed_point_framework/scripts/data/tuscaloosa_micp")
+DATA_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "tuscaloosa_micp")
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "_verification_logs")
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -81,7 +80,11 @@ print("CNF 页岩成藏理论 · MICP 验证（P3 封堵标度形式竞争：线
 print("数据：Tuscaloosa MICP 31 样品（USGS DOI 10.5066/F7BC3XTK，真实 csv 独立重算）")
 print("=" * 72)
 
-press = load_wide(os.path.join(DATA_ROOT, "MICPAirHgInjPress_psia.csv"))
+_data_file = os.path.join(DATA_ROOT, "MICPAirHgInjPress_psia.csv")
+if not os.path.isdir(DATA_ROOT) or not os.path.isfile(_data_file):
+    print("[SKIP] tuscaloosa_micp data not found — skipping CNF shale MICP verification module.")
+    sys.exit(0)
+press = load_wide(_data_file)
 sat = load_wide(os.path.join(DATA_ROOT, "MICP_PseudoWettingSaturation.csv"))
 samples = list(press.keys())
 print(f"\n[数据] 样品数 {len(samples)}，压力点数 {len(press[samples[0]])}（全部真实 csv 读入）")

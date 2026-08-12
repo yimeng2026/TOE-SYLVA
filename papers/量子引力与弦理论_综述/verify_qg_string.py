@@ -171,7 +171,8 @@ def verify_string_spectrum():
     # Level matching: N = tilde{N}
     M2_alpha = 2.0 * (2.0 * N_vals - 2.0 * a_bosonic)   # alpha' * M^2
     print(f"\n  Bosonic closed-string spectrum (alpha' M^2 = 2(N+tildeN-2a)):")
-    print(f"  {'N=tildeN':>8}  {'alpha\' M^2':>12}  {'state':>20}")
+    _hdr_m2 = "alpha' M^2"
+    print(f"  {'N=tildeN':>8}  {_hdr_m2:>12}  {'state':>20}")
     states = ['Tachyon', 'Massless (graviton)', '1st massive', '2nd massive', '3rd massive']
     for n, m2, s in zip(N_vals, M2_alpha, states):
         print(f"  {n:8d}  {m2:12.1f}  {s:>20}")
@@ -392,8 +393,9 @@ def verify_ads_cft_and_rt():
     N_vals = np.array([10, 100, 1000, 10000])
     g_s_vals = np.array([0.1, 0.5, 1.0, 2.0])
 
+    _hdr_r4 = "R^4/alpha'^2"
     print(f"\n  {'N':>6}  {'g_s':>6}  {'g_YM^2':>8}  {'lambda':>10}  "
-          f"{'R^4/alpha\'^2':>14}  {'consistent?':>12}")
+          f"{_hdr_r4:>14}  {'consistent?':>12}")
     all_consistent = True
     for N in N_vals:
         for g_s in g_s_vals:
