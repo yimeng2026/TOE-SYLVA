@@ -1,0 +1,1337 @@
+{
+  "metadata": {
+    "title": "TOE-SYLVA 公理登记表 (Axiom Registry)",
+    "version": "1.0",
+    "generated": "2026-08-14",
+    "scope": "Top 13 human-authored files by axiom count (excluding SYLVA_Proven*R*M* batch modules)",
+    "total_axioms_audited": 157,
+    "classification_scheme": {
+      "primitive": "本原公理 — genuine physical or deep mathematical claims that cannot be derived",
+      "definitional": "定义性扩展 — should be downgraded to definition + theorem (reducible via rfl, calculation, or direct logical combination)",
+      "schema": "公理模式 — depends on type parameters, should hold for all eligible instances",
+      "placeholder": "占位公理 — conclusion is True or trivially true, no actual mathematical content"
+    }
+  },
+  "summary": {
+    "total_axioms": 157,
+    "by_category": {
+      "primitive": 102,
+      "definitional": 45,
+      "schema": 1,
+      "placeholder": 9
+    },
+    "reducible_count": 64,
+    "by_file": {
+      "BSD_Rank_amputated.lean": {
+        "total": 12,
+        "reducible": 0
+      },
+      "BerryConnection_Framework_v5_42.lean": {
+        "total": 10,
+        "reducible": 6
+      },
+      "CNFEncoding.lean": {
+        "total": 15,
+        "reducible": 13
+      },
+      "Constants.lean": {
+        "total": 16,
+        "reducible": 0
+      },
+      "NavierStokes.lean": {
+        "total": 8,
+        "reducible": 0
+      },
+      "NavierStokes_DEEP_COMPLETED.lean": {
+        "total": 9,
+        "reducible": 1
+      },
+      "NavierStokes_REVISED.lean": {
+        "total": 8,
+        "reducible": 0
+      },
+      "PolynomialTime.lean": {
+        "total": 17,
+        "reducible": 11
+      },
+      "SYLVA_CollectiveIntelligence.lean": {
+        "total": 19,
+        "reducible": 0
+      },
+      "SYLVA_Dynamics.lean": {
+        "total": 8,
+        "reducible": 0
+      },
+      "SYLVA_Information.lean": {
+        "total": 9,
+        "reducible": 7
+      },
+      "Superconductivity_Material_Derivation.lean": {
+        "total": 17,
+        "reducible": 17
+      },
+      "TM1Extended.lean": {
+        "total": 9,
+        "reducible": 9
+      }
+    }
+  },
+  "axioms": [
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "VicsekPhaseTransition",
+      "statement_summary": "Vicsek model exhibits phase transition from disorder to order as noise decreases",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "BoidsConvergence",
+      "statement_summary": "Boids model converges to coherent flocking behavior",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "ACOConvergence",
+      "statement_summary": "Ant colony optimization converges to shortest path",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "DeGrootConvergence",
+      "statement_summary": "DeGroot opinion dynamics converges to consensus on strongly connected aperiodic networks",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "HegselmannKrauseFragmentation",
+      "statement_summary": "Hegselmann-Krause model exhibits fragmentation transition at critical confidence threshold",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "QuorumSensingPhaseTransition",
+      "statement_summary": "Quorum sensing exhibits phase transition at concentration threshold",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "GaltonOxAccuracy",
+      "statement_summary": "Galton's ox experiment: crowd average within 1% of true weight",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "BaggingVarianceReductionBound",
+      "statement_summary": "Bagging variance reduction bounded by diversity gain",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "AdaBoostConvergence",
+      "statement_summary": "AdaBoost converges to strong learner via gradient descent in weak learner space",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "FedAvgConvergence",
+      "statement_summary": "Federated averaging converges to global optimum",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "DifferentialPrivacyComposition",
+      "statement_summary": "Differential privacy composition bound over T rounds",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "NashEquilibriumExistence",
+      "statement_summary": "Nash equilibrium exists for finite games",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "QMIXCoordination",
+      "statement_summary": "QMIX monotonicity ensures coordinated joint action",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "SocialDilemmaBifurcation",
+      "statement_summary": "Social dilemma exhibits bifurcation at critical incentive threshold",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "SmallWorldEnhances",
+      "statement_summary": "Small-world networks enhance collective intelligence",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "ScaleFreeConcentrates",
+      "statement_summary": "Scale-free networks concentrate collective intelligence at hubs",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "RegularNetworkSlowConsensus",
+      "statement_summary": "Regular networks have slow consensus due to long path lengths",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "WisdomMadnessPhaseTransition",
+      "statement_summary": "Wisdom-to-madness phase transition at critical diversity",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+      "name": "CollectiveIntelligenceCausalEmergence",
+      "statement_summary": "Collective intelligence emerges from causal interactions of individual states",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "CuO2_Cu_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 3 → Prop (uninterpreted constant for CuO2 Cu site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "CuO2_Cu_coordinates",
+      "statement_summary": "RealVector 3 → Prop (uninterpreted constant for CuO2 Cu coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "CuO2_O_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 3 → Prop (uninterpreted constant for CuO2 O site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "CuO2_O_coordinates",
+      "statement_summary": "RealVector 3 → Prop (uninterpreted constant for CuO2 O coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Kagome_a_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 2 → Prop (uninterpreted constant for Kagome a site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Kagome_a_coordinates",
+      "statement_summary": "RealVector 2 → Prop (uninterpreted constant for Kagome a coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Kagome_b_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 2 → Prop (uninterpreted constant for Kagome b site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Kagome_b_coordinates",
+      "statement_summary": "RealVector 2 → Prop (uninterpreted constant for Kagome b coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_Ni_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 3 → Prop (uninterpreted constant for Nickelate Ni site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_Ni_coordinates",
+      "statement_summary": "RealVector 3 → Prop (uninterpreted constant for Nickelate Ni coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_O_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 3 → Prop (uninterpreted constant for Nickelate O site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_O_coordinates",
+      "statement_summary": "RealVector 3 → Prop (uninterpreted constant for Nickelate O coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_R_siteSymmetry",
+      "statement_summary": "SpaceGroupOperation 3 → Prop (uninterpreted constant for Nickelate R site symmetry)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "Nickelate_R_coordinates",
+      "statement_summary": "RealVector 3 → Prop (uninterpreted constant for Nickelate R coordinates)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing experimental Wyckoff position data"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "d_x2_y2_pointGroupRep",
+      "statement_summary": "PointOperation 3 → Matrix (Fin 3) (Fin 3) ℂ (uninterpreted representation)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing d_x2-y2 representation matrices"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "d_x2_y2_spaceGroupRep",
+      "statement_summary": "SpaceGroupOperation 3 → (RealVector 3 → ℂ) → (RealVector 3 → ℂ) (uninterpreted)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing space group representation"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+      "name": "d_x2_y2_character",
+      "statement_summary": "(op : PointOperation 3) → ℂ (uninterpreted character)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Replace with def containing character table"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "mono",
+      "statement_summary": "If M halts in p(n) steps and p≤q, then M halts in q(n) steps",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Provable by accepts_in monotonicity + IsPolynomial; induction on step count"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "of_constant_time",
+      "statement_summary": "Constant-time halting implies polynomial time",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Use IsPolynomial.of_constant; constant function is polynomial"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "comp",
+      "statement_summary": "Composition of two polytime machines is polytime",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "complement_closed",
+      "statement_summary": "P is closed under complement",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "intersection_closed",
+      "statement_summary": "P is closed under intersection",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "union_closed",
+      "statement_summary": "P is closed under union",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "concat_closed",
+      "statement_summary": "P is closed under concatenation",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "star_closed",
+      "statement_summary": "P is closed under Kleene star",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": ""
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "hasSeparator",
+      "statement_summary": "∃ sep : Γ, sep ≠ default (alphabet has ≥2 elements)",
+      "category": "schema",
+      "reducible": true,
+      "reduction_method": "Provable for any Γ with Fintype card ≥2; for Bool, true≠false by norm_num"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "P_subset_NP",
+      "statement_summary": "P ⊆ NP (polytime decider is trivially a verifier with empty cert)",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard construction: take empty certificate, verifier=decider"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "union_closed (NP)",
+      "statement_summary": "NP is closed under union",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard construction: cert = Bool × cert, select verifier by flag"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "intersection_closed (NP)",
+      "statement_summary": "NP is closed under intersection",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard construction: cert = c₁ ++ c₂, run both verifiers"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "SAT_in_NP",
+      "statement_summary": "SAT ∈ NP (certificate = truth assignment, verifier checks clauses)",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard SAT verifier construction"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "InP_singletape_of_multitape",
+      "statement_summary": "Multitape P ⊆ Singletape P (via quadratic simulation overhead)",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Use multitape_to_singletape_overhead, p(n)² is polynomial"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "InP_multitape_of_singletape",
+      "statement_summary": "Singletape P ⊆ Multitape P (1-tape multitape = singletape)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "1-tape TM1Multitape directly embeds TM1, O(1) overhead"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "InNP_singletape_of_multitape",
+      "statement_summary": "Multitape NP ⊆ Singletape NP",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Same simulation as InP, cert length unchanged"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+      "name": "InNP_multitape_of_singletape",
+      "statement_summary": "Singletape NP ⊆ Multitape NP",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "1-tape multitape directly embeds singletape verifier"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "rho_c_friedmann_relation",
+      "statement_summary": "rho_c = 3*H0²/(8πG) (numerical rounding mismatch)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value 8.5e-27 ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "lambda_dark_energy_relation",
+      "statement_summary": "lambda_ = 8πG*DarkEnergyDensity/(3c²) (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "HiggsVEV_fermi_relation",
+      "statement_summary": "HiggsVEV = 1/√(√2·GF3) (numerical approximation)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 246.22 GeV ≈ formula, not exact"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "DarkEnergyDensity_Omega_L_relation",
+      "statement_summary": "DarkEnergyDensity = Omega_L * rho_c (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 5.96e-27 ≈ 0.685*8.5e-27, not exact"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "PlanckMass_definition",
+      "statement_summary": "PlanckMass = √(ℏc/G) (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "GravitonCoupling_planck_relation",
+      "statement_summary": "GravitonCoupling = √(8πG)/c² (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "NeutrinoOscillationAngle_PMNS_unitary",
+      "statement_summary": "∃ θ₁₂ θ₂₃ θ₁₃ δ, oscillation angle = sin²(2θ₁₂)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: PMNS parameterization existence"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "OmegaBaryonDensity_OmegaBaryon_relation",
+      "statement_summary": "OmegaBaryonDensity = OmegaBaryon * rho_c (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "OmegaDarkEnergyDensity_Omega_L_relation",
+      "statement_summary": "OmegaDarkEnergyDensity = Omega_L * rho_c (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 5.96e-27 ≈ 0.685*8.5e-27, not exact"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "OmegaNeutrinoDensity_mass_relation",
+      "statement_summary": "OmegaNeutrinoDensity = NeutrinoMassSum/(93.14*h²) (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "CosmologicalConstantDensity_lambda_relation",
+      "statement_summary": "CosmologicalConstantDensity = lambda_*c⁴/(8πG) (numerical rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: defined value ≠ formula result due to rounding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "OmegaTotalDensity_sum",
+      "statement_summary": "OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity (≈1.001)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: sum ≈ 1.0012, defined as 1.001, rounding mismatch"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "LightYear_AU_relation",
+      "statement_summary": "LightYear = 63241 * AU (approximate numerical conversion)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 1 ly ≈ 63241 AU, approximate"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "Parsec_LightYear_relation",
+      "statement_summary": "Parsec = 3.26156 * LightYear (approximate numerical conversion)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 1 pc ≈ 3.26156 ly, approximate"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "HubbleTime_H0_relation",
+      "statement_summary": "HubbleTime = 1/H0 (unit conversion + rounding)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: 14.4e9 ≈ 1/H0, unit/rounding mismatch"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SylvaInfrastructure/Constants.lean",
+      "name": "AgeOfUniverse_HubbleTime_relation",
+      "statement_summary": "AgeOfUniverse = HubbleTime (approximate equality 13.8e9 ≈ 14.4e9)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical axiom: approximate equality, not exact"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "params_of_polytime",
+      "statement_summary": "Extract EncodingParams from TM1PolyTime machine",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct from TM1PolyTime definition: exists p, take T=p(input.length), S=T"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "toNat_injective",
+      "statement_summary": "TMVar.toNat is injective for state variables at fixed t",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Provable from encoding: t*cardΛ+qIdx is injective in qIdx"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "numVars_polynomial",
+      "statement_summary": "Total variable count ≤ (T+1)*(|Λ| + n_tapes*S + n_tapes*S*|Γ|)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct calculation: sum of three list lengths"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncoding_soundness",
+      "statement_summary": "CNF satisfiable → TM accepts (extract tableau from assignment)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Requires proving extracted config sequence is valid tableau"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncoding_completeness",
+      "statement_summary": "TM accepts → CNF satisfiable (construct assignment from run)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Requires constructing satisfying assignment from accepting run"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncodingCorrect",
+      "statement_summary": "CNF satisfiable ↔ TM accepts (iff of soundness + completeness)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Iff.intro from soundness (→) and completeness (←)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "initialConfigClauses_bound",
+      "statement_summary": "Initial config clause count ≤ |Λ|+n_tapes+|input|+n_tapes*S+1",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct list length calculation"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "acceptingClauses_bound",
+      "statement_summary": "Accepting clause count ≤ |Λ|",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct: (Finset.univ : Finset Λ).toList.length = card Λ"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "transitionClauses_bound",
+      "statement_summary": "Transition clause count ≤ T*S^n_tapes*|Λ|*|Γ|^n_tapes*(n_tapes+3)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct calculation from allTransitions and allPositions"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "cellInvarianceClauses_bound",
+      "statement_summary": "Cell invariance clause count ≤ T*n_tapes*S*|Γ|",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct: T*n_tapes*S*|Γ| clauses, each length 3"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "uniquenessClauses_bound",
+      "statement_summary": "Uniqueness clause count ≤ (T+1)*(|Λ|²+n_tapes*S²+n_tapes*S*|Γ|²)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Direct calculation of at-least + at-most clauses"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncodingPolynomialClauses",
+      "statement_summary": "∃ polynomial p, total clause count ≤ p(|input|)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Sum all 5 bounds; T=poly(n), S≤T, constants absorb"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncodingPolynomialSize",
+      "statement_summary": "∃ polynomial p, total CNF size ≤ p(|input|)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Clause count × max clause length O(n_tapes) = poly(n)×O(1)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "CNFEncodingPolynomial_holds",
+      "statement_summary": "All encoding metrics (vars, clauses, size) are polynomial-bounded",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Conjunction of numVars_polynomial + CNFEncodingPolynomialClauses + CNFEncodingPolynomialSize"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+      "name": "cook_levin_phase2",
+      "statement_summary": "Main theorem: CNF satisfiable ↔ accepts ∧ polynomial encoding",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Combines CNFEncodingCorrect + CNFEncodingPolynomial_holds"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "torsion_finite",
+      "statement_summary": "Torsion subgroup of Mordell-Weil group is finite (Mazur's theorem)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: Mazur's torsion bound ≤16"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "MordellWeil_finite_generated",
+      "statement_summary": "Mordell-Weil group is finitely generated (Mordell-Weil theorem)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: requires weak Mordell-Weil + descent + height machine"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "high_rank_exists",
+      "statement_summary": "∃ elliptic curve with rank ≥ 28",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Existence claim: known by explicit construction"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "weak_MordellWeil",
+      "statement_summary": "E(Rat)/nE(Rat) is finite for n≥2",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: requires Kummer sequence and descent computations"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "descent_lemma",
+      "statement_summary": "If E(Rat)/2E(Rat) is finite + height properties → E(Rat) is finitely generated",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: descent argument"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "canonical_height_quadratic",
+      "statement_summary": "ĥ(n·P) = n²·ĥ(P) (quadratic property of Néron-Tate height)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard but requires canonical height construction"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "canonical_height_positive",
+      "statement_summary": "ĥ(P) > 0 for non-torsion P",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Follows from quadratic property + non-torsion"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "height_pairing_positive_definite",
+      "statement_summary": "Height pairing matrix is positive definite",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep result: requires non-degeneracy of height pairing"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "Regulator_positive",
+      "statement_summary": "Regulator > 0 when rank > 0",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Follows from positive definiteness of height pairing"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "BSD_known_rank_0",
+      "statement_summary": "BSD weak conjecture holds for rank 0 curves",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: requires L-function analysis at s=1"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "BSD_known_rank_1",
+      "statement_summary": "BSD weak conjecture holds for rank 1 (Gross-Zagier, Kolyvagin)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: Gross-Zagier formula + Kolyvagin Euler system"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/BSD_Rank_amputated.lean",
+      "name": "Gross_Zagier_formula",
+      "statement_summary": "canonical_height(Heegner point) > 0 when rank=1",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: Gross-Zagier formula connects L'(E,1) to height"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "blochState_normalized",
+      "statement_summary": "‖⟨u|u⟩‖ = 1 (Bloch state normalization, physical input)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical input: quantum states are normalized"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "BlochState.differentiable",
+      "statement_summary": "∀k, BlochState n_idx k exists (band structure is smooth, physical input)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Physical input: band structure C^1 smoothness"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "innerProduct_derivative_leibniz",
+      "statement_summary": "∂_μ⟨u|v⟩ = ⟨∂_μ u|v⟩ + ⟨u|∂_μ v⟩ (Leibniz rule for inner product)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Standard fderiv Leibniz rule; provable from fderiv.mul and inner product definition"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "gaugeTransform_derivative",
+      "statement_summary": "∂_μ(e^{iθ}|u⟩) = i(∂_μθ)e^{iθ}|u⟩ + e^{iθ}∂_μ|u⟩ (chain rule + product rule)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Standard chain rule + product rule for fderiv"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "fderiv_commute_Berry",
+      "statement_summary": "∂_μ∂_ν θ = ∂_ν∂_μ θ (Clairaut/Schwarz theorem for C² functions)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Standard ContDiff.clairaut from Mathlib"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "BerryConnection_fderiv_linear",
+      "statement_summary": "∂_μ(A_ν - ∂_νθ) = ∂_μA_ν - ∂_μ∂_νθ (linearity of fderiv)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Standard fderiv.sub / linearity: fderiv (f - g) = fderiv f - fderiv g"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "berryPhase_well_defined",
+      "statement_summary": "BerryPhase u' C = BerryPhase u C (both defined as 0, so 0=0)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Reducible via rfl: BerryPhase is defined as 0, so both sides are 0"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "berryPhase_gauge_variation",
+      "statement_summary": "BerryPhase u' = BerryPhase u - (θ(C1) - θ(C0)) (with C0=C1, reduces to 0=0)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Reducible via rfl + hC: BerryPhase=0 and C0=C1 implies θ(C1)-θ(C0)=0"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "berryPrincipalBundle_vertical",
+      "statement_summary": "BerryConnection on iξ·u at index 0 = -ξ (vertical distribution condition)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Requires checking principal bundle connection axiom on vertical vectors"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/BerryConnection_Framework_v5_42.lean",
+      "name": "BerryCurvature_explicit_formula_axiom",
+      "statement_summary": "Ω_μν = Re(i(⟨∂_μu|∂_νu⟩ - ⟨∂_νu|∂_μu⟩)) (Kubo formula)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Requires derivation from Berry connection definition + commutativity assumption"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "beale_kato_majda_criterion",
+      "statement_summary": "If ∫₀ᵀ ‖curl u‖²∞ dt < ∞, then no blow-up (BKM criterion)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Beale-Kato-Majda 1984"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "weak_strong_uniqueness",
+      "statement_summary": "Strong solution = weak solution with same initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: weak-strong uniqueness"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "strong_solution_uniqueness",
+      "statement_summary": "Two strong solutions with same initial data are identical",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE uniqueness theorem via energy method"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "regularity_criterion",
+      "statement_summary": "Small bootstrap residual implies no blow-up",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE regularity theorem via bootstrap argument"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "leray_hopf_existence",
+      "statement_summary": "Leray-Hopf weak solution exists for L² divergence-free initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Leray 1934, Hopf 1951"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "energy_dissipation_bound",
+      "statement_summary": "∫₀ᵀ dissipation rate dt ≤ ‖u₀‖²_{L²} (energy inequality)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Energy estimate from NSE"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "smooth_compact_support_bounded",
+      "statement_summary": "Smooth compactly supported function is bounded by 1e8",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Standard analysis: compact support + continuity → bounded; specific bound follows from support in unit ball + smoothness"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "sylva_ns_regularity",
+      "statement_summary": "For ε<1e-6, smooth compact div-free data yields regular NS solution",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific regularity claim (potentially open)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+      "name": "ns_energy_debt_analogy",
+      "statement_summary": "Energy debt analogy: bootstrap residual ≤ λ_c for all t∈[0,T]",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific PDE claim"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "shannon_entropy_maximum",
+      "statement_summary": "Shannon entropy H(p) ≤ log n for n-outcome distribution",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard information theory theorem (Jensen's inequality)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "von_neumann_entropy_subadditivity",
+      "statement_summary": "S(ρ_AB) ≤ S(ρ_A) + S(ρ_B) (Lieb-Trikitinger theorem)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: Lieb 1973, requires matrix inequality proof"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "cramer_rao_lower_bound",
+      "statement_summary": "estimator_variance ≥ 0 (trivially true; actual CR bound not captured)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Trivially true: variance is always ≥0; actual CR bound Var≥1/I(θ) not asserted"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "natural_gradient_equivalence_mle",
+      "statement_summary": "True (natural gradient = MLE in exponential families)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "hjb_on_statistical_manifold",
+      "statement_summary": "True (HJB equation on statistical manifold)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "bellman_on_statistical_manifold",
+      "statement_summary": "True (Bellman equation on statistical manifold)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "fisher_sensitivity_duality",
+      "statement_summary": "True (Fisher information = expected squared sensitivity)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "fisher_information_control_sensitivity",
+      "statement_summary": "True (Fisher metric = closed-loop sensitivity)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+      "name": "natural_gradient_optimal_learning",
+      "statement_summary": "True (natural gradient = optimal learning on NN manifold)",
+      "category": "placeholder",
+      "reducible": true,
+      "reduction_method": "Conclusion is True; no actual mathematical content"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "stepN_ReachesIn",
+      "statement_summary": "stepN M k c is reachable from c in k steps, or c is halted",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Provable by induction on k: stepN definition + step halt condition"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "accepts_in_iff_Reaches",
+      "statement_summary": "accepts_in M k input ↔ ∃ halted config reachable from initial config",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Follows from stepN_ReachesIn + accepts_in definition"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "TM1Compat_roundtrip",
+      "statement_summary": "MultitapeToTM1Cfg (TM1toMultitapeCfg c) = c (conversion is identity)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Provable by rfl: both conversions are structural identity on Fin 1"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "TM1toMultitapeMachine",
+      "statement_summary": "Type: TM1Multitape.Machine Γ Λ σ 1 (compilation function exists)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Should be a def, not an axiom; construct by mapping TM1 Stmt to transitions"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "TM1Compat_step",
+      "statement_summary": "step (TM1toMultitapeMachine M) (TM1toMultitapeCfg c) = TM1toMultitapeCfg (TM1.step M c)",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Requires induction on Stmt structure + stepAux definition"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "multitape_to_singletape_overhead",
+      "statement_summary": "∃ TM0 machine simulating multitape M with overhead function f",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard simulation theorem: construct multi-track single tape encoding"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "singletape_to_multitape_linear",
+      "statement_summary": "∃ 2-tape multitape machine simulating TM0 M with linear overhead",
+      "category": "primitive",
+      "reducible": true,
+      "reduction_method": "Standard simulation: tape 0 = content, tape 1 = head position"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "stepN_stable_halted",
+      "statement_summary": "If c.q = none, then stepN M n c = c for all n (halted configs are fixed points)",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Trivial induction on n: step returns none when q=none"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+      "name": "stepN_add",
+      "statement_summary": "stepN M (a+b) c = stepN M b (stepN M a c) when not halted in first a steps",
+      "category": "definitional",
+      "reducible": true,
+      "reduction_method": "Induction on a: stepN is iterated step, additive when no early halt"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "hamiltonian_energy_conservation_axiom",
+      "statement_summary": "d/dt H(q(t),p(t)) = 0 for time-independent Hamiltonian",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: follows from Hamilton's equations via chain rule"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "lagrangian_hamiltonian_equivalence_axiom",
+      "statement_summary": "Lagrangian equations ↔ Hamiltonian equations (via Legendre transform)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: Legendre transform equivalence"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "schrodinger_heisenberg_equivalence_axiom",
+      "statement_summary": "Schrödinger picture = Heisenberg picture (unitary equivalence)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: requires unitary time evolution operator"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "schrodinger_norm_preservation_axiom",
+      "statement_summary": "d/dt ⟨ψ|ψ⟩ = 0 (norm preservation from Hermiticity of H)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: unitarity of time evolution from H†=H"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "master_equation_probability_conservation_axiom",
+      "statement_summary": "∑ P(i,t) = 1 preserved by master equation with detailed balance",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: probability conservation from detailed balance"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "gibbs_entropy_constant_axiom",
+      "statement_summary": "d/dt S = 0 for Liouville equation (Gibbs entropy conservation)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: Liouville flow preserves phase space volume"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "boltzmann_h_nonnegative_axiom",
+      "statement_summary": "Boltzmann H-function ≥ 0 for normalized distributions",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Standard theorem: follows from -x log x ≤ 0 for x≥0 and Jensen"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+      "name": "h_theorem_axiom",
+      "statement_summary": "dH/dt ≥ 0 for Boltzmann equation with molecular chaos (H-theorem)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep theorem: Boltzmann's H-theorem"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "beale_kato_majda_criterion",
+      "statement_summary": "If ∫₀ᵀ ‖curl u‖²∞ dt < ∞, then no blow-up (BKM criterion)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Beale-Kato-Majda 1984"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "weak_strong_uniqueness",
+      "statement_summary": "Strong solution = weak solution with same initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: weak-strong uniqueness"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "strong_solution_uniqueness",
+      "statement_summary": "Two strong solutions with same initial data are identical",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE uniqueness theorem via energy method"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "regularity_criterion",
+      "statement_summary": "Small bootstrap residual implies no blow-up",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE regularity theorem via bootstrap argument"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "leray_hopf_existence",
+      "statement_summary": "Leray-Hopf weak solution exists for L² divergence-free initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Leray 1934, Hopf 1951"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "energy_dissipation_bound",
+      "statement_summary": "∫₀ᵀ dissipation rate dt ≤ ‖u₀‖²_{L²} (energy inequality)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Energy estimate from NSE"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "sylva_ns_regularity",
+      "statement_summary": "For ε<1e-6, smooth compact div-free data yields regular NS solution",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific regularity claim (potentially open)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+      "name": "ns_energy_debt_analogy",
+      "statement_summary": "Energy debt analogy: bootstrap residual ≤ λ_c for all t∈[0,T]",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific PDE claim"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "beale_kato_majda_criterion",
+      "statement_summary": "If ∫₀ᵀ ‖curl u‖²∞ dt < ∞, then no blow-up (BKM criterion)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Beale-Kato-Majda 1984"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "weak_strong_uniqueness",
+      "statement_summary": "Strong solution = weak solution with same initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: weak-strong uniqueness"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "strong_solution_uniqueness",
+      "statement_summary": "Two strong solutions with same initial data are identical",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE uniqueness theorem via energy method"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "regularity_criterion",
+      "statement_summary": "Small bootstrap residual implies no blow-up",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "PDE regularity theorem via bootstrap argument"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "leray_hopf_existence",
+      "statement_summary": "Leray-Hopf weak solution exists for L² divergence-free initial data",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Deep PDE theorem: Leray 1934, Hopf 1951"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "energy_dissipation_bound",
+      "statement_summary": "∫₀ᵀ dissipation rate dt ≤ ‖u₀‖²_{L²} (energy inequality)",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "Energy estimate from NSE"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "sylva_ns_regularity",
+      "statement_summary": "For ε<1e-6, smooth compact div-free data yields regular NS solution",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific regularity claim (potentially open)"
+    },
+    {
+      "file": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+      "name": "ns_energy_debt_analogy",
+      "statement_summary": "Energy debt analogy: bootstrap residual ≤ λ_c for all t∈[0,T]",
+      "category": "primitive",
+      "reducible": false,
+      "reduction_method": "SYLVA-specific PDE claim"
+    }
+  ]
+}
