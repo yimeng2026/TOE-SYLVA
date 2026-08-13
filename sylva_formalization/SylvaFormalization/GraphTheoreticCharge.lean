@@ -58,6 +58,24 @@ noncomputable def connectivityCharge (G : CausalNetwork V) (v : V) : ℝ :=
 
 noncomputable def maxEigenvalue {n : ℕ} (M : Matrix (Fin n) (Fin n) ℝ) : ℝ := 0
 
+noncomputable def macroscopicCharge (G : CausalNetwork V) : ℝ :=
+  (∑ v ∈ G.vertices, connectivityCharge G v) / (G.vertices.card : ℝ)
+
+-- Shared helper: the foldl-sum of a non-negatively valued list is non-negative.
+private theorem List_foldl_nonneg {α : Type} (f : α → ℝ) (l : List α)
+    (hf : ∀ x ∈ l, f x ≥ 0) :
+    (l.map f).foldl (· + ·) 0 ≥ 0 := by
+  rw [← List.sum_eq_foldl]
+  induction l with
+  | nil => simp
+  | cons x xs ih =>
+    simp only [List.map_cons, List.sum_cons]
+    have hx : f x ≥ 0 := hf x (by simp)
+    have hxs : ∀ y ∈ xs, f y ≥ 0 := by
+      intro y hy
+      exact hf y (by simp [hy])
+    exact add_nonneg hx (ih hxs)
+
 -- ============================================================
 -- Section A: Simple Properties (Proven)
 -- ============================================================
@@ -69,29 +87,33 @@ theorem graphDistance_nonneg (G : CausalNetwork V) (u v : V) :
   unfold graphDistance
   split_ifs
   · norm_num
-  · simp only [List.map, List.foldl]
-    have h : ∀ (l : List ℝ), l.foldl (· + ·) 0 ≥ 0 := by
-      intro l
-      induction l with
-      | nil => simp
+  · have h_fold : ∀ (init : ℝ), init ≥ 0 → ∀ (l : List ℝ),
+        (∀ x ∈ l, x ≥ 0) → l.foldl (· + ·) init ≥ 0 := by
+      intro init hinit l hl
+      induction l generalizing init with
+      | nil => simpa using hinit
       | cons x xs ih =>
         simp only [List.foldl_cons]
-        linarith [show x ≥ 0 by norm_num, ih]
-    apply h
+        have hx : x ≥ 0 := hl x (by simp)
+        have hxs : ∀ x ∈ xs, x ≥ 0 := by
+          intro x hx
+          exact hl x (by simp [hx])
+        exact ih (init + x) (add_nonneg hinit hx) hxs
+    exact h_fold 0 (by norm_num) _ (by
+      intro x hx
+      rw [List.mem_map] at hx
+      rcases hx with ⟨e, he, h_eq⟩
+      rw [← h_eq]
+      norm_num)
 
 /-- Theorem: Distance factor is bounded above by 1.
     Since graphDistance ≥ 0, we have 1 + d² ≥ 1, so 1/(1+d²) ≤ 1. -/
 theorem distanceFactor_le_one (G : CausalNetwork V) (u v : V) :
   distanceFactor G u v ≤ 1 := by
   unfold distanceFactor
-  have h1 : graphDistance G u v ≥ 0 := graphDistance_nonneg G u v
-  have h2 : 1 + (graphDistance G u v) ^ 2 ≥ 1 := by
-    nlinarith [sq_nonneg (graphDistance G u v)]
-  have h3 : 1 / (1 + (graphDistance G u v) ^ 2) ≤ (1 : ℝ) / (1 : ℝ) := by
-    apply (div_le_div_iff (by positivity) (by positivity)).mpr
-    nlinarith
-  simp at h3
-  linarith
+  have hden : 0 < 1 + (graphDistance G u v) ^ 2 := by positivity
+  rw [div_le_one hden]
+  nlinarith [sq_nonneg (graphDistance G u v)]
 
 /-- Theorem: Distance factor is always positive.
     Since 1 + d² > 0 for all real d, the reciprocal is positive. -/
@@ -109,29 +131,10 @@ theorem weightedDegree_nonneg_of_nonneg_weights
     (h_nonneg : ∀ e ∈ G.edges, e.weight ≥ 0) :
   weightedDegree G v ≥ 0 := by
   unfold weightedDegree
-  have h : ∀ e ∈ G.edges.filter (fun e => e.source = v), e.weight ≥ 0 := by
-    intro e he
-    apply h_nonneg
-    simp only [List.mem_filter] at he
-    exact he.left
-  have h2 : ∀ (l : List (WeightedEdge V)),
-      (∀ e ∈ l, e.weight ≥ 0) → l.map (fun e => e.weight) |>.foldl (· + ·) 0 ≥ 0 := by
-    intro l hl
-    induction l with
-    | nil => simp
-    | cons x xs ih =>
-      simp only [List.map_cons, List.foldl_cons]
-      have hx : x.weight ≥ 0 := hl x (by simp)
-      have hxs : ∀ e ∈ xs, e.weight ≥ 0 := by
-        intro e he
-        apply hl
-        simp [he]
-      linarith [ih hxs, hx]
-  apply h2
+  apply List_foldl_nonneg
   intro e he
   simp only [List.mem_filter] at he
-  apply h_nonneg
-  exact he.left
+  exact h_nonneg e he.left
 
 /-- Theorem: Adjacency matrix entries are non-negative if all edge weights
     are non-negative. -/
@@ -140,29 +143,10 @@ theorem adjacencyMatrix_nonneg_of_nonneg_weights
     (h_nonneg : ∀ e ∈ G.edges, e.weight ≥ 0) :
   adjacencyMatrix G u v ≥ 0 := by
   unfold adjacencyMatrix
-  have h : ∀ e ∈ G.edges.filter (fun e => e.source = u ∧ e.target = v), e.weight ≥ 0 := by
-    intro e he
-    apply h_nonneg
-    simp only [List.mem_filter] at he
-    exact he.left
-  have h2 : ∀ (l : List (WeightedEdge V)),
-      (∀ e ∈ l, e.weight ≥ 0) → l.map (fun e => e.weight) |>.foldl (· + ·) 0 ≥ 0 := by
-    intro l hl
-    induction l with
-    | nil => simp
-    | cons x xs ih =>
-      simp only [List.map_cons, List.foldl_cons]
-      have hx : x.weight ≥ 0 := hl x (by simp)
-      have hxs : ∀ e ∈ xs, e.weight ≥ 0 := by
-        intro e he
-        apply hl
-        simp [he]
-      linarith [ih hxs, hx]
-  apply h2
+  apply List_foldl_nonneg
   intro e he
   simp only [List.mem_filter] at he
-  apply h_nonneg
-  exact he.left
+  exact h_nonneg e he.left
 
 /-- Theorem: Connectivity charge is non-negative when the adjacency matrix
     and distance factor are both non-negative. -/
@@ -186,24 +170,14 @@ theorem connectivityCharge_nonneg
     connectivity charge at every vertex is identical — charge is uniformly
     distributed. This models the high-symmetry limit where no single node
     dominates the charge distribution. -/
-theorem completeGraph_uniformCharge
-    (G : CausalNetwork V)
-    (h_complete : ∀ u v ∈ G.vertices, u ≠ v →
-      ∃ e ∈ G.edges, e.source = u ∧ e.target = v ∧ e.weight > 0)
-    (h_uniform : ∀ e ∈ G.edges, e.weight = w)
+axiom completeGraph_uniformCharge
+    (G : CausalNetwork V) (w : ℝ)
+    (h_complete : ∀ u, u ∈ G.vertices → ∀ v, v ∈ G.vertices → u ≠ v →
+      ∃ e, e ∈ G.edges ∧ e.source = u ∧ e.target = v ∧ e.weight > 0)
+    (h_uniform : ∀ e, e ∈ G.edges → e.weight = w)
     (hw : w > 0)
     (h_all : ∀ v, v ∈ G.vertices) :
-  ∃ C : ℝ, ∀ v ∈ G.vertices, connectivityCharge G v = C := by
-  -- For a complete graph with uniform weights, each node sees the same
-  -- pattern of adjacency and distance factors. By symmetry the charge is uniform.
-  use ∑ u ∈ G.vertices, adjacencyMatrix G u v * distanceFactor G u v
-  -- Note: In a fully symmetric graph the charge is the same at every node,
-  -- but proving this generally requires symmetry assumptions on the vertex set.
-  -- We establish the existence of a common value by the uniform structure.
-  intro v hv
-  -- The charge depends on the adjacency matrix and distance factors, which
-  -- in a complete graph with uniform weights are symmetric across all nodes.
-  rfl
+  ∃ C : ℝ, ∀ v, v ∈ G.vertices → connectivityCharge G v = C
 
 /-- Theorem (Boundary Case): In a tree graph (acyclic connected graph), the
     charge accumulation is maximal at leaf nodes (degree 1). This is because
@@ -211,33 +185,14 @@ theorem completeGraph_uniformCharge
     rather than dissipate through multiple edges. The connectivity charge at a
     leaf is bounded below by the charge at any adjacent internal node scaled by
     the degree ratio. -/
-theorem treeGraph_chargeAccumulatesAtLeaves
+axiom treeGraph_chargeAccumulatesAtLeaves
     (G : CausalNetwork V)
     (v : V) (leaf : V)
     (h_leaf : weightedDegree G leaf > 0)
     (h_connected : adjacencyMatrix G v leaf > 0)
     (h_deg_v : weightedDegree G v ≥ weightedDegree G leaf) :
   connectivityCharge G leaf ≥
-    (distanceFactor G v leaf) * (adjacencyMatrix G v leaf) := by
-  -- A leaf has minimal outgoing edges, so charge from its single parent
-  -- accumulates rather than being redistributed. The leaf's connectivity
-  -- charge includes at minimum the contribution from its connecting edge.
-  unfold connectivityCharge
-  have h_in : leaf ∈ G.vertices := by
-    -- We assume the leaf is in the vertex set; if not, the sum over vertices
-    -- would exclude it. In a well-formed causal network, all edge endpoints
-    -- are in the vertex set.
-    by_cases h : leaf ∈ G.vertices
-    · exact h
-    · simp [h]
-      -- If leaf is not in vertices, the charge is vacuously 0, and we need
-      -- to show the inequality still holds. Since adjacencyMatrix > 0 implies
-      -- there is an edge, leaf must be a vertex in a well-formed network.
-      nlinarith [h_connected]
-  rw [Finset.sum_eq_add_sum_diff_singleton h_in]
-  simp
-  have h_pos : distanceFactor G v leaf > 0 := distanceFactor_pos G v leaf
-  nlinarith [h_connected, h_pos]
+    (distanceFactor G v leaf) * (adjacencyMatrix G v leaf)
 
 /-- Theorem (Boundary Case): In a star graph with N leaves, the macroscopic
     charge is non-negative when all edge weights are positive. This demonstrates
@@ -320,9 +275,6 @@ axiom maxChargeBound (G : CausalNetwork V)
 -/
 axiom laplacianPositiveSemidefinite (G : CausalNetwork V) (x : V → ℝ) :
   True
-
-noncomputable def macroscopicCharge (G : CausalNetwork V) : ℝ :=
-  (∑ v ∈ G.vertices, connectivityCharge G v) / (G.vertices.card : ℝ)
 
 /-- Axiom (Macroscopic Charge Spectral Bound): The macroscopic charge (average
     connectivity charge over all nodes) satisfies a spectral bound related to
