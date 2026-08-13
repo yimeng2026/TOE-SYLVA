@@ -14,12 +14,17 @@ Numerical Validation Suite for Statistical Learning Theory
 作者: TOE-SYLVA 形式化物理研究所
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # 无GUI后端
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
+
+# Output directory: same as script location (portable, no hardcoded paths)
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.makedirs(_SCRIPT_DIR, exist_ok=True)
 
 # 设置随机种子保证可重复性
 np.random.seed(42)
@@ -571,7 +576,7 @@ def main():
     ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/statistical_learning/validation_figures.png', dpi=150, bbox_inches='tight')
+    plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_figures.png'), dpi=150, bbox_inches='tight')
     print("\n[OK] 可视化结果已保存至 validation_figures.png")
     
     print("\n" + "=" * 60)

@@ -621,9 +621,14 @@ def compute_distance_redshift():
     D_L_Mpc = D_L / Mpc
     D_A_Mpc = D_A / Mpc
     
-    print(f"  红移 z=1: 光度距离 D_L ≈ {D_L_Mpc[z==1][0]:.0f} Mpc")
-    print(f"  红移 z=2: 光度距离 D_L ≈ {D_L_Mpc[z==2][0]:.0f} Mpc")
-    print(f"  红移 z=10: 光度距离 D_L ≈ {D_L_Mpc[z==10][0]:.0f} Mpc")
+    # 用 np.interp 插值获取精确红移处的 D_L 值
+    # （z = np.linspace(0, 10, 500) 不含 z=1.0/2.0 精确值，原 z==1 会返回空数组）
+    DL_z1  = np.interp(1.0,  z, D_L_Mpc)
+    DL_z2  = np.interp(2.0,  z, D_L_Mpc)
+    DL_z10 = np.interp(10.0, z, D_L_Mpc)
+    print(f"  红移 z=1: 光度距离 D_L ≈ {DL_z1:.0f} Mpc")
+    print(f"  红移 z=2: 光度距离 D_L ≈ {DL_z2:.0f} Mpc")
+    print(f"  红移 z=10: 光度距离 D_L ≈ {DL_z10:.0f} Mpc")
     
     fig, ax = plt.subplots(figsize=(10, 6))
     

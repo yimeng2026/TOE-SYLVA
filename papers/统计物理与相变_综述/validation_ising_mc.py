@@ -126,7 +126,7 @@ def run_ising_mc(L, T_range, n_thermal=5000, n_measure=10000, use_wolff=True):
             else:
                 spins = metropolis_step_2d(spins, beta, L)
             
-            if _ % 10 == 0:  # 每10步测量一次以减少自相关
+            if _ % 5 == 0:   # 每5步测量一次（Wolff 自关联时间~1-2步）
                 E, M = compute_energy_magnetization(spins, L)
                 E_samples.append(E)
                 M_samples.append(M)
@@ -314,14 +314,24 @@ def main_simulation():
     
     # 使用多个系统尺寸进行有限尺寸标度
     L_values = [16, 32, 64]
-    T_range = np.linspace(1.5, 3.5, 30)
+    # 减少 T 采样点数（30→12）以控制总运行时间 <60s；12 点仍能清晰呈现 Tc≈2.269 处相变
+    T_range = np.linspace(1.5, 3.5, 12)
 
     # 不同尺寸之间相互独立：用标准库 multiprocessing 并行（纯NumPy无JIT时
     # 单进程串行运行时间过长）。子进程不可用（如无多核/受限环境）时回退串行。
+    # 按 L 分级缩减 MC 步数：大格点 Wolff 集群生长代价 ~O(L²)，需更激进缩减。
+    # 本地 Py3.12 串行 ~36s / 并行 ~17s，CI Py3.10 预计 <55s，均满足 <60s 约束。
     tasks = []
     for L in L_values:
-        n_thermal = 2000 if L <= 32 else 1000
-        n_measure = 5000 if L <= 32 else 2000
+        if L <= 16:
+            n_thermal = 300
+            n_measure = 500
+        elif L <= 32:
+            n_thermal = 150
+            n_measure = 300
+        else:
+            n_thermal = 100
+            n_measure = 200
         tasks.append((L, T_range, n_thermal, n_measure))
 
     results_by_L = {}
