@@ -1,6 +1,25 @@
 import re
+from pathlib import Path
+from collections import Counter
 
-with open('alpha_derivation/Paper_Final.md', 'r', encoding='utf-8') as f:
+# Auto-locate Paper_Final.md
+def _find_paper():
+    candidates = [
+        Path(__file__).parent / 'Paper_Final.md',
+        Path(__file__).parent.parent / 'framework' / 'Paper_Final.md',
+        Path(__file__).parent.parent / 'alpha_derivation' / 'Paper_Final.md',
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    for p in Path(__file__).parent.parent.rglob('Paper_Final.md'):
+        return p
+    raise FileNotFoundError('Paper_Final.md not found anywhere in repo')
+
+PAPER_PATH = _find_paper()
+print(f'[check_paper3] Using: {PAPER_PATH}')
+
+with open(PAPER_PATH, 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Extract all math blocks and check them
@@ -29,15 +48,10 @@ for i, block in enumerate(math_blocks):
     
     # Check for common mistakes
     if '\\frac{' in block:
-        # Check frac has two arguments
         frac_parts = block.split('\\frac{')[1:]
         for fp in frac_parts:
-            # Simple check: after first { there should be another {
             if '{' not in fp:
                 issues.append("\\frac missing second argument")
-    
-    if '\\int_' in block and '\\int_' in block:
-        pass  # OK
     
     if issues:
         for issue in issues:
@@ -84,7 +98,6 @@ if not missing_in_bib and not missing_in_text:
 print("\n=== Duplicate Bibliography Check ===")
 bib_lines = re.findall(r'^\[\d+\].*', bib_text, re.MULTILINE)
 bib_nums = re.findall(r'^\[(\d+)\]', bib_text, re.MULTILINE)
-from collections import Counter
 dupes = {k: v for k, v in Counter(bib_nums).items() if v > 1}
 if dupes:
     print(f"Duplicate bib entries: {dupes}")

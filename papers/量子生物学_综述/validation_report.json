@@ -1,7 +1,7 @@
 {
   "suite": "Quantum Biology Numerical Validation",
   "institution": "TOE-SYLVA Formal Physics Institute",
-  "numpy_version": "2.4.4",
+  "numpy_version": "2.1.3",
   "results": [
     {
       "module": "FMO_coherence",

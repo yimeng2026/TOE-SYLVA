@@ -16,11 +16,16 @@ Author: TOE-SYLVA Academic Validation Team
 Date: 2026-07-14
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+
+# Output directory: same as script location (portable, no hardcoded paths)
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.makedirs(_SCRIPT_DIR, exist_ok=True)
 
 print("="*60)
 print("TOE-SYLVA Biophysics Numerical Validation Scripts")
@@ -79,7 +84,7 @@ ax3.legend()
 ax3.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_01_energy_landscape.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_01_energy_landscape.png'), dpi=150)
 plt.close(fig1)
 print("  [OK] Energy landscape saved: validation_01_energy_landscape.png")
 
@@ -153,7 +158,7 @@ for idx, I_stim in enumerate(stimuli):
     ax.set_ylim(-80, 60)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_02_hodgkin_huxley.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_02_hodgkin_huxley.png'), dpi=150)
 plt.close(fig2)
 print("  [OK] HH action potential saved: validation_02_hodgkin_huxley.png")
 
@@ -177,7 +182,7 @@ ax2b.set_title('All-or-None Property of Action Potential')
 ax2b.legend()
 ax2b.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_02b_all_or_none.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_02b_all_or_none.png'), dpi=150)
 plt.close(fig2b)
 print("  [OK] All-or-none property saved: validation_02b_all_or_none.png")
 
@@ -230,7 +235,7 @@ axes[1].legend()
 axes[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_03_wlc_dna.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_03_wlc_dna.png'), dpi=150)
 plt.close(fig3)
 print("  [OK] WLC curve saved: validation_03_wlc_dna.png")
 
@@ -292,7 +297,7 @@ for idx, (u_snap, v_snap, t_snap) in enumerate(snapshots):
         plt.colorbar(im2, ax=axes[1, idx], fraction=0.046)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_04_turing_pattern.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_04_turing_pattern.png'), dpi=150)
 plt.close(fig4)
 print("  [OK] Turing pattern saved: validation_04_turing_pattern.png")
 
@@ -344,7 +349,7 @@ axes[1].set_yscale('log')
 axes[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_05_fret_efficiency.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_05_fret_efficiency.png'), dpi=150)
 plt.close(fig5)
 print("  [OK] FRET efficiency saved: validation_05_fret_efficiency.png")
 
@@ -397,7 +402,7 @@ for bar, val in zip(bars, energies):
                 ha='center', va='bottom', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_06_helfrich_membrane.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_06_helfrich_membrane.png'), dpi=150)
 plt.close(fig6)
 print("  [OK] Helfrich membrane saved: validation_06_helfrich_membrane.png")
 
@@ -468,7 +473,7 @@ axes[1].set_ylim(-0.1, 1.2)
 axes[1].grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/生物物理学_综述/validation_07_ion_channel_gating.png', dpi=150)
+plt.savefig(os.path.join(_SCRIPT_DIR, 'validation_07_ion_channel_gating.png'), dpi=150)
 plt.close(fig7)
 print("  [OK] Ion channel gating saved: validation_07_ion_channel_gating.png")
 

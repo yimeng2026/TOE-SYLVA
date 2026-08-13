@@ -13,12 +13,17 @@ This script contains 5 core validation modules:
 All calculations use pure NumPy, no external dependencies.
 """
 
+import os
 import numpy as np
 import json
 import sys
 
 # Force UTF-8 output
 sys.stdout.reconfigure(encoding='utf-8')
+
+# Output directory: same as script location (portable, no hardcoded paths)
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+os.makedirs(_SCRIPT_DIR, exist_ok=True)
 
 # ============================================================================
 # Module 1: FMO Complex Quantum Coherence Dynamics (Analytical)
@@ -546,7 +551,7 @@ def main():
         "all_passed": all_passed
     }
     
-    report_path = "C:/Users/一梦/Documents/TOE-SYLVA-pull/papers/量子生物学_综述/validation_report.json"
+    report_path = os.path.join(_SCRIPT_DIR, 'validation_report.json')
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
     
