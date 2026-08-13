@@ -1,6 +1,24 @@
 import re
+from pathlib import Path
 
-with open('alpha_derivation/Paper_Final.md', 'r', encoding='utf-8') as f:
+# Auto-locate Paper_Final.md
+def _find_paper():
+    candidates = [
+        Path(__file__).parent / 'Paper_Final.md',
+        Path(__file__).parent.parent / 'framework' / 'Paper_Final.md',
+        Path(__file__).parent.parent / 'alpha_derivation' / 'Paper_Final.md',
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    for p in Path(__file__).parent.parent.rglob('Paper_Final.md'):
+        return p
+    raise FileNotFoundError('Paper_Final.md not found anywhere in repo')
+
+PAPER_PATH = _find_paper()
+print(f'[check_paper2] Using: {PAPER_PATH}')
+
+with open(PAPER_PATH, 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Split into sections
