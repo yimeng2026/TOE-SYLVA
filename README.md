@@ -69,7 +69,7 @@ SYLVA 框架建立在五条元原则之上，它们既是哲学立场，也是�
 ```
 TOE-SYLVA/
 ├── README.md                      # 本文件 — 项目全景入口
-├── ROADMAP_V6.md                  # v6.x 开发路线图
+├── ROADMAP_V6.md                  # v6.x 开发µ线图
 ├── DEVELOPMENT_DIRECTIONS.md      # 发展战略：现状诚实评估、数学基础强化、五大新方向、工具链与治理 (2026-08-06)
 ├── REORGANIZATION.md              # 仓库重组报告 (v6.0)
 ├── SYLVA_PFE_UNIFIED_INDEX.md     # SYLVA-PFE 统一索引
@@ -102,10 +102,10 @@ TOE-SYLVA/
 
 `papers/` 是本仓库的论文主体，共 **140 个主题目录**，由 [papers/README.md](papers/README.md) 统一索引为 **119 个系列**，覆盖：
 
-- **数学核心**：千禧年难题七系列（[P vs NP、霍奇猜想、黎曼假设、NS 方程、BSD、庞加莱、杨-米尔斯](papers/millennium_papers/)）、[Langlands 纲领](papers/langlands_program/)、[数论与算术几何](papers/number_theory_arithmetic/)、[代数几何基础](papers/algebraic_geometry/)、[非交换几何](papers/noncommutative_geometry/)、[辛几何与经典力学](papers/symplectic_geometry/)、[随机矩阵理论](papers/random_matrix_theory/)、[数学基础强化系列](papers/数学基础强化_系列/)（公理审计与分层、课程式形式化路线，对接 [DEVELOPMENT_DIRECTIONS.md](DEVELOPMENT_DIRECTIONS.md) 第二节）；
-- **量子与信息**：[量子信息与量子计算](papers/quantum_info_computing/)、[量子纠错与容错计算 (QEC-FTQC)](papers/qec_ftqc/)（15 篇 + 综述）、[拓扑量子互联网](papers/topo_quantum_internet/)（14 篇 + 综述）、量子光学/量子模拟/量子传感等 30+ 个综述目录；
+- **数学核心**：千禧年难题七系列（[P vs NP、霍奇猜想、黎曼假设、NS 方程、BSD、庞加莱、杨-米尔斯](papers/millennium_papers/)）、[Langlands 纲领](papers/langlands_program/)、[数论与算术几何](papers/数论与算术几何/)、[代数几何基础](papers/代数几何基础/)、[非交换几何](papers/noncommutative_geometry/)、[辛几何与经典力学](papers/辛几何与经典力学/)、[随机矩阵理论](papers/random_matrix_theory/)、[数学基础强化系列](papers/数学基础强化_系列/)（公理审计与分层、课程式形式化µ线，对接 [DEVELOPMENT_DIRECTIONS.md](DEVELOPMENT_DIRECTIONS.md) 第二节）；
+- **量子与信息**：[量子信息与量子计算](papers/量子信息与量子计算/)、[量子纠错与容错计算 (QEC-FTQC)](papers/qec_ftqc/)（15 篇 + 综述）、[拓扑量子互联网](papers/topo_quantum_internet/)（14 篇 + 综述）、量子光学/量子模拟/量子传感等 30+ 个综述目录；
 - **凝聚态与材料**：[凝聚态物理](papers/condensed_matter/)、[强关联电子系统与量子磁性](papers/强关联电子系统与量子磁性_综述/)、[超导物理与低温物理](papers/超导物理与低温物理_综述/)、[二维材料与范德华异质结](papers/二维材料与范德华异质结_综述/)、[室温超导](papers/room_temp_sc/)；
-- **宇宙学与引力**：[宇宙学与天体物理](papers/cosmology_astrophysics/)、[量子引力](papers/quantum_gravity/)、[引力波天体物理学](papers/引力波天体物理学_综述/)、[因果集理论与离散时空](papers/因果集理论与离散时空/)、[暗物质与暗能量探测](papers/暗物质与暗能量探测_综述/)；
+- **宇宙学与引力**：[宇宙学与天体物理](papers/宇宙学与天体物理学_综述/)、[量子引力](papers/quantum_gravity/)、[引力波天体物理学](papers/引力波天体物理学_综述/)、[因果集理论与离散时空](papers/因果集理论与离散时空/)、[暗物质与暗能量探测](papers/暗物质与暗能量探测_综述/)；
 - **交叉与应用的 p-adic Hodge 系列**：[p-adic Hodge 理论交叉联系表](papers/p-adic_Hodge_交叉联系表/) 以 p-adic Hodge 理论为主线，系统梳理其与复几何、表示论、自守形式、BSD 猜想、正特征奇点消解、量子引力、信息论等十余方向的交叉联系（18 篇主从文档 + `validate_padic_hodge.py` 验证脚本），是本仓库交叉联系表方法论的标杆系列。
 
 每个主题目录通常包含：`*_综述.md` 主文、`verify_*.py` / `validate_*.py` 可执行验证脚本、生成的图表，以及参考文献。全部论文为**探索性学术综述，非同行评议出版物**。
@@ -149,7 +149,7 @@ TOE-SYLVA/
 1. **arXiv 引用全量核验**：全库 1,943 个唯一 arXiv ID 逐一验证可达，失效/错误 ID 全部修正。
 2. **验证脚本清零失败**：124 个在册验证脚本中 25 个失败脚本全部修复为 `exit 0`——修复方式是定位并修正真实物理 bug（符号、单位、边界条件、公式推导错误），未放宽任何断言。
 3. **引用-论述语义一致性核查**：全库范围内修复约 500 处引用问题，包括张冠李戴的编号错配、虚构条目、作者/标题讹误。
-4. **论文体系索引化**：[papers/README.md](papers/README.md) 重建为 119 个系列的完整索引，含每篇论文的路径、行数与状态。
+4. **论文体系索引化**：[papers/README.md](papers/README.md) 重建为 119 个系列的完整索引，含每篇论文的µ径、行数与状态。
 
 远程侧另有一次 **AI 幻觉专项审计**（2026-07/08）：计数几何方向论文中识别并删除 15 条虚构主张，其余主张逐条经网络检索比对已发表文献；审计产出"失败模式分类学 + 可验证写作协议"（远程 `papers/AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md`），被远程 README 认定为整个项目"唯一真正的新贡献"。该审计文件将随下次同步进入本地。
 
@@ -169,7 +169,7 @@ TOE-SYLVA/
 - [经验教训与优势总结](papers/LESSONS_AND_STRENGTHS.md)
 - [证明治理登记表](framework/proof_status.md)（Proven / CLAIM / CONJECTURE 分级）
 - [发展战略与方向](DEVELOPMENT_DIRECTIONS.md)（现状诚实评估、数学基础强化计划、五大新方向、治理度量口径）
-- [版本路线图](ROADMAP_V6.md)
+- [版本µ线图](ROADMAP_V6.md)
 
 ## 十、快速开始
 
@@ -178,7 +178,7 @@ TOE-SYLVA/
 1. [docs/SYLVA_MANIFESTO.md](docs/SYLVA_MANIFESTO.md) — 理解哲学立场
 2. [docs/ARCHITECTURE_V2.md](docs/ARCHITECTURE_V2.md) — 理解技术蓝图
 3. [papers/README.md](papers/README.md) — 119 个论文系列总索引
-4. [ROADMAP_V6.md](ROADMAP_V6.md) — 开发路线与优先级
+4. [ROADMAP_V6.md](ROADMAP_V6.md) — 开发µ线与优先级
 5. [DEVELOPMENT_DIRECTIONS.md](DEVELOPMENT_DIRECTIONS.md) — 发展战略：现状评估、数学基础强化与新方向（2026-08-06）
 
 ### 10.2 编译 Lean 形式化
@@ -210,7 +210,7 @@ SYLVA 是一个开放的、可无限扩展的框架。贡献方式包括：
 
 ## 十二、引用与许可
 
-- **引用**：如使用本仓库的论文、Lean 模块或验证脚本，请注明 "TOE-SYLVA Working Group, TOE-SYLVA repository" 及对应子目录路径。
+- **引用**：如使用本仓库的论文、Lean 模块或验证脚本，请注明 "TOE-SYLVA Working Group, TOE-SYLVA repository" 及对应子目录µ径。
 - **许可**：MIT License，详见 [LICENSE](LICENSE)。
 
 ---
@@ -227,7 +227,7 @@ SYLVA 项目由 yimeng2026 / TOE-SYLVA Working Group 发起，继承的思想传
 ---
 
 > "道可道，非常道；名可名，非常名。"
-> SYLVA 不是"常道"，而是一条通往"常道"的可形式化路径。
+> SYLVA 不是"常道"，而是一条通往"常道"的可形式化µ径。
 >4b2cbb0f9b (docs: README 全面重写——远程v10.x数据核对、四轮质量工程记录、34个链接全部验证)
 
 ---
