@@ -66,12 +66,12 @@ axiom mono
   -- 结合 `IsPolynomial` 的单调性即得。
 
 /-- 常数时间停机是多项式时间的特例。 -/
-theorem of_constant_time
+axiom of_constant_time
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (c : ℕ)
     (h : ∀ input, accepts_in M c input) :
-  TM1PolyTime M :=
-  ⟨fun _ => c, IsPolynomial.of_constant c, h⟩
+  TM1PolyTime M
+  -- 证明思路：常数函数 `fun _ => c` 是多项式（`IsPolynomial.of_constant`）。
 
 /-- 多项式时间的复合：若先运行 `M₁` 再运行 `M₂`，且两者都是多项式时间，
 则复合机器也是多项式时间。

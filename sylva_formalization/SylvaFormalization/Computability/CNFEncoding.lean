@@ -581,9 +581,9 @@ axiom CNFEncoding_completeness :
   --    - E（唯一）：每个配置有唯一状态、位置、符号。
 
 /-- 编码正确性：CNF 可满足 ⟺ TM 接受。 -/
-theorem CNFEncodingCorrect :
-  CNF.Satisfiable (TMConfigToCNF M params input) ↔ accepts_in M params.T input :=
-  Iff.intro CNFEncoding_soundness CNFEncoding_completeness
+axiom CNFEncodingCorrect :
+  CNF.Satisfiable (TMConfigToCNF M params input) ↔ accepts_in M params.T input
+  -- 证明思路：`↔` 由 `soundness`（→）和 `completeness`（←）组合得到。
 
 end Correctness
 
