@@ -213,9 +213,8 @@ def MultitapeToTM1Cfg (c : TM1Multitape.Config Γ Λ σ 1) : Turing.TM1.Cfg Γ �
 /-- `TM1toMultitapeCfg` 与 `MultitapeToTM1Cfg` 互逆。
 
 开放引理：需验证 `Fin 1 → Tape Γ` 与 `Tape Γ` 之间的规范等价。 -/
-axiom TM1Compat_roundtrip (c : Turing.TM1.Cfg Γ Λ σ) :
-  MultitapeToTM1Cfg (TM1toMultitapeCfg c) = c
-  -- 证明思路：直接展开定义，利用 `Fin 1` 的单点性质。
+theorem TM1Compat_roundtrip (c : Turing.TM1.Cfg Γ Λ σ) :
+  MultitapeToTM1Cfg (TM1toMultitapeCfg c) = c := rfl
 
 /-- 将单带 TM1 语句编译为 1-带 TM1Multitape 机器。
 
@@ -292,13 +291,18 @@ section StepNProperties
 variable {Γ Λ σ : Type*} [Inhabited Λ] [Inhabited Γ] [Inhabited σ]
 
 /-- stepN 的停机稳定性：若配置已停机，继续执行保持不动。 -/
-axiom stepN_stable_halted
+theorem stepN_stable_halted
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     {c : TM1Multitape.Config Γ Λ σ n_tapes}
     (h : c.q = none)
     (n : ℕ) :
-  stepN M n c = c
-  -- 证明思路：对 n 归纳，利用 step 在 q = none 时返回 none 的定义。
+  stepN M n c = c := by
+  induction n with
+  | zero => rfl
+  | succ k ih =>
+    obtain ⟨q, v, t⟩ := c
+    subst h
+    rfl
 
 /-- stepN 的加法分解：`stepN M (a + b) c = stepN M b (stepN M a c)`
 （前提是中间未提前停机）。
