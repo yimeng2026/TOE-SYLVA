@@ -72,7 +72,7 @@ def module1_berry_curvature_chern():
         chern = round(chern / (2 * pi))
         print(f"  m = {m:+.1f}  →  Chern数 C = {int(chern)}")
 
-    print("  [验证通过] Chern数随质量参数m∞化呈现正确拓扑相变行为")
+    print("  [验证通过] Chern数随质量参数m变化呈现正确拓扑相变行为")
     print("  理论预期: m<-2→C=0; -2<m<0→C=-1; 0<m<2→C=+1; m>2→C=0")
     print()
     return True
