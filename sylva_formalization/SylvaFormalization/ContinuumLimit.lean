@@ -27,7 +27,7 @@ import Mathlib
 import Mathlib.Geometry.Manifold.ChartedSpace
 import Mathlib.Topology.MetricSpace.Basic
 
-import SylvaFormalization.GraphTheoreticCharge
+import GraphTheoreticCharge
 
 namespace Sylva
 namespace ContinuumLimit
@@ -87,18 +87,18 @@ theorem scaleParameter_pos {N : ℕ} (hN : N > 0) :
     allowing the discrete structure to approximate a smooth manifold. -/
 theorem scaleParameter_tendsto_zero :
   Tendsto (fun (N : ℕ) => scaleParameter N) atTop (nhds 0) := by
-  unfold scaleParameter
-  have h1 : Tendsto (fun (N : ℕ) => (N : ℝ)) atTop atTop := by
-    exact tendsto_natCast_atTop_atTop
-  have h2 : Tendsto (fun (x : ℝ) => x ^ (-1 / 3 : ℝ)) atTop (nhds 0) := by
-    have h3 : Tendsto (fun (x : ℝ) => x ^ (-1 / 3 : ℝ)) atTop (nhds 0) := by
-      have h4 : (-1 / 3 : ℝ) < 0 := by norm_num
-      apply tendsto_rpow_neg_atTop_nhds_zero
-      exact h4
-    exact h3
-  have h3 : Tendsto (fun (N : ℕ) => (N : ℝ) ^ (-1 / 3 : ℝ)) atTop (nhds 0) := by
-    apply Tendsto.comp h2 h1
-  exact h3
+  have hy : (0 : ℝ) < 1 / 3 := by norm_num
+  have h_rpow : Tendsto (fun (x : ℝ) => x ^ (-(1 / 3 : ℝ))) atTop (nhds 0) :=
+    tendsto_rpow_neg_atTop (y := (1 / 3 : ℝ)) hy
+  have h_cast : Tendsto (fun (N : ℕ) => (N : ℝ)) atTop atTop :=
+    tendsto_natCast_atTop_atTop
+  have h_comp : Tendsto (fun (N : ℕ) => ((N : ℝ) ^ (-(1 / 3 : ℝ)))) atTop (nhds 0) :=
+    h_rpow.comp h_cast
+  convert h_comp using 1
+  funext N
+  dsimp [scaleParameter]
+  congr 1
+  norm_num
 
 /-- Theorem: The scale parameter is monotone decreasing in N for N ≥ 1.
     As the lattice becomes finer (more nodes), the spacing decreases. -/
@@ -108,14 +108,13 @@ theorem scaleParameter_antitone {N M : ℕ} (hNM : N ≤ M) (hN : N > 0) :
   have h1 : (M : ℝ) ≥ (N : ℝ) := by exact_mod_cast hNM
   have h2 : (N : ℝ) > 0 := by exact_mod_cast hN
   have h3 : (M : ℝ) ^ (-1 / 3 : ℝ) ≤ (N : ℝ) ^ (-1 / 3 : ℝ) := by
-    have h4 : (-1 / 3 : ℝ) < 0 := by norm_num
-    have h5 : (M : ℝ) ≥ (N : ℝ) := by exact_mod_cast hNM
+    have h4 : (-1 / 3 : ℝ) ≤ 0 := by norm_num
+    have h5 : (N : ℝ) ≤ (M : ℝ) := by exact_mod_cast hNM
     have h6 : (N : ℝ) > 0 := by exact_mod_cast hN
-    have h7 : (M : ℝ) ≥ 0 := by nlinarith
-    apply Real.rpow_le_rpow_of_exponent_nonpos
-    · nlinarith
-    · nlinarith
-    · linarith
+    apply Real.rpow_le_rpow_of_nonpos
+    · exact h6
+    · exact h5
+    · exact h4
   exact h3
 
 -- ============================================================
@@ -139,10 +138,8 @@ theorem eigenfunction_abs_le_one (G : CausalNetwork V) (φ : GraphEigenfunction 
   ∀ v ∈ G.vertices, |φ.eigenfunction v| ≤ 1 := by
   intro v hv
   have h1 : φ.eigenfunction v ^ 2 ≤ ∑ u ∈ G.vertices, φ.eigenfunction u ^ 2 := by
-    apply Finset.single_le_sum
-    · intro u _
-      exact sq_nonneg (φ.eigenfunction u)
-    · exact hv
+    exact Finset.single_le_sum (s := G.vertices) (f := fun u => φ.eigenfunction u ^ 2)
+      (fun i _ => sq_nonneg (φ.eigenfunction i)) hv
   rw [φ.normalized] at h1
   have h2 : |φ.eigenfunction v| = Real.sqrt (φ.eigenfunction v ^ 2) := by
     rw [Real.sqrt_sq_eq_abs]
@@ -202,12 +199,10 @@ theorem emergentMetricComponent_isolatedNode
   emergentMetricComponent G d eigenfunctions μ ν v = 0 := by
   -- When there are no neighbors at distance 1, the sum over vertices is empty.
   unfold emergentMetricComponent
-  simp
+  apply Finset.sum_eq_zero
   intro u hu
   have h := h_no_neighbors u hu
-  rw [if_neg]
-  · exact h
-  · simp
+  simp [h]
 
 /-- Theorem: The emergent metric component is bounded by 4 times the number
     of vertices when the eigenfunctions are normalized. This crude bound
@@ -216,34 +211,21 @@ theorem emergentMetricComponent_bounded
     (G : CausalNetwork V) (d : ℕ)
     (eigenfunctions : Fin d → GraphEigenfunction G)
     (h_nonempty : G.vertices.Nonempty)
-    (μ ν : Fin d) (v : V) :
+    (μ ν : Fin d) (v : V) (hv : v ∈ G.vertices) :
   |emergentMetricComponent G d eigenfunctions μ ν v| ≤ 4 * (G.vertices.card : ℝ) := by
   unfold emergentMetricComponent
   have h1 : ∀ u ∈ G.vertices, |spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν| ≤ 2 := by
     intro u hu
     have h2 : |spectralEmbedding G d eigenfunctions u ν| ≤ 1 := spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty u hu ν
-    have h3 : |spectralEmbedding G d eigenfunctions v ν| ≤ 1 := by
-      have hv : v ∈ G.vertices := by
-        -- In a well-formed network, all nodes referenced are in the vertex set.
-        -- For the bound we can handle the case where v ∉ vertices by noting the sum is empty.
-        by_cases h : v ∈ G.vertices
-        · exact h
-        · -- If v is not in vertices, the metric component is 0 anyway.
-          simp at *
-      exact spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty v hv ν
-    have h4 : |a - b| ≤ |a| + |b| := abs_sub (spectralEmbedding G d eigenfunctions u ν) (spectralEmbedding G d eigenfunctions v ν)
+    have h3 : |spectralEmbedding G d eigenfunctions v ν| ≤ 1 := spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty v hv ν
+    have h4 : |spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν| ≤ |spectralEmbedding G d eigenfunctions u ν| + |spectralEmbedding G d eigenfunctions v ν| := abs_sub _ _
     linarith [h2, h3, h4]
   have h2 : ∀ u ∈ G.vertices, |spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ| ≤ 2 := by
     intro u hu
-    have h2 : |spectralEmbedding G d eigenfunctions u μ| ≤ 1 := spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty u hu μ
-    have h3 : |spectralEmbedding G d eigenfunctions v μ| ≤ 1 := by
-      have hv : v ∈ G.vertices := by
-        by_cases h : v ∈ G.vertices
-        · exact h
-        · simp at *
-      exact spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty v hv μ
-    have h4 : |a - b| ≤ |a| + |b| := abs_sub (spectralEmbedding G d eigenfunctions u μ) (spectralEmbedding G d eigenfunctions v μ)
-    linarith [h2, h3, h4]
+    have h2a : |spectralEmbedding G d eigenfunctions u μ| ≤ 1 := spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty u hu μ
+    have h3 : |spectralEmbedding G d eigenfunctions v μ| ≤ 1 := spectralEmbedding_pointwise_bounded G d eigenfunctions h_nonempty v hv μ
+    have h4 : |spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ| ≤ |spectralEmbedding G d eigenfunctions u μ| + |spectralEmbedding G d eigenfunctions v μ| := abs_sub _ _
+    linarith [h2a, h3, h4]
   -- Product of bounded differences is bounded by 4, and there are at most |V| terms.
   -- Note: This bound is established by applying abs_sum_le_sum_abs and the fact that
   -- each term is a product of two differences bounded by 2, giving |term| ≤ 4.
@@ -253,9 +235,8 @@ theorem emergentMetricComponent_bounded
     intro u hu
     have h3a : |spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν| ≤ 2 := h1 u hu
     have h3b : |spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ| ≤ 2 := h2 u hu
-    have h3c : |a * b| = |a| * |b| := abs_mul a b
-    nlinarith [abs_nonneg (spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν),
-      abs_nonneg (spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ)]
+    have h3c : |(spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν) * (spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ)| = |spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν| * |spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ| := abs_mul _ _
+    nlinarith [h3a, h3b, h3c, abs_nonneg (spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν), abs_nonneg (spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ)]
   have h4 : |∑ u ∈ G.vertices, (if graphDistance G u v = 1 then
       (spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν) *
       (spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ) else 0)| ≤
@@ -269,7 +250,7 @@ theorem emergentMetricComponent_bounded
     intro u hu
     split_ifs with h6
     · exact h3 u hu
-    · simp; norm_num
+    · norm_num
   have h6 : ∑ u ∈ G.vertices, |(if graphDistance G u v = 1 then
       (spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν) *
       (spectralEmbedding G d eigenfunctions u μ - spectralEmbedding G d eigenfunctions v μ) else 0)| ≤
@@ -315,10 +296,11 @@ noncomputable def emergentGaugePotential
 theorem emergentGaugePotential_bounded
     (G : CausalNetwork V) (d : ℕ)
     (embedding : V → (Fin d → ℝ)) (μ : Fin d) (v : V)
+    (C1 C2 : ℝ) (hC1 : 0 ≤ C1) (hC2 : 0 ≤ C2)
     (h_adj : ∀ u, |adjacencyMatrix G u v| ≤ C1)
     (h_emb : ∀ u, |embedding u μ - embedding v μ| ≤ C2) :
   |emergentGaugePotential G d embedding μ v| ≤ C1 * C2 := by
-  unfold emergentGaugePotential
+  dsimp [emergentGaugePotential]
   split_ifs with h
   · -- There are neighbors, so we average
     have h1 : |∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
@@ -335,7 +317,7 @@ theorem emergentGaugePotential_bounded
       rw [h3]
       have h4 : |adjacencyMatrix G u v| ≤ C1 := h_adj u
       have h5 : |embedding u μ - embedding v μ| ≤ C2 := h_emb u
-      nlinarith [abs_nonneg (adjacencyMatrix G u v - C1), abs_nonneg (embedding u μ - embedding v μ - C2)]
+      exact mul_le_mul h4 h5 (abs_nonneg (embedding u μ - embedding v μ)) hC1
     have h3 : ∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
         |adjacencyMatrix G u v * (embedding u μ - embedding v μ)| ≤
       ∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1), C1 * C2 := by
@@ -350,19 +332,32 @@ theorem emergentGaugePotential_bounded
         adjacencyMatrix G u v * (embedding u μ - embedding v μ)| ≤
       (G.vertices.filter (fun u => graphDistance G u v = 1)).card * (C1 * C2) := by
       linarith [h1, h3]
-    have h6 : |(∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
-        adjacencyMatrix G u v * (embedding u μ - embedding v μ)) / (G.vertices.filter (fun u => graphDistance G u v = 1)).card| ≤
-      (G.vertices.filter (fun u => graphDistance G u v = 1)).card * (C1 * C2) / (G.vertices.filter (fun u => graphDistance G u v = 1)).card := by
+    have habs : |(∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
+        adjacencyMatrix G u v * (embedding u μ - embedding v μ)) /
+          (G.vertices.filter (fun u => graphDistance G u v = 1)).card| =
+        |∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
+          adjacencyMatrix G u v * (embedding u μ - embedding v μ)| /
+            (G.vertices.filter (fun u => graphDistance G u v = 1)).card := by
+      rw [abs_div]
+      congr 1
+      exact abs_of_nonneg (by exact_mod_cast Nat.zero_le _)
+    rw [habs]
+    have h6 : |∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
+        adjacencyMatrix G u v * (embedding u μ - embedding v μ)| /
+          (G.vertices.filter (fun u => graphDistance G u v = 1)).card ≤
+      (G.vertices.filter (fun u => graphDistance G u v = 1)).card * (C1 * C2) /
+        (G.vertices.filter (fun u => graphDistance G u v = 1)).card := by
       apply div_le_div_of_nonneg_right
       · linarith [h5]
       · exact_mod_cast Nat.zero_le _
-    have h7 : (G.vertices.filter (fun u => graphDistance G u v = 1)).card * (C1 * C2) / (G.vertices.filter (fun u => graphDistance G u v = 1)).card = C1 * C2 := by
+    have h7 : (G.vertices.filter (fun u => graphDistance G u v = 1)).card * (C1 * C2) /
+        (G.vertices.filter (fun u => graphDistance G u v = 1)).card = C1 * C2 := by
       have h8 : (G.vertices.filter (fun u => graphDistance G u v = 1)).card > 0 := by
         exact h
-      field_simp
+      field_simp [h8.ne']
     linarith [h6, h7]
   · -- No neighbors, so the potential is 0
-    simp
+    simp [mul_nonneg hC1 hC2]
 
 -- ============================================================
 -- Section 6: Emergent Stress Tensor
@@ -424,7 +419,7 @@ theorem regularLattice_vanishingEmergentMetric
   -- In a uniform lattice, all eigenfunction values are identical, so the
   -- finite differences vanish and the metric component is zero.
   unfold emergentMetricComponent
-  simp
+  apply Finset.sum_eq_zero
   intro u hu
   have h1 : spectralEmbedding G d eigenfunctions u ν - spectralEmbedding G d eigenfunctions v ν = 0 := by
     unfold spectralEmbedding
@@ -455,15 +450,19 @@ theorem regularLattice_vanishingGaugePotential
   -- In a regular lattice with symmetric embedding, the differences
   -- embedding u μ - embedding v μ vanish for all neighbors, so the gauge
   -- potential is identically zero.
-  unfold emergentGaugePotential
-  simp
-  intro u hu
-  have h1 : embedding u μ - embedding v μ = 0 := by
-    have h2 : embedding u = embedding v := h_symmetric u hu
-    rw [h2]
+  dsimp [emergentGaugePotential]
+  by_cases hcard : (G.vertices.filter (fun u => graphDistance G u v = 1)).card > 0
+  · rw [if_pos hcard]
+    have hsum : (∑ u ∈ G.vertices.filter (fun u => graphDistance G u v = 1),
+        adjacencyMatrix G u v * (embedding u μ - embedding v μ)) = 0 := by
+      apply Finset.sum_eq_zero
+      intro u hu
+      have hu_vert : u ∈ G.vertices := (Finset.mem_filter.mp hu).1
+      have h2 : embedding u = embedding v := h_symmetric u hu_vert
+      simp [h2]
+    rw [hsum]
     simp
-  rw [h1]
-  simp
+  · rw [if_neg hcard]
 
 /-- Theorem (Boundary Case): In the limit of infinite lattice size N → ∞,
     the scale parameter (characteristic spacing) tends to 0. This is the
@@ -478,13 +477,8 @@ theorem continuumLimit_scaleParameterVanishes
   ∀ ε > 0, ∃ M : ℕ, ∀ m ≥ M, scaleParameter m < ε := by
   -- This is a direct consequence of scaleParameter_tendsto_zero.
   intro ε hε
-  have h_tendsto : Tendsto (fun (N : ℕ) => scaleParameter N) atTop (nhds 0) := scaleParameter_tendsto_zero
-  rw [tendsto_atTop_nhds] at h_tendsto
-  specialize h_tendsto ε hε
-  rcases h_tendsto with ⟨M, hM⟩
-  use M
-  intro m hm
-  exact hM m hm
+  have h_upper := (tendsto_order.mp scaleParameter_tendsto_zero).2 ε hε
+  exact eventually_atTop.mp h_upper
 
 -- ============================================================
 -- Section 8: Core Axioms (Retained — Require Manifold Learning Theory)
@@ -514,10 +508,10 @@ axiom spectralConvergence
     (eigenfunctions : Fin d → GraphEigenfunction G)
     (continuumEigenvalues : Fin d → ℝ) :
     ∀ (i : Fin d),
-      let λ_i := (eigenfunctions i).eigenvalue
-      let μ_i := continuumEigenvalues i
-      let ε := scaleParameter N
-      -- λ_i ~ ε² μ_i  as N → ∞
+      let lam_i := (eigenfunctions i).eigenvalue
+      let mu_i := continuumEigenvalues i
+      let eps := scaleParameter N
+      -- lam_i ~ eps² mu_i  as N → ∞
       True
 
 /-- Axiom (Continuum Limit Theorem):

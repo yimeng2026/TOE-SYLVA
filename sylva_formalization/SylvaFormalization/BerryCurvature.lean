@@ -474,7 +474,7 @@ theorem TotalChernNumber_FullBandVanishing
    Kubo 公式的推导：
    1. 微扰哈密顿量 H' = -e E_x · r_x
    2. 使用一阶微扰理论计算电流算符 J_y 的期望值
-   3. σ_{yx} = (i/ℏ) ∫_0^∞ dt ⟨[J_y(t), J_x(0)]⟩ e^{iωt-ηt}
+   3. σ_{yx} = (i/ℏ) ∫_0^变 dt ⟨[J_y(t), J_x(0)]⟩ e^{iωt-ηt}
    4. 在直流极限（ω → 0）下，
       σ_{yx} = (e²/ℏ) (1/2π) ∫_{BZ} Ω_{xy} d²k = (e²/ℏ) C_n
    

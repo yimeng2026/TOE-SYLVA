@@ -164,7 +164,7 @@ axiom QuasiparticleSpectrum (H : BCSHamiltonian) (Δ : EnergyGap H) :
 
     **Physical statement:** The density of states in a superconductor has a gap:
     N_S(E) = 0 for |E| < Δ, and N_S(E) = N(0) |E| / √(E² - Δ²) for |E| > Δ.
-    Near the gap edge (E → Δ⁺), N_S(E) → ∞ (square-root van Hove singularity).
+    Near the gap edge (E → Δ⁺), N_S(E) → 变 (square-root van Hove singularity).
 
     **Proof path:**
     1. From the quasiparticle spectrum E_k = √(ε_k² + Δ²), invert to get ε_k = ±√(E_k² - Δ²).
@@ -395,7 +395,7 @@ theorem CoherenceLength (gl : GinzburgLandau) :
        ∇ × j = -(n_s e²/m) B (first London equation, from rigidity of the wavefunction).
     2. Combined with Maxwell's equations ∇ × B = μ₀ j, this gives ∇² B = B/λ_L².
     3. The solution is B(x) = B(0) exp(-x/λ_L), with λ_L = √(m/μ₀ n_s e²).
-    4. Near T_c, n_s → 0, so λ_L → ∞ (normal state, no Meissner effect).
+    4. Near T_c, n_s → 0, so λ_L → 变 (normal state, no Meissner effect).
     See London & London (1935); Tinkham (2004) §1.2; de Gennes (1966) §1.
 
     **Mathlib status:** Not formalized. The London penetration depth is derived from the

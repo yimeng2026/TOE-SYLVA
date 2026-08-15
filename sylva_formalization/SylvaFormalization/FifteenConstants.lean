@@ -10,7 +10,7 @@ Sylva Formalization Project - Fifteen Fundamental Constants
 核心关系：
 - ℏ = h / (2π)
 - α = e² / (4πε₀ℏc)  [无量纲]
-- R∞ = α² m_e c / (2h)
+- R变 = α² m_e c / (2h)
 - Φ₀ = h / (2e)
 - K_J = 2e / h
 - R_K = h / e²
@@ -71,7 +71,7 @@ noncomputable def N_A : ℝ := 6.02214076e23
 /-- 精细结构常数 α [无量纲] -/
 noncomputable def α : ℝ := e^2 / (4 * π * ε₀ * ℏ * c)
 
-/-- 里德伯常数 R∞ [m⁻¹] -/
+/-- 里德伯常数 R变 [m⁻¹] -/
 noncomputable def R_infty : ℝ := α^2 * m_e * c / (2 * h)
 
 /-- 磁通量子 Φ₀ [Wb] = h / (2e) -/
@@ -352,7 +352,7 @@ noncomputable def allConstants : List ConstantInfo := [
   { name := "玻尔兹曼常数", symbol := "k_B", value := k_B, unit := "J/K", dimensionless := false },
   { name := "阿伏伽德罗常数", symbol := "N_A", value := N_A, unit := "mol⁻¹", dimensionless := false },
   { name := "精细结构常数", symbol := "α", value := α, unit := "1", dimensionless := true },
-  { name := "里德伯常数", symbol := "R∞", value := R_infty, unit := "m⁻¹", dimensionless := false },
+  { name := "里德伯常数", symbol := "R变", value := R_infty, unit := "m⁻¹", dimensionless := false },
   { name := "磁通量子", symbol := "Φ₀", value := Φ₀, unit := "Wb", dimensionless := false },
   { name := "约瑟夫森常数", symbol := "K_J", value := K_J, unit := "Hz/V", dimensionless := false },
   { name := "冯·克利青常数", symbol := "R_K", value := R_K, unit := "Ω", dimensionless := false }

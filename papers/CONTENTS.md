@@ -479,7 +479,7 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 |:--|:--|:--|
 | 111 | 111_biological_evolution_cnf.md | 生物进化 CNF: 突变→边重连, Fisher/Price方程 |
 | 112 | 112_consciousness_cnf.md | 意识 CNF: 自指回路假说, $Phi$-CNF=IIT映射 |
-| 113 | 113_quantum_biology_cnf.md | 量子生物学: 相干保护壳, 光合/磁导航/酶催化 |
+| 113 | 113_quantum_biology_cnf.md | 量子生物学: 相干保护壳, 光合/磁导航/ø催化 |
 | 114 | 114_climate_earth_system_cnf.md | 气候/地球系统 CNF: 五层慢快网络, 15临界点 |
 | 115 | 115_network_science_complex_networks_cnf.md | 网络科学: BA/SW/Wigner半圆律 CNF统一 |
 | 116 | 116_quantum_computing_cnf.md | 量子计算: Shor→周期检测,量子优势→层间并行 |

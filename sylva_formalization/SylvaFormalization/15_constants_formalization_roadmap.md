@@ -23,7 +23,7 @@ SylvaFormalization/
 │   └── ...                       # Fibonacci, Binet, 连分数等
 ├── FifteenConstants.lean         # 15个常数定义与SI关系
 │   ├── c, G_grav, h, ℏ, ε₀, e  # 基本SI常数
-│   ├── α, R_∞, Φ₀, K_J, R_K    # 导出常数
+│   ├── α, R_变, Φ₀, K_J, R_K    # 导出常数
 │   ├── UnitSystem (SI/Planck/Stoney)
 │   └── allConstants : List ConstantInfo
 ├── FourForcesUnification.lean    # 四力统一：因果网络、层化空间

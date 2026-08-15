@@ -7,7 +7,7 @@ This module establishes formal bridges between three disciplines that share
 the mathematical structure of spectral statistics and zeta functions:
 
 1. **Riemann Hypothesis ↔ Quantum Chaos**: The Riemann zeta function
-    ζ(s) = Σ_{n=1}^∞ n^{-s} has its non-trivial zeros on the critical line
+    ζ(s) = Σ_{n=1}^变 n^{-s} has its non-trivial zeros on the critical line
     Re(s) = 1/2 (Riemann hypothesis). The zeros are conjectured to be the
     eigenvalues of a Hermitian operator (Hilbert-Pólya conjecture): there
     exists a quantum Hamiltonian H such that its spectrum is {E_n = i(1/2 + iγ_n)}
@@ -89,7 +89,7 @@ the mathematical structure of spectral statistics and zeta functions:
     system. The lengths of the closed geodesics on the surface correspond to
     the periods of the classical periodic orbits, and the eigenvalues of the
     Laplacian correspond to the quantum energy levels. The Selberg zeta function
-    Z(s) = Π_p Π_{k=0}^∞ (1 - e^{-(s+k)l(p)}) is the product over all prime
+    Z(s) = Π_p Π_{k=0}^变 (1 - e^{-(s+k)l(p)}) is the product over all prime
     geodesics p, analogous to the Euler product for the Riemann zeta function.
 
 Author: SYLVA Interdisciplinary Fusion Agent
@@ -174,7 +174,7 @@ def hilbertPolyaHamiltonian (n : ℕ) : Matrix (Fin n) (Fin n) ℂ :=
 
 def spectralZetaFunction (n : ℕ) (H : Matrix (Fin n) (Fin n) ℂ) (s : ℂ) : ℂ :=
   -- ζ_H(s) = Σ_{k=1}^n E_k^{-s} where E_k are the eigenvalues of H
-  -- For the Hilbert-Pólya Hamiltonian, ζ_H(s) = ζ(1/2 + s) (as n → ∞)
+  -- For the Hilbert-Pólya Hamiltonian, ζ_H(s) = ζ(1/2 + s) (as n → 变)
   ∑ k : Fin n, (1.0 / (k.val.toFloat + 1.0))^s  -- **RESEARCH**: Requires eigenvalue computation
 
 /-- **Theorem**: The pair correlation function of the eigenvalues of a random
@@ -204,14 +204,14 @@ theorem montgomery_odlyzko_law (n : ℕ) (H : Matrix (Fin n) (Fin n) ℂ)
     let pair_corr_zeta := pairCorrelationZeta n
     pair_corr_GUE = pair_corr_zeta := by
   -- The Montgomery-Odlyzko law states that the pair correlation of the zeta
-  -- zeros matches the GUE pair correlation in the asymptotic limit (n → ∞).
+  -- zeros matches the GUE pair correlation in the asymptotic limit (n → 变).
   -- In our stub formalization, both correlation functions are defined identically
   -- as 1 - (sin(πu)/(πu))^2, reflecting the conjectured equality.
   -- The full mathematical proof requires:
   --   1. Montgomery's explicit formula for the pair correlation of zeta zeros
   --   2. Dyson's GUE pair correlation via orthogonal polynomial methods
   --   3. The Harish-Chandra-Itzykson-Zuber integral for the GUE
-  --   4. The asymptotic limit n → ∞ where both converge to the same universal function
+  --   4. The asymptotic limit n → 变 where both converge to the same universal function
   simp only [pairCorrelationGUE, pairCorrelationZeta, hilbertPolyaHamiltonian]
   -- Both functions are identical by definition in the stub implementation
   rfl
@@ -288,7 +288,7 @@ theorem wigner_semicircle_law_off_support (N : ℕ) (H : Matrix (Fin N) (Fin N) 
 -- Section 3: Zeta Functions ↔ Partition Functions (Zeta Gas)
 -- ============================================================================
 
-/-- The **Riemann zeta function** ζ(s) = Σ_{n=1}^∞ n^{-s} is the partition
+/-- The **Riemann zeta function** ζ(s) = Σ_{n=1}^变 n^{-s} is the partition
     function of a "zeta gas" of non-interacting bosons with energy levels
     E_n = ln n. The partition function at inverse temperature β = s is:
     Z(β) = Σ_n exp(-β E_n) = Σ_n n^{-β} = ζ(β).
@@ -315,7 +315,7 @@ theorem wigner_semicircle_law_off_support (N : ℕ) (H : Matrix (Fin N) (Fin N) 
     function diverges). -/
 
 def zeta_gas_partition_function (beta : ℂ) : ℂ :=
-  -- Z(β) = ζ(β) = Σ_{n=1}^∞ n^{-β}
+  -- Z(β) = ζ(β) = Σ_{n=1}^变 n^{-β}
   -- For Re(β) > 1, the series converges absolutely
   -- For Re(β) ≤ 1, the series diverges and ζ(β) is defined by analytic continuation
   if beta.re > 1 then ∑' n : ℕ, (n + 1 : ℂ)^(-beta) else 0
@@ -329,7 +329,7 @@ def zeta_gas_free_energy (beta : ℂ) : ℂ :=
 def zeta_gas_energy (beta : ℂ) : ℂ :=
   -- U(β) = ζ'(β) / ζ(β)
   -- The derivative of the zeta function is computed via the Dirichlet series
-  -- ζ'(s) = -Σ_{n=1}^∞ ln(n) n^{-s}
+  -- ζ'(s) = -Σ_{n=1}^变 ln(n) n^{-s}
   0  -- **RESEARCH**: Requires the derivative of the zeta function
 
 def zeta_gas_entropy (beta : ℂ) : ℂ :=
@@ -468,7 +468,7 @@ theorem prime_zeta_duality (x T : ℝ) (h_x : x > 1) (h_T : T > 2 * Real.pi * Re
     signature of the infinitude of primes. Euler's product formula
     ζ(s) = ∏_p (1 - p^{-s})^{-1} converges for Re(s) > 1. If there were only
     finitely many primes, the product would converge at s = 1 to a finite value.
-    But ζ(1) = ∑ 1/n = ∞ (the harmonic series diverges), giving a contradiction.
+    But ζ(1) = ∑ 1/n = 变 (the harmonic series diverges), giving a contradiction.
 
     This is Euler's classical proof (1737), establishing the first deep connection
     between the analytic properties of ζ(s) and the arithmetic of primes. The pole
@@ -478,7 +478,7 @@ theorem zeta_pole_implies_infinite_primes :
     Set.Infinite {p : ℕ | p.Prime} := by
   -- Euler's proof: The divergence of ζ(1) = ∑ 1/n implies infinitely many primes
   -- via the Euler product ζ(s) = ∏_p (1 - p^{-s})^{-1}.
-  -- If primes were finite, the product would converge at s=1, contradicting ζ(1)=∞.
+  -- If primes were finite, the product would converge at s=1, contradicting ζ(1)=变.
   -- Mathlib provides this classical result as Nat.infinite_setOf_prime.
   exact Nat.infinite_setOf_prime
 
@@ -487,7 +487,7 @@ theorem zeta_pole_implies_infinite_primes :
 -- ============================================================================
 
 /-- The **Selberg zeta function** for a hyperbolic surface is:
-    Z(s) = Π_p Π_{k=0}^∞ (1 - e^{-(s+k)l(p)})
+    Z(s) = Π_p Π_{k=0}^变 (1 - e^{-(s+k)l(p)})
     where the product is over all primitive closed geodesics p on the surface,
     and l(p) is the length of the geodesic. The Selberg zeta function is the
     exact analogue of the Riemann zeta function for hyperbolic geometry.
@@ -497,7 +497,7 @@ theorem zeta_pole_implies_infinite_primes :
     λ_n are the eigenvalues of the Laplacian Δ = -y^2 (∂^2/∂x^2 + ∂^2/∂y^2)
     on the surface. The Selberg trace formula relates the spectrum of the
     Laplacian to the lengths of closed geodesics:
-    Σ_n h(λ_n) = (Area/4π) ∫_{-∞}^∞ r h(r^2 + 1/4) tanh(πr) dr + Σ_p Σ_{k=1}^∞
+    Σ_n h(λ_n) = (Area/4π) ∫_{-变}^变 r h(r^2 + 1/4) tanh(πr) dr + Σ_p Σ_{k=1}^变
     (l(p) / (2 sinh(kl(p)/2))) ĥ(kl(p))
     where h is a test function and ĥ is its Fourier transform.
 
@@ -520,13 +520,13 @@ theorem zeta_pole_implies_infinite_primes :
     in the energy and entropy calculations. -/
 
 def selbergZetaFunction (s : ℂ) (geodesics : List ℝ) : ℂ :=
-  -- Z(s) = Π_p Π_{k=0}^∞ (1 - e^{-(s+k)l(p)})
+  -- Z(s) = Π_p Π_{k=0}^变 (1 - e^{-(s+k)l(p)})
   -- For a hyperbolic surface with a finite set of geodesics
   geodesics.foldl (fun acc l =>
     acc * ∏' k : ℕ, (1 - Complex.exp (-(s + k) * l))) 1.0
 
 /-- **Theorem**: The Selberg zeta function satisfies the functional equation:
-    Z(s) = Z(1-s) · exp(Area · (s - 1/2) / 2π) · Π_{n=0}^∞ (1 - e^{-(s+n)})^χ
+    Z(s) = Z(1-s) · exp(Area · (s - 1/2) / 2π) · Π_{n=0}^变 (1 - e^{-(s+n)})^χ
     where χ is the Euler characteristic of the surface. This is the hyperbolic
     geometry analogue of the Riemann functional equation: ζ(s) = 2^s π^{s-1}
     sin(πs/2) Γ(1-s) ζ(1-s).
@@ -557,7 +557,7 @@ axiom selberg_functional_equation (s : ℂ) (geodesics : List ℝ)
 -- ============================================================================
 
 /-- **Boundary Problem 2**: The Wigner semicircle law is only valid in the
-    large-N limit (N → ∞). For finite N, the eigenvalue density deviates
+    large-N limit (N → 变). For finite N, the eigenvalue density deviates
     significantly from the semicircle, especially near the edges (λ = ±1).
     Our stub `eigenvalueDensity` returns 0 for all inputs, while the true
     semicircle density is non-zero on |λ| < 1, demonstrating this deviation

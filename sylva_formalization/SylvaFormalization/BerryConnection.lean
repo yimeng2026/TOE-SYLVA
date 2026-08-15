@@ -129,7 +129,7 @@ structure BerryConnection (L : BlochTheorem.Lattice2D) where
 structure GaugeTransformation (L : BlochTheorem.Lattice2D) where
   /-- 规范变换函数：θ : BZ → ℝ -/
   theta : BlochTheorem.CrystalMomentum2D → ℝ
-  /-- 光滑性条件：θ ∈ C^∞(BZ) -/
+  /-- 光滑性条件：θ ∈ C^变(BZ) -/
   smoothness : Prop
 
 /-- 规范变换后的波函数：|u'_nk⟩ = e^{iθ(k)} |u_nk⟩ -/
