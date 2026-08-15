@@ -40,9 +40,9 @@ Full formalization requires:
 
 import Mathlib
 
-import SylvaFormalization.GraphTheoreticCharge
-import SylvaFormalization.ContinuumLimit
-import SylvaFormalization.EinsteinCartan
+import GraphTheoreticCharge
+import ContinuumLimit
+import EinsteinCartan
 
 namespace Sylva
 namespace SpectralAction
