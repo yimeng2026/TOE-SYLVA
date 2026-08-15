@@ -50,7 +50,7 @@ def test_3():
     """
     print(f"\n=== VQE能量 ===")
     print(f"公式: E = <psi(theta)|H|psi(theta)>")
-    print(f"含义: ∞分量子本征值")
+    print(f"含义: 变分量子本征值")
     print("状态: 公式定义正确")
     return True
 
