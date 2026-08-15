@@ -288,7 +288,7 @@ def validate_satellite_link_attenuation():
     """
     验证量子卫星链路的自由空间衰减模型：
     自由空间损耗 FSPL = (4*pi*d/lambda)^2
-    其中d为链µ距离，lambda为波长
+    其中d为链路距离，lambda为波长
     对于星地链路，d随卫星轨道变化
     """
     lambda_ = 1550e-9  # m, 通信波长
@@ -319,7 +319,7 @@ def validate_satellite_link_attenuation():
         "天顶方向非最小损耗"
     
     print("[模块6] 量子卫星链路衰减模型验证通过")
-    print(f"  最大链µ距离: {d_max/1e3:.1f} km")
+    print(f"  最大链路距离: {d_max/1e3:.1f} km")
     print(f"  天顶方向损耗: {fspl_dB[-1]:.2f} dB")
     print(f"  地平线方向损耗: {fspl_dB[0]:.2f} dB")
     
