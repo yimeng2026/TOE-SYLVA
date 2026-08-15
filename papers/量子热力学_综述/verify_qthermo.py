@@ -50,7 +50,7 @@ def module_a_jarzynski():
     pi /= pi.sum()
 
     # TPM 联合概率 P(m,n) = p_m |⟨n|m⟩|²
-    # 能量本征基不∞（均为 σ_z 本征态），所以 ⟨n|m⟩ = δ_{nm}
+    # 能量本征基不变（均为 σ_z 本征态），所以 ⟨n|m⟩ = δ_{nm}
     P_mn = np.zeros((2, 2))
     for m in range(2):
         for n in range(2):
