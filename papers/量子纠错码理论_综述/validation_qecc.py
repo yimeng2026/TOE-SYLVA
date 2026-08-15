@@ -384,8 +384,8 @@ def test_module_6_toric_degeneracy():
     # 环面上逻辑 Z 与逻辑 X 反对易, 因为它们代表的两条非平凡环路恰好交于一个比特;
     # 原代码 'ZZZZ' 与 'XXXX' 在全部 4 个比特上重叠 (偶数次反对易), 实际对易
     n = 4
-    L_x = pauli_to_binary('ZZII')  # Z 环µ, 经过比特 0,1
-    L_z = pauli_to_binary('IXXI')  # X 环µ, 经过比特 1,2 (与 Z 环µ仅交于比特 1)
+    L_x = pauli_to_binary('ZZII')  # Z 环路, 经过比特 0,1
+    L_z = pauli_to_binary('IXXI')  # X 环路, 经过比特 1,2 (与 Z 环路仅交于比特 1)
     comm = symplectic_inner_product(L_x, L_z)
     print(f"\n  Logical operator anti-commutation: [L_x, L_z] = {comm} (should be 1)")
     assert comm == 1, "Logical operators on torus must anti-commute"
