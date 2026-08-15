@@ -166,7 +166,7 @@ def module2_kie():
     print(f"  全网格扫描范围: KIE_min = {KIE_min:.2f}, KIE_max = {KIE_max:.2f}")
     print(f"  经典 KIE 上限 ≈ {classical_limit}")
     print(f"  AADH 实测 KIE ≈ {exp_aadh}")
-    print(f"  注: V-E=0.10 eV (≈10 kJ/mol) 远低于ø氢键势垒(20-50 kJ/mol),")
+    print(f"  注: V-E=0.10 eV (≈10 kJ/mol) 远低于酶氢键势垒(20-50 kJ/mol),")
     print(f"      属于'近自由'区,KIE 退化为经典极限,并非综述所指的酶活性位点.")
 
     # 综述 §4.1/§4.2 明确将 KIE>10 (远超经典上限 7) 的论断限定在
@@ -254,7 +254,7 @@ def module3_sensitivity():
     print(f"      综述的论断针对酶活性位点势垒 (V-E≥0.2 eV).")
 
     # 综述 §4.2 将"0.1 Å → 一个数量级变化"的论断限定在酶活性位点,
-    # 即 V-E ≥ 0.2 eV (典型ø氢键势垒).  阈值"一个数量级"(factor~10)
+    # 即 V-E ≥ 0.2 eV (典型酶氢键势垒).  阈值"一个数量级"(factor~10)
     # 保持不变, 仅把判据范围与综述论断的范围对齐.
     enzyme_rows = np.where(V_eV_grid >= 0.20)[0]
     ratio_enzyme = ratio_grid[enzyme_rows, :]
