@@ -125,7 +125,7 @@ P3中ΔAIC=-8.247，UFPF双曲获胜。但高压窗口（P>5000 psia）线性反
 - **严格化网络模型**：明确页岩孔隙网络的空间嵌入DAG模型。在统计物理中，可以定义一个**三维各向异性有向逾渗模型**，其中层内边概率p_intra，层间向上边概率p_up，向下边概率p_down（若DAG则p_down=0）。计算其巨连通分量（Giant Strongly Connected Component, GSCC）和巨外向分量（GOUT）的出现条件。与经典DP普适类对比。
 - **临界路径分析（CPA）与CNF连接**：将ConnectivityMeasure与CPA中的临界孔径r_c严格对应。证明或证伪：在DAG约束下，CPA的有效渗透率K_eff与CNF的连通度增长成正比。
 - **多尺度分形与交叉长度尺度**：开发**双逾渗模型**（dual percolation）或**多孔网络模型**，区分有机质纳米孔网络与无机质微裂缝网络。解释高压/低压窗口不同标度律的物理起源。
-- **贝叶斯模型选择替代AIC**：鉴于数据多段结构，建议使用**贝叶斯分层模型**（Bayesian hierarchical model）或**变点检测**（change-point detection）结合**贝叶斯信息准则（BIC）/WAIC/LOO-CV**进行更稳健的模型比较。
+- **贝叶斯模型选择替代AIC**：鉴于数据多段结构，建议使用**贝叶斯分层模型**（Bayesian hierarchical model）或**∞点检测**（change-point detection）结合**贝叶斯信息准则（BIC）/WAIC/LOO-CV**进行更稳健的模型比较。
 - **形式化验证**：对CNF的Lean形式化，建议补全以下引理（Lemma）：证明在有限DAG中，若边方向与重力势梯度一致（即每条边满足Δz>0），则不存在违反浮力方向的宏观运移路径。若该证明成立，则评估其前提（边方向=重力势梯度）是否为先验假设。
 
 ## 5. 与相关领域交叉点
@@ -148,7 +148,7 @@ P3中ΔAIC=-8.247，UFPF双曲获胜。但高压窗口（P>5000 psia）线性反
 
 关于Lean 4：用户提到"如使用 Lean 4 形式化，确保代码语法正确且可编译"。我可以在点评CNF形式化时，给出一个关于DAG路径方向性的Lean代码片段，说明其公理化问题。或者给出有向逾渗阈值存在的形式化定义。考虑到复杂性，给出一个简化的、可编译的Lean 4代码片段来形式化"DAG中不存在从高层返回低层的路径"是比较合适的。
 
-Lean 4代码思路：
+Lean 4代码思µ：
 ```lean4
 import Mathlib
 
@@ -260,7 +260,7 @@ R4：开放"分段结构"的理论整合
 
 - **科学计量学与元科学（Metascience）**：预注册预言（preregistration）在地球科学中的应用。可借鉴_registered reports_模式（Chambers, 2013），将理论检验与数据获取分离。
 - **统计学习理论**：VC 维与过拟合。CNF 线性模型（2 参数）vs UFPF 双曲模型（3 参数？）在 31 个样品上的自由度差异。需要精确报告参数数量，因为 AIC 已经惩罚了参数，但样本量 n=31 相对较小，模型选择方差可能较大。
-- **复杂网络科学**：渗流相变（percolation theory）与 DAG 约束下的有向渗流（directed percolation）。已知有向渗流有独特的普适类（universality class, Hinrichsen, 2000）。CNF 的 p_c 阈值预言可以与有向渗流的临界指数进行对比，提供理论物理基础。
+- **复杂网络科学**：渗流相∞（percolation theory）与 DAG 约束下的有向渗流（directed percolation）。已知有向渗流有独特的普适类（universality class, Hinrichsen, 2000）。CNF 的 p_c 阈值预言可以与有向渗流的临界指数进行对比，提供理论物理基础。
 - **科学哲学中的 realism**：结构实在论（structural realism, Worrall, 1989）。两理论在 P1 上的重合可能反映了共同的结构（生烃-滞留的负截距关系），而 P2/P3 的分歧是实体/机制层面的。这支持了"保留结构、修正本体"的实在论策略。
 
 现在，我需要以资深学术研究者的身份，用精确学术语言撰写这份评审意见。

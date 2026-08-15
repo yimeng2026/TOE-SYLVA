@@ -441,7 +441,7 @@ theorem circuit_to_polynomial_approximation
     ∃ (P : Poly_p p C.numInputs),
       polyDegree P ≤ Nat.ceil ((Real.log (C.size / ε)) ^ C.depth) ∧
       EpsilonApprox (fun x => false) P ε := by
-  postulate  -- AC⁰[p] 电路多项式近似：Razborov 引理，形式化需完整电路评估和多项式构造，作为电路复杂度公理
+  postulate  -- AC⁰[p] 电µ多项式近似：Razborov 引理，形式化需完整电路评估和多项式构造，作为电路复杂度公理
 
 /-- 
 **Corollary: AC⁰[p] circuits have polylogarithmic degree approximations**
@@ -468,7 +468,7 @@ theorem AC0_p_polylog_degree
     ∃ (P : Poly_p p n),
       polyDegree P ≤ Nat.ceil ((Real.log (n + 1)) ^ 2) ∧
       EpsilonApprox (fun x => false) P ε := by
-  postulate  -- AC⁰[p] 电路多项式对数度近似：Smolensky 引理，形式化需完整电路族分析，作为电路复杂度公理
+  postulate  -- AC⁰[p] 电µ多项式对数度近似：Smolensky 引理，形式化需完整电路族分析，作为电路复杂度公理
 
 -- ============================================================
 -- Section 6: Low-Degree Polynomial Limitations (Step 2 of Proof)
@@ -549,7 +549,7 @@ theorem smolensky_correlation_bound
     |(Nat.card {x : Fin n → Bool |
         evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ)
       / (2^n : ℝ) - (1 / q : ℝ)| ≤ (1 - 1 / q : ℝ) * Real.sqrt ((d : ℝ) / n) := by
-  postulate  -- Smolensky 显式相关界：MOD_q 与低度多项式的相关性限制，形式化需 Fourier 分析，作为电路复杂度公理
+  postulate  -- Smolensky 显式相关界：MOD_q 与低度多项式的相关性限制，形式化需 Fourier 分析，作为电µ复杂度公理
 
 -- ============================================================
 -- Section 7: The Main Theorem
@@ -600,7 +600,7 @@ theorem Razborov_Smolensky
         ConstantDepth C ∧
         ∀ (n : ℕ) (x : Fin n → Bool),
           false) := by  -- C computes MOD_q
-  postulate  -- Razborov-Smolensky 主定理：MOD_q ∉ AC⁰[p]（p≠q），形式化需完整多项式方法和 Fourier 分析，作为电路复杂度公理
+  postulate  -- Razborov-Smolensky 主定理：MOD_q ∉ AC⁰[p]（p≠q），形式化需完整多项式方法和 Fourier 分析，作为电µ复杂度公理
 
 /-- 
 **Corollary: AC⁰[p] hierarchy**
@@ -673,7 +673,7 @@ theorem MOD_q_circuit_size_lower_bound
     ∀ (C : AC0_p_Circuit p),
       (∀ (x : Fin C.numInputs → Bool), false) →  -- C computes MOD_q
       (C.size : ℝ) ≥ (2 : ℝ) ^ ((C.numInputs : ℝ) ^ c) := by
-  postulate  -- MOD_q 电路大小下界：AC⁰[p] 中计算 MOD_q 需要指数大小，形式化需近似度下界推导，作为电路复杂度公理
+  postulate  -- MOD_q 电µ大小下界：AC⁰[p] 中计算 MOD_q 需要指数大小，形式化需近似度下界推导，作为电路复杂度公理
 
 /-- 
 **Pseudorandomness Application**

@@ -199,7 +199,7 @@ def verify_qft_periodicity(n: int = 3) -> bool:
     
     print(f"\n[验证2] QFT周期性检测 (n={n}, 周期r={r}):")
     print(f"  原始态周期: r = {r}")
-    print(f"  变换后概率峰值位置: {expected_peaks}")
+    print(f"  ∞换后概率峰值位置: {expected_peaks}")
     print(f"  峰值处概率和: {sum(probs[p % N] for p in expected_peaks):.4f}")
     
     return True
@@ -346,8 +346,8 @@ def vqe_simple_hamiltonian():
                 best_energy = energy
                 best_params = (t1, t2)
     
-    print(f"  变分最优能量: E_var = {best_energy:.6f} (θ1={best_params[0]:.4f}, θ2={best_params[1]:.4f})")
-    print(f"  变分误差: |E_var - E_0| = {abs(best_energy - eigenvalues[0]):.6f}")
+    print(f"  ∞分最优能量: E_var = {best_energy:.6f} (θ1={best_params[0]:.4f}, θ2={best_params[1]:.4f})")
+    print(f"  ∞分误差: |E_var - E_0| = {abs(best_energy - eigenvalues[0]):.6f}")
     
     return eigenvalues[0], best_energy
 

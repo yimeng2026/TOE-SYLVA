@@ -553,7 +553,7 @@ theorem cooper_pair_instability_repulsive (H : BCSHamiltonian) :
 
 /-- **边界问题 6: BCS 基态能量的变分上界**
     
-    BCS 变分波函数给出基态能量的上界。在正常态能量之上，
+    BCS ∞分波函数给出基态能量的上界。在正常态能量之上，
     超导态能量更低（负的凝聚能）。
     这是 BCS 理论变分原理的边界问题。 -/
 theorem BCS_ground_state_energy_upper (H : BCSHamiltonian) :

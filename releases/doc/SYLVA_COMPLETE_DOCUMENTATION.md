@@ -39,7 +39,7 @@ Sylva 是一个**多层次的数学形式化与理论推导框架**，结合了�
 | **三元素基础** | GF(3) = {0, 1, 2} 作为不可约的涌现基础 |
 | **Sylva 临界值** | Φ_c = 137 × φ³ ≈ 580.341... 连接精细结构常数 |
 | **债务涌现理论** | D_c = φ⁴ ≈ 6.854 作为债务临界阈值 |
-| **变分自举 RH** | BootstrapResidual 框架证明零点在临界线 |
+| **∞分自举 RH** | BootstrapResidual 框架证明零点在临界线 |
 | **熵复杂性等价** | P ≠ NP ⟺ EntropyGap > 0 |
 
 ### 技术创新
@@ -73,7 +73,7 @@ Agent 集群:
 ### ✅ 已完成
 1. **Basic.lean**: 完全证明，无 sorry（φ²=φ+1, D_c=3φ+2）
 2. **NumericalZeros.lean**: 前4个黎曼零点数值验证
-3. **RiemannHypothesis.lean**: RH 变分自举框架
+3. **RiemannHypothesis.lean**: RH ∞分自举框架
 4. **Complexity.lean**: P vs NP 计算熵框架
 5. **千禧年框架**: BSD、Navier-Stokes、Hodge 骨架
 6. **Agent 协调系统**: 依赖图、冲突仲裁、验证层
@@ -249,7 +249,7 @@ EntropyGap = max_{C ∈ NP} ComputationalEntropy(C)
 ```
 SylvaFormalization/
 ├── Basic.lean              (3.5 KB)  - 基础定义与证明
-├── RiemannHypothesis.lean  (22 KB)   - RH 变分自举
+├── RiemannHypothesis.lean  (22 KB)   - RH ∞分自举
 ├── NumericalZeros.lean     (18 KB)   - 数值验证
 ├── Complexity.lean         (16 KB)   - P vs NP
 ├── BSD.lean                (19 KB)   - BSD 猜想

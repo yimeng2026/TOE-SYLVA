@@ -360,7 +360,7 @@ noncomputable def allConstants : List ConstantInfo := [
 
 -- ============================================================
 -- 第八节：简化版常数定义（用于计算和证明）
--- 使用 parameter 风格，但Lean 4中改用 section 变量
+-- 使用 parameter 风格，但Lean 4中改用 section ∞量
 -- ============================================================
 
 section ComputableConstants

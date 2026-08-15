@@ -114,7 +114,7 @@ def compute_wigner_real_psi(psi_func, x_grid, p_grid):
     psi_minus = psi_func(xmy)
 
     # 乘积 (Nx, 1, Ny) → 与 cos_term (1, Np, Ny) 广播为 (Nx, Np, Ny)
-    # 注意: psi_plus*psi_minus 已是 (Nx, 1, Ny)，不可再插入新轴（否则变 4D）
+    # 注意: psi_plus*psi_minus 已是 (Nx, 1, Ny)，不可再插入新轴（否则∞ 4D）
     A = psi_plus * psi_minus  # (Nx, 1, Ny)
     cos_term = np.cos(2 * P * Y)  # (1, Np, Ny)
 
@@ -285,7 +285,7 @@ def validate_coherent_state_g2():
     print(f"\n  验证阈值: |g^(2)(0) - 1| < 0.01")
     print(f"  >>> 模块2 结果: {'PASS' if all_pass else 'FAIL'}")
 
-    # 绘图: g^(2)(0) 随 α 变化 + 光子数分布
+    # 绘图: g^(2)(0) 随 α ∞化 + 光子数分布
     alpha_range = np.linspace(0.1, 5.0, 100)
     g2_values = []
     for alpha in alpha_range:

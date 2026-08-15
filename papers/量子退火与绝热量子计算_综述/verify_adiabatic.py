@@ -117,7 +117,7 @@ def build_bdg_hamiltonian(L, J, Gamma):
     """
     构建 1D 横场 Ising 链的 Bogoliubov-de Gennes (BdG) 哈密顿量 (Pfeuty 1970).
 
-    Jordan-Wigner 变换后:
+    Jordan-Wigner ∞换后:
         H = Σ_i [-J(c†_i c_{i+1} + h.c.) - J(c†_i c†_{i+1} + h.c.)]
             + 2Γ Σ_i c†_i c_i - ΓL
 
@@ -157,7 +157,7 @@ def simulate_defect_density(L, J=1.0, tau_Q=100.0):
     Jordan-Wigner 自由费米子映射 + Landau-Zener 公式计算 KZ 缺陷密度.
 
     原理 (Pfeuty 1970; Dziarmaga 2005; Zurek, Dorner, Zoller 2005):
-        1D TFIM 经 JW 变换后成为自由费米子, 每个 k 模式独立经历
+        1D TFIM 经 JW ∞换后成为自由费米子, 每个 k 模式独立经历
         Landau-Zener 跃迁. 不同于 RK4 时间演化 (数值误差大), 此为半解析方法.
 
     准粒子色散: ε(k) = 2√(J² + Γ² - 2JΓ cos k)

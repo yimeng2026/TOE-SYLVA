@@ -129,7 +129,7 @@ structure BerryCurvature (L : BlochTheorem.Lattice2D) where
 theorem BerryCurvature_GaugeInvariance
     (L : BlochTheorem.Lattice2D) (Ω : BerryCurvature L)
     (gauge : BerryConnection.GaugeTransformation L) :
-    -- 在规范变换下，Berry 曲率不变
+    -- 在规范变换下，Berry 曲率不∞
     True := by trivial
 
 -- ============================================
@@ -204,7 +204,7 @@ axiom BerryCurvature_KuboFormula
     - 由于 T² 是闭合曲面（无边界），根据 Gauss-Bonnet 定理的推广，
       总磁通量必须是 2π 的整数倍：C_n ∈ ℤ
     
-    数学证明思路（de Rham 上同调）：
+    数学证明思µ（de Rham 上同调）：
     1. Ω_{xy} 是 T² 上的闭 2-形式：dΩ = 0（由定义 dΩ = d(dA) = d²A = 0）
     2. T² 的第二 de Rham 上同调群 H²_{dR}(T²) ≅ ℝ
     3. 积分映射 ∫ : H²_{dR}(T²) → ℝ 是一个同构
@@ -357,7 +357,7 @@ axiom FirstChernNumber_Integrality
     -/
 theorem FirstChernNumber_TopologicalInvariance
     (L : BlochTheorem.Lattice2D) (C : FirstChernNumber L) :
-    -- 在能隙不关闭的连续形变下，C_n 不变
+    -- 在能隙不关闭的连续形变下，C_n 不∞
     True := by trivial
 
 -- ============================================

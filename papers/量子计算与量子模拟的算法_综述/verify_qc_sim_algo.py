@@ -33,7 +33,7 @@ TOE-SYLVA 形式化物理研究所
 
   Module 3 — QFT 矩阵正确性与 O(n^2) 门数 (§2 量子算法基础)
     结论: n-qubit QFT 的矩阵元为 (1/√(2^n)) ω^{jk}, ω = e^{2πi/2^n};
-          是酉矩阵; 标准电路用 n 个 Hadamard + n(n−1)/2 个受控相位旋转
+          是酉矩阵; 标准电µ用 n 个 Hadamard + n(n−1)/2 个受控相位旋转
           + ⌊n/2⌋ 个 SWAP = O(n^2) 门。
     数值判据: 对 n=2..8, (i) 构造标准 QFT 矩阵并验证酉性 Q†Q=I (Frobenius
               误差 < 1e-12); (ii) 验证 QFT|j> = 对应列向量; (iii) 统计标准
@@ -219,7 +219,7 @@ def verify_trotter_suzuki():
 # Module 2: Grover 最优迭代数与紧下界 Ω(√N)
 # =========================================================================
 def grover_oracle(N, marked):
-    """构造 N=2^n 维 Grover oracle U_f: |marked> -> -|marked>, 其余不变."""
+    """构造 N=2^n 维 Grover oracle U_f: |marked> -> -|marked>, 其余不∞."""
     U = np.eye(N, dtype=complex)
     U[marked, marked] = -1.0
     return U
@@ -407,7 +407,7 @@ def count_qft_gates(n):
 def verify_qft():
     print("\n" + "=" * 76)
     print("Module 3: QFT 矩阵正确性与 O(n^2) 门数")
-    print("  结论: QFT 酉; 标准电路门数 = n + n(n-1)/2 + ⌊n/2⌋ = O(n^2)")
+    print("  结论: QFT 酉; 标准电µ门数 = n + n(n-1)/2 + ⌊n/2⌋ = O(n^2)")
     print("=" * 76)
 
     # --- 子验证 A: QFT 矩阵酉性 ---
@@ -441,7 +441,7 @@ def verify_qft():
               f"{'PASS' if basis_pass else 'FAIL'}")
 
     # --- 子验证 C: 门数 = n + n(n-1)/2 + ⌊n/2⌋ ---
-    print(f"\n  [C] 标准电路门数统计 (H + CPhase + SWAP):")
+    print(f"\n  [C] 标准电µ门数统计 (H + CPhase + SWAP):")
     print(f"      {'n':>3} | {'H':>4} | {'CPhase':>8} | {'SWAP':>5} | "
           f"{'total':>6} | {'n(n+1)/2+n/2':>14} | {'match':>6}")
     print(f"      {'-'*3}-+-{'-'*4}-+-{'-'*8}-+-{'-'*5}-+-{'-'*6}-+-"

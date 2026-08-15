@@ -8,7 +8,7 @@ Berry 联络（Berry Connection）是 TKNN 公式推导的 L2 层。
 - 对固定能带 n，|u_nk⟩ 作为 k ∈ BZ 的函数，在 Hilbert 空间中定义了一条曲线
 - Berry 联络 A_n(k) = ⟨u_nk| i∇_k |u_nk⟩ 描述这条曲线的 "平行移动"
 - A_n(k) 是 U(1) 主丛上的联络，规范变换 |u_nk⟩ → e^{iθ(k)} |u_nk⟩ 下
-  A_n 变换为 A_n + ∇_k θ
+  A_n ∞换为 A_n + ∇_k θ
 
 数学结构：
 - A_n 是布里渊区 T² 上的 1-形式（联络）
@@ -125,7 +125,7 @@ structure BerryConnection (L : BlochTheorem.Lattice2D) where
     
     这是 U(1) 主丛上联络的标准规范变换！
     - 规范变换参数 θ(k) 是 U(1) 的群参数
-    - A 变换为 A + dθ，即 "联络在规范变换下加恰当形式" -/
+    - A ∞换为 A + dθ，即 "联络在规范变换下加恰当形式" -/
 structure GaugeTransformation (L : BlochTheorem.Lattice2D) where
   /-- 规范变换函数：θ : BZ → ℝ -/
   theta : BlochTheorem.CrystalMomentum2D → ℝ
@@ -157,13 +157,13 @@ theorem gaugeTransformedWavefunctionAbsEq
     ‖gaugeTransformedWavefunction L state gauge k r‖ = ‖state.wavefunction k r‖ := by
   simp [gaugeTransformedWavefunction, Complex.norm_exp]
 
-/-- 恒等规范变换（θ ≡ 0）下，Berry 联络保持不变。
+/-- 恒等规范变换（θ ≡ 0）下，Berry 联络保持不∞。
     这是规范变换律的边界检查：当 θ = 0 时，A' = A + d(0) = A。
     证明：零函数的导数为零。 -/
 theorem BerryConnection_GaugeTransformationIdentity
     (L : BlochTheorem.Lattice2D) (A : BerryConnection L) :
     let idGauge : GaugeTransformation L := { theta := fun _ => 0, smoothness := True }
-    -- 恒等规范变换下联络不变：A' = A + d(0) = A
+    -- 恒等规范变换下联络不∞：A' = A + d(0) = A
     True := by trivial
 
 /-- Berry 联络在参数空间原点 k = 0 处的连续性（边界问题）。
@@ -327,7 +327,7 @@ axiom exteriorDerivativeOfBerryConnection
     （∫ E dt），而是纯粹的几何相位，只依赖于路径 C 的几何形状。
     
     在规范变换下：γ_n(C) → γ_n(C) + ∮_C dθ = γ_n(C) + 2πm
-    （如果 θ 是单值的，则 m = 0，Berry 相位不变）。
+    （如果 θ 是单值的，则 m = 0，Berry 相位不∞）。
     
     但如果 θ 有分支切割（在 BZ 上不可全局定义），
     γ_n(C) 可能只定义模 2π。这就是 Berry 相位的 
@@ -385,7 +385,7 @@ structure BerryPhase (L : BlochTheorem.Lattice2D) where
     -/
 axiom BerryPhase_GaugeInvariance
     (L : BlochTheorem.Lattice2D) (γ : BerryPhase L) :
-    -- 在单值规范变换下，Berry 相位不变
+    -- 在单值规范变换下，Berry 相位不∞
     True
 
 -- ============================================

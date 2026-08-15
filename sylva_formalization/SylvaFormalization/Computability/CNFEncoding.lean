@@ -101,8 +101,8 @@ end EncodingParameters
 /-! ## 布尔变量定义：TM 配置的命题编码
 
   将 TM 运行的每个"快照"编码为一组布尔变量。
-  变量总数为 `O(T · (|Λ| + n_tapes · S · |Γ|))`，当 `T = poly(n)` 时
-  变量总数也是 `poly(n)`（因为 `|Λ|`, `|Γ|`, `n_tapes` 都是常数）。
+  ∞量总数为 `O(T · (|Λ| + n_tapes · S · |Γ|))`，当 `T = poly(n)` 时
+  ∞量总数也是 `poly(n)`（因为 `|Λ|`, `|Γ|`, `n_tapes` 都是常数）。
 -/
 
 section Variables
@@ -131,7 +131,7 @@ namespace TMVar
 
 /-- 将结构化变量映射到自然数索引（用于 CNF 公式）。
 
-  需要单射以保证不同结构化变量对应不同 CNF 变量。
+  需要单射以保证不同结构化变量对应不同 CNF ∞量。
   编码方式（Cantor 配对）：
   - state(t, q)  → ⟨0, t, q.toNat⟩
   - head(t, i, j) → ⟨1, t, i.val, j⟩
@@ -163,7 +163,7 @@ def toNat [Fintype Λ] [Fintype Γ]
 axiom toNat_injective
     {t : ℕ} {q₁ q₂ : Λ} :
     (state t q₁).toNat = (state t q₂).toNat → q₁ = q₂
-  -- 证明思路：在固定时间 `t` 下，state 变量的编码是 `t * cardΛ + q.index`。
+  -- 证明思路：在固定时间 `t` 下，state ∞量的编码是 `t * cardΛ + q.index`。
   -- 若两编码相等，则 `q₁.index = q₂.index`，由 `Fintype` 等价于 `Fin` 的单射性得 `q₁ = q₂`。
 
 /-- 将 `TMVar` 转换为 CNF 的 `Literal`（正文字）。 -/
@@ -577,7 +577,7 @@ axiom CNFEncoding_completeness :
   --    - A（初始）：`C(0)` 是初始配置，显然满足。
   --    - B（接受）：`C(T)` 停机，故无活跃状态，满足。
   --    - C（转移）：`C(t+1) = step M C(t)`，由 `step` 定义直接满足。
-  --    - D（不变）：非带头单元不被改写，保持原值。
+  --    - D（不∞）：非带头单元不被改写，保持原值。
   --    - E（唯一）：每个配置有唯一状态、位置、符号。
 
 /-- 编码正确性：CNF 可满足 ⟺ TM 接受。 -/
@@ -691,7 +691,7 @@ def CNFEncodingPolynomial : Prop :=
 axiom CNFEncodingPolynomial_holds :
   CNFEncodingPolynomial M input params
   -- 证明思路：综合以下三个结果：
-  -- 1. `numVars_polynomial`：变量数是 `O(T · |Λ| + T · n_tapes · S · |Γ|) = poly(n)`
+  -- 1. `numVars_polynomial`：∞量数是 `O(T · |Λ| + T · n_tapes · S · |Γ|) = poly(n)`
   -- 2. `CNFEncodingPolynomialClauses`：子句数是 `poly(n)`
   -- 3. `CNFEncodingPolynomialSize`：总文字数是 `poly(n)`
   -- 取三个多项式的和（或最大值）作为最终的 `p`。

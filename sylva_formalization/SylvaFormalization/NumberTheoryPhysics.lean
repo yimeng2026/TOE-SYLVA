@@ -545,7 +545,7 @@ def selbergZetaFunction (s : ℂ) (geodesics : List ℝ) : ℂ :=
     --         1. Selberg 迹公式：将 Laplacian 的谱与闭测地线长度联系
     --         2. 双曲几何中的几何-谱对应
     --         3. 解析延拓和函数方程的完整推导
-    --         4. 涉及 Mehler-Fock 变换和特征函数展开
+    --         4. 涉及 Mehler-Fock ∞换和特征函数展开
     -- 难度：高级，需要完整的双曲几何和谱理论形式化。 -/
 axiom selberg_functional_equation (s : ℂ) (geodesics : List ℝ)
     (Area : ℝ) (chi : ℤ) :
