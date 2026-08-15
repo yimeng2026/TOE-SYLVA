@@ -499,7 +499,7 @@ def verify_nested_wilson_loop():
     ax.set_xlabel(r'$\gamma_x / \lambda_x$ (固定 $\gamma_y/\lambda_y = 0.5$)')
     ax.set_ylabel(r'$q_{xy}$')
     ax2.set_ylabel(r'体带隙 $\Delta$', color='b')
-    ax.set_title('四极矩 $q_{xy}$ 拓扑相∞')
+    ax.set_title('四极矩 $q_{xy}$ 拓扑相变')
     ax.set_ylim(-1.3, 1.3)
     ax.legend(loc='upper left', fontsize=9)
     ax2.legend(loc='upper right', fontsize=9)
