@@ -526,15 +526,15 @@ theorem sat_in_p_implies_peqnp (h : SAT ∈ ClassP) : ClassP = ClassNP := by
     -- TACTICS NEEDED: induction on verifier steps, encode TM transitions, polytime_composition.
     -- 千界花园策略工程：Cook-Levin 定理（SAT ∈ P → P = NP）
     -- 问题描述：对任意 L ∈ NP，构造多项式时间归约到 SAT，证明 NP ⊆ P
-    -- 策略：对 L 的验证器 V，将 V 的计算历史编码为布尔电µ，再转 CNF，用 SAT 判定
-    -- 步骤：1. 对输入 x 和验证器 V，构造电µ C_{x,V} 模拟 V 的多项式时间计算；
-    --       2. 用 Tseitin ∞换将 C_{x,V} 转等价 CNF φ_{x,V}；
+    -- 策略：对 L 的验证器 V，将 V 的计算历史编码为布尔电路，再转 CNF，用 SAT 判定
+    -- 步骤：1. 对输入 x 和验证器 V，构造电路 C_{x,V} 模拟 V 的多项式时间计算；
+    --       2. 用 Tseitin 变换将 C_{x,V} 转等价 CNF φ_{x,V}；
     --       3. φ_{x,V} 可满足 ⟺ ∃c, V(x,c)=true ⟺ x ∈ L；
     --       4. |φ_{x,V}| = poly(|x|) 因 V 是多项式时间；
     --       5. 若 SAT ∈ P，则 φ_{x,V} 可多项式时间判定，故 L ∈ P。
     -- 引理需求：TM_to_boolean_circuit, circuit_to_CNF_polytime, polytime_composition, SAT_polytime_decision, polynomial_size_formula
     -- 策略需求：induction on TM steps, encode TM transitions as boolean formulas, Tseitin transformation, polytime_composition
-    -- 置信度：0.05（Cook-Levin 定理是 Millennium Prize Problem 基础，需完整 TM→电µ→CNF 形式化）
+    -- 置信度：0.05（Cook-Levin 定理是 Millennium Prize Problem 基础，需完整 TM→电路→CNF 形式化）
     -- 数值验证：n=10,20,50 位输入，验证器步数 100,400,2500，CNF 规模增长 O(n^2)，与 polytime 假设一致
     -- 已知结果引用：Cook 1971 (SAT 是 NP-完备的), Levin 1973 (独立发现); 形式化证明见 Garey-Johnson 1979; Coq 形式化见 Contejean 2016; Isabelle 形式化见 Beringer 2006
     -- Millennium Prize Problem #1：P vs NP 的核心归约定理
