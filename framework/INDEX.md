@@ -2,8 +2,8 @@
 
 > **文档版本**: v3.6  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-14  
-> **文档总数**: 35+87=122 (core docs 01-30 + extended 31-121) | framework/ 目录共 200+ 个 .md 文件
+> **最后更新**: 2026-08-15  
+> **文档总数**: 35+89=124 (core docs 01-30 + extended 31-123) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -588,3 +588,5 @@ four_forces_unification_*.md
 | doc:119 | [119_financial_economic_cnf.md](119_financial_economic_cnf.md) | 金融/经济 CNF 多资产因果 | 2026-08-11 |
 | doc:120 | [120_postulate_reduction_roadmap.md](120_postulate_reduction_roadmap.md) | Agda postulate 削减路线图 | 2026-08-11 |
 | doc:121 | [121_environmental_science_cnf.md](121_environmental_science_cnf.md) | 环境科学 CNF 生态因果网络与行星边界 | 2026-08-14 |
+| doc:122 | [122_psychology_cnf.md](122_psychology_cnf.md) | 心理学 CNF 认知因果网络与意识桥 | 2026-08-15 |
+| doc:123 | [123_social_science_cnf.md](123_social_science_cnf.md) | 社会科学 CNF 社会因果网络与集体智能 | 2026-08-15 |
