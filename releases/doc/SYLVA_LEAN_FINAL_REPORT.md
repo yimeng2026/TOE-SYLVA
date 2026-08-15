@@ -11,7 +11,7 @@
 | 模块 | 文件 | 大小 | 描述 |
 |------|------|------|------|
 | **Basic** | Basic.olean | 418 KB | GF(3)、φ、Φ_c、D_c、H-CND层级 |
-| **RiemannHypothesis** | RiemannHypothesis.olean | 225 KB | ∞分自举框架、Xi函数、零点数值证据 |
+| **RiemannHypothesis** | RiemannHypothesis.olean | 225 KB | 变分自举框架、Xi函数、零点数值证据 |
 | **Complexity** | Complexity.olean | 31 KB | P vs NP 计算熵框架 |
 | **MathAgent** | MathAgent.olean | 111 KB | 数学搜索代理 |
 | **BSD** | BSD.olean | 47 KB | Birch-Swinnerton-Dyer猜想 |
@@ -46,7 +46,7 @@ sigma_star λ t                     -- 最小化σ*
 
 **关键定理：**
 - `sigma_star_converges_to_half`: σ* → 1/2 当 λ → 1⁺
-- `variational_bootstrap_rh`: ∞分自举RH框架
+- `variational_bootstrap_rh`: 变分自举RH框架
 
 **前4个非平凡零点数值证据：**
 - γ₁ ≈ 14.134725141734693790457251983562...
