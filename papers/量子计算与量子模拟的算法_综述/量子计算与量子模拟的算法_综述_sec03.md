@@ -22,7 +22,7 @@ $$
 
 ### 3.2 变分与虚时演化方法
 
-变分量子本征求解器（VQE）是NISQ时代最具代表性的量子-经典混合算法之一[^peruzzo-2014]。VQE的核心思想是利用参数化量子电µ（PQC） $U(\boldsymbol{\theta})$ 制备试探波函数 $|\psi(\boldsymbol{\theta})\rangle = U(\boldsymbol{\theta})|\psi_0\rangle$，通过经典优化器最小化能量期望值：
+变分量子本征求解器（VQE）是NISQ时代最具代表性的量子-经典混合算法之一[^peruzzo-2014]。VQE的核心思想是利用参数化量子电路（PQC） $U(\boldsymbol{\theta})$ 制备试探波函数 $|\psi(\boldsymbol{\theta})\rangle = U(\boldsymbol{\theta})|\psi_0\rangle$，通过经典优化器最小化能量期望值：
 
 $$
 E(\boldsymbol{\theta}) = \langle \psi(\boldsymbol{\theta})| H |\psi(\boldsymbol{\theta})\rangle
@@ -36,7 +36,7 @@ $$
 |\psi(\boldsymbol{\gamma}, \boldsymbol{\beta})\rangle = e^{-i\beta_p H_B} e^{-i\gamma_p H_C} \cdots e^{-i\beta_1 H_B} e^{-i\gamma_1 H_C} |+\rangle^{\otimes n}
 $$
 
-参数 $p$ 控制电µ深度。当 $p \to \infty$ 时，QAOA收敛于绝热量子计算的结果。对于有限 $p$，QAOA在MaxCut等特定问题上已被证明可超越经典贪心算法[^farhi-2014-supremacy]。
+参数 $p$ 控制电路深度。当 $p \to \infty$ 时，QAOA收敛于绝热量子计算的结果。对于有限 $p$，QAOA在MaxCut等特定问题上已被证明可超越经典贪心算法[^farhi-2014-supremacy]。
 
 量子虚时演化（QITE）为基态制备提供了不依赖经典优化的替代路径[^motta-2020]。虚时演化将Schrödinger方程中的时间替换为虚时间 $\tau = it$：
 
