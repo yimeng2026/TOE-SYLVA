@@ -140,7 +140,7 @@ def module_3_entanglement_entropy_area_law():
     return S
 
 # ============================================================
-# 模块 4: VQE ∞分量子本征求解器 (2量子比特演示)
+# 模块 4: VQE 变分量子本征求解器 (2量子比特演示)
 # ============================================================
 def module_4_vqe_two_qubit_ansatz():
     """
@@ -245,7 +245,7 @@ def module_6_hubbard_hf_benchmark():
 # ============================================================
 def module_7_qsp_polynomial_transform():
     """
-    验证: QSP 实现 x -> x^3 ∞换 (SU(2) 旋转序列)
+    验证: QSP 实现 x -> x^3 变换 (SU(2) 旋转序列)
     """
     def qsp_sequence(x, angles):
         """简化QSP: 交替 Rz(φ) Rx(arccos x)"""
