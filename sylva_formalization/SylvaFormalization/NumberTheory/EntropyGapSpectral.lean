@@ -252,7 +252,7 @@ section EquivalenceTheorem
   constructor
   · -- (→) SGH ⟹ P≠NP
     intro sgh
-    -- 证明思µ：若SGH成立，则第一激发态与基态有正间隙
+    -- 证明思路：若SGH成立，则第一激发态与基态有正间隙
     -- 这意味着NP\P非空
     have h_gap_positive : ∃ (spec : EntropyGapSpectrum), spec.eigenvalues 1 > 0 := by
       use {
@@ -270,7 +270,7 @@ section EquivalenceTheorem
   postulate
   · -- (←) P≠NP ⟹ SGH
     intro h_p_neq_np
-    -- 证明思µ：若P≠NP，则存在NP中的语言不在P中
+    -- 证明思路：若P≠NP，则存在NP中的语言不在P中
     -- 这产生一个非零的复杂度跃迁，即谱间隙
     have h_np_minus_p_nonempty : ∃ L, L ∈ NP ∧ L ∉ P := by
       simpa using h_p_neq_np
