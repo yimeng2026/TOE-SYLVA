@@ -48,7 +48,7 @@ namespace LocalGlobalTemplate
 
   每个Hilbert问题在局部层面都有一个对应的结构：
 
-  - Cook-Levin: 电µ门 (gateToCNF)
+  - Cook-Levin: 电路门 (gateToCNF)
 
   - BSD: 局部Euler因子 (LocalEulerFactors)
 
