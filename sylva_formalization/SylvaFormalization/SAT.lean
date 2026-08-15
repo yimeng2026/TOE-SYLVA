@@ -1940,7 +1940,7 @@ theorem horn_cnf_all_neg_satisfiable (cnf : CNF)
     **Difficulty to theorem:** Research (requires SAT_is_NPComplete + Tseitin proof completion ~100h).
     
     -- 保留为 axiom 原因：CircuitSAT 的 NP-完全性依赖于 Cook-Levin 定理
-    -- (SAT_is_NPComplete) 和 Tseitin ∞换 (circuitToSAT) 的正确性作为前提。
+    -- (SAT_is_NPComplete) 和 Tseitin 变换 (circuitToSAT) 的正确性作为前提。
     -- Tseitin 等可满足性证明在本模块中已有结构归纳框架，但赋值扩展步骤尚未完成。
     -- 预计工作量：~100h（需要完成 Tseitin 证明 + NP-完全性前提）。
     -/
@@ -1983,7 +1983,7 @@ axiom CircuitSAT_is_NPComplete :
     
     -- 保留为 axiom 原因：SAT 与 CircuitSAT 的多项式时间等价是两个 NP-完全性定理
     -- (SAT_is_NPComplete 和 CircuitSAT_is_NPComplete) 的直接推论。
-    -- 虽然归约本身是纯结构性的（Tseitin ∞换），但"多项式时间等价"的陈述需要
+    -- 虽然归约本身是纯结构性的（Tseitin 变换），但"多项式时间等价"的陈述需要
     -- 复杂性类形式化作为类型基础。
     -- 预计工作量：研究级（需要完整复杂性理论框架）。
     -/
