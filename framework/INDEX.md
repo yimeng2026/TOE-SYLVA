@@ -590,3 +590,4 @@ four_forces_unification_*.md
 | doc:121 | [121_environmental_science_cnf.md](121_environmental_science_cnf.md) | 环境科学 CNF 生态因果网络与行星边界 | 2026-08-14 |
 | doc:122 | [122_psychology_cnf.md](122_psychology_cnf.md) | 心理学 CNF 认知因果网络与意识桥 | 2026-08-15 |
 | doc:123 | [123_social_science_cnf.md](123_social_science_cnf.md) | 社会科学 CNF 社会因果网络与集体智能 | 2026-08-15 |
+| doc:124 | [124_chemistry_cnf.md](124_chemistry_cnf.md) | 化学 CNF 分子因果网络与反应动力学 | 2026-08-15 |
