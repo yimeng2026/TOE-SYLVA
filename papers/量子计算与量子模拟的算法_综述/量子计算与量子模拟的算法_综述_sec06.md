@@ -24,12 +24,12 @@ Shor算法对密码学的冲击和Grover算法对对称密码的影响，使量�
 
 | 算法类别 | 核心算法 | SYLVA模块 | 交叉维度 |
 |---------|---------|----------|---------|
-| 量子算法基础 | Deutsch-Jozsa, Simon, Grover, Shor, HHL, QPE | SYLVA_ComplexityTheory | 查询复杂度、电µ复杂度、BQP类刻画 |
+| 量子算法基础 | Deutsch-Jozsa, Simon, Grover, Shor, HHL, QPE | SYLVA_ComplexityTheory | 查询复杂度、电路复杂度、BQP类刻画 |
 | 量子算法基础 | Grover搜索、量子幅度放大 | SYLVA_InformationTheory | 量子熵、Holevo界、信道容量 |
 | 量子模拟 | Trotter分解、VQE、QAOA、QITE | SYLVA_CondensedMatter | 电子结构、能带计算、基态制备 |
 | 量子模拟 | 量子相位估计、虚时演化 | SYLVA_QuantumManyBody | 纠缠熵、关联函数、相变模拟 |
 | 量子机器学习 | QSVM、QNN、qPCA、QGAN | SYLVA_StatisticalLearning | 样本复杂度、泛化界、核方法 |
-| 量子机器学习 | 量子增强学习、参数化电µ | SYLVA_MachineLearning | 优化景观、梯度下降、表征学习 |
+| 量子机器学习 | 量子增强学习、参数化电路 | SYLVA_MachineLearning | 优化景观、梯度下降、表征学习 |
 | NISQ算法 | 浅层电路、错误缓解 | SYLVA_QEC | 表面码、 stabilizer形式、阈值定理 |
 | NISQ算法 | 动态解耦、最优控制 | SYLVA_ControlTheory | 脉冲设计、反馈控制、滤波估计 |
 | 量子密码 | Shor算法、Grover算法 | SYLVA_NumberTheory | 周期寻找、模运算、素性测试 |
