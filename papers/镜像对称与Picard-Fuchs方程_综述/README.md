@@ -6,7 +6,7 @@
   - 主题：Calabi-Yau 流形、镜像对、Picard-Fuchs 方程、Yukawa 耦合、Candelas 公式
   - 涵盖章节：CY 流形基础、Picard-Fuchs 方程与周期积分、Candelas 公式与 GW 不变量、Batyrev 构造、SYZ 镜像、同调镜像对称
   - 包含五次 CY 的 $N_1$ 到 $N_5$ 计算结果
-  - 包含 TOE-SYLVA 统一图景：镜像对称 = 几何的 Fourier ∞换
+  - 包含 TOE-SYLVA 统一图景：镜像对称 = 几何的 Fourier 变换
 
 ## 规划扩展内容
 - 补充图表（CY 流形 Hodge 钻石、镜像对示意、SYZ 纤维化图）
