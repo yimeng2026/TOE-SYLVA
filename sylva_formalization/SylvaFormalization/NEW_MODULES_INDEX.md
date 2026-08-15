@@ -12,7 +12,7 @@
 | **ContinuumLimit** | `ContinuumLimit.lean` | 8.8KB | Layer 1→2 | §3.4 | 粗粒化映射、谱嵌入、涌现度量 |
 | **EinsteinCartan** | `EinsteinCartan.lean` | 11.6KB | Layer 2 | §3.2 | 爱因斯坦-嘉当方程、 Cartan 挠率方程 |
 | **ChernSimons** | `ChernSimons.lean` | 9.5KB | Layer 3 | §3.3, Conj 3.2 | α⁻¹ = n_CS 核心假设 |
-| **SpectralAction** | `SpectralAction.lean` | 10.3KB | ∞分起源 | §3.2.1 | 谱作用、热核展开、应力张量变分 |
+| **SpectralAction** | `SpectralAction.lean` | 10.3KB | 变分起源 | §3.2.1 | 谱作用、热核展开、应力张量变分 |
 
 **模块依赖关系**:
 ```
