@@ -86,7 +86,7 @@ sylva_formalization/
 ├── SylvaFormalization.lean      # 主模块
 ├── SylvaFormalization/
 │   ├── Basic.lean               # φ, GF(3), Debt
-│   ├── RiemannHypothesis.lean   # ∞分引导框架
+│   ├── RiemannHypothesis.lean   # 变分引导框架
 │   ├── NumericalZeros.lean      # 黎曼零点验证
 │   ├── Complexity.lean          # P vs NP
 │   └── MathAgent.lean           # 数学代理
@@ -103,7 +103,7 @@ sylva_formalization/
 
 ### RiemannHypothesis 模块
 - `sigma_star_converges_to_half` : σ* → 1/2
-- `variational_bootstrap_rh` : ∞分引导 RH
+- `variational_bootstrap_rh` : 变分引导 RH
 - `RiemannXi_functional_equation` : xi(s) = xi(1-s)
 
 ### NumericalZeros 模块
