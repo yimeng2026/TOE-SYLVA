@@ -173,7 +173,7 @@ def ReachesIn (M : Machine Γ Λ σ n_tapes) : ℕ → Config Γ Λ σ n_tapes �
 开放引理：需证明 `stepN` 的迭代语义等价于 `ReachesIn` 的归纳定义。 -/
 axiom stepN_ReachesIn (M : Machine Γ Λ σ n_tapes) (k : ℕ) (c : Config Γ Λ σ n_tapes) :
   ReachesIn M k c (stepN M k c) ∨ (step M c = none ∧ stepN M k c = c)
-  -- 证明思µ：对 k 归纳，分情况讨论 step M c 是否为 none。
+  -- 证明思路：对 k 归纳，分情况讨论 step M c 是否为 none。
 
 /-- `accepts_in` 的等价刻画：存在某个配置 c'，使得 c' 停机且从初始配置 k 步内可达。 -/
 axiom accepts_in_iff_Reaches (M : Machine Γ Λ σ n_tapes) (k : ℕ) (input : List Γ) :
@@ -182,7 +182,7 @@ axiom accepts_in_iff_Reaches (M : Machine Γ Λ σ n_tapes) (k : ℕ) (input : L
       c'.q = none ∧
       Reaches M (Config.mk (some default) default (fun i =>
         if h : i.val = 0 then Tape.mk₁ input else Tape.mk₁ [])) c'
-  -- 证明思µ：利用 stepN 的停机稳定性，结合 Reaches 的传递闭包定义。
+  -- 证明思路：利用 stepN 的停机稳定性，结合 Reaches 的传递闭包定义。
 
 end
 
@@ -237,7 +237,7 @@ axiom TM1Compat_step (M : Λ → Turing.TM1.Stmt Γ Λ σ) (c : Turing.TM1.Cfg �
   match Turing.TM1.step M c with
   | none => step (TM1toMultitapeMachine M) (TM1toMultitapeCfg c) = none
   | some c' => step (TM1toMultitapeMachine M) (TM1toMultitapeCfg c) = some (TM1toMultitapeCfg c')
-  -- 证明思µ：对 `M l` 的语句结构归纳，利用 `stepAux` 的定义。
+  -- 证明思路：对 `M l` 的语句结构归纳，利用 `stepAux` 的定义。
 
 end TM1Compat
 
@@ -314,7 +314,7 @@ axiom stepN_add
     (c : TM1Multitape.Config Γ Λ σ n_tapes)
     (h : ∀ k ≤ a, (stepN M k c).q ≠ none) :
   stepN M (a + b) c = stepN M b (stepN M a c)
-  -- 证明思µ：对 a 归纳，利用 step 的确定性。
+  -- 证明思路：对 a 归纳，利用 step 的确定性。
 
 end StepNProperties
 
