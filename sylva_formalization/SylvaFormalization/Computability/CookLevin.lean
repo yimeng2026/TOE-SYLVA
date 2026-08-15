@@ -176,7 +176,7 @@ axiom CircuitSAT_is_NPComplete :
       IsPolynomialTimeComputable f ∧
       ∀ (x : List Γ), L x ↔ CircuitSAT (f x)
 
-/-- 3-SAT 也是 NP-完全的（由 SAT ≤ₚ 3-SAT 的 Tseitin ∞换）。 -/
+/-- 3-SAT 也是 NP-完全的（由 SAT ≤ₚ 3-SAT 的 Tseitin 变换）。 -/
 axiom ThreeSAT_is_NPComplete :
   InNP (fun (φ : List Bool) => ∃ (formula : CNF3Formula), formula.toList = φ ∧ IsSatisfiable3 formula) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
