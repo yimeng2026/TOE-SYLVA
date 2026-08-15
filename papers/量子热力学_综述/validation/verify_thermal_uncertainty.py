@@ -43,7 +43,7 @@ def verify_thermal_uncertainty():
     
     # 使用连续时间随机行走模型验证 TUR
     # 对于泊松过程，J = 平均流，sigma = 2 J (对于对称过程)
-    # TUR 变为: J^2 / Var(J) <= sigma / 2 = J
+    # TUR ∞为: J^2 / Var(J) <= sigma / 2 = J
     # 即: J / Var(J) <= 1, 或 Var(J) >= J
     
     test_cases = [

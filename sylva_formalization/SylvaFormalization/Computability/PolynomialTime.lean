@@ -61,7 +61,7 @@ axiom mono
     (hle : ∀ n, p n ≤ q n)
     (hM : ∀ input, accepts_in M (p input.length) input) :
   ∀ input, accepts_in M (q input.length) input
-  -- 证明思路：`accepts_in M k input` 对 k 单调（若 k₁ ≤ k₂ 且 k₁ 步内停机，
+  -- 证明思µ：`accepts_in M k input` 对 k 单调（若 k₁ ≤ k₂ 且 k₁ 步内停机，
   -- 则 k₂ 步内也停机，因为 stepN 在停机后保持不动）。
   -- 结合 `IsPolynomial` 的单调性即得。
 
@@ -165,7 +165,7 @@ axiom intersection_closed
     (h₁ : InP L₁)
     (h₂ : InP L₂) :
   InP (fun input => L₁ input ∧ L₂ input)
-  -- 证明思路：利用 `TM1PolyTime.comp` 的构造，
+  -- 证明思µ：利用 `TM1PolyTime.comp` 的构造，
   -- 或显式构造乘积状态空间，时间复杂度为 `p₁(n) + p₂(n)`。
 
 /-- P 对并集封闭：若 L₁ ∈ P 且 L₂ ∈ P，则 L₁ ∪ L₂ ∈ P。
@@ -188,7 +188,7 @@ axiom concat_closed
     (h₁ : InP L₁)
     (h₂ : InP L₂) :
   InP (fun input => ∃ i, L₁ (input.take i) ∧ L₂ (input.drop i))
-  -- 证明思路：对 `i = 0, ..., input.length`，
+  -- 证明思µ：对 `i = 0, ..., input.length`，
   -- 分别判定 `L₁ (take i)` 和 `L₂ (drop i)`。
   -- 时间复杂度为 `O(n · (p₁(n) + p₂(n)))`，仍是多项式。
 
@@ -296,7 +296,7 @@ axiom intersection_closed
     (h₁ : InNP L₁)
     (h₂ : InNP L₂) :
   InNP (fun input => L₁ input ∧ L₂ input)
-  -- 证明思路：证书为 `c₁ ++ c₂`，验证器顺序验证。
+  -- 证明思µ：证书为 `c₁ ++ c₂`，验证器顺序验证。
 
 /-- SAT ∈ NP（布尔可满足性属于 NP）。
 
@@ -354,7 +354,7 @@ axiom InP_multitape_of_singletape
     (L : DecisionProblem Γ)
     (h : Sylva.NPClass.InP L) :
   InP L
-  -- 证明思路：单带 TM1 可通过 `TM1toMultitapeMachine` 嵌入
+  -- 证明思µ：单带 TM1 可通过 `TM1toMultitapeMachine` 嵌入
   -- 1-带 TM1Multitape，时间开销为 O(1)（宏步到微步的映射有常数界）。
 
 /-- `SylvaFormalization.Computability.InNP` 蕴含 `Sylva.NPClass.InNP`。
@@ -365,7 +365,7 @@ axiom InNP_singletape_of_multitape
     (h : InNP L) :
   Sylva.NPClass.InNP L
   -- 证明思路：多带验证器转换为单带验证器，证书长度不变，
-  -- 验证时间从 p(n) 变为 p(n)²，仍为多项式。
+  -- 验证时间从 p(n) ∞为 p(n)²，仍为多项式。
 
 /-- `Sylva.NPClass.InNP` 蕴含 `SylvaFormalization.Computability.InNP`。
 

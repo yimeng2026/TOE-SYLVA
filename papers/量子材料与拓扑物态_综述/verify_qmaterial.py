@@ -136,10 +136,10 @@ def module1_chern_number():
 # ============================================================
 
 def berry_phase_dirac(m, R, N=200):
-    """计算围绕二维 Dirac 点的 Berry 相位 (Wilson 回路法).
+    """计算围绕二维 Dirac 点的 Berry 相位 (Wilson 回µ法).
 
     模型: H = kx σx + ky σy + m σz (有质量 Dirac 锥)
-    回路: kx = R cos(θ), ky = R sin(θ), θ ∈ [0, 2π)
+    回µ: kx = R cos(θ), ky = R sin(θ), θ ∈ [0, 2π)
 
     理论: 无质量 (m=0) 时 Berry 相位 = π (半量子化);
           有质量 (m≠0) 时 |γ| = π·(1 - |m|/√(R²+m²))
@@ -153,7 +153,7 @@ def berry_phase_dirac(m, R, N=200):
         _, V = np.linalg.eigh(H)
         states.append(V[:, 0])  # 下能带
 
-    # 离散 Wilson 回路: W = Π_n <u_n|u_{n+1}>/|...|
+    # 离散 Wilson 回µ: W = Π_n <u_n|u_{n+1}>/|...|
     W = 1.0 + 0j
     for i in range(N):
         j = (i + 1) % N

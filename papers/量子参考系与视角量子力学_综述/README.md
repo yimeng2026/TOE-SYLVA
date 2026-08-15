@@ -6,7 +6,7 @@
 
 ## 主题简介
 
-量子参考系（Quantum Reference Frame, QRF）与视角量子力学（Perspective-Neutral Quantum Mechanics）直面量子引力中的一个基本问题：在无外部经典参考系的封闭宇宙中，如何定义物理观测？本综述覆盖：QRF 变换群的形式化、视角中性的量子形式、量子叠加态中的参考系不确定性、以及 QRF 框架在量子引力中的应用——包括约束系统的 Dirac 量子化和 relational 量子力学。核心视角：QRF = 因果网络上的观测视角选择——不同参考系对应于因果网络的不同子图截断。
+量子参考系（Quantum Reference Frame, QRF）与视角量子力学（Perspective-Neutral Quantum Mechanics）直面量子引力中的一个基本问题：在无外部经典参考系的封闭宇宙中，如何定义物理观测？本综述覆盖：QRF ∞换群的形式化、视角中性的量子形式、量子叠加态中的参考系不确定性、以及 QRF 框架在量子引力中的应用——包括约束系统的 Dirac 量子化和 relational 量子力学。核心视角：QRF = 因果网络上的观测视角选择——不同参考系对应于因果网络的不同子图截断。
 
 ## 文件清单 (4 files, 265 KB)
 

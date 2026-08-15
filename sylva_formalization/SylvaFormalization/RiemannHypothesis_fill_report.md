@@ -67,7 +67,7 @@ ZETA_ZERO_4 = 30.424876125859513210311897530584091320181560023715
 theorem xi_functional_equation (s : ℂ) : xi s = xi (1 - s) := by
   -- 使用 completedRiemannZeta 从 Mathlib
   -- completedRiemannZeta 满足 xi(s) = xi(1-s)
-  -- 通过反射公式和 Mellin 变换关系证明
+  -- 通过反射公式和 Mellin ∞换关系证明
 ```
 
 ### 5. Tendsto 拓扑学定义修复

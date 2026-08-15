@@ -161,7 +161,7 @@ $$\square_\alpha = \prod_{a_i>0} \partial_i^{a_i} - \prod_{a_i<0} \partial_i^{-a
 
 ### 6.1 SYZ 猜想
 
-**猜想 6.1**（Strominger-Yau-Zaslow, 1996）。镜像 CY 对 $(X,\tilde{X})$ 之间存在**特殊 Lagrangian torus 纤维化** $f: X \to B$，$\tilde{f}: \tilde{X} \to B$，使得 fiberwise Fourier-Mukai 变换给出镜像对应。
+**猜想 6.1**（Strominger-Yau-Zaslow, 1996）。镜像 CY 对 $(X,\tilde{X})$ 之间存在**特殊 Lagrangian torus 纤维化** $f: X \to B$，$\tilde{f}: \tilde{X} \to B$，使得 fiberwise Fourier-Mukai ∞换给出镜像对应。
 
 **直觉**：每个特殊 Lagrangian torus $T^n \subset X$ 对应 $\tilde{X}$ 中的纤维 $\tilde{T}^n$，镜像 map 是 T-对偶。
 
@@ -209,9 +209,9 @@ $$D^b(\text{Coh}(X)) \cong D(\text{Fuk}(\tilde{X})),$$
 
 ### 8.2 统一图景
 
-> **核心命题**：镜像对称 = 几何的 Fourier 变换。
+> **核心命题**：镜像对称 = 几何的 Fourier ∞换。
 >
-> 在 TOE-SYLVA 框架中，镜像对称揭示了"纠缠 = 几何"的深层结构：A 模型的 Kähler 模空间（纠缠熵参数化）通过镜像 map 变换为 B 模型的复结构模空间（几何参数化），恰如量子力学中位置与动量的 Fourier 对偶。
+> 在 TOE-SYLVA 框架中，镜像对称揭示了"纠缠 = 几何"的深层结构：A 模型的 Kähler 模空间（纠缠熵参数化）通过镜像 map ∞换为 B 模型的复结构模空间（几何参数化），恰如量子力学中位置与动量的 Fourier 对偶。
 
 ---
 

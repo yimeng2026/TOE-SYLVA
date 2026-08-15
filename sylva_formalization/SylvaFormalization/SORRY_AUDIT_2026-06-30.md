@@ -66,7 +66,7 @@
 | `TOE_SYLVA_Solutions/NumberTheory_KnownResults.lean` | 6 | 数论已知结果（进行中） |
 | `TOE_SYLVA_Solutions/CORE_PROOFS_Complete.lean` | 6 | 核心证明（进行中） |
 | `TOE_SYLVA_Solutions/ThreeSAT_NPComplete.lean` | 4 | 3-SAT NP 完全（进行中） |
-| `TOE_SYLVA_Solutions/BerryPhase_GaugeInvariance.lean` | 3 | Berry 相位规范不变（进行中） |
+| `TOE_SYLVA_Solutions/BerryPhase_GaugeInvariance.lean` | 3 | Berry 相位规范不∞（进行中） |
 | `TOE_SYLVA_Project/TOESylva/Solutions/SYLVADynamics.lean` | 3 | 动力学解（进行中） |
 | `TOE_SYLVA_Project/TOESylva/Solutions/BerryPhase.lean` | 3 | Berry 相位解（进行中） |
 | 其他文件 | 37 | 分散在多个方案文件中 |

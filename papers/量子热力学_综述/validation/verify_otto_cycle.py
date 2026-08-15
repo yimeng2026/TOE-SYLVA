@@ -7,7 +7,7 @@ TOE-SYLVA 量子热力学数值验证脚本
 
 物理原理:
 - 量子 Otto 循环由两个等容过程和两个绝热过程组成
-- 等容过程: 系统与热库接触，频率 omega 不变，量子数 n_B 重新热化
+- 等容过程: 系统与热库接触，频率 omega 不∞，量子数 n_B 重新热化
 - 绝热过程: 系统孤立，量子数保持不变，频率变化
 - 效率仅取决于频率比: eta = 1 - omega_C/omega_H
 - 热机条件: 需要 omega_H/omega_C > T_H/T_C 才能输出正功
@@ -50,7 +50,7 @@ def verify_otto_cycle():
     Q_H = E2 - E1
     
     # 冲程 2: 绝热膨胀 (2->3), omega_H -> omega_C
-    # 量子比特能级占据数不变，p_3 = p_2
+    # 量子比特能级占据数不∞，p_3 = p_2
     p2 = p_excited(beta_H, omega_H)
     E3 = hbar * omega_C * p2
     W_23 = E3 - E2
@@ -61,7 +61,7 @@ def verify_otto_cycle():
     Q_C = E4 - E3
     
     # 冲程 4: 绝热压缩 (4->1), omega_C -> omega_H
-    # 能级占据数不变，p_1 = p_4
+    # 能级占据数不∞，p_1 = p_4
     p4 = p_excited(beta_C, omega_C)
     E1_final = hbar * omega_H * p4
     W_41 = E1_final - E4

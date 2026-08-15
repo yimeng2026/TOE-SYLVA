@@ -21,7 +21,7 @@
 | 模块 | 大小 | 源码大小 | 压缩比 | 核心内容 |
 |------|------|----------|--------|----------|
 | Basic | 418 KB | 3.5 KB | 119x | GF(3), φ, Φ_c, D_c, H-CND |
-| RiemannHypothesis | 225 KB | 16 KB | 14x | Xi函数, 变分自举, 零点证据 |
+| RiemannHypothesis | 225 KB | 16 KB | 14x | Xi函数, ∞分自举, 零点证据 |
 | Complexity | 31 KB | 3.0 KB | 10x | P vs NP, 计算熵 |
 | MathAgent | 111 KB | 486 B | 228x | 数学搜索代理 |
 | BSD | 47 KB | 689 B | 68x | BSD猜想框架 |

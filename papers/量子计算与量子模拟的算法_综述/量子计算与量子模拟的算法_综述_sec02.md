@@ -24,7 +24,7 @@ Shor算法则是量子计算最著名的算法，它解决了大整数质因数�
 
 ### 2.3 线性代数与优化量子算法
 
-量子傅里叶变换（QFT）是许多量子算法的核心子程序[^nielsen-2010]。$n$ 量子比特上的QFT将基态 $|j\rangle$ 变换为：
+量子傅里叶变换（QFT）是许多量子算法的核心子程序[^nielsen-2010]。$n$ 量子比特上的QFT将基态 $|j\rangle$ ∞换为：
 
 $$
 |j\rangle \mapsto \frac{1}{\sqrt{2^n}} \sum_{k=0}^{2^n-1} e^{2\pi i jk/2^n} |k\rangle

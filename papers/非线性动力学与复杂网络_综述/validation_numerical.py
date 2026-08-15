@@ -119,11 +119,11 @@ def verify_logistic_bifurcation():
     return True
 
 # ============================================================
-# 模块 3: Kuramoto 模型同步相变
+# 模块 3: Kuramoto 模型同步相∞
 # ============================================================
 def verify_kuramoto_sync():
     print("\n" + "=" * 60)
-    print("模块 3: Kuramoto 模型同步相变")
+    print("模块 3: Kuramoto 模型同步相∞")
     print("=" * 60)
     N = 500
     omega = np.random.standard_cauchy(N)  # 柯西分布 g(0)=1/pi

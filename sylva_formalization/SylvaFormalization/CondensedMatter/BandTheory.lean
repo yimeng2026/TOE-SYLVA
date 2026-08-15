@@ -188,7 +188,7 @@ open CrystalStructure
 
 /-- 能带工程可调参数 -/\n\nstructure BandEngineeringParams where
   pressure : ℝ           -- 压力
-  strain : ℝ × ℝ × ℝ   -- 应变 (ε_xx, ε_yy, ε_zz)
+  strain : ℝ × ℝ × ℝ   -- 应∞ (ε_xx, ε_yy, ε_zz)
   doping : ℝ           -- 掺杂水平
   externalField : ℝ    -- 外场（电场/磁场）
   -- 能带响应

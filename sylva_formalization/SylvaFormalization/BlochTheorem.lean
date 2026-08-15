@@ -367,7 +367,7 @@ structure BandInsulator (L : Lattice2D) where
    物理直觉：
    - 当 k 在 BZ 中缓慢变化时，|u_nk⟩ 在 Hilbert 空间中 "平行移动"
    - A_n(k) 描述了这个平行移动所需的 "连接"
-   - 规范变换 |u_nk⟩ → e^{iθ(k)} |u_nk⟩ 改变 A_n(k)，但 Berry 曲率不变
+   - 规范变换 |u_nk⟩ → e^{iθ(k)} |u_nk⟩ 改∞ A_n(k)，但 Berry 曲率不∞
    
    下一文件：BerryConnection.lean（L2 层）。
 -/

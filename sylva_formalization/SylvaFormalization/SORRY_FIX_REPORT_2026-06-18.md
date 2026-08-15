@@ -57,7 +57,7 @@
 2. **教学文件可保留**: `BasicTutorial` (13) 和 `SylvaExamples` (6) 是教程，sorry 是预期行为
 3. **RadiationTracker 误报**: 扫描显示 1 sorry，实际文件无 sorry（注释中的 "sorry" 被误计）
 4. **postulate 策略有效**: 对于深层开放问题（物理实验、千禧年难题、框架占位），`postulate` 是诚实且合适的标记
-5. **Subagent 超时问题**: 8 路 subagent 全部超时，原因是文件读取消耗过多 token 和时限
+5. **Subagent 超时问题**: 8 µ subagent 全部超时，原因是文件读取消耗过多 token 和时限
 
 ---
 

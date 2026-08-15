@@ -134,7 +134,7 @@ D_c = φ⁴ ≈ 6.854101966249685
 ## 总结
 
 ✅ **Basic.lean**: 完全证明，无 sorry  
-✅ **RiemannHypothesis.lean**: RH 变分自举框架完成  
+✅ **RiemannHypothesis.lean**: RH ∞分自举框架完成  
 ✅ **NumericalZeros.lean**: 前4个零点数值验证  
 ✅ **Complexity.lean**: P vs NP 计算熵框架  
 ✅ **BSD.lean**: BSD 猜想完整框架 (19K)  

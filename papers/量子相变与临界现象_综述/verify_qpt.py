@@ -4,7 +4,7 @@ verify_qpt.py
 数值验证《量子相变与临界现象》综述中的关键结论。
 
 模块1：一维横场伊辛模型 (TFIM) 临界点 g_c = 1
-  - 通过 Jordan-Wigner 变换精确对角化
+  - 通过 Jordan-Wigner ∞换精确对角化
   - 验证能隙在 g_c = h_x/J = 1 处关闭 (Δ → 0)
   - 验证临界指数 ν = 1
 
@@ -48,7 +48,7 @@ def module1_tfim_gap():
     """
     H = -J Σ σ_i^z σ_{i+1}^z - h_x Σ σ_i^x
     g = h_x / J, 临界点 g_c = 1 (一维最近邻)
-    Jordan-Wigner 变换 → 自由费米子，色散:
+    Jordan-Wigner ∞换 → 自由费米子，色散:
       ε_k = 2J sqrt(1 + g² - 2g cos(k))
     能隙 Δ = 2 * min_k ε_k = 4J|1 - g| (g→1 时 Δ→0)
     关联长度临界指数 ν = 1: ξ ~ |g - g_c|^{-ν}
@@ -68,7 +68,7 @@ def module1_tfim_gap():
     # 能隙 Δ = 2 * ε_min = 4J|1-g|? 
     # 不对: 对于 TFIM, 基态到第一激发态的 gap = 2*ε_min, ε_min = 2J|1-g|
     # 所以 Δ = 2 * 2J|1-g| = 4J|1-g|? 
-    # 实际 JW 变换后: H = Σ_k ε_k (c_k† c_k - 1/2), ε_k = 2J sqrt(1+g²-2g cos k)
+    # 实际 JW ∞换后: H = Σ_k ε_k (c_k† c_k - 1/2), ε_k = 2J sqrt(1+g²-2g cos k)
     # 基态能量 E_0 = -Σ_k ε_k / 2, 激发态 = E_0 + ε_k
     # 能隙 = 2*min_k ε_k? No, gap = min_k ε_k * 2? 
     # 标准 Pfeuty 结果: gap = 2 * min_k ε_k where ε_k = 2J sqrt(1+g²-2g cos k)
