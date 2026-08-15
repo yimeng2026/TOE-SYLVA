@@ -76,7 +76,7 @@ def linear_entropy(rho_subsystem_of_pure_state):
 #   C^(C) = [[c00, c01], [c10, c11]]   →
 #   C^(A) = [[c00, c11], [c01, c10]]
 # 这是 H_phys 上一个合法的酉变换 (置换矩阵作用于向量化系数).
-# 见 [4] 附录 A; [5] §III; [7] 电µ编译.
+# 见 [4] 附录 A; [5] §III; [7] 电路编译.
 
 def qrf_C_to_A_coeffs(cC):
     """QRF 变换: 给定 C 视角下的 2×2 系数矩阵 cC, 返回 A 视角下的系数矩阵 cA"""
