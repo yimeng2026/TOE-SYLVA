@@ -1,9 +1,9 @@
 ﻿# TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.6  
+> **文档版本**: v3.8  
 > **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-15  
-> **文档总数**: 35+89=124 (core docs 01-30 + extended 31-123) | framework/ 目录共 200+ 个 .md 文件
+> **最后更新**: 2026-08-16  
+> **文档总数**: 35+92=127 (core docs 01-30 + extended 31-126) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
 
 ---
@@ -591,3 +591,5 @@ four_forces_unification_*.md
 | doc:122 | [122_psychology_cnf.md](122_psychology_cnf.md) | 心理学 CNF 认知因果网络与意识桥 | 2026-08-15 |
 | doc:123 | [123_social_science_cnf.md](123_social_science_cnf.md) | 社会科学 CNF 社会因果网络与集体智能 | 2026-08-15 |
 | doc:124 | [124_chemistry_cnf.md](124_chemistry_cnf.md) | 化学 CNF 分子因果网络与反应动力学 | 2026-08-15 |
+| doc:125 | [125_neuroscience_cnf.md](125_neuroscience_cnf.md) | 神经科学 CNF 神经因果网络与脑网络拓扑 | 2026-08-16 |
+| doc:126 | [126_geology_geophysics_cnf.md](126_geology_geophysics_cnf.md) | 地质学/地球物理学 CNF 岩石圈-地幔耦合因果网络 | 2026-08-16 |
