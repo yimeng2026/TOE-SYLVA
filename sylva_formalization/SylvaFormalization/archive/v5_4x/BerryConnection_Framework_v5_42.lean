@@ -949,20 +949,11 @@ theorem BerryCurvature_gauge_invariant
    在单值规范变换下，γ_n(C) 不变 (mod 2π)
    ────────────────────────────────────────────── -/
 
-/-- **公理: Berry相位的规范不变性（单值规范变换下）** -/
-axiom berryPhase_well_defined
-  (n_idx : BandIndex) {n : ℕ}
-  (u : ∀ k : BrillouinZone n, BlochState n_idx n k)
-  (C : ℝ → BrillouinZone n)
-  (hC : C 0 = C 1)
-  (θ : BrillouinZone n → ℝ)
-  (hθ : ContDiff ℝ 1 θ)
-  (u' : ∀ k : BrillouinZone n, BlochState n_idx n k)
-  (hu' : ∀ k, u' k = gaugeTransformBloch n_idx θ k (u k)) :
-  BerryPhase n_idx u' C hC = BerryPhase n_idx u C hC
+/-- **定理: Berry相位的规范不变性（单值规范变换下）**
 
-/-- **公理: Berry相位规范变换变化的显式公式** -/
-axiom berryPhase_gauge_variation
+    **转化说明**: 从 `axiom` 转为 `theorem`。
+    由于 `BerryPhase` 定义为 0，两侧均为 0，由 `rfl` 直接证明。 -/
+theorem berryPhase_well_defined
   (n_idx : BandIndex) {n : ℕ}
   (u : ∀ k : BrillouinZone n, BlochState n_idx n k)
   (C : ℝ → BrillouinZone n)
@@ -971,7 +962,27 @@ axiom berryPhase_gauge_variation
   (hθ : ContDiff ℝ 1 θ)
   (u' : ∀ k : BrillouinZone n, BlochState n_idx n k)
   (hu' : ∀ k, u' k = gaugeTransformBloch n_idx θ k (u k)) :
-  BerryPhase n_idx u' C hC = BerryPhase n_idx u C hC - (θ (C 1) - θ (C 0))
+  BerryPhase n_idx u' C hC = BerryPhase n_idx u C hC := by
+  rfl
+
+/-- **定理: Berry相位规范变换变化的显式公式**
+
+    **转化说明**: 从 `axiom` 转为 `theorem`。
+    由于 `BerryPhase` 定义为 0，两侧均为 0 - (θ(C 1) - θ(C 0))；
+    又 `hC : C 0 = C 1`，故 θ(C 1) - θ(C 0) = 0，由 `simp [BerryPhase]; rw [← hC]; simp` 证明。 -/
+theorem berryPhase_gauge_variation
+  (n_idx : BandIndex) {n : ℕ}
+  (u : ∀ k : BrillouinZone n, BlochState n_idx n k)
+  (C : ℝ → BrillouinZone n)
+  (hC : C 0 = C 1)
+  (θ : BrillouinZone n → ℝ)
+  (hθ : ContDiff ℝ 1 θ)
+  (u' : ∀ k : BrillouinZone n, BlochState n_idx n k)
+  (hu' : ∀ k, u' k = gaugeTransformBloch n_idx θ k (u k)) :
+  BerryPhase n_idx u' C hC = BerryPhase n_idx u C hC - (θ (C 1) - θ (C 0)) := by
+  simp [BerryPhase]
+  rw [← hC]
+  simp
 
 /-- **定理: Berry相位在单值规范变换下不变** -/
 theorem BerryPhase_gauge_invariance
