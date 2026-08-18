@@ -20,7 +20,17 @@ invariant, explaining its specific value ~ 1/137.
 
 Status: Framework with postulates（2026-08-06 P0 修复：移除导致逻辑不一致的精确
 等号公理 alphaInverseIsChernSimonsLevel，降级为有界近似定理；占位公理
-chernSimonsLevelInteger 已清偿为 theorem）. Full formalization requires:
+chernSimonsLevelInteger 已清偿为 theorem）.
+
+2026-08-18 P0 修复（数学基础系列 08 号论文发现）：结构群 `U1` 原为
+`inductive U1 | exp (θ : ℝ)`——单构造子归纳类型，实为 (ℝ, +) 的拷贝，
+θ 与 θ + 2π 是不同元素，2π 周期商结构性缺席，并非真正的圆周群 U(1) = ℝ/2πℤ，
+电荷量子化（绕数 π₁(U(1)) ≅ ℤ）的 Lie 群根源无处安放。现升级为
+`Multiplicative (AddCircle (2 * π))`（mathlib 商群 ℝ ⧸ 2πℤ 的乘法记法封装），
+群（CommGroup）、拓扑群、紧性、道路连通性实例均由 mathlib 提供，
+并新增 2π 周期性（`U1_exp_periodic`）与整数绕数不变性（`U1_exp_periodic_int`）定理。
+
+Full formalization requires:
 - Differential geometry (connections, curvature, characteristic classes)
 - Algebraic topology (Chern-Weil theory, characteristic numbers)
 - Gauge theory (principal bundles, gauge transformations)
@@ -36,6 +46,11 @@ import Mathlib.LinearAlgebra.CliffordAlgebra.Basic
 import Mathlib.Data.Real.Basic
 import Mathlib.Combinatorics.SimpleGraph.Basic
 import Mathlib.Tactic.Common
+-- P0 修复（2026-08-18）：真正的圆周群 U(1) = ℝ ⧸ 2πℤ 所需的 mathlib 模块
+import Mathlib.Topology.Instances.AddCircle.Defs
+import Mathlib.Topology.Instances.AddCircle.Real
+import Mathlib.Topology.Algebra.Group.Quotient
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 
 namespace Sylva
 namespace ChernSimons
@@ -52,19 +67,71 @@ class GaugeGroup (G : Type) where
   group : Group G
   smooth : True -- Placeholder: smooth manifold structure
 
-/-- The structure group for electromagnetism: U(1). -/
-inductive U1
-  | exp (θ : ℝ)
+/-- **The structure group for electromagnetism: U(1) ≅ ℝ ⧸ 2πℤ.**
 
-instance : Group U1 where
-  mul a b := match a, b with
-    | U1.exp θ₁, U1.exp θ₂ => U1.exp (θ₁ + θ₂)
-  one := U1.exp 0
-  inv a := match a with | U1.exp θ => U1.exp (-θ)
-  mul_assoc := by rintro ⟨a⟩ ⟨b⟩ ⟨c⟩; exact congrArg U1.exp (add_assoc a b c)
-  one_mul := by rintro ⟨a⟩; exact congrArg U1.exp (zero_add a)
-  mul_one := by rintro ⟨a⟩; exact congrArg U1.exp (add_zero a)
-  inv_mul_cancel := by rintro ⟨a⟩; exact congrArg U1.exp (neg_add_cancel a)
+    **P0 修复记录（2026-08-18，数学基础系列 08 号论文发现）**：
+    原定义为 `inductive U1 | exp (θ : ℝ)`——单构造子归纳类型，结构上等价于
+    (ℝ, +) 的拷贝：`U1.exp θ` 与 `U1.exp (θ + 2π)` 是**不同**的元素，
+    2π 周期商结构性缺席。因此它不是真正的圆周群 U(1) = ℝ/2πℤ，
+    电荷量子化（绕数 π₁(U(1)) ≅ ℤ）的 Lie 群根源无处安放。
+
+    **修复方案（b）**：采用 mathlib 的商群
+    `AddCircle (2 * π) := ℝ ⧸ AddSubgroup.zmultiples (2 * π)`（真正的商 ℝ ⧸ 2πℤ），
+    经 `Multiplicative` 转为乘法记法，以匹配规范群的物理惯例与 `GaugeGroup` 的
+    `Group` 接口。选择理由：相比方案 (a)（手写 `QuotientAddGroup` 商群）省去全部
+    商群工程——`AddCircle` 自带 `AddCommGroup`、`IsTopologicalAddGroup`、
+    `CompactSpace`、`PathConnectedSpace` 实例；相比方案 (c)（Subtype 角度值）
+    避免手工搬运群律与拓扑结构。
+
+    群结构（`CommGroup`，含 `Group`）由 mathlib 商群实例自动提供；
+    原手工 `Group U1` 实例（实为 (ℝ,+) 的群律，无周期商）随之删除。 -/
+noncomputable abbrev U1 : Type := Multiplicative (AddCircle (2 * Real.pi))
+
+/-- U(1) 是乘法 Abel 群：商群实例直接可用（编译期证据；`CommGroup` 是 Type 值类，
+    故以 `Nonempty` 命题形式登记以避免代码生成）。 -/
+example : Nonempty (CommGroup U1) := ⟨inferInstance⟩
+
+/-- U(1)（加法商形式 ℝ ⧸ 2πℤ）是拓扑群：商拓扑继承自 ℝ（编译期证据）。
+    原 `inductive` 拷贝不携带任何拓扑结构。 -/
+example : IsTopologicalAddGroup (AddCircle (2 * Real.pi)) := inferInstance
+
+/-- U(1)（加法商形式）是紧空间（编译期证据）——ℝ ⧸ 2πℤ 同胚于端点粘合的闭区间，
+    即 U(1) 是紧 Lie 群的拓扑基石。 -/
+example : CompactSpace (AddCircle (2 * Real.pi)) :=
+  haveI : Fact (0 < 2 * Real.pi) := ⟨by positivity⟩
+  inferInstance
+
+/-- U(1)（加法商形式）道路连通（编译期证据）。 -/
+example : PathConnectedSpace (AddCircle (2 * Real.pi)) := inferInstance
+
+/-- U(1) 的指数映射（Lie 群指数映射）：`exp(θ)` 为商映射 ℝ → ℝ ⧸ 2πℤ 的像
+    （经 `Multiplicative.ofAdd` 转乘法）。保留原 `U1.exp` 名称以维持 API 连续性，
+    但它现在是真正的商映射，而非恒等打包。 -/
+noncomputable def U1.exp (θ : ℝ) : U1 :=
+  Multiplicative.ofAdd (θ : AddCircle (2 * Real.pi))
+
+/-- 单位元：`exp 0 = 1`（商映射把 0 送到商群单位元）。 -/
+theorem U1_exp_zero : U1.exp 0 = 1 := rfl
+
+/-- 指数律：`exp(θ₁ + θ₂) = exp(θ₁) * exp(θ₂)`，即 ℝ → U(1) 是群同态
+    （Lie 群指数映射的基本性质）。 -/
+theorem U1_exp_add (θ₁ θ₂ : ℝ) : U1.exp (θ₁ + θ₂) = U1.exp θ₁ * U1.exp θ₂ := rfl
+
+/-- **2π 周期性（P0 修复的核心新增定理）**：`exp(θ + 2π) = exp(θ)`。
+    原 `inductive` 拷贝下 θ 与 θ + 2π 是不同的构造子项，此等式不成立——
+    这正是旧定义"圆周群"名不副实的根源。 -/
+theorem U1_exp_periodic (θ : ℝ) : U1.exp (θ + 2 * Real.pi) = U1.exp θ := by
+  unfold U1.exp
+  rw [AddCircle.coe_add_period]
+
+/-- **整数绕数不变性**：`exp(θ + 2πn) = exp(θ)`（n ∈ ℤ）。
+    绕数 n 是 π₁(U(1)) ≅ ℤ 的元素，对应 U(1)-主丛的第一陈类——
+    即电荷量子化（`chernSimonsLevelInteger` 的拓扑整数性）的 Lie 群根源。 -/
+theorem U1_exp_periodic_int (θ : ℝ) (n : ℤ) :
+    U1.exp (θ + n • (2 * Real.pi)) = U1.exp θ := by
+  unfold U1.exp
+  congr 1
+  rw [AddCircle.coe_add, AddCircle.coe_zsmul, AddCircle.coe_period, smul_zero, add_zero]
 
 /-- Principal G-bundle over a manifold M.
     Framework: the full definition requires fiber bundles, local trivializations,
@@ -105,11 +172,11 @@ noncomputable def curvature2Form {M G} [GaugeGroup G] {P : PrincipalBundle M G}
 -- ============================================================
 
 /-- U(1) 群是 Abel 群：群乘法满足交换律（简单性质）。
-    证明：U1.exp θ₁ * U1.exp θ₂ = U1.exp (θ₁ + θ₂) = U1.exp (θ₂ + θ₁) = U1.exp θ₂ * U1.exp θ₁。 -/
-theorem U1_mul_commutative (a b : U1) : a * b = b * a := by
-  rcases a with ⟨θ₁⟩
-  rcases b with ⟨θ₂⟩
-  exact congrArg U1.exp (add_comm θ₁ θ₂)
+    商群 ℝ ⧸ 2πℤ 继承 ℝ 加法的交换性，经 `Multiplicative` 转换即乘法交换律。
+    （P0 修复 2026-08-18：证明由对旧 `U1.exp` 构造子的模式匹配改为
+    `CommGroup` 实例的 `mul_comm`——交换性现在是商群结构的真实推论。） -/
+theorem U1_mul_commutative (a b : U1) : a * b = b * a :=
+  mul_comm a b
 
 /-- 曲率 2-形式的反对称性（简单性质）：
     F_{μν} = A_ν - A_μ，因此 F_{νμ} = -(F_{μν})。
@@ -329,7 +396,9 @@ theorem alphaInverse_approx_chernSimonsLevel
   rw [chernSimonsLevel_value]
   norm_num [abs, inv_inv]
 
-instance : GaugeGroup U1 where
+/-- `GaugeGroup U1` 实例：P0 修复（2026-08-18）后，群结构来自 mathlib 商群
+    `ℝ ⧸ 2πℤ` 的 `CommGroup` 实例（经 `Multiplicative`），不再依赖手工构造。 -/
+noncomputable instance : GaugeGroup U1 where
   group := by infer_instance
   smooth := by trivial
 
