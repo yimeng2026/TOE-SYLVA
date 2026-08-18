@@ -12,7 +12,7 @@
     "batch_generated_excluded": 141907
   },
   "summary": {
-    "total_paper_dirs": 189,
+    "total_paper_dirs": 187,
     "coverage": {
       "fully_covered": 51,
       "partially_covered": 137,
@@ -966,15 +966,6 @@
         }
       ],
       "coverage_status": "partially_covered"
-    },
-    {
-      "paper_dir": "code",
-      "paper_topic": "code/ — 论文相关代码",
-      "file_count": 1,
-      "lean_file": null,
-      "lean_module": null,
-      "lean_files": [],
-      "coverage_status": "uncovered"
     },
     {
       "paper_dir": "computational_complexity",
@@ -2533,50 +2524,6 @@
           "key_theorems": [
             "NaturalGradientConvergence"
           ],
-          "axiom_count": 0
-        }
-      ],
-      "coverage_status": "partially_covered"
-    },
-    {
-      "paper_dir": "submission_covers",
-      "paper_topic": "投稿封面材料 — Submission Covers",
-      "file_count": 13,
-      "lean_file": "sylva_formalization/SylvaFormalization/CondensedMatter.lean",
-      "lean_module": "CondensedMatter",
-      "lean_files": [
-        {
-          "lean_file": "sylva_formalization/SylvaFormalization/CondensedMatter.lean",
-          "lean_module": "CondensedMatter",
-          "match_type": "weak",
-          "key_definitions": [],
-          "key_theorems": [],
-          "axiom_count": 0
-        },
-        {
-          "lean_file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/TopologicalInsulator.lean",
-          "lean_module": "TopologicalInsulator",
-          "match_type": "weak",
-          "key_definitions": [],
-          "key_theorems": [
-            "Kitaev_A_class_2D"
-          ],
-          "axiom_count": 0
-        },
-        {
-          "lean_file": "sylva_formalization/SylvaFormalization/QuantumChemistry.lean",
-          "lean_module": "QuantumChemistry",
-          "match_type": "weak",
-          "key_definitions": [],
-          "key_theorems": [],
-          "axiom_count": 0
-        },
-        {
-          "lean_file": "sylva_formalization/SylvaFormalization.lean",
-          "lean_module": "SylvaFormalization",
-          "match_type": "weak",
-          "key_definitions": [],
-          "key_theorems": [],
           "axiom_count": 0
         }
       ],

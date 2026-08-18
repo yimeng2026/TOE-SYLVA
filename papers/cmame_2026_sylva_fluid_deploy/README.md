@@ -16,7 +16,7 @@
 - `.bbl` 参考文献文件
 
 ## 相关目录
-- `papers/code/` — sylva-fluid 计算代码
+- `../nature_physics_2026_entanglement_duality/reproduce.sh` — cMERA-LES CFD 复现脚本（原 `papers/code/`，P2-1 归并后移入）
 - `papers/jfm_2026_cmera_les/` — cMERA-LES 基础方法论论文
 - `papers/jolt_2026_ip_strategy/` — IP 战略（含 CFD 专利估值）
 - `papers/流体力学与湍流_综述/` — 流体力学综述

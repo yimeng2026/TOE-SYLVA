@@ -17,7 +17,7 @@
 - 验证数据（NASA CRM、DLR-F6、CRM WBT 的参考实验结果）
 
 ## 相关目录
-- `papers/code/` — sylva-fluid 开源代码
+- `../nature_physics_2026_entanglement_duality/reproduce.sh` 第 8 段 — cMERA-LES CFD 复现（原 `papers/code/`，P2-1 归并后移入）
 - `papers/cmame_2026_sylva_fluid_deploy/` — 工业部署姊妹论文
 - `papers/流体力学与湍流_综述/` — 流体力学综述
 - `papers/张量网络方法与全息对偶/` — 张量网络与全息对偶理论基础

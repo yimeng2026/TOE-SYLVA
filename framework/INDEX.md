@@ -556,8 +556,6 @@ four_forces_unification_*.md
 | 子目录 | 说明 |
 |--------|------|
 | `arxiv_submission/` | arXiv 投稿相关材料 |
-| `code/` | 论文相关计算代码 |
-| `submission_covers/` | 期刊投稿封面信 |
 | `millennium_papers/` | 千禧年问题相关论文 |
 | `SYLVA_comprehensive_survey/` | SYLVA 综合综述子目录 |
 

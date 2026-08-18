@@ -19,7 +19,7 @@
 - NMPA 申请材料（参考 `nbe_2026_nmpa_pathway/`）
 
 ## 相关目录
-- `papers/code/` — DNEI 算法实现代码
+- `../nature_physics_2026_entanglement_duality/reproduce.sh` 第 6 段 — Brain Entanglement Entropy 复现（原 `papers/code/`，P2-1 归并后移入）
 - `papers/nbe_2026_nmpa_pathway/` — NMPA 审批路径（姊妹论文）
 - `papers/jolt_2026_ip_strategy/` — IP 战略（专利 #2：DNEI 诊断方法）
 - `papers/神经科学与计算神经科学_综述/` — 神经科学综述

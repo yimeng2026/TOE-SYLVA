@@ -19,7 +19,7 @@
 - ngEHT 观测提案（预注册：ngEHT-2026-PROP-042）
 
 ## 相关目录
-- `papers/code/` — sylva-astro 计算代码
+- `../nature_physics_2026_entanglement_duality/reproduce.sh` 第 7 段 — M87* 黑洞阴影复现（原 `papers/code/`，P2-1 归并后移入）
 - `papers/apjl_2026_m87_shadow/` — M87* 阴影量子修正（姊妹论文）
 - `papers/引力波天体物理学_综述/` — 引力波天体物理
 - `papers/天文学与观测宇宙学_综述/` — 观测宇宙学

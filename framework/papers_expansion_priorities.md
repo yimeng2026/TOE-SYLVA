@@ -10,11 +10,11 @@
 
 ## 摘要（TL;DR）
 
-- `papers/` 共 **249 个条目** = **60 个根级文件** + **189 个子目录**。子目录类型分布：134 个主题综述、4 个系列、13 个 2026 期刊投稿占位、1 个 `submission_covers/`、1 个 `code/`、23 个英文学科目录、13 个其它中文目录。
-- **占位与近空目录共 34 个**（详见 §2）：13 个期刊投稿目录（README+main.md、无 LaTeX 源）、`arxiv_submission/`、`code/`、`submission_covers/`、`SYLVA_comprehensive_survey/`、`复几何学习指南/`、17 个"裸综述"目录（仅 README+综述.md，无 verify 脚本、无图表）。
+- `papers/` 共 **247 个条目** = **60 个根级文件** + **187 个子目录**（v7.47 P2-1/P2-2 归并后，原 `code/` 与 `submission_covers/` 已并入各期刊目录）。子目录类型分布：134 个主题综述、4 个系列、13 个 2026 期刊投稿占位（已含归并的 cover_letter.md）、23 个英文学科目录、13 个其它中文目录。
+- **占位与近空目录共 32 个**（详见 §2）：13 个期刊投稿目录（README+main.md、无 LaTeX 源）、`arxiv_submission/`、`SYLVA_comprehensive_survey/`、`复几何学习指南/`、17 个"裸综述"目录（仅 README+综述.md，无 verify 脚本、无图表）。（原 `code/` 与 `submission_covers/` 在 v7.47 P2-1/P2-2 已归并。）
 - **`.lean` 文件实测为 2 个，而非 §1.4 所述的 0 个**：`qec_ftqc/QEC_FTQC_Formalization.lean`（21 KB，7 处 `sorry`）、`数学基础强化_系列/_panel_records/ig_probe_20260812.lean`（4 KB，0 sorry，探针文件）。但相对 198 个论文目录仍属严重脱节，§1.4 第 2 项"两张皮"结论方向正确、数字略过时。
 - **学科盲区**：化学已有 2 目录、地球科学已有 4 目录（与 §1.4 "仅 3 目录"的表述有偏差，详见 §3 修正）；环境科学、经济学、心理学、社会科学四个一级学科仍为 **0 覆盖**。
-- **优先级扩展清单**见 §5：高优先级 5 项（环境科学、经济学、心理学、社会科学四学科补齐 + papers↔Lean 血缘登记），中优先级 5 项（17 个裸综述补 verify 脚本 + 13 个期刊占位实义化 + 化学广度扩展 + 数学-物理桥接 + SYLVA 四层级心智/生命补齐），低优先级 4 项（code/ 目录归档、submission_covers 合并、SYLVA_comprehensive_survey 充实、计数几何系列去重）。
+- **优先级扩展清单**见 §5：高优先级 5 项（环境科学、经济学、心理学、社会科学四学科补齐 + papers↔Lean 血缘登记），中优先级 5 项（17 个裸综述补 verify 脚本 + 13 个期刊占位实义化 + 化学广度扩展 + 数学-物理桥接 + SYLVA 四层级心智/生命补齐），低优先级 2 项（SYLVA_comprehensive_survey 充实、计数几何系列去重）。（原低优先级 P2-1 `code/` 归档、P2-2 `submission_covers/` 合并已在 v7.47 完成。）
 
 ---
 
@@ -40,8 +40,8 @@
 | **主题综述** `*_综述/` | **134** | 中文命名，每目录含 `README.md` + `<主题>_综述.md`，部分含 verify 脚本与图表 |
 | **系列** `*_系列/` | **4** | `数学基础强化_系列/`（19 文件）、`模块强化_系列/`（62 文件）、`热点议题_系列/`（5 文件）、`落地验证_系列/`（48 文件，含两期子目录） |
 | **2026 期刊投稿占位** `*_2026_*/` | **13** | 见 §2.1 详表，均仅 `README.md` + `main.md` |
-| `submission_covers/` | 1 | 13 个 cover letter（共 17 KB） |
-| `code/` | 1 | 仅 `README.md` + `nature_physics_reproduce/reproduce.sh` |
+| ~~`submission_covers/`~~ | — | 已在 v7.47 P2-2 归并到各期刊 `cover_letter.md` |
+| ~~`code/`~~ | ~~1~~ | 已在 v7.47 P2-1 归并：`reproduce.sh` 移入 `nature_physics_2026_entanglement_duality/` |
 | **英文学科目录**（无后缀） | **23** | `algebraic_topology/`、`category_theory_tqft/`、`computational_complexity/`、`condensed_matter/`、`differential_geometry_gr/`、`dynamical_systems_chaos/`、`enumerative_geometry/`、`four_forces_unification/`、`information_theory/`、`langlands_program/`、`millennium_papers/`、`noncommutative_geometry/`、`p_adic_hodge_theory/`、`particle_physics_standard_model/`、`positive_characteristic_resolution/`、`qec_ftqc/`（23 MB，最大论文目录）、`quantum_field_theory/`、`quantum_gravity/`、`random_matrix_theory/`、`room_temp_sc/`（1.9 MB，含 6 个 PDF+14 个 .tex）、`statistical_learning/`、`topo_quantum_internet/`（20 MB）、`SYLVA_comprehensive_survey/` |
 | **中文其它目录**（无 `_综述` / `_系列` 后缀） | **13** | `p-adic_Hodge_交叉联系表/`（907 KB，62 文件，最大非综述中文目录）、`代数几何基础/`、`光子行为_CNF解释/`、`回应与评论/`、`因果集理论与离散时空/`、`复几何学习指南/`、`多体局域与无序量子系统/`、`学术论文/`、`张量网络方法与全息对偶/`、`数论与算术几何/`、`辛几何与经典力学/`（1.2 MB，11 文件）、`量子信息与量子计算/`、`页岩油气_CNF成藏理论/` |
 | **合计** | **189** | — |
@@ -71,7 +71,7 @@
 | `arxiv_submission/` | 3.9 KB | 2 | 2.9 KB | 占位符（v7.8 自述） |
 | `neurips_2026_topo_rl/` | 5.3 KB | 2 | 4.2 KB | 占位 |
 | `apjl_2026_m87_shadow/` | 5.5 KB | 2 | 4.3 KB | 占位（main.md 含 M87 阴影计算草稿，4.3 KB） |
-| `code/` | 5.8 KB | 2 | — | 占位（README + 子目录 reproduce.sh） |
+| ~~`code/`~~ | — | — | — | 已在 v7.47 P2-1 归并到 `nature_physics_2026_entanglement_duality/` |
 | `prd_2026_syk_cmera/` | 5.8 KB | 2 | 4.5 KB | 占位 |
 | `mnras_2026_sgrA_ripple/` | 6.0 KB | 2 | 4.6 KB | 占位 |
 | `ieee_tqe_2026_egsf20/` | 6.0 KB | 2 | 4.6 KB | 占位 |
@@ -82,7 +82,7 @@
 | `nature_medicine_2026_ad_biomarker/` | 8.1 KB | 2 | 6.5 KB | 占位 |
 | `jolt_2026_ip_strategy/` | 8.6 KB | 2 | 7.1 KB | 占位 |
 
-**特征**：13 个期刊目录共 80 KB、26 文件，平均每个目录 6.2 KB。所有 `main.md` 均为 AI 辅助草稿，无 LaTeX 源、无补充材料、无图表、无参考文献 `.bib` 文件。`submission_covers/`（13 个 cover letter、17 KB）为配套占位目录。
+**特征**：13 个期刊目录共约 97 KB、38 文件（v7.47 P2-2 后每个目录各含 `cover_letter.md`），平均每个目录 7.5 KB。所有 `main.md` 均为 AI 辅助草稿。原 `submission_covers/`（13 个 cover letter、17 KB）已在 v7.47 P2-2 归并到各期刊目录。
 
 > **与 §1.4 第 4 项的对照**：原文"9 个期刊目录仅 4 KB `main.md` 占位 + 12 封投稿信"——实测期刊目录数为 **13**（不是 9），cover letter 数为 **13**（不是 12），main.md 平均大小 **5.2 KB**（不是 4 KB）。规模略大于 §1.4 表述，但"占位符性质"判断完全准确。建议将 §1.4 第 4 项更新为"13 个期刊目录、13 封投稿信，无 LaTeX 源"。
 
@@ -115,7 +115,7 @@
 
 | 目录 | 大小 | 文件数 | 状态 |
 |------|------|--------|------|
-| `submission_covers/` | 17.2 KB | 13 | 13 个 cover letter，占位 |
+| ~~`submission_covers/`~~ | — | — | — | 已在 v7.47 P2-2 归并到各期刊 `cover_letter.md` |
 | `nature_physics_2026_entanglement_duality/` | 18.0 KB | 3 | 比其它期刊目录多一份材料，仍属占位 |
 | `复几何学习指南/` | 28.5 KB | 2 | 学习指南性质，非综述，无验证 |
 | `SYLVA_comprehensive_survey/` | 58.6 KB | 2 | 仅 2 文件，自述"综合调查"但体量过小 |
@@ -222,8 +222,8 @@ $ find /tmp/TOE-SYLVA/papers -name "*.lean"
 
 | # | 领域 | 缺失理由 | 建议文档编号 | 预估篇幅 |
 |---|------|----------|--------------|----------|
-| **P2-1** | `code/` 目录归并 | §2.3 列出；仅 README+reproduce.sh，代码分散在各主题综述，建议归档到 `papers/_archive/code_staging/` 或直接删除指针，依赖各综述自带 verify 目录 | — | 0（删除/归档操作） |
-| **P2-2** | `submission_covers/` 合并到各期刊目录 | 13 个 cover letter 与 13 个期刊目录一一对应，分离存放徒增交叉引用成本；建议每个 `<journal>_2026_*/cover_letter.md` 内嵌 | — | 0（移动操作） |
+| **P2-1** ✅ | `code/` 目录归并 | **已完成 v7.47**：`reproduce.sh` 移入 `nature_physics_2026_entanglement_duality/`，`code/` 目录已删除 | — | 0（删除/归档操作） |
+| **P2-2** ✅ | `submission_covers/` 合并到各期刊目录 | **已完成 v7.47**：12 个 cover letter 已移入各对应期刊目录 `cover_letter.md`，`submission_covers/` 目录已删除 | — | 0（移动操作） |
 | **P2-3** | `SYLVA_comprehensive_survey/` 充实或注销 | 仅 2 文件、58 KB，自述"综合调查"但体量过小；建议要么扩充到 5+ 文件（含 index、timeline、contributors、methodology、output_inventory），要么并入根级 `CONTENTS.md` | `papers/SYLVA_comprehensive_survey/index.md` 等 5 文件 | 约 50 KB |
 | **P2-4** | **计数几何系列去重** | `Donaldson-Thomas与Gopakumar-Vafa不变量_综述/`、`计数几何与Gromov-Witten不变量_综述/`、`Kontsevich积分与Witten猜想_综述/`、`镜像对称与Picard-Fuchs方程_综述/`、`Schubert演算与旗流形计数_综述/`、`热带几何与组合计数_综述/`、`enumerative_geometry/`（英文学科目录，1.3 MB）——7 个目录均属计数几何大家族，建议合并为子系列 | `papers/计数几何_系列/`（含 6 篇子论文 + 1 个总索引） | 合并后约 50 KB，去重后净增 0 |
 

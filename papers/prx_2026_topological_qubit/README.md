@@ -21,7 +21,7 @@
 
 ## 相关目录
 - `papers/arxiv_submission/` — arXiv 投稿元数据
-- `papers/code/` — 遗传算法与验证代码
+- 各主题综述子目录内 `verify_*.py` — 验证脚本（原 `papers/code/` 占位指针，P2-1 归并后删除）
 - `papers/ieee_tqe_2026_egsf20/` — EGSF-20 基准测试（含拓扑基准 BM-19）
 - `papers/qec_ftqc/` — 量子纠错码与容错量子计算
 - `papers/jolt_2026_ip_strategy/` — IP 战略（专利 #1：拓扑量子比特设计）

@@ -16,12 +16,14 @@
 
 ---
 
-## 文件清单 (2 files, 15 KB)
+## 文件清单 (4 files, 21 KB)
 
 | 文件 | 大小 | 内容说明 |
 |------|------|----------|
 | `main.md` | ~8 KB | **主论文**：纠缠-对偶对应原理的完整陈述、数学证明与物理预言 |
 | `supplementary.md` | ~7 KB | 补充材料：8 个具体对偶案例的详细计算 |
+| `reproduce.sh` | ~5 KB | 可复现脚本：8 组核心数值实验（Barren Plateaus / Page 曲线 / Kitaev / cMERA 等） |
+| `cover_letter.md` | ~1.7 KB | Nature Physics 投稿封面信 |
 
 ---
 
@@ -45,6 +47,6 @@
 
 ---
 
-## 状态：v7.33
+## 状态：v7.47（P2-1/P2-2 归并后）
 
-小型目录（2 文件 / 15 KB），但重要性极高——是 TOE-SYLVA 统一框架的核心理论支柱。主论文与补充材料均为精练版本，详细推导图表待后续扩展。
+本目录在 v7.47 归并中吸收了原 `papers/code/nature_physics_reproduce/reproduce.sh`（可复现脚本）与原 `papers/submission_covers/nature_physics_cover_letter.md`（→ `cover_letter.md`）。现为 4 文件 / 21 KB，是 TOE-SYLVA 统一框架的核心理论支柱。主论文与补充材料均为精练版本，详细推导图表待后续扩展。

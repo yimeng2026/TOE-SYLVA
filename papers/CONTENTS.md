@@ -135,8 +135,6 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 | 子目录 | 说明 | 状态 |
 |--------|------|------|
 | `arxiv_submission/` | arXiv 投稿相关材料（封面信、LaTeX 源码等） | REFERENCE |
-| `code/` | 论文相关计算与验证代码 | REFERENCE |
-| `submission_covers/` | 期刊投稿封面信 | REFERENCE |
 | `millennium_papers/` | 千禧年问题相关论文（P vs NP、Riemann、BSD、Hodge、Navier-Stokes） | REFERENCE |
 | `SYLVA_comprehensive_survey/` | SYLVA 综合综述子目录（多学科全面综述） | DRAFT |
 
@@ -455,7 +453,7 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 
 > **说明**：所有 19 个目录均已添加 `README.md`（占位符文件），标注目录主题、规划内容与相关目录。其中投稿类目录（前 12 个）均缺 LaTeX 源码与完整材料；综述类目录（后 7 个）初始文件尺寸较大（10-12 KB）但仍仅为单文件骨架，内容有待大幅扩展。
 
-> **v7.8 补充文件（第一批）**：`code/README.md`、`arxiv_submission/README.md`、`neurips_2026_topo_rl/README.md`、`apjl_2026_m87_shadow/README.md`、`prd_2026_syk_cmera/README.md`、`ieee_tqe_2026_egsf20/README.md` — 以上 6 个 README 在 v7.8 审计第一批新增。
+> **v7.8 补充文件（第一批）**：`arxiv_submission/README.md`、`neurips_2026_topo_rl/README.md`、`apjl_2026_m87_shadow/README.md`、`prd_2026_syk_cmera/README.md`、`ieee_tqe_2026_egsf20/README.md` — 以上 6 个 README 在 v7.8 审计第一批新增。
 >
 > **v7.8 补充文件（第二批，2026-08-02）**：全部 19 个近空目录均已添加 `README.md`。本次新增 14 个：
 > - 投稿类（7）：`cmame_2026_sylva_fluid_deploy/README.md`、`jfm_2026_cmera_les/README.md`、`jolt_2026_ip_strategy/README.md`、`mnras_2026_sgrA_ripple/README.md`、`nature_medicine_2026_ad_biomarker/README.md`、`nbe_2026_nmpa_pathway/README.md`、`prx_2026_topological_qubit/README.md`

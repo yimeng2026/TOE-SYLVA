@@ -15,7 +15,7 @@
 - 投稿时使用的 `.bbl` 参考文献文件
 
 ## 相关目录
-- `papers/code/` — 相关计算与验证代码
+- 各主题综述子目录内 `verify_*.py` — 相关计算与验证代码（原 `papers/code/` 占位指针，P2-1 归并后删除）
 - `papers/prx_2026_topological_qubit/` — 拓扑量子比特投稿
 - `papers/qec_ftqc/` — 量子纠错码与容错量子计算
 - `papers/ieee_tqe_2026_egsf20/` — EGSF-20 基准测试（含拓扑基准 BM-19: 4-MZM Braiding）
