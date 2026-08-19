@@ -48,20 +48,23 @@ structure HubbardModel where
     - U > U_c: Mott insulator (antiferromagnetic order).
 
     U_c ≈ 0 for bipartite lattices (Mott transition at any U > 0). -/
-axiom HalfFilling (H : HubbardModel) :
+theorem HalfFilling (H : HubbardModel) :
   let n := 1  -- Average electron density per site
-  H.U > 0 → n = 1
-  -- Half-filling: one electron per site, postulated as Hubbard model axiom
+  H.U > 0 → n = 1 := by
+  intro _
+  rfl
 
 /-- Mott insulator: charge gap opens at half-filling for U > 0.
 
     The charge gap Δ_c ≈ U - 2zt for large U (z = coordination number).
     Spin excitations are gapless (Goldstone modes from AF order). -/
-axiom MottInsulator (H : HubbardModel) :
+theorem MottInsulator (H : HubbardModel) :
   let z := 2 * H.d  -- Coordination number for hypercubic lattice
   let Delta_c := H.U - 2 * z * H.t
-  H.U > 2 * z * H.t → Delta_c > 0
-  -- Mott gap: charge gap opens for U > 2zt, postulated as Hubbard model axiom
+  H.U > 2 * z * H.t → Delta_c > 0 := by
+  intro h
+  show H.U - 2 * (2 * H.d) * H.t > 0
+  linarith
 
 end CondensedMatter
 end Sylva

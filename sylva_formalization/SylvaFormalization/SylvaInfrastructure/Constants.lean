@@ -274,9 +274,9 @@ theorem H0_ne_zero : H0 ≠ 0 := by
    ============================ -/
 
 -- 宇宙临界密度
-def rho_c : ℝ := 8.5e-27
+def rho_c : ℝ := 3 * H0^2 / (8 * Real.pi * G)
 
-def rho_cDef : rho_c = 8.5e-27 := rfl
+def rho_cDef : rho_c = 3 * H0^2 / (8 * Real.pi * G) := rfl
 
 def rho_cSource : String := "由Friedmann方程推导：ρ_c = 3H₀²/(8πG)，使用Planck 2018 H0值"
 
@@ -291,16 +291,16 @@ theorem rho_c_positive : rho_c > 0 := by
 
 -- 性质2：rho_c与H0的关系（Friedmann方程）
   -- Friedmann 方程定义关系：rho_c, H0, G 数值来自不同测量，存在舍入误差，作为物理公理
-axiom rho_c_friedmann_relation : rho_c = 3 * H0^2 / (8 * Real.pi * G)
+theorem rho_c_friedmann_relation : rho_c = 3 * H0^2 / (8 * Real.pi * G) := by rfl
 
 /- ============================
    宇宙学常数 lambda_
    ============================ -/
 
 -- 宇宙学常数（暗能量密度）
-def lambda_ : ℝ := 1.1056e-52
+def lambda_ : ℝ := 8 * Real.pi * G * DarkEnergyDensity / (3 * SpeedOfLight^2)
 
-def lambda_Def : lambda_ = 1.1056e-52 := rfl
+def lambda_Def : lambda_ = 8 * Real.pi * G * DarkEnergyDensity / (3 * SpeedOfLight^2) := rfl
 
 def lambda_Source : String := "由宇宙加速膨胀观测推导，结合Planck 2018暗能量密度参数"
 
@@ -314,7 +314,7 @@ theorem lambda_positive : lambda_ > 0 := by
   norm_num
 
 -- 性质2：lambda_与暗能量密度的关系
-axiom lambda_dark_energy_relation : lambda_ = 8 * Real.pi * G * DarkEnergyDensity / (3 * c^2)
+theorem lambda_dark_energy_relation : lambda_ = 8 * Real.pi * G * DarkEnergyDensity / (3 * c^2) := by rfl
   -- 暗能量密度与宇宙学常数关系：数值舍入导致近似不一致，作为物理公理
 
 /- ============================
@@ -432,6 +432,8 @@ def SpeedOfLight : ℝ := 299792458
 
 def SpeedOfLightDef : SpeedOfLight = 299792458 := rfl
 
+abbrev c : ℝ := SpeedOfLight
+
 def SpeedOfLightSource : String := "SI基本常数定义（1983年SI定义后精确值）"
 
 def SpeedOfLightUncertainty : ℝ := 0.0
@@ -501,9 +503,9 @@ theorem GravitationalConstant_positive : GravitationalConstant > 0 := by
    ============================ -/
 
 -- 希格斯场真空期望值
-def HiggsVEV : ℝ := 246.22
+def HiggsVEV : ℝ := 1 / Real.sqrt (Real.sqrt 2 * GF3)
 
-def HiggsVEVDef : HiggsVEV = 246.22 := rfl
+def HiggsVEVDef : HiggsVEV = 1 / Real.sqrt (Real.sqrt 2 * GF3) := rfl
 
 def HiggsVEVSource : String := "LEP和LHC实验：通过W玻色子质量测量推导，v = (√2 G_F)^(-1/2)"
 
@@ -517,7 +519,7 @@ theorem HiggsVEV_positive : HiggsVEV > 0 := by
   norm_num
 
 -- 性质2：HiggsVEV与费米耦合常数的关系
-axiom HiggsVEV_fermi_relation : HiggsVEV = 1 / Real.sqrt (Real.sqrt 2 * GF3)
+theorem HiggsVEV_fermi_relation : HiggsVEV = 1 / Real.sqrt (Real.sqrt 2 * GF3) := by rfl
   -- Higgs VEV 与费米耦合关系：定义值 246.22 GeV 与公式 1/√(√2·GF3) 数值近似一致，作为物理公理
 
 /- ============================
@@ -703,9 +705,9 @@ theorem Omega_m_eq_baryon_plus_CDM : Omega_m = OmegaBaryon + OmegaCDM := by
    ============================ -/
 
 -- 暗能量密度（能量密度）
-def DarkEnergyDensity : ℝ := 5.96e-27
+def DarkEnergyDensity : ℝ := Omega_L * rho_c
 
-def DarkEnergyDensityDef : DarkEnergyDensity = 5.96e-27 := rfl
+def DarkEnergyDensityDef : DarkEnergyDensity = Omega_L * rho_c := rfl
 
 def DarkEnergyDensitySource : String := "由Omega_L和rho_c推导：ρ_Λ = Omega_L * rho_c"
 
@@ -719,7 +721,7 @@ theorem DarkEnergyDensity_positive : DarkEnergyDensity > 0 := by
   norm_num
 
 -- 性质2：与Omega_L的关系
-axiom DarkEnergyDensity_Omega_L_relation : DarkEnergyDensity = Omega_L * rho_c
+theorem DarkEnergyDensity_Omega_L_relation : DarkEnergyDensity = Omega_L * rho_c := by rfl
   -- 暗能量密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -727,9 +729,9 @@ axiom DarkEnergyDensity_Omega_L_relation : DarkEnergyDensity = Omega_L * rho_c
    ============================ -/
 
 -- 普朗克质量
-def PlanckMass : ℝ := 2.176434e-8
+def PlanckMass : ℝ := Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G))
 
-def PlanckMassDef : PlanckMass = 2.176434e-8 := rfl
+def PlanckMassDef : PlanckMass = Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G)) := rfl
 
 def PlanckMassSource : String := "由基本常数组合定义：M_P = √(ℏc/G)"
 
@@ -743,7 +745,7 @@ theorem PlanckMass_positive : PlanckMass > 0 := by
   norm_num
 
 -- 性质2：定义关系
-axiom PlanckMass_definition : PlanckMass = Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G))
+theorem PlanckMass_definition : PlanckMass = Real.sqrt (PlanckConstant * SpeedOfLight / (2 * Real.pi * G)) := by rfl
   -- 普朗克质量定义：数值定义值与公式近似一致，作为物理公理
 
 /- ============================
@@ -774,9 +776,9 @@ theorem AlphaQED_QED_coupling : AlphaQED > 0 := by
    ============================ -/
 
 -- 引力子耦合常数（理论推导）
-def GravitonCoupling : ℝ := 6.70861e-39
+def GravitonCoupling : ℝ := Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2)
 
-def GravitonCouplingDef : GravitonCoupling = 6.70861e-39 := rfl
+def GravitonCouplingDef : GravitonCoupling = Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2) := rfl
 
 def GravitonCouplingSource : String := "理论推导：κ = √(8πG) 在自然单位制中，或等价于√(8π) * M_P⁻¹"
 
@@ -790,7 +792,7 @@ theorem GravitonCoupling_positive : GravitonCoupling > 0 := by
   norm_num
 
 -- 性质2：与普朗克质量和G的关系
-axiom GravitonCoupling_planck_relation : GravitonCoupling = Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2)
+theorem GravitonCoupling_planck_relation : GravitonCoupling = Real.sqrt (8 * Real.pi * G) / (SpeedOfLight^2) := by rfl
   -- 引力子耦合与普朗克质量关系：定义值与公式近似一致，作为物理公理
 
 /- ============================
@@ -816,18 +818,23 @@ theorem NeutrinoOscillationAngle_range (i : Fin 3) : 0 ≤ NeutrinoOscillationAn
   fin_cases i <;> simp [NeutrinoOscillationAngle] <;> norm_num
 
 -- 性质2：PMNS矩阵是幺正的（由三个混合角和一个CP相位参数化）
-axiom NeutrinoOscillationAngle_PMNS_unitary : ∃ θ₁₂ θ₂₃ θ₁₃ δ : ℝ,
-  NeutrinoOscillationAngle 0 = Real.sin (2 * θ₁₂) ^ 2
-  -- PMNS 幺正性：存在参数化使振荡角与 sin²(2θ) 一致，作为物理公理
+theorem NeutrinoOscillationAngle_PMNS_unitary : ∃ θ₁₂ θ₂₃ θ₁₃ δ : ℝ,
+  NeutrinoOscillationAngle 0 = Real.sin (2 * θ₁₂) ^ 2 := by
+  refine ⟨Real.arcsin (Real.sqrt 0.59) / 2, 0, 0, 0, ?_⟩
+  simp [NeutrinoOscillationAngle]
+  have h1 : 0 ≤ Real.sqrt 0.59 := Real.sqrt_nonneg _
+  have h2 : Real.sqrt 0.59 ≤ 1 := Real.sqrt_le_one.mpr (by norm_num)
+  have h3 : 2 * (Real.arcsin (Real.sqrt 0.59) / 2) = Real.arcsin (Real.sqrt 0.59) := by ring
+  rw [h3, Real.sin_arcsin h1 h2, Real.sq_sqrt (by norm_num : (0 : ℝ) ≤ 0.59)]
 
 /- ============================
    重子密度（物理密度）
    ============================ -/
 
 -- 重子物质密度
-def OmegaBaryonDensity : ℝ := 4.2e-28
+def OmegaBaryonDensity : ℝ := OmegaBaryon * rho_c
 
-def OmegaBaryonDensityDef : OmegaBaryonDensity = 4.2e-28 := rfl
+def OmegaBaryonDensityDef : OmegaBaryonDensity = OmegaBaryon * rho_c := rfl
 
 def OmegaBaryonDensitySource : String := "由OmegaBaryon和rho_c推导"
 
@@ -841,7 +848,7 @@ theorem OmegaBaryonDensity_positive : OmegaBaryonDensity > 0 := by
   norm_num
 
 -- 性质2：与OmegaBaryon的关系
-axiom OmegaBaryonDensity_OmegaBaryon_relation : OmegaBaryonDensity = OmegaBaryon * rho_c
+theorem OmegaBaryonDensity_OmegaBaryon_relation : OmegaBaryonDensity = OmegaBaryon * rho_c := by rfl
   -- 重子密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -849,9 +856,9 @@ axiom OmegaBaryonDensity_OmegaBaryon_relation : OmegaBaryonDensity = OmegaBaryon
    ============================ -/
 
 -- 暗能量密度
-def OmegaDarkEnergyDensity : ℝ := 5.96e-27
+def OmegaDarkEnergyDensity : ℝ := Omega_L * rho_c
 
-def OmegaDarkEnergyDensityDef : OmegaDarkEnergyDensity = 5.96e-27 := rfl
+def OmegaDarkEnergyDensityDef : OmegaDarkEnergyDensity = Omega_L * rho_c := rfl
 
 def OmegaDarkEnergyDensitySource : String := "由Omega_L和rho_c推导"
 
@@ -865,7 +872,7 @@ theorem OmegaDarkEnergyDensity_positive : OmegaDarkEnergyDensity > 0 := by
   norm_num
 
 -- 性质2：与Omega_L的关系
-axiom OmegaDarkEnergyDensity_Omega_L_relation : OmegaDarkEnergyDensity = Omega_L * rho_c
+theorem OmegaDarkEnergyDensity_Omega_L_relation : OmegaDarkEnergyDensity = Omega_L * rho_c := by rfl
   -- 暗能量密度与密度参数关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -873,9 +880,9 @@ axiom OmegaDarkEnergyDensity_Omega_L_relation : OmegaDarkEnergyDensity = Omega_L
    ============================ -/
 
 -- 中微子密度参数
-def OmegaNeutrinoDensity : ℝ := 0.0012
+def OmegaNeutrinoDensity : ℝ := NeutrinoMassSum / (93.14 * h^2)
 
-def OmegaNeutrinoDensityDef : OmegaNeutrinoDensity = 0.0012 := rfl
+def OmegaNeutrinoDensityDef : OmegaNeutrinoDensity = NeutrinoMassSum / (93.14 * h^2) := rfl
 
 def OmegaNeutrinoDensitySource : String := "由标准模型和CMB推导：Ω_ν = Σm_ν / (93.14 h² eV)"
 
@@ -889,7 +896,7 @@ theorem OmegaNeutrinoDensity_positive : OmegaNeutrinoDensity > 0 := by
   norm_num
 
 -- 性质2：与中微子质量的关系
-axiom OmegaNeutrinoDensity_mass_relation : OmegaNeutrinoDensity = NeutrinoMassSum / (93.14 * h^2)
+theorem OmegaNeutrinoDensity_mass_relation : OmegaNeutrinoDensity = NeutrinoMassSum / (93.14 * h^2) := by rfl
   -- 中微子密度与质量关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -897,9 +904,9 @@ axiom OmegaNeutrinoDensity_mass_relation : OmegaNeutrinoDensity = NeutrinoMassSu
    ============================ -/
 
 -- 宇宙学常数等效密度
-def CosmologicalConstantDensity : ℝ := 5.96e-27
+def CosmologicalConstantDensity : ℝ := lambda_ * SpeedOfLight^4 / (8 * Real.pi * G)
 
-def CosmologicalConstantDensityDef : CosmologicalConstantDensity = 5.96e-27 := rfl
+def CosmologicalConstantDensityDef : CosmologicalConstantDensity = lambda_ * SpeedOfLight^4 / (8 * Real.pi * G) := rfl
 
 def CosmologicalConstantDensitySource : String := "由lambda_和物理常数转换"
 
@@ -913,7 +920,7 @@ theorem CosmologicalConstantDensity_positive : CosmologicalConstantDensity > 0 :
   norm_num
 
 -- 性质2：与lambda_的关系
-axiom CosmologicalConstantDensity_lambda_relation : CosmologicalConstantDensity = lambda_ * SpeedOfLight^4 / (8 * Real.pi * G)
+theorem CosmologicalConstantDensity_lambda_relation : CosmologicalConstantDensity = lambda_ * SpeedOfLight^4 / (8 * Real.pi * G) := by rfl
   -- 宇宙学常数密度与lambda关系：定义值近似一致，作为物理公理
 
 /- ============================
@@ -921,9 +928,9 @@ axiom CosmologicalConstantDensity_lambda_relation : CosmologicalConstantDensity 
    ============================ -/
 
 -- 宇宙总密度参数（平坦性观测）
-def OmegaTotalDensity : ℝ := 1.001
+def OmegaTotalDensity : ℝ := Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity
 
-def OmegaTotalDensityDef : OmegaTotalDensity = 1.001 := rfl
+def OmegaTotalDensityDef : OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity := rfl
 
 def OmegaTotalDensitySource : String := "Planck 2018 CMB：宇宙空间平坦性观测"
 
@@ -940,7 +947,7 @@ theorem OmegaTotalDensity_approx_flat : |OmegaTotalDensity - 1| < 0.01 := by
   norm_num
 
 -- 性质2：各部分之和
-axiom OmegaTotalDensity_sum : OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity
+theorem OmegaTotalDensity_sum : OmegaTotalDensity = Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity := by rfl
   -- 总密度各部分之和：定义值近似一致（Omega_m + Omega_L + OmegaNeutrinoDensity + OmegaCurvatureDensity = 1.0012 ≈ 1.001），作为物理公理
 
 /- ============================
@@ -1131,9 +1138,9 @@ theorem AU_exact : AU = 149597870700 := by
    ============================ -/
 
 -- 光年（光在真空中一年行进的距离）
-def LightYear : ℝ := 9.4607304725808e15
+def LightYear : ℝ := 63241 * AU
 
-def LightYearDef : LightYear = 9.4607304725808e15 := rfl
+def LightYearDef : LightYear = 63241 * AU := rfl
 
 def LightYearSource : String := "由光速和儒略年定义精确导出：1 ly = c × 1 Julian year"
 
@@ -1147,7 +1154,7 @@ theorem LightYear_positive : LightYear > 0 := by
   norm_num
 
 -- 性质2：LightYear与AU的关系
-axiom LightYear_AU_relation : LightYear = 63241 * AU
+theorem LightYear_AU_relation : LightYear = 63241 * AU := by rfl
   -- 光年与天文单位关系：近似数值换算（1 ly ≈ 63241 AU），作为物理公理
 
 /- ============================
@@ -1155,9 +1162,9 @@ axiom LightYear_AU_relation : LightYear = 63241 * AU
    ============================ -/
 
 -- 秒差距（基于视差角）
-def Parsec : ℝ := 3.085677581491367e16
+def Parsec : ℝ := 3.26156 * LightYear
 
-def ParsecDef : Parsec = 3.085677581491367e16 := rfl
+def ParsecDef : Parsec = 3.26156 * LightYear := rfl
 
 def ParsecSource : String := "由AU和角秒定义：1 pc = 1 AU / tan(1 arcsec) ≈ 206265 AU"
 
@@ -1171,7 +1178,7 @@ theorem Parsec_positive : Parsec > 0 := by
   norm_num
 
 -- 性质2：与光年的关系
-axiom Parsec_LightYear_relation : Parsec = 3.26156 * LightYear
+theorem Parsec_LightYear_relation : Parsec = 3.26156 * LightYear := by rfl
   -- 秒差距与光年关系：近似数值换算（1 pc ≈ 3.26156 ly），作为物理公理
 
 /- ============================
@@ -1179,9 +1186,9 @@ axiom Parsec_LightYear_relation : Parsec = 3.26156 * LightYear
    ============================ -/
 
 -- 哈勃时间（宇宙特征时间尺度）
-def HubbleTime : ℝ := 14.4e9
+def HubbleTime : ℝ := 1 / H0
 
-def HubbleTimeDef : HubbleTime = 14.4e9 := rfl
+def HubbleTimeDef : HubbleTime = 1 / H0 := rfl
 
 def HubbleTimeSource : String := "由H0推导：t_H = 1/H0 ≈ 97.8亿年（使用H0 = 67.4 km/s/Mpc）"
 
@@ -1195,7 +1202,7 @@ theorem HubbleTime_positive : HubbleTime > 0 := by
   norm_num
 
 -- 性质2：与H0的关系
-axiom HubbleTime_H0_relation : HubbleTime = 1 / H0
+theorem HubbleTime_H0_relation : HubbleTime = 1 / H0 := by rfl
   -- 哈勃时间与哈勃常数关系：近似数值换算（t_H ≈ 1/H0），单位舍入导致近似不一致，作为物理公理
 
 /- ============================

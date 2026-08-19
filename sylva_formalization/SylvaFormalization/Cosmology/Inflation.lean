@@ -59,9 +59,9 @@ axiom SlowRollInflation (inf : Inflaton) :
 
     Sufficient inflation solves the flatness and horizon problems.
     N = 50-60 for scales from CMB to today. -/
-axiom EfoldsNumber (inf : Inflaton) :
-  ∃ (N : ℝ), N > 50 ∧ N < 70
-  -- E-folds: 50-60 for observable universe, postulated as inflation axiom
+theorem EfoldsNumber (inf : Inflaton) :
+  ∃ (N : ℝ), N > 50 ∧ N < 70 := by
+  exact ⟨60, by norm_num, by norm_num⟩
 
 end Cosmology
 end Sylva

@@ -20,10 +20,11 @@ open Real
     The order parameter Δ(k) = Δ_0 (cos k_x - cos k_y) / 2.
     Nodes at k_x = ±k_y (gapless excitations along diagonals).
     Phase sensitive experiments (Josephson junctions, SQUID) confirm d-wave. -/
-axiom DWavePairing (TJ : TJModel) :
+theorem DWavePairing (TJ : TJModel) :
   ∀ (k : Fin 2 → ℝ), let Delta_k := (Real.cos (k 0) - Real.cos (k 1)) / 2
-    ‖Delta_k‖ ≥ 0
-  -- d-wave pairing: nodes along diagonals, axiomd as cuprate superconductivity axiom
+    ‖Delta_k‖ ≥ 0 := by
+  intro k
+  exact abs_nonneg _
 
 /-- Resonating Valence Bond (RVB) state: spin singlet pairs on neighboring sites.
 

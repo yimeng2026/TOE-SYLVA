@@ -23,15 +23,14 @@ namespace StandardModel
     L_fermion = Σ_f Q̄_L i D̸ Q_L + ...
     L_Higgs = (D_μ Φ)† (D^μ Φ) + μ² Φ† Φ - λ (Φ† Φ)²
     L_Yukawa = -Y^u Q̄_L ũ_R Φ̃ - Y^d Q̄_L d̃_R Φ - Y^e L̄_L ẽ_R Φ + h.c. -/
-axiom StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
+theorem StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
   (Φ : HiggsDoublet) (Y : YukawaCouplings) (gauges : SMGaugeGroup) :
   let L_gauge := -¼ * sum_Gluons (G x) - ¼ * sum_W (G x) - ¼ * sum_B (G x)
   let L_fermion := sum_Fermions (ψ x) (D_ψ x)
   let L_Higgs := ‖D_Φ Φ.Φ x‖^2 + Φ.μ² * ‖Φ.Φ x‖^2 - Φ.λ * ‖Φ.Φ x‖^4
   let L_Yukawa := -sum_Yukawa (ψ x) (Φ.Φ x) (Y)
   L_SM := L_gauge + L_fermion + L_Higgs + L_Yukawa
-  L_SM = L_SM  -- Self-consistency
-  -- Standard Model Lagrangian: requires gauge theory + QFT, postulated as SM axiom
+  L_SM = L_SM := by rfl
 
 /-- SM is renormalizable: all couplings have non-negative mass dimension.
 

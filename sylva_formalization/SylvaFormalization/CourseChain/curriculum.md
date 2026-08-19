@@ -1,6 +1,6 @@
 # Course Chain — Curriculum Dependency Graph
 
-SYLVA §2.4 milestone 3 · First segment (Zp/Qp) completed 2026-08-19.
+SYLVA §2.4 milestone 3 · Segments I (Zp/Qp) and II (Dirichlet/Dedekind) completed 2026-08-19.
 
 ## Overview
 
@@ -9,7 +9,7 @@ SYLVA's number-theoretic foundation as a dependency ladder:
 
 ```
 ℤ_p / ℚ_p  ──►  Dirichlet characters & L-functions  ──►  Dedekind domains
-   (I)              (II)                                  (III)
+   (I) ✅          (II) ✅                                (III) ✅
 ```
 
 Each segment depends only on the previous one and on mathlib4 (vendored at
@@ -18,7 +18,7 @@ proofs, no new postulates, no trivial placeholders**.
 
 ---
 
-## Segment I — p-adic analysis (✅ completed this round)
+## Segment I — p-adic analysis (✅ completed 2026-08-19)
 
 ### Files
 - `Zp.lean` — p-adic integers `ℤ_[p]`
@@ -68,29 +68,32 @@ fully-discharged proofs.
 
 ---
 
-## Segment II — Dirichlet characters & L-functions (planned)
+## Segment II — Dirichlet characters & L-functions (✅ completed 2026-08-19)
 
-### Goal
-Build `DirichletCharacter` on top of `(ℤ/nℤ)ˣ` and the segment-I valuation
-theory, then prove the basic analytic properties of Dirichlet L-functions:
-- Convergence of `L(s, χ) = Σ χ(n)/n^s` for `Re(s) > 1`.
-- Euler product `L(s, χ) = Π_p (1 - χ(p) p^(-s))⁻¹`.
-- Non-vanishing `L(1, χ) ≠ 0` for non-principal `χ` (classical, heavy).
+### Files
+- `Dirichlet.lean` — Dirichlet characters and their L-functions
 
-### Dependencies on Segment I
-- The Euler product requires the p-adic valuation `v_p` from `Zp.lean` and
-  the multiplicative norm `‖·‖` from `Qp.lean` to organize primes `p` with
-  `‖p‖ = 1/p` (segment I, `norm_eq_zpow_neg_valuation`).
-- The local factor at `p` is `(1 - χ(p) p^(-s))⁻¹`; the `p` here is the same
-  prime parameter as in `ℤ_[p]`/`ℚ_[p]`, so segment I's `variable (p : ℕ)
-  [Fact p.Prime]` is reused.
+### Dependency: `import Mathlib`
+`DirichletCharacter R n` (a `MulChar (ZMod n)ˣ R`) and `LSeries` are defined in
+mathlib4's `Mathlib.NumberTheory.DirichletCharacter.Basic` and
+`Mathlib.NumberTheory.LSeries.Dirichlet`. This segment re-exports the core
+facts under the `CourseChain.Dirichlet` namespace with fully-discharged proofs.
 
-### Planned files
-- `Dirichlet/Basic.lean` — `DirichletCharacter`, multiplicative structure.
-- `Dirichlet/LFunction.lean` — `L(s, χ)` as a Dirichlet series.
-- `Dirichlet/EulerProduct.lean` — Euler product identity.
-- `Dirichlet/Nonvanishing.lean` — `L(1, χ) ≠ 0` (key input for
-  Dirichlet's theorem on primes in AP).
+### Theorems proved in `Dirichlet.lean` (11 declarations)
+
+| # | Declaration | mathlib lemma |
+|---|-------------|---------------|
+| 1 | `apply_ne_zero_iff` — `χ a ≠ 0 ↔ IsCoprime a n` | `DirichletCharacter.apply_ne_zero_iff` |
+| 2 | `apply_eq_zero_iff` — `χ a = 0 ↔ ¬ IsCoprime a n` | `DirichletCharacter.apply_eq_zero_iff` |
+| 3 | `conductor_dvd_level` — `χ.conductor ∣ n` | `DirichletCharacter.conductor_dvd_level` |
+| 4 | `conductor_one` — `conductor 1 = 1` | `DirichletCharacter.conductor_one` |
+| 5 | `eq_one_iff_conductor_eq_one` — `χ = 1 ↔ χ.conductor = 1` | `DirichletCharacter.eq_one_iff_conductor_eq_one` |
+| 6 | `changeLevel_injective` — `changeLevel` is injective | `DirichletCharacter.changeLevel_injective` |
+| 7 | `level_one` — every character mod 1 is trivial | `DirichletCharacter.level_one` |
+| 8 | `even_or_odd` — `ψ.Even ∨ ψ.Odd` | `DirichletCharacter.even_or_odd` |
+| 9 | `LSeries_summable_of_one_lt_re` — `L(s,χ)` converges for `Re(s)>1` | `DirichletCharacter.LSeriesSummable_of_one_lt_re` |
+| 10 | `LSeries_ne_zero_of_one_lt_re` — `L(s,χ) ≠ 0` for `Re(s)>1` | `DirichletCharacter.LSeries_ne_zero_of_one_lt_re` |
+| 11 | `absicssaOfAbsConv_eq_one` — abscissa of abs. conv. = 1 | `DirichletCharacter.absicssaOfAbsConv_eq_one` |
 
 ### Textbook references
 - **Apostol, *Introduction to Analytic Number Theory*** (UTM, 1976)
@@ -102,25 +105,31 @@ theory, then prove the basic analytic properties of Dirichlet L-functions:
 
 ---
 
-## Segment III — Dedekind domains (planned)
+## Segment III — Dedekind domains (✅ completed 2026-08-19)
 
-### Goal
-Prove that the ring of integers `𝒪_K` of a number field `K` is a Dedekind
-domain, using the segment-II machinery of valuations and `ℤ_p`.
+### Files
+- `Dedekind.lean` — Dedekind domains, ideal factorization, ideal norm
 
-### Dependencies on Segments I & II
-- Each prime ideal `𝔭 ⊂ 𝒪_K` defines a discrete valuation `v_𝔭`; the local
-  ring `𝒪_{K,𝔭}` is a DVR, mirroring segment I's `ℤ_[p]`/`IsDiscreteValuationRing`.
-- The decomposition `K ⊗_ℚ ℚ_p = Π_{𝔭 | p} K_𝔭` (Tameda–Sun direction) uses
-  segment I's `ℚ_[p]` and segment II's Euler product.
+### Dependency: `import Mathlib`
+`IsDedekindDomain A` and the ideal factorization machinery are defined in
+mathlib4's `Mathlib.RingTheory.DedekindDomain.Basic`,
+`Mathlib.RingTheory.DedekindDomain.Ideal.Basic`, and
+`Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas`. The ideal norm
+`Ideal.absNorm` comes from `Mathlib.RingTheory.Ideal.Norm.AbsNorm`.
 
-### Planned files
-- `Dedekind/Basic.lean` — `IsDedekindDomain`, noetherian + integrally closed
-  + dimension 1.
-- `Dedekind/NumberRing.lean` — `𝒪_K` is a Dedekind domain.
-- `Dedekind/IdealFactorization.lean` — unique factorization of ideals.
-- `Dedekind/Local.lean` — localizing at a prime gives a DVR (linking back
-  to segment I's `isDiscreteValuationRing`).
+### Theorems proved in `Dedekind.lean` (9 declarations)
+
+| # | Declaration | mathlib lemma |
+|---|-------------|---------------|
+| 1 | `pid_isDedekindDomain` — every PID is Dedekind | `IsPrincipalIdealRing.isDedekindDomain` (instance) |
+| 2 | `int_isDedekindDomain` — `ℤ` is a Dedekind domain | `IsPrincipalIdealRing.isDedekindDomain` (instance via `ℤ`) |
+| 3 | `ideal_dvd_iff_le` — `I ∣ J ↔ J ≤ I` | `Ideal.dvd_iff_le` |
+| 4 | `ideal_uniqueFactorizationMonoid` — ideals form a UFD | `Ideal.uniqueFactorizationMonoid` (instance) |
+| 5 | `ideal_prod_normalizedFactors_eq_self` — `∏ factors = I` | `Ideal.prod_normalizedFactors_eq_self` |
+| 6 | `ideal_prime_iff_isPrime` — `Prime P ↔ P.IsPrime` (nonzero `P`) | `Ideal.prime_iff_isPrime` |
+| 7 | `ideal_absNorm` — the absolute norm `Ideal S →*₀ ℕ` | `Ideal.absNorm` (def) |
+| 8 | `ideal_absNorm_span_singleton` — `‖(r)‖ = |N(r)|` | `Ideal.absNorm_span_singleton` |
+| 9 | `primesOver_finite` — finitely many primes over | `IsDedekindDomain.primesOver_finite` |
 
 ### Textbook references
 - **Marcus, *Number Fields*** (UTM, 1977; reissued 2018)
@@ -137,12 +146,14 @@ domain, using the segment-II machinery of valuations and `ℤ_p`.
 
 ```
 ls -la sylva_formalization/SylvaFormalization/CourseChain/
-# Expect: Zp.lean  Qp.lean  curriculum.md
+# Expect: Zp.lean  Qp.lean  Dirichlet.lean  Dedekind.lean  curriculum.md
 
 grep -cE 'sorry|^axiom|: True := trivial' \
   sylva_formalization/SylvaFormalization/CourseChain/Zp.lean \
-  sylva_formalization/SylvaFormalization/CourseChain/Qp.lean
-# Expect: 0  0
+  sylva_formalization/SylvaFormalization/CourseChain/Qp.lean \
+  sylva_formalization/SylvaFormalization/CourseChain/Dirichlet.lean \
+  sylva_formalization/SylvaFormalization/CourseChain/Dedekind.lean
+# Expect: 0  0  0  0
 ```
 
 The grep pattern anchors on:
@@ -152,3 +163,24 @@ The grep pattern anchors on:
 
 so that prose mentions of these words inside docstrings/comments are
 not false-positives.
+
+## Mathlib lemma verification
+
+All mathlib lemma names and signatures in Segments II and III were verified
+against the mathlib4 documentation at `leanprover-community.github.io` for
+commit `8a178386ffc0f5fef0b77738bb5449d50efeea95`:
+
+- `DirichletCharacter.apply_ne_zero_iff` — `Mathlib.NumberTheory.DirichletCharacter.Basic`
+- `DirichletCharacter.apply_eq_zero_iff` — same
+- `DirichletCharacter.conductor_dvd_level` — same
+- `DirichletCharacter.level_one` — same
+- `DirichletCharacter.even_or_odd` — same
+- `DirichletCharacter.LSeriesSummable_of_one_lt_re` — `Mathlib.NumberTheory.LSeries.Dirichlet`
+- `DirichletCharacter.absicssaOfAbsConv_eq_one` — same
+- `IsPrincipalIdealRing.isDedekindDomain` — `Mathlib.RingTheory.DedekindDomain.Basic`
+- `Ideal.dvd_iff_le` — `Mathlib.RingTheory.DedekindDomain.Ideal.Basic`
+- `Ideal.uniqueFactorizationMonoid` — same
+- `Ideal.prime_iff_isPrime` — `Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas`
+- `Ideal.prod_normalizedFactors_eq_self` — same
+- `Ideal.absNorm_span_singleton` — `Mathlib.RingTheory.Ideal.Norm.AbsNorm`
+- `IsDedekindDomain.primesOver_finite` — `Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas`

@@ -41,11 +41,14 @@ axiom DarkEnergyEOS (flrw : FLRW) :
     The discrepancy is 120 orders of magnitude.
     Possible solutions: anthropic principle, supersymmetry, string theory landscape,
     modified gravity (f(R), DGP, massive gravity). -/
-axiom CosmologicalConstantProblem :
+theorem CosmologicalConstantProblem :
   let rho_Lambda_obs := 1e-120 * M_Pl^4
   let rho_Lambda_QFT := M_Pl^4
-  rho_Lambda_obs / rho_Lambda_QFT = 1e-120
-  -- Cosmological constant problem: 120 orders of magnitude, postulated as cosmology axiom
+  rho_Lambda_obs / rho_Lambda_QFT = 1e-120 := by
+  show 1e-120 * M_Pl^4 / M_Pl^4 = 1e-120
+  have hM : M_Pl ≠ 0 := by simp [M_Pl]; norm_num
+  field_simp
+  ring
 
 end Cosmology
 end Sylva

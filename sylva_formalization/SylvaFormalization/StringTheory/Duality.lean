@@ -24,23 +24,27 @@ open Real
     - T-duality exchanges n ↔ m and R ↔ α'/R.
 
     The spectrum is invariant under T-duality. -/
-axiom TDuality (R : ℝ) (alpha' : ℝ) (n m : ℤ) :
+theorem TDuality (R : ℝ) (alpha' : ℝ) (n m : ℤ) :
   let p := n / R
   let w := m * R / alpha'
   let R_dual := alpha' / R
   let p_dual := m / R_dual
   let w_dual := n * R_dual / alpha'
-  p^2 + w^2 = p_dual^2 + w_dual^2
-  -- T-duality invariance: spectrum invariant under R ↔ α'/R, postulated as string theory axiom
+  p^2 + w^2 = p_dual^2 + w_dual^2 := by
+  show ((n : ℝ) / R)^2 + ((m : ℝ) * R / alpha')^2
+       = ((m : ℝ) / (alpha' / R))^2 + ((n : ℝ) * (alpha' / R) / alpha')^2
+  field_simp
+  ring
 
 /-- S-duality: strong ↔ weak coupling duality.
 
     Type IIB superstring is self-dual under g_s ↔ 1/g_s.
     The SL(2, ℤ) symmetry of IIB relates different coupling regimes. -/
-axiom SDuality (g_s : ℝ) :
+theorem SDuality (g_s : ℝ) :
   let g_s_dual := 1 / g_s
-  g_s > 0 → g_s_dual > 0
-  -- S-duality: strong-weak coupling, postulated as string theory axiom
+  g_s > 0 → g_s_dual > 0 := by
+  intro h
+  exact one_div_pos.mpr h
 
 end StringTheory
 end Sylva

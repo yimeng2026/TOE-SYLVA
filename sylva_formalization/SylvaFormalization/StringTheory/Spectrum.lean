@@ -23,10 +23,14 @@ open Real
     Massive: N + Ñ > 2.
 
     Critical dimension: D = 26 (bosonic) or D = 10 (superstring). -/
-axiom ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
+theorem ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
   let M2 := (4 / ws.alpha') * (N + Ñ - 2)
-  ws.D = 26 → M2 ≥ -4 / ws.alpha'
-  -- Closed string mass: critical dimension D=26, postulated as string theory axiom
+  ws.D = 26 → M2 ≥ -4 / ws.alpha' := by
+  intro _
+  have hα : (0 : ℝ) < ws.alpha' := ws.alpha'_positive
+  have hnn : (0 : ℝ) ≤ ((N + Ñ - 2 : ℕ) : ℝ) := Nat.cast_nonneg _
+  show (4 / ws.alpha') * ((N + Ñ - 2 : ℕ) : ℝ) ≥ -4 / ws.alpha'
+  nlinarith
 
 /-- Open string spectrum: mass formula M² = (1/α')(N - 1).
 
@@ -35,20 +39,29 @@ axiom ClosedStringMass (ws : Worldsheet) (N Ñ : ℕ) :
     Massive: N > 1.
 
     Endpoints can satisfy Neumann or Dirichlet boundary conditions. -/
-axiom OpenStringMass (ws : Worldsheet) (N : ℕ) :
+theorem OpenStringMass (ws : Worldsheet) (N : ℕ) :
   let M2 := (1 / ws.alpha') * (N - 1)
-  ws.D = 26 → M2 ≥ -1 / ws.alpha'
-  -- Open string mass: critical dimension D=26, postulated as string theory axiom
+  ws.D = 26 → M2 ≥ -1 / ws.alpha' := by
+  intro _
+  have hα : (0 : ℝ) < ws.alpha' := ws.alpha'_positive
+  have hnn : (0 : ℝ) ≤ ((N - 1 : ℕ) : ℝ) := Nat.cast_nonneg _
+  show (1 / ws.alpha') * ((N - 1 : ℕ) : ℝ) ≥ -1 / ws.alpha'
+  nlinarith
 
 /-- Superstring spectrum: no tachyon (GSO projection).
 
     Massless sector: graviton (G_{μν}), dilaton (Φ), Kalb-Ramond field (B_{μν}),
     gravitino (ψ_μ), dilatino (λ).
     Critical dimension: D = 10. -/
-axiom SuperstringSpectrum (ws : Worldsheet) :
+theorem SuperstringSpectrum (ws : Worldsheet) :
   ws.D = 10 → ∀ (N Ñ : ℕ), let M2 := (4 / ws.alpha') * (N + Ñ - 1)
-    M2 ≥ 0
-  -- Superstring no tachyon: GSO projection, critical dimension D=10, postulated as string theory axiom
+    M2 ≥ 0 := by
+  intro _
+  intro N Ñ
+  show (4 / ws.alpha') * ((N + Ñ - 1 : ℕ) : ℝ) ≥ 0
+  have hα : (0 : ℝ) < ws.alpha' := ws.alpha'_positive
+  have hnn : (0 : ℝ) ≤ ((N + Ñ - 1 : ℕ) : ℝ) := Nat.cast_nonneg _
+  nlinarith
 
 end StringTheory
 end Sylva

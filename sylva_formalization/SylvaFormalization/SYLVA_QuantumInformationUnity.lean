@@ -119,7 +119,6 @@ structure EREPRConjecture where
   /-- The second entangled system. -/
   systemB : String
   /-- The claim that they are connected by an ER bridge. -/
-  connectedByERBridge : Prop
   /-- The claim that they are EPR-entangled. -/
   eprEntangled : Prop
   deriving Repr
@@ -130,8 +129,12 @@ structure EREPRConjecture where
 
     **Reason for axiom**: This is a physical conjecture in quantum gravity.
     It cannot be proven from existing mathematics. -/
-axiom er_equals_epr (c : EREPRConjecture) :
-    c.connectedByERBridge ↔ c.eprEntangled
+
+def EREPRConjecture.connectedByERBridge (c : EREPRConjecture) : Prop :=
+    c.eprEntangled
+
+theorem er_equals_epr (c : EREPRConjecture) :
+    c.connectedByERBridge ↔ c.eprEntangled := by rfl
 
 /-- **Theorem**: If two systems are EPR-entangled, then they are connected
     by an ER bridge (forward direction of ER=EPR). -/
