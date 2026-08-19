@@ -580,7 +580,10 @@ axiom CNFEncoding_completeness :
   --    - D（不变）：非带头单元不被改写，保持原值。
   --    - E（唯一）：每个配置有唯一状态、位置、符号。
 
-/-- 编码正确性：CNF 可满足 ⟺ TM 接受。 -/
+/-- 编码正确性：CNF 可满足 ⟺ TM 接受。
+
+    证明：由 `CNFEncoding_soundness`（→）和 `CNFEncoding_completeness`（←）
+    通过 `Iff.intro` 组合得到。 -/
 theorem CNFEncodingCorrect :
   CNF.Satisfiable (TMConfigToCNF M params input) ↔ accepts_in M params.T input :=
   Iff.intro CNFEncoding_soundness CNFEncoding_completeness

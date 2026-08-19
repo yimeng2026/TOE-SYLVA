@@ -1,0 +1,543 @@
+{
+  "metadata": {
+    "title": "TOE-SYLVA 三深系列定理级血缘映射 (Theorem-Level Lineage)",
+    "version": "1.0",
+    "generated": "2026-08-19",
+    "generated_by": "并行搜索员B",
+    "source_mapping": "framework/papers_lean_mapping.json v1.0",
+    "description": "对三个优先系列（qec_ftqc / p_adic_hodge_theory / millennium_papers）建立定理级三元组映射：论文文件 → Lean 模块路径 → 核心 theorem/def 名称。每系列 15 条以上，共 51 条。",
+    "series_count": 3,
+    "total_theorem_entries": 51,
+    "convention": "theorem_level 条目中 kind 字段: theorem=已证定理, def=定义, axiom=公理声明, lemma=引理"
+  },
+  "series": {
+    "qec_ftqc": {
+      "series_name": "量子纠错与容错量子计算 (QEC & FTQC)",
+      "paper_dir": "papers/qec_ftqc",
+      "lean_sources": [
+        {
+          "lean_file": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "lean_module": "Sylva.QECFTQC",
+          "description": "QEC-FTQC 系列论文核心 Lean 形式化（509 行，含稳定子码、表面码、阈值定理、魔术态蒸馏）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+          "lean_module": "TopologicalQuantumComputing",
+          "description": "主仓库拓扑量子计算模块（Chern 数 ↔ 码距、辫群、Berry 相位、Kitaev 十六重道）"
+        }
+      ],
+      "theorem_level": [
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "CSSCode_orthogonality_implies_commutation",
+          "kind": "theorem",
+          "category": "stabilizer_formalism",
+          "notes": "CSS 码辛正交性 ⇒ Pauli 算符交换性，稳定子码框架核心约束"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "quantum_singleton_bound",
+          "kind": "theorem",
+          "category": "quantum_code_bounds",
+          "notes": "量子 Singleton 界: [[n,k,d]] 满足 n-k ≥ 2(d-1)"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "threshold_theorem",
+          "kind": "theorem",
+          "category": "threshold_theorem",
+          "notes": "量子纠错阈值定理（声明形式）：物理错误率低于阈值时逻辑错误率可任意抑制"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "surface_code_qubit_count_formula",
+          "kind": "theorem",
+          "category": "surface_code",
+          "notes": "表面码物理量子比特数公式: n = 2d²-2d+1 (d≥1)"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "surface_code_qubit_count_quadratic",
+          "kind": "theorem",
+          "category": "surface_code",
+          "notes": "表面码量子比特数二次增长界: n ≥ d² (d≥2)"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "logical_error_rate_below_threshold",
+          "kind": "theorem",
+          "category": "threshold_scaling",
+          "notes": "阈值以下逻辑错误率指数抑制: p_L ~ (p/p_th)^(d/2)"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "logical_error_rate_monotone_decreasing",
+          "kind": "theorem",
+          "category": "threshold_scaling",
+          "notes": "逻辑错误率随码距单调递减（阈值以下）"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "maxCorrectable_odd_distance",
+          "kind": "theorem",
+          "category": "surface_code",
+          "notes": "奇数码距最大可纠错数: t = (d-1)/2"
+        },
+        {
+          "paper": "papers/qec_ftqc/03_论文三/论文3_surface_code_threshold.md",
+          "paper_title": "Numerical Simulation of Surface Code Error Correction Threshold",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "surface_code_asymptotic_scaling",
+          "kind": "theorem",
+          "category": "surface_code",
+          "notes": "表面码渐近 scaling: 资源开销 ~ d²"
+        },
+        {
+          "paper": "papers/qec_ftqc/07_论文七/论文7_MagicStateDistillation.md",
+          "paper_title": "Magic State Distillation and Fault-Tolerant T-Gate Implementation",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "RM_threshold_value",
+          "kind": "theorem",
+          "category": "magic_state_distillation",
+          "notes": "Reed-Muller [15,1,3] 码蒸馏阈值: 1/√35"
+        },
+        {
+          "paper": "papers/qec_ftqc/07_论文七/论文7_MagicStateDistillation.md",
+          "paper_title": "Magic State Distillation and Fault-Tolerant T-Gate Implementation",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "BH_threshold_value",
+          "kind": "theorem",
+          "category": "magic_state_distillation",
+          "notes": "Bravyi-Haah [15,1,3] 码蒸馏阈值: 1/√8"
+        },
+        {
+          "paper": "papers/qec_ftqc/07_论文七/论文7_MagicStateDistillation.md",
+          "paper_title": "Magic State Distillation and Fault-Tolerant T-Gate Implementation",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "BH_threshold_higher_than_RM",
+          "kind": "theorem",
+          "category": "magic_state_distillation",
+          "notes": "Bravyi-Haah 阈值高于 Reed-Muller 阈值"
+        },
+        {
+          "paper": "papers/qec_ftqc/07_论文七/论文7_MagicStateDistillation.md",
+          "paper_title": "Magic State Distillation and Fault-Tolerant T-Gate Implementation",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "BH_yield_higher_than_RM",
+          "kind": "theorem",
+          "category": "magic_state_distillation",
+          "notes": "Bravyi-Haah 产出率 (3/14) 高于 Reed-Muller (1/15)"
+        },
+        {
+          "paper": "papers/qec_ftqc/09_论文九/论文9_Cascaded_Codes_Code_Switching.md",
+          "paper_title": "Cascaded Codes and Code Switching",
+          "lean_module": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+          "theorem": "cascade_recurrence",
+          "kind": "theorem",
+          "category": "cascaded_codes",
+          "notes": "级联码递推公式: 输入错误率经 r 级蒸馏后的递推关系"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+          "theorem": "chern_number_equals_logical_qubit_count",
+          "kind": "theorem",
+          "category": "topological_codes",
+          "notes": "Chern 数等于逻辑量子比特数（拓扑纠错核心对应）"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+          "theorem": "jones_representation_is_universal",
+          "kind": "theorem",
+          "category": "topological_quantum_computing",
+          "notes": "Jones 表示的普适性（n≥5 时辫群表示普适）"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+          "theorem": "kitaev_sixteen_fold_way",
+          "kind": "theorem",
+          "category": "topological_phases",
+          "notes": "Kitaev 十六重道：2D 拓扑相的 16 类分类"
+        },
+        {
+          "paper": "papers/qec_ftqc/00_综述/论文1_Review_of_QEC_FTQC.md",
+          "paper_title": "Review of Quantum Error Correction and Fault-Tolerant Quantum Computing",
+          "lean_module": "sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+          "theorem": "berry_phase_at_conical_intersection_is_pi",
+          "kind": "theorem",
+          "category": "geometric_phase",
+          "notes": "锥形交叉处 Berry 相位为 π（几何相位门基础）"
+        }
+      ]
+    },
+    "p_adic_hodge_theory": {
+      "series_name": "p-adic Hodge 理论",
+      "paper_dir": "papers/p_adic_hodge_theory",
+      "lean_sources": [
+        {
+          "lean_file": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "lean_module": "Sylva.PadicHodgeTheory",
+          "description": "p-adic Hodge 理论论文级形式化（192 行：Fontaine 环 B_dR、Hodge-Tate/de Rham/crystalline 分类、比较定理）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "lean_module": "SYLVA_pAdicAnalysis",
+          "description": "主仓库 p-adic 分析模块（27 个声明：p-adic 域、Fontaine 环理论、perfectoid spaces、prismatic cohomology）"
+        }
+      ],
+      "theorem_level": [
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "theorem": "t_is_uniformizer",
+          "kind": "theorem",
+          "category": "fontaine_rings",
+          "notes": "B_dR 中 t 元素是 uniformizer: v_K(t)=1（Fontaine 环理论基石）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "theorem": "IsHodgeTate",
+          "kind": "def",
+          "category": "representation_classification",
+          "notes": "Hodge-Tate 表示定义（p-adic Galois 表示分类第一层）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "theorem": "IsDeRham",
+          "kind": "def",
+          "category": "representation_classification",
+          "notes": "de Rham 表示定义（p-adic Galois 表示分类第二层）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "theorem": "crystalline_implies_deRham",
+          "kind": "theorem",
+          "category": "representation_hierarchy",
+          "notes": "晶体表示 ⇒ de Rham 表示（表示分类包含链: crystalline ⊂ semistable ⊂ de Rham ⊂ Hodge-Tate）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+          "theorem": "padic_comparison_theorem",
+          "kind": "theorem",
+          "category": "comparison_theorem",
+          "notes": "p-adic 比较定理（Faltings 1988 / Tsuji 1999）：étale 上同调 ↔ de Rham 上同调"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "p_adic_construction",
+          "kind": "theorem",
+          "category": "padic_field",
+          "notes": "p-adic 数构造（ℚ_p 作为 ℤ_p 的分式域）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "ultrametric",
+          "kind": "theorem",
+          "category": "padic_field",
+          "notes": "超度量不等式: v_p(x+y) ≥ min(v_p(x), v_p(y))"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "p_adic_expansion",
+          "kind": "theorem",
+          "category": "padic_field",
+          "notes": "p-adic 展开: x = Σ a_n p^n (a_n ∈ {0,...,p-1})"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "de_rham_representations",
+          "kind": "theorem",
+          "category": "representation_classification",
+          "notes": "de Rham 表示（Fontaine 分类）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "crystalline_representations",
+          "kind": "theorem",
+          "category": "representation_classification",
+          "notes": "晶体表示（Fontaine 分类最强层）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "semistable_representations",
+          "kind": "theorem",
+          "category": "representation_classification",
+          "notes": "半稳定表示（Fontaine 分类中间层）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "fontaine_theory",
+          "kind": "theorem",
+          "category": "fontaine_rings",
+          "notes": "Fontaine 环理论总述（B_dR, B_cris, B_st）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "perfectoid_fields",
+          "kind": "theorem",
+          "category": "perfectoid",
+          "notes": "Perfectoid 域（Scholze 2012 革命性概念）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "perfectoid_spaces",
+          "kind": "theorem",
+          "category": "perfectoid",
+          "notes": "Perfectoid 空间（tilting 等价的基础）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "prismatic_cohomology",
+          "kind": "theorem",
+          "category": "prismatic",
+          "notes": "Prismatic 上同调（Bhatt-Scholze 2019，统一各种上同调理论）"
+        },
+        {
+          "paper": "papers/p_adic_hodge_theory/p_adic_Hodge理论_综述.md",
+          "paper_title": "p-adic Hodge 理论：数论与几何的深层桥梁",
+          "lean_module": "sylva_formalization/SylvaFormalization/SYLVA_pAdicAnalysis.lean",
+          "theorem": "eigencurve",
+          "kind": "theorem",
+          "category": "padic_modular_forms",
+          "notes": "Eigencurve（Coleman-Mazur，p-adic 模形式谱理论）"
+        }
+      ]
+    },
+    "millennium_papers": {
+      "series_name": "千禧年大奖难题 (Millennium Prize Problems)",
+      "paper_dir": "papers/millennium_papers",
+      "lean_sources": [
+        {
+          "lean_file": "papers/millennium_papers/millennium_papers_Formalization.lean",
+          "lean_module": "Sylva.MillenniumPapers",
+          "description": "千禧年难题论文级形式化（172 行：P vs NP、黎曼假设、Hodge 猜想、Navier-Stokes）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "lean_module": "RiemannHypothesis",
+          "description": "主仓库黎曼假设模块（510 行：zeta 函数零点、临界线、函数方程、对称性）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/MillenniumProblems/BSD.lean",
+          "lean_module": "MillenniumProblems.BSD",
+          "description": "BSD 猜想模块（18K 行：椭圆曲线、L-函数、Mordell-Weil 群、Tamagawa 数）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/MillenniumProblems/NavierStokes.lean",
+          "lean_module": "MillenniumProblems.NavierStokes",
+          "description": "Navier-Stokes 模块（23K 行：弱解/强解、爆破判据、全局正则性）"
+        },
+        {
+          "lean_file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/MillenniumProblems.lean",
+          "lean_module": "TOE_SYLVA_Project.TOESylva.Solutions.MillenniumProblems",
+          "description": "TOE-SYLVA 解决方案索引（P/NP 类占位定义）"
+        }
+      ],
+      "theorem_level": [
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "zeta_trivial_zero_neg_even",
+          "kind": "theorem",
+          "category": "riemann_zeta",
+          "notes": "ζ 的平凡零点为负偶数: ζ(-2n)=0 (n≥1)"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "trivial_zeros_infinite",
+          "kind": "theorem",
+          "category": "riemann_zeta",
+          "notes": "ζ 平凡零点无穷多个（负偶数轴）"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "completed_zeta_functional_equation",
+          "kind": "theorem",
+          "category": "functional_equation",
+          "notes": "完成 ζ 函数的函数方程: ξ(s)=ξ(1-s)"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "zeta_no_zero_Re_gt_one",
+          "kind": "theorem",
+          "category": "zero_free_region",
+          "notes": "ζ 在 Re(s)>1 区域无零点"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "zero_symmetry_one_minus",
+          "kind": "theorem",
+          "category": "zero_symmetry",
+          "notes": "非平凡零点对称性: ζ(s)=0 ⟹ ζ(1-s)=0"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "critical_line_in_critical_strip",
+          "kind": "theorem",
+          "category": "critical_strip",
+          "notes": "临界线 Re(s)=1/2 包含在临界带 0<Re(s)<1 内"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+          "theorem": "RH_implies_zero_real_part",
+          "kind": "theorem",
+          "category": "riemann_hypothesis",
+          "notes": "RH 声明: 非平凡零点 ⟹ Re(s)=1/2"
+        },
+        {
+          "paper": "papers/millennium_papers/黎曼假设_学术论文_最终版.md",
+          "paper_title": "千禧年难题：黎曼假设 (Riemann Hypothesis)",
+          "lean_module": "papers/millennium_papers/millennium_papers_Formalization.lean",
+          "theorem": "trivial_zeros",
+          "kind": "theorem",
+          "category": "riemann_zeta",
+          "notes": "论文级形式化的平凡零点定理（ζ(-2n)=0）"
+        },
+        {
+          "paper": "papers/millennium_papers/BSD_猜想_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Birch-Swinnerton-Dyer 猜想",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/BSD.lean",
+          "theorem": "discriminant_eq",
+          "kind": "lemma",
+          "category": "elliptic_curve",
+          "notes": "椭圆曲线判别式等式（Weierstrass 形式）"
+        },
+        {
+          "paper": "papers/millennium_papers/BSD_猜想_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Birch-Swinnerton-Dyer 猜想",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/BSD.lean",
+          "theorem": "sylva_bsd_formula",
+          "kind": "def",
+          "category": "bsd_conjecture",
+          "notes": "BSD 公式完整陈述: rank = ord_{s=1} L(E,s)（猜想核心）"
+        },
+        {
+          "paper": "papers/millennium_papers/BSD_猜想_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Birch-Swinnerton-Dyer 猜想",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/BSD.lean",
+          "theorem": "BSD_conjecture_complete",
+          "kind": "def",
+          "category": "bsd_conjecture",
+          "notes": "BSD 猜想完整形式化定义（含 Sha、Tamagawa 数、实/复周期）"
+        },
+        {
+          "paper": "papers/millennium_papers/BSD_猜想_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Birch-Swinnerton-Dyer 猜想",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/BSD.lean",
+          "theorem": "rank_EllipticCurve",
+          "kind": "def",
+          "category": "elliptic_curve",
+          "notes": "椭圆曲线有理点秩（Mordell-Weil 群的秩）"
+        },
+        {
+          "paper": "papers/millennium_papers/纳维-斯托克斯_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Navier-Stokes 存在性与光滑性",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/NavierStokes.lean",
+          "theorem": "kinetic_energy_bounded",
+          "kind": "theorem",
+          "category": "navier_stokes",
+          "notes": "动能有界性: ∫|u|² ≤ C (Leray-Hopf 弱解能量不等式)"
+        },
+        {
+          "paper": "papers/millennium_papers/纳维-斯托克斯_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Navier-Stokes 存在性与光滑性",
+          "lean_module": "sylva_formalization/SylvaFormalization/MillenniumProblems/NavierStokes.lean",
+          "theorem": "navier_stokes_summary",
+          "kind": "theorem",
+          "category": "navier_stokes",
+          "notes": "Navier-Stokes 问题总结定理（综合弱解存在、正则性开放）"
+        },
+        {
+          "paper": "papers/millennium_papers/P_vs_NP_学术论文_最终版.md",
+          "paper_title": "千禧年难题：P vs NP",
+          "lean_module": "papers/millennium_papers/millennium_papers_Formalization.lean",
+          "theorem": "P_vs_NP_open",
+          "kind": "theorem",
+          "category": "complexity_theory",
+          "notes": "P vs NP 开放性: ¬P=NP ∨ P=NP（排中律，问题未解）"
+        },
+        {
+          "paper": "papers/millennium_papers/P_vs_NP_学术论文_最终版.md",
+          "paper_title": "千禧年难题：P vs NP",
+          "lean_module": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/MillenniumProblems.lean",
+          "theorem": "PClass",
+          "kind": "def",
+          "category": "complexity_theory",
+          "notes": "P 类定义（多项式时间可判定语言类）"
+        },
+        {
+          "paper": "papers/millennium_papers/霍奇猜想_学术论文_最终版.md",
+          "paper_title": "千禧年难题：Hodge 猜想",
+          "lean_module": "papers/millennium_papers/millennium_papers_Formalization.lean",
+          "theorem": "hodge_conjecture",
+          "kind": "def",
+          "category": "hodge_conjecture",
+          "notes": "Hodge 猜想陈述: 每个 Hodge 类都是代数闭链类的有理组合"
+        }
+      ]
+    }
+  }
+}

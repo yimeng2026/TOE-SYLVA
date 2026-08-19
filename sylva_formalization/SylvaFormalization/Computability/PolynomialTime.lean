@@ -65,7 +65,10 @@ axiom mono
   -- 则 k₂ 步内也停机，因为 stepN 在停机后保持不动）。
   -- 结合 `IsPolynomial` 的单调性即得。
 
-/-- 常数时间停机是多项式时间的特例。 -/
+/-- 常数时间停机是多项式时间的特例。
+
+    证明：取 `p = fun _ => c`（常数函数），由 `IsPolynomial.of_constant c`
+    得 `IsPolynomial p`，再结合 `h` 即得 `TM1PolyTime M`。 -/
 theorem of_constant_time
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (c : ℕ)

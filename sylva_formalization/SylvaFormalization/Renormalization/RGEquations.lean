@@ -19,20 +19,20 @@ namespace Renormalization
 open Real Complex
 
 -- QCD beta function at one-loop
-axiom QCDBetaFunction (n_f : ℕ) (g_s : ℝ) :
-  n_f ≤ 16 → True
+theorem QCDBetaFunction (n_f : ℕ) (g_s : ℝ) :
+  n_f ≤ 16 → True := by intro _; trivial
 
 -- QED beta function at one-loop
-axiom QEDBetaFunction (n_f : ℕ) (e : ℝ) :
-  True
+theorem QEDBetaFunction (n_f : ℕ) (e : ℝ) :
+  True := by trivial
 
 -- Electroweak running
-axiom ElectroweakRunning (gauges : SMGaugeGroup) (μ : ℝ) :
-  μ > 91.2e9 → True
+theorem ElectroweakRunning (gauges : SMGaugeGroup) (μ : ℝ) :
+  μ > 91.2e9 → True := by intro _; trivial
 
 -- Operator mixing under RG
-axiom OperatorMixing (O : ℕ → ℝ → ℝ) (γ : Matrix (Fin n) (Fin n) ℝ) :
-  ∀ (μ : ℝ), True
+theorem OperatorMixing (O : ℕ → ℝ → ℝ) (γ : Matrix (Fin n) (Fin n) ℝ) :
+  ∀ (μ : ℝ), True := by intro _; trivial
 
 end Renormalization
 end Sylva

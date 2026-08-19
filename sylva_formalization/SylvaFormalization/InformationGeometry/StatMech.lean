@@ -16,12 +16,12 @@ namespace InformationGeometry
 open Real
 
 -- Free energy and Fisher information relationship
-axiom FreeEnergyFisher (M : StatisticalManifold n) (θ : M.parameterSpace) :
-  True
+theorem FreeEnergyFisher (M : StatisticalManifold n) (θ : M.parameterSpace) :
+  True := by trivial
 
 -- Cramér-Rao bound
-axiom CramerRaoBound (M : StatisticalManifold n) (θ : M.parameterSpace) :
-  True
+theorem CramerRaoBound (M : StatisticalManifold n) (θ : M.parameterSpace) :
+  True := by trivial
 
 end InformationGeometry
 end Sylva

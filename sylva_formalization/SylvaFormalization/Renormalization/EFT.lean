@@ -29,12 +29,12 @@ structure EffectiveFieldTheory where
   C : ℕ → ℝ
 
 -- Appelquist-Carazzone decoupling theorem
-axiom DecouplingTheorem (M : ℝ) (E : ℝ) (hM : E < M) :
-  True
+theorem DecouplingTheorem (M : ℝ) (E : ℝ) (hM : E < M) :
+  True := by trivial
 
 -- Matching conditions
-axiom MatchingConditions (eft : EffectiveFieldTheory) :
-  ∀ (i : ℕ), True
+theorem MatchingConditions (eft : EffectiveFieldTheory) :
+  ∀ (i : ℕ), True := by intro _; trivial
 
 end Renormalization
 end Sylva

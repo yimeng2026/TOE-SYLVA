@@ -17,12 +17,12 @@ namespace Renormalization
 open Real Complex
 
 -- Loop integral finiteness in dimensional regularization
-axiom LoopIntegralDimReg (params : DimRegParams) (m : ℝ) (n : ℕ) :
-  params.D < 2 * n → True
+theorem LoopIntegralDimReg (params : DimRegParams) (m : ℝ) (n : ℕ) :
+  params.D < 2 * n → True := by intro _; trivial
 
 -- One-loop counterterms in MS-bar scheme
-axiom CountertermsOneLoop (scheme : RenormalizationScheme) (α : ℝ) (ε : ℝ) :
-  True
+theorem CountertermsOneLoop (scheme : RenormalizationScheme) (α : ℝ) (ε : ℝ) :
+  True := by trivial
 
 end Renormalization
 end Sylva

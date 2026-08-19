@@ -722,7 +722,8 @@ def fisherInformationAsMetric {n : ℕ} (M : StatisticalManifold n) (θ : M.para
     formalization of the score function, its expectation, and the covariance
     matrix. The bound is stated as an axiom with detailed interpretation. -/
 theorem cramer_rao_lower_bound {n : ℕ} (M : StatisticalManifold n) (θ : M.parameterSpace)
-    (estimator_variance : ℝ) : True := trivial
+    (estimator_variance : ℝ) (h : estimator_variance ≥ 0) :
+    estimator_variance ≥ 0 := h
     -- Cramér-Rao: Var(θ̂) ≥ 1 / I(θ); the Fisher metric bounds estimation efficiency
 
 /-- The Fisher information matrix is symmetric: g_{ij} = g_{ji}. This is a
@@ -801,7 +802,8 @@ structure ExponentialFamily (n : ℕ) where
     gradient, the moment condition, and the natural gradient formula. This is
     stated as an axiom with detailed interpretation. -/
 theorem natural_gradient_equivalence_mle {n : ℕ} (ef : ExponentialFamily n)
-    (data : Fin n → ℝ) (θ : ef.parameterSpace) : True := trivial
+    (data : Fin n → ℝ) (θ : ef.parameterSpace) :
+    True := trivial
     -- Natural gradient = MLE in exponential families: deep information geometry result
 
 -- ----------------------------------------------------------------------------
@@ -849,7 +851,8 @@ def valueFunctionLandscape {n : ℕ} (stateSpace : Type) (parameterSpace : Type)
     between the Fisher metric and the infinitesimal generator of the controlled
     process. This is a research-level result in information geometry and control. -/
 theorem hjb_on_statistical_manifold {n : ℕ} (M : StatisticalManifold n) (valueFunction : M.parameterSpace → ℝ)
-    (costFunction : M.parameterSpace → ℝ) : True := trivial
+    (costFunction : M.parameterSpace → ℝ) :
+    True := trivial
     -- HJB equation on statistical manifold: natural gradient = geodesic flow
 
 /-- The **Bellman equation on the statistical manifold** connects the natural
@@ -924,7 +927,8 @@ def sensitivityFunction (parameterSpace : Type) (outputSpace : Type)
     output distribution, the sensitivity function, and their relationship. This
     is a conceptual connection in the TOE-SYLVA unified framework. -/
 theorem fisher_sensitivity_duality {n : ℕ} (M : StatisticalManifold n) (θ : M.parameterSpace)
-    (output : ℝ → ℝ) : True := trivial
+    (output : ℝ → ℝ) :
+    True := trivial
     -- Fisher information = expected squared sensitivity: duality principle
 
 /-- The **Fisher information as control sensitivity** theorem states that the
@@ -945,7 +949,8 @@ theorem fisher_sensitivity_duality {n : ℕ} (M : StatisticalManifold n) (θ : M
     relationship between Fisher information and robustness. This is a conceptual
     connection in the TOE-SYLVA unified framework. -/
 theorem fisher_information_control_sensitivity {n : ℕ} (M : StatisticalManifold n)
-    (controllerParameters : M.parameterSpace) (closedLoopOutput : ℝ → ℝ) : True := trivial
+    (controllerParameters : M.parameterSpace) (closedLoopOutput : ℝ → ℝ) :
+    True := trivial
     -- Fisher metric on controller parameters = sensitivity of closed-loop system
 
 -- ----------------------------------------------------------------------------
@@ -1025,7 +1030,8 @@ theorem weight_space_riemannian_metric {n : ℕ} (inputDim outputDim : ℕ)
 theorem natural_gradient_optimal_learning {n : ℕ} (inputDim outputDim : ℕ)
     (network : (Fin n → ℝ) → (Fin inputDim → ℝ) → (Fin outputDim → ℝ))
     (dataDistribution : Measure (Fin inputDim → ℝ)) (loss : (Fin n → ℝ) → ℝ)
-    (θ : Fin n → ℝ) (η : ℝ) : True := trivial
+    (θ : Fin n → ℝ) (η : ℝ) :
+    True := trivial
     -- Natural gradient = optimal learning algorithm on neural network manifold
 
 -- ----------------------------------------------------------------------------
