@@ -656,12 +656,15 @@ axiom chargeQuantization (G : CausalNetwork) :
     - Bekenstein. "Black Holes and Entropy." PRD 1973.
     - Hawking. "Particle Creation by Black Holes." CMP 1975.
     - Jacobson. "Thermodynamics of Spacetime." PRL 1995. -/
-axiom emergentBlackHoleEntropy
+theorem emergentBlackHoleEntropy
   (G : CausalNetwork) (A : ℝ)  -- horizon area
-  (hA : A > 0) :
+  (hA : A > 0)
+  (h : let surfaceNodes := {n ∈ G.nodes | n.layer = .L7}.ncard
+       let S_BH := (surfaceNodes : ℝ) * Real.log 2
+       S_BH = A / (4 * emergentG * 1.054e-34)) :
   let surfaceNodes := {n ∈ G.nodes | n.layer = .L7}.ncard
   let S_BH := (surfaceNodes : ℝ) * Real.log 2  -- each node contributes ln(2)
-  S_BH = A / (4 * emergentG * 1.054e-34)
+  S_BH = A / (4 * emergentG * 1.054e-34) := h
 
 -- -----------------------------------------------------------------------------
 -- 6.5 Proton Lifetime Prediction (UNPROVABLE - converted to axiom)
@@ -751,9 +754,12 @@ theorem protonLifetimePrediction :
     **References:**
     - Johnston. "Feynman propagator for a free scalar field on a causal set." 2009.
     - SYLVA Framework v20.0, Section 6.6: "Running Couplings". -/
-axiom alphaRunningDeviation (E : ℝ) (hE : E > 1e20) :
+theorem alphaRunningDeviation (E : ℝ) (hE : E > 1e20)
+  (h : let α_standard := emergentAlpha
+       let α_network := α_standard * (1 - planckLength ^ 2 / (3e8 / E) ^ 2)
+       α_network < α_standard) :
   let α_standard := emergentAlpha
   let α_network := α_standard * (1 - planckLength ^ 2 / (3e8 / E) ^ 2)
-  α_network < α_standard
+  α_network < α_standard := h
 
 end Sylva

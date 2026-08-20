@@ -18,3 +18,19 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+
+# Lean / Lake build artifacts
+*.olean
+*.olean.trace
+*.trace
+*.trace.tmp
+.lake/
+build/
+lake-manifest.json
+
+# Cache
+.cache/
+
+# Generated artifacts (regenerate via script)
+framework/batch_module_manifest.json
+*.bak

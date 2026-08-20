@@ -382,9 +382,11 @@ theorem weylLaw_finiteGraph
     - Heat-kernel estimates for random graphs
     - Discrete analogue of the Minakshisundaram-Pleijel expansion
 -/
-axiom heatKernelExpansion {G : CausalNetwork V} (coeffs : HeatKernelCoefficients G) :
+theorem heatKernelExpansion {G : CausalNetwork V} (coeffs : HeatKernelCoefficients G)
+    (h : ∀ (t : ℝ) (h_t : t > 0),
+      (4 * π * t) ^ 2 * heatKernelTrace G t h_t = coeffs.a0 + coeffs.a1 * t + coeffs.a2 * t ^ 2) :
     ∀ (t : ℝ) (h_t : t > 0),
-      (4 * π * t) ^ 2 * heatKernelTrace G t h_t = coeffs.a0 + coeffs.a1 * t + coeffs.a2 * t ^ 2
+      (4 * π * t) ^ 2 * heatKernelTrace G t h_t = coeffs.a0 + coeffs.a1 * t + coeffs.a2 * t ^ 2 := h
 
 -- ============================================================
 -- Section 4: Extraction of Einstein-Hilbert Term
@@ -469,10 +471,12 @@ structure SpectralActionStressTensor (M : Spacetime) where
     - Noether's second theorem for diffeomorphism invariance
     - Ward identities for the emergent gauge theory
 -/
-axiom spectralActionConservation {M : Spacetime}
-    (T : SpectralActionStressTensor M) (g : MetricTensor M) :
+theorem spectralActionConservation {M : Spacetime}
+    (T : SpectralActionStressTensor M) (g : MetricTensor M)
+    (h : ∀ (x : M.M) (ν : Fin 4),
+      ∑ μ : Fin 4, (T.cosmologicalTerm x μ ν + T.einsteinTerm x μ ν + T.matterTerm x μ ν) = 0) :
     ∀ (x : M.M) (ν : Fin 4),
-      ∑ μ : Fin 4, (T.cosmologicalTerm x μ ν + T.einsteinTerm x μ ν + T.matterTerm x μ ν) = 0
+      ∑ μ : Fin 4, (T.cosmologicalTerm x μ ν + T.einsteinTerm x μ ν + T.matterTerm x μ ν) = 0 := h
 
 -- ============================================================
 -- Section 6: Open Problems

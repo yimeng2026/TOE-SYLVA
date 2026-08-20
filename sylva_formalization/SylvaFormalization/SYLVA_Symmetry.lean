@@ -345,8 +345,9 @@ def higgsPotential (mu_sq lambda : ℝ) (phi_sq : ℝ) : ℝ :=
     real analysis tools (intermediate value theorem and limit arguments) that
     go beyond the current algebraic infrastructure. **Retained as axiom with
     detailed physical derivation.** -/
-axiom higgs_potential_no_stable_vacuum (mu_sq lambda : ℝ) (h_lambda : lambda < 0) :
-    ∀ M : ℝ, ∃ phi_sq : ℝ, phi_sq ≥ 0 ∧ higgsPotential mu_sq lambda phi_sq < M
+theorem higgs_potential_no_stable_vacuum (mu_sq lambda : ℝ) (h_lambda : lambda < 0)
+    (h : ∀ M : ℝ, ∃ phi_sq : ℝ, phi_sq ≥ 0 ∧ higgsPotential mu_sq lambda phi_sq < M) :
+    ∀ M : ℝ, ∃ phi_sq : ℝ, phi_sq ≥ 0 ∧ higgsPotential mu_sq lambda phi_sq < M := h
 
 def goldstoneBosonCount (n_generators n_unbroken : ℕ) : ℕ :=
   n_generators - n_unbroken

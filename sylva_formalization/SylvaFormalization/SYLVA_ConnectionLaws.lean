@@ -1571,11 +1571,16 @@ theorem connection_law_transitivity (A B C : String) (φ : ConnectionLaw) (ψ : 
     laws. This is the mathematical justification for the "theory of everything": the universe is a single
     mathematical structure, and the divisions between disciplines are artificial. -/
 
-axiom universal_connection_hypothesis (A B : String) :
+theorem universal_connection_hypothesis (A B : String) :
     ∃ (chain : List ConnectionLaw),
     chain.length > 0 ∧
     chain.head?.isSome ∧ chain.head?.get!.domainA = A ∧
-    chain.getLast?.isSome ∧ chain.getLast?.get!.domainB = B
+    chain.getLast?.isSome ∧ chain.getLast?.get!.domainB = B := by
+  -- Construct a single-element chain with a ConnectionLaw from A to B.
+  refine ⟨[{  domainA := A, domainB := B, structureA := "", structureB := "",
+              isomorphismType := "", confidenceLevel := "E",
+              methodologyMigration := "", keyReferences := [] }], ?_⟩
+  simp [List.head?_concat, List.getLast?]
 
 /-- **Meta-Theorem 3: The Methodology Migration Theorem**.
     If a connection law φ : A → B exists, then any technique T developed in A can be migrated to B via φ.
@@ -1606,8 +1611,12 @@ theorem methodology_migration_theorem (A B : String) (T : String) (φ : Connecti
     highest level of abstraction in the TOE-SYLVA: it is not about specific domains but about the category of
     all domains. The category theory is the "meta-language" of the TOE-SYLVA. -/
 
-axiom universal_structure_equivalence (S1 S2 : String) :
-    ∃ (φ : ConnectionLaw), φ.structureA = S1 ∧ φ.structureB = S2
+theorem universal_structure_equivalence (S1 S2 : String) :
+    ∃ (φ : ConnectionLaw), φ.structureA = S1 ∧ φ.structureB = S2 := by
+  -- Construct a ConnectionLaw with the given structures.
+  exact ⟨{  domainA := "", domainB := "", structureA := S1, structureB := S2,
+            isomorphismType := "", confidenceLevel := "E",
+            methodologyMigration := "", keyReferences := [] }, rfl, rfl⟩
 
 /-- **Meta-Theorem 5: The Scaling of Connection Laws**.
     The number of connection laws grows with the number of domains, and the density of the connection graph

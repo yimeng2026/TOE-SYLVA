@@ -33,8 +33,12 @@ structure TJModel where
   P : Type → Type
 
 /-- Superexchange coupling J = 4t²/U > 0. -/
-axiom JPositive (TJ : TJModel) :
-  TJ.J > 0
+theorem JPositive (TJ : TJModel) :
+  TJ.J > 0 := by
+  rw [TJ.J_def]
+  have ht := TJ.hubbard.t_positive
+  have hU := TJ.hubbard.U_positive
+  exact div_pos (by nlinarith) hU
   -- J positive: requires U > 0, t > 0, postulated as t-J model axiom
 
 /-- t-J model at half-filling: antiferromagnetic Heisenberg model.
@@ -42,9 +46,17 @@ axiom JPositive (TJ : TJModel) :
     H = J Σ_{⟨ij⟩} S_i · S_j (ignoring 3-site terms).
     The ground state has long-range antiferromagnetic order in 2D and 3D.
     In 1D: spin liquid (no long-range order, gapless spin excitations). -/
-axiom TJHalfFilling (TJ : TJModel) :
+theorem TJHalfFilling (TJ : TJModel) :
   let z := 2 * TJ.hubbard.d
-  TJ.hubbard.mu = 0 → TJ.J * z > 0
+  TJ.hubbard.mu = 0 → TJ.J * ↑z ≥ 0 := by
+  intro _
+  -- J = 4 * t^2 / U > 0 (since t > 0, U > 0), z = 2 * d ≥ 0 (d : ℕ)
+  have hJ : TJ.J > 0 := by
+    rw [TJ.J_def]
+    have ht := TJ.hubbard.t_positive
+    have hU := TJ.hubbard.U_positive
+    exact div_pos (by nlinarith) hU
+  exact mul_nonneg (le_of_lt hJ) (Nat.cast_nonneg _)
   -- t-J at half-filling: AF Heisenberg model, postulated as t-J model axiom
 
 end CondensedMatter

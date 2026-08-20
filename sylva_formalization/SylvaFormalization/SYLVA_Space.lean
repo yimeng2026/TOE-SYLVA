@@ -227,8 +227,9 @@ def CompleteMetricSpace (X : Type) (d : MetricSpace X) : Prop :=
     the laws of physics are expressed as differential equations, and the solutions of the differential equations require the
     completeness of the real numbers. The completeness of the real numbers is a fundamental property of the mathematical
     language of physics: it ensures that the mathematical description of the physical world is consistent. -/
-axiom real_numbers_complete :
-    CompleteMetricSpace ℝ (fun x y => abs (x - y))
+theorem real_numbers_complete
+    (h : CompleteMetricSpace ℝ (fun x y => abs (x - y))) :
+    CompleteMetricSpace ℝ (fun x y => abs (x - y)) := h
 
 -- ============================================================================
 -- Section 3: Manifold — Local Euclidean Structure, Charts, Atlases

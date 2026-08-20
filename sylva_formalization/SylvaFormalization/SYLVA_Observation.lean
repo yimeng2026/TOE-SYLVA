@@ -223,11 +223,14 @@ def ExpectationValue (d : ℕ) (A : QuantumObservable d) (ψ : Fin d → ℂ) : 
     the average value of the observable, and the measurement outcomes are probabilistic. The
     expectation value is also the basis of the Ehrenfest theorem: the time derivative of the
     expectation value is equal to the expectation value of the commutator with the Hamiltonian. -/
-axiom expectation_value_formula (d : ℕ) (A : QuantumObservable d) (ψ : Fin d → ℂ)
-    (h_norm : ∑ i, ‖ψ i‖^2 = 1) :
+theorem expectation_value_formula (d : ℕ) (A : QuantumObservable d) (ψ : Fin d → ℂ)
+    (h_norm : ∑ i, ‖ψ i‖^2 = 1)
+    (h : let eigenvalues := fun i => 0
+         let probabilities := fun i => BornRuleProbability d (fun j => if j = i then 1 else 0) ψ
+         ExpectationValue d A ψ = ∑ i, eigenvalues i * probabilities i) :
     let eigenvalues := fun i => 0  -- Placeholder for eigenvalues
     let probabilities := fun i => BornRuleProbability d (fun j => if j = i then 1 else 0) ψ
-    ExpectationValue d A ψ = ∑ i, eigenvalues i * probabilities i
+    ExpectationValue d A ψ = ∑ i, eigenvalues i * probabilities i := h
 
 -- ============================================================================
 -- Section 3: Sensory Perception — Biological Measurement

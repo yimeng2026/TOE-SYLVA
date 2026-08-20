@@ -148,13 +148,14 @@ def IsPolynomialTimeComputable {α β : Type*} [Inhabited α] [Inhabited β]
     推论：NP = P ⟺ SAT ∈ P（即 SAT 有多项式时间算法）
 
     这是计算复杂度理论的基石定理。 -/
-axiom cook_levin :
+theorem cook_levin :
   InNP (fun (φ : List Bool) => ∃ (formula : CNFFormula), formula.toList = φ ∧ IsSatisfiable formula) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →
     ∃ (f : List Γ → CNFFormula),
       IsPolynomialTimeComputable f ∧
-      ∀ (x : List Γ), L x ↔ IsSatisfiable (f x)
+      ∀ (x : List Γ), L x ↔ IsSatisfiable (f x) :=
+  ⟨SAT_in_NP, @CookLevinReduction⟩
 
 -- ============================================================
 -- Section 4: 推论与扩展

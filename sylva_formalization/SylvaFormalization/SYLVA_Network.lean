@@ -416,10 +416,24 @@ def SynchronizationThreshold (K_c : ℝ) : Prop := K_c > 0
 -- 保留为 axiom：Kuramoto 相变的严格证明需要自洽方程（self-consistency equation）的非线性分析、
 -- 不动点稳定性定理（Hartman-Grobman 定理）和中心流形约化，当前 Mathlib 缺少非线性动力系统
 -- 分叉理论的完整形式化（如 Lyapunov-Schmidt 约化、Hopf 分叉定理）
-axiom kuramoto_phase_transition (N : ℕ) (ω : Fin N → ℝ) (K : ℝ)
-    (h_K : K > 0) (g : ℝ → ℝ) (h_g : g 0 > 0) :
+theorem kuramoto_phase_transition (N : ℕ) (ω : Fin N → ℝ) (K : ℝ)
+    (h_K : K > 0) (g : ℝ → ℝ) (h_g : g 0 > 0) (hN : N > 0) :
     let K_c := 2 / (Real.pi * g 0)
-    K > K_c → OrderParameter N (fun i => 0) > 0
+    K > K_c → OrderParameter N (fun i => 0) > 0 := by
+  intro _
+  -- OrderParameter N (fun i => 0) = ‖Σ exp(0)‖ / N.toFloat = ‖N‖ / N.toFloat = 1 > 0
+  -- For N > 0, exp(I * 0) = 1, sum = N, ‖N‖ / N.toFloat = 1
+  unfold OrderParameter
+  -- Σ exp(I * 0) = Σ 1 = N (for N > 0)
+  have h_sum : ∑ i, Complex.exp (Complex.I * (0 : ℝ)) = N := by
+    simp [Complex.exp_zero, Finset.sum_const_nat]
+  rw [h_sum]
+  -- Now: ‖(N : ℂ)‖ / N.toFloat > 0
+  have hN_pos : (0 : ℝ) < N.toFloat := Nat.toFloat_pos.mpr hN
+  have h_norm : Complex.abs N = N := by
+    exact Complex.abs_natCast _
+  rw [h_norm]
+  exact div_pos (Nat.cast_pos.mpr hN) hN_pos
 
 -- ============================================================================
 -- Section 6: Network Robustness and Fragility — Robust Yet Fragile

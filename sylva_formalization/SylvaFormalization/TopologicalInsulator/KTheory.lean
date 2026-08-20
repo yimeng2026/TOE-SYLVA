@@ -125,13 +125,19 @@ def KTheoryInvariant (d : ℕ) (s : SymmetryClass) : Type :=
     K_R^{-n} ≅ K_R^{-n-8} (real Bott periodicity)
 
     This gives the periodic table its structure. -/
-axiom BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A
-  -- Complex Bott periodicity: period 2, requires K-theory homotopy equivalence
+theorem BottPeriodicityComplex : ∀ (d : ℕ), KTheoryInvariant d SymmetryClass.A = KTheoryInvariant (d + 2) SymmetryClass.A := by
+  intro d
+  have h : (d + 2) % 2 = d % 2 := by omega
+  simp only [KTheoryInvariant]
+  rw [h]
 
-axiom BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
+theorem BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
   s = SymmetryClass.AI ∨ s = SymmetryClass.AII ∨ s = SymmetryClass.D ∨ s = SymmetryClass.DIII →
-  KTheoryInvariant d s = KTheoryInvariant (d + 8) s
-  -- Real Bott periodicity: period 8, requires K-theory homotopy equivalence
+  KTheoryInvariant d s = KTheoryInvariant (d + 8) s := by
+  intro d s h
+  have h8 : (d + 8) % 8 = d % 8 := by omega
+  rcases h with rfl | rfl | rfl | rfl
+  all_goals simp only [KTheoryInvariant, h8]
 
 /-- Example: 2D quantum spin Hall (class AII, d=2) → Z₂ invariant.
 

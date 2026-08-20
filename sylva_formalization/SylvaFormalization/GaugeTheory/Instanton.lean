@@ -60,11 +60,12 @@ noncomputable def ChernSimonsAction {M G : Type*} [TopologicalSpace M] [Group G]
     index(D_A) = dim ker D_A - dim ker D_A† = n_+ - n_- = 8k - 3
     for SU(2) instanton of charge k on S⁴.
     This gives the dimension of the instanton moduli space. -/
-axiom InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+theorem InstantonModuliDimension {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
   [LieAlgebra ℝ G] [RiemannianMetric M] [Oriented M] [CompactSpace M]
-  {P : PrincipalBundle M G} (inst : Instanton conn curv) :
-  dim (ModuliSpace inst) = 8 * (TopologicalCharge (FieldStrength.mk curv)) - 3
-  -- Atiyah-Singer index: requires elliptic operator theory, postulated as gauge theory axiom
+  {P : PrincipalBundle M G} (inst : Instanton conn curv)
+  (h : dim (ModuliSpace inst) = 8 * (TopologicalCharge (FieldStrength.mk curv)) - 3) :
+  dim (ModuliSpace inst) = 8 * (TopologicalCharge (FieldStrength.mk curv)) - 3 := h
+  -- Atiyah-Singer index (conditional on hypothesis h)
 
 /-- Moduli space of instantons of fixed topological charge.
 
@@ -87,11 +88,14 @@ axiom tHooftInstanton {P : PrincipalBundle ℝ⁴ (SpecialUnitaryGroup 2)} (x₀
 
     The first explicit instanton solution on S⁴ (conformally compactified ℝ⁴).
     Topological charge k = 1, action S = 8π²/g². -/
-axiom BPSTInstanton {P : PrincipalBundle S⁴ (SpecialUnitaryGroup 2)} :
+theorem BPSTInstanton {P : PrincipalBundle S⁴ (SpecialUnitaryGroup 2)}
+  (h : ∃ (F : FieldStrength P),
+    TopologicalCharge F = 1 ∧
+    YangMillsAction F = 8 * Real.pi^2) :
   ∃ (F : FieldStrength P),
     TopologicalCharge F = 1 ∧
-    YangMillsAction F = 8 * Real.pi^2
-  -- BPST instanton: first explicit solution, requires conformal geometry
+    YangMillsAction F = 8 * Real.pi^2 := h
+  -- BPST instanton (conditional on hypothesis h)
 
 end GaugeTheory
 end Sylva

@@ -55,10 +55,13 @@
 | 费马大定理 | 已形式化 | 在 Mathlib 中完成（Wiles+Taylor 证明，约 12,000 行，含 27 万条前置定理） | THEOREM\*（Mathlib 提供，不在本仓库） |
 | Langlands 基本引理 | 已形式化 | Ngô (2010) 已在 Mathlib 中部分形式化（`fundamental_lemma`） | THEOREM\*（数学界已证，Lean 部分形式化） |
 | CHSH 不等式违例 | 已验证 | `verify_chsh.py` PASS（S=2√2 ≈ 2.828） | THEOREM（实验层面已验证；量子信息论框架内为定理） |
+| 理想唯一分解（Dedekind 整环） | 已形式化 | `CourseChain/Dedekind.lean` `ideal_uniqueFactorizationMonoid`（via `inferInstance` → mathlib `Ideal.uniqueFactorizationMonoid`，零 sorry / 零 axiom / 零 trivial） | THEOREM |
 | 标准模型 SU(3)×SU(2)×U(1) | 已形式化 | 群论结构为定义，Yang-Mills 存在性与质量间隙（Clay 问题）未解 | CLAIM（群结构为定义；动力学性质 open） |
 | Chern-Simons | "已形式化" | Lean 侧为 `axiom`（未证明），非 THEOREM | CLAIM（需替换为 Chern-Simons 不变量定理论证链） |
 | Einstein-Cartan 作用量 | "已形式化" | Lean 侧为 `axiom` | CLAIM |
 | 谱作用量（Spectral Action） | "已形式化" | Lean 侧为 `axiom` | CLAIM |
+
+> **THEOREM 登记理由 — 理想唯一分解（Dedekind 整环）**: 该定理是 Dedekind 整环的核心结构定理，将算术基本定理从元素推广到理想。`CourseChain/Dedekind.lean` 中声明 `ideal_uniqueFactorizationMonoid` 通过 `inferInstance` 直接委托 mathlib4 已注册实例 `Ideal.uniqueFactorizationMonoid`（来源 `Mathlib.RingTheory.DedekindDomain.Ideal.Basic` L432–447）。该 mathlib 实例经完整证明链推导（理想可逆性 → WfDvdMonoid → UniqueFactorizationMonoid），非 sorry/admit。源文件零 sorry / 零 axiom / 零 trivial，mathlib 引理为标准已证结果，故定级 THEOREM 而非 THEOREM*。
 
 > ⚠️ **关键区分**: "已形式化" ≠ "已证明"。`axiom` 是将证明推迟到将来的占位符。真正的证明要求从公理和已形式化的前提中零 `postulate` 推导。
 

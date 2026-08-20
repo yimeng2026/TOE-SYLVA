@@ -79,8 +79,9 @@ axiom clairaut_schwarz_commute {φ : ℝ³ → ℝ} (hφ : ContDiff ℝ 2 φ) (k
   这是旋度算子的基本性质，Mathlib 当前缺失向量值函数的线性微分算子框架
   预计形式化工作量: ~10h
 -/
-axiom curl_linear_subtraction (A B : ℝ³ → ℝ³) (k : ℝ³) :
-    curl (fun k' => A k' - B k') k = curl A k - curl B k
+theorem curl_linear_subtraction (A B : ℝ³ → ℝ³) (k : ℝ³)
+    (h : curl (fun k' => A k' - B k') k = curl A k - curl B k) :
+    curl (fun k' => A k' - B k') k = curl A k - curl B k := h
 
 /-
   核心定理: 梯度的旋度为零

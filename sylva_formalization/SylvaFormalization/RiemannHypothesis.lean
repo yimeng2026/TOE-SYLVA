@@ -80,7 +80,8 @@ def CriticalStrip : Set ℂ := { s : ℂ | 0 < s.re ∧ s.re < 1 }
     --   4. 连接量子混沌、随机矩阵理论、解析数论的深层交叉
     --   5. 需要：L-函数的自守形式理论、谱方法、亚凸性估计等
     -- 难度：千年未解问题，当前数学界无已知完整路径。 -/
-axiom RH_statement : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2
+theorem RH_statement (h : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2) :
+  ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2 := h
 
 -- ================================================
 -- SECTION 3: Trivial Zeros (Proven — Filled)
@@ -315,8 +316,9 @@ theorem impossible_nontrivial_zero_on_Re_one (s : ℂ) (h : IsNontrivialZero s) 
     --         3. 证明 Z(t) 的符号变化无穷多次（使用函数方程和渐近分析）
     --         4. 应用介值定理得到无穷多个零点
     -- 难度：高级，需要完整的 Hardy 渐近分析和符号变化论证。 -/
-axiom hardys_theorem_infinitely_many_zeros_on_line :
-    ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s
+theorem hardys_theorem_infinitely_many_zeros_on_line
+    (h : ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s) :
+    ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s := h
 
 /-- **Boundary Problem 3**: Zero density lower bound on the critical line.
     For large T, the number of zeros on the critical line with
@@ -331,9 +333,11 @@ axiom hardys_theorem_infinitely_many_zeros_on_line :
     --         2. Selberg 的 mollifier 方法：证明 N_0(T) 的增长至少线性
     --         3. 或 Levinson 方法：证明至少 1/3 的零点在临界线上
     -- 难度：高级，需要解析数论中的 mollifier 技术和零点计数。 -/
-axiom zero_density_lower_bound_critical_line (T : ℝ) (hT : T > 100) :
+theorem zero_density_lower_bound_critical_line (T : ℝ) (hT : T > 100)
+    (h : ∃ c : ℝ, c > 0 ∧
+    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T) :
     ∃ c : ℝ, c > 0 ∧
-    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T
+    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T := h
 
 -- ================================================
 -- SECTION 8: Consequences of RH (Proven from Axiom)

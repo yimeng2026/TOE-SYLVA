@@ -157,12 +157,17 @@ theorem BlochTheorem_FreeParticleLimit
     -- 证明策略：展开 ψ_nk(r+R) = e^{ik·(r+R)} u_nk(r+R) = e^{ik·r} e^{ik·R} u_nk(r) = e^{ik·R} ψ_nk(r)。
     -- 当前 Mathlib 已有复数指数运算，缺少的是将周期性条件 `u(r+R) = u(r)` 代入展开，预计工作量 2-5 小时。
     -/
-axiom BlochTheorem_TranslationBehavior
+theorem BlochTheorem_TranslationBehavior
     (L : Lattice2D) (u : PeriodicBlochFunction L) (k : CrystalMomentum2D)
     (r : Position2D) (site : LatticeSite L) :
     BlochWavefunction L u k (r.1 + (LatticePosition L site).1, r.2 + (LatticePosition L site).2)
       = exp (I * (k.1 * (LatticePosition L site).1 + k.2 * (LatticePosition L site).2))
-        * BlochWavefunction L u k r
+        * BlochWavefunction L u k r := by
+  simp only [BlochWavefunction, u.periodicity]
+  rw [mul_assoc, ← Complex.exp_add]
+  congr 1
+  · ring
+  · rfl
 
 -- ============================================
 -- Section 3: 能带结构（Band Structure）

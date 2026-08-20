@@ -275,10 +275,21 @@ structure HiggsDoublet where
 
     **Difficulty to theorem:** Easy (~10–20h, completing the square with complex norms).
     -/
-axiom HiggsPotential (Φ : HiggsDoublet) :
+theorem HiggsPotential (Φ : HiggsDoublet) :
   ∀ (x : Fin 3 → ℝ), let V := -Φ.mu2 * ‖Φ.Φ x‖^2 + Φ.lambdaParam * ‖Φ.Φ x‖^4
-  V ≥ -Φ.mu2^2 / (4 * Φ.lambdaParam)
-  -- Higgs potential bounded below: requires λ > 0, postulated as SM axiom
+  V ≥ -Φ.mu2^2 / (4 * Φ.lambdaParam) := by
+  intro x
+  have hλ : 0 < Φ.lambdaParam := Φ.lambda_positive
+  have ht : 0 ≤ ‖Φ.Φ x‖^2 := sq_nonneg _
+  have key : Φ.lambdaParam * (‖Φ.Φ x‖^2 - Φ.mu2 / (2 * Φ.lambdaParam))^2 ≥ 0 := by
+    apply mul_nonneg
+    · linarith
+    · apply sq_nonneg
+  have expand : Φ.lambdaParam * (‖Φ.Φ x‖^2 - Φ.mu2 / (2 * Φ.lambdaParam))^2
+              = Φ.lambdaParam * ‖Φ.Φ x‖^4 - Φ.mu2 * ‖Φ.Φ x‖^2 + Φ.mu2^2 / (4 * Φ.lambdaParam) := by
+    field_simp
+    ring
+  linarith: requires λ > 0, postulated as SM axiom
 
 /-- **Higgs Mass Formula (Electroweak Symmetry Breaking).**
 

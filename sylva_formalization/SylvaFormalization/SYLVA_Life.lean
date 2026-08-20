@@ -144,9 +144,13 @@ def ErrorThreshold (f_max : ℝ) : ℝ := 1 / f_max
     frequencies of the strategies sum to 1 at all times. The replicator equation is a model of frequency-
     dependent selection: the fitness of a strategy depends on the frequencies of all strategies. -/
 
-axiom replicator_preserves_total_population (x f : Fin n → ℝ)
+theorem replicator_preserves_total_population (x f : Fin n → ℝ)
     (h_norm : ∑ i, x i = 1) :
-    ∑ i, ReplicatorEquation x f i = 0
+    ∑ i, ReplicatorEquation x f i = 0 := by
+  simp only [ReplicatorEquation, mul_sub]
+  rw [Finset.sum_sub_distrib, ← Finset.sum_mul]
+  rw [h_norm]
+  ring
 
 -- ============================================================================
 -- Section 2: Metabolism — Energy Flow, Dissipative Structures
@@ -376,9 +380,10 @@ def EvolutionaryStableStrategy (strategy : Fin n → ℝ) (payoff : Matrix (Fin 
     is a mathematical identity: it is a tautology that holds for any population and any trait. The Price equation
     is a powerful tool for understanding evolution: it provides a framework for analyzing the forces of evolution. -/
 
-axiom price_equation_exact (z w : Fin n → ℝ) :
+theorem price_equation_exact (z w : Fin n → ℝ) :
     PriceEquation z w = ∑ i, (w i - ∑ j, w j / n) * (z i - ∑ j, z j / n) / n / (∑ j, w j / n) +
-      ∑ i, w i * (z i - ∑ j, z j / n) / (∑ j, w j / n)
+      ∑ i, w i * (z i - ∑ j, z j / n) / (∑ j, w j / n) := by
+  simp only [PriceEquation]
 
 -- ============================================================================
 -- Section 5: Emergence of Life — Abiogenesis, RNA World, Dissipative Structures

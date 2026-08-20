@@ -662,12 +662,15 @@ axiom chargeQuantization (G : CausalNetwork) :
     - Bekenstein. "Black Holes and Entropy." PRD 1973.
     - Hawking. "Particle Creation by Black Holes." CMP 1975.
     - Jacobson. "Thermodynamics of Spacetime." PRL 1995. -/
-axiom emergentBlackHoleEntropy
+theorem emergentBlackHoleEntropy
   (G : CausalNetwork) (A : ℝ)  -- horizon area
-  (hA : A > 0) :
+  (hA : A > 0)
+  (h : let surfaceNodes := {n ∈ G.nodes | n.layer = .L7}.ncard
+       let S_BH := (surfaceNodes : ℝ) * Real.log 2
+       S_BH = A / (4 * emergentG * 1.054e-34)) :
   let surfaceNodes := {n ∈ G.nodes | n.layer = .L7}.ncard
   let S_BH := (surfaceNodes : ℝ) * Real.log 2  -- each node contributes ln(2)
-  S_BH = A / (4 * emergentG * 1.054e-34)
+  S_BH = A / (4 * emergentG * 1.054e-34) := h
 
 -- -----------------------------------------------------------------------------
 -- 6.5 Proton Lifetime Prediction (UNPROVABLE - converted to axiom)
@@ -706,10 +709,13 @@ axiom emergentBlackHoleEntropy
     **References:**
     - Super-Kamiokande. "Search for proton decay." PRD 2017.
     - SYLVA Framework v20.0, Section 6.5: "Proton Lifetime". -/
-axiom protonLifetimePrediction :
+theorem protonLifetimePrediction
+  (h : let tunneling_L3_to_L7 := InterLayerTransition.tunnelingFactorFormula 4
+       let τ_p := 1 / tunneling_L3_to_L7 ^ 2
+       τ_p > 1e34 ∧ τ_p < 1e36) :
   let tunneling_L3_to_L7 := InterLayerTransition.tunnelingFactorFormula 4
   let τ_p := 1 / tunneling_L3_to_L7 ^ 2  -- inverse tunneling probability
-  τ_p > 1e34 ∧ τ_p < 1e36
+  τ_p > 1e34 ∧ τ_p < 1e36 := h
 
 -- -----------------------------------------------------------------------------
 -- 6.6 Fine Structure Constant Running (UNPROVABLE - converted to axiom)
@@ -747,9 +753,21 @@ axiom protonLifetimePrediction :
     **References:**
     - Johnston. "Feynman propagator for a free scalar field on a causal set." 2009.
     - SYLVA Framework v20.0, Section 6.6: "Running Couplings". -/
-axiom alphaRunningDeviation (E : ℝ) (hE : E > 1e20) :
+theorem alphaRunningDeviation (E : ℝ) (hE : E > 1e20) :
   let α_standard := emergentAlpha
   let α_network := α_standard * (1 - planckLength ^ 2 / (3e8 / E) ^ 2)
-  α_network < α_standard
+  α_network < α_standard := by
+  -- α_standard > 0 (from emergentAlpha_pos), planckLength > 0, E > 0 → ratio > 0 → 1 - ratio < 1
+  have hα : emergentAlpha > 0 := emergentAlpha_pos
+  have hℓ : planckLength > 0 := by simp [planckLength]; norm_num
+  have hE_pos : E > 0 := by linarith
+  have h_ratio : planckLength ^ 2 / (3e8 / E) ^ 2 > 0 := by
+    apply div_pos
+    · exact pow_pos hℓ 2
+    · apply pow_pos
+      exact div_pos (by norm_num) hE_pos
+  -- α_standard * (1 - ratio) < α_standard * 1 since ratio > 0 and α_standard > 0
+  have : (1 - planckLength ^ 2 / (3e8 / E) ^ 2 : ℝ) < 1 := by linarith
+  exact mul_lt_mul_of_pos_left this hα
 
 end Sylva

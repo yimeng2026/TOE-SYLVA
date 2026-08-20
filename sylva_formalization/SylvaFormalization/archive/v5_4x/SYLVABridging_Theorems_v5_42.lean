@@ -179,13 +179,18 @@ open Real Matrix BigOperators
 /-- 辅助公理: |t|^p 在 t → 0 时趋于 ∞，当 p < 0
     这是标度分析中的基本极限性质。完整形式化需要Mathlib中
     关于负指数幂函数在零点行为的引理。 -/
-axiom tendsto_abs_rpow_nhds_zero_atTop {p : ℝ} (hp : p < 0) :
-    Tendsto (fun t : ℝ => |t| ^ p) (𝓝 0) atTop
+theorem tendsto_abs_rpow_nhds_zero_atTop {p : ℝ} (hp : p < 0) :
+    Tendsto (fun t : ℝ => |t| ^ p) (𝓝 0) atTop := by
+  have : p < 0 := hp
+  simp only [Real.rpow_def, abs_lt_iff] at this ⊢
+  · exact Real.tendsto_abs_rpow_nhds_zero hp
 
 /-- 辅助公理: 1/x 在 x → ∞ 时趋于 0
     这是极限理论的基本结果。 -/
-axiom tendsto_inv_atTop_nhds_zero_real :
-    Tendsto (fun x : ℝ => 1 / x) atTop (𝓝 0)
+theorem tendsto_inv_atTop_nhds_zero_real :
+    Tendsto (fun x : ℝ => 1 / x) atTop (𝓝 0) := by
+  simp only [one_div]
+  exact tendsto_inv_atTop_nhds_zero
 
 /-- **定理**: Fisher信息矩阵在临界点处的发散行为
 

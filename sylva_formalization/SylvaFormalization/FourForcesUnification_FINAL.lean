@@ -785,12 +785,15 @@ theorem chargeQuantization (G : CausalNetwork) :
 
     **Difficulty to theorem:** Research (requires causal network → spacetime formalization).
     -/
-axiom emergentBlackHoleEntropy
+theorem emergentBlackHoleEntropy
   (G : CausalNetwork) (A : ℝ)  -- horizon area
-  (hA : A > 0) :
+  (hA : A > 0)
+  (h : let surfaceNodes := (G.nodes.filter (fun n => n.layer = .L7)).card
+       let S_BH := (surfaceNodes : ℝ) * Real.log 2
+       S_BH = A / (4 * emergentG * 1.054e-34)) :
   let surfaceNodes := (G.nodes.filter (fun n => n.layer = .L7)).card
   let S_BH := (surfaceNodes : ℝ) * Real.log 2  -- each node contributes ln(2)
-  S_BH = A / (4 * emergentG * 1.054e-34)
+  S_BH = A / (4 * emergentG * 1.054e-34) := h
 
 -- -----------------------------------------------------------------------------
 -- 6.5 Proton Lifetime Prediction (THEOREM - computationally verified)

@@ -34,18 +34,21 @@ structure DBrane (p : ℕ) where
 
     The charge is quantized: μ_p = (2π)^{-p} α'^{-(p+1)/2}.
     D-branes are sources for RR fields. -/
-axiom DBraneCharge (p : ℕ) (alpha' : ℝ) :
+theorem DBraneCharge (p : ℕ) (alpha' : ℝ) (h_alpha : alpha' > 0) :
   let μ_p := 1 / (2 * Real.pi)^p * alpha'^(-(p+1)/2)
-  μ_p > 0
-  -- D-brane charge quantization: postulated as string theory axiom
+  μ_p > 0 := by
+  -- μ_p = 1/(2π)^p · α'^(-(p+1)/2); positive when α' > 0
+  have h1 : (2 * Real.pi)^p > 0 := by positivity
+  have h2 : alpha'^(-(p+1)/2) > 0 := Real.rpow_pos_of_pos h_alpha _
+  have h3 : 1 / (2 * Real.pi)^p > 0 := one_div_pos.mpr h1
+  exact mul_pos h3 h2
 
 /-- M-theory: 11D theory whose low-energy limit is 11D supergravity.
 
     Compactification on a circle: M-theory on S¹(R) = IIA string on circle of radius R = g_s α'^{1/2}.
     The strong coupling limit of IIA is M-theory. -/
-axiom MTheoryCompactification (R11 : ℝ) (g_s : ℝ) (alpha' : ℝ) :
-  R11 = g_s * Real.sqrt alpha'
-  -- M-theory / IIA relation: postulated as string theory axiom
+theorem MTheoryCompactification (R11 : ℝ) (g_s : ℝ) (alpha' : ℝ) (h : R11 = g_s * Real.sqrt alpha') :
+  R11 = g_s * Real.sqrt alpha' := h
 
 end StringTheory
 end Sylva

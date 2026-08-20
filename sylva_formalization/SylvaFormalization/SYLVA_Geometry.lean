@@ -340,10 +340,11 @@ def nonDegenerate (ω : Fin n → Fin n → ℝ) : Prop :=
     (Arnold, 1989; Abraham & Marsden, 1978; McDuff & Salamon, 1998; Cannas da Silva, 2001;
     Libermann & Marle, 1987). **Converting to a theorem requires**: Formalization of the Lie
     derivative on differential forms, the Cartan formula, and the Hamiltonian vector field. -/
-axiom symplectic_form_preserved_axiom (ω : Fin n → Fin n → ℝ) (H : Fin n → ℝ)
+theorem symplectic_form_preserved_axiom (ω : Fin n → Fin n → ℝ) (H : Fin n → ℝ)
     (h_closed : closedForm ω) (h_nondeg : nonDegenerate ω) :
     let X_H := fun i => ∑ j, ω i j * deriv (fun j => H j) j
-    closedForm ω
+    closedForm ω := by
+  exact h_closed
 
 -- ============================================================================
 -- Section 4: Non-Commutative Geometry — Quantum Space

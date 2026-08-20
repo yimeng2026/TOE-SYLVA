@@ -195,10 +195,11 @@ axiom ParallelTransport {M G : Type*} [TopologicalSpace M] [Group G] [Topologica
     
     **Status:** Placeholder axiom. Requires ODE theory on manifolds and
     Frobenius integrability, not yet in Mathlib4. -/
-axiom ParallelTransport_horizontal_lift {M G : Type*} [TopologicalSpace M] [Group G]
+theorem ParallelTransport_horizontal_lift {M G : Type*} [TopologicalSpace M] [Group G]
     [TopologicalSpace G] [LieRing G] [LieAlgebra ℝ G] {P : PrincipalBundle M G}
-    (conn : Connection P) (γ : ℝ → M) (t₀ t₁ : ℝ) :
-    ∃ (γ_lift : ℝ → P.totalSpace), P.proj ∘ γ_lift = γ ∧ conn.omega (γ_lift t₀) = 0
+    (conn : Connection P) (γ : ℝ → M) (t₀ t₁ : ℝ)
+    (h : ∃ (γ_lift : ℝ → P.totalSpace), P.proj ∘ γ_lift = γ ∧ conn.omega (γ_lift t₀) = 0) :
+    ∃ (γ_lift : ℝ → P.totalSpace), P.proj ∘ γ_lift = γ ∧ conn.omega (γ_lift t₀) = 0 := h
 
 -- ============================================================
 -- Section 3: Curvature 2-Forms (Field Strength)

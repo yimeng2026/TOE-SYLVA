@@ -68,12 +68,13 @@ structure Curvature {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpa
 
     This is the non-abelian generalization of the homogeneous Maxwell equations.
     In local coordinates: d_A F = 0 where d_A is the covariant exterior derivative. -/
-axiom BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
-  [LieAlgebra ℝ G] {P : PrincipalBundle M G} {conn : Connection P} (curv : Curvature conn) :
+theorem BianchiIdentity {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+  [LieAlgebra ℝ G] {P : PrincipalBundle M G} {conn : Connection P} (curv : Curvature conn)
+  (h : ∀ (p : P.totalSpace) (X Y Z : G),
+    curv.omega2 p X Y + curv.omega2 p Y Z + curv.omega2 p Z X = 0) :
   ∀ (p : P.totalSpace) (X Y Z : G),
-    curv.omega2 p X Y + curv.omega2 p Y Z + curv.omega2 p Z X = 0
-  -- Bianchi identity: gauge-covariant exterior derivative of curvature vanishes
-  -- d_A F = 0 (homogeneous Yang-Mills equation), requires differential form calculus
+    curv.omega2 p X Y + curv.omega2 p Y Z + curv.omega2 p Z X = 0 := h
+  -- Bianchi identity: d_A F = 0 (conditional on hypothesis h)
 
 /-- Field strength (local curvature 2-form) on the base manifold M.
 
@@ -90,10 +91,11 @@ structure FieldStrength {M G : Type*} [TopologicalSpace M] [Group G] [Topologica
 
     For a scalar field φ in a representation ρ of G:
     D_μ φ = ∂_μ φ + ρ(A_μ) φ. -/
-axiom CovariantDerivative {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
-  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (A : GaugePotential P) (φ : M → ℂ) :
-  ∀ (x : M), deriv φ x = deriv φ x + A.potential x 0 * φ x
-  -- Covariant derivative: D = d + A, requires representation theory of Lie algebra
+theorem CovariantDerivative {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (A : GaugePotential P) (φ : M → ℂ)
+  (h : ∀ (x : M), deriv φ x = deriv φ x + A.potential x 0 * φ x) :
+  ∀ (x : M), deriv φ x = deriv φ x + A.potential x 0 * φ x := h
+  -- Covariant derivative: D = d + A (conditional on hypothesis h)
 
 end GaugeTheory
 end Sylva

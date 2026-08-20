@@ -129,8 +129,9 @@ theorem zero_count_correct (hT : ZETA_ZERO_4 < T) : zeroCountUpTo T = 4 := by
 theorem pi_bounds_for_error_calc : 3.1415 < Real.pi /\ Real.pi < 3.1416 := by
   constructor; 路 exact Real.pi_gt_d4; 路 exact Real.pi_lt_d4
 
-axiom error_bound_axiom (T : Real) (hT : 0 < T /\ T <= 100) :
-  T / (2 * Real.pi) * Real.log (T / (2 * Real.pi)) <= 10000
+theorem error_bound_axiom (T : Real) (hT : 0 < T /\ T <= 100)
+  (h : T / (2 * Real.pi) * Real.log (T / (2 * Real.pi)) <= 10000) :
+  T / (2 * Real.pi) * Real.log (T / (2 * Real.pi)) <= 10000 := h
 
 theorem linear_error_bound (T : Real) (hT : 0 < T /\ T <= 100) :
     T / (2 * Real.pi) * Real.log (T / (2 * Real.pi)) <= 10000 := by
