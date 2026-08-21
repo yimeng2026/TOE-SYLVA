@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "description": "Phase 1 pilot migration: 5 batch modules archived",
+  "source_commit": "e3026fc0e8b1",
+  "migration_date": "2026-08-21",
+  "files": [
+    {
+      "name": "SYLVA_ProvenAlgebraR1M1.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenAlgebraR1M1.lean",
+      "archive_path": "releases/proven_batch_pilot/SYLVA_ProvenAlgebraR1M1.lean",
+      "size_bytes": 106254,
+      "sha256": "916baa94115d8672011b7cc856aaa47c5e68c70452b13d7d24ced60ff0674daf"
+    },
+    {
+      "name": "SYLVA_ProvenAnalysisR1M1.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenAnalysisR1M1.lean",
+      "archive_path": "releases/proven_batch_pilot/SYLVA_ProvenAnalysisR1M1.lean",
+      "size_bytes": 109559,
+      "sha256": "0f394eff4768c80a37da5b5a01dabef1b24b0e0086f0f5bb0d09ce1eb2b5ce8c"
+    },
+    {
+      "name": "SYLVA_ProvenTopologyR1M1.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenTopologyR1M1.lean",
+      "archive_path": "releases/proven_batch_pilot/SYLVA_ProvenTopologyR1M1.lean",
+      "size_bytes": 132459,
+      "sha256": "6e46011924a82211d267a4e2489921de9ab69b2dc8c0a036e379b36de8faf715"
+    },
+    {
+      "name": "SYLVA_ProvenLogicR1M1.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenLogicR1M1.lean",
+      "archive_path": "releases/proven_batch_pilot/SYLVA_ProvenLogicR1M1.lean",
+      "size_bytes": 95444,
+      "sha256": "d1da38d2659c7631f8b9d5661d4f45eedef3e8fd24ec3025aef534988ce36fbf"
+    },
+    {
+      "name": "SYLVA_ProvenNumbertheoryR100M1.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenNumbertheoryR100M1.lean",
+      "archive_path": "releases/proven_batch_pilot/SYLVA_ProvenNumbertheoryR100M1.lean",
+      "size_bytes": 25886,
+      "sha256": "1991faecf2eb25be1e7053762afb1daa334fe75c9e2f93498a8e31909b0317fb"
+    }
+  ]
+}

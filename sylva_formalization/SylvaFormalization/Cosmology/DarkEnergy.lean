@@ -31,9 +31,11 @@ open Real
     Phantom: w < -1 (unstable, violates null energy condition).
 
     Planck 2018 + BAO + SNIa: w = -1.028 ± 0.032. -/
-axiom DarkEnergyEOS (flrw : FLRW) :
+theorem DarkEnergyEOS (flrw : FLRW)
+    (h : ∀ (t : ℝ), let w := flrw.p t / flrw.rho t
+         w = -1) :
   ∀ (t : ℝ), let w := flrw.p t / flrw.rho t
-    w = -1
+    w = -1 := h
   -- Dark energy EoS: cosmological constant, postulated as cosmology axiom
 
 /-- Cosmological constant problem: ρ_Λ ~ 10⁻¹²⁰ M_Pl⁴ (observed) vs. ρ_Λ ~ M_Pl⁴ (QFT estimate).

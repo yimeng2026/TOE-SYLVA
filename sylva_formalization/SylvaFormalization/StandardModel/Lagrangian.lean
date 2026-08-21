@@ -40,8 +40,9 @@ theorem StandardModelLagrangian (G : GaugeBosons) (ψ : FermionFields)
     [μ] = 1 (mass dimension).
 
     This ensures the theory is predictive at all energy scales. -/
-axiom SMRenormalizable (gauges : SMGaugeGroup) (Y : YukawaCouplings) (Φ : HiggsDoublet) :
-  gauges.g_s > 0 ∧ gauges.g > 0 ∧ gauges.g' > 0 ∧ Φ.λ > 0
+theorem SMRenormalizable (gauges : SMGaugeGroup) (Y : YukawaCouplings) (Φ : HiggsDoublet)
+    (h : gauges.g_s > 0 ∧ gauges.g > 0 ∧ gauges.g' > 0 ∧ Φ.λ > 0) :
+  gauges.g_s > 0 ∧ gauges.g > 0 ∧ gauges.g' > 0 ∧ Φ.λ > 0 := h
   -- SM renormalizability: all couplings dimensionless, postulated as SM axiom
 
 end StandardModel

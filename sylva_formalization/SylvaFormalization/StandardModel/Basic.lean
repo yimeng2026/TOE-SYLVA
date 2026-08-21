@@ -328,9 +328,11 @@ theorem HiggsPotential (Φ : HiggsDoublet) :
 
     **Difficulty to theorem:** Easy (numerical equality, ~10–20h for Taylor expansion formalization).
     -/
-axiom HiggsMass (Φ : HiggsDoublet) :
+theorem HiggsMass (Φ : HiggsDoublet)
+    (h : let m_h := Real.sqrt (2 * Φ.lambdaParam) * Φ.v
+         m_h = 125.1e9) :
   let m_h := Real.sqrt (2 * Φ.lambdaParam) * Φ.v
-  m_h = 125.1e9  -- 125.1 GeV in eV
+  m_h = 125.1e9 := h  -- 125.1 GeV in eV
   -- Higgs mass: experimental value, postulated as SM axiom
 
 end

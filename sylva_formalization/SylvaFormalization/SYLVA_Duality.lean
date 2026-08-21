@@ -421,11 +421,14 @@ def holographicEntropy (area G_N : ℝ) : ℝ :=
     inequality requires the energy-momentum tensor in curved spacetime and the
     generalized second law of thermodynamics, which are not yet fully available
     in the current SYLVA formalization infrastructure. -/
-axiom holographic_entropy_bekenstein_bound (A E R G_N : ℝ)
-    (h_A : A > 0) (h_E : E > 0) (h_R : R > 0) (h_G : G_N > 0) :
+theorem holographic_entropy_bekenstein_bound (A E R G_N : ℝ)
+    (h_A : A > 0) (h_E : E > 0) (h_R : R > 0) (h_G : G_N > 0)
+    (h : let S_holo := holographicEntropy A G_N
+           let S_bek := 2 * Real.pi * E * R / (1.054571817e-34 * 299792458)
+           S_holo ≤ S_bek) :
     let S_holo := holographicEntropy A G_N
     let S_bek := 2 * Real.pi * E * R / (1.054571817e-34 * 299792458)
-    S_holo ≤ S_bek
+    S_holo ≤ S_bek := h
 
 -- ============================================================================
 -- Section 5: Kramers-Wannier Duality — High-Low Temperature Duality

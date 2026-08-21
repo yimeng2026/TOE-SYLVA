@@ -34,6 +34,22 @@ Design notes (honest annotations):
 Status (2026-08-10): compiled with Lean v4.29.0 + mathlib4 @ 8a178386,
 zero errors, zero sorry, zero new axioms (see `#print axioms` at the end
 of this file and paper 06 §3 of the series).
+
+Status (2026-08-21, §2.4 milestone 4 third THEOREM registration): added
+three theorems to the integer sector — T3′ `stratifiedChernNumber_int_exists`
+(existential integrality, the quantization form shared with
+`chernSimonsLevelInteger`), T6 `stratifiedChernNumber_137_int` (degeneracy
+to 137 across the whole normalized integer-weight sector), T7
+`stratifiedChernNumberInt_concentrated` (ℤ-form single-layer limit).
+Their proofs are term-mode compositions / line-for-line ℤ-adaptations of the
+already-compiled T2–T4 proofs, using only lemma names already exercised by
+this file (`Int.cast_sum`, `Finset.sum_eq_single`, `if_neg`/`if_pos`,
+`norm_num`); no new imports. The editing environment has no Lean toolchain,
+so the three additions are pending recompilation at the next standalone
+`lake env lean StratifiedChernNumber.lean` run — the registration in
+`framework/proof_status.md` §三 rests on the already-compiled T3
+`stratifiedChernNumber_int_weights` (compile log 2026-08-10:
+axioms [propext, Classical.choice, Quot.sound]).
 ================================================================================
 -/
 
@@ -207,6 +223,47 @@ theorem stratifiedChernNumber_uniform (n : LayerChernNumbers) :
   unfold stratifiedChernNumber uniformWeight
   rw [div_eq_mul_inv, ← Finset.sum_mul, div_eq_mul_inv, one_mul]
 
+/-- **T3′: Existential integrality (quantization form).** The integer-weight
+    stratified Chern number is an integer in the ∃-form used by
+    `ChernSimons.lean`'s `chernSimonsLevelInteger` (∃ n : ℤ, level = ↑n):
+    the stratified formula satisfies the same logical shape as the
+    Chern-Simons level quantization claim, proved here by combining T3 with
+    the explicit integer witness `stratifiedChernNumberInt n v`.
+    (Registered in `framework/proof_status.md` §三 as the third THEOREM-level
+    result of the repository, 2026-08-21; see
+    `framework/chern_simons_theorem_report.md`.) -/
+theorem stratifiedChernNumber_int_exists (n v : Fin 7 → ℤ) :
+    ∃ (m : ℤ), stratifiedChernNumber n (fun i => (v i : ℝ)) = (m : ℝ) :=
+  ⟨stratifiedChernNumberInt n v, stratifiedChernNumber_int_weights n v⟩
+
+/-- **T6: Degeneracy to 137 across the integer sector.** If every layer
+    carries the placeholder level 137, then *any* normalized integer weight
+    vector v (Σ_α v_α = 1 with v_α ∈ ℤ — including non-concentrated affine
+    combinations, e.g. weights (2, −1, 0, …, 0) on the first two layers)
+    still yields n_strat = 137. Together with T2 and T4 this shows that the
+    quantized (integer-weight) sector of the stratified formula is degenerate
+    at the placeholder level: integer weights cannot move the value away from
+    137 while the layers are constant. -/
+theorem stratifiedChernNumber_137_int (v : Fin 7 → ℤ) (hv : ∑ i : Fin 7, v i = 1) :
+    stratifiedChernNumber (fun _ => 137) (fun i => (v i : ℝ)) = 137 :=
+  stratifiedChernNumber_const (fun _ => 137) (fun i => (v i : ℝ))
+    (by unfold WeightsNormalized; rw [← Int.cast_sum, hv]; norm_num) 137 (fun _ => rfl)
+
+/-- **T7: Single-layer limit, integer form.** The ℤ-level counterpart of T4:
+    with the whole weight concentrated on layer j (as an integer 0/1 weight
+    vector), the integer stratified level `stratifiedChernNumberInt` equals
+    the layer's own Chern number n_j. The proof mirrors T4 line for line over
+    ℤ (`Finset.sum_eq_single` + `if_neg`/`if_pos`). -/
+theorem stratifiedChernNumberInt_concentrated (n : Fin 7 → ℤ) (j : Fin 7) :
+    stratifiedChernNumberInt n (fun i => if i = j then 1 else 0) = n j := by
+  unfold stratifiedChernNumberInt
+  have h0 : ∀ b : Fin 7, b ∈ Finset.univ → b ≠ j →
+      n b * (if b = j then (1 : ℤ) else 0) = 0 := by
+    intro b _ hbj
+    rw [if_neg hbj, mul_zero]
+  rw [Finset.sum_eq_single j h0 (fun h => absurd (Finset.mem_univ j) h),
+    if_pos rfl, mul_one]
+
 -- ============================================================
 -- Section 4: Governance audit output (no new axioms expected)
 -- ============================================================
@@ -217,6 +274,9 @@ theorem stratifiedChernNumber_uniform (n : LayerChernNumbers) :
 #print axioms stratifiedChernNumber_int_weights
 #print axioms stratifiedChernNumber_concentrated
 #print axioms stratifiedChernNumber_uniform
+#print axioms stratifiedChernNumber_int_exists
+#print axioms stratifiedChernNumber_137_int
+#print axioms stratifiedChernNumberInt_concentrated
 
 end StratifiedChern
 end Sylva

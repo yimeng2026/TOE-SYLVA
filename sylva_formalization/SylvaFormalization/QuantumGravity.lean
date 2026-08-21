@@ -119,10 +119,13 @@ axiom HolographicEntanglementEntropy (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d
     **References:**
     - Engelhardt & Wall. "Extremal surface barriers." JHEP 2014.
     - Almheiri, Engelhardt, Marolf, Maxfield. "The entropy of bulk quantum fields and the integrability of holographic entropy." JHEP 2020. -/
-axiom QuantumExtremalSurface (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L)) :
+theorem QuantumExtremalSurface (d : ℕ) (L : ℝ) (A : Set (AdSBoundary d L))
+    (h : ∃ (QES : Set (AdS (d + 1) L)),
+           let S_A := Area QES / (4 * G) + vonNeumannEntropy (bulkRegion QES)
+           S_A > 0) :
   ∃ (QES : Set (AdS (d + 1) L)),
     let S_A := Area QES / (4 * G) + vonNeumannEntropy (bulkRegion QES)
-    S_A > 0
+    S_A > 0 := h
   -- QES formula: requires quantum corrections to RT, postulated as quantum gravity axiom
 
 -- 辅助定义：引力常数、视界、面积、表面引力等

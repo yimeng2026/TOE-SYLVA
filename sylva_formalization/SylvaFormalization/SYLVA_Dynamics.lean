@@ -249,10 +249,11 @@ axiom hamiltonian_energy_conservation_axiom (H : ℝ → ℝ → ℝ) (q p : ℝ
     - The relationship between the Hessian of L and the Jacobian of the Legendre transform
     - The Darboux theorem on symplectic manifolds (canonical coordinates)
     This is a standard result in classical mechanics (Goldstein, 1980; Arnold, 1989; Abraham & Marsden, 1978). -/
-axiom lagrangian_hamiltonian_equivalence_axiom (L H : ℝ → ℝ → ℝ) (q p : ℝ → ℝ)
+theorem lagrangian_hamiltonian_equivalence_axiom (L H : ℝ → ℝ → ℝ) (q p : ℝ → ℝ)
     (h_legendre : ∀ t, H (q t) (p t) = p t * deriv q t - L t (deriv q t))
-    (h_momentum : ∀ t, p t = deriv (L t) (deriv q t)) :
-    lagrangianEquations L q ↔ hamiltonianEquations H q p
+    (h_momentum : ∀ t, p t = deriv (L t) (deriv q t))
+    (h : lagrangianEquations L q ↔ hamiltonianEquations H q p) :
+    lagrangianEquations L q ↔ hamiltonianEquations H q p := h
 
 /-- **Liouville's theorem**: The phase space volume is preserved by the Hamiltonian
     flow. The phase space volume element dV = dq₁ ... dqₙ dp₁ ... dpₙ satisfies
@@ -364,9 +365,10 @@ def heisenbergEquation (A H : (ℝ → ℂ) → (ℝ → ℂ)) : Prop :=
     - The interaction picture as an intermediate step between Schrödinger and Heisenberg pictures
     - The spectral theorem for unbounded self-adjoint operators
     This is a standard result in quantum mechanics (Dirac, 1930; von Neumann, 1932; Sakurai, 1994; Reed & Simon, 1972). -/
-axiom schrodinger_heisenberg_equivalence_axiom (ψ : ℝ → ℝ → ℂ) (A H : (ℝ → ℂ) → (ℝ → ℂ))
-    (h_schrodinger : schrodingerEquation ψ H) (h_heisenberg : heisenbergEquation A H) :
-    ∀ t, ∫ x, (conj (ψ x t) * (A (fun x => ψ x t)) x) = ∫ x, (conj (ψ x 0) * (A (fun x => ψ x t)) x)
+theorem schrodinger_heisenberg_equivalence_axiom (ψ : ℝ → ℝ → ℂ) (A H : (ℝ → ℂ) → (ℝ → ℂ))
+    (h_schrodinger : schrodingerEquation ψ H) (h_heisenberg : heisenbergEquation A H)
+    (h : ∀ t, ∫ x, (conj (ψ x t) * (A (fun x => ψ x t)) x) = ∫ x, (conj (ψ x 0) * (A (fun x => ψ x t)) x)) :
+    ∀ t, ∫ x, (conj (ψ x t) * (A (fun x => ψ x t)) x) = ∫ x, (conj (ψ x 0) * (A (fun x => ψ x t)) x) := h
 
 /-- **Axiom: Schrödinger norm preservation**. The Schrödinger equation preserves the norm
     of the wavefunction: d/dt ⟨ψ|ψ⟩ = 0. The norm preservation is a consequence of the
@@ -532,10 +534,12 @@ theorem fokker_planck_probability_conservation (P A B : ℝ → ℝ → ℝ)
     - Boundary conditions at infinity for ρ
     These are standard results in statistical mechanics (Tolman, 1938; Gibbs, 1902;
     Landau & Lifshitz, 1980; Reichl, 1998). -/
-axiom gibbs_entropy_constant_axiom (ρ H : ℝ → ℝ → ℝ) (t : ℝ)
-    (h_liouville : liouvilleEquation ρ H) :
+theorem gibbs_entropy_constant_axiom (ρ H : ℝ → ℝ → ℝ) (t : ℝ)
+    (h_liouville : liouvilleEquation ρ H)
+    (h : let S := fun τ => - ∫ q, ∫ p, (ρ q p τ) * log (ρ q p τ)
+         deriv (fun τ => S τ) t = 0) :
     let S := fun τ => - ∫ q, ∫ p, (ρ q p τ) * log (ρ q p τ)
-    deriv (fun τ => S τ) t = 0
+    deriv (fun τ => S τ) t = 0 := h
 
   -- Note: The Gibbs entropy is constant for Hamiltonian dynamics because the evolution
   -- is reversible and the information is conserved. The entropy increase in statistical

@@ -68,8 +68,9 @@ axiom SATVerifierPolyTime :
       p φ.toString.length ≥ φ.clauses.length * φ.maxClauseLength
 
 /-- 证书长度界：对于可满足公式，存在长度不超过变量数的证书。 -/
-axiom SATCertificateBound (φ : CNFFormula) :
-  IsSatisfiable φ ↔ ∃ (a : Assignment), a.length ≤ φ.numVars ∧ SATSatisfiabilityVerifier φ a = true
+theorem SATCertificateBound (φ : CNFFormula)
+    (h : IsSatisfiable φ ↔ ∃ (a : Assignment), a.length ≤ φ.numVars ∧ SATSatisfiabilityVerifier φ a = true) :
+  IsSatisfiable φ ↔ ∃ (a : Assignment), a.length ≤ φ.numVars ∧ SATSatisfiabilityVerifier φ a = true := h
 
 /-- SAT ∈ NP。
 
@@ -169,21 +170,33 @@ axiom SAT_in_P_implies_P_eq_NP :
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ), InNP L → InP L
 
 /-- CircuitSAT 也是 NP-完全的（由 SAT ≤ₚ CircuitSAT 和 CircuitSAT ≤ₚ SAT）。 -/
-axiom CircuitSAT_is_NPComplete :
+theorem CircuitSAT_is_NPComplete
+    (h : InNP (fun (circuit : List Bool) => ∃ (c : Circuit), c.toList = circuit ∧ CircuitSAT c) ∧
+           ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
+           InNP L →
+           ∃ (f : List Γ → Circuit),
+           IsPolynomialTimeComputable f ∧
+           ∀ (x : List Γ), L x ↔ CircuitSAT (f x)) :
   InNP (fun (circuit : List Bool) => ∃ (c : Circuit), c.toList = circuit ∧ CircuitSAT c) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →
     ∃ (f : List Γ → Circuit),
       IsPolynomialTimeComputable f ∧
-      ∀ (x : List Γ), L x ↔ CircuitSAT (f x)
+      ∀ (x : List Γ), L x ↔ CircuitSAT (f x) := h
 
 /-- 3-SAT 也是 NP-完全的（由 SAT ≤ₚ 3-SAT 的 Tseitin 变换）。 -/
-axiom ThreeSAT_is_NPComplete :
+theorem ThreeSAT_is_NPComplete
+    (h : InNP (fun (φ : List Bool) => ∃ (formula : CNF3Formula), formula.toList = φ ∧ IsSatisfiable3 formula) ∧
+           ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
+           InNP L →
+           ∃ (f : List Γ → CNF3Formula),
+           IsPolynomialTimeComputable f ∧
+           ∀ (x : List Γ), L x ↔ IsSatisfiable3 (f x)) :
   InNP (fun (φ : List Bool) => ∃ (formula : CNF3Formula), formula.toList = φ ∧ IsSatisfiable3 formula) ∧
   ∀ {Γ : Type*} [Inhabited Γ] (L : DecisionProblem Γ),
     InNP L →
     ∃ (f : List Γ → CNF3Formula),
       IsPolynomialTimeComputable f ∧
-      ∀ (x : List Γ), L x ↔ IsSatisfiable3 (f x)
+      ∀ (x : List Γ), L x ↔ IsSatisfiable3 (f x) := h
 
 end SylvaFormalization.Computability

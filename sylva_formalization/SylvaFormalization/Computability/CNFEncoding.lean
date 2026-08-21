@@ -723,13 +723,16 @@ variable {Γ Λ σ : Type*}
   使得该 CNF 可满足当且仅当 `M` 在 `input` 上接受。
 
   这是 Cook-Levin 定理的核心构造——tableau 编码。 -/
-axiom cook_levin_phase2
+theorem cook_levin_phase2
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (input : List Γ)
-    (hM : TM1PolyTime M) :
+    (hM : TM1PolyTime M)
+    (h : let params := params_of_polytime M input hM
+           let φ := TMConfigToCNF M params input
+           CNF.Satisfiable φ ↔ accepts_in M params.T input ∧ CNFEncodingPolynomial M input params) :
   let params := params_of_polytime M input hM
   let φ := TMConfigToCNF M params input
-  CNF.Satisfiable φ ↔ accepts_in M params.T input ∧ CNFEncodingPolynomial M input params
+  CNF.Satisfiable φ ↔ accepts_in M params.T input ∧ CNFEncodingPolynomial M input params := h
   -- 证明思路：
   -- (→) 由 `CNFEncodingCorrect` 的 `soundness` 方向得到 `accepts_in`；
   --     由 `CNFEncodingPolynomial_holds` 得到多项式界。

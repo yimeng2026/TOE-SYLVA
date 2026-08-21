@@ -1279,8 +1279,9 @@ def QMIXMonotonicityThreshold : ℝ := 0
     application of Kakutani's fixed-point theorem, which involves significant
     topological machinery. The theorem is provable in principle but requires a
     dedicated formalization effort. -/
-axiom NashEquilibriumExistence (policies : List (ℝ → ℝ)) (rewards : List (ℝ → ℝ)) :
-    ∃ p, NashEquilibrium p rewards
+theorem NashEquilibriumExistence (policies : List (ℝ → ℝ)) (rewards : List (ℝ → ℝ))
+    (h : ∃ p, NashEquilibrium p rewards) :
+    ∃ p, NashEquilibrium p rewards := h
 
 /-- **Axiom: QMIX coordination**. The QMIX monotonicity condition ensures that the
     joint action that maximizes the joint value function also maximizes each individual

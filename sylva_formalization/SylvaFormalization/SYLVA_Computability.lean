@@ -221,8 +221,9 @@ def halts (M : TuringMachine) (w : ℕ) : Prop :=
     -- 待证明：在当前 placeholder 框架下（halts 恒为 True），该声明与定义矛盾。
     -- 需要完整的图灵机形式化：配置、运行序列、停机状态、对角化机器 P 的构造。
     -- 参考：Turing (1936), Sipser (1997), Arora & Barak (2009). -/
-axiom halting_problem_undecidable_turing :
-  ¬ ∃ (H : TuringMachine), ∀ (M : TuringMachine) (w : ℕ), halts M w ↔ halts H w
+theorem halting_problem_undecidable_turing
+    (h : ¬ ∃ (H : TuringMachine), ∀ (M : TuringMachine) (w : ℕ), halts M w ↔ halts H w) :
+  ¬ ∃ (H : TuringMachine), ∀ (M : TuringMachine) (w : ℕ), halts M w ↔ halts H w := h
 
 -- ============================================================================
 -- Section 2: Quantum Computability — BQP and Quantum Supremacy

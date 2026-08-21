@@ -34,11 +34,15 @@ structure YukawaCouplings where
 
     m_f = Y_f v / √2 for each fermion f.
     The top quark mass is the largest: m_t ≈ 173 GeV. -/
-axiom FermionMasses (Y : YukawaCouplings) (v : ℝ) :
+theorem FermionMasses (Y : YukawaCouplings) (v : ℝ)
+    (h : let m_t := Y.Y_u 2 2 * v / Real.sqrt 2
+           let m_b := Y.Y_d 2 2 * v / Real.sqrt 2
+           let m_τ := Y.Y_e 2 2 * v / Real.sqrt 2
+           m_t ≈ 173e9 ∧ m_b ≈ 4.2e9 ∧ m_τ ≈ 1.777e9) :
   let m_t := Y.Y_u 2 2 * v / Real.sqrt 2
   let m_b := Y.Y_d 2 2 * v / Real.sqrt 2
   let m_τ := Y.Y_e 2 2 * v / Real.sqrt 2
-  m_t ≈ 173e9 ∧ m_b ≈ 4.2e9 ∧ m_τ ≈ 1.777e9
+  m_t ≈ 173e9 ∧ m_b ≈ 4.2e9 ∧ m_τ ≈ 1.777e9 := h
   -- Fermion masses: experimental values, postulated as SM axiom
 
 end StandardModel

@@ -1,6 +1,6 @@
 # 批量模块 Manifest 摘要 (Batch Module Manifest Summary)
 
-> **生成时间**: 2026-08-20T07:40:18
+> **生成时间**: 2026-08-21T16:54:00
 > **扫描目录**: `sylva_formalization/SylvaFormalization`
 > **匹配模式**: `SYLVA_Proven*R*M*.lean`
 > **生成脚本**: `scripts/generate_batch_manifest.py`

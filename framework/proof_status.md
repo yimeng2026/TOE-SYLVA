@@ -56,12 +56,18 @@
 | Langlands 基本引理 | 已形式化 | Ngô (2010) 已在 Mathlib 中部分形式化（`fundamental_lemma`） | THEOREM\*（数学界已证，Lean 部分形式化） |
 | CHSH 不等式违例 | 已验证 | `verify_chsh.py` PASS（S=2√2 ≈ 2.828） | THEOREM（实验层面已验证；量子信息论框架内为定理） |
 | 理想唯一分解（Dedekind 整环） | 已形式化 | `CourseChain/Dedekind.lean` `ideal_uniqueFactorizationMonoid`（via `inferInstance` → mathlib `Ideal.uniqueFactorizationMonoid`，零 sorry / 零 axiom / 零 trivial） | THEOREM |
+| 分层陈数整性（Chern-Simons 不变量链·整数权整性） | 已形式化 | `StratifiedChernNumber.lean` `stratifiedChernNumber_int_weights`（T3）+ `stratifiedChernNumber_int_exists`（T3′，∃-整性形式）（via `Int.cast_sum`/`Int.cast_mul` → mathlib `Mathlib.Data.Int.Cast.Lemmas`；2026-08-10 本机真实编译零错误零 sorry，`#print axioms` 仅 [propext, Classical.choice, Quot.sound]） | THEOREM |
 | 标准模型 SU(3)×SU(2)×U(1) | 已形式化 | 群论结构为定义，Yang-Mills 存在性与质量间隙（Clay 问题）未解 | CLAIM（群结构为定义；动力学性质 open） |
-| Chern-Simons | "已形式化" | Lean 侧为 `axiom`（未证明），非 THEOREM | CLAIM（需替换为 Chern-Simons 不变量定理论证链） |
+| Chern-Simons 能级（主结论 α⁻¹ = n_CS = 137 及 Chern-Weil 整性） | "已形式化" | 链中最深可证环节已升级为 THEOREM（见上行"分层陈数整性"；另 `ChernSimons.lean` U(1)=ℝ/2πℤ 结构定理簇 2026-08-18 P0 修复后编译通过）；但 `chernSimonsLevel` 仍为占位定义 ≡ 137，`chernSimonsLevelInteger` 在占位下退化平凡，Chern-Weil 理论 mathlib 缺失，谱桥公理 `causalNetworkChernSimonsLevel` 未清偿 | CLAIM（主结论暂不可达；剩余缺口与论证链详见 `framework/chern_simons_theorem_report.md`） |
 | Einstein-Cartan 作用量 | "已形式化" | Lean 侧为 `axiom` | CLAIM |
 | 谱作用量（Spectral Action） | "已形式化" | Lean 侧为 `axiom` | CLAIM |
 
 > **THEOREM 登记理由 — 理想唯一分解（Dedekind 整环）**: 该定理是 Dedekind 整环的核心结构定理，将算术基本定理从元素推广到理想。`CourseChain/Dedekind.lean` 中声明 `ideal_uniqueFactorizationMonoid` 通过 `inferInstance` 直接委托 mathlib4 已注册实例 `Ideal.uniqueFactorizationMonoid`（来源 `Mathlib.RingTheory.DedekindDomain.Ideal.Basic` L432–447）。该 mathlib 实例经完整证明链推导（理想可逆性 → WfDvdMonoid → UniqueFactorizationMonoid），非 sorry/admit。源文件零 sorry / 零 axiom / 零 trivial，mathlib 引理为标准已证结果，故定级 THEOREM 而非 THEOREM*。
+
+> **THEOREM 登记理由 — 分层陈数整性（Chern-Simons 不变量链，2026-08-21）**: 
+> **来源**: `sylva_formalization/SylvaFormalization/StratifiedChernNumber.lean` 定理 `stratifiedChernNumber_int_weights`（T3）及其 ∃-形式推论 `stratifiedChernNumber_int_exists`（T3′，2026-08-21 新增，为已编译证明的项模式组合）；登记人是并行搜索员A（§2.4 milestone 4 第三个 THEOREM，本轮独占更新本表）。
+> **证明链**: n_strat = Σ_α n_α·v_α（v_α ∈ ℤ）经 `Finset.sum_congr` 逐项改写 + mathlib 引理 `Int.cast_sum`（ℤ 求和与 ℝ cast 交换）与 `Int.cast_mul`（cast 与乘法交换）把 ℝ 值求和坍缩回 ℤ 值求和，得 n_strat = ↑(Σ n_α·v_α) ∈ ℤ —— 与 Dedekind 先例同构的 mathlib 委托模式（引理逐名使用，非黑箱）。该定理是 PFE 姊妹项目引理 6.2（数值管线支撑、无证明）的严格机器化形式，也是 Chern-Simons 链"能级整性"断言目前在 Lean 中可达的最深环节。
+> **定级依据**: 2026-08-10 本机真实编译（Lean v4.29.0 + mathlib4 @ 8a178386，与 lakefile 锁定版本一致）零错误零 sorry；`#print axioms` 输出仅标准三件套 [propext, Classical.choice, Quot.sound]（编译日志 `papers/数学基础强化_系列/_panel_records/stratified_chern_compile_log_20260810.txt`），零新增公理、零 `: True := trivial`，不依赖 `causalNetworkChernSimonsLevel` 谱桥公理（求和结构层自闭合）。T3′/T6/T7 三条新增定理为本轮补强（T3′ 使整性与 `ChernSimons.lean` 的 `chernSimonsLevelInteger` 同一 ∃-逻辑形），证明仅为已编译证明的组合/逐行 ℤ 适配，编辑环境无 Lean 工具链、待下次独立编译复核，**不构成定级依据**——定级仅基于已编译的 T3。详细论证链与剩余缺口见 `framework/chern_simons_theorem_report.md`。
 
 > ⚠️ **关键区分**: "已形式化" ≠ "已证明"。`axiom` 是将证明推迟到将来的占位符。真正的证明要求从公理和已形式化的前提中零 `postulate` 推导。
 

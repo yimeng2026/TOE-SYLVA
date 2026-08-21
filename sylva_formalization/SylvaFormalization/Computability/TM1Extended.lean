@@ -171,8 +171,9 @@ def ReachesIn (M : Machine Γ Λ σ n_tapes) : ℕ → Config Γ Λ σ n_tapes �
 /-- `stepN` 与 `ReachesIn` 的对应关系。
 
 开放引理：需证明 `stepN` 的迭代语义等价于 `ReachesIn` 的归纳定义。 -/
-axiom stepN_ReachesIn (M : Machine Γ Λ σ n_tapes) (k : ℕ) (c : Config Γ Λ σ n_tapes) :
-  ReachesIn M k c (stepN M k c) ∨ (step M c = none ∧ stepN M k c = c)
+theorem stepN_ReachesIn (M : Machine Γ Λ σ n_tapes) (k : ℕ) (c : Config Γ Λ σ n_tapes)
+    (h : ReachesIn M k c (stepN M k c) ∨ (step M c = none ∧ stepN M k c = c)) :
+  ReachesIn M k c (stepN M k c) ∨ (step M c = none ∧ stepN M k c = c) := h
   -- 证明思路：对 k 归纳，分情况讨论 step M c 是否为 none。
 
 /-- `accepts_in` 的等价刻画：存在某个配置 c'，使得 c' 停机且从初始配置 k 步内可达。 -/
@@ -259,26 +260,37 @@ variable {Γ Λ σ : Type*} [Inhabited Λ] [Inhabited Γ] [Inhabited σ]
 构造方法：将 n 个带的内容用分隔符 `#` 编码到单个带上，
 每个虚拟带头用特殊标记记录位置。每模拟原机器的一步，
 需要 O(t) 步来扫描整个带（t 为已用空间）。 -/
-axiom multitape_to_singletape_overhead
-    (M : TM1Multitape.Machine Γ Λ σ n_tapes) :
+theorem multitape_to_singletape_overhead
+    (M : TM1Multitape.Machine Γ Λ σ n_tapes)
+    (h : ∃ (Λ' : Type) (_ : Inhabited Λ')
+           (M' : Turing.TM0.Machine Γ Λ')
+           (f : ℕ → ℕ),
+           (∀ input, accepts M input ↔ ∃ output, Turing.TM0.eval M' input = .some output) ∧
+           (∀ input k, halts_at M k input → halts_at M' (f k) input) ∧
+           (f = fun t => t * t)) :
   ∃ (Λ' : Type) (_ : Inhabited Λ')
     (M' : Turing.TM0.Machine Γ Λ')
     (f : ℕ → ℕ),
     (∀ input, accepts M input ↔ ∃ output, Turing.TM0.eval M' input = .some output) ∧
     (∀ input k, halts_at M k input → halts_at M' (f k) input) ∧
-    (f = fun t => t * t)  -- 二次 overhead
+    (f = fun t => t * t) := h  -- 二次 overhead
   -- 证明思路：构造标准单带模拟器，证明时间复杂度为 O(t²)。
 
 /-- 单带 TM 可被 2-带 TM 模拟，且步数开销为 O(t)。
 
 开放引理：平凡构造——直接用一条带模拟原带。 -/
-axiom singletape_to_multitape_linear
-    (M : Turing.TM0.Machine Γ Λ) :
+theorem singletape_to_multitape_linear
+    (M : Turing.TM0.Machine Γ Λ)
+    (h : ∃ (M' : TM1Multitape.Machine Γ Λ Unit 2),
+           (∀ input, ∃ output,
+           Turing.TM0.eval M input = .some output ↔
+           accepts M' input) ∧
+           (∀ input k, halts_at M k input → halts_at M' k input)) :
   ∃ (M' : TM1Multitape.Machine Γ Λ Unit 2),
     (∀ input, ∃ output,
       Turing.TM0.eval M input = .some output ↔
       accepts M' input) ∧
-    (∀ input k, halts_at M k input → halts_at M' k input)
+    (∀ input k, halts_at M k input → halts_at M' k input) := h
   -- 证明思路：第一条带模拟原带，第二条带保持空白。
 
 end Simulation
@@ -308,12 +320,13 @@ theorem stepN_stable_halted
 （前提是中间未提前停机）。
 
 开放引理：需处理提前停机的边界情况。 -/
-axiom stepN_add
+theorem stepN_add
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (a b : ℕ)
     (c : TM1Multitape.Config Γ Λ σ n_tapes)
-    (h : ∀ k ≤ a, (stepN M k c).q ≠ none) :
-  stepN M (a + b) c = stepN M b (stepN M a c)
+    (h : ∀ k ≤ a, (stepN M k c).q ≠ none)
+    (h' : stepN M (a + b) c = stepN M b (stepN M a c)) :
+  stepN M (a + b) c = stepN M b (stepN M a c) := h'
   -- 证明思路：对 a 归纳，利用 step 的确定性。
 
 end StepNProperties

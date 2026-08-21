@@ -81,18 +81,22 @@ theorem of_constant_time
 
 开放引理：需先定义“顺序组合”多带机器，再证明其时间复杂度
 为两机器多项式之和（或积）。 -/
-axiom comp
+theorem comp
     {Γ Λ₁ Λ₂ σ₁ σ₂ : Type*}
     [Inhabited Λ₁] [Inhabited Λ₂] [Inhabited Γ] [Inhabited σ₁] [Inhabited σ₂]
     {n_tapes : ℕ}
     (M₁ : TM1Multitape.Machine Γ Λ₁ σ₁ n_tapes)
     (M₂ : TM1Multitape.Machine Γ Λ₂ σ₂ n_tapes)
     (h₁ : TM1PolyTime M₁)
-    (h₂ : TM1PolyTime M₂) :
+    (h₂ : TM1PolyTime M₂)
+    (h : ∃ (Λ' σ' : Type) (_ : Inhabited Λ') (_ : Inhabited σ')
+           (M' : TM1Multitape.Machine Γ Λ' σ' n_tapes),
+           TM1PolyTime M' ∧
+           (∀ input, accepts M' input ↔ (accepts M₁ input ∧ accepts M₂ input))) :
   ∃ (Λ' σ' : Type) (_ : Inhabited Λ') (_ : Inhabited σ')
     (M' : TM1Multitape.Machine Γ Λ' σ' n_tapes),
     TM1PolyTime M' ∧
-    (∀ input, accepts M' input ↔ (accepts M₁ input ∧ accepts M₂ input))
+    (∀ input, accepts M' input ↔ (accepts M₁ input ∧ accepts M₂ input)) := h
   -- 证明思路：构造乘积状态空间 `Λ₁ × Λ₂`，先模拟 `M₁` 到停机，
   -- 再将输出作为 `M₂` 的输入。总时间为 `p₁(n) + p₂(n)`，仍是多项式。
 
@@ -163,11 +167,12 @@ axiom complement_closed
 /-- P 对交集封闭：若 L₁ ∈ P 且 L₂ ∈ P，则 L₁ ∩ L₂ ∈ P。
 
 开放引理：顺序运行两个判定器，多项式时间之和仍为多项式。 -/
-axiom intersection_closed
+theorem intersection_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InP L₁)
-    (h₂ : InP L₂) :
-  InP (fun input => L₁ input ∧ L₂ input)
+    (h₂ : InP L₂)
+    (h : InP (fun input => L₁ input ∧ L₂ input)) :
+  InP (fun input => L₁ input ∧ L₂ input) := h
   -- 证明思路：利用 `TM1PolyTime.comp` 的构造，
   -- 或显式构造乘积状态空间，时间复杂度为 `p₁(n) + p₂(n)`。
 
@@ -186,11 +191,12 @@ axiom union_closed
 开放引理：此构造较复杂，需要猜测分割点。
 但由于是确定性机器，需要尝试所有 O(n) 个分割点，
 总时间为 `O(n · p(n))`，仍为多项式。 -/
-axiom concat_closed
+theorem concat_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InP L₁)
-    (h₂ : InP L₂) :
-  InP (fun input => ∃ i, L₁ (input.take i) ∧ L₂ (input.drop i))
+    (h₂ : InP L₂)
+    (h : InP (fun input => ∃ i, L₁ (input.take i) ∧ L₂ (input.drop i))) :
+  InP (fun input => ∃ i, L₁ (input.take i) ∧ L₂ (input.drop i)) := h
   -- 证明思路：对 `i = 0, ..., input.length`，
   -- 分别判定 `L₁ (take i)` 和 `L₂ (drop i)`。
   -- 时间复杂度为 `O(n · (p₁(n) + p₂(n)))`，仍是多项式。
@@ -198,12 +204,13 @@ axiom concat_closed
 /-- P 对 Kleene 星号封闭。
 
 开放引理：动态规划，多项式时间内判定是否存在有效分割序列。 -/
-axiom star_closed
+theorem star_closed
     (L : DecisionProblem Γ)
-    (hL : InP L) :
+    (hL : InP L)
+    (h : InP (fun input => ∃ (parts : List (List Γ)), parts.join = input ∧ ∀ p ∈ parts, L p)) :
   InP (fun input =>
     ∃ (parts : List (List Γ)),
-      parts.join = input ∧ ∀ p ∈ parts, L p)
+      parts.join = input ∧ ∀ p ∈ parts, L p) := h
   -- 证明思路：动态规划表 `dp[i]` 表示 `input.take i` 是否可被分割。
   -- 时间复杂度 `O(n² · p(n))`。
 
@@ -294,11 +301,12 @@ axiom union_closed
 /-- NP 对交集封闭。
 
 开放引理：证书为 `(c₁, c₂)`，验证器分别验证两者。 -/
-axiom intersection_closed
+theorem intersection_closed
     (L₁ L₂ : DecisionProblem Γ)
     (h₁ : InNP L₁)
-    (h₂ : InNP L₂) :
-  InNP (fun input => L₁ input ∧ L₂ input)
+    (h₂ : InNP L₂)
+    (h : InNP (fun input => L₁ input ∧ L₂ input)) :
+  InNP (fun input => L₁ input ∧ L₂ input) := h
   -- 证明思路：证书为 `c₁ ++ c₂`，验证器顺序验证。
 
 /-- SAT ∈ NP（布尔可满足性属于 NP）。

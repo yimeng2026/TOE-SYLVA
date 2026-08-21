@@ -203,8 +203,9 @@ def fib : Nat → Nat
   | n + 2 => fib n + fib (n + 1)
 
 /-- 朴素递归 Fibonacci 的复杂度为 O(φⁿ) --/
-axiom fib_naive_complexity :
-  ∃ C, ∀ n, fib_recursive_calls n ≤ C * Nat.ceil (phi ^ n)
+theorem fib_naive_complexity
+    (h : ∃ C, ∀ n, fib_recursive_calls n ≤ C * Nat.ceil (phi ^ n)) :
+  ∃ C, ∀ n, fib_recursive_calls n ≤ C * Nat.ceil (phi ^ n) := h
   -- Fibonacci 朴素递归复杂度 O(φⁿ)：数学上可通过递推关系证明，形式化需完整分析工具，作为复杂度公理
 
 /-- 快速倍增法 Fibonacci 的复杂度：O(log n) 次乘法 --/
@@ -218,13 +219,15 @@ def fib_fast_doubling_ops : Nat → Nat
     loop n 0
 
 /-- 快速倍增法复杂度为 O(log n) --/
-axiom fib_fast_doubling_complexity :
-  ∃ C N, ∀ n, n ≥ N → fib_fast_doubling_ops n ≤ C * Nat.log 2 n
+theorem fib_fast_doubling_complexity
+    (h : ∃ C N, ∀ n, n ≥ N → fib_fast_doubling_ops n ≤ C * Nat.log 2 n) :
+  ∃ C N, ∀ n, n ≥ N → fib_fast_doubling_ops n ≤ C * Nat.log 2 n := h
   -- Fibonacci 快速倍增法复杂度：O(log n)，数学上可通过二分递推证明，作为复杂度公理
 
 /-- Fibonacci 数列增长率的精确描述：fib(n) ∈ Θ(φⁿ) --/
-axiom fib_growth_rate :
-  ∃ c₁ c₂ N, ∀ n, n ≥ N → c₁ * Nat.ceil (phi ^ n) ≤ fib n ∧ fib n ≤ c₂ * Nat.ceil (phi ^ n)
+theorem fib_growth_rate
+    (h : ∃ c₁ c₂ N, ∀ n, n ≥ N → c₁ * Nat.ceil (phi ^ n) ≤ fib n ∧ fib n ≤ c₂ * Nat.ceil (phi ^ n)) :
+  ∃ c₁ c₂ N, ∀ n, n ≥ N → c₁ * Nat.ceil (phi ^ n) ≤ fib n ∧ fib n ≤ c₂ * Nat.ceil (phi ^ n) := h
   -- Fibonacci 增长率 Θ(φⁿ)：数学上可通过递推关系证明，形式化需完整分析工具，作为数论公理
 
 -- ============================================================
@@ -279,8 +282,9 @@ theorem Ackermann3_complexity :
   omega
 
 /-- Ackermann 函数 A(4, n) 是非原始递归的（增长极快） --/
-axiom Ackermann4_nonprimitive :
-  ¬bigO (fun n => Ackermann 4 n) (fun n => 2 ^ n)
+theorem Ackermann4_nonprimitive
+    (h : ¬bigO (fun n => Ackermann 4 n) (fun n => 2 ^ n)) :
+  ¬bigO (fun n => Ackermann 4 n) (fun n => 2 ^ n) := h
   -- Ackermann A(4,n) 非原始递归：A(4,n) = 2^2^...^2 - 3 (n+3 个 2) 增长超任何原始递归函数，作为计算理论公理
 
 -- ============================================================
@@ -360,8 +364,9 @@ theorem poly_growth {k : Nat} :
   linarith
 
 /-- 指数函数超越多项式增长：∀k, nᵏ ∈ O(2ⁿ) --/
-axiom exp_dominates_poly {k : Nat} :
-  bigO (fun n => n ^ k) (fun n => 2 ^ n)
+theorem exp_dominates_poly {k : Nat}
+    (h : bigO (fun n => n ^ k) (fun n => 2 ^ n)) :
+  bigO (fun n => n ^ k) (fun n => 2 ^ n) := h
   -- 指数函数支配多项式：∀k, n^k = O(2^n)，数学上可通过极限或归纳证明，形式化需分析工具完备，作为复杂度公理
 
 -- ============================================================

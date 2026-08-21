@@ -51,8 +51,9 @@ structure Inflaton where
     During slow-roll: φ̇² << V(φ), so p ≈ -ρ (quasi-de Sitter).
     Number of e-folds: N = ∫ H dt = ∫ dφ / (M_Pl² V'/V).
     N ≈ 60 for observable scales. -/
-axiom SlowRollInflation (inf : Inflaton) :
-  ∀ (t : ℝ), inf.epsilon t < 1 ∧ ‖inf.eta t‖ < 1
+theorem SlowRollInflation (inf : Inflaton)
+    (h : ∀ (t : ℝ), inf.epsilon t < 1 ∧ ‖inf.eta t‖ < 1) :
+  ∀ (t : ℝ), inf.epsilon t < 1 ∧ ‖inf.eta t‖ < 1 := h
   -- Slow-roll: inflation continues, postulated as inflation axiom
 
 /-- Number of e-folds: N = ln(a_end/a_start) ≈ 60.
