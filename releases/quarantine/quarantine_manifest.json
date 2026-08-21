@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "description": "Quarantine registry: modules excluded from batch corpus and TrivialBench sampling",
+  "created": "2026-08-21",
+  "created_by": "Parallel Searcher A (admin dispatch 2026-08-21 18:06, sorry-audit follow-up)",
+  "authority": "framework/sorry_contamination_audit.md sec 6.1 (sole quarantine entry)",
+  "source_commit": "ae8ab0e07 (v7.98)",
+  "entries": [
+    {
+      "name": "SYLVA_ProvenLayer2.lean",
+      "origin_path": "sylva_formalization/SylvaFormalization/SYLVA_ProvenLayer2.lean",
+      "quarantine_path": "releases/quarantine/SYLVA_ProvenLayer2.lean",
+      "size_bytes": 1704,
+      "sha256": "4a8181a28c256dbe5d4e73eaf9ba7e24b52927e569090a52eb08541db17b6c69",
+      "reasons": [
+        "header_claim_conflict: header asserts 'ACTUAL PROOFS / No True := trivial placeholders' but 8 of 10 theorems are 'True := trivial'",
+        "theorem name 'sylva_zero_sorry_guarantee' (L37) contains 'sorry': sole non-declaration string-caliber hit among 119,859 batch files, proved ironically by trivial",
+        "TrivialBench contamination risk: sampling without exclusion would admit 8 trivial placeholders as proven-theorem corpus"
+      ],
+      "excluded_from": ["TrivialBench sampling pool", "batch corpus qualification"],
+      "permitted_use": "the 2 real proofs (Nonempty constructor witnesses for HierarchyLevel / ConnectionLaw) may be sampled individually if needed",
+      "status": "quarantined",
+      "quarantined_at": "2026-08-21",
+      "known_side_effects": [
+        "All.lean L49149 'import SylvaFormalization.SYLVA_ProvenLayer2' now dangles; All.lean carries 81,778 batch imports and is slated for full regeneration in CI-slimming Phase 2; no Lean toolchain in this environment and CI runs no lake build - practical impact zero"
+      ],
+      "caliber_impact": {
+        "static_dashboard": "unchanged (generated artifact 2026-08-11)",
+        "next_compute_proof_rate_regen": "batch files 119859 -> 119858; batch theorems 26239728 -> 26239718 (intended effect: contamination source leaves the pool)",
+        "ci_verify_honest_repo": "PASS before and after (measured 2026-08-21)",
+        "batch_module_manifest_json": "unaffected (file never matched SYLVA_Proven*R*M* pattern)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+% =====================================================================
+% Results - material sources (v7.98):
+%   * framework/axiom_reduction_sweep1..6_report.md
+%   * framework/proof_rate_dashboard.md (2026-08-11, independent caliber)
+%   * DASHBOARD.md (99.79% caliber), proof_status.md sec 5 (history)
+%   * framework/sorry_contamination_audit.md (full population audit)
+%   * framework/chern_simons_theorem_report.md (T3 chain census)
+%   * releases/quarantine/ (isolation record, this round)
+%   * framework/journal_submission_d1_review.md sec 1.3 (C1-C6)
+% \pnum{...} = declared calibers; C6-related figures are canonical
+% per p0_reconciliation_report.md (landed 2026-08-21); others are
+% verified v7.98 baselines.
+% =====================================================================
+
+\subsection{Registry and redemption outcomes}
+\label{sec:registry-results}
+Across six sweeps the program closed \pnum{196} registered axioms
+(\pnum{30}+\pnum{44}+\pnum{31}+\pnum{29}+\pnum{30}+\pnum{32}),
+clearing the \texttt{definitional} class (\pnum{142} entries) and the
+\texttt{placeholder} class (\pnum{42}) entirely; live \texttt{axiom}
+declarations in \texttt{.lean} sources fell from \pnum{445} at the
+registry baseline (v7.94) to \pnum{253}, exactly matching the registry
+residual (primitive \pnum{239} + schema \pnum{14}).
+% canonical (p0_reconciliation_report.md secs 2.1/5): 196 = 30+44+31+
+% 29+30+32; .lean declarations 445 (v7.94) -> 253 (working tree).
+% Supersedes the D1-review accounting "136 + 30 = 166" (double-counted
+% the 2 v7.94 entries already inside sweep1's 30) and the
+% irreproducible "598 -> 568" caliber; both documented in the
+% reconciliation report.
+The semantic-grade decomposition is the headline result, and it is
+deliberately unflattering: of \pnum{196} closures, \pnum{50} are
+vacuous (G1), \pnum{90} trust transfers (G2), \pnum{41} definitional
+reconstructions (G3), and \pnum{13} substantive proofs
+(G4) --- \pnum{6.6\%} of closures, or about \pnum{2.9\%} of the
+registered axiom population.
+% canonical: five-class taxonomy over sweeps 1-6 (p0_reconciliation_
+% report.md sec 4): G1 50 + G2 90 + G3 41 (data-def 17 + rfl 24) +
+% G4 13 + bundling 2 (excluded) = 196; 13/196 = 6.6%; 13/448 = 2.9%.
+% Supersedes the D1-review C6 estimate (53/57/46/<10).
+
+\subsection{Proof-rate caliber history}
+\label{sec:history}
+The same library, measured at different times with different implicit
+calibers:
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Reported} & \textbf{Caliber (implicit at the time)} &
+\textbf{Status} & \textbf{Source} \\
+\midrule
+\pnum{88.08\%} & sorry-count based & superseded & history,
+\texttt{proof\_status.md} \\
+\pnum{99.5\%} / \pnum{99.9\%} & sorry-count, per-module & superseded
+& history \\
+\pnum{100\%} & (\#sorry\,=\,0)/(\#modules); axioms ignored &
+superseded & history \\
+\pnum{3.91\%} & \caliber{independent}: excludes trivial patterns,
+sorry, axiom-dependent & current (2026-08-11) &
+\texttt{proof\_rate\_dashboard.md} \\
+\pnum{99.79\%} & \caliber{code}: theorems $-$ sorry, file-level axiom
+zeroing & current (parallel file) & \texttt{DASHBOARD.md} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% baselines: 88.08/99.5/99.9/100 deprecated per proof_rate_dashboard.md
+% CI-discipline note; 3.91% = 22,328/571,611 (independent caliber,
+% 2026-08-11); 99.79% = 545,408/546,550 handcrafted (code caliber,
+% DASHBOARD.md / recomputed scan). The 25x disagreement is conflict C3
+% -> P0 reconciliation in parallel; both numbers are reported here
+% precisely because hiding either would be the anti-pattern.
+The two ``current'' rows disagree by 25$\times$. This is not an
+embarrassment to be patched quietly but the central exhibit of the
+paper: both numbers are arithmetically correct under their declared
+calibers, and the conflict inventory (Sec.~\ref{sec:conflicts})
+tracks its resolution as a first-class P0 task.
+
+\subsection{The 30.2\% sorry incident and its reversal}
+\label{sec:sorry}
+A string-caliber scan reported \pnum{36199} of \pnum{119859} batch
+files (\pnum{30.2\%}) as ``containing sorry''. A full-population audit
+(no sampling shortcut; every hit classified) reversed the finding:
+
+\begin{center}
+\begin{tabular}{@{}lrl@{}}
+\toprule
+\textbf{Class of hit} & \textbf{Files} & \textbf{Nature} \\
+\midrule
+header negation comment & \pnum{36198} (99.997\%) & \texttt{Actual
+Lean 4 proofs --- no sorry, no True := trivial} \\
+& & (a \emph{denial}, matched as a substring) \\
+code-level \texttt{sorry} & \pnum{0} & --- \\
+genuine contamination & \pnum{1} (0.003\%) &
+\texttt{SYLVA\_ProvenLayer2.lean} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% baselines: 36,199 / 119,859 / 30.2% / 36,198 / 0 / 1
+% (sorry_contamination_audit.md sec 1-4, full population)
+The reversal had an operational consequence beyond bookkeeping: the
+draft TrivialBench sampling protocol (A-2) filtered modules by the
+string caliber, which would have silently discarded \pnum{30.2\%} of
+\emph{qualified} corpus (leaving, e.g., only \pnum{14\%} of Analysis
+-domain modules).
+% baseline: 14% Analysis retention under string-caliber filtering
+% (sorry_contamination_audit.md sec 6.2)
+The protocol clause has been revised to the code-level caliber with
+an explicit quarantine exception for the single genuine case.
+
+\subsection{Quarantine case: \texttt{SYLVA\_ProvenLayer2.lean}}
+\label{sec:quarantine}
+The one genuine case concentrates all three irony modes of AI
+generation. The file's header asserts it contains ``10 theorems with
+ACTUAL PROOFS. No \texttt{True := trivial} placeholders --- all proofs
+are real.'' In fact \pnum{8} of its \pnum{10} theorems are
+\texttt{True := trivial}; one of the two remaining is named
+\texttt{sylva\_zero\_sorry\_guarantee} --- the zero-sorry guarantee,
+proved by \texttt{trivial} --- which made the file the only
+non-declaration string-caliber \texttt{sorry} hit in the entire batch
+corpus. Under the quarantine protocol the file was moved out of the
+batch corpus into an isolation directory with a machine-readable
+manifest (origin path, SHA-256, reason list, exclusion scope), the
+audit report's status was updated, and the caliber impact was
+measured rather than assumed: the static dashboard is untouched
+(dashboards are generated artifacts, not live queries), and the next
+regeneration will see the batch pool shrink from \pnum{119859} to
+\pnum{119858} files with \pnum{10} template theorems removed from
+both numerator and denominator of the batch caliber --- the intended
+effect of quarantining a contamination source.
+% v7.98 action record: releases/quarantine/ (README + manifest +
+% isolated file), sorry_contamination_audit.md sec 6.1 status update.
+
+\subsection{Lifecycle case study: the Chern--Simons chain}
+\label{sec:cschain}
+% source: framework/chern_simons_theorem_report.md + D1 review 2.4;
+% proof_status.md sec 3 registration rows.
+The strongest single narrative in the repository is the staged
+CLAIM$\to$THEOREM upgrade along the Chern--Simons dependency chain:
+\begin{enumerate}
+\item \textbf{Claim identification}: the fine-structure coincidence
+$\alpha^{-1}\!\approx\!n_{CS}\!=\!137$ is registered as a CLAIM with
+an explicit falsifiability criterion (first-principles prediction of
+$\alpha^{-1}$ to $\pm 0.01$, independent of loop-integer self-tuning).
+\item \textbf{Chain census}: the 8-file Chern--Simons side-chain was
+inventoried with per-file placeholder/axiom census, exposing exactly
+which links of the purported derivation were load-bearing debt.
+\item \textbf{Deepest provable link upgraded}: the stratified
+Chern-number identity in the integer-weight sector
+(\texttt{stratifiedChernNumber\_int\_weights}) was formalized via
+mathlib delegation (\texttt{Int.cast\_sum}, \texttt{Int.cast\_mul}),
+independently compiled (exit 0, \pnum{6.7}\,s), with
+\texttt{\#print axioms} reduced to the standard trio.
+% baseline: 6.7s compile (chern_simons_theorem_report.md)
+\item \textbf{Honest labeling}: the upgraded statement is labeled what
+it is --- a $\mathbb{Z}$-ring-closure identity in the integer-weight
+sector, \emph{not} the topological integrality of the real-weight
+Chern--Simons functional; that stronger statement remains open, and
+the remaining gap chain (Chern--Weil theory absent from mathlib; the
+spectral-action bridge axiom; the level placeholder
+$\equiv\!137$) is registered alongside it.
+\item \textbf{Registration}: the tier assignment and its evidence
+live in the central registry (\texttt{proof\_status.md} sec 3), not
+in the paper draft --- the draft cites the registry.
+\end{enumerate}
+The Dedekind unique-factorization sub-case demonstrates the other
+half of the discipline: a delegation wrapper around mathlib's
+\texttt{normalized\_factor\_uniq} proves a THEOREM with \emph{zero
+new mathematics}, and the registry says so explicitly, rather than
+letting the tier label imply novelty.
+
+\subsection{Conflict inventory (C1--C6)}
+\label{sec:conflicts}
+The paper's own numbers are governed by the same discipline it
+advocates. Six inter-document caliber conflicts were inventoried by
+the internal review; their resolution landed with the P0 reconciliation
+(\texttt{framework/p0\_reconciliation\_report.md}, 2026-08-21), which
+this skeleton now cites as its canonical-number source:
+% source: journal_submission_d1_review.md sec 1.3 (C1-C6 table);
+% resolutions per p0_reconciliation_report.md sec 3
+
+\begin{center}
+\begin{tabular}{@{}llp{5.6cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Subject} & \textbf{Status (P0 landed)} \\
+\midrule
+C1 & axiom total (478 vs 448 vs ``$\sim$350+'') & \textbf{resolved}:
+253 live-.lean $\equiv$ registry residual; 448 = registry baseline
+caliber \\
+C2 & Agda postulates (``$\sim$149'' vs 55 measured) & \textbf{resolved}:
+7 files / 131 name-level postulates (149 = planning value, 55 =
+string-caliber) \\
+C3 & proof rate (3.91\% vs 99.79\%) & \textbf{resolved}: 3.91\%
+authoritative; legacy dashboard marked stale (Sec.~\ref{sec:history}) \\
+C4 & batch sorry caliber & \textbf{resolved} (string-caliber false
+positive; Sec.~\ref{sec:sorry}) \\
+C5 & sweep3 internal ledger (37 vs 31) & \textbf{resolved}: 31;
+method-table 37 was a miscount (corrected in sweep3 report) \\
+C6 & ``136 redeemed'' composition & \textbf{resolved}: canonical 196 =
+five-class decomposition (Sec.~\ref{sec:registry-results});
+``136/198'' were double-count calibers \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every \pnum{...} in this paper is therefore a declared caliber,
+traceable to a source file; C6-related figures have been replaced by
+P0 canonical numbers, and the remaining values are verified v7.98
+baselines --- the same (number, caliber) discipline of
+Sec.~\ref{sec:metric}, applied to the paper itself.

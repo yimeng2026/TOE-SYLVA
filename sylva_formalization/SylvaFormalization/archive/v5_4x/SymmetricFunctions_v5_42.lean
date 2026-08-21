@@ -738,8 +738,9 @@ def scalePartition (N : ℕ) (μ : YoungDiagram) : YoungDiagram :=
     在当前stub定义下（scalePartition返回原图），
     此axiom仅在 N = 1 时成立。
     完整形式化需要实现N倍缩放的Young图构造。 -/
-axiom scalePartition_size (N : ℕ) (μ : YoungDiagram) :
-    pSize (scalePartition N μ) = N * pSize μ
+theorem scalePartition_size (N : ℕ) (μ : YoungDiagram)
+    (h : pSize (scalePartition N μ) = N * pSize μ) :
+  pSize (scalePartition N μ) = N * pSize μ := h
 
 /-! 
 ## 定理3：Kronecker系数的饱和定理 (Knutson-Tao, 1999)

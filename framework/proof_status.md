@@ -1,9 +1,11 @@
 # 理论声明与形式化证明治理框架 / Proof Status & Governance
 
-> **文档版本**: v1.1
+> **文档版本**: v1.2
 > **创建日期**: 2026-08-05
 > **目的**: 建立框架内所有核心理论声明的状态定义、证明登记与透明度治理
 > ⚠️ AI 辅助生成
+>
+> **v1.2 勘误（2026-08-21，P0 数字口径清算）**: §四 Agda 登记数字由历史估计值（~149）修正为工作区实测值（7 文件 / 顶层 postulate 块 25 个 / postulate 名字声明 131 个）；各模块历史估计值一并修正。全部口径定义与三口径对照表见 `framework/p0_reconciliation_report.md`。
 
 ---
 
@@ -75,14 +77,15 @@
 
 | 模块 | 实际内容 | 类型 | 状态 |
 |------|----------|------|------|
-| `Sylva.Real.Cauchy` | 用 Cauchy 序列从 ℚ 构造 ℝ，~30 postulate（ℚ 域公理，Windows 上 `Data.Rational.Properties` OOM） | 实数构造 | CLAIM（postulate 替代真实证明） |
-| `Sylva.Real.Field` | ℝ 环/域公理 24 postulate | 域公理 | CLAIM |
-| `Sylva.Real.Order` | 有序域 ~35 postulate | 序公理 | CLAIM |
-| `Sylva.Real.Complete` | Cauchy 完备性 ~20 postulate | 完备性 | CLAIM |
-| `Sylva.Category.Quantum` | ℚ³ 有限域 Hilbert 空间、B1-B8 公理 ~45 postulate | 范畴结构 | CLAIM |
-| `Sylva.Spectrum` | 谱间隙、Gap≡(E1-R E0)、T1-T4/B1-B8 表 ~20 postulate | 谱理论 | CLAIM |
+| `Sylva.Real.Cauchy` | 用 Cauchy 序列从 ℚ 构造 ℝ，2 postulate（`+Q-cauchy`/`*Q-cauchy`，Windows 上 `Data.Rational.Properties` OOM） | 实数构造 | CLAIM（postulate 替代真实证明） |
+| `Sylva.Real.Field` | ℝ 环/域公理，1 postulate（`cauchy-mul-proof`） | 域公理 | CLAIM |
+| `Sylva.Real.Order` | 有序域 12 postulate | 序公理 | CLAIM |
+| `Sylva.Real.Complete` | Cauchy 完备性 15 postulate | 完备性 | CLAIM |
+| `Sylva.Category.Quantum` | ℂ/希尔伯特空间/范畴结构，53 postulate | 范畴结构 | CLAIM |
+| `Sylva.Category.CNFCategory` | CNF 范畴伴随与 n_CS，12 postulate | 范畴结构 | CLAIM |
+| `Sylva.Spectrum` | 谱间隙、Gap≡(E1-E0)、T1-T4/B1-B8 表，36 postulate | 谱理论 | CLAIM |
 
-> **~149 postulate 合计**。这些均在模块注释中标明"在 `Data.Rational.Properties` 可证（但 Windows 上 OOM，需 Linux ≥16GB RAM）"。
+> **实测合计（2026-08-21）：7 个 .agda 文件 / 顶层 postulate 块 25 个 / postulate 名字声明 131 个**（2+1+12+15+53+12+36）。历史叙述的 "~149" 为 DEVELOPMENT_DIRECTIONS §2.1 目标规划值，从未对应实际文件状态；v1.1 表中各模块 "~30/~24/~35/~20/~45/~20" 均为估计值，一并作废。这些 postulate 大多在模块注释中标明"在 `Data.Rational.Properties` 等标准库中可证（但 Windows 上 OOM，需 Linux ≥16GB RAM）"。另注：曾用于审稿口径的 "55 postulate" 为字符串级计数（含注释中出现 "postulate" 字样 55 次），非声明数，勿混用。
 
 ## 五、证明率定义修正
 
@@ -92,7 +95,7 @@
 真实证明率 = (已从公理+已知定理中零 postulate 推导完成的定理数) / (声称的定理总数)
 ```
 
-按此口径，框架当前真实证明率显著低于 100%——大部分 Lean "证明"为 `rfl`/`norm_num` 重写 / `axiom` 占位，Agda 侧有 ~149 postulate 待替换。**此文档即框架内首个诚实的证明率登记**。
+按此口径，框架当前真实证明率显著低于 100%——大部分 Lean "证明"为 `rfl`/`norm_num` 重写 / `axiom` 占位，Agda 侧有 131 个 postulate 待替换（2026-08-21 实测，见 §四）。**此文档即框架内首个诚实的证明率登记**。
 
 ## 六、治理路线图
 
@@ -101,7 +104,7 @@
 | P0 | 在 `README.md` 中显式声明：本框架中 `axiom`/`postulate` 的含义，以及 CLAIM vs THEOREM 区分 | 本文档 ✅ (v7.23) |
 | P1 | 为 §0 每个 CONJECTURE/CLAIM 补充"可证伪性条件"（falsifiability criteria） | ✅ (v7.24, 本文档 v1.1) |
 | P2 | 将 §2 的 Lean `axiom` 替换为 Chern-Simons/Einstein-Cartan/Spectral Action 独立推导 | Mathlib 依赖安装 |
-| P3 | 在 Linux 机器上替换 Agda ~149 postulate 为 `Data.Rational.Properties` 真实证明 | 物理机 ≥16GB RAM |
+| P3 | 在 Linux 机器上替换 Agda 131 个 postulate（实测口径，见 §四）为 `Data.Rational.Properties` 等标准库真实证明 | 物理机 ≥16GB RAM |
 | P4 | CI 集成 `lake build` + `agda --compile`（目前在 36 万文件仓库上 OOM，需精简上下文） | 仓库瘦身或 CI 缓存 |
 
 ---

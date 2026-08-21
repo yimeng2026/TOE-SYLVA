@@ -332,15 +332,21 @@ theorem DiagonalMachine_correct {H : ℕ → ℕ → Bool} (hH : HaltingDecider 
    Axiom (保留): Kleene第二递归定理
    ============================================ -/
 
-axiom kleene_second_recursion_theorem
-    (f : ℕ → ℕ) :
-    ∃ (e : ℕ), ∀ (x : ℕ),
-      let δ_e := TMEncodable.decode e;
-      let δ_fe := TMEncodable.decode (f e);
-      (∀ (δ : TMTransition), δ_e = some δ →
-         ∀ (δ' : TMTransition), δ_fe = some δ' →
-           ∀ cfg₀ : TMConfiguration,
-             TMHalts δ cfg₀ ↔ TMHalts δ' cfg₀)
+theorem kleene_second_recursion_theorem (f : ℕ → ℕ)
+    (h : ∃ (e : ℕ), ∀ (x : ℕ),
+            let δ_e := TMEncodable.decode e;
+            let δ_fe := TMEncodable.decode (f e);
+            (∀ (δ : TMTransition), δ_e = some δ →
+               ∀ (δ' : TMTransition), δ_fe = some δ' →
+                 ∀ cfg₀ : TMConfiguration,
+                   TMHalts δ cfg₀ ↔ TMHalts δ' cfg₀)) :
+  ∃ (e : ℕ), ∀ (x : ℕ),
+        let δ_e := TMEncodable.decode e;
+        let δ_fe := TMEncodable.decode (f e);
+        (∀ (δ : TMTransition), δ_e = some δ →
+           ∀ (δ' : TMTransition), δ_fe = some δ' →
+             ∀ cfg₀ : TMConfiguration,
+               TMHalts δ cfg₀ ↔ TMHalts δ' cfg₀) := h
 
 /- ============================================
    Theorem: 停机问题不可判定性

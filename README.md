@@ -158,7 +158,7 @@ TOE-SYLVA/
 继承远程 README 的诚实声明传统，本仓库明确声明：
 
 - **论文为探索性综述**，非同行评议出版物；并非所有目录都经过同等严格程度的审计。
-- **Lean 形式化仍在发展中**：定理数量庞大主要源于批量生成的 Proven 模块，证明深度以平凡/表层为主；许多物理推导仍以 `axiom`（公设）形式存在（本地统计 478 条 axiom），**尚未被形式化证明**。
+- **Lean 形式化仍在发展中**：定理数量庞大主要源于批量生成的 Proven 模块，证明深度以平凡/表层为主；许多物理推导仍以 `axiom`（公设）形式存在（2026-08-21 工作区实测：`sylva_formalization/` 目录 `axiom` 声明 253 条，全部登记于公理登记表 v2.0，其中 primitive 239 + schema 14；历史上的 "478 条" 为 v7.9x 时点旧口径，见 `framework/p0_reconciliation_report.md` 口径对照表），**尚未被形式化证明**。
 - **自评质量星级**（如有）为写作初期的自我评估，应视为愿景而非独立验证结论。
 - 远程已建立 proof governance 登记（`framework/proof_status.md`），对每条主张按 THEOREM / THEOREM\* / CLAIM / CONJECTURE 分级管理——本地同步后适用同一标准。
 

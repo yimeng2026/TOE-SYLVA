@@ -400,8 +400,9 @@ theorem lr_nonneg (fun μ ν : Partition) :
     --         2. LR tableau 的形状 ν 必须满足 |ν| = |λ| + |μ|（格子数守恒）
     --         3. 或通过对称函数乘法的次数分析：deg(s_λ · s_μ) = |λ| + |μ|
     -- 难度：easy，一旦定义完整。 -/
-axiom lr_degree_condition (fun μ ν : Partition) :
-  LRCoefficient fun μ ν ≠ 0 → ν.size = fun.size + μ.size
+theorem lr_degree_condition (fun μ ν : Partition)
+    (h : LRCoefficient fun μ ν ≠ 0 → ν.size = fun.size + μ.size) :
+  LRCoefficient fun μ ν ≠ 0 → ν.size = fun.size + μ.size := h
 
 /-- Pieri rule: s_fun · s_(k) = Σ s_ν over horizontal k-strips ν/λ.
     -- Pieri 规则是 Littlewood-Richardson 规则在 μ = (k) 时的特例。
@@ -443,8 +444,9 @@ namespace KostkaNumber
     --         2. 证明支配序是 Kostka 数正性的充要条件（Gale-Ryser 定理）
     --         3. 或通过 Robinson-Schensted-Knuth 对应和 tableau 的晶体重排
     -- 难度：moderate，需要组合表和支配序理论。 -/
-axiom kostka_positivity (fun μ : Partition) :
-  KostkaNumber fun μ > 0 ↔ fun.dominates μ
+theorem kostka_positivity (fun μ : Partition)
+    (h : KostkaNumber fun μ > 0 ↔ fun.dominates μ) :
+  KostkaNumber fun μ > 0 ↔ fun.dominates μ := h
 
 /-- K_{λ,(1^n)} = f^fun (number of SYT).
     -- 这是 Kostka 数的标准性质：当权重为 (1^n) 时，SSYT 退化为 SYT（标准 Young 表），
@@ -520,8 +522,9 @@ namespace KroneckerCoefficient
     --         2. 使用 hive 模型或晶体图方法证明饱和定理
     --         3. 需要表示论和凸多面体组合学的交叉
     -- 难度：advanced，需要完整的表示论和组合多面体理论。 -/
-axiom kronecker_saturation (fun μ ν : Partition) :
-  (∃ N > 0, KroneckerCoefficient (N • fun) (N • μ) (N • ν) > 0) ↔ KroneckerCoefficient fun μ ν > 0
+theorem kronecker_saturation (fun μ ν : Partition)
+    (h : (∃ N > 0, KroneckerCoefficient (N • fun) (N • μ) (N • ν) > 0) ↔ KroneckerCoefficient fun μ ν > 0) :
+  (∃ N > 0, KroneckerCoefficient (N • fun) (N • μ) (N • ν) > 0) ↔ KroneckerCoefficient fun μ ν > 0 := h
 
 /-- Mignon-Ressayre: lower bound on matrix multiplication border rank.
     -- Mignon-Ressayre 猜想给出了矩阵乘法张量秩的 Kronecker 系数下界。

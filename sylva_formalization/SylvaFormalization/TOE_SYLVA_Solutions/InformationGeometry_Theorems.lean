@@ -243,14 +243,19 @@ def vonNeumannEntropy {n : ℕ} (rho : Matrix (Fin n) (Fin n) ℂ)
   预计工作量: ~100h
   
   当前形式化: 使用诚实公理化声明此已知定理 -/
-axiom von_Neumann_entropy_subadditivity_axiom
-    {n m : ℕ} (rho_AB : Matrix (Fin (n*m)) (Fin (n*m)) ℂ)
-    (h_psd : rho_AB.PosSemidef) (h_trace : rho_AB.trace = 1) :
-    let rho_A := partialTraceB rho_AB
-    let rho_B := partialTraceA rho_AB
-    let S_AB := vonNeumannEntropy rho_AB h_psd h_trace
-    let S_A := vonNeumannEntropy rho_A (partialTraceB_PosSemidef rho_AB h_psd) (partialTraceB_trace rho_AB h_trace)
-    let S_B := vonNeumannEntropy rho_B (partialTraceA_PosSemidef rho_AB h_psd) (partialTraceA_trace rho_AB h_trace)
-    S_AB ≤ S_A + S_B
+theorem von_Neumann_entropy_subadditivity_axiom {n m : ℕ} (rho_AB : Matrix (Fin (n*m)) (Fin (n*m)) ℂ)
+    (h_psd : rho_AB.PosSemidef) (h_trace : rho_AB.trace = 1)
+    (h : let rho_A := partialTraceB rho_AB
+          let rho_B := partialTraceA rho_AB
+          let S_AB := vonNeumannEntropy rho_AB h_psd h_trace
+          let S_A := vonNeumannEntropy rho_A (partialTraceB_PosSemidef rho_AB h_psd) (partialTraceB_trace rho_AB h_trace)
+          let S_B := vonNeumannEntropy rho_B (partialTraceA_PosSemidef rho_AB h_psd) (partialTraceA_trace rho_AB h_trace)
+          S_AB ≤ S_A + S_B) :
+  let rho_A := partialTraceB rho_AB
+      let rho_B := partialTraceA rho_AB
+      let S_AB := vonNeumannEntropy rho_AB h_psd h_trace
+      let S_A := vonNeumannEntropy rho_A (partialTraceB_PosSemidef rho_AB h_psd) (partialTraceB_trace rho_AB h_trace)
+      let S_B := vonNeumannEntropy rho_B (partialTraceA_PosSemidef rho_AB h_psd) (partialTraceA_trace rho_AB h_trace)
+      S_AB ≤ S_A + S_B := h
 
 end

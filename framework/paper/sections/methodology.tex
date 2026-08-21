@@ -1,0 +1,191 @@
+% =====================================================================
+% Methodology - material sources (v7.98):
+%   * framework/axiom_registry.json v2.0 (taxonomy, 448 entries)
+%   * framework/axiom_reduction_sweep1..6_report.md (redemption record)
+%   * framework/proof_status.md sec 5 (honest-rate definition),
+%     sec 2 (claim tiers + falsifiability criteria), sec 3 (registry)
+%   * scripts/compute_proof_rate.py (count_sorry_no_comments = normative
+%     reference implementation), scripts/verify_honest_repo.py (CI)
+%   * framework/sorry_contamination_audit.md sec 6 (caliber standards)
+% \pnum{...} = declared calibers; C6-related figures are canonical
+% per p0_reconciliation_report.md (landed 2026-08-21); others are
+% verified v7.98 baselines.
+% =====================================================================
+
+\subsection{Axiom taxonomy and registry}
+\label{sec:taxonomy}
+Every \texttt{axiom} declaration in the non-batch corpus is registered
+in a machine-readable JSON registry (\texttt{axiom\_registry.json},
+schema v2.0) with one of four classes:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Class} & \textbf{Semantics} & \textbf{Disposition} \\
+\midrule
+\texttt{primitive} & genuinely assumed primitive & keep, declare \\
+\texttt{definitional} & restatement of a definition & discharge by
+\texttt{rfl}/\texttt{norm\_num}/\texttt{simp} \\
+\texttt{schema} & instance of a general transfer pattern &
+conditionalize ($P\!\to\!P$) \\
+\texttt{placeholder} & deferred proof parked as axiom & full
+replacement or explicit debt \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At the v7.98 baseline the registry contains \pnum{448} entries over
+\pnum{116} non-batch files; the \texttt{placeholder} class alone holds
+\pnum{42} entries.
+% baselines: 448 / 116 / 42 (axiom_registry.json v2.0; D1 review C6,
+% sec 1.4-7). NOTE: class-wise full decomposition table pending P0
+% (C1 reconciliation: README 478 vs registry 448 vs paper-01 "~350+").
+The registry is the single point of truth for redemption accounting
+(Sec.~\ref{sec:redemption}); its per-entry provenance (file, line,
+sweep that closed it, closing transformation) is what makes the
+semantic grading of Sec.~\ref{sec:redemption} auditable rather than
+assertive.
+
+\subsection{Redemption methodology and semantic grading}
+\label{sec:redemption}
+Axioms are discharged in recorded \emph{sweeps} (six at the
+reconciled working tree: sweep1--sweep6), each producing a per-entry
+report. The methodological
+commitment of this paper is that a sweep's output must be graded by
+\emph{semantic content added}, not by closure count. Four grades:
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Grade} & \textbf{Content added} &
+\textbf{Typical transformation} & \textbf{Count} \\
+\midrule
+G1 vacuous & none & \texttt{axiom T : True} $\to$
+\texttt{theorem T : True := trivial} & \pnum{50} \\
+G2 trust transfer & none (hypothesis) & \texttt{axiom P} $\to$
+\texttt{theorem (h : P) : P := h} & \pnum{90} \\
+G3 definitional & definitional equality & data axiom $\to$
+\texttt{noncomputable def}; \texttt{rfl} rewrites & \pnum{41} \\
+G4 substantive & real proof content & arithmetic / existence proofs
+& \pnum{13} \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{excluded from redemption:} axiom bundling
+(kept, declared)} & \pnum{2} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% canonical (p0_reconciliation_report.md sec 4, five-class taxonomy
+% over sweeps 1-6 = 196 closures; merged 2026-08-21, superseding the
+% D1-review C6 estimate and resolving C5/C6):
+%   G1 vacuous 50 (sweep1 6 + sweep2 44);
+%   G2 trust transfer 90 (sweep1 1 + sweep4 27 + sweep5 30 + sweep6 32);
+%   G3 definitional 41 (sweep1 data-def 17 + sweep1 rfl 3 + sweep3 rfl 21);
+%   G4 substantive 13 (sweep1 2 + sweep3 10 + sweep4 1);
+%   bundling 2 (sweep1 1 + sweep4 1), excluded from redemption.
+% C5 resolved: sweep3 ledger is 31 (method table 37 was a miscount).
+
+Two design points deserve emphasis. First, \emph{conditionalization}
+(G2) is honest but content-free: it converts an axiom into a theorem
+whose hypothesis is the axiom's statement, preserving downstream
+elaboration while making the debt visible at every use site. Second,
+the grade distribution itself is the deliverable: only \pnum{13}
+of \pnum{196} closures are G4. Reporting only ``\pnum{196} axioms
+redeemed'' would be the exact failure mode (F2) this methodology
+exists to prevent.
+
+% TODO(P1, metatheorem): formalize that G1-G3 transformations yield
+% conservative extensions of the ambient theory (D1 review sec 1.4-6).
+% Claimed at governance level; not yet a formal theorem.
+
+\subsection{The honest proof-rate metric and caliber discipline}
+\label{sec:metric}
+The repository's normative definition
+(\texttt{proof\_status.md} sec 5):
+\begin{quote}
+\emph{true proof rate} $=$ (theorems derived from axioms and known
+theorems with zero \texttt{postulate}) $/$ (total claimed theorems).
+\end{quote}
+Operationally, two calibers coexist and both are legitimate when
+declared:
+\begin{itemize}
+\item \caliber{code}: \texttt{sorry} is counted after stripping
+comments; files declaring \texttt{axiom}/\texttt{postulate} contribute
+zero true proofs. Reference implementation:
+\texttt{count\_sorry\_no\_comments} in \texttt{compute\_proof\_rate.py}
+--- the single normative implementation, not to be reimplemented ad
+hoc.
+\item \caliber{independent}: additionally excludes trivially-patterned
+proofs and axiom-dependent theorems, yielding the strict ``independent
+derivation'' rate.
+\end{itemize}
+The three-tier caliber standard adopted as policy after the incident
+of Sec.~\ref{sec:sorry} is:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Tier} & \textbf{Meaning} & \textbf{Admissible for} \\
+\midrule
+\caliber{string} & raw substring match, comments included &
+nothing (quarantine for humans) \\
+\caliber{code} & comment-stripped, code-level pattern &
+contamination judgment, CI \\
+\caliber{CI-pattern} & anchored CI grep with comment exclusion &
+gates, dashboards \\
+\bottomrule
+\end{tabular}
+\end{center}
+The rule: \emph{a metric is not a number; it is a (number, caliber)
+pair}, and any headline number without a declared caliber is treated
+as a defect (cf.\ C3, C4 in Sec.~\ref{sec:conflicts}).
+
+\subsection{The external claim layer}
+\label{sec:claims}
+Internal formal status and external epistemic status are separated by
+a four-tier label, assigned per claim and registered centrally
+(\texttt{proof\_status.md}):
+
+\begin{center}
+\begin{tabular}{@{}lp{9.2cm}@{}}
+\toprule
+\textbf{Tier} & \textbf{Standard} \\
+\midrule
+THEOREM & formal proof machine-checked in-repo, core free of
+\texttt{postulate} \\
+THEOREM* & mathematical body proven, relying on known theorems not
+re-verified in-framework (reference integrity confirmed) \\
+CLAIM & reasoning / numerics / citation support, no independent
+formalization or review \\
+CONJECTURE & speculative, logically coherent, falsifiable \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every CLAIM and CONJECTURE carries a \emph{falsifiability criterion}
+(e.g., for the fine-structure coincidence $\alpha^{-1}\!\approx\!
+n_{CS}\!=\!137$: a first-principles computation of $\alpha^{-1}$ to
+$\pm 0.01$ independent of the loop-integer self-tuning parameters).
+The registered entries at v7.98 span FLT and Langlands (THEOREM*, via
+mathlib), CHSH and the Dedekind unique-factorization delegation
+(THEOREM), the stratified Chern-number identity (THEOREM, with
+\texttt{\#print axioms} reduced to the standard trio
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}),
+and the Standard-Model gauge-group, Chern--Simons level, and spectral
+action claims (CLAIM, with explicit gap chains).
+% source: proof_status.md sec 2 (criteria), sec 3 (registry, v1.1)
+
+\subsection{CI discipline and the reproducibility envelope}
+\label{sec:ci}
+The honesty layer of the repository is machine-checked
+(\texttt{verify\_honest\_repo.py --ci}: forbidden-term scan with
+deletion-context allowance, required honesty markers, deleted-claims
+ledger with $>$\,10 entries, BibTeX integrity, new-paper presence).
+Its \emph{boundary is stated explicitly}: the CI checks the honesty
+layer, not Lean proof content --- conflation of the two is itself a
+caliber error. The Lean side is pinned: mathlib4 at commit
+\texttt{8a178386}, toolchain Lean 4.29.0, with independent compile
+logs recording \texttt{\#print axioms} output. The batch generator is
+reproducible from its manifest (\pnum{119831} entries, SHA-256
+sampling \pnum{500}, zero mismatches at v7.98).
+% TODO(P1-8): containerized reproducibility package (compile logs
+% currently carry local paths; no CI artifacts yet - D1 review 1.2).

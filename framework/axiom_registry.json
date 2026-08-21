@@ -13,7 +13,7 @@
       "schema": "公理模式 — depends on type parameters, should hold for all eligible instances",
       "placeholder": "占位公理 — conclusion is True or trivially true, no actual mathematical content"
     },
-    "agda_note": "DEVELOPMENT_DIRECTIONS 2.1 目标包含 149 条 Agda postulate。实测：仓库内不存在任何 .agda 文件，亦无 Agda/ 目录。DEVELOPMENT_DIRECTIONS.md 第 50 行明载此 149 条为「CLAIM，因 Windows 编译 OOM」未实体化。本登记表仅覆盖 Lean axiom 全量化。Agda 部分待 Linux ≥16GB 环境就绪后另行登记。",
+    "agda_note": "【勘误 2026-08-21，P0 口径清算】本注记原文称『仓库内不存在任何 .agda 文件』为事实错误：实测存在 sylva_formalization/SylvaFormalization/Agda/Sylva/ 下 7 个 .agda 文件（Real/ 4 个 + Category/ 2 个 + Spectrum 1 个），顶层 postulate 块 25 个、postulate 名字声明 131 个（名字级口径；'postulate' 字符串级出现 55 次，勿作声明数引用；DEVELOPMENT_DIRECTIONS 2.1 的『149 条』为目标规划值，从未对应实际文件）。本登记表仅覆盖 Lean axiom 全量化；Agda postulate 状态明细见 framework/proof_status.md §四（v1.2）。",
     "reduction_methods_legend": {
       "rfl": "reflexivity check — for definitional equalities",
       "norm_num": "numerical normalization — for arithmetic on concrete numbers",

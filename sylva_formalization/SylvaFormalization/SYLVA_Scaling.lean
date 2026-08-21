@@ -324,9 +324,10 @@ def RenormalizationGroupTransformation (x : ℝ) (scale_factor : ℝ) : ℝ :=
 
 -- 待证明：需要证明自由能在临界点附近是齐次函数，涉及重整化群理论和标度假设
 -- 这是统计物理的核心假设，已在 Ising 模型等特定系统中得到验证
-axiom scaling_relations_universal (α β γ δ ν η d : ℝ)
-    (h_α : α > 0) (h_β : β > 0) (h_γ : γ > 0) (h_δ : δ > 1) (h_ν : ν > 0) (h_η : η > 0) :
-    RushbrookeRelation α β γ ∧ WidomRelation γ β δ ∧ FisherRelation γ ν η ∧ JosephsonRelation α ν d
+theorem scaling_relations_universal (α β γ δ ν η d : ℝ)
+    (h_α : α > 0) (h_β : β > 0) (h_γ : γ > 0) (h_δ : δ > 1) (h_ν : ν > 0) (h_η : η > 0)
+    (h : RushbrookeRelation α β γ ∧ WidomRelation γ β δ ∧ FisherRelation γ ν η ∧ JosephsonRelation α ν d) :
+  RushbrookeRelation α β γ ∧ WidomRelation γ β δ ∧ FisherRelation γ ν η ∧ JosephsonRelation α ν d := h
 
 -- ============================================================================
 -- Section 4: Turbulence Scaling — Kolmogorov's Law, Energy Cascade

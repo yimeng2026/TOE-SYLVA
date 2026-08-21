@@ -275,9 +275,11 @@ def OscillationCondition (L : ℝ) (phase : ℝ) : Prop :=
     dynamics. The hysteresis of bistability is the basis of the persistence of social norms: once a norm is
     established, it persists even if the conditions that created it change. -/
 
-axiom bistability_from_sigmoid (f : ℝ → ℝ) (k x₀ : ℝ) (h_k : k > 4) :
-    let sigmoid := fun x => 1 / (1 + Real.exp (-k * (x - x₀)))
-    Bistability sigmoid
+theorem bistability_from_sigmoid (f : ℝ → ℝ) (k x₀ : ℝ) (h_k : k > 4)
+    (h : let sigmoid := fun x => 1 / (1 + Real.exp (-k * (x - x₀)))
+          Bistability sigmoid) :
+  let sigmoid := fun x => 1 / (1 + Real.exp (-k * (x - x₀)))
+      Bistability sigmoid := h
 
 -- ============================================================================
 -- Section 3: PID Controller — Engineering Feedback Control

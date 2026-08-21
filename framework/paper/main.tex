@@ -1,0 +1,126 @@
+% =====================================================================
+% Axiom Governance for an AI-Generated Formal Library:
+% Taxonomy, Redemption Methodology, and Honest Proof-Rate Metrics
+% ---------------------------------------------------------------------
+% D3 LaTeX pilot skeleton (roadmap wave-2, line D; candidate (1))
+% Task dispatch: group admin 2026-08-21 18:06; executor: Parallel Searcher A
+% Target venue (updated per framework/journal_matching_matrix.md, D2,
+% 2026-08-21 18:33 - data-driven correction overriding D1 sec 1.5):
+%   Journal of Automated Reasoning (JAR) - main target
+%     (Springer, IF 0.7, ITP 2026 special issue active);
+%   LMCS - backup; conference checkpoints: CPP 2028 (main line),
+%   ITP 2027 (mid-way checkpoint, not yet announced).
+%   JFR moved to observation list (no issue since Vol.13 No.1,
+%   2020-12-21 - 5y8m hiatus measured on official archive).
+% Baseline: repo HEAD v7.98 (ae8ab0e07, 2026-08-21)
+% ---------------------------------------------------------------------
+% NUMBER PLACEHOLDER DISCIPLINE (D1 review sec 1.4-1; P0 canonical-number
+% reconciliation running in parallel, do not merge numbers yourself):
+%   * Every aggregate number is wrapped in \pnum{...} (red brackets).
+%   * The value inside \pnum{} is the v7.98 WORKING-TREE BASELINE,
+%     kept for traceability only; canonical numbers land after P0.
+%   * The repository source of each baseline is given in a % comment
+%     adjacent to the macro call.
+% Compile:  tectonic main.tex      (verified working, build log in build/)
+%           also compatible with pdflatex + bibtex.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ---- placeholder macro: red angle-bracket number = v7.98 baseline ----
+\newcommand{\pnum}[1]{\textcolor{red}{$\langle$#1$\rangle$}}
+% caliber keyword for metric-caliber discipline (Sec. 2.3, 4.1)
+\newcommand{\caliber}[1]{\textsf{[#1]}}
+
+\title{Axiom Governance for an AI-Generated Formal Library:\\
+Taxonomy, Redemption Methodology, and Honest Proof-Rate Metrics}
+\author{TOE-SYLVA Formalization Governance Group}
+\date{August 2026 --- draft skeleton; canonical numbers per the P0
+reconciliation (v7.98 baseline, landed 2026-08-21)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+AI-assisted formalization scales content faster than the human
+communities of practice that traditionally guarantee it, and the debt
+accumulates in three specific failure modes: axioms used as deferred
+proofs, proof-rate metrics that drift with the measuring caliber, and
+string-level scans that mistake comments for placeholders. We document
+the axiom-governance program of TOE-SYLVA, a Lean~4 (+\,Agda) library
+built on a pinned mathlib4 revision and containing \pnum{119859}
+machine-generated batch modules alongside handcrafted developments.
+% v7.98 baseline: 119,859 SYLVA_Proven* files in working tree
+% (framework/sorry_contamination_audit.md sec 1; ci_slimming_phase1_report.md)
+The program comprises: (i)~a four-class axiom taxonomy (primitive,
+definitional, schema, placeholder) with a machine-readable registry of
+\pnum{448} axioms;
+% v7.98 baseline: 448 (axiom_registry.json v2.0; C1 in
+% journal_submission_d1_review.md sec 1.3)
+(ii)~a redemption methodology executed across six sweeps, whose
+\pnum{196} closures we re-classify into four semantic grades --- vacuous
+placeholder cleanup, trust transfer ($P\!\to\!P$ conditionalization),
+definitional reconstruction, and substantive proof --- of which only
+\pnum{13} carry non-trivial proof content;
+% canonical (p0_reconciliation_report.md secs 2.1/4): 196 = 30+44+31+
+% 29+30+32 (sweeps 1-6; definitional 142 and placeholder 42 classes
+% fully cleared); 13 substantive = 6.6% of closures. Supersedes the
+% double-counted "136+30=166" (2 v7.94 entries are inside sweep1's 30)
+% and the irreproducible 598->568 caliber.
+(iii)~an honest proof-rate metric that counts code-level \texttt{sorry}
+with comments stripped, replacing a caliber history that drifted from
+\pnum{88.08\%} to \pnum{100\%} and then collapsed to \pnum{3.91\%} once
+axioms were no longer ignored;
+% v7.98 baselines: caliber history per proof_status.md sec 5 and
+% proof_rate_dashboard.md (2026-08-11); DASHBOARD.md conflict = C3
+and (iv)~a four-tier external claim layer (THEOREM / THEOREM* / CLAIM /
+CONJECTURE) with falsifiability criteria. Two incidents in which the
+governance loop caught defects in its own metrics --- a \pnum{30.2\%}
+``sorry contamination'' alarm that reversed to zero under a code-level
+caliber, and a 25$\times$ disagreement between two dashboards measuring
+the same library --- are elevated into the methodological thesis of the
+paper: \emph{every proof-library metric must be bound to an explicitly
+declared caliber level (string / code / CI-pattern)}, and the binding
+must be machine-checkable. We close with a full lifecycle case study ---
+a CLAIM$\to$THEOREM upgrade along a Chern--Simons dependency chain with
+mathlib-delegation honesty labels --- and the quarantine of the single
+genuinely contaminated module in the batch corpus.
+\end{abstract}
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+\small\textbf{Draft-skeleton status (D3 compilation pilot).}
+Numbers in red angle brackets $\langle\cdots\rangle$ are declared
+calibers retained for traceability. The P0 canonical-number
+reconciliation (D1 review sec 1.4-1) has landed
+(\texttt{framework/p0\_reconciliation\_report.md}, 2026-08-21): all
+C6-related figures --- sweep accounting (196), semantic-grade
+decomposition, registry (448) vs.\ live-.lean (253) calibers --- are
+canonical and quotable; the remaining bracketed values are verified
+v7.98 baselines, each annotated with its repository source in the
+\LaTeX{} source comments. The full conflict inventory (C1--C6) that
+motivated this discipline is tabulated in Sec.~\ref{sec:conflicts}.}}
+
+\medskip
+
+\section{Introduction}\label{sec:intro}
+\input{sections/introduction}
+
+\section{Methodology}\label{sec:method}
+\input{sections/methodology}
+
+\section{Results}\label{sec:results}
+\input{sections/results}
+
+\section{Discussion}\label{sec:discussion}
+\input{sections/discussion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

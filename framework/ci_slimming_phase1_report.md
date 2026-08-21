@@ -109,7 +109,7 @@ git rm --cached sylva_formalization/SylvaFormalization/SYLVA_ProvenNumbertheoryR
 | 指标 | 迁移前 | 迁移后 | 变化 |
 |------|--------|--------|------|
 | 试点文件 sorry 总数 | 0 | 0 | 不变 |
-| sorry-audit 全量 SYLVA_Proven*（含 sorry 文件数） | 36,199 | 36,199 | 不变（工作树文件仍在） |
+| sorry-audit 全量 SYLVA_Proven*（含 sorry 文件数） | 36,199 | 36,199 | 不变（工作树文件仍在）※字符串口径，代码级实测 0，见 §末勘误注 |
 | sorry-audit 全量耗时 | 1.93s | 1.94s | +0.01s（噪声范围） |
 | `git grep sorry`（仅 tracked） | — | 36,199 | 36,199（tracked 减 5 但含 sorry 文件数不变） |
 | `verify_honest_repo.py --ci` | **PASS** (0.04s) | **PASS** (0.08s) | ✅ **仍 PASS** |
@@ -183,7 +183,7 @@ D  sylva_formalization/SylvaFormalization/SYLVA_ProvenTopologyR1M1.lean
 
 2. **`framework/batch_module_manifest.json` 在 .gitignore 中**：39MB JSON 不入库，正确做法。summary MD 入库。
 
-3. **sorry-audit 发现**：119,859 个 SYLVA_Proven* 文件中有 36,199 个含 `sorry`（30.2%）。这与审计报告 §4.6 中"批量模块本就 zero-sorry"的假设不符。**建议后续调查这 36,199 个含 sorry 的批量模块**——可能是生成器模板中包含 sorry 占位符。
+3. **sorry-audit 发现（已勘误，2026-08-21 P0 口径清算）**：本报告原文称 "119,859 个 SYLVA_Proven* 文件中有 36,199 个含 `sorry`（30.2%），与 §4.6 '批量模块本就 zero-sorry' 的假设不符，建议后续调查"。经《sorry 污染审计》（framework/sorry_contamination_audit.md，2026-08-21）全量复核定性为**口径层级混淆**：36,199/30.2% 为**字符串包含口径**（`git grep sorry` 子串匹配，把注释中的 "no sorry" 否定声明也计入）；**代码级**（`^\s*sorry\b` 行首 tactic/term，即 CI sorry-audit job 的实际检查模式）**全量 119,859 文件命中 0 个**。§4.6 的"批量模块 zero-sorry"假设在代码级口径下**成立**，无需调查，CI 无需修改。原文的"建议后续调查"作废。
 
 4. **CI 指标变化微乎其微**：5 个文件的迁移（0.004% 占比）对 CI 指标的影响在噪声范围内。全量迁移后预期加速比见 §7.1（sorry-audit ~18×，proof-rate-dashboard ~10×）。
 

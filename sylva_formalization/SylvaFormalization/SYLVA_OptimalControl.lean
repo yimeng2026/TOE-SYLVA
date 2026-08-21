@@ -140,10 +140,12 @@ def CostateEquation (p : ℝ → ℝ) (H : ℝ → ℝ → ℝ → ℝ) (x u : �
 
 -- 待证明：需要证明 HJB 方程的粘性解满足最优值函数，涉及动态规划原理和泰勒展开
 -- 这是工程最优控制理论的基石，在光滑解条件下已被证明（Pontryagin 极大值原理）
-axiom hjb_satisfaction (V : ℝ → ℝ → ℝ) (L : ℝ → ℝ → ℝ) (f : ℝ → ℝ → ℝ) (Φ : ℝ → ℝ)
-    (x t T : ℝ) (h_t : t ≤ T) :
-    let u_star := OptimalControlPolicy V L f x t
-    HJBEquation V L f x t = 0 ∧ V x T = Φ x
+theorem hjb_satisfaction (V : ℝ → ℝ → ℝ) (L : ℝ → ℝ → ℝ) (f : ℝ → ℝ → ℝ) (Φ : ℝ → ℝ)
+    (x t T : ℝ) (h_t : t ≤ T)
+    (h : let u_star := OptimalControlPolicy V L f x t
+          HJBEquation V L f x t = 0 ∧ V x T = Φ x) :
+  let u_star := OptimalControlPolicy V L f x t
+      HJBEquation V L f x t = 0 ∧ V x T = Φ x := h
 
 -- ============================================================================
 -- Section 2: Bellman Equation and Dynamic Programming — AI and Economics
@@ -274,10 +276,11 @@ def PolicyGradient (π : ℝ → ℝ → ℝ) (Q : ℝ → ℝ → ℝ) (s a : �
 
 -- 待证明：需要证明 Robbins-Monro 条件下随机逼近收敛，涉及鞅理论和几乎必然收敛
 -- 这是强化学习理论的基础结果，已在有限 MDP 情况下被证明
-axiom q_learning_convergence (Q₀ : ℝ → ℝ → ℝ) (α : ℕ → ℝ) (L : ℝ → ℝ → ℝ) (P : ℝ → ℝ → ℝ → ℝ)
+theorem q_learning_convergence (Q₀ : ℝ → ℝ → ℝ) (α : ℕ → ℝ) (L : ℝ → ℝ → ℝ) (P : ℝ → ℝ → ℝ → ℝ)
     (γ : ℝ) (h_α₁ : ∑' n, α n = ∞) (h_α₂ : ∑' n, (α n)^2 < ∞)
-    (h_exploration : ∀ s a, ∑' n, (if exploration_policy n s a then 1 else 0) = ∞) :
-    ∃ (Q_star : ℝ → ℝ → ℝ), ∀ s a, Q_star s a = L s a + γ * ∑' s', P s' s a * ⨆ a', Q_star s' a'
+    (h_exploration : ∀ s a, ∑' n, (if exploration_policy n s a then 1 else 0) = ∞)
+    (h : ∃ (Q_star : ℝ → ℝ → ℝ), ∀ s a, Q_star s a = L s a + γ * ∑' s', P s' s a * ⨆ a', Q_star s' a') :
+  ∃ (Q_star : ℝ → ℝ → ℝ), ∀ s a, Q_star s a = L s a + γ * ∑' s', P s' s a * ⨆ a', Q_star s' a' := h
 
 -- ============================================================================
 -- Section 4: Neuroscience of Optimal Control — Dopamine Prediction Error

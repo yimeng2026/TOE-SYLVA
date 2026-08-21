@@ -1,0 +1,664 @@
+{
+ "metadata": {
+  "title": "TOE-SYLVA 静态超图基线统计",
+  "version": "1.0",
+  "generated": "2026-08-21",
+  "head": "ae8ab0e07-dirty",
+  "data": "framework/hypergraph/hypergraph_static_v1.json",
+  "build_script": "framework/hypergraph/build_hypergraph.py"
+ },
+ "node_counts": {
+  "total": 24570,
+  "papers": 194,
+  "modules": 22349,
+  "modules_curated": 273,
+  "modules_topic": 22076,
+  "concepts": 1579,
+  "concepts_definition": 851,
+  "concepts_theorem": 728,
+  "axioms": 448
+ },
+ "hyperedge_counts": {
+  "total": 970,
+  "cites": 586,
+  "cites_strong": 188,
+  "cites_weak": 398,
+  "depends": 170,
+  "depends_curated": 22,
+  "depends_topic_hub": 148,
+  "topic": 51,
+  "topic_discipline": 16,
+  "topic_domain": 35,
+  "reduction": 163
+ },
+ "degree": {
+  "papers": {
+   "histogram": {
+    "3-5": 135,
+    "6-20": 42,
+    "2": 11,
+    "1": 6
+   },
+   "top10_by_degree": [
+    [
+     "paper:几何深度学习与规范等变神经网络_综述",
+     9
+    ],
+    [
+     "paper:天体粒子物理与超高能宇宙线_综述",
+     9
+    ],
+    [
+     "paper:相对论性重离子碰撞与夸克胶子等离子体_综述",
+     9
+    ],
+    [
+     "paper:粒子天体物理与宇宙线_综述",
+     8
+    ],
+    [
+     "paper:量子霍尔效应与拓扑量子输运_综述",
+     8
+    ],
+    [
+     "paper:凝聚态物理与拓扑物态_综述",
+     7
+    ],
+    [
+     "paper:天文学与观测宇宙学_综述",
+     7
+    ],
+    [
+     "paper:宇宙学与天体物理学_综述",
+     7
+    ],
+    [
+     "paper:引力波天体物理学_综述",
+     7
+    ],
+    [
+     "paper:拓扑量子场论与Knot不变量_综述",
+     7
+    ]
+   ]
+  },
+  "modules_curated": {
+   "histogram": {
+    "3-5": 30,
+    "6-20": 61,
+    "1": 146,
+    ">20": 7,
+    "2": 29
+   },
+   "top10_by_degree": [
+    [
+     "module:sylva_formalization/SylvaFormalization/InformationGeometry.lean",
+     66
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/CondensedMatter.lean",
+     36
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean",
+     32
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/GaugeTheory.lean",
+     29
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean",
+     27
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/QuantumChemistry.lean",
+     26
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/TopologicalInsulator.lean",
+     25
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/Hodge.lean",
+     19
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/Superconductivity/Superconductivity_Material_Derivation.lean",
+     19
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/BerryCurvature.lean",
+     18
+    ]
+   ]
+  },
+  "modules_topic": {
+   "histogram": {
+    "1": 21916,
+    "3-5": 33,
+    "6-20": 17,
+    "2": 36,
+    "0": 68,
+    ">20": 6
+   },
+   "top10_by_degree": [
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean",
+     147
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+     52
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+     36
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean",
+     26
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Scale.lean",
+     24
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean",
+     22
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Causality.lean",
+     20
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+     20
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean",
+     20
+    ],
+    [
+     "module:sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean",
+     16
+    ]
+   ]
+  },
+  "concepts": {
+   "histogram": {
+    "2": 56,
+    "6-20": 178,
+    "3-5": 99,
+    "0": 1150,
+    ">20": 20,
+    "1": 76
+   },
+   "top10_by_degree": [
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#Matrix.IsUnitary",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#adiabaticBerryPhaseGate",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#braidGroupGenerator",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#chernNumberToCodeDistance",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#topologicalInsulatorKClass",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#berry_phase_at_conical_intersection_is_pi",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#chern_number_equals_logical_qubit_count",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#jones_representation_is_universal",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TopologicalQuantumComputing.lean#kitaev_sixteen_fold_way",
+     30
+    ],
+    [
+     "concept:sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/TopologicalInsulator.lean#Kitaev_A_class_2D",
+     24
+    ]
+   ]
+  },
+  "axioms": {
+   "histogram": {
+    "1": 135,
+    "0": 313
+   },
+   "top10_by_degree": [
+    [
+     "axiom:sylva_formalization/SylvaFormalization/BCSTherory.lean#GapEquationZeroT",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/BCSTherory.lean#CriticalTemperature",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/BCSTherory.lean#QuasiparticleSpectrum",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/BCSTherory.lean#JosephsonCurrent",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/BCSTherory.lean#ACJosephsonEffect",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean#cook_levin_phase2",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/Computability/CookLevin.lean#SATCertificateBound",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/Computability/CookLevin.lean#cook_levin",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/Computability/CookLevin.lean#CircuitSAT_is_NPComplete",
+     1
+    ],
+    [
+     "axiom:sylva_formalization/SylvaFormalization/Computability/CookLevin.lean#ThreeSAT_is_NPComplete",
+     1
+    ]
+   ]
+  }
+ },
+ "edge_sizes": {
+  "cites": {
+   "count": 586,
+   "min": 2,
+   "max": 12,
+   "mean": 6.95,
+   "median": 8
+  },
+  "depends": {
+   "count": 170,
+   "min": 2,
+   "max": 21825,
+   "mean": 134.08,
+   "median": 5
+  },
+  "topic": {
+   "count": 51,
+   "min": 1,
+   "max": 60,
+   "mean": 10.14,
+   "median": 4
+  },
+  "reduction": {
+   "count": 163,
+   "min": 1,
+   "max": 2,
+   "mean": 1.83,
+   "median": 2
+  }
+ },
+ "topic_coverage": {
+  "discipline_papers_multi": {
+   "数学物理与几何拓扑": 33,
+   "未分类": 31,
+   "凝聚态与量子物质": 26,
+   "量子信息与量子计算": 23,
+   "计算科学与人工智能": 20,
+   "量子场论与粒子物理": 17,
+   "量子光学与原子分子光物理": 17,
+   "引力、宇宙学与量子引力": 15,
+   "统计物理与复杂系统": 14,
+   "生物物理与神经科学": 11,
+   "天文观测与天体物理": 10,
+   "量子基础与开放系统": 8,
+   "核物理与高能实验": 6,
+   "地球、空间与环境科学": 5,
+   "化学与分子科学": 4,
+   "社会经济与认知科学": 4
+  },
+  "discipline_papers_primary": {
+   "未分类": 31,
+   "凝聚态与量子物质": 24,
+   "数学物理与几何拓扑": 23,
+   "量子信息与量子计算": 23,
+   "引力、宇宙学与量子引力": 15,
+   "量子场论与粒子物理": 14,
+   "量子光学与原子分子光物理": 13,
+   "计算科学与人工智能": 10,
+   "统计物理与复杂系统": 9,
+   "生物物理与神经科学": 8,
+   "量子基础与开放系统": 8,
+   "地球、空间与环境科学": 5,
+   "化学与分子科学": 4,
+   "社会经济与认知科学": 3,
+   "核物理与高能实验": 3,
+   "天文观测与天体物理": 1
+  },
+  "discipline_orphan_papers": {
+   "社会经济与认知科学": 3,
+   "化学与分子科学": 2,
+   "地球、空间与环境科学": 1,
+   "生物物理与神经科学": 1,
+   "计算科学与人工智能": 1
+  },
+  "discipline_fully_covered_papers": {
+   "量子场论与粒子物理": 13,
+   "凝聚态与量子物质": 12,
+   "数学物理与几何拓扑": 10,
+   "未分类": 8,
+   "引力、宇宙学与量子引力": 7,
+   "统计物理与复杂系统": 5,
+   "计算科学与人工智能": 4,
+   "量子基础与开放系统": 3,
+   "生物物理与神经科学": 3,
+   "量子信息与量子计算": 3,
+   "核物理与高能实验": 2,
+   "天文观测与天体物理": 2,
+   "化学与分子科学": 1
+  },
+  "discipline_cites_edges": {
+   "数学物理与几何拓扑": 106,
+   "凝聚态与量子物质": 94,
+   "未分类": 86,
+   "量子信息与量子计算": 78,
+   "量子场论与粒子物理": 67,
+   "量子光学与原子分子光物理": 64,
+   "引力、宇宙学与量子引力": 62,
+   "计算科学与人工智能": 59,
+   "统计物理与复杂系统": 41,
+   "天文观测与天体物理": 41,
+   "生物物理与神经科学": 33,
+   "核物理与高能实验": 25,
+   "量子基础与开放系统": 20,
+   "地球、空间与环境科学": 12,
+   "化学与分子科学": 6,
+   "社会经济与认知科学": 2
+  },
+  "curated_domain_modules": {
+   "core": 60,
+   "archive": 48,
+   "TOE_SYLVA_Solutions": 22,
+   "archive/v5_4x": 19,
+   "TOE_SYLVA_Project/TOESylva/Solutions": 18,
+   "MathematicalTools": 9,
+   ".": 9,
+   "CondensedMatter": 8,
+   "GaugeTheory": 5,
+   "QuantumChemistry": 5,
+   "Tests": 5,
+   "Computability": 4,
+   "Cosmology": 4,
+   "CourseChain": 4,
+   "InformationGeometry": 4,
+   "Renormalization": 4,
+   "StandardModel": 4,
+   "StringTheory": 4,
+   "TopologicalInsulator": 4,
+   "CookLevin": 3,
+   "NPClass": 3,
+   "NumberTheory": 3,
+   "Superconductivity": 3,
+   "SylvaInfrastructure": 3,
+   "Meta": 2,
+   "MillenniumProblems": 2,
+   "Tutorial": 2,
+   "tutorials/01_introduction": 2,
+   "tutorials/02_gf3_basics": 2,
+   "tutorials/04_proving_techniques": 2,
+   "tutorials": 2,
+   "Complexity": 1,
+   "PhysicalChemistry": 1,
+   "PvsNP": 1,
+   "TOE_SYLVA_Project": 1
+  },
+  "curated_domain_axioms": {
+   "core": 195,
+   "archive/v5_4x": 68,
+   "Computability": 45,
+   "SylvaInfrastructure": 22,
+   "archive": 19,
+   "GaugeTheory": 12,
+   "MillenniumProblems": 10,
+   "TOE_SYLVA_Solutions": 10,
+   "TopologicalInsulator": 10,
+   "CondensedMatter": 9,
+   "Cosmology": 9,
+   "Renormalization": 8,
+   "StandardModel": 8,
+   "StringTheory": 8,
+   "InformationGeometry": 5,
+   "QuantumChemistry": 4,
+   "NumberTheory": 2,
+   "PhysicalChemistry": 2,
+   "NPClass": 1,
+   "Superconductivity": 1
+  }
+ },
+ "orphan_and_reconciliation": {
+  "papers_total": 194,
+  "papers_mapped": 187,
+  "papers_orphan": 7,
+  "lineage_v1_index_files": 232,
+  "lineage_v1_mapped_files": 79,
+  "registry_axioms": 448,
+  "registry_files_missing_from_tree": [],
+  "sweep_parse_counts": {
+   "sweep1": 30,
+   "sweep2": 46,
+   "sweep3": 31,
+   "sweep4": 29,
+   "sweep5": 28
+  },
+  "sweep_expected_counts": {
+   "sweep1": 30,
+   "sweep2": 44,
+   "sweep3": 31,
+   "sweep4": 29,
+   "sweep5": 30
+  },
+  "reduction_edges": 163,
+  "reduction_registered_ok": 135,
+  "reduction_name_only_match": 0,
+  "reduction_unregistered": 29,
+  "reduction_file_unresolved": 1,
+  "topic_modules_importing_hub": 22000,
+  "topic_import_signatures": {
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 21824,
+   "(无内部依赖)": 76,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean": 5,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Meta.lean": 4,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_RigorousProofs.lean": 4,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_KnotTheory.lean": 3,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 3,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicGeometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_RepresentationTheory.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Incompleteness.lean|sylva_formalization/SylvaFormalization/SYLVA_TypeTheory.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_CrossModuleTheorems.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumFoundations.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Incompleteness.lean|sylva_formalization/SylvaFormalization/SYLVA_Meta.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_ExperimentalPredictions.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_HigherCategoryTheory.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TacticLibrary.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_CondensedMatter.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalFieldTheory.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumComputing.lean": 2,
+   "sylva_formalization/SylvaFormalization/SYLVA_AdS_CFT.lean|sylva_formalization/SylvaFormalization/SYLVA_ConformalFieldTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean|sylva_formalization/SylvaFormalization/SYLVA_UniversalSymmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_BraidGroups.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalFieldTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_RenormalizationGroup.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_BerryPhase.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumFoundations.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AdS_CFT.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ComplexityTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean|sylva_formalization/SylvaFormalization/SYLVA_UniversalSymmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Space.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CertifiedComputation.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_FormalVerification.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumHallEffect.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalInsulators.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_StringTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_SymplecticGeometry.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ComplexityTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_KTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_StatisticalMechanics.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_StringTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_Feedback.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean|sylva_formalization/SylvaFormalization/SYLVA_OptimalControl.lean|sylva_formalization/SylvaFormalization/SYLVA_Resilience.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Observation.lean": 1,
+   "sylva_formalization/SylvaFormalization/Cosmology/DarkEnergy.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CosmologicalConstant.lean|sylva_formalization/SylvaFormalization/SYLVA_DarkSector.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean|sylva_formalization/SylvaFormalization/SYLVA_CrossModuleTheorems.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/Cosmology/DarkEnergy.lean|sylva_formalization/SylvaFormalization/SYLVA_CosmologicalConstant.lean|sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TypeTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_GaugeTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/GaugeTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean|sylva_formalization/SylvaFormalization/StringTheory/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NavierStokes.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_KTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/CondensedMatter/Superconductivity.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/Cosmology/Perturbations.lean|sylva_formalization/SylvaFormalization/InformationGeometry/StatMech.lean|sylva_formalization/SylvaFormalization/PhysicalChemistry/ReactionNetwork.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/PartitionFunction.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Meta.lean|sylva_formalization/SylvaFormalization/TopologicalInsulator/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_OptimalControl.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CosmologicalConstant.lean|sylva_formalization/SylvaFormalization/SYLVA_DarkSector.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_UnifiedPhysics.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ExperimentalPredictions.lean|sylva_formalization/SylvaFormalization/SYLVA_Falsifiability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ExperimentalPredictions.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Incompleteness.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Falsifiability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_StatisticalMechanics.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scaling.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AnyonTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalFieldTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Life.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_OperatorAlgebras.lean|sylva_formalization/SylvaFormalization/SYLVA_SpectralTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_FreeEnergyPrinciple.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/EinsteinCartan.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/GaugeTheory.lean|sylva_formalization/SylvaFormalization/Hodge.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean|sylva_formalization/SylvaFormalization/StringTheory/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_RepresentationTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_RepresentationTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_HomotopyType.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/CosmologicalThermodynamics.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/InformationGeometry.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_SymplecticGeometry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ClassFieldTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicTopology.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalFieldTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Computability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ComputationalComplexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_InformationGeometry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CondensedMatter.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalQuantumComputing.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_FunctionalAnalysis.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_OperatorAlgebras.lean|sylva_formalization/SylvaFormalization/SYLVA_RiemannianGeometry.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/Hamiltonian.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/HuckelModel.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/StandardModel/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_TacticLibrary2.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Life.lean|sylva_formalization/SylvaFormalization/SYLVA_Matter.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConsciousnessBridge.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_OperatorAlgebras.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumChaos.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumMasterEquation.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConsciousnessBridge.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Observation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Meta.lean": 1,
+   "sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Life.lean|sylva_formalization/SylvaFormalization/SYLVA_Matter.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_FreeEnergyPrinciple.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_MachineLearning.lean|sylva_formalization/SylvaFormalization/SYLVA_OptimalControl.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Observation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_ProofTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_TypeTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Neuroscience.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumFoundations.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Epistemology.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Meta.lean|sylva_formalization/SylvaFormalization/SYLVA_Observation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_StochasticProcesses.lean": 1,
+   "sylva_formalization/SylvaFormalization/BerryCurvature.lean|sylva_formalization/SylvaFormalization/QuantumGravity.lean|sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumInformation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumComputing.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumInformation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConsciousnessBridge.lean|sylva_formalization/SylvaFormalization/SYLVA_Decoherence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_ObserverDependence.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CosmologicalConstant.lean|sylva_formalization/SylvaFormalization/SYLVA_DarkSector.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_UniversalSymmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumInformationUnity.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_NumberTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumChaos.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean|sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean|sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_HierarchyOfSciences.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Resilience.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_AlgebraicGeometry.lean|sylva_formalization/SylvaFormalization/SYLVA_ComplexGeometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/QuantumChemistry/HuckelModel.lean|sylva_formalization/SylvaFormalization/QuantumGravity.lean|sylva_formalization/SylvaFormalization/Renormalization/EFT.lean|sylva_formalization/SylvaFormalization/Renormalization/RGEquations.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/StringTheory/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_RenormalizationGroup.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Complexity.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Incompleteness.lean|sylva_formalization/SylvaFormalization/SYLVA_MathematicalPlatonism.lean": 1,
+   "sylva_formalization/SylvaFormalization/CondensedMatter/Hubbard.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/FifteenConstants.lean|sylva_formalization/SylvaFormalization/NPClass.lean|sylva_formalization/SylvaFormalization/SAT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_OperatorAlgebras.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_ErgodicTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_KTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumGravity.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_GrandUnification.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean|sylva_formalization/SylvaFormalization/SYLVA_Feedback.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean|sylva_formalization/SylvaFormalization/SYLVA_Resilience.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean": 1,
+   "sylva_formalization/SylvaFormalization/ChernSimons.lean|sylva_formalization/SylvaFormalization/CondensedMatter/Superconductivity.lean|sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/GaugeTheory/Basic.lean|sylva_formalization/SylvaFormalization/GaugeTheory/YangMills.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/StandardModel/Symmetries.lean|sylva_formalization/SylvaFormalization/StringTheory/Basic.lean|sylva_formalization/SylvaFormalization/TopologicalInsulator/Basic.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CondensedMatter.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_GeometricQuantization.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/SYLVA_Network.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CondensedMatter.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumInformation.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_BraidGroups.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_QuantumComputing.lean|sylva_formalization/SylvaFormalization/SYLVA_TopologicalFieldTheory.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ComplexGeometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Space.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Incompleteness.lean": 1,
+   "sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean|sylva_formalization/SylvaFormalization/SYLVA_Falsifiability.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean": 1,
+   "sylva_formalization/SylvaFormalization/BerryCurvature.lean|sylva_formalization/SylvaFormalization/CosmologicalThermodynamics.lean|sylva_formalization/SylvaFormalization/GaugeTheory.lean|sylva_formalization/SylvaFormalization/QuantumGravity.lean|sylva_formalization/SylvaFormalization/SYLVA_AdS_CFT.lean|sylva_formalization/SylvaFormalization/SYLVA_Causality.lean|sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean|sylva_formalization/SylvaFormalization/SYLVA_Geometry.lean|sylva_formalization/SylvaFormalization/SYLVA_Information.lean|sylva_formalization/SylvaFormalization/TopologicalInsulator.lean": 1,
+   "sylva_formalization/SylvaFormalization/Cosmology/FLRW.lean|sylva_formalization/SylvaFormalization/GaugeTheory.lean|sylva_formalization/SylvaFormalization/SYLVA_Duality.lean|sylva_formalization/SylvaFormalization/SYLVA_Emergence.lean|sylva_formalization/SylvaFormalization/SYLVA_Hierarchy.lean|sylva_formalization/SylvaFormalization/SYLVA_Scale.lean|sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean|sylva_formalization/SylvaFormalization/StringTheory/Basic.lean": 1
+  },
+  "unresolved_internal_imports": {
+   "SylvaFormalization.Basic": 11,
+   "SylvaFormalization.Complexity": 9,
+   "SylvaFormalization.NumericalZeros": 6,
+   "SylvaFormalization.BSD": 3,
+   "SylvaFormalization.CP004": 5,
+   "SylvaFormalization.ZetaVerifier": 1,
+   "SylvaFormalization.MathAgent": 5,
+   "SylvaFormalization.SYLVA_InformationTheory": 2,
+   "SylvaFormalization.SYLVA_Chaos": 1,
+   "SylvaFormalization.SYLVA_FundamentalConstants": 1
+  }
+ },
+ "layers": {
+  "curated": {
+   "total": 273,
+   "mapped": 78,
+   "orphan": 195
+  },
+  "topic": {
+   "total": 22076,
+   "mapped": 1,
+   "orphan": 22075
+  },
+  "batch_excluded": {
+   "total": 119831,
+   "note": "SYLVA_Proven*R*M* 批量生成模块，血缘 v1.0 口径即排除"
+  }
+ }
+}

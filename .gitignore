@@ -34,3 +34,4 @@ lake-manifest.json
 # Generated artifacts (regenerate via script)
 framework/batch_module_manifest.json
 *.bak
+framework/hypergraph/hypergraph_static_v1.json

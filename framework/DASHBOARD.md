@@ -14,6 +14,8 @@
 
 ## 🔢 真实证明率（§5.1 口径）
 
+> ⚠️ **STALE / 已废止（2026-08-21 P0 口径清算标注）**：下表为 2026-08-12 时点的旧口径快照（分母含全部手写定理、axiom 计数为当时旧口径 553，未反映 sweep1-6 清偿与 axiom 隔离后的状态），**与本仪表盘口径下的 99.79%/100.00% 相矛盾的现行权威口径为 [`proof_rate_dashboard.md`](proof_rate_dashboard.md)（2026-08-11 生成：人工策划 3.91%，批量 0% 单列）**。两者并存系生成时点与分母口径不同所致，引用时**以 proof_rate_dashboard.md 为准**；口径对照见 `framework/p0_reconciliation_report.md`。本表保留仅作冻结基线的历史记录。
+
 > **口径来源**: `DEVELOPMENT_DIRECTIONS.md` §5.1  ·  **详细报告**: [`proof_rate_report.md`](proof_rate_report.md)  ·  **机读数据**: [`proof_rate.json`](proof_rate.json)
 >
 > **定义**: 真实证明率 = 零公理、零 sorry 的独立推导定理数 ÷ 声称定理总数。人工策划与批量模块**分开报告**，禁止合并出「总证明率」。历史口径（88.08%/99.5%/99.9%/100%）已废止。
@@ -42,7 +44,7 @@
 | 回归基线（2026-08-10 首跑） | **257 扫描 / 228 通过 / 28 失败 / 1 超时** | `framework/verify_report.json` |
 | CI 修复（v7.81+v7.83） | 15 个 Validation Scripts 全 exit 0（Py 3.10+3.12） | commits 2e475efc3b / 86adeaaa7b |
 | GitHub CI | **最近 3 次运行全 success**（86adeaaa7b/0f450a8116/abe8c3aa1c） | Actions API 2026-08-12 实测 |
-| Agda 形式化 | **7/7 PASS，0 admits**（postulate 共 56） | v7.76/v7.80 恢复后状态 |
+| Agda 形式化 | **7/7 PASS，0 admits**（postulate 共 56 ※字符串口径；声明级实测 131 个名字 / 25 个顶层块，见 proof_status.md §四与 p0_reconciliation_report.md） | v7.76/v7.80 恢复后状态 |
 | Lean lakefile roots | **1,092** 个模块（唯一名实测） | `lakefile.lean` roots 数组 |
 | mathlib 缓存移植（P0 解阻塞） | **7,878 个 .olean 就位** | `.lake/packages/mathlib` 实测 |
 | Lean 模块编译打样 | ChernSimons / StandardModel 零错误成功；BlochTheorem / EinsteinCartan 失败待修 | `build_verify_*.txt` 如实登记 |

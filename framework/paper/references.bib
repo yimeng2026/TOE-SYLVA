@@ -1,0 +1,137 @@
+% =====================================================================
+% references.bib - D3 skeleton (candidate (1))
+% POLICY (D1 review sec 1.4): 
+%   * Internal artifacts are cited as @techreport/@misc with repository
+%     paths - they are the primary evidence chain.
+%   * External entries are deliberately @misc with official URLs only
+%     (zero bibliographic-hallucination risk). TODO(P1-5): upgrade to
+%     verified formal entries (publisher metadata + DOI) before any
+%     submission; the 12 verified arXiv refs in
+%     DEVELOPMENT_DIRECTIONS.md sec 4 are the starting pool for the
+%     LLM-proof-integrity entries.
+% All internal numbers cited through these reports are v7.98 baselines
+% pending P0 canonical reconciliation.
+% =====================================================================
+
+% ---------------- internal evidence chain ----------------
+
+@techreport{sylvaregistry2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Axiom Registry v2.0 (machine-readable)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/axiom\_registry.json}; 448 entries
+                 over 116 non-batch files at v7.98 baseline;
+                 canonical count pending P0 (conflict C1)}
+}
+
+@techreport{sylvasweeps2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Axiom Reduction Sweeps 1--5: Per-Entry Redemption
+                 Reports},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/axiom\_reduction\_sweep\{1..5\}\_report.md};
+                 136 closures sweeps 1--4 (incl.\ 2 archived at v7.94)
+                 + 30 in sweep 5}
+}
+
+@techreport{sylvasorryaudit2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Sorry-Contamination Audit of the Batch Corpus
+                 (Full-Population)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/sorry\_contamination\_audit.md};
+                 string caliber 36{,}199/119{,}859 = 30.2\% reversed
+                 to zero code-level; single quarantine case}
+}
+
+@techreport{sylvaproofstatus2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Proof Status and Governance (claim-tier registry,
+                 honest proof-rate definition)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/proof\_status.md} v1.1}
+}
+
+@techreport{sylvadashboard2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Proof-Rate Dashboards (independent and code calibers)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/proof\_rate\_dashboard.md}
+                 (3.91\% independent caliber, 2026-08-11) and
+                 \texttt{DASHBOARD.md} (99.79\% code caliber);
+                 conflict C3 pending P0}
+}
+
+@techreport{sylvad1review2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {D1 Dual-Candidate Journal-Submission Peer Review
+                 (three-role simulated review)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/journal\_submission\_d1\_review.md};
+                 conflict inventory C1--C6 and 11-item improvement
+                 list driving this skeleton}
+}
+
+@techreport{sylvacsreport2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Chern--Simons Chain Theorem Report (T3 lifecycle case
+                 study)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/chern\_simons\_theorem\_report.md}}
+}
+
+@techreport{sylvacislim2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {CI Slimming Phase 1 Report (batch-corpus context and
+                 generator reproducibility)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{framework/ci\_slimming\_phase1\_report.md};
+                 manifest 119{,}831 entries, SHA-256 sampling 500,
+                 zero mismatch}
+}
+
+@techreport{sylvaquarantine2026,
+  author      = {{TOE-SYLVA Formalization Governance Group}},
+  title       = {Quarantine Manifest for the Batch Corpus
+                 (SYLVA\_ProvenLayer2.lean)},
+  institution = {TOE-SYLVA repository},
+  year        = {2026},
+  note        = {\texttt{releases/quarantine/quarantine\_manifest.json};
+                 origin path, SHA-256, reason list, exclusion scope}
+}
+
+% ---------------- external (URL-only, zero-hallucination policy) -------
+
+@misc{lean4,
+  title        = {The {L}ean 4 Theorem Prover and Programming Language},
+  howpublished = {\url{https://leanprover.github.io/}},
+  note         = {TODO(P1-5): upgrade to formal bibliographic entry}
+}
+
+@misc{mathlib4,
+  author       = {{The mathlib4 Community}},
+  title        = {mathlib4: the {L}ean 4 mathematical library},
+  howpublished = {\url{https://github.com/leanprover-community/mathlib4}},
+  note         = {Pinned at commit 8a178386 in this library;
+                 TODO(P1-5): upgrade to formal entry}
+}
+
+@misc{isabelle,
+  title        = {The {I}sabelle/{HOL} Proof Assistant},
+  howpublished = {\url{https://isabelle.in.tum.de/}},
+  note         = {TODO(P1-5): include AFP review-process citations}
+}
+
+@misc{metamath,
+  title        = {Metamath},
+  howpublished = {\url{https://us.metamath.org/}},
+  note         = {TODO(P1-5): axiom-economy tradition citations}
+}

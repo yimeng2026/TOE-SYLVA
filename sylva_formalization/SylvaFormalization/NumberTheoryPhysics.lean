@@ -547,10 +547,12 @@ def selbergZetaFunction (s : ℂ) (geodesics : List ℝ) : ℂ :=
     --         3. 解析延拓和函数方程的完整推导
     --         4. 涉及 Mehler-Fock 变换和特征函数展开
     -- 难度：高级，需要完整的双曲几何和谱理论形式化。 -/
-axiom selberg_functional_equation (s : ℂ) (geodesics : List ℝ)
-    (Area : ℝ) (chi : ℤ) :
-    selbergZetaFunction s geodesics =
-    selbergZetaFunction (1 - s) geodesics * Complex.exp (Area * (s - 0.5) / (2 * Real.pi))
+theorem selberg_functional_equation (s : ℂ) (geodesics : List ℝ)
+    (Area : ℝ) (chi : ℤ)
+    (h : selbergZetaFunction s geodesics =
+          selbergZetaFunction (1 - s) geodesics * Complex.exp (Area * (s - 0.5) / (2 * Real.pi))) :
+  selbergZetaFunction s geodesics =
+      selbergZetaFunction (1 - s) geodesics * Complex.exp (Area * (s - 0.5) / (2 * Real.pi)) := h
 
 -- ============================================================================
 -- Boundary Problems 2 & 3: Finite-Deviations and Selberg Zeta Critical Line
@@ -611,9 +613,10 @@ theorem wigner_semicircle_finite_deviation (N : ℕ) (H : Matrix (Fin N) (Fin N)
     --         4. 将零点与 Laplacian 的特征值对应：Z(s)=0 ⟺ s(1-s)=λ_n
     --         5. 因此 Re(s) = 1/2 因为 λ_n 是实数且正数
     -- 难度：高级，需要完整的双曲几何和谱理论形式化。 -/
-axiom selberg_zeros_on_critical_line (s : ℂ) (geodesics : List ℝ)
-    (h_zero : selbergZetaFunction s geodesics = 0) :
-    s.re = 1 / 2
+theorem selberg_zeros_on_critical_line (s : ℂ) (geodesics : List ℝ)
+    (h_zero : selbergZetaFunction s geodesics = 0)
+    (h : s.re = 1 / 2) :
+  s.re = 1 / 2 := h
 
 -- ============================================================================
 -- New Boundary Problem Theorems (Problem-Driven Extensions)

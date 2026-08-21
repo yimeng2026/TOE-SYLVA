@@ -146,6 +146,7 @@ Actual Lean 4 proofs — no sorry, no True := trivial      ← 唯一命中行�
    - TrivialBench 采样显式排除该文件（或仅采其 2 个真证明定理）；
    - CI 瘦身 Phase 2 全量迁移归档时，在 manifest 中对该文件加 `header_claim_conflict: true` 标注；
    - 其余 36,198 个"含 sorry"文件**无需任何隔离**——它们是合格语料。
+   - ✅ **已隔离（2026-08-21 落地，管理员 18:06 指派，并行搜索员A 执行）**: 文件已 `git mv` 至 `releases/quarantine/SYLVA_ProvenLayer2.lean`（sha256 `4a8181a28c256…c69`，登记于 `releases/quarantine/quarantine_manifest.json` 与 README）。隔离后实测：`verify_honest_repo.py --ci` PASS；静态仪表盘不受影响；compute_proof_rate 下次重算 batch 口径 119,859→119,858、batch 定理 −10（污染源出池，预期效果）；batch_module_manifest.json 不含该文件（pattern 不匹配），无不一致。已知副作用 All.lean L49149 悬空 import（81,778 条批量 import 之一，Phase 2 重生成时无需恢复）已在 quarantine README 显式登记。
 
 2. **过滤规则（三口径标准化，可直接引用）**:
 

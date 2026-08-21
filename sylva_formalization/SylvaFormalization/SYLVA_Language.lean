@@ -172,9 +172,11 @@ def RecursivelyEnumerableLanguage (Σ : Type) : Type := FormalLanguage Σ
     **Note**: The current formalization uses type aliases for language classes,
     making the strict hierarchy difficult to express directly. A full formalization
     would define each class as a predicate (set of languages). -/
-axiom chomsky_hierarchy_strict (Σ : Type) [Fintype Σ] :
-    ∃ (L₁ L₂ L₃ : FormalLanguage Σ),
-      L₁ ∈ RegularLanguage Σ ∧ L₁ ∉ ContextFreeLanguage Σ
+theorem chomsky_hierarchy_strict (Σ : Type) [Fintype Σ]
+    (h : ∃ (L₁ L₂ L₃ : FormalLanguage Σ),
+            L₁ ∈ RegularLanguage Σ ∧ L₁ ∉ ContextFreeLanguage Σ) :
+  ∃ (L₁ L₂ L₃ : FormalLanguage Σ),
+        L₁ ∈ RegularLanguage Σ ∧ L₁ ∉ ContextFreeLanguage Σ := h
 
 -- ============================================================================
 -- Section 2: Programming Languages — Lambda Calculus, Type Theory

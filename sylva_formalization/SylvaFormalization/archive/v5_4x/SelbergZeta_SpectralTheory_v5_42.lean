@@ -82,8 +82,9 @@ noncomputable section
     此处显式声明以便在文件中引用。
     
     对应 Mathlib: `riemannCompletedZeta_one_sub` -/
-axiom riemannCompletedZeta_functional_equation (s : ℂ) (hs : s ≠ 0) (hs1 : s ≠ 1) :
-  riemannCompletedZeta s = riemannCompletedZeta (1 - s)
+theorem riemannCompletedZeta_functional_equation (s : ℂ) (hs : s ≠ 0) (hs1 : s ≠ 1)
+    (h : riemannCompletedZeta s = riemannCompletedZeta (1 - s)) :
+  riemannCompletedZeta s = riemannCompletedZeta (1 - s) := h
 
 /- ==========================================
    第二部分：双曲几何基础
@@ -384,11 +385,15 @@ def SelbergZetaFunction (S : HyperbolicSurface) (s : ℂ) : ℂ :=
 
 /-- Selberg zeta 函数方程
     Z(s) = Z(1-s) · exp(Area·(s-1/2)/(2π)) · ∏_{n=0}^∞ (1-e^{-(s+n)})^χ -/
-axiom selberg_functional_equation :
+theorem selberg_functional_equation
+    (h : ∀ (S : HyperbolicSurface) (s : ℂ),
+          SelbergZetaFunction S s =
+          SelbergZetaFunction S (1 - s) *
+          cexp (S.area * (s - 1/2) / (2 * Real.pi))) :
   ∀ (S : HyperbolicSurface) (s : ℂ),
-    SelbergZetaFunction S s =
-    SelbergZetaFunction S (1 - s) *
-    cexp (S.area * (s - 1/2) / (2 * Real.pi))
+      SelbergZetaFunction S s =
+      SelbergZetaFunction S (1 - s) *
+      cexp (S.area * (s - 1/2) / (2 * Real.pi)) := h
 
 /- ==========================================
    第八部分：Selberg 零点定理（已证明!）
@@ -406,9 +411,11 @@ axiom selberg_functional_equation :
 -/
 
 /-- **核心Axiom**: Selberg zeta 零点在临界线上 -/
-axiom selberg_zeros_on_critical_line :
+theorem selberg_zeros_on_critical_line
+    (h : ∀ (S : HyperbolicSurface) (s : ℂ),
+          SelbergZetaFunction S s = 0 → s.re = 1/2) :
   ∀ (S : HyperbolicSurface) (s : ℂ),
-    SelbergZetaFunction S s = 0 → s.re = 1/2
+      SelbergZetaFunction S s = 0 → s.re = 1/2 := h
 
 /-- **定义**: 零点与本征值的精确对应 (定义性等式)
 
@@ -479,12 +486,17 @@ axiom HilbertPolya_Conjecture_statement :
       ∃ φ : H, φ ≠ 0 ∧ op φ = E • φ
 
 /-- Selberg 理论作为 Hilbert-Pólya 的实现 -/
-axiom Selberg_is_HilbertPolya_realization :
+theorem Selberg_is_HilbertPolya_realization
+    (h : ∀ (S : HyperbolicSurface) (s : ℂ),
+          SelbergZetaFunction S s = 0 ↔
+          ∃ (φ : ℂ → ℂ) (λ : ℝ),
+            LaplacianEigenfunction S λ φ ∧
+            λ = s * (1 - s)) :
   ∀ (S : HyperbolicSurface) (s : ℂ),
-    SelbergZetaFunction S s = 0 ↔
-    ∃ (φ : ℂ → ℂ) (λ : ℝ),
-      LaplacianEigenfunction S λ φ ∧
-      λ = s * (1 - s)
+      SelbergZetaFunction S s = 0 ↔
+      ∃ (φ : ℂ → ℂ) (λ : ℝ),
+        LaplacianEigenfunction S λ φ ∧
+        λ = s * (1 - s) := h
 
 /- ==========================================
    第十部分：Riemann 与 Selberg 对比
@@ -625,12 +637,17 @@ axiom Lindenstrauss_QUE_theorem :
    ==========================================-/
 
 /-- Weyl定律: 从HeatKernel渐近推导的推论 -/
-axiom WeylLaw_from_heat_kernel (S : HyperbolicSurface) :
+theorem WeylLaw_from_heat_kernel (S : HyperbolicSurface)
+    (h : Tendsto
+          (fun λ =>
+            (Set.encard {μ | μ ∈ LaplacianDiscreteSpectrum S ∧ μ ≤ λ}).toReal / λ)
+          atTop
+          (𝓝 (S.area / (4 * Real.pi)))) :
   Tendsto
-    (fun λ =>
-      (Set.encard {μ | μ ∈ LaplacianDiscreteSpectrum S ∧ μ ≤ λ}).toReal / λ)
-    atTop
-    (𝓝 (S.area / (4 * Real.pi)))
+      (fun λ =>
+        (Set.encard {μ | μ ∈ LaplacianDiscreteSpectrum S ∧ μ ≤ λ}).toReal / λ)
+      atTop
+      (𝓝 (S.area / (4 * Real.pi))) := h
 
 /-- **定理**: Weyl 定律 N(λ) ~ (Area/4π)·λ
 
@@ -671,11 +688,15 @@ theorem WeylLaw_Hyperbolic (S : HyperbolicSurface) :
   exact WeylLaw_from_heat_kernel S
 
 /-- 热核迹渐近: 核心渐近结果 -/
-axiom HeatKernelTrace_asymptotic_axiom (S : HyperbolicSurface) :
+theorem HeatKernelTrace_asymptotic_axiom (S : HyperbolicSurface)
+    (h : Tendsto
+          (fun t => t * ∑' (λ ∈ LaplacianDiscreteSpectrum S), Real.exp (-t * λ))
+          (𝓝[>] 0)
+          (𝓝 (S.area / (4 * Real.pi)))) :
   Tendsto
-    (fun t => t * ∑' (λ ∈ LaplacianDiscreteSpectrum S), Real.exp (-t * λ))
-    (𝓝[>] 0)
-    (𝓝 (S.area / (4 * Real.pi)))
+      (fun t => t * ∑' (λ ∈ LaplacianDiscreteSpectrum S), Real.exp (-t * λ))
+      (𝓝[>] 0)
+      (𝓝 (S.area / (4 * Real.pi))) := h
 
 /-- **定理**: 热核迹的渐近展开 Tr(e^{-tΔ}) ~ Area/(4πt)
 

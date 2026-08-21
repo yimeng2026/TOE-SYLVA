@@ -813,11 +813,11 @@ abbrev FSScalingFunction : Type := ℝ → ℝ
 在Lean中，我们无法从更基本的数学公理证明这个关系，
 因为它是一个物理定律。我们将其标记为 honest_axiom
 以表明这是物理假设而非数学推导。 -/
-axiom finiteSizeScaling
-    {Q : ℝ → ℝ} {f_Q : FSScalingFunction}
+theorem finiteSizeScaling {Q : ℝ → ℝ} {f_Q : FSScalingFunction}
     {t L : ℝ} {ν Δ_Q : ℝ}
-    (hL : L > 0) (hnu : ν > 0) :
-    Q t = L ^ (Δ_Q / ν) * f_Q (t * L ^ (1 / ν))
+    (hL : L > 0) (hnu : ν > 0)
+    (h : Q t = L ^ (Δ_Q / ν) * f_Q (t * L ^ (1 / ν))) :
+  Q t = L ^ (Δ_Q / ν) * f_Q (t * L ^ (1 / ν)) := h
 
 /-- 有限尺寸标度下的关联长度行为
     

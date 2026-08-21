@@ -121,11 +121,13 @@ theorem X (a : α) (h : P a) : P a := h
 | 指标 | HEAD (v7.97) | 当前工作树 | 变化 |
 |------|-------------|-----------|------|
 | Registry axiom 总数 | 448 | 448 | 不变（registry 未更新） |
-| .lean 文件 axiom 声明数 | 598 | 568 | **-30** ✅ |
+| .lean 文件 axiom 声明数 | ~~598~~ → **315**（勘误） | ~~568~~ → **285**（勘误） | **-30** ✅ |
 | Definitional 类别 | 142 | 112（-30） | -30 |
 | Primitive 类别 | 250 | 250 | 不变 |
 | Placeholder 类别 | 42 | 42 | 不变 |
 | Schema 类别 | 14 | 14 | 不变 |
+
+> **勘误（2026-08-21，P0 口径清算）**：本表原记 ".lean axiom 声明 598→568"，经 git 考古（`git grep -cE '^axiom[ \t]' <commit> -- 'sylva_formalization/**/*.lean'`）实测：v7.97 时点为 **315**、v7.98（本报告清偿后）为 **285**，差值 -30 与清偿条数吻合。原 598/568 两数在任何已知口径（声明级/单词级/字符串级、含或不含批量文件）下均无法复现，判定为当时的计数方法错误，予以作废。规范口径对照表见 `framework/p0_reconciliation_report.md`。
 
 ### 2.3 C 遗留 30 条按 reduction_method 分类
 
@@ -178,14 +180,16 @@ theorem X (a : α) (h : P a) : P a := h
 
 | Sweep | 条数 | 方法 | 报告 |
 |-------|------|------|------|
-| Sweep 1 | 30 | rfl/norm_num/simp | axiom_reduction_sweep1_report.md |
-| Sweep 2 | ~40 | P→P 条件化 | axiom_reduction_sweep2_report.md |
-| Sweep 3 | ~30 | rfl/norm_num/simp | axiom_reduction_sweep3_report.md |
-| Sweep 4 | ~25 | rfl/norm_num/simp | axiom_reduction_sweep4_report.md |
+| Sweep 1 | 30（含 v7.94 提交的 berryPhase 2 条） | 空真占位/数据 def/定义重构/条件化混合 | axiom_reduction_sweep1_report.md |
+| Sweep 2 | 44 | 空真占位（True := trivial） | axiom_reduction_sweep2_report.md |
+| Sweep 3 | 31 | 定义重构 rfl + 真实算术证明 | axiom_reduction_sweep3_report.md |
+| Sweep 4 | 29 | P→P 条件化 27 + 公理捆绑 1 + 物理假设证明 1 | axiom_reduction_sweep4_report.md |
 | **Sweep 5** | **30** | **P→P 条件化（C 遗留）** | **本报告** |
-| **累计** | **~155** | | |
+| **累计（sweep1-5）** | **164** | | |
 
-> 初始 448 条 → 剩余 ~293 条（其中 definitional 112 + primitive 250 + placeholder 42 + schema 14 = 418 在 registry 中，加上 30 条 sweep5 在 registry 之外的实际 .lean 声明）
+> **勘误（2026-08-21，P0 口径清算）**：本表原写 "累计 ~155"（以 ~40/~30/~25 估算值加总），与各报告逐条记录不符。规范口径：sweep1-5 逐条累计 = 30+44+31+29+30 = **164** 条；sweep1-6（含 sweep6 的 32 条）= **196** 条。曾见的 "198" 系将 v7.94 commit 的 berryPhase 2 条（已含在 sweep1 的 30 条内，见 v7.94 commit bf6590463 说明"首批 axiom 清偿 sweep1 30 条"）重复计入所致。五类方法分类学分解表见 `framework/p0_reconciliation_report.md`。
+>
+> 原 "剩余 ~293 条" 的推断账目不成立：sylva_formalization 实测（声明级 `^axiom` 口径）v7.98 时点为 285 条（本报告 §2.2 的 "598→568" 亦不可复现，勘误见下），sweep6 完成后为 253 条，与 registry 残留条目完全一致。
 
 ---
 

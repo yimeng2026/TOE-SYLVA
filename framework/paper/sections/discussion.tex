@@ -1,0 +1,127 @@
+% =====================================================================
+% Discussion - material sources (v7.98):
+%   * framework/journal_submission_d1_review.md sec 1.4 (11-item
+%     improvement list), 1.5 (venue plan), 2.4 (candidate-2 lessons)
+%   * framework/new_directions_roadmap.md sec D (program)
+%   * DEVELOPMENT_DIRECTIONS.md sec 4 (LLM proof-integrity refs)
+% All \pnum{...} = v7.98 baselines; canonical numbers land after P0.
+% =====================================================================
+
+\subsection{Caliber discipline as the central thesis}
+\label{sec:thesis}
+The paper's transferable claim is not the specific numbers of one
+library but a methodological proposition: \emph{in a formal library
+that mixes human and machine authorship, a proof-progress metric is
+only meaningful as a (number, caliber) pair, and the caliber must be
+declared, machine-checkable, and enforced by the same CI that enforces
+the rest of the honesty layer.} The two self-caught incidents are the
+evidence that this is load-bearing rather than ceremonious: the
+\pnum{30.2\%} contamination alarm (F3) was produced by a caliber
+mismatch that any of the library's own automated gates could have
+made silently permanent had the false positive not been audited to
+closure; the 25$\times$ dashboard disagreement (F2/C3) survived in
+production documents for days precisely because both files carried
+the same informal label (``honest proof rate'') with different
+implicit calibers. A reviewer or meta-scientist who accepts only one
+claim from this paper should accept this one.
+
+\subsection{Related work}
+\label{sec:related}
+% TODO(P1-5, D1 review 1.4): the survey below is a mapping of
+% conversation partners, not yet a literature review. Each bullet
+% needs: 3-5 verified citations + an explicit delta paragraph.
+\begin{itemize}
+\item \textbf{mathlib \texttt{\#print axioms} discipline and linter
+ecosystem}: the community practice of listing axiom dependencies of
+shipped theorems, and linters that police unwanted \texttt{sorry} /
+\texttt{axiom} declarations. Delta: we manage a taxonomy of
+\emph{legitimate} axiom classes plus a redemption ledger, not only a
+prohibition regime.
+\item \textbf{Isabelle/HOL conservative-extension and import audits}:
+ AFP's review process and Isabelle's emphasis on conservative
+extensions. Delta: our G1--G3 transformations are claimed to be
+conservative at the governance level; formalizing that claim
+(Sec.~\ref{sec:future}) would connect the two traditions.
+\item \textbf{Metamath and minimal-axiom-economy traditions}: explicit
+bookkeeping of assumed primitives. Delta: our problem is not economy
+but \emph{debt retirement under scale}.
+\item \textbf{LLM proof-integrity literature (2024--2026)}:
+documented incidents of fabricated or silently weakened proofs in
+machine-generated corpora. Delta: we contribute a full-population
+contamination audit that reversed a string-caliber alarm, plus a
+quarantine protocol with measured (not asserted) caliber impact.
+% reusable: DEVELOPMENT_DIRECTIONS.md sec 4 has 12 verified arXiv
+% references (per D1 review 1.4-5) - upgrade these to \cite entries
+% when P1-5 executes.
+\end{itemize}
+
+\subsection{Limitations}
+\label{sec:limits}
+\begin{itemize}
+\item \textbf{Numbers are not yet canonical.} Six caliber conflicts
+(C1--C6) are under P0 reconciliation; every number here is a declared
+v7.98 baseline. The paper is un-submittable in this state by design
+--- the skeleton exists so that the writing and the number
+reconciliation can proceed in parallel without the former quietly
+hard-coding the latter.
+\item \textbf{No containerized reproducibility artifact.} Compile
+logs exist and are three-way consistent (lake-manifest vs.\ two
+independent builds), but carry local paths; a Docker/CI artifact
+package is P1-8.
+\item \textbf{Metatheorems missing.} The conservativity of G1--G3
+transformations is asserted at the governance level, not formalized.
+\item \textbf{Single-library case study.} The taxonomy was induced
+from one library; cross-library validation (mathlib, AFP, or another
+AI-generated corpus) is future work.
+\item \textbf{Compile-log provenance.} Independent compilation was
+performed on one machine class; the \pnum{6.7}\,s compile time is an
+environment-dependent anecdote, not a benchmark.
+\end{itemize}
+
+\subsection{Anticipated objections}
+\label{sec:objections}
+% mapping of the four objection classes from D1 review 1.4-9
+\begin{enumerate}
+\item \emph{``AI-generated content cannot be trusted.''} The paper's
+position: precisely --- which is why every artifact class carries a
+registration-and-audit trail, and why the two metric defects were
+caught by the loop itself. The claim is not that the library is
+trustworthy; it is that its trust posture is \emph{explicit}.
+\item \emph{``Your axioms are non-standard.''} The taxonomy exists to
+separate genuine primitives from debt; the debt is being retired with
+graded honesty; the residual is declared, not hidden.
+\item \emph{``The batch corpus is contamination.''} Full-population
+audit: code-level contamination is exactly one file, now quarantined;
+the other \pnum{36198} string hits are denials, and the corpus's
+triviality is a \emph{labeled property} of the corpus, not a hidden
+one.
+\item \emph{``Your headline numbers drifted by 25$\times$.''} Yes ---
+and the drift is the finding: undecalared calibers, not dishonest
+arithmetic. The conflict inventory and the placeholder discipline in
+this very draft are the corrective.
+\end{enumerate}
+
+\subsection{Future work}
+\label{sec:future}
+Three lines, in dependency order: (i)~\textbf{metatheorems} ---
+formalize conservativity of the G1--G3 transformation classes
+(the infrastructure target is a Lean proof that each transformation
+extends the ambient theory conservatively); (ii)~\textbf{TrivialBench
+sampling under the code caliber} --- the revised A-2 clause ships with
+this program, and its first full sampling round will exercise the
+quarantine list; (iii)~\textbf{reproducibility package} ---
+containerized builds publishing \texttt{\#print axioms} artifacts per
+release. Longer term, the registry + redemption + caliber-discipline
+stack is library-agnostic; porting it to an external corpus is the
+natural validation study.
+
+\subsection{Ethics and transparency}
+\label{sec:ethics}
+The library and this paper were produced with AI assistance under
+human tasking and review. The repository's transparency conventions
+(AI-assistance markers on every artifact, deleted-claim ledger,
+no-silent-deletion rule, CI-enforced honesty markers) apply to this
+manuscript: the draft status, baseline numbers, and pending
+reconciliation are visible by construction, and the supplementary
+material includes the build log of the exact \LaTeX{} compile that
+produced the accompanying PDF.

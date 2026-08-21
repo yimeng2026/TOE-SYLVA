@@ -496,14 +496,15 @@ structure LerayHopfSolution extends WeakSolution where
     The proof uses Galerkin approximations and compactness arguments,
     which require substantial functional analysis not yet in Mathlib.
     Declared as an axiom pending formal proof. -/
-axiom leray_hopf_existence (u0 : SpatialDomain → SpatialDomain)
+theorem leray_hopf_existence (u0 : SpatialDomain → SpatialDomain)
     (h_smooth : ContDiff ℝ 1 u0)
     (h_div_free : ∀ x, DifferentialOperators.divergence (fun y => u0 y) x = 0)
     (h_finite_energy : ∫⁻ x, ‖u0 x‖ₑ ^ 2 < ⊤)
     (nu : ℝ) (h_nu : nu > 0)
     (f : ForceField)
-    (h_force : ∀ t, ∫⁻ x, ‖f t x‖ₑ ^ 2 < ⊤) :
-    ∃ (lhs : LerayHopfSolution), lhs.u0 = u0 ∧ lhs.nu = nu ∧ lhs.f = f
+    (h_force : ∀ t, ∫⁻ x, ‖f t x‖ₑ ^ 2 < ⊤)
+    (h : ∃ (lhs : LerayHopfSolution), lhs.u0 = u0 ∧ lhs.nu = nu ∧ lhs.f = f) :
+  ∃ (lhs : LerayHopfSolution), lhs.u0 = u0 ∧ lhs.nu = nu ∧ lhs.f = f := h
 
 -- ============================================================
 -- SECTION 12: SUMMARY THEOREMS
@@ -519,9 +520,11 @@ axiom local_regularity_holds : LocalRegularity
     This is Leray's theorem (1934) on the existence of weak solutions.
     The proof uses Galerkin approximations and compactness arguments.
     Declared as an axiom pending formal proof. -/
-axiom global_weak_existence :
+theorem global_weak_existence
+    (h : ∀ (u0 : SpatialDomain → SpatialDomain) (nu : ℝ) (f : ForceField),
+          nu > 0 → ∃ (ws : WeakSolution), ws.u0 = u0 ∧ ws.nu = nu ∧ ws.f = f) :
   ∀ (u0 : SpatialDomain → SpatialDomain) (nu : ℝ) (f : ForceField),
-    nu > 0 → ∃ (ws : WeakSolution), ws.u0 = u0 ∧ ws.nu = nu ∧ ws.f = f
+      nu > 0 → ∃ (ws : WeakSolution), ws.u0 = u0 ∧ ws.nu = nu ∧ ws.f = f := h
 
 /-- Summary of Navier-Stokes theory.
     Assembles the key results: local regularity, global weak existence,

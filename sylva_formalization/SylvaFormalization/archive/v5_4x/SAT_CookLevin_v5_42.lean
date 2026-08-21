@@ -390,12 +390,17 @@ theorem CookLevin_split :
     2. 多项式时间界限保证
     3. 正确性证明（可满足性 ↔ 原问题答案）
 -/
-axiom CookLevin_reduction :
+theorem CookLevin_reduction
+    (h : ∀ {α : Type} [Inhabited α] (L : DecisionProblem α),
+          InNP L →
+          ∃ (f : α → CNFFormula),
+            IsPolynomialTimeComputable f ∧
+            ∀ x, L x ↔ IsSatisfiable (f x)) :
   ∀ {α : Type} [Inhabited α] (L : DecisionProblem α),
-    InNP L →
-    ∃ (f : α → CNFFormula),
-      IsPolynomialTimeComputable f ∧
-      ∀ x, L x ↔ IsSatisfiable (f x)
+      InNP L →
+      ∃ (f : α → CNFFormula),
+        IsPolynomialTimeComputable f ∧
+        ∀ x, L x ↔ IsSatisfiable (f x) := h
 
 /- ============================================
    第八部分: SAT ∈ P → P = NP

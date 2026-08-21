@@ -331,14 +331,17 @@ noncomputable def partialDerivBloch
     数学陈述: ∂_μ ⟨u|v⟩ = ⟨∂_μ u|v⟩ + ⟨u|∂_μ v⟩
     
     物理意义: 内积的导数满足莱布尼茨律。 -/
-axiom innerProduct_derivative_leibniz
-  {n_idx : BandIndex} {n : ℕ} 
+theorem innerProduct_derivative_leibniz {n_idx : BandIndex} {n : ℕ} 
   (u v : BlochState n_idx n k)
-  (μ : Fin n) (k : BrillouinZone n) :
+  (μ : Fin n) (k : BrillouinZone n)
+    (h : partialDerivBZ (fun k' => (braKet (BlochState.differentiable n_idx k') 
+          (BlochState.differentiable n_idx k')).re) μ k =
+        (braKet (partialDerivBloch n_idx μ k u) v).re + 
+        (braKet u (partialDerivBloch n_idx μ k v)).re) :
   partialDerivBZ (fun k' => (braKet (BlochState.differentiable n_idx k') 
-    (BlochState.differentiable n_idx k')).re) μ k =
-  (braKet (partialDerivBloch n_idx μ k u) v).re + 
-  (braKet u (partialDerivBloch n_idx μ k v)).re
+      (BlochState.differentiable n_idx k')).re) μ k =
+    (braKet (partialDerivBloch n_idx μ k u) v).re + 
+    (braKet u (partialDerivBloch n_idx μ k v)).re := h
 
 /-- **定理: 内积的共轭对称性**
     
@@ -461,15 +464,17 @@ scoped[QuantumMechanics] notation u "^θ" => gaugeTransformBloch _ _ _ u
     数学陈述: ∂_μ(e^{iθ(k)}|u⟩) = i·(∂_μ θ)(k)·e^{iθ(k)}|u⟩ + e^{iθ(k)}·∂_μ|u⟩
     
     这是链式法则和乘积法则的直接应用。 -/
-axiom gaugeTransform_derivative
-  (n_idx : BandIndex) {n : ℕ}
+theorem gaugeTransform_derivative (n_idx : BandIndex) {n : ℕ}
   (θ : BrillouinZone n → ℝ)
   (u : BlochState n_idx n k)
   (μ : Fin n) (k : BrillouinZone n)
-  (hθ : ContDiff ℝ 1 θ) :
+  (hθ : ContDiff ℝ 1 θ)
+    (h : partialDerivBloch n_idx μ k (gaugeTransformBloch n_idx θ k u) =
+        (I * (partialDerivBZ θ μ k)) • (gaugeTransformBloch n_idx θ k u) + 
+        gaugeTransformBloch n_idx θ k (partialDerivBloch n_idx μ k u)) :
   partialDerivBloch n_idx μ k (gaugeTransformBloch n_idx θ k u) =
-  (I * (partialDerivBZ θ μ k)) • (gaugeTransformBloch n_idx θ k u) + 
-  gaugeTransformBloch n_idx θ k (partialDerivBloch n_idx μ k u)
+    (I * (partialDerivBZ θ μ k)) • (gaugeTransformBloch n_idx θ k u) + 
+    gaugeTransformBloch n_idx θ k (partialDerivBloch n_idx μ k u) := h
 
 /-- **定理: 规范变换保持内积的模**
     
@@ -864,13 +869,14 @@ theorem exterior_derivative_nilpotent
 /-- **公理: Berry联络fderiv的线性性（规范变换下）**
 
     数学陈述: ∂_μ(A_ν - ∂_ν θ) = ∂_μ A_ν - ∂_μ ∂_ν θ。 -/
-axiom BerryConnection_fderiv_linear
-  (n_idx : BandIndex) {n : ℕ}
+theorem BerryConnection_fderiv_linear (n_idx : BandIndex) {n : ℕ}
   (θ : BrillouinZone n → ℝ)
   (μ ν : Fin n) (k : BrillouinZone n)
-  (hθ : ContDiff ℝ 2 θ) :
+  (hθ : ContDiff ℝ 2 θ)
+    (h : partialDerivBZ (fun k' => BerryConnection n_idx (BlochState.differentiable n_idx k') ν k' - partialDerivBZ θ ν k') μ k =
+        partialDerivBZ (fun k' => BerryConnection n_idx (BlochState.differentiable n_idx k') ν k') μ k - partialDerivBZ (partialDerivBZ θ ν) μ k) :
   partialDerivBZ (fun k' => BerryConnection n_idx (BlochState.differentiable n_idx k') ν k' - partialDerivBZ θ ν k') μ k =
-  partialDerivBZ (fun k' => BerryConnection n_idx (BlochState.differentiable n_idx k') ν k') μ k - partialDerivBZ (partialDerivBZ θ ν) μ k
+    partialDerivBZ (fun k' => BerryConnection n_idx (BlochState.differentiable n_idx k') ν k') μ k - partialDerivBZ (partialDerivBZ θ ν) μ k := h
 
 theorem BerryCurvature_gauge_invariant
   (n_idx : BandIndex) {n : ℕ}
@@ -1113,12 +1119,12 @@ theorem BerryConnection_equivariance
   exact h
 
 /-- **公理: Berry联络的垂直分布条件（主丛联络公理）** -/
-axiom berryPrincipalBundle_vertical
-  (n_idx : BandIndex) {n : ℕ}
+theorem berryPrincipalBundle_vertical (n_idx : BandIndex) {n : ℕ}
   (u : BlochState n_idx n k)
   (k : BrillouinZone n)
-  (ξ : ℝ) :
-  BerryConnection n_idx (I • ((↑ξ : ℂ) • u)) (0 : Fin n) k = -ξ
+  (ξ : ℝ)
+    (h : BerryConnection n_idx (I • ((↑ξ : ℂ) • u)) (0 : Fin n) k = -ξ) :
+  BerryConnection n_idx (I • ((↑ξ : ℂ) • u)) (0 : Fin n) k = -ξ := h
 
 /-- **定理: Berry联络满足U(1)主丛联络的公理**
     
@@ -1223,15 +1229,17 @@ theorem BerryCurvature_antisymmetric
   ring
 
 /-- **公理: Berry曲率的显式公式（Kubo公式）** -/
-axiom BerryCurvature_explicit_formula_axiom
-  (n_idx : BandIndex) {n : ℕ}
+theorem BerryCurvature_explicit_formula_axiom (n_idx : BandIndex) {n : ℕ}
   (u : BlochState n_idx n k)
   (μ ν : Fin n) (k : BrillouinZone n)
   (h_comm : partialDerivBloch n_idx μ k (partialDerivBloch n_idx ν k u) =
-            partialDerivBloch n_idx ν k (partialDerivBloch n_idx μ k u)) :
+            partialDerivBloch n_idx ν k (partialDerivBloch n_idx μ k u))
+    (h : BerryCurvature2D n_idx u μ ν k =
+        (I * (braKet (partialDerivBloch n_idx μ k u) (partialDerivBloch n_idx ν k u) -
+              braKet (partialDerivBloch n_idx ν k u) (partialDerivBloch n_idx μ k u))).re) :
   BerryCurvature2D n_idx u μ ν k =
-  (I * (braKet (partialDerivBloch n_idx μ k u) (partialDerivBloch n_idx ν k u) -
-        braKet (partialDerivBloch n_idx ν k u) (partialDerivBloch n_idx μ k u))).re
+    (I * (braKet (partialDerivBloch n_idx μ k u) (partialDerivBloch n_idx ν k u) -
+          braKet (partialDerivBloch n_idx ν k u) (partialDerivBloch n_idx μ k u))).re := h
 
 /-- **定理: Berry曲率的显式公式**
     

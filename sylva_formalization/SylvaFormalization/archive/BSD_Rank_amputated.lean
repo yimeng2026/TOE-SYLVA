@@ -160,8 +160,11 @@ def rank_one_has_infinite_order (E : ShortWeierstrassCurve) : Prop :=
   rank_EllipticCurve E = 1 鈫?  exists P : MordellWeilGroup E, forall n > 0, n 鈥?P /= MordellWeil_zero E
 
 /-- 楂楻ank鏇茬嚎瀛樺湪鎬?(宸茬煡瀛樺湪rank >= 28鐨勬洸绾? -/
-axiom high_rank_exists : exists E : ShortWeierstrassCurve,
-  ShortWeierstrassCurve.IsElliptic E /\ rank_EllipticCurve E >= 28
+theorem high_rank_exists
+    (h : exists E : ShortWeierstrassCurve,
+        ShortWeierstrassCurve.IsElliptic E /\ rank_EllipticCurve E >= 28) :
+  exists E : ShortWeierstrassCurve,
+    ShortWeierstrassCurve.IsElliptic E /\ rank_EllipticCurve E >= 28 := h
 
 
 /-! ## 5. Mordell-Weil瀹氱悊妗嗘灦

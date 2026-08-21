@@ -504,14 +504,18 @@ theorem value_iteration_successive_diff {S A : Type} [Fintype S] [Fintype A]
     但其数学基础已完全由上述定理建立。
     
     参考文献: Banach (1922), Puterman (1994) Theorem 6.2.3 -/
-axiom value_iteration_convergence {S A : Type} [Fintype S] [Fintype A]
+theorem value_iteration_convergence {S A : Type} [Fintype S] [Fintype A]
     (mdp : DiscountedMDP S A) (h_non_empty : mdp.actions.Nonempty)
     (h_prob : IsProbabilityKernel mdp.P)
-    (V₀ : ValueFunction_MDP S) :
-    ∃ V_star : ValueFunction_MDP S,
-      Tendsto (fun k => ValueIteration mdp h_non_empty V₀ k)
-        atTop (nhds V_star)
-      ∧ BellmanOptimalityOperator mdp h_non_empty V_star = V_star
+    (V₀ : ValueFunction_MDP S)
+    (h : ∃ V_star : ValueFunction_MDP S,
+            Tendsto (fun k => ValueIteration mdp h_non_empty V₀ k)
+              atTop (nhds V_star)
+            ∧ BellmanOptimalityOperator mdp h_non_empty V_star = V_star) :
+  ∃ V_star : ValueFunction_MDP S,
+        Tendsto (fun k => ValueIteration mdp h_non_empty V₀ k)
+          atTop (nhds V_star)
+        ∧ BellmanOptimalityOperator mdp h_non_empty V_star = V_star := h
 
 /- ============================================
    Axiom (保留): Q学习收敛

@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://toe-sylva.local/schemas/hypergraph_static_v1.json",
+  "title": "TOE-SYLVA 静态知识超图 v1（hypergraph_static_v1.json）",
+  "description": "B 线静态超图基线的数据契约。节点四类：paper / module / concept / axiom；超边四类：cites / depends / topic / reduction。ID 前缀约定：paper:<dir>、module:<relpath>、concept:<relpath>#<name>、axiom:<relpath>#<name>。",
+  "type": "object",
+  "required": ["metadata", "nodes", "hyperedges", "aggregates"],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["title", "version", "generated", "head", "schema", "sources"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {"type": "string"},
+        "version": {"const": "1.0"},
+        "generated": {"type": "string"},
+        "head": {"type": "string", "description": "构建时仓库 HEAD 描述（tag 与短哈希）"},
+        "schema": {"type": "string", "description": "本 schema 文件相对仓库根路径"},
+        "sources": {
+          "type": "object",
+          "required": ["papers_lean_mapping", "axiom_registry", "sweep_reports"],
+          "additionalProperties": false,
+          "properties": {
+            "papers_lean_mapping": {"type": "string"},
+            "axiom_registry": {"type": "string"},
+            "sweep_reports": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+          }
+        },
+        "scope_notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "required": ["papers", "modules", "concepts", "axioms"],
+      "additionalProperties": false,
+      "properties": {
+        "papers": {"type": "array", "items": {"$ref": "#/$defs/paperNode"}},
+        "modules": {"type": "array", "items": {"$ref": "#/$defs/moduleNode"}},
+        "concepts": {"type": "array", "items": {"$ref": "#/$defs/conceptNode"}},
+        "axioms": {"type": "array", "items": {"$ref": "#/$defs/axiomNode"}}
+      }
+    },
+    "hyperedges": {
+      "type": "object",
+      "required": ["cites", "depends", "topic", "reduction"],
+      "additionalProperties": false,
+      "properties": {
+        "cites": {"type": "array", "items": {"$ref": "#/$defs/citesEdge"}},
+        "depends": {"type": "array", "items": {"$ref": "#/$defs/dependsEdge"}},
+        "topic": {"type": "array", "items": {"$ref": "#/$defs/topicEdge"}},
+        "reduction": {"type": "array", "items": {"$ref": "#/$defs/reductionEdge"}}
+      }
+    },
+    "aggregates": {
+      "type": "object",
+      "required": ["layers", "reconciliation"],
+      "additionalProperties": true,
+      "properties": {
+        "layers": {
+          "type": "object",
+          "required": ["curated", "topic", "batch_excluded"],
+          "additionalProperties": false,
+          "properties": {
+            "curated": {"$ref": "#/$defs/layerStat"},
+            "topic": {"$ref": "#/$defs/layerStat"},
+            "batch_excluded": {
+              "type": "object",
+              "required": ["total", "note"],
+              "additionalProperties": false,
+              "properties": {
+                "total": {"type": "integer", "minimum": 0},
+                "note": {"type": "string"}
+              }
+            }
+          }
+        },
+        "reconciliation": {
+          "type": "object",
+          "description": "与既有血缘资产（orphan_report.json / lineage_report.md）的交叉核对结果",
+          "additionalProperties": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "paperNode": {
+      "type": "object",
+      "required": ["id", "paper_dir", "primary_discipline", "disciplines", "file_count", "has_survey_md", "has_main_tex", "orphan", "indexed_by_lineage_v1"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^paper:"},
+        "paper_dir": {"type": "string", "minLength": 1},
+        "primary_discipline": {"type": "string"},
+        "disciplines": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "file_count": {"type": "integer", "minimum": 0},
+        "has_survey_md": {"type": "boolean"},
+        "has_main_tex": {"type": "boolean"},
+        "orphan": {"type": "boolean"},
+        "indexed_by_lineage_v1": {"type": "boolean"},
+        "coverage_status": {"enum": ["fully_covered", "partially_covered", "uncovered"]}
+      }
+    },
+    "moduleNode": {
+      "type": "object",
+      "required": ["id", "path", "module_name", "layer", "domain", "orphan", "indexed_by_lineage_v1"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^module:"},
+        "path": {"type": "string", "minLength": 1},
+        "module_name": {"type": "string"},
+        "layer": {"enum": ["curated", "topic"]},
+        "domain": {"type": "string"},
+        "orphan": {"type": "boolean", "description": "true = 不隶属任何 cites 超边"},
+        "indexed_by_lineage_v1": {"type": "boolean"},
+        "coverage_as_target": {
+          "enum": ["mapped", "unmapped"],
+          "description": "仅 lineage v1.0 索引过的模块携带：mapped=出现在 mappings、unmapped=仅在 unmapped_lean_files"
+        },
+        "axiom_count": {"type": "integer", "minimum": 0},
+        "key_def_count": {"type": "integer", "minimum": 0},
+        "key_thm_count": {"type": "integer", "minimum": 0},
+        "external_import_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "conceptNode": {
+      "type": "object",
+      "required": ["id", "name", "kind", "home_module"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^concept:"},
+        "name": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["definition", "theorem"]},
+        "home_module": {"type": "string", "pattern": "^module:"}
+      }
+    },
+    "axiomNode": {
+      "type": "object",
+      "required": ["id", "name", "category", "reducible", "home_module"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^axiom:"},
+        "name": {"type": "string", "minLength": 1},
+        "category": {"enum": ["primitive", "definitional", "placeholder", "schema"]},
+        "reducible": {"type": "boolean"},
+        "home_module": {"type": "string", "pattern": "^module:"},
+        "line": {"type": "integer", "minimum": 1},
+        "reduction_method": {"type": "string"},
+        "statement_summary": {"type": "string"}
+      }
+    },
+    "citesEdge": {
+      "type": "object",
+      "description": "血缘超边：一条 = papers_lean_mapping v1.0 中一个 (paper_dir, lean_file) 匹配，成员为论文节点 + 模块节点 + 该匹配条目列出的关键定义/定理概念节点",
+      "required": ["id", "members", "match_type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^cites:"},
+        "members": {
+          "type": "array", "minItems": 2, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(paper:|module:|concept:)"}
+        },
+        "match_type": {"enum": ["strong", "weak"]},
+        "source": {"const": "framework/papers_lean_mapping.json v1.0"}
+      }
+    },
+    "dependsEdge": {
+      "type": "object",
+      "description": "依赖超边：curated 层一条 = 一个模块及其全部内部 import 目标；topic 层的 hub 聚合边单独标注 aggregated=true",
+      "required": ["id", "members", "aggregated"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^depends:"},
+        "members": {
+          "type": "array", "minItems": 2, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^module:"}
+        },
+        "aggregated": {"type": "boolean"},
+        "unresolved_imports": {"type": "array", "items": {"type": "string"}},
+        "note": {"type": "string"}
+      }
+    },
+    "topicEdge": {
+      "type": "object",
+      "description": "主题超边：discipline=学科（关键词规则，可多归属）；domain=模块目录域",
+      "required": ["id", "subtype", "label", "members"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^topic:"},
+        "subtype": {"enum": ["discipline", "module_domain"]},
+        "label": {"type": "string", "minLength": 1},
+        "members": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(paper:|module:)"}
+        }
+      }
+    },
+    "reductionEdge": {
+      "type": "object",
+      "description": "清偿超边：sweep 报告中一条 axiom→theorem/def 迁移记录。成员 = 公理节点（若在 axiom_registry v2.0 中登记）+ 模块节点",
+      "required": ["id", "axiom_name", "sweep", "source_report", "registered_in_registry", "members"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^reduction:"},
+        "axiom_name": {"type": "string", "minLength": 1},
+        "sweep": {"type": "string", "minLength": 1},
+        "method": {"type": "string"},
+        "source_report": {"type": "string"},
+        "registered_in_registry": {"type": "boolean"},
+        "registry_category": {"enum": ["primitive", "definitional", "placeholder", "schema"]},
+        "file_resolved": {"type": "boolean"},
+        "note": {"type": "string"},
+        "members": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^(axiom:|module:)"}
+        }
+      }
+    },
+    "layerStat": {
+      "type": "object",
+      "required": ["total", "mapped", "orphan"],
+      "additionalProperties": false,
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "mapped": {"type": "integer", "minimum": 0},
+        "orphan": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

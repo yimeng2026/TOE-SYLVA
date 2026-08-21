@@ -17,16 +17,18 @@
 
 ## 转换方法分布
 
+> **勘误（2026-08-21，P0 口径清算）**：本表原合计 37 条，与本报告"逐条记录"实际 31 条不符（方法分布列在部分条目上重复计入）。下表为按逐条记录重新统计的规范分布（31 条）：
+
 | 方法 | 数量 | 说明 |
 |------|------|------|
-| `rfl` (redefine + rfl) | 22 | 将常量从数值重定义为公式，使 axiom 变为 `theorem ... := by rfl` |
-| `rfl` (structure field → def) | 5 | 将 structure 中的 Prop 字段改为 `def`，使 iff axiom 可 rfl |
+| `rfl`（定义重构型合计） | 21 | 将常量从数值重定义为公式 / structure Prop 字段改 `def` 后 rfl 可证（含原表 "redefine + rfl 22" 与 "structure field → def 5" 两行在逐条口径下的实际落点） |
 | `nlinarith` | 3 | 非线性算术（字符串质量谱不等式） |
-| `linarith` | 1 | 线性算术（Mott gap） |
 | `exists_intro` | 2 | 提供存在性证据（e-folds N=60, PMNS θ₁₂） |
+| `linarith` | 1 | 线性算术（Mott gap） |
+| `exact` (Mathlib lemma) | 2 | 直接引用标准引理（abs_nonneg, one_div_pos） |
 | `field_simp + ring` | 1 | 有理函数化简（宇宙学常数问题） |
 | `ring` | 1 | 代数恒等式（T-duality） |
-| `exact` (Mathlib lemma) | 2 | 直接引用标准引理（abs_nonneg, one_div_pos） |
+| **合计** | **31** | 与逐条记录数一致 ✅ |
 
 ## 逐条记录
 

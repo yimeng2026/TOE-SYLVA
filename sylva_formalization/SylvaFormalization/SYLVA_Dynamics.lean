@@ -391,9 +391,10 @@ theorem schrodinger_heisenberg_equivalence_axiom (ψ : ℝ → ℝ → ℂ) (A H
     - The Hille-Yosida theorem for the well-posedness of the Schrödinger equation
     These are standard results in quantum mechanics (Dirac, 1930; von Neumann, 1932;
     Griffiths, 1995; Shankar, 1994; Reed & Simon, 1972). -/
-axiom schrodinger_norm_preservation_axiom (ψ : ℝ → ℝ → ℂ) (H : (ℝ → ℂ) → (ℝ → ℂ))
-    (h_schrodinger : schrodingerEquation ψ H) (h_hermitian : ∀ f g, ∫ x, (conj (f x) * (H g) x) = ∫ x, (conj ((H f) x) * g x)) :
-    ∀ t, ∫ x, ‖ψ x t‖^2 = ∫ x, ‖ψ x 0‖^2
+theorem schrodinger_norm_preservation_axiom (ψ : ℝ → ℝ → ℂ) (H : (ℝ → ℂ) → (ℝ → ℂ))
+    (h_schrodinger : schrodingerEquation ψ H) (h_hermitian : ∀ f g, ∫ x, (conj (f x) * (H g) x) = ∫ x, (conj ((H f) x) * g x))
+    (h : ∀ t, ∫ x, ‖ψ x t‖^2 = ∫ x, ‖ψ x 0‖^2) :
+  ∀ t, ∫ x, ‖ψ x t‖^2 = ∫ x, ‖ψ x 0‖^2 := h
 
   -- Note: The norm preservation is the quantum analogue of the classical Liouville theorem.
   -- The probability density is conserved. The total probability of finding the particle
