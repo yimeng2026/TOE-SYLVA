@@ -1,0 +1,227 @@
+% =====================================================================
+% Case study I: Chern-Simons chain T3 (Sec 6) - sources:
+%   * framework/chern_simons_theorem_report.md (L0-L5 census,
+%     side chains, T3 proof chain, T3'/T6/T7, honest disclosure,
+%     gaps G1-G4, registration rationale)
+%   * framework/proof_status.md sec 2 (CLAIM 1 falsifiability),
+%     sec 3 (THEOREM registration, three-part rationale)
+%   * framework/journal_submission_d1_review.md sec 2.1-2.3 (R2's
+%     "Z-ring identity, not topological integrality" verdict;
+%     rollback incident A3/A4; compile log A5-A6)
+%   * compile log: papers/数学基础强化_系列/_panel_records/
+%     stratified_chern_compile_log_20260810.txt (Lean 4.29.0,
+%     mathlib 8a178386, exit 0, 6.7s, standard axiom trio)
+% Number policy: chain/side-chain census numbers are v7.98 baselines
+% from the report (\pnum where aggregate); T3 evidence is
+% document-anchored.
+% =====================================================================
+
+\subsection{The claim and the chain}
+\label{sec:cs-claim}
+The program's flagship physical claim (CLAIM 1 in the registry)
+identifies the fine-structure constant's inverse with a
+Chern--Simons level number, $\alpha^{-1} \approx n_{\mathrm{CS}} =
+137$, and froze that prediction in a blind registry before the
+comparison was performed. Its falsifiability clause is explicit:
+a first-principles prediction of $\alpha^{-1}$ accurate to
+$\pm 0.01$ without loop-integer self-tuning would refute the
+identification. The claim's support is a numerical pipeline, not a
+proof; the governance question is where, along the chain of
+statements between the physics and the arithmetic, machine-checked
+mathematics actually reaches.
+
+Table~\ref{tab:chain} answers. The chain from the physical
+identity down to quotient-group arithmetic decomposes into six
+levels (L5--L0), each an independently checkable statement. The
+audit census found: two levels are genuinely compiled mathematics
+(L0, L1); one level is a compiled but \emph{degenerate} theorem
+(L3, true only because a placeholder definition hard-codes the
+integer); one level is an unredeemed schema axiom (L4); the top
+level is exactly the CLAIM of the blind registry (L5); and the
+remaining level, L2 --- integrality of the stratified Chern number
+under integer weights --- is the deepest link whose proof closes
+without touching any unredeemed axiom.
+
+\begin{table}[t]
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.065\linewidth}p{0.40\linewidth}p{0.42\linewidth}@{}}
+\toprule
+Level & Statement & Audit verdict \\
+\midrule
+L5 & $\alpha^{-1} \approx n_{\mathrm{CS}} = 137$ & CLAIM: numerical
+pipeline; blind-registry freeze; falsifiability clause on file \\
+L4 & spectral bridge: causal network
+$\to$ CS level (axiom \texttt{causalNetworkChernSimonsLevel}) &
+AXIOM, registry class \emph{schema}; physics derivation, not
+provable in mathlib \\
+L3 & $n_{\mathrm{CS}} \in \mathbb{Z}$
+(\texttt{chernSimonsLevelInteger}) & compiled, but degenerate:
+placeholder def $\equiv 137$ makes integrality a
+\texttt{rfl} (honestly labeled) \\
+L2 & stratified integrality T3: integer weights $\Rightarrow$
+$n_{\mathrm{strat}} \in \mathbb{Z}$ & \textbf{THEOREM} (this
+section): compiled, zero \texttt{sorry}, standard axiom trio,
+mathlib-delegated \\
+L1 & stratified-formula semantic cluster (T0--T5, weighted sums,
+concentration, sector decomposition) & compiled; closes at the
+sum-structure layer \\
+L0 & $U(1) = \mathbb{R}/2\pi\mathbb{Z}$ quotient-group structure &
+compiled from mathlib quotient instances (v7.94-era P0 fix) \\
+\bottomrule
+\end{tabular}
+\caption{The Chern--Simons chain, L5 (physics) to L0 (arithmetic).
+Census per \texttt{framework/chern\_simons\_theorem\_report.md}~\cite{sylvacsreport2026}
+(v7.98 baseline). The upgraded level is L2; the two blocking gaps
+are L4 (schema axiom) and L3's placeholder degeneration.}
+\label{tab:chain}
+\end{center}
+\end{table}
+
+The audit also censused the side chains that hang off the main
+one: knot-theoretic identifiers (Witten--Jones type, \pnum{15}
+\texttt{True := trivial} placeholders), instanton indices (AS
+index, 2 standing axioms with conditionally compiled theorems),
+quantum Hall identifiers (TKNN-type, \pnum{21} vacuous
+placeholders), and the Chern-number family side files (axiom
+carriers, all graded CLAIM). In aggregate the side chains carry
+\pnum{80+} vacuous entries plus 2 axioms --- each an independent
+mathematical infrastructure project (gap G4 below). None of them
+supports CLAIM 1; the registry keeps them visible precisely so
+that no reader mistakes their existence for evidence.
+
+\subsection{The upgrade: what was proved, and how it is labeled}
+\label{sec:cs-upgrade}
+
+The CLAIM$\to$THEOREM upgrade was performed at L2, on the theorem
+
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{\small
+\texttt{theorem stratifiedChernNumber\_int\_weights}\;
+$(n\,v : \mathbb{Z}^{\times k})$ :\\[2pt]
+\quad $\uparrow(\text{stratifiedChernNumberInt}\; n\; v) =
+\text{stratifiedChernNumber}\; \uparrow n\; \uparrow v$
+\quad --- \emph{i.e.}\ $\uparrow\!\sum_\alpha n_\alpha v_\alpha =
+\sum_\alpha \uparrow(n_\alpha)\,\uparrow(v_\alpha)$.}}
+\end{center}
+
+The selection was a governance decision, not a mathematical boast,
+and the registered rationale has three parts.
+\emph{First, position}: T3 is the deepest link at which the
+statement closes without touching any unredeemed axiom --- the PFE
+source paper itself concedes that its integrality lemma (6.2) had
+only a numerical pipeline, and that all its theorems close at the
+sum-structure layer. \emph{Second, evidence quality}: T3 was
+compiled for real on 2026-08-10 (Lean 4.29.0, mathlib4 pinned at
+\texttt{8a178386}, exit 0, 6.7\,s), with \texttt{\#print axioms}
+returning only the standard trio \texttt{[propext,
+Classical.choice, Quot.sound]} on all six theorems of the module;
+the log is archived in the panel records~\cite{sylvacscompilelog}. \emph{Third,
+delegation pattern}: the proof discharges the $\mathbb{Z}\to
+\mathbb{R}$ cast through two named mathlib lemmas ---
+\texttt{Int.cast\_sum} (casts commute with finite sums) and
+\texttt{Int.cast\_mul} (casts commute with multiplication),
+applied under \texttt{Finset.sum\_congr} --- following the same
+named-lemma discipline as the Dedekind case study
+(Sec.~\ref{sec:dedekind-zero}).
+
+The proof is three rewrites long. That is not an embarrassment;
+it is the point. The registration's value is the \emph{label}, not
+the difficulty: the row in the claim registry now says THEOREM
+and links, conjunct by conjunct, to (i) the compile log, (ii) the
+axiom-trio certificate, (iii) the named mathlib delegation, and
+(iv) an explicit non-degeneracy note distinguishing T3 from the
+L3 placeholder theorem above it. A companion strengthening round
+added the $\exists$-form corollary T3$'$ (matching the logical
+shape of \texttt{chernSimonsLevelInteger} so the L2/L3 interface
+is fixed), plus T6/T7 (integer-sector 137-degeneracy and
+concentrated-weights forms) --- added under a
+zero-new-vocabulary discipline, with the honest disclosure that
+the strengthening round executed in a no-toolchain environment,
+so the THEOREM grade rests on the compiled T3 alone; T3$'$/T6/T7
+carry an awaits-independent-compile note (one \texttt{lake env
+lean} command, single file, pure mathlib dependencies).
+
+\subsection{What T3 is not: gaps and the rollback incident}
+\label{sec:cs-gaps}
+
+An internal mathematics-physics referee (the D1 review's R2)
+graded the upgraded statement bluntly, and the grading is
+preserved in the paper: T3 is a $\mathbb{Z}$-ring closure
+identity --- the cast homomorphism commuting with sums and
+products --- \emph{not} a topological integrality theorem. The
+physically meaningful integrality (Chern--Weil:
+$\langle c_1(E), [M]\rangle \in \mathbb{Z}$, carried by a
+cohomological integral) is nowhere in it; with integer weights the
+integrality holds by construction. The corrected formulation,
+which this paper adopts verbatim: T3 formalizes the
+\emph{degeneration consistency} of the stratified formula on the
+integer-weight sector and exhibits the precise sufficient
+condition (integer weights) under which integrality holds;
+real-weight integrality --- the physical target --- remains an
+open gap. Any sentence that lets the reader hear ``T3 supports
+$\alpha^{-1}=137$'' is a caliber error of the type this paper
+exists to prevent; the blind-registry row keeps its CLAIM grade.
+
+\begin{table}[t]
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.05\linewidth}p{0.42\linewidth}p{0.41\linewidth}@{}}
+\toprule
+Gap & Content & Why it stands \\
+\midrule
+G1 & Chern--Weil theory (characteristic classes, de Rham
+cohomology, first-Chern integrality) & mathlib has none of it;
+\texttt{FirstChernNumber\_Integrality},
+\texttt{ChernNumberInteger}, \texttt{TKNN\_Formula} remain
+axioms \\
+G2 & spectral bridge (\texttt{causalNetworkChernSimonsLevel}) &
+schema axiom; a physics derivation, not a pure-mathematics
+statement \\
+G3 & placeholder degeneration of L3
+(\texttt{chernSimonsLevel} $\equiv 137$) & integrality at L3 is
+\texttt{rfl}-true by hard-coding; T2/T6 pin the compatibility
+interface while the placeholder stands \\
+G4 & side chains: knot/AS-index/QHE identifiers, \pnum{80+}
+vacuous + 2 axioms & each needs independent mathematical
+infrastructure before upgrade \\
+\bottomrule
+\end{tabular}
+\caption{Registered gaps above and beside the upgraded link. The
+upgrade is honest only together with this table.}
+\label{tab:gaps}
+\end{center}
+\end{table}
+
+The case study also records an incident that no clean retrospective
+would invent. The upgrade's registration (a THEOREM row in
+\texttt{proof\_status.md}~\cite{sylvaproofstatus2026}) and the
+T3$'$/T6/T7 additions were
+performed by one session while a \emph{parallel} redemption sweep
+was running; the sweep session, isolating what it believed were
+foreign edits, rolled both back with \texttt{git checkout}. The
+changes existed, then did not --- and the audit layer caught the
+disappearance itself: a scheduled evidence check found the
+registration missing, timestamps and \texttt{git status}
+pinpointed the rollback, and the sweep report's own log (``$+60$
+lines \ldots{} belongs to another session \ldots{} rolled back'')
+confirmed the mechanism. Under the program's standard,
+\emph{an uncommitted registration is a non-event}: the upgrade was
+re-applied and committed with the next version. The incident
+produced a standing rule --- registration files are serial-exclusive,
+and no session rolls back another session's registry rows --- and it
+is reproduced here because it is the honesty layer working as
+designed, not as advertised.
+
+Read as mathematics, then, the T3 upgrade is one small
+cast-rearrangement lemma sitting under two admitted gaps and a
+CLAIM it does not touch. Read as governance, it is the full
+lifecycle: claim identification, chain census, deepest-provable
+selection, compile evidence, delegation labeling, gap accounting,
+and a rollback the audit layer itself detected. The story is in
+the inventory audit trails, not the mathematics. The governance
+contribution is the label: within this corpus, ``THEOREM'' now
+means exactly ``compiled, zero-\texttt{sorry},
+standard-axiom-trio, non-degenerate, with a named proof
+delegation'', and the registry row points at the evidence for
+each conjunct.

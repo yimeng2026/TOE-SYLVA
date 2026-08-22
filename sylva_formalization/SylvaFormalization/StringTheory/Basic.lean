@@ -125,8 +125,9 @@ noncomputable def NambuGotoAction (ws : Worldsheet) : ℝ :=
 
     **Difficulty to theorem:** Medium (~100–200h, requires functional analysis formalization).
     -/
-axiom NambuGotoAction_eq_PolyakovAction (ws : Worldsheet) :
-  NambuGotoAction ws = PolyakovAction ws
+-- [sweep7] axiom→theorem：两个 stub 定义均为 0，rfl 即证
+theorem NambuGotoAction_eq_PolyakovAction (ws : Worldsheet) :
+  NambuGotoAction ws = PolyakovAction ws := rfl
   -- Nambu-Goto = Polyakov in conformal gauge, postulated as string theory axiom
 
 end StringTheory

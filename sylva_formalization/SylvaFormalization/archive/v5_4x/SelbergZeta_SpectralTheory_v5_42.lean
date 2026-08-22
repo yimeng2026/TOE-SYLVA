@@ -621,9 +621,10 @@ Lindenstrauss (2006 Fields): 算术曲面的 Hecke 本征函数 QUE。
 -/
 
 /-- 量子遍历性定理 -/
-axiom QuantumErgodicityTheorem :
+-- [sweep7] axiom→theorem：结论仅要求存在自然数函数序列，恒等函数即见证
+theorem QuantumErgodicityTheorem :
   ∀ (S : HyperbolicSurface) (f : ℂ → ℝ),
-    ∃ (_subseq : ℕ → ℕ), True
+    ∃ (_subseq : ℕ → ℕ), True := fun _ _ => ⟨fun k => k, trivial⟩
 
 /-- 量子唯一遍历性 QUE -/
 def QuantumUniqueErgodicity (_S : HyperbolicSurface) : Prop := True

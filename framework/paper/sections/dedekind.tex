@@ -1,0 +1,149 @@
+% =====================================================================
+% Case study II: Dedekind delegation (Sec 7) - sources:
+%   * CourseChain/Dedekind.lean (header design rules; per-theorem
+%     mathlib references: IsPrincipalIdealRing.isDedekindDomain,
+%     Ideal.dvd_iff_le, Ideal.uniqueFactorizationMonoid,
+%     Ideal.prod_normalizedFactors_eq_self, Ideal.prime_iff_isPrime,
+%     Ideal.absNorm, Ideal.absNorm_span_singleton,
+%     IsDedekindDomain.primesOver_finite; delegation modules
+%     Mathlib.RingTheory.DedekindDomain.{Basic,Ideal.Basic,Ideal.Lemmas};
+%     textbook anchor Neukirch GTM 322 ch. I & III.1)
+%   * framework/proof_status.md sec 3 (THEOREM registration +
+%     three-part rationale; FLT/Langlands THEOREM* rows)
+%   * framework/journal_submission_d1_review.md sec 2.4-4 ("zero
+%     self-built mathematics, validating the mathlib attribution
+%     mechanism"), 2.4-7 (attribution table normalization)
+%   * git log v7.95/v7.96 (course-chain segments Zp/Qp, Dirichlet)
+% Number policy: all numbers document-anchored; no new calibers.
+% =====================================================================
+
+\subsection{The course chain and the delegation pattern}
+\label{sec:dedekind-chain}
+The second case study is deliberately the opposite of the first.
+The Chern--Simons chain (Sec.~\ref{sec:cschain}) is a physics claim
+whose deepest provable layer had to be \emph{found} inside a
+dependency chain of placeholders; the Dedekind module is a textbook
+chapter of commutative algebra whose proofs were never in doubt and
+whose only governance question is \emph{attribution}: when every
+theorem in a file is discharged by a named mathlib lemma, what may
+the library claim about itself?
+
+\emph{CourseChain/Dedekind.lean} is the second segment of a course
+chain (first segment: $\mathbb{Z}_p/\mathbb{Q}_p$, v7.95; this
+segment: Dirichlet theory background plus Dedekind domains, v7.96)
+that formalizes the algebraic-number-theory curriculum in Lean~4.
+It states the foundational theorems of Dedekind domain theory ---
+a PID is a Dedekind domain; $\mathbb{Z}$ is a Dedekind domain;
+ideal divisibility is reverse containment; unique factorization of
+ideals; prime ideals and residue norms; finiteness of primes over
+a given ideal --- and proves each by \emph{direct delegation}:
+\texttt{exact}/\texttt{:=} to a named mathlib lemma or instance
+whose signature was verified against the pinned mathlib revision
+(\texttt{8a178386}) in the module header. The design rules are
+explicit: no unfinished proofs, no new postulates, no trivial
+placeholders, and \emph{only} theorems whose mathlib counterpart
+could be located and signature-verified --- ``no guessing of lemma
+names.'' The textbook anchor (Neukirch, \emph{Algebraic Number
+Theory}, Chapters~I and~III.1) is cited in the header so that the
+curriculum intent is checkable against the literature.
+
+Table~\ref{tab:dedekind-attr} is the attribution table the module
+maintains, normalized to paper form (per-lemma mathlib anchors
+recorded in the source; the flagship instance chain shown).
+
+\begin{table}[t]
+\caption{Dedekind delegation table (CourseChain/Dedekind.lean):
+every theorem discharges to a named mathlib entity; the flagship
+row carries the full instance chain. Zero \texttt{sorry}, zero
+\texttt{axiom}, zero \texttt{trivial} in the module.}
+\label{tab:dedekind-attr}
+\begin{center}
+\small
+\begin{tabular}{@{}p{4.6cm}p{6.0cm}p{3.2cm}@{}}
+\toprule
+Course-chain theorem & mathlib delegate & Delegate kind \\
+\midrule
+\texttt{pid\_isDedekindDomain} &
+\texttt{IsPrincipalIdealRing.\allowbreak isDedekindDomain} & instance \\
+\texttt{int\_isDedekindDomain} & (as above, via
+\texttt{inferInstance}) & instance \\
+\texttt{ideal\_dvd\_iff\_le} & \texttt{Ideal.dvd\_iff\_le} &
+lemma \\
+\texttt{ideal\_\allowbreak uniqueFactorizationMonoid} &
+\texttt{Ideal.\allowbreak uniqueFactorizationMonoid}
+(\texttt{Ideal.Basic} L432--447) & instance \\
+\texttt{ideal\_prod\_\allowbreak normalizedFactors} &
+\texttt{Ideal.prod\_\allowbreak normalizedFactors\_\allowbreak eq\_self} & lemma \\
+\texttt{ideal\_prime\_iff} & \texttt{Ideal.prime\_iff\_isPrime}
+& iff-lemma \\
+\texttt{ideal\_absNorm} \emph{et al.} &
+\texttt{Ideal.absNorm}, \texttt{Ideal.absNorm\_\allowbreak span\_singleton}
+& def/lemma \\
+\texttt{primesOver\_finite} &
+\texttt{IsDedekindDomain.\allowbreak primesOver\_finite} & lemma \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Zero new mathematics, and why it is registered anyway}
+\label{sec:dedekind-zero}
+The internal peer review of this module was blunt
+(journal\_submission\_d1\_review, sec 2.1~\cite{sylvad1review2026}): ``all theorems are
+delegation wrappers; zero new mathematics.'' Under a
+mathematics-first venue that is a rejection. Under the governance
+lens of this paper it is the cleanest possible demonstration of
+what the claim tiers are \emph{for}:
+
+\begin{itemize}
+\item The registry entry is THEOREM, not THEOREM*: the proof
+(compiled delegation to a proved mathlib instance chain) is
+machine-checked within the corpus, complete, and carries zero
+local obligations --- \texttt{inferInstance} to
+\texttt{Ideal.\allowbreak uniqueFactorizationMonoid} (whose own derivation in
+mathlib runs through ideal invertibility and
+\texttt{WfDvdMonoid} to \texttt{UniqueFactorizationMonoid}),
+with the pinned-commit source lines recorded. The three-part
+registration rationale (statement's role in the curriculum; proof
+chain with named delegates; compile-status basis) is the same
+format as T3's.
+\item THEOREM* is reserved for the other delegation pattern:
+mathematics proved \emph{elsewhere} and formalized
+\emph{elsewhere}, which the corpus only cites --- the registry's
+Fermat's Last Theorem row (THEOREM*, ``mathlib-provided, not in
+this repository'') is the canonical example, with the repository
+quoting mathlib's scale for it (\pnum{12000} lines of FLT-specific
+development atop a \pnum{270000}-theorem prerequisite stack,
+per the registration note).
+\item What the module \emph{adds} is not mathematics but a
+verified attribution mechanism: signature-level anchoring of every
+course-chain statement to a pinned mathlib revision, a textbook
+correspondence, and a compile-clean module boundary. When the
+course chain later grows segments whose proofs are only partly in
+mathlib, the delegation table is precisely the surface on which
+``local work vs.\ borrowed work'' will be visible --- the same
+surface the five-class taxonomy provides for axioms.
+\end{itemize}
+
+\subsection{T3 vs.\ Dedekind: two ends of one scale}
+\label{sec:dedekind-contrast}
+Set side by side, the two case studies calibrate the whole
+program. Both registrations are THEOREM; both rest on
+\texttt{\#print axioms}-clean compilations against the same pinned
+mathlib revision; both use \emph{named} delegation
+(\texttt{Int.cast\_sum}/\texttt{Int.cast\_mul} for T3,
+\texttt{inferInstance}/\texttt{exact} for Dedekind). They differ
+in exactly one dimension: where the local contribution sits.
+Dedekind's contribution is the attribution layer itself (statements
+curated, signatures verified, zero local proof content); T3's
+contribution is a small but real assembly step --- the integrality
+of a stratified sum is not a mathlib lemma, and discharging it
+required combining three named lemmas in a proof whose shape was
+not copied from anywhere. The scale between ``pure delegation''
+and ``assembly'' is the honest axis along which the corpus's
+non-placeholder content must be presented; pretending either end
+is ``a new theorem'' is exactly the failure mode F1 that the
+governance program exists to prevent. The course chain continues
+(v7.95: $\mathbb{Z}_p/\mathbb{Q}_p$; v7.96: Dirichlet background +
+Dedekind), and each future segment will be graded on this axis at
+registration time.

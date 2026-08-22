@@ -1,0 +1,188 @@
+% =====================================================================
+% Honesty governance (Sec 8) - sources:
+%   * framework/proof_status.md sec 1 (claim tiers), sec 2
+%     (falsifiability criteria, CLAIM 1), sec 5 (honest rate def)
+%   * scripts/compute_proof_rate.py (count_sorry_no_comments =
+%     normative reference implementation)
+%   * framework/proof_rate_dashboard.md (3.91% = 22,328/571,611,
+%     2026-08-11; batch separately 0%; caliber history
+%     88.08%/99.5%/99.9%/100% deprecated)
+%   * framework/sorry_contamination_audit.md (30.2% reversal,
+%     three-level caliber standard sec 6, quarantine list)
+%   * releases/quarantine/quarantine_manifest.json (protocol)
+%   * scripts/verify_honest_repo.py (--ci gate; deletion-context
+%     allowance; deleted-claims ledger >10 entries; bibtex
+%     integrity; new-paper presence)
+%   * data/deleted_fabricated_claims.json (15 fabricated claims,
+%     counting-geometry audit; DEVELOPMENT_DIRECTIONS.md header:
+%     1,943 arXiv IDs verified, 25 failing scripts zeroed,
+%     ~500 consistency repairs)
+%   * framework/ci_slimming_phase1_report.md (batch manifest
+%     119,831, SHA-256 sampling 500, zero mismatch)
+% Number policy: 3.91% = 22,328/571,611 canonical (P0); other
+% values are v7.98 baselines (\pnum).
+% =====================================================================
+
+\subsection{Claim tiers and falsifiability}
+\label{sec:tiers}
+The governance layer begins with a vocabulary problem: the corpus
+used ``formalized'' for statements ranging from textbook theorems
+with complete machine-checked proofs to naked \texttt{axiom}
+placeholders. The registry therefore fixes a four-tier vocabulary
+(\texttt{proof\_status.md} sec 1~\cite{sylvaproofstatus2026}):
+
+\begin{center}
+\small
+\begin{tabular}{@{}lp{11.6cm}@{}}
+\toprule
+Tier & Meaning \\
+\midrule
+THEOREM & machine-checked proof within the corpus (or complete
+delegation to a checked external proof), core free of
+\texttt{postulate}/\texttt{axiom}; certificate on file \\
+THEOREM* & mathematical content proved and formalized
+\emph{elsewhere}; the corpus delegates (e.g.\ FLT via mathlib) \\
+CLAIM & reasoning, numerics, or citations exist, but no independent
+formalization; falsifiability criteria mandatory \\
+CONJECTURE & speculative, logically coherent, falsifiable \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two design decisions matter for the rest of this section. First,
+the tiers are \emph{vocabulary for status, not for value}: a CLAIM
+is not an embarrassment, it is a precisely delimited obligation
+--- every CLAIM in the registry carries a falsifiability clause
+(v7.24 discipline), e.g.\ for CLAIM 1: a first-principles
+prediction of $\alpha^{-1}$ accurate to $\pm 0.01$ without
+loop-integer self-tuning. Second, tier assignments are
+\emph{evidence-linked}: each THEOREM row names the source file,
+theorem, compile evidence, and proof chain (Secs.~\ref{sec:cschain}
+and \ref{sec:dedekind-zero} showed the two hardest cases), and the
+``key distinction'' printed under the registry table is the
+program's motto: \emph{``formalized'' $\neq$ ``proved'' --- an
+\texttt{axiom} is proof deferred to the future.}
+
+\subsection{The honest proof-rate metric}
+\label{sec:metric}
+The registry's second pillar is a metric that refuses to count
+deferred proofs as progress. The \emph{honest proof rate} is
+
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{\centering
+honest rate $=$ (theorems derived with zero \texttt{axiom}s, zero
+\texttt{postulate}s, zero \texttt{sorry}s) $\div$ (all theorems
+the corpus claims),\\
+with handcrafted and batch content \textbf{reported separately} ---
+merging them into one ``total rate'' is prohibited by the caliber
+standard.}}
+\end{center}
+
+Under this metric the corpus's handcrafted tier scores 3.91\%
+(22{,}328 of 571{,}611, independent dashboard caliber, 2026-08-11),
+and the batch tier is listed separately at 0\% by construction.
+The caliber history that led here is itself part of the finding:
+an early 88.08\% line counted batch trivialities as proven
+theorems; successive recalibrations reported 99.5\%, 99.9\%, then
+100\% (the ``zero \texttt{sorry} per module'' caliber that ignored
+\texttt{axiom}s entirely) --- all now formally deprecated ---
+before the current definition landed. A number this mutable is
+not a measurement; binding it to a named caliber
+(Sec.~\ref{sec:calibers}) is what turns it back into one. The
+normative reference implementation
+(\texttt{compute\_proof\_rate.py},
+\texttt{count\_sorry\_no\_comments}) counts code-level
+\texttt{sorry}s only, comments stripped --- the same string/code
+distinction that the next subsection dramatizes.
+
+\subsection{The sorry incident: a 30.2\% contamination that
+wasn't}
+\label{sec:sorry}
+In 2026-08-21, CI slimming analysis~\cite{sylvacislim2026} reported
+that \pnum{30199} of
+\pnum{119859} batch files (30.2\%) ``contained \texttt{sorry}'',
+apparently contradicting the batch generator's zero-sorry design.
+The contamination audit (full population, not sampling) reversed
+the alarm:
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{5.4cm}rrp{5.8cm}@{}}
+\toprule
+Pattern & Files & Share & Nature \\
+\midrule
+header negation statement & 36{,}198 & 99.997\% & fixed boilerplate
+\texttt{Actual Lean 4 proofs --- no sorry, no True := trivial}
+hit by substring search \\
+name-level occurrence + trivial body & 1 & 0.003\% &
+\texttt{SYLVA\_ProvenLayer2.lean}: theorem \emph{name} contains
+``sorry'', and 8 of its 10 theorems are \texttt{True :=
+trivial} \\
+\midrule
+code-level \texttt{sorry} (\texttt{\^{}$\backslash$s*sorry$\backslash$b},
+comments stripped) & \textbf{0} & --- & the CI pattern's actual
+check \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The single genuine offender was quarantined (below,
+\cite{sylvaquarantine2026}), and the
+string-caliber alarm was re-classified as a \emph{caliber-level
+confusion}, not a contamination event --- the CI slimming report's
+``hypothesis violated'' note was corrected accordingly. The audit
+codified the three-level caliber standard that the reconciliation
+chapter applies to every number: \textbf{string level} (substring
+search --- never a valid basis for honesty claims),
+\textbf{code level} (statement-level pattern, comments stripped
+--- the reference caliber), \textbf{CI-pattern level} (the exact
+regular expression the honesty gate uses). A side observation
+with governance weight: under the \emph{string} caliber, filtering
+for files that ``look honest'' would have deleted a
+\pnum{14\%} slice of the Analysis domain --- caliber errors
+are not cosmetic, they misallocate deletion decisions.
+
+\subsection{Quarantine, not deletion}
+\label{sec:quarantine}
+The response to the one contaminated module is the repository's
+template for handling genuinely bad content: \texttt{SYLVA\_ProvenLayer2.lean}
+was moved to \texttt{releases/quarantine/} with a machine-readable
+manifest (origin path, SHA-256, reason list, exclusion scope), the
+batch census was updated from \pnum{119859} to
+\pnum{119858} files, and its 10 template theorems were removed
+from the metric's numerator and denominator alike. Nothing was
+silently deleted; the no-silent-deletion rule (below) applies with
+special force to content whose existence is embarrassing. The
+quarantine directory is the batch corpus's equivalent of the
+deleted-claims ledger: a place where failures remain visible,
+attributable, and countable.
+
+\subsection{The honesty CI and its explicit boundary}
+\label{sec:ci}
+The governance layer is machine-checked.
+\texttt{verify\_honest\_repo.py --ci} gates every round: a
+forbidden-term scan with deletion-context allowance (so that
+\emph{deleting} a fabricated claim is never itself flagged), the
+required honesty markers (\texttt{AI-assisted-generated} banners
+on every report), the deleted-claims ledger
+(\texttt{data/deleted\_fabricated\_claims.json}~\cite{sylvafabrication2026},
+\pnum{15} entries from the counting-geometry fabrication audit,
+well above the gate's 10-entry minimum), BibTeX integrity
+checks, and new-paper presence checks. It passes in seconds
+(exit~0), every round.
+
+The gate's \emph{boundary is stated in the gate itself}: it
+checks the honesty layer --- markers, ledgers, manifests,
+caliber-discipline artifacts --- and deliberately does not check
+Lean proof content (no \texttt{lake build}; the full build
+exceeds the audit machines' \pnum{4GB}-class memory, and the Agda
+side has never compiled in CI for the same reason). Conflating ``honesty CI green'' with ``library correct''
+would be a caliber error of exactly the kind this paper catalogs;
+the Lean side is instead pinned (mathlib4
+\texttt{8a178386}, toolchain Lean 4.29.0, lakefile + manifest
+committed) and carries independent per-module compile logs, while
+the batch generator is reproducible from its manifest
+(\pnum{119831} entries, SHA-256 sampling \pnum{500}, zero
+mismatches). The remaining gap --- containerized, artifact-
+publishing reproducibility --- is registered as future work
+(Sec.~\ref{sec:future}).

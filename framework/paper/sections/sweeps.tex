@@ -1,0 +1,220 @@
+% =====================================================================
+% Redemption sweeps & five-class taxonomy (Sec 4) - sources:
+%   * framework/axiom_reduction_sweep1..6_report.md (per-sweep records:
+%     sweep1: 30 in 6 files, v7.94 bf6590463, 2026-08-18, Searcher C;
+%     sweep2: 44 placeholders in 10 files, v7.95, 2026-08-19;
+%     sweep3: 31 definitional (rfl 21 + substantive 10), v7.96,
+%       ledger erratum 37->31;
+%     sweep4: 29 (27 P->P + 1 physical hypothesis + 1 CookLevin bundle),
+%       v7.97;
+%     sweep5: 30 P->P across 15 files, v7.98, C-legacy audit,
+%       axiom 315->285 (598->568 irreproducible, errata);
+%     sweep6: 32 P->P definitional close-out, working tree 2026-08-21,
+%       no-toolchain honesty, stub-falsity cases)
+%   * framework/p0_reconciliation_report.md sec 4 (five-class
+%     decomposition 50/90/17/24/13 + 2 bundling - CANONICAL) and
+%     sec 5 (evolution chain 445/399/368/315/285/253, closure
+%     445-166-26=253 - CANONICAL)
+% Number policy: five-class numbers, sweep totals, and the evolution
+% chain are canonical (plain text); sweep-internal metadata
+% (file counts, dates) are per-sweep report baselines.
+% =====================================================================
+
+\subsection{The sweep protocol}
+\label{sec:sweep-protocol}
+A \emph{redemption sweep} is an organized pass over a work queue of
+registered axioms, with four standing rules that every sweep report
+must satisfy (learned, in part, from early violations the audits
+later caught):
+
+\begin{enumerate}
+\item \textbf{Registration first:} only registry entries are
+redeemed; any axiom discovered mid-sweep that is not registered is
+registered before it is touched.
+\item \textbf{No silent deletion:} no entry disappears; each is
+converted to something whose trust status is explicit (theorem with
+proof, definition, or conditional theorem), and the sweep report
+records the per-entry mapping axiom-name $\to$ new form $\to$
+method.
+\item \textbf{Semantics preserved or explicitly weakened:} the
+statement of a redeemed axiom may not be quietly changed; if the
+only honest conversion is a conditionalization (class \ding{172}
+below), the conversion must be visible in the signature itself.
+\item \textbf{Ledger closure:} the sweep report's own arithmetic
+must close against the registry delta --- the rule whose early
+violations became conflicts C5 and C6
+(Sec.~\ref{sec:conflicts}).
+\end{enumerate}
+
+Six sweeps ran between 2026-08-18 and 2026-08-21 (repository
+versions v7.94 through the v7.99 working tree), closing
+$30+44+31+29+30+32 = 196$ registered axioms --- the canonical sweep
+accounting. Sweep-level facts are summarized in
+Table~\ref{tab:sweeps}; the full per-entry records are the sweep
+reports cited therein~\cite{sylvasweeps2026}.
+
+\subsection{The five semantic classes}
+\label{sec:fiveclasses}
+The sweep reports count \emph{closures}. The program's central
+bookkeeping decision is that a closure is not a unit of progress;
+its \emph{semantic content} is. Every closure is therefore
+re-graded, post hoc and independently of the sweep that produced it
+(the grading was performed by the P0 reconciliation pass), into one
+of five classes (plus one excluded category):
+
+\begin{enumerate}
+\item[\ding{172}] \textbf{Vacuous placeholder closure} (50 entries,
+25.5\%). The axiom's conclusion was \texttt{True}; the closure
+proves it by \texttt{trivial} (or \texttt{intro}; \texttt{trivial}).
+The theorem now type-checks, is not an axiom, and says nothing.
+This is honest bookkeeping: the placeholder debt is marked paid
+\emph{at its true value, zero}.
+\item[\ding{173}] \textbf{\boldmath$P\!\to\!P$ conditionalization}
+(90 entries, 45.9\%). The axiom asserted $P$; the closure is
+\texttt{theorem h : P} with hypothesis \texttt{(h : P)} and proof
+\texttt{:= h}. The axiom disappears from the count, the statement
+remains available to downstream consumers in conditional form, and
+\emph{no mathematical content has been transferred}. We return to
+the honesty of this class in Secs.~\ref{sec:pp} and
+\ref{sec:limitations}.
+\item[\ding{174}] \textbf{Data-to-definition conversion} (17
+entries, 8.7\%). Axioms asserting numeric facts about physical
+constants become \texttt{def}s: e.g.\ the critical density, asserted
+as an axiom with a numeric value, becomes
+\texttt{def rho\_c := 3*H0\^{}2/(8*$\pi$*G)} with the numeric value
+retained in the docstring as data. The axiom footprint shrinks by
+construction; the ``theorem'' purchased is definitional, not
+mathematical.
+\item[\ding{175}] \textbf{Definitional reconstruction} (24 entries,
+12.2\%). Axioms whose statements are definitional equalities become
+theorems proved by \texttt{rfl} after the underlying \texttt{def}
+is repaired (constants previously given as bare numbers are
+redefined by their formulas). Genuine proof work, of exactly zero
+mathematical depth --- but it \emph{is} the correct fix, and it
+survives \texttt{\#print axioms}.
+\item[\ding{176}] \textbf{Substantive proof} (13 entries, 6.6\%).
+Real proofs of real statements: identifications via mathlib lemmas
+(e.g.\ \texttt{Real.rpow\_pos\_of\_pos} under an explicitly added
+physical hypothesis $\alpha' > 0$), algebraic identities by
+\texttt{ring}/\texttt{nlinarith}, existence constructions by
+\texttt{exists\_intro}. Thirteen of 196.
+\item[\ding{177}] \textbf{Axiom bundling, excluded from the
+redemption classes} (2 entries, 1.0\%). Two closures restructured a
+statement as a conjunction of two existing axioms (the Cook--Levin
+reduction bundle; one analogy-of-science entry). The \texttt{axiom}
+keyword disappears from the declaration count, but both ingredients
+remain axioms --- so the P0 reconciliation reports these two
+\emph{separately} from the five redemption classes: the canonical
+sentence is ``196 closures $=$ five classes summing to 194, plus 2
+bundling restructurings'', and no proof-rate or redemption claim
+anywhere in the program counts them as content.
+\end{enumerate}
+
+\begin{table}[t]
+\caption{The six sweeps and the canonical five-class re-grading of
+their closures (P0 reconciliation, sec.~4). Column \ding{177} counts
+bundling restructurings excluded from the five-class redemption
+decomposition.}
+\label{tab:sweeps}
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrrrrr@{}}
+\toprule
+Sweep & Closed & \ding{172} & \ding{173} & \ding{174} &
+\ding{175} & \ding{176} & \ding{177} & Version \\
+\midrule
+sweep1 (2026-08-18) & 30 & 6 & 1 & 17 & 3 & 2 & 1 & v7.94 \\
+sweep2 (2026-08-19) & 44 & 44 & -- & -- & -- & -- & -- & v7.95 \\
+sweep3 (2026-08-19) & 31 & -- & -- & -- & 21 & 10 & -- & v7.96 \\
+sweep4 (2026-08-20) & 29 & -- & 27 & -- & -- & 1 & 1 & v7.97 \\
+sweep5 (2026-08-21) & 30 & -- & 30 & -- & -- & -- & -- & v7.98 \\
+sweep6 (2026-08-21) & 32 & -- & 32 & -- & -- & -- & -- & worktree \\
+\midrule
+\textbf{Total} & \textbf{196} & \textbf{50} & \textbf{90} &
+\textbf{17} & \textbf{24} & \textbf{13} & \textbf{2} & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Two features of Table~\ref{tab:sweeps} deserve emphasis. First, the
+sweeps are \emph{specialized}: sweep2 eliminated the entire
+placeholder class (all 44 remaining \texttt{True}-conclusion axioms
+in its target set; the class total of 50 includes 6 from sweep1);
+sweep3 was the definitional pass; sweeps 4--6 were progressively
+more honest about what remained. Second, the composition drifts
+\emph{down}, not up: the last two sweeps are 100\%
+$P\!\to\!P$ --- not because the methodology degraded, but because
+the registry queue was drained in order of decreasing semantic
+availability, and what remains at the bottom is exactly the
+material that cannot be redeemed honestly without doing or
+importing mathematics.
+
+\subsection{The honesty of \boldmath$P\!\to\!P$}
+\label{sec:pp}
+The $P\!\to\!P$ class deserves its own subsection because it is
+the methodology's most easily abused move. The conversion
+\begin{center}
+\texttt{axiom X : P}
+\quad$\longrightarrow$\quad
+\texttt{theorem X (h : P) : P := h}
+\end{center}
+is a real improvement in three specific senses: the ambient logic
+no longer \emph{assumes} $P$; downstream consumers that cite
+\texttt{X} must now supply $P$ as a hypothesis, so the debt is
+propagated instead of hidden; and the statement's trust status is
+visible in its own signature. It is a nullity in the sense that
+matters to a mathematician: no proof of $P$ has been produced, and
+a proof-rate metric that counted 90 such conversions as 90 proofs
+would be lying with precision.
+
+The program's rule, enforced nowhere but in the taxonomy itself, is
+that $P\!\to\!P$ conversions are only acceptable when (i) the
+statement is retained verbatim as the conclusion, (ii) the sweep
+report names the class explicitly, and (iii) the aggregate reporting
+(the five-class table, never the bare count) keeps the class
+visible. Sweep6 documented the limiting case honestly: some
+registered propositions are \emph{false} under the corpus's stub
+definitions (e.g.\ a partition-size identity that holds only for
+$N=1$ under its stub, and a positivity statement that fails under a
+zero-stub), and for those, $P\!\to\!P$ is not merely the cheap
+conversion but the \emph{only} honest one --- asserting the
+unconditional $P$ was the original defect. Sweep6's report also
+discloses an operational constraint: the sweep was executed in an
+environment without a Lean toolchain, so its conversions carry
+structural verification (keyword, hypothesis, proof-body, verbatim
+conclusion) but not compilation --- a boundary stated in the report
+itself rather than papered over.
+
+\subsection{Closing the declaration account}
+\label{sec:evolution}
+The six sweeps, plus non-sweep removals (template axioms deleted
+from generated-but-committed files during corpus hygiene),
+produce a monotone evolution of the live declaration count
+(\texttt{axiom} commands in \texttt{sylva\_formalization/},
+statement-level, canonical caliber):
+
+\begin{center}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Version & \texttt{axiom} declarations & $\Delta$ \\
+\midrule
+v7.94 (registry baseline) & 445 & --- \\
+v7.95 & 399 & $-46$ (sweep2: 44; non-sweep: 2) \\
+v7.96 & 368 & $-31$ (sweep3) \\
+v7.97 & 315 & $-53$ (sweep4: 29; non-sweep: 24) \\
+v7.98 & 285 & $-30$ (sweep5) \\
+working tree (v7.99) & 253 & $-32$ (sweep6) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The account closes exactly: $445 - 166\ (\text{sweep}_2..6) - 26\
+(\text{non-sweep}) = 253$, matching the registry-residual and
+live-declaration calibers independently
+(Sec.~\ref{sec:reconciliation}). It is worth stating what this
+arithmetic does and does not certify: it certifies that
+\emph{entries} left the axiom ledger by declared, auditable routes;
+it does not certify that mathematics happened --- for that, one
+needs the five-class column, and there the answer is 13.

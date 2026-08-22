@@ -100,8 +100,10 @@ structure GaugeBosons where
     **Difficulty to theorem:** N/A (this is a definition, not a theorem to prove).
     However, formalizing the definition requires Lie algebra representation theory (~100h).
     -/
-axiom GluonFieldStrength (gauge : GaugeBosons) (g_s : ℝ) :
-  ∀ (x : Fin 3 → ℝ) (μ ν : Fin 4) (a : Fin 8), ℝ  -- TODO: axiom type placeholder, replace with proper gauge field type
+-- [sweep7] axiom→noncomputable def（数据型清偿）：原公理仅断言该张量函数存在（无任何性质），
+-- 现以显式零 stub 定义化；物理定义待后续批次替换
+noncomputable def GluonFieldStrength (gauge : GaugeBosons) (g_s : ℝ) :
+  ∀ (x : Fin 3 → ℝ) (μ ν : Fin 4) (a : Fin 8), ℝ := fun _ _ _ _ => 0  -- TODO: stub placeholder, replace with proper gauge field type
   -- Gluon field strength: requires SU(3) Lie algebra, postulated as SM axiom
 
 /-- **W Boson Field Strength Tensor (SU(2)_L Yang-Mills).**
@@ -140,8 +142,9 @@ axiom GluonFieldStrength (gauge : GaugeBosons) (g_s : ℝ) :
     **Difficulty to theorem:** N/A (definition, not theorem).
     Formalizing SU(2) gauge theory requires ~100h for representation theory setup.
     -/
-axiom WFieldStrength (gauge : GaugeBosons) (g : ℝ) :
-  ∀ (x : Fin 3 → ℝ) (μ ν : Fin 4) (i : Fin 3), ℝ  -- TODO: axiom type placeholder, replace with proper gauge field type
+-- [sweep7] axiom→noncomputable def（数据型清偿）：同上，显式零 stub
+noncomputable def WFieldStrength (gauge : GaugeBosons) (g : ℝ) :
+  ∀ (x : Fin 3 → ℝ) (μ ν : Fin 4) (i : Fin 3), ℝ := fun _ _ _ _ => 0  -- TODO: stub placeholder, replace with proper gauge field type
   -- W field strength: requires SU(2) Lie algebra, postulated as SM axiom
 
 -- ============================================================
@@ -217,8 +220,9 @@ def sum_Pauli (v : Fin 3 → ℝ) : (Fin 4 → ℂ) × (Fin 4 → ℂ) → (Fin 
     **Difficulty to theorem:** N/A (definition, not theorem).
     Formalizing the full Standard Model gauge sector requires ~500h+ for representation theory.
     -/
-axiom CovariantDerivativeFermion (ψ : FermionFields) (gauge : GaugeBosons) (gauges : SMGaugeGroup) :
-  ∀ (x : Fin 3 → ℝ) (μ : Fin 4) (I : Fin 3), ℝ  -- TODO: axiom type placeholder, replace with proper gauge field type
+-- [sweep7] axiom→noncomputable def（数据型清偿）：同上，显式零 stub
+noncomputable def CovariantDerivativeFermion (ψ : FermionFields) (gauge : GaugeBosons) (gauges : SMGaugeGroup) :
+  ∀ (x : Fin 3 → ℝ) (μ : Fin 4) (I : Fin 3), ℝ := fun _ _ _ => 0  -- TODO: stub placeholder, replace with proper gauge field type
   -- Covariant derivative: requires gauge group representation theory, postulated as SM axiom
 
 -- ============================================================

@@ -143,21 +143,24 @@ theorem BottPeriodicityReal : ∀ (d : ℕ) (s : SymmetryClass),
 
     Kitaev table: class AII, d=2 → Z₂.
     This matches the Kane-Mele Z₂ invariant. -/
-axiom KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2
+-- [sweep7] axiom→theorem：表值与 def KTheoryInvariant 的 AII/d%8=2 分支定义性相等，rfl 即证
+theorem KitaevTable_KaneMele : KTheoryInvariant 2 SymmetryClass.AII = ZMod 2 := rfl
   -- 2D quantum spin Hall: Z₂ invariant from K-theory classification
 
 /-- Example: 3D topological insulator (class AII, d=3) → Z₂ invariant.
 
     Kitaev table: class AII, d=3 → Z₂.
     This matches the Fu-Kane-Mele Z₂ invariant. -/
-axiom KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2
+-- [sweep7] axiom→theorem：AII/d%8=3 分支定义性相等，rfl 即证
+theorem KitaevTable_FuKaneMele : KTheoryInvariant 3 SymmetryClass.AII = ZMod 2 := rfl
   -- 3D topological insulator: Z₂ invariant from K-theory classification
 
 /-- Example: 2D Chern insulator (class A, d=2) → ℤ invariant.
 
     Kitaev table: class A, d=2 → ℤ.
     This matches the TKNN Chern number. -/
-axiom KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ
+-- [sweep7] axiom→theorem：A/d%2=0 分支定义性相等，rfl 即证
+theorem KitaevTable_TKNN : KTheoryInvariant 2 SymmetryClass.A = ℤ := rfl
   -- 2D quantum Hall: ℤ invariant (Chern number) from K-theory classification
 
 end TopologicalInsulator

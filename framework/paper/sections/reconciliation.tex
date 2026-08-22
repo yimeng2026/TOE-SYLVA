@@ -1,0 +1,216 @@
+% =====================================================================
+% Three-caliber reconciliation (Sec 5) - sources:
+%   * framework/p0_reconciliation_report.md sec 2 (caliber definitions
+%     A/A'/B/B'/C, Agda calibers, proof-rate calibers), sec 3 (C1-C6),
+%     sec 5 (evolution chain + closure identity) - CANONICAL register
+%   * framework/journal_submission_d1_review.md sec 1.3 (C1-C6 origin)
+%   * framework/proof_rate_dashboard.md (independent caliber 3.91%,
+%     22,328/571,611, 2026-08-11), DASHBOARD.md (stale snapshot
+%     99.79%/100.00%/79.70%, denominator 546,356, axiom count 553)
+%   * proof_status.md sec 5 (caliber history 88.08% -> 100%)
+% Number policy: three-caliber identities, Agda 131, 3.91% =
+% 22,328/571,611 are canonical; snapshot internals are quoted from
+% the P0 register.
+% =====================================================================
+
+\subsection{Why numbers drift}
+\label{sec:drift}
+Every aggregate in this program is computed by a script, over a
+corpus, at a time, through a pattern --- change any of the four and
+the number changes while the library does not. An audit that
+reconstructed the program's own reporting history~\cite{sylvad1review2026}
+(2026-08-21) found six live conflicts (C1--C6) in which the same quantity carried
+incompatible values across authoritative-looking documents; two of
+them (C3, C6) had survived precisely because both sides looked
+defensible. The conflicts are themselves data:
+Table~\ref{tab:conflicts} lists all six with their resolutions ---
+each resolution is not ``the larger number won'' but a named caliber
+plus a reproducible measurement.
+
+The P0 reconciliation pass then did for the whole account what
+Table~\ref{tab:conflicts} did for the conflicts: it fixed one
+caliber per quantity, measured everything against the working tree,
+and landed the results as the repository's canonical register
+(\texttt{framework/p0\_reconciliation\_report.md}~\cite{sylvap0recon2026}), with the
+measurements themselves in an appendix so any future audit can
+re-run them. The rest of this section is the reconciliation, class
+by class.
+
+\subsection{Axioms: three calibers that must all close}
+\label{sec:axiom-calibers}\label{sec:conflicts}
+Three independent records count ``the axioms'': the registry (what
+was registered), the live declarations (what \texttt{axiom} commands
+the source currently contains), and the sweep ledger (what the
+redemption process claims to have closed). Each answers a different
+question, and the program's accounting rule is that all three must
+close against each other \emph{or} the discrepancy must itself be a
+named, measured object:
+
+\begin{itemize}
+\item \textbf{Caliber A (registry entries): 448} at baseline ---
+primitive 250, definitional 142, placeholder 42, schema 14; 391
+unique names, \pnum{57} cross-file duplicates, over 116 non-batch
+files, generated at v7.94. (The registry's 448 and the v7.94
+declaration census's 445 differ by exactly 3 entries --- two
+documentation-example snippets and one \texttt{.backup} archive
+entry picked up by the generator's parser; a named caliber
+difference, not an error in either count. The pre-reconciliation
+headlines ``478'' and ``350+'' were respectively a historical
+README caliber and an audit-timepoint estimate, both annotated and
+retired by C1.)
+\item \textbf{Caliber A$'$ (registry residual): 253} --- registry
+entries that still point at live \texttt{axiom} declarations
+(primitive 239 + schema 14). Detached entries:
+$448-253=195$ = definitional 142 (all cleared) + placeholder 42
+(all cleared) + primitive 11.
+\item \textbf{Caliber B (live declarations): 253} --- statement-level
+\texttt{axiom} commands under \texttt{sylva\_\allowbreak formalization/}
+(252 unique file$\times$name pairs; one name declared twice in a
+single file; 214 unique names). \textbf{A$'$ $\equiv$ B} is the
+reconciliation's strongest single check: two records produced by
+different processes (registration vs.\ measurement) agree entry by
+entry.
+\item \textbf{Caliber B$'$ (whole-repo declarations): 284} --- adds
+\pnum{31} statements outside the audited scope (academic
+courseware 15, archive 11, released src snapshots 4, papers 1).
+Quoted only when the question is ``what does the whole repository
+assert?'', never as a library headline.
+\item \textbf{Caliber C (sweep accounting): 196} --- closures
+claimed by sweeps 1--6 ($30+44+31+29+30+32$), re-graded into the
+five semantic classes of Sec.~\ref{sec:fiveclasses}.
+\end{itemize}
+
+The calibers close through two identities. First,
+\emph{baseline identity}: caliber A (448) minus the
+detached-in-sweep-and-other-processes entries equals the residual:
+registry 448 $\to$ 253 residual. Second, \emph{evolution identity}
+(Sec.~\ref{sec:evolution}): the declaration census moved
+$445 \to 399 \to 368 \to 315 \to 285 \to 253$ across versions
+v7.94$\to$working tree, and $445 - 166\ (\text{sweeps}_2..6) -
+26\ (\text{non-sweep removals}) = 253$. The two ``headline''
+numbers that this reconciliation retired --- ``198 closures'' and
+``598$\to$568 declarations'' --- failed for instructive reasons:
+the former double-counted 2 entries already inside sweep1's 30
+(the berryPhase pair, committed at v7.94 before the sweep reports
+were written), and the latter is reproducible under \emph{no}
+caliber the audit could construct (sweep5's actual effect was
+$315\to285$) --- a fabricated-precision artifact, now corrected
+in the sweep report itself.
+
+\begin{table}[t]
+\caption{The C1--C6 conflict inventory (origin:
+D1 review sec.~1.3; resolution: P0 reconciliation). Each
+resolution names the surviving caliber and its correction site.}
+\label{tab:conflicts}
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.6cm}p{5.6cm}p{8.2cm}@{}}
+\toprule
+\# & Conflict & Resolution \\
+\midrule
+C1 & axiom counts (478 vs.\ 448 vs.\ 350+) & \textbf{resolved}:
+authoritative live count 253 (caliber A$'$ $\equiv$ B); 448 is the
+v7.94 registry baseline (caliber A); 478 was a historical README
+caliber, 350+ an audit-timepoint estimate --- both annotated and
+retired \\
+C2 & Agda postulates (149 vs.\ 55 vs.\ none) & \textbf{resolved}:
+7 files, 25 top-level blocks, \textbf{131} name-level declarations
+(name caliber is canonical; 55 = string caliber, 149 = planning
+value; registry's ``no Agda'' note corrected) \\
+C3 & proof rate (3.91\% vs.\ 99.79\%) & \textbf{resolved}: 3.91\%
+authoritative (independent caliber, 2026-08-11); legacy dashboard
+frozen and marked stale (Sec.~\ref{sec:history}) \\
+C4 & batch ``sorry contamination'' (30.2\%) & \textbf{resolved}:
+string-caliber false positive; code-level count is zero
+(Sec.~\ref{sec:sorry}) \\
+C5 & sweep3 internal ledger (37 vs.\ 31) & \textbf{resolved}: 31;
+the method table's 37 was a miscount, corrected in the sweep
+report \\
+C6 & ``136 redeemed'' composition & \textbf{resolved}: canonical
+196 with the five-class decomposition
+(Sec.~\ref{sec:fiveclasses}); ``136/166/198'' were double-count or
+estimate calibers \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Agda: three calibers for one track}
+\label{sec:agda-calibers}
+The Agda side inherited the same disease in miniature: the
+governance documents said ``$\sim$149 postulates'' (a planning
+estimate from before the files existed in their current shape), a
+string scan said 55, and the registry's metadata said there were no
+Agda files at all. The P0 register fixed all three: 7 files, 25
+top-level \texttt{postulate} blocks, and \textbf{131} name-level
+declarations (the canonical caliber), with the per-module split
+Quantum 53 / Spectrum 36 / Complete 15 / CNFCategory 12 / Order 12
+/ Cauchy 2 / Field 1 summing to 131. The string caliber's 55 counts
+the \emph{keyword occurrences}; the planning value's 149 counts an
+intention. Neither measures the library. The Agda redemption (131
+postulates to be replaced by standard-library proofs) remains open
+and is the largest single visible debt line in the program's
+roadmap --- deliberately not swept into any closure number.
+
+\subsection{Proof rate: the 25$\times$ disagreement}
+\label{sec:history}
+The program's metric history is the paper's cautionary core. An
+early dashboard reported \pnum{88.08\%} ``proved'' under a
+hand-computed caliber; successive revisions reported \pnum{99.5\%},
+\pnum{99.9\%}, then \pnum{100\%} --- each step technically defensible
+under its own definition and collectively absurd. Two artifacts
+then disagreed by 25$\times$:
+
+\begin{itemize}
+\item \textbf{Authoritative (independent caliber): 3.91\%} =
+22{,}328 $\div$ 571{,}611, computed 2026-08-11 by the reference
+implementation (\texttt{scripts/\allowbreak compute\_\allowbreak proof\_\allowbreak rate.py},
+\texttt{count\_\allowbreak sorry\_\allowbreak no\_\allowbreak comments}): handcrafted theorems only,
+\texttt{sorry} counted at code level with comments stripped, and
+axiom-dependent theorems \emph{excluded from the numerator} ---
+i.e.\ the metric respects the difference between a proof and a
+promise. The batch corpus is reported on its own line (0\% under
+the same caliber), never merged.
+\item \textbf{Stale snapshot: 99.79\%} (with 100.00\% batch and
+79.70\% legacy rows) --- a hand-patched dashboard frozen
+2026-08-12, whose denominator (546{,}356) and axiom count (553 vs.\
+the independent caliber's 586) differ from the authoritative
+caliber. The P0 register's disposition: the snapshot stays in the
+repository as historical evidence, marked stale with a warning
+banner, superseded by the 3.91\% caliber.
+\end{itemize}
+
+The reconciliation does not ask which number is ``right''; it asks
+what question each number answers, and keeps only the one whose
+question is the program's actual question: \emph{of the theorems we
+claim, how many are proved?} --- answer, at the time of writing:
+22{,}328 of 571{,}611 handcrafted, and none of the batch corpus.
+The caliber standard that emerged (string / code / CI-pattern
+levels, with the code level normative) is formalized in
+Sec.~\ref{sec:metric}.
+
+\subsection{The reconciliation as a first-class artifact}
+\label{sec:recon-artifact}
+Three practices made the reconciliation itself trustworthy, and all
+three are transferable:
+
+\begin{enumerate}
+\item \textbf{One canonical register per quantity family.} The P0
+report is designated the sole authoritative source for
+axiom/Agda/proof-rate/sweep numbers; downstream documents either
+quote it or are wrong. (The register explicitly lists the
+downstream documents that still carry pre-reconciliation values
+and whose fixes belong to other workstreams --- errata surface,
+not silent fixes.)
+\item \textbf{Measurements in the appendix.} Every canonical number
+in the register is reproducible by a one-line command in the
+report's appendix (registry Python reconciliation, declaration
+censuses per version, Agda block parsing, the CI honesty gate).
+An auditor should never need to trust the register's arithmetic.
+\item \textbf{Caliber names in the citations.} When this paper
+quotes 448, 253, 196, 131, or 3.91\%, the surrounding sentence
+names the caliber (registry / declaration / sweep / name-level /
+independent). The parenthetical numbers in red brackets
+(\pnum{...}) are the remaining verified baselines outside the P0
+register's scope --- same discipline, one tier down.
+\end{enumerate}

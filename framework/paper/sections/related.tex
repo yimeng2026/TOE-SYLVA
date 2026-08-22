@@ -1,0 +1,172 @@
+% =====================================================================
+% Related work - material sources:
+%   * DEVELOPMENT_DIRECTIONS.md sec 4 (12 verified arXiv refs,
+%     2024-2026 autoformalization/LLM-proof-integrity literature scan,
+%     identifiers verified 12/12 on 2026-08-06)
+%   * proof_status.md sec 3 (mathlib-delegation registrations: FLT,
+%     Langlands), sec 4 (Agda track)
+%   * DEVELOPMENT_DIRECTIONS.md header (four rounds of quality
+%     engineering; deleted_fabricated_claims.json)
+%   * Bib policy (D1 review sec 1.4): internal = techreport w/ repo
+%     paths; external = URL/arXiv-ID-only @misc entries pending
+%     P1-5 formal bibliographic upgrade --- zero-hallucination policy.
+% All external claims below are qualitative (practices, not numbers)
+% or attributed to the repository's own registrations.
+% =====================================================================
+
+\subsection{Large-scale formal libraries and their quality culture}
+\label{sec:related-libraries}
+The problems this paper addresses --- placeholder declarations,
+metric drift, untracked deferred proof --- are not specific to
+AI-assisted corpora, but AI assistance changes their \emph{rate} and
+\emph{scale}. The established communities have long maintained
+disciplines that our program independently rediscovers and then has
+to formalize more aggressively, because at machine-generation scale
+no informal convention survives.
+
+\textbf{mathlib/Lean 4}~\cite{mathlib4,lean4} is the foundation layer
+of our corpus and the reference point for axiom discipline. The
+community norm is that a proof-development's axiom footprint is
+inspectable with \texttt{\#print axioms}, and that a result relying
+on nothing beyond Lean's standard axioms
+(\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound})
+is reported as such; that ``standard trio'' is exactly the
+certificate our case-study registry requires
+(Sec.~\ref{sec:cschain}). mathlib's own growth is curated through
+review; our corpus deliberately contains an \emph{unreviewed} tier,
+which is why we need a registry where a mature library needs code
+review. Our claim-tier THEOREM* --- mathematics proved elsewhere,
+formalized elsewhere, and only \emph{delegated to} by our corpus ---
+is modeled on the ordinary situation of a downstream development
+citing mathlib results; the repository's FLT registration (formal
+Fermat's Last Theorem as delegated by mathlib, roughly
+\pnum{12000}~lines of mathlib proof atop a large dependency cone ---
+the figure is the repository's registration, not an independent
+measurement) is the canonical example.
+
+\textbf{Isabelle/HOL and the Archive of Formal
+Proofs}~\cite{isabelle} pair a mature proof assistant with a
+refereed, versioned archive: entries enter AFP through review and
+are then kept building against the evolving Isabelle release ---
+the closest existing analogue to our ``registration before
+promotion'' rule, but with human referees where we use machine
+audit plus tier labels. The AFP's review gate exists precisely
+because unrestricted growth degrades trust; our batch corpus is the
+limiting case of unrestricted growth, and its quarantine protocol
+(Sec.~\ref{sec:quarantine}) is a machine-scale substitute for that
+gate.
+
+\textbf{Metamath}~\cite{metamath} represents the strictest tradition
+of axiom economy: every proof step is an explicit substitution
+instance of a small, fixed axiom set, so the notion of
+``untracked trust'' cannot arise by construction. Our registry
+taxonomy (Sec.~\ref{sec:taxonomy}) can be read as retrofitting a
+weaker version of that strictness onto a corpus that was \emph{not}
+built that way --- a retrofit that only became necessary once
+AI-assisted drafting let statement volume outrun proof volume.
+
+\subsection{LLM-generated proofs and autoformalization integrity}
+\label{sec:related-llm}
+A 2024--2026 literature line --- twelve papers whose identifiers
+were verified in the repository's 2026-08-06 scan
+\cite{leancopilot2024,forml4,leanworkbook,userintent2024,wild2025,
+commonframework2025,masa2025,rlmeval2025,llmoutput2025,leanatlas2026,
+paraphrase2026,robustness2026} --- frames
+the exact failure surfaces this paper governs:
+
+\begin{itemize}
+\item \textbf{Assistance and generation.} Lean Copilot
+\cite{leancopilot2024} and multi-agent formalization frameworks such as
+MASA \cite{masa2025} put LLMs inside the proof-writing loop; corpora
+built this way inherit the LLM's statement-level fluency without any
+guarantee of proof-level content --- the precondition of failure
+mode F1. Process-driven benchmarks (FormL4 \cite{forml4}) and
+corpus-build methodologies (Lean Workbook \cite{leanworkbook},
+common-framework proposals \cite{commonframework2025}) study how
+NL$\to$Lean pipelines scale.
+\item \textbf{Evaluation and its blind spots.} Research-grade
+evaluation suites for real Lean projects (RLMEval \cite{rlmeval2025}),
+in-the-wild autoformalization studies \cite{wild2025}, intent-capture
+evaluation \cite{userintent2024}, and robustness studies showing that
+frontier models fail under mere paraphrase \cite{paraphrase2026} or on
+non-canonical real proof texts \cite{robustness2026} all converge on one
+point: \emph{curated-benchmark performance does not transfer to
+unguarded corpora}. Our batch corpus is precisely an unguarded
+corpus, and Sec.~\ref{sec:sorry} shows what a naive scan of it
+reports.
+\item \textbf{Semantic hallucination.} The most directly relevant
+result for us: type-checking success does not imply that a
+formalized proposition faithfully expresses the intended mathematics
+--- ``semantic hallucination'' in the terminology of the Lean Atlas
+study \cite{leanatlas2026}, with formal verification of LLM-generated
+outputs proposed as the mitigation \cite{llmoutput2025}. Our claim
+tiers and falsifiability criteria
+(Sec.~\ref{sec:tiers}) are a governance-scale answer to the
+same problem: the registry records \emph{what} a statement claims
+and at what tier, so that a type-checked placeholder cannot masquerade
+as a theorem.
+\end{itemize}
+
+To our knowledge, the autoformalization literature documents the
+\emph{capability} side of this problem extensively, but not the
+\emph{corpus-governance} side: what to do once a mixed
+human/AI library already contains four hundred trusted placeholders
+and a hundred thousand generated modules. This paper is a case
+study of the governance side.
+
+\subsection{Audit precedents inside the repository}
+\label{sec:related-audit}
+The program did not start from zero: the repository's own history
+supplied the audit precedent, and the paper's methodology is a
+generalization of it. An earlier counting-geometry audit identified
+and deleted 15 fabricated claims, logging them in a machine-readable
+deleted-claims ledger
+(\texttt{data/deleted\_fabricated\_claims.json}) together with the
+protocol document that distilled the failure-mode taxonomy of
+AI-generated mathematical writing. Four subsequent rounds of quality
+engineering verified \pnum{1943} arXiv identifiers, zeroed
+\pnum{25} failing verification scripts by fixing the underlying
+content rather than loosening the assertions, and repaired some
+\pnum{500} reference-text consistency defects
+(DEVELOPMENT\_DIRECTIONS.md, repository history). The registry,
+sweeps, and reconciliation machinery of
+Secs.~\ref{sec:registry}--\ref{sec:reconciliation} is that practice
+scaled from ``audit the papers'' to ``audit the library''; the
+deleted-claims ledger survives as a CI-enforced invariant
+(Sec.~\ref{sec:ci}).
+
+\subsection{What is new here}
+\label{sec:related-delta}
+Table~\ref{tab:delta} summarizes the delta against each
+conversation partner.
+
+\begin{table}[t]
+\caption{Position relative to prior practice.}
+\label{tab:delta}
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.30\linewidth}p{0.62\linewidth}@{}}
+\toprule
+Partner & What this paper adds \\
+\midrule
+mathlib/Lean discipline & A registry that makes the axiom footprint
+of an \emph{unreviewed}, AI-assisted corpus explicit and auditable,
+plus a semantic re-grading of every ``redemption'' so that closure
+counts cannot launder placeholders into proofs. \\
+AFP review culture & A machine-checkable substitute
+(claim tiers + honesty CI + quarantine) for review gates when the
+corpus grows faster than review capacity. \\
+Metamath axiom economy & A post-hoc retrofit: taxonomy,
+per-entry provenance, and closing identities for a corpus that was
+not born under strict accounting. \\
+Autoformalization integrity literature & The missing corpus-governance
+case study: a full reconciliation of registry, declaration, and
+process accounts in a mixed human/AI library, with the (number,
+caliber) discipline as the proposed interface. \\
+Internal audit precedent & Generalization from document audits to
+library audits; the same ledger conventions, enforced by CI instead
+of by convention. \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}

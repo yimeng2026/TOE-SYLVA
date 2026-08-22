@@ -1,27 +1,28 @@
 % =====================================================================
 % Axiom Governance for an AI-Generated Formal Library:
-% Taxonomy, Redemption Methodology, and Honest Proof-Rate Metrics
+% Taxonomy, Redemption, Three-Caliber Reconciliation, and
+% Honest Proof-Rate Metrics
 % ---------------------------------------------------------------------
-% D3 LaTeX pilot skeleton (roadmap wave-2, line D; candidate (1))
-% Task dispatch: group admin 2026-08-21 18:06; executor: Parallel Searcher A
-% Target venue (updated per framework/journal_matching_matrix.md, D2,
-% 2026-08-21 18:33 - data-driven correction overriding D1 sec 1.5):
-%   Journal of Automated Reasoning (JAR) - main target
-%     (Springer, IF 0.7, ITP 2026 special issue active);
-%   LMCS - backup; conference checkpoints: CPP 2028 (main line),
-%   ITP 2027 (mid-way checkpoint, not yet announced).
-%   JFR moved to observation list (no issue since Vol.13 No.1,
-%   2020-12-21 - 5y8m hiatus measured on official archive).
-% Baseline: repo HEAD v7.98 (ae8ab0e07, 2026-08-21)
-% ---------------------------------------------------------------------
-% NUMBER PLACEHOLDER DISCIPLINE (D1 review sec 1.4-1; P0 canonical-number
-% reconciliation running in parallel, do not merge numbers yourself):
-%   * Every aggregate number is wrapped in \pnum{...} (red brackets).
-%   * The value inside \pnum{} is the v7.98 WORKING-TREE BASELINE,
-%     kept for traceability only; canonical numbers land after P0.
-%   * The repository source of each baseline is given in a % comment
-%     adjacent to the macro call.
-% Compile:  tectonic main.tex      (verified working, build log in build/)
+% Full first submission draft (D4) - expands the D3 skeleton
+% (candidate (1)) into a complete JAR-targeted manuscript.
+% Task dispatch: group admin 2026-08-21 21:59; executor: Report
+% Summarizer (报告汇总员).
+% Target venue (per framework/journal_matching_matrix.md, D2,
+% 2026-08-21): Journal of Automated Reasoning (JAR) - main target;
+% LMCS - backup; conference checkpoints: CPP 2028 (main line),
+% ITP 2027 (mid-way checkpoint). JFR on observation list.
+% Number policy (P0 landed, framework/p0_reconciliation_report.md
+% 2026-08-21):
+%   * CANONICAL (plain text): sweep accounting 196 = 30+44+31+29+30+32;
+%     registry 448 (250/142/42/14); residual/live 253 (239+14);
+%     five classes 50/90/17/24/13 + 2 bundling; Agda 7/25/131;
+%     evolution chain 445/399/368/315/285/253; proof rate
+%     3.91% = 22,328/571,611 (handcrafted, batch 0% separate);
+%     stale snapshot 99.79%/100.00%/79.70% (frozen, STALE).
+%   * BASELINES (\pnum{...} red brackets): verified v7.98/v7.99
+%     working-tree values outside the P0 register's scope, each
+%     annotated with its repository source in adjacent comments.
+% Compile:  tectonic main.tex   (build log in build/compile_log.txt)
 %           also compatible with pdflatex + bibtex.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
@@ -30,97 +31,228 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{pifont}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
-% ---- placeholder macro: red angle-bracket number = v7.98 baseline ----
-\newcommand{\pnum}[1]{\textcolor{red}{$\langle$#1$\rangle$}}
-% caliber keyword for metric-caliber discipline (Sec. 2.3, 4.1)
-\newcommand{\caliber}[1]{\textsf{[#1]}}
+% ---- placeholder macro: red angle brackets = declared v7.98/99
+% baseline calibers (outside P0 canonical scope), kept for
+% traceability; source given in adjacent % comments. ----
+\newcommand{\pnum}[1]{{\color{red}$\langle$#1$\rangle$}}
+% ---- caliber annotation for inline caliber names ----
+\newcommand{\caliber}[1]{\textsf{#1}}
 
-\title{Axiom Governance for an AI-Generated Formal Library:\\
-Taxonomy, Redemption Methodology, and Honest Proof-Rate Metrics}
-\author{TOE-SYLVA Formalization Governance Group}
-\date{August 2026 --- draft skeleton; canonical numbers per the P0
-reconciliation (v7.98 baseline, landed 2026-08-21)}
+\title{\textbf{Axiom Governance for an AI-Generated Formal Library:\\
+Taxonomy, Redemption, Three-Caliber Reconciliation,\\
+and Honest Proof-Rate Metrics\thanks{Target venue: Journal of
+Automated Reasoning (main). Draft status: full first submission
+draft (D4), 2026-08-21. The library and this manuscript were
+produced with AI assistance under human tasking and review; the
+transparency conventions are described in
+Sec.~\ref{sec:transparency}.}}}
+
+\author{TOE-SYLVA Formalization Governance Group%
+\thanks{Correspondence: repository maintainers. Artifact chain:
+\texttt{framework/paper/} (this manuscript + build log),
+\texttt{framework/p0\_reconciliation\_report.md} (canonical
+numbers), \texttt{scripts/verify\_honest\_repo.py} (honesty CI).}}
+\date{August 21, 2026 \quad (D4 full draft; canonical numbers per
+P0 reconciliation)}
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
-AI-assisted formalization scales content faster than the human
-communities of practice that traditionally guarantee it, and the debt
-accumulates in three specific failure modes: axioms used as deferred
-proofs, proof-rate metrics that drift with the measuring caliber, and
-string-level scans that mistake comments for placeholders. We document
-the axiom-governance program of TOE-SYLVA, a Lean~4 (+\,Agda) library
-built on a pinned mathlib4 revision and containing \pnum{119859}
-machine-generated batch modules alongside handcrafted developments.
-% v7.98 baseline: 119,859 SYLVA_Proven* files in working tree
-% (framework/sorry_contamination_audit.md sec 1; ci_slimming_phase1_report.md)
-The program comprises: (i)~a four-class axiom taxonomy (primitive,
-definitional, schema, placeholder) with a machine-readable registry of
-\pnum{448} axioms;
-% v7.98 baseline: 448 (axiom_registry.json v2.0; C1 in
-% journal_submission_d1_review.md sec 1.3)
-(ii)~a redemption methodology executed across six sweeps, whose
-\pnum{196} closures we re-classify into four semantic grades --- vacuous
-placeholder cleanup, trust transfer ($P\!\to\!P$ conditionalization),
-definitional reconstruction, and substantive proof --- of which only
-\pnum{13} carry non-trivial proof content;
-% canonical (p0_reconciliation_report.md secs 2.1/4): 196 = 30+44+31+
-% 29+30+32 (sweeps 1-6; definitional 142 and placeholder 42 classes
-% fully cleared); 13 substantive = 6.6% of closures. Supersedes the
-% double-counted "136+30=166" (2 v7.94 entries are inside sweep1's 30)
-% and the irreproducible 598->568 caliber.
-(iii)~an honest proof-rate metric that counts code-level \texttt{sorry}
-with comments stripped, replacing a caliber history that drifted from
-\pnum{88.08\%} to \pnum{100\%} and then collapsed to \pnum{3.91\%} once
-axioms were no longer ignored;
-% v7.98 baselines: caliber history per proof_status.md sec 5 and
-% proof_rate_dashboard.md (2026-08-11); DASHBOARD.md conflict = C3
-and (iv)~a four-tier external claim layer (THEOREM / THEOREM* / CLAIM /
-CONJECTURE) with falsifiability criteria. Two incidents in which the
-governance loop caught defects in its own metrics --- a \pnum{30.2\%}
-``sorry contamination'' alarm that reversed to zero under a code-level
-caliber, and a 25$\times$ disagreement between two dashboards measuring
-the same library --- are elevated into the methodological thesis of the
-paper: \emph{every proof-library metric must be bound to an explicitly
-declared caliber level (string / code / CI-pattern)}, and the binding
-must be machine-checkable. We close with a full lifecycle case study ---
-a CLAIM$\to$THEOREM upgrade along a Chern--Simons dependency chain with
-mathlib-delegation honesty labels --- and the quarantine of the single
-genuinely contaminated module in the batch corpus.
+\noindent AI-assisted formalization programs can scale proof-term
+production faster than they scale proof \emph{verification}. We
+report the governance methodology of TOE-SYLVA, a Lean~4 corpus
+built on pinned mathlib4 that accumulated, alongside genuine
+developments, a large ledger of \texttt{axiom} declarations used as
+deferred-proof placeholders, plus a machine-generated tier of
+119,859 modules. The methodology has four components.
+(1)~\emph{Axiom audit}: a machine-readable registry of every
+non-batch \texttt{axiom} (448 entries at baseline) with a
+four-class taxonomy separating genuine mathematical assumptions
+from definitional shorthand and vacuous placeholders.
+(2)~\emph{Redemption sweeps with semantic re-grading}: six sweeps
+closed 196 entries (30+44+31+29+30+32); the P0 reconciliation
+re-grades them into five classes --- 50 vacuous placeholder
+closures, 90 $P\to P$ conditionalizations, 17 data-to-definition
+conversions, 24 definitional reconstructions, and 13 substantive
+proofs (plus 2 bundling restructurings excluded from the content
+count) --- an intentionally unflattering decomposition in which
+71.4\% of closures transfer no proof content.
+(3)~\emph{Three-caliber reconciliation}: registry (448),
+live-declaration (253), and sweep-process (196) accounts are
+reconciled to exact identities, and six documented caliber
+conflicts (axiom counts, Agda postulates, dual proof-rate
+dashboards disagreeing by 25$\times$, a 30.2\% ``sorry
+contamination'' alarm that reversed to zero under a code-level
+caliber, an internal ledger miscount, and double-counted
+closures) are each resolved with named calibers.
+(4)~\emph{An honesty layer}: claim tiers with falsifiability
+criteria, an honest proof-rate metric (3.91\% = 22,328/571,611 on
+the handcrafted corpus; batch tier reported separately at 0\%; a
+legacy 99.79\% dashboard is preserved, marked stale), a quarantine
+protocol, and a CI gate that fails on silent deletions. Two case
+studies --- a CLAIM$\to$THEOREM upgrade along a Chern--Simons
+chain with explicit mathlib-delegation labels, and a
+Dedekind-domain segment honestly registered as zero-new-mathematics
+delegation --- exhibit the full lifecycle. The transferable claim:
+in mixed human/AI proof libraries, metrics are trustworthy only as
+(number, caliber) pairs, with calibers declared, machine-checkable,
+and CI-enforced.
 \end{abstract}
 
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
-\small\textbf{Draft-skeleton status (D3 compilation pilot).}
-Numbers in red angle brackets $\langle\cdots\rangle$ are declared
-calibers retained for traceability. The P0 canonical-number
-reconciliation (D1 review sec 1.4-1) has landed
-(\texttt{framework/p0\_reconciliation\_report.md}, 2026-08-21): all
-C6-related figures --- sweep accounting (196), semantic-grade
-decomposition, registry (448) vs.\ live-.lean (253) calibers --- are
-canonical and quotable; the remaining bracketed values are verified
-v7.98 baselines, each annotated with its repository source in the
-\LaTeX{} source comments. The full conflict inventory (C1--C6) that
-motivated this discipline is tabulated in Sec.~\ref{sec:conflicts}.}}
+\small\textbf{Draft status (D4: full first submission draft).}
+This manuscript expands the D3 compilation skeleton into a
+complete draft targeted at JAR (per the D2 journal-matching
+matrix), including the two P1 gap items from the D1 internal
+review: a related-work chapter (Sec.~\ref{sec:related}) and an
+expanded limitations section with honest disclosure of the
+$P\to P$ and vacuous classes (Sec.~\ref{sec:limitations}). All
+headline figures are \emph{canonical} per the P0 reconciliation
+report (\texttt{framework/p0\_reconciliation\_report.md},
+2026-08-21): sweep accounting 196 $=$ 30+44+31+29+30+32; registry
+448; residual/live 253; five classes 50/90/17/24/13 with 2
+bundling entries excluded; Agda 131. Values in red angle brackets
+$\langle\cdots\rangle$ are declared v7.98/v7.99 working-tree
+baselines outside the P0 register's scope, retained for
+traceability; the repository source of each is annotated in the
+\LaTeX{} source comments. The conflict inventory (C1--C6) that
+motivated the caliber discipline is tabulated in
+Sec.~\ref{sec:conflicts}.}}
 
 \medskip
 
+\tableofcontents
+\newpage
+
+% ================= 1. Introduction =================
 \section{Introduction}\label{sec:intro}
 \input{sections/introduction}
 
-\section{Methodology}\label{sec:method}
-\input{sections/methodology}
+% ================= 2. Related work =================
+\section{Related Work}\label{sec:related}
+\input{sections/related}
 
-\section{Results}\label{sec:results}
-\input{sections/results}
+% ================= 3. Registry audit =================
+\section{The Axiom Registry Audit}\label{sec:registry}
+\input{sections/registry}
 
-\section{Discussion}\label{sec:discussion}
+% ================= 4. Sweeps & taxonomy =================
+\section{Redemption Sweeps and the Five-Class Taxonomy}\label{sec:sweeps}
+\input{sections/sweeps}
+
+% ================= 5. Reconciliation =================
+\section{Three-Caliber Reconciliation}\label{sec:reconciliation}
+\input{sections/reconciliation}
+
+% ================= 6. Case study I =================
+\section{Case Study I: The Chern--Simons Chain and Theorem T3}\label{sec:cschain}
+\input{sections/cschain}
+
+% ================= 7. Case study II =================
+\section{Case Study II: The Dedekind Delegation Layer}\label{sec:dedekind}
+\input{sections/dedekind}
+
+% ================= 8. Honesty governance =================
+\section{Honesty Governance}\label{sec:governance}
+\input{sections/governance}
+
+% ================= 9. Discussion =================
+\section{Discussion and Limitations}\label{sec:discussion}
 \input{sections/discussion}
+
+% ================= 10. Conclusion =================
+\input{sections/conclusion}
 
 \bibliographystyle{plain}
 \bibliography{references}
+
+% ================= Appendices =================
+\appendix
+
+\section{Reproduction Protocol}\label{sec:repro}
+All canonical numbers in this paper are reproducible from the
+repository root with the commands below (per the P0 reconciliation
+report's appendix; values as of the v7.99 working tree). The
+honesty gate is
+\texttt{python3 scripts/verify\_honest\_repo.py -{}-ci} (expected:
+PASS, exit 0).
+
+\subsection{Axiom calibers}
+\begin{itemize}\small
+\item \textbf{A (registry 448)}:
+\texttt{python3 -c "import json;}\\
+\texttt{print(len(json.load(open('framework/axiom\_registry.json'))['axioms']))"}
+\item \textbf{B (live declarations 253)}:
+\texttt{rg -c '\^{}axiom\textbackslash s' -{}-glob '*.lean'}\\
+\texttt{-{}-glob '!.lake' sylva\_formalization/ | awk -F:}\\
+\texttt{'\{s+=\$NF\} END \{print s\}'}
+\item \textbf{A$'$ (registry residual $\equiv$ 253)}: registry
+join against live declarations (Python script in the P0 report
+appendix): entries $(\text{file},\text{name})$ registered
+\textbf{and} still declared \texttt{axiom}.
+\item \textbf{Evolution chain}
+(445/\allowbreak 399/\allowbreak 368/\allowbreak 315/\allowbreak 285/\allowbreak 253):
+per-commit census via
+\texttt{git grep -c -E '\^{}axiom[ \textbackslash t]' <commit>}\\
+\texttt{-{}- 'sylva\_formalization/**/*.lean'}
+over commits bf6590463, e7b326854, 39105a690, e3026fc0e,
+ae8ab0e07.
+\end{itemize}
+
+\subsection{Agda calibers}
+\begin{itemize}\small
+\item Files: \texttt{find sylva\_formalization -name '*.agda' | wc -l}
+$\to$ 7.
+\item Top-level blocks: \texttt{rg -c '\^{}\textbackslash s*postulate\textbackslash b' -{}-glob '*.agda'}\\
+\texttt{sylva\_formalization/ | awk -F: '\{s+=\$NF\} END \{print s\}'}
+$\to$ 25.
+\item Name-level declarations: per-block parsing $\to$ 131
+(Quantum 53 / Spectrum 36 / Complete 15 / CNFCategory 12 /
+Order 12 / Cauchy 2 / Field 1).
+\item The string-level count (55) and the planning value (149)
+are deprecated calibers, retained only in erratum notes.
+\end{itemize}
+
+\subsection{Proof-rate calibers}
+\begin{itemize}\small
+\item Authoritative (3.91\% = 22,328/571,611, handcrafted; batch
+0\% reported separately):\\
+\texttt{scripts/compute\_proof\_rate.py}
+(count\_sorry\_no\_comments reference implementation), dashboard
+\texttt{framework/proof\_rate\_dashboard.md}.
+\item Stale snapshot (99.79\%/100.00\%/79.70\%): frozen in
+\texttt{framework/DASHBOARD.md} under a STALE banner; denominator
+546,356, axiom count 553 (both old-caliber).
+\end{itemize}
+
+\section{Glossary of Calibers}\label{sec:glossary}\label{sec:calibers}
+\begin{itemize}
+\item \caliber{String caliber}: substring match over raw file
+content (comments included). Cheap, reproducible, and the source
+of the 30.2\% false alarm. Never authoritative for placeholder
+counts.
+\item \caliber{Code caliber}: statement-level pattern with
+comments stripped (e.g.\ \texttt{\^{}\textbackslash s*sorry\textbackslash b});
+the reference level for placeholder scans.
+\item \caliber{CI-pattern caliber}: the exact regular expressions
+used by \texttt{verify\_honest\_repo.py -{}-ci}; the binding level
+for gate behavior.
+\item \caliber{Registry caliber} (axioms): entries of
+\texttt{axiom\_registry.json} (file$\times$name pairs).
+\item \caliber{Declaration caliber} (axioms): \texttt{axiom}
+command census over \texttt{.lean} files (scope variants: corpus
+only, or whole repository).
+\item \caliber{Sweep caliber} (redemptions): per-entry closure
+records in the sweep reports, summed.
+\item \caliber{Name-level caliber} (Agda): postulate name
+declarations, as distinct from top-level \texttt{postulate} blocks
+or substring occurrences.
+\end{itemize}
 
 \end{document}

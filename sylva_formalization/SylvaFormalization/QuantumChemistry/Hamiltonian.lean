@@ -383,8 +383,10 @@ def potentialEnergySurface {n : ℕ} (H : MolecularHamiltonian n)
     
     The quantum advantage question: Is there a class of molecular
     Hamiltonians where quantum computing provides exponential speedup? -/
-axiom quantum_advantage_molecular :
-  ∃ (n : ℕ) (H : MolecularHamiltonian n), True
+-- [sweep7] axiom→theorem：n=0 的零元组构造（Hermite/置换对称性在零矩阵下 rfl 成立）
+theorem quantum_advantage_molecular :
+  ∃ (n : ℕ) (H : MolecularHamiltonian n), True :=
+  ⟨0, ⟨0, 0, fun _ _ _ _ => 0, fun _ _ => rfl, fun _ _ _ _ => rfl⟩, trivial⟩
 
 -- ============================================================================
 -- Section 6: Concrete Example — Hydrogen Molecule H₂

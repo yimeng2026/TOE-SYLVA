@@ -1,139 +1,191 @@
 % =====================================================================
-% Introduction - material sources (v7.98):
+% Introduction - material sources (v7.99 / P0-canonical):
 %   * framework/proof_status.md sec 3 (claim registry), sec 5 (honest rate)
 %   * framework/journal_submission_d1_review.md sec 1.1 (R1), 1.3 (C1-C6)
 %   * framework/sorry_contamination_audit.md sec 1 (reversal finding)
 %   * framework/ci_slimming_phase1_report.md (batch scale, reproducibility)
-% All \pnum{...} = v7.98 baselines; canonical numbers land after P0.
+%   * framework/p0_reconciliation_report.md (canonical numbers, landed
+%     2026-08-21: 196 = 30+44+31+29+30+32; registry 448; residual 253;
+%     five classes 50/90/17/24/13 + 2 bundling; Agda 131)
+% Number policy: P0-canonical figures appear as plain numbers; the
+% remaining \pnum{...} red-bracket values are verified v7.98/v7.99
+% working-tree baselines, each annotated with its repository source.
 % =====================================================================
 
 \subsection{Setting: a library that scaled faster than its governance}
 \label{sec:setting}
 TOE-SYLVA is a formalization program whose Lean~4 side is built
 strictly on top of a pinned mathlib4 revision (commit
-\texttt{8a178386} at v7.98; toolchain Lean 4.29.0) and contains two
-very different kinds of content. The first is a set of handcrafted
-developments targeting physics-adjacent mathematics (Chern--Simons
-theory, topological invariants, gauge structures, algorithmic
-complexity). The second is a machine-generated \emph{batch corpus} of
-\pnum{119859} modules following the naming pattern
-\texttt{SYLVA\_Proven*R*M*}, produced by a generator whose manifest
-(\pnum{119831} entries) was verified by SHA-256 sampling
-(\pnum{500} draws, zero mismatches at v7.98).
-% baselines: 119,859 files / 119,831 manifest / 500 sha256 sample
-% sources: sorry_contamination_audit.md sec 1; ci_slimming_phase1_report.md
-Alongside it, an Agda side carries \pnum{7} files.
-% baseline: 7 Agda files (journal_submission_d1_review.md C2; note
-% "~149 postulates" vs registry "no agda files" conflict - P0 pending)
+\texttt{8a178386} at the v7.99 baseline; toolchain Lean 4.29.0) and
+contains two very different kinds of content. The first is a set of
+handcrafted developments targeting physics-adjacent mathematics
+(Chern--Simons theory, topological invariants, gauge theory,
+$p$-adic analysis, a course chain in algebraic number theory), grown
+to roughly \pnum{571611} declared theorems. The second is a
+machine-generated \emph{batch corpus} of \pnum{119859} template
+modules produced by a generator whose manifest lists \pnum{119831}
+entries with SHA-256 sampling (\pnum{500} draws, zero mismatches at
+the v7.98 baseline). A third, smaller Agda track holds 7 files with
+131 name-level \texttt{postulate} declarations (canonical, P0). The
+library, its audits, and this paper were all produced with AI
+assistance under human tasking and review; that fact is not a
+disclaimer but the paper's subject matter. The defining event of the
+program is that the second kind of content --- and, earlier, large
+parts of the first --- scaled two to three orders of magnitude faster
+than the processes that were supposed to keep the corpus honest.
 
-This scale was reached with AI assistance, and it inherited the three
-failure modes that motivate the present paper. They are not
-hypothetical: each was caught, documented, and (partially) remediated
-inside the repository, and the remediation records are themselves the
-primary material of this article.
+The result was not one problem but three, each a distinct failure
+mode of \emph{measurement}, not of taste:
 
-\subsection{Three failure modes of scaled formalization}
-\label{sec:failures}
+\begin{enumerate}
+\item[\textbf{F1}] \textbf{Axioms as invisible deferred proof.}
+An \texttt{axiom} command in Lean is a legal, type-checked, fully
+trusted placeholder. In a corpus where AI-assisted drafting produced
+plausible-looking statement blocks at scale, the non-batch corpus
+accumulated 448 registered \texttt{axiom} declarations (canonical
+registry caliber, 116 non-batch files), while top-level summaries
+continued to say ``formalized''. ``Formalized'' and ``proved'' are
+different predicates; the library had been quietly conflating them.
+\item[\textbf{F2}] \textbf{Proof-rate metrics that drift with the
+measuring rule.} Over the program's history the reported
+``proof rate'' of the handcrafted corpus took the values
+\pnum{88.08\%}, \pnum{99.5\%}, \pnum{99.9\%}, \pnum{100\%},
+\pnum{99.79\%}, and 3.91\% --- a 25$\times$ spread --- with no change
+to the underlying proofs. Every value was ``correct'' under some
+counting rule; no rule was stated.
+\item[\textbf{F3}] \textbf{String-level scans that mistake
+negations for placeholders.} A repository-wide text search for
+\texttt{sorry} reported \pnum{30.2\%} of the batch corpus as
+``containing sorry'' (\pnum{36199} of \pnum{119859} files). A
+full-population code-level audit found the code-level count to be
+zero: 36{,}198 of the 36{,}199 hits were the fixed header comment
+\emph{asserting the absence} of placeholders, and the single
+remaining hit was a theorem whose \emph{name} contains the word.
+The scan was measuring comments, not proofs.
+\end{enumerate}
 
-\paragraph{F1: axioms as deferred proofs.}
-At its v7.98 baseline the registry lists \pnum{448} axiom declarations
-across \pnum{116} non-batch files.
-% baselines: 448 axioms / 116 files (axiom_registry.json v2.0)
-A substantial fraction of these were not mathematical primitives the
-framework genuinely needs, but \emph{placeholders}: statements the
-generation pipeline could not prove at production time and parked as
-\texttt{axiom} so that downstream files would elaborate. The registry's
-\texttt{placeholder} class contains \pnum{42} such entries that a naive
-name-based grep over \texttt{axiom} declarations would not flag as
-problematic at all.
-% baseline: 42 placeholder-class entries (D1 review C6 baseline
-% comparison, sec 1.4-7)
-
-\paragraph{F2: proof-rate caliber drift.}
-The library's headline ``proof rate'' was reported at different times
-as \pnum{88.08\%}, then \pnum{99.5\%}, then \pnum{100\%}, and --- after
-the honest metric of Sec.~\ref{sec:metric} was adopted --- as
-\pnum{3.91\%} for the handcrafted corpus.
-% baselines: caliber history per proof_status.md sec 5;
-% 3.91% handcrafted honest rate per proof_rate_dashboard.md (2026-08-11)
-None of these numbers was fabricated: each was correct under the
-caliber in which it was computed (sorry-count only; axioms ignored;
-per-module normalization). The 25$\times$ spread is a property of the
-\emph{calibers}, not of the computations --- which is precisely why
-caliber discipline must become an explicit, first-class part of the
-methodology rather than an implicit convention.
-
-\paragraph{F3: string-level false positives.}
-A routine string search reported that \pnum{36199} of the
-\pnum{119859} batch modules (``\pnum{30.2\%}'') \emph{contain sorry}.
-% baselines: 36,199 / 119,859 / 30.2% (sorry_contamination_audit.md
-% sec 1; string caliber)
-A full-population audit under a comment-stripping code-level caliber
-reversed the finding: \pnum{36198} of those hits were the literal text
-of a \emph{negation} header comment (\texttt{Actual Lean 4 proofs ---
-no sorry, no True := trivial}), the code-level count is zero, and
-exactly one file (\texttt{SYLVA\_ProvenLayer2.lean}) constitutes a
-genuine, if ironic, contamination case: a theorem \emph{named}
-\texttt{sylva\_zero\_sorry\_guarantee}, proved by
-\texttt{True := trivial}, inside a file whose header claims that it
-contains no trivial placeholders (Sec.~\ref{sec:quarantine}).
+None of these failures is exotic. Each is what happens when a metric
+is quoted without the rule that produced it --- a \emph{caliber}, in
+the terminology this paper develops --- and each would have survived
+casual review indefinitely, because the surface numbers were
+plausible. They were caught only because the program eventually
+built governance whose explicit job was to catch them.
 
 \subsection{The governance program}
 \label{sec:program}
-The remediation program has four pillars, each mapping to one section
-of the methodology:
+The response, executed over versions v7.94--v7.99 of the repository,
+is the subject of this paper. It has four stages, which are also the
+paper's methodological mainline:
+
 \begin{enumerate}
-\item \textbf{Taxonomy and registry} (Sec.~\ref{sec:taxonomy}): every
-axiom is classified into one of four classes and recorded in a
-machine-readable JSON registry with per-entry provenance.
-\item \textbf{Redemption methodology} (Sec.~\ref{sec:redemption}):
-axioms are discharged in recorded sweeps, and every closure is
-re-classified into one of four \emph{semantic grades} --- including the
-unflattering ones (vacuous discharge, trust transfer) --- so that the
-redemption statistics cannot inflate themselves.
-\item \textbf{Honest proof-rate metric with declared calibers}
-(Sec.~\ref{sec:metric}): a metric that strips comments before counting
-\texttt{sorry}, zeroes out files that declare axioms or postulates, and
-is always reported together with its caliber level.
-\item \textbf{External claim layer}
-(Sec.~\ref{sec:claims}): a four-tier labeling
-(THEOREM / THEOREM* / CLAIM / CONJECTURE) with falsifiability criteria
-per claim, separating the internal formal status of a lemma from the
-external epistemic status of a physics claim.
+\item \textbf{Registry audit} (Sec.~\ref{sec:registry}): every
+\texttt{axiom} declaration in the non-batch corpus is registered in a
+machine-readable JSON registry, classified into a four-class taxonomy
+(primitive / definitional / schema / placeholder), with per-entry
+provenance. The registry is the single authority for \emph{what the
+library owes}: 448 entries at baseline.
+\item \textbf{Redemption sweeps} (Sec.~\ref{sec:sweeps}): six
+organized passes (sweep1--sweep6) convert registered axioms into
+theorems, definitions, or explicitly conditional statements, closing
+196 entries in total ($30+44+31+29+30+32$). Every closure is
+re-graded \emph{post hoc} by semantic content into a five-class
+taxonomy --- vacuous placeholder closure (50), $P\!\to\!P$
+conditionalization (90), data-to-definition conversion (17),
+definitional reconstruction by \texttt{rfl} (24), substantive proof
+(13), plus 2 axiom-bundling restructurings excluded from the
+redemption count --- because the honest headline of the program is
+\emph{what kind} of work those 196 closures actually were.
+\item \textbf{Three-caliber reconciliation}
+(Sec.~\ref{sec:reconciliation}): the program's own numbers are then
+audited against each other. The registry caliber (448), the live
+\texttt{.lean}-declaration caliber (253 residual), and the
+sweep-accounting caliber (196 cumulative) close to the identity
+$445 - 166 - 26 = 253$ at the declaration level, and
+$448 - 253 = 195 = 142 + 42 + 11$ at the registry level. Six
+documented caliber conflicts (C1--C6) are resolved and their
+anatomy tabulated.
+\item \textbf{Honesty governance}
+(Secs.~\ref{sec:cschain}--\ref{sec:governance}): a claim-tier system
+(THEOREM / THEOREM* / CLAIM / CONJECTURE) with falsifiability
+criteria, an honest proof-rate metric defined as a
+(number,~caliber) pair, a machine-checked honesty CI, a quarantine
+protocol for the one genuinely contaminated module, and a
+deleted-claims ledger enforcing the no-silent-deletion rule.
 \end{enumerate}
 
+Two lifecycle case studies exercise the whole stack end to end ---
+the Chern--Simons chain, where a CLAIM$\to$THEOREM upgrade is
+performed along a six-level dependency chain with explicit
+mathlib-delegation labels and an explicit statement of what the
+upgraded theorem is \emph{not} (Sec.~\ref{sec:cschain}); and the
+Dedekind delegation, where a ``theorem'' that is a pure wrapper over
+a mathlib instance is registered honestly as such
+(Sec.~\ref{sec:dedekind}).
+
 \subsection{Contributions}
-\label{sec:contrib}
+\label{sec:contributions}
 \begin{itemize}
-\item[\textbf{C1}] A four-class axiom taxonomy and machine-readable
-registry for a mixed human/AI formal library
-(\pnum{448} entries at v7.98 baseline).
-\item[\textbf{C2}] A redemption methodology with honest semantic
-grading: across six sweeps, \pnum{196} axioms were closed (clearing the
-\pnum{142}-entry \texttt{definitional} class entirely), of which only
-\pnum{13} are substantive proofs; we argue that reporting
-this decomposition --- rather than a single redemption count --- is the
-correct epistemic unit of account.
-\item[\textbf{C3}] A proof-rate metric bound to an explicit caliber
-level, together with a three-tier caliber standard (string / code /
-CI-pattern) adopted as repository policy.
-\item[\textbf{C4}] Two documented cases of the governance loop catching
-defects in its own metrics (F2, F3), argued to be the strongest
-available evidence that the methodology is doing work.
-\item[\textbf{C5}] A full lifecycle case study ---
-CLAIM$\to$THEOREM upgrade along a Chern--Simons dependency chain with
-explicit mathlib-delegation labels (Sec.~\ref{sec:cschain}) --- and the
-quarantine protocol for the single contaminated batch module
-(Sec.~\ref{sec:quarantine}).
+\item[\textbf{C1}] A four-class axiom taxonomy (primitive /
+definitional / schema / placeholder) with a machine-readable registry
+of 448 axioms over 116 non-batch files --- the audit artifact that
+made F1 visible at all, and the precondition for every later number
+in the paper.
+\item[\textbf{C2}] A redemption methodology --- six sweeps closing
+196 registered axioms --- together with a five-class semantic
+re-classification (50 vacuous / 90 $P\!\to\!P$ / 17 data-def / 24
+definitional / 13 substantive / 2 bundling excluded) that refuses the
+aggregate ``196 redeemed'' reading. The transferable claim is the
+\emph{decomposition}, not the count.
+\item[\textbf{C3}] A three-caliber reconciliation protocol that
+closes the registry (448), live-declaration (253), and sweep (196)
+accounts to a machine-reproducible identity, resolving six
+documented conflicts (C1--C6) --- including a 25$\times$
+proof-rate disagreement and a 2.7$\times$ Agda-postulate
+disagreement --- without editing a single proof.
+\item[\textbf{C4}] An honesty-governance layer: claim tiers with
+falsifiability criteria; an honest proof-rate metric whose reference
+implementation counts code-level placeholders only
+(\texttt{count\_\allowbreak sorry\_\allowbreak no\_\allowbreak comments}); a repository CI that enforces
+the honesty layer's invariants; and the full-population reversal of
+the 30.2\% ``sorry contamination'' signal (F3), which we argue is a
+\emph{positive} result: the caliber discipline caught a would-be
+crisis that string-level tooling had manufactured.
+\item[\textbf{C5}] Two full lifecycle case studies --- the
+Chern--Simons T3 upgrade with mathlib-delegation labels, gap
+accounting, and a concurrent-work rollback that the audit layer
+itself detected; and the Dedekind delegation, an honest registration
+of zero-new-math ``theorems''. Together they show the tier labels
+doing real communicative work.
 \end{itemize}
+
+\subsection{Paper roadmap}
+\label{sec:roadmap}
+Section~\ref{sec:related} positions the work against large-scale
+formalization practice (mathlib, Isabelle/AFP, Metamath) and the
+2024--2026 literature on LLM-generated proofs and autoformalization
+integrity. Sections~\ref{sec:registry}--\ref{sec:reconciliation} are
+the methodological core: registry audit, redemption sweeps and the
+five-class taxonomy, and the three-caliber reconciliation.
+Sections~\ref{sec:cschain} and~\ref{sec:dedekind} are the case
+studies. Section~\ref{sec:governance} assembles the honesty layer.
+Section~\ref{sec:discussion} states limitations --- including an
+explicit disclosure that 71.4\% of closures (the vacuous and
+$P\!\to\!P$ classes) transfer no proof content --- anticipated
+objections, and future work. Appendix~A gives the reproduction
+protocol; Appendix~B is a glossary of calibers.
 
 \subsection{Transparency statement}
 \label{sec:transparency}
-This library was produced with AI assistance, and so was this paper's
-skeleton. The repository discipline it describes --- registration
-first, boundaries explicit, no silent deletions --- is applied to the
-paper itself: every number is a labeled baseline pending a canonical
-reconciliation (P0), every claim about the library cites the internal
-audit report it rests on, and the draft status of each section is
-marked. The supplementary build artifacts (compile log, PDF) accompany
-the skeleton under \texttt{framework/paper/}.
+This library was produced with AI assistance, and so was this paper.
+The repository discipline it describes --- registration first,
+boundaries explicit, no silent deletions --- is applied to the
+manuscript itself. All headline figures (196, 448, 253, the
+five-class decomposition, Agda 131) are canonical per the P0
+reconciliation report
+(\texttt{framework/p0\_reconciliation\_report.md}, 2026-08-21~\cite{sylvap0recon2026}), and
+the remaining values in red angle brackets are declared
+v7.98/v7.99 working-tree baselines, each annotated with its
+repository source in the \LaTeX{} source comments. Every claim about
+the library cites the internal audit report it rests on. The
+supplementary build artifacts (compile log, PDF) accompany the
+manuscript under \texttt{framework/paper/}.

@@ -1,127 +1,187 @@
 % =====================================================================
-% Discussion - material sources (v7.98):
-%   * framework/journal_submission_d1_review.md sec 1.4 (11-item
-%     improvement list), 1.5 (venue plan), 2.4 (candidate-2 lessons)
-%   * framework/new_directions_roadmap.md sec D (program)
-%   * DEVELOPMENT_DIRECTIONS.md sec 4 (LLM proof-integrity refs)
-% All \pnum{...} = v7.98 baselines; canonical numbers land after P0.
+% Discussion & limitations (Sec 9) - material sources:
+%   * D1 review sec 1.4 item 9 (four objection classes), item 6
+%     (metatheorem gap), item 8 (reproducibility package)
+%   * p0_reconciliation_report.md sec 4 (five-class decomposition,
+%     71.4% no-content headline; review-risk note)
+%   * sorry_contamination_audit.md (30.2% reversal, full-population)
+%   * proof_status.md sec 5 (proof-rate caliber history)
+%   * framework/journal_matching_matrix.md (D2: CPP 2028 main,
+%     ITP 2027 mid-way; JAR main target, LMCS backup)
+%   * new_directions_roadmap.md sec D (W-line future program)
+% Number policy: all decompositions canonical per P0; single-case
+% audit-population figures quoted with their sources.
 % =====================================================================
 
 \subsection{Caliber discipline as the central thesis}
 \label{sec:thesis}
 The paper's transferable claim is not the specific numbers of one
-library but a methodological proposition: \emph{in a formal library
-that mixes human and machine authorship, a proof-progress metric is
-only meaningful as a (number, caliber) pair, and the caliber must be
-declared, machine-checkable, and enforced by the same CI that enforces
-the rest of the honesty layer.} The two self-caught incidents are the
-evidence that this is load-bearing rather than ceremonious: the
-\pnum{30.2\%} contamination alarm (F3) was produced by a caliber
-mismatch that any of the library's own automated gates could have
-made silently permanent had the false positive not been audited to
-closure; the 25$\times$ dashboard disagreement (F2/C3) survived in
-production documents for days precisely because both files carried
-the same informal label (``honest proof rate'') with different
-implicit calibers. A reviewer or meta-scientist who accepts only one
-claim from this paper should accept this one.
+library but a methodological proposition: in a formal library
+that mixes human and machine authorship, a proof-progress metric
+is meaningful only as a (number, caliber) pair, with the caliber
+declared, machine-checkable, and enforced by the same CI that
+enforces the rest of the honesty layer. The program's two
+self-caught incidents are the evidence.
 
-\subsection{Related work}
-\label{sec:related}
-% TODO(P1-5, D1 review 1.4): the survey below is a mapping of
-% conversation partners, not yet a literature review. Each bullet
-% needs: 3-5 verified citations + an explicit delta paragraph.
-\begin{itemize}
-\item \textbf{mathlib \texttt{\#print axioms} discipline and linter
-ecosystem}: the community practice of listing axiom dependencies of
-shipped theorems, and linters that police unwanted \texttt{sorry} /
-\texttt{axiom} declarations. Delta: we manage a taxonomy of
-\emph{legitimate} axiom classes plus a redemption ledger, not only a
-prohibition regime.
-\item \textbf{Isabelle/HOL conservative-extension and import audits}:
- AFP's review process and Isabelle's emphasis on conservative
-extensions. Delta: our G1--G3 transformations are claimed to be
-conservative at the governance level; formalizing that claim
-(Sec.~\ref{sec:future}) would connect the two traditions.
-\item \textbf{Metamath and minimal-axiom-economy traditions}: explicit
-bookkeeping of assumed primitives. Delta: our problem is not economy
-but \emph{debt retirement under scale}.
-\item \textbf{LLM proof-integrity literature (2024--2026)}:
-documented incidents of fabricated or silently weakened proofs in
-machine-generated corpora. Delta: we contribute a full-population
-contamination audit that reversed a string-caliber alarm, plus a
-quarantine protocol with measured (not asserted) caliber impact.
-% reusable: DEVELOPMENT_DIRECTIONS.md sec 4 has 12 verified arXiv
-% references (per D1 review 1.4-5) - upgrade these to \cite entries
-% when P1-5 executes.
-\end{itemize}
+The 30.2\% ``sorry contamination'' alarm~\cite{sylvasorryaudit2026}
+was produced by a
+string-level scan over the batch corpus: 36{,}199 of 119{,}859
+files ``contained sorry''. A full-population re-audit under the
+code-level caliber found the true count to be zero: 36{,}198 of
+the 36{,}199 hits were the fixed header comment \emph{asserting
+the absence} of placeholders, and the one remaining hit was a
+theorem whose \emph{name} contains the word. The alarm had been
+measuring comments, not proofs --- and the operational consequence
+cuts both ways: a filter built on the string caliber would have
+quarantined roughly a third of a clean corpus. The dashboard
+history tells the same story in percentages: the headline rate
+climbed 88.08\% $\to$ 99.5\% $\to$ 100\% across successive
+documents before the honest re-definition dropped it to 3.91\%.
+Every intermediate value was defensible under its own (undeclared)
+caliber; the sequence is absurd only against a fixed one.
+
+The redemption ledger closes the argument. Decomposed into the
+five-class taxonomy~\cite{sylvap0recon2026}, the 196 closures are: 50 vacuous placeholder
+closures (25.5\%), 90 $P\!\to\!P$ conditionalizations (45.9\%),
+17 data-to-definition conversions (8.7\%), 24 definitional
+reconstructions (12.2\%), and 13 substantive proofs (6.6\%), plus
+2 bundling restructurings excluded from the content count. Each of
+the two large classes is individually defensible --- a vacuous
+placeholder was never mathematics, and a $P\!\to\!P$
+conditionalization is a conservative extension that at least
+makes the dependence explicit in the statement's type --- yet
+together they are proxy-clean, and 140/196 (71.4\%) of closures
+carry no proof content at all. A redemption program optimized on
+any aggregate metric would drift exactly here: conditionalization
+removes an \texttt{axiom} declaration, improves every census, and
+transfers nothing. A skeptic who suspects a proof-rate metric of
+being gamed now has a concrete audit program: decompose the
+numerator into semantic classes, declare the caliber of every
+count, and reconcile ledger, process, and live-code totals. That
+is the paper's export.
 
 \subsection{Limitations}
-\label{sec:limits}
-\begin{itemize}
-\item \textbf{Numbers are not yet canonical.} Six caliber conflicts
-(C1--C6) are under P0 reconciliation; every number here is a declared
-v7.98 baseline. The paper is un-submittable in this state by design
---- the skeleton exists so that the writing and the number
-reconciliation can proceed in parallel without the former quietly
-hard-coding the latter.
-\item \textbf{No containerized reproducibility artifact.} Compile
-logs exist and are three-way consistent (lake-manifest vs.\ two
-independent builds), but carry local paths; a Docker/CI artifact
-package is P1-8.
-\item \textbf{Metatheorems missing.} The conservativity of G1--G3
-transformations is asserted at the governance level, not formalized.
-\item \textbf{Single-library case study.} The taxonomy was induced
-from one library; cross-library validation (mathlib, AFP, or another
-AI-generated corpus) is future work.
-\item \textbf{Compile-log provenance.} Independent compilation was
-performed on one machine class; the \pnum{6.7}\,s compile time is an
-environment-dependent anecdote, not a benchmark.
-\end{itemize}
+\label{sec:limitations}
+This section states, rather than defends, what the program has
+not achieved.
+
+\begin{enumerate}
+\item \textbf{Most closures transfer no mathematics.} The
+canonical decomposition is unflattering by design: 140 of 196
+redemptions (71.4\% --- the 90 $P\!\to\!P$ conditionalizations and
+50 vacuous closures) add no proof content, and the 13 substantive
+proofs (6.6\%) are themselves shallow --- arithmetic rewrites,
+existence witnesses, and single-lemma mathlib discharges. The
+declaration census improving 445$\to$253 is a record of
+bookkeeping progress, not of mathematical progress, and this
+paper deliberately refuses the aggregate ``196 redeemed''
+reading.
+\item \textbf{$P\!\to\!P$ conditionalization is a loophole the
+taxonomy only exposes.} The conversion \texttt{axiom X : P} $\to$
+\texttt{theorem X (h:P) : P := h} is logically conservative and
+audit-proof: it removes an axiom, changes no theorem, and cannot
+be faulted under any declaration-level metric. A library could
+convert its entire axiom debt this way and truthfully report
+``zero axioms'' while having verified nothing new. The five-class
+taxonomy makes such a program \emph{visible}; it does not yet
+\emph{prevent} it --- the CI gate audits the honesty of reporting,
+not the depth of content.
+\item \textbf{The conservativity claims are not yet metatheorems.}
+That the three conversion families (conditionalization, vacuous
+closure, definitional reconstruction) are conservative extensions
+is asserted from inspection of the sweep records, not proved.
+Until the small metatheory is formalized (the registered P1-6
+program), the taxonomy's semantics rest on exactly the kind of
+undischarged trust this paper is about retiring.
+\item \textbf{The residual debt is large and partly permanent.}
+253 axioms remain (239 primitive, 14 schema), including the
+spectral-bridge axiom of Case Study I, which is physics rather
+than mathematics and may never be ``redeemed'' in the sweep sense.
+The Agda track's 131 postulates have never compiled in CI (the
+toolchain OOMs on the audit machines). The honest proof rate of
+3.91\% is itself the statement that the corpus is at an early
+stage of genuine coverage.
+\item \textbf{Verification boundaries.} The honesty CI checks the
+honesty layer (markers, ledgers, manifests, caliber artifacts);
+it does not run \texttt{lake build}. Sweep6 executed without a
+Lean toolchain (structural verification only); the T3$'$/T6/T7
+strengthening of Case Study I awaits its independent compile.
+Reproduction is command-level and version-pinned, not yet
+containerized (P1-8).
+\item \textbf{Single corpus, no baseline benchmark.} The
+methodology is evaluated on one library --- this one. The
+comparison against naive \texttt{grep} and mathlib's linters is
+qualitative (Sec.~\ref{sec:related}); a measured
+detection/false-positive baseline comparison is future work. All
+figures are anchored to the v7.99 working tree and will drift;
+the caliber discipline, not the numbers, is what transfers.
+\end{enumerate}
 
 \subsection{Anticipated objections}
 \label{sec:objections}
-% mapping of the four objection classes from D1 review 1.4-9
+Four objections the internal review pre-registered~\cite{sylvad1review2026},
+with the program's standing answers:
+
 \begin{enumerate}
-\item \emph{``AI-generated content cannot be trusted.''} The paper's
-position: precisely --- which is why every artifact class carries a
-registration-and-audit trail, and why the two metric defects were
-caught by the loop itself. The claim is not that the library is
-trustworthy; it is that its trust posture is \emph{explicit}.
-\item \emph{``Your axioms are non-standard.''} The taxonomy exists to
-separate genuine primitives from debt; the debt is being retired with
-graded honesty; the residual is declared, not hidden.
-\item \emph{``The batch corpus is contamination.''} Full-population
-audit: code-level contamination is exactly one file, now quarantined;
-the other \pnum{36198} string hits are denials, and the corpus's
-triviality is a \emph{labeled property} of the corpus, not a hidden
-one.
-\item \emph{``Your headline numbers drifted by 25$\times$.''} Yes ---
-and the drift is the finding: undecalared calibers, not dishonest
-arithmetic. The conflict inventory and the placeholder discipline in
-this very draft are the corrective.
+\item \emph{``The corpus is AI-generated; why trust any of it?''}
+That is the premise, not the objection. The governance layer
+exists because AI-assisted generation at this scale cannot be
+trusted through review capacity. Trust is replaced by
+verifiability: every headline number is a command away
+(Appendix~\ref{sec:repro}), every claim row links its evidence,
+and every artifact carries its provenance markers.
+\item \emph{``The remaining axioms are non-standard.''} They are
+registered, class-labeled, and deliberately visible; the program
+nowhere claims they are proved. The reconciliation exists so that
+no document can quietly re-count them.
+\item \emph{``The 119{,}859-module batch tier poisons the
+metrics.''} The caliber standard prohibits merging tiers: the
+batch rate is reported separately (0\% honest rate by
+construction), the one contaminated module is quarantined, and
+the 30.2\% alarm turned out to be a caliber artifact --- which is
+precisely why tiers and calibers are enforced in CI.
+\item \emph{``Your own numbers disagreed; why believe the current
+ones?''} The drift is the finding. Six documented conflicts
+(C1--C6) were resolved through a named-caliber reconciliation
+whose every step is reproducible; the errata are surface-visible,
+never silent. A numbers system that can exhibit its own
+corrections is the strongest thing an auditor can be offered.
 \end{enumerate}
 
 \subsection{Future work}
 \label{sec:future}
-Three lines, in dependency order: (i)~\textbf{metatheorems} ---
-formalize conservativity of the G1--G3 transformation classes
-(the infrastructure target is a Lean proof that each transformation
-extends the ambient theory conservatively); (ii)~\textbf{TrivialBench
-sampling under the code caliber} --- the revised A-2 clause ships with
-this program, and its first full sampling round will exercise the
-quarantine list; (iii)~\textbf{reproducibility package} ---
-containerized builds publishing \texttt{\#print axioms} artifacts per
-release. Longer term, the registry + redemption + caliber-discipline
-stack is library-agnostic; porting it to an external corpus is the
-natural validation study.
+The registered program, in order: (i) the metatheorem track ---
+formalizing the conservativity of the three conversion families,
+which would convert this paper's taxonomy from an audit practice
+into a method with proved properties; (ii) evaluation of the
+residual: the 239 primitive and 14 schema axioms need a grading
+that distinguishes permanent physics postulates from redeemable
+mathematical debt, and the Agda 131 require a machine that can
+compile them; (iii) a non-delegation theorem target on the
+Chern--Simons chain (the registered candidate: a weight-group
+decomposition theorem generalizing T6's integer-sector
+invariance), the first prospective THEOREM that would be neither
+a wrapper nor a cast identity; (iv) containerized reproducibility
+(Dockerfile, pinned toolchain, expected-output snapshots), closing
+the P1-8 gap; (v) venue checkpoints per the journal-matching
+matrix~\cite{sylvad2matrix2026}: ITP 2027 as the mid-way conference target, CPP 2028 as
+the main line, JAR as the journal target this draft is shaped
+for. The blind registry keeps its own schedule: $\alpha^{-1} =
+137$ stays a frozen prediction until a first-principles
+computation or its refutation arrives.
 
 \subsection{Ethics and transparency}
 \label{sec:ethics}
 The library and this paper were produced with AI assistance under
 human tasking and review. The repository's transparency conventions
-(AI-assistance markers on every artifact, deleted-claim ledger,
+(AI-assistance markers on every artifact, deleted-claims ledger,
 no-silent-deletion rule, CI-enforced honesty markers) apply to this
-manuscript: the draft status, baseline numbers, and pending
-reconciliation are visible by construction, and the supplementary
-material includes the build log of the exact \LaTeX{} compile that
-produced the accompanying PDF.
+manuscript: canonical numbers, bracketed baselines, draft status,
+and pending work items are visible by construction, and the
+supplementary material includes the build log of the exact
+\LaTeX{} compile that produced the accompanying PDF. One decision
+deserves explicit statement: the program does \emph{not} delete the
+fabricated or vacuous material it finds --- it labels, quarantines,
+or converts it, leaving the evidence in place. For an AI-assisted
+corpus, an audit trail that survives is worth more than a clean
+but unverifiable history.

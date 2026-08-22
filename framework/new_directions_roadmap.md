@@ -233,6 +233,8 @@
 
 > **v1.1 进度注记（2026-08-21）**：W1–W2 四项中三项已完成——D1 重审（`framework/journal_submission_d1_review.md`：候选① Major Revision 可投／候选②转轨）、D2 匹配矩阵（`framework/journal_matching_matrix.md`：主投 JAR／备选 LMCS／会议锚 CPP 2028）、T3 证据链落盘（已随 v7.98 提交）；P0 数字口径清算已完成（规范口径对照 `framework/p0_reconciliation_report.md` 已落盘，2026-08-21：落修 7 文件、CI PASS）。W1–W2 四项全部完成。
 
+> **进度注记（2026-08-21，W3–W6 启动）**：材料补齐三项前置方案定稿——可复现包 v1 设计（双层 Tier 1/2 + 打包脚本 + fresh clone 十命令协议）、D.4-8 四类质疑回复要点框架、JAR 投稿 checklist 逐项落实状态（12 项：已完成 1／进行中 6／未启动 5，责任分工与时间预估附列）——见 `framework/submission_materials_plan.md`；关键路径为方法学元定理三件套（预估 2–3 周，建议 W3 首日启动）。
+
 ### D.6 前置依赖
 
 1. 无硬性外部依赖（素材全部仓内自足）——这是 D 排 P1 的核心理由；

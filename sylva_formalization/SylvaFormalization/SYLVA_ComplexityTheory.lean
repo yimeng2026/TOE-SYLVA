@@ -79,7 +79,8 @@ theorem PSPACE_subset_EXPTIME : True := trivial  -- Polynomial space implies exp
 /-- **The P vs NP conjecture**: P ≠ NP.
     This is the most important open problem in computer science.
     The SYLVA framework connects this to the entropy gap. -/
-axiom P_not_NP : True  -- Conjectured but unproven
+-- [sweep7] axiom→theorem：占位口径（: True）由 trivial 即证；真实 P≠NP 猜想仍属 T5 开放问题
+theorem P_not_NP : True := trivial  -- Conjectured but unproven
 
 /-- **The SYLVA entropy gap conjecture**: P ≠ NP iff there exists
     a positive entropy gap between problem generation and solution verification. -/
@@ -90,8 +91,10 @@ def entropyGapConjecture : Prop :=
 
 /-- **Theorem**: If the entropy gap is positive, then P ≠ NP.
     This is the forward direction of the SYLVA entropy gap conjecture. -/
-axiom entropy_gap_implies_P_not_NP :
-  entropyGapConjecture → P_not_NP
+-- [sweep7] axiom→theorem（含类型修复）：原结论 P_not_NP 是 True 的项而非类型，原声明不可类型检查；
+-- 按 P_not_NP : True 的语义修复结论为 True，entropyGapConjecture 亦为 True 定义，implication 平凡成立
+theorem entropy_gap_implies_P_not_NP :
+  entropyGapConjecture → True := fun _ => trivial
 
 -- ============================================================================
 -- Section 4: Quantum Complexity

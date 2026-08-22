@@ -31,8 +31,9 @@ theorem DWavePairing (TJ : TJModel) :
     Anderson's proposal: the ground state of the Heisenberg model on a
     triangular lattice is a quantum spin liquid (RVB state).
     The RVB state has no long-range order and supports fractional excitations (spinons). -/
-axiom RVBState (TJ : TJModel) :
-  TJ.hubbard.d = 2 → ∃ (RVB : Type), True
+-- [sweep7] axiom→theorem：结论 ∃ Type, True 由 Unit 见证（原公理未携带任何 RVB 结构性质）
+theorem RVBState (TJ : TJModel) :
+  TJ.hubbard.d = 2 → ∃ (RVB : Type), True := fun _ => ⟨Unit, trivial⟩
   -- RVB state: exists in 2D, axiomd as spin liquid axiom
 
 /-- Spinon excitations: fractional spin-½ excitations in spin liquids.
@@ -40,8 +41,9 @@ axiom RVBState (TJ : TJModel) :
     In the RVB state, breaking a singlet bond creates two spin-½ excitations (spinons).
     Spinons are deconfined (unlike quarks in QCD) in 1D and some 2D spin liquids.
     They are detected by neutron scattering and thermal transport. -/
-axiom SpinonExcitations (TJ : TJModel) :
-  TJ.hubbard.d = 1 → ∃ (spinon : Type), True
+-- [sweep7] axiom→theorem：同上，Unit 见证
+theorem SpinonExcitations (TJ : TJModel) :
+  TJ.hubbard.d = 1 → ∃ (spinon : Type), True := fun _ => ⟨Unit, trivial⟩
   -- Spinons: deconfined in 1D, axiomd as spin liquid axiom
 
 end CondensedMatter

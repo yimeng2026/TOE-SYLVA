@@ -59,12 +59,14 @@ noncomputable def energyDensity {M G : Type*} [TopologicalSpace M] [Group G] [To
   ½ * (‖electricPart F x‖² + ‖magneticPart F x‖²)
 
 /-- Electric part of field strength: F_{0i} = E_i. -/
-axiom electricPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
-  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3
+-- [sweep7] axiom→noncomputable def（数据型清偿）：原公理仅断言电场部分函数存在（无性质），显式零 stub
+noncomputable def electricPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3 := fun _ _ => 0
 
 /-- Magnetic part of field strength: F_{ij} = ε_{ijk} B_k. -/
-axiom magneticPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
-  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3
+-- [sweep7] axiom→noncomputable def（数据型清偿）：同上，显式零 stub
+noncomputable def magneticPart {M G : Type*} [TopologicalSpace M] [Group G] [TopologicalSpace G]
+  [LieAlgebra ℝ G] {P : PrincipalBundle M G} (F : FieldStrength P) (x : M) : ℝ^3 := fun _ _ => 0
 
 /-- Noether current for gauge symmetry: J_μ = ∂ℒ/∂(∂^μ A_ν) · δA_ν.
 

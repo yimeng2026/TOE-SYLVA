@@ -1,0 +1,52 @@
+% =====================================================================
+% Conclusion - sources: all chapters; canonical figures per P0.
+% =====================================================================
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented the axiom-governance methodology of TOE-SYLVA, an
+AI-assisted formal library that scaled past its own review
+capacity, and the honesty layer that now disciplines it. The
+methodology has four moving parts, each independently useful and
+together closing the loop:
+
+\begin{enumerate}
+\item \textbf{A registry-first audit}: every \texttt{axiom}
+declaration in the non-batch corpus is registered with a semantic
+class (448 entries at baseline: primitive 250, definitional 142,
+placeholder 42, schema 14), so that debt is explicit before it is
+addressed.
+\item \textbf{Redemption sweeps with semantic re-grading}: six
+sweeps closed 196 entries ($30+44+31+29+30+32$), and the P0
+reconciliation re-graded them into five classes --- vacuous 50,
+$P\!\to\!P$ conditionalization 90, data-to-definition 17,
+definitional reconstruction 24, substantive 13, plus 2 bundling
+restructurings excluded from the content count. The honest
+headline is 13.
+\item \textbf{Three-caliber reconciliation}: registry (448),
+live-declaration (253), and sweep-process (196) accounts now close
+identically ($445-166-26=253$ and $448-253=195=142+42+11$), the
+Agda side is pinned at 7 files / 25 blocks / 131 name-level
+postulates, and the authoritative proof rate is 3.91\%
+(22,328/571,611, handcrafted; batch reported separately).
+\item \textbf{An honesty layer}: claim tiers with falsifiability
+criteria, a caliber-discipline standard, a quarantine protocol,
+and a CI gate that fails on silent deletions and missing markers.
+\end{enumerate}
+
+Two case studies showed the lifecycle end to end: a CLAIM$\to$
+THEOREM upgrade along a Chern--Simons chain whose registered
+theorem is deliberately labeled as what it is --- a
+\texttt{mathlib}-delegated cast-summation identity, not
+topological integrality --- and a Dedekind-domain segment that is
+honest about contributing zero new mathematics while validating
+the attribution mechanism.
+
+For the growing population of AI-generated formal content, we
+claim one general lesson. Every number this paper reports ---
+including the unflattering ones --- is bound to a declared,
+reproducible caliber. That binding, not any particular
+percentage, is what makes a proof-rate metric trustworthy; and
+the cheapest time to install it is before the corpus, and the
+metrics, have a history worth laundering.

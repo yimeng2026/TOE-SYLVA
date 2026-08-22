@@ -1,0 +1,117 @@
+% =====================================================================
+% Registry audit (Sec 3) - material sources:
+%   * framework/axiom_registry.json v2.0 (taxonomy, 448 entries,
+%     116 non-batch files; primitive 250 / definitional 142 /
+%     placeholder 42 / schema 14; unique names 391; cross-file dups 57)
+%   * framework/p0_reconciliation_report.md sec 2.1 (caliber A/A',
+%     three-way table), sec 2.2 (Agda 7/25/131)
+%   * framework/proof_status.md sec 1 (claim tier motivation),
+%     sec 4 (Agda registration, v1.2 erratum)
+% Number policy: canonical = plain; 116 files, 57 dups etc. are
+% v7.98 registry metadata baselines (\pnum where non-canonical).
+% =====================================================================
+
+\subsection{Corpus anatomy}
+\label{sec:corpus}
+The audited object is the \emph{non-batch} Lean corpus: all
+\texttt{.lean} files under \texttt{sylva\_formalization/} except
+the generated \texttt{SYLVA\_Proven*} batch modules (batch corpus:
+\pnum{119859} files, governed separately,
+Sec.~\ref{sec:quarantine}). The non-batch corpus is handcrafted in
+the sense of ``curated by humans with AI assistance'', covering
+physics-adjacent mathematics: Chern--Simons theory and the chern
+number family, gauge theory and instanton constructions, quantum
+Hall effect modules, cosmology (FLRW, dark energy, inflation),
+string/M-theory brane content, computability (Cook--Levin, CNF
+encodings, polynomial-time closures), $p$-adic analysis, a course
+chain in algebraic number theory, and collective-intelligence and
+learning-theory statements. Alongside it, the Agda track holds 7
+files (Quantum, Spectrum, Complete, CNFCategory, Order, Cauchy,
+Field modules) with 131 name-level \texttt{postulate} declarations
+--- canonical caliber; the per-module split is Quantum~53,
+Spectrum~36, Complete~15, CNFCategory~12, Order~12, Cauchy~2,
+Field~1.
+
+The asymmetry that motivates a registry: in this corpus, an
+\texttt{axiom} command is not a mathematical foundation choice but
+a \emph{deferred obligation} --- typically an AI-drafted statement
+block that reads like a theorem, type-checks like a theorem, and
+imports the full trust of the ambient logic the moment anyone builds
+on it. Nothing in the Lean toolchain distinguishes ``foundational
+axiom we choose to assume'' from ``proof we hope to write later''.
+The registry exists to restore that distinction.
+
+\subsection{The four-class taxonomy}
+\label{sec:taxonomy}
+Every \texttt{axiom} declaration in the non-batch corpus is
+registered in a machine-readable JSON registry
+(\texttt{framework/axiom\_registry.json}, v2.0~\cite{sylvaregistry2026}) with per-entry
+fields: file path, declaration name, statement, a taxonomy category,
+and (where applicable) a suggested reduction method. The taxonomy
+has four classes, defined by \emph{why the axiom exists} rather than
+by subject matter:
+
+\begin{itemize}
+\item \textbf{Primitive} (250 entries): statements intended as
+genuine mathematical content --- conjectures, physical input,
+or results whose proofs are currently out of reach (e.g.\ the
+spectral-action or Chern--Weil statements). These are the corpus's
+real debts.
+\item \textbf{Definitional} (142 entries): axioms that restate
+definitions --- the ``proof'' is a definitional unfolding that
+nobody performed (e.g.\ a physical constant asserted as an axiom
+when it is the \emph{definition} of that constant).
+\item \textbf{Placeholder} (42 entries): statements whose conclusion
+is \texttt{True} (or an implication into \texttt{True}) --- pure
+syntactic placeholders, carrying no mathematical content at all.
+\item \textbf{Schema} (14 entries): cross-cutting structural
+assumptions that license a whole family of statements at once
+(e.g.\ the causal-network$\to$gauge-level identification of the
+Chern--Simons chain, Sec.~\ref{sec:cschain}); tracked separately
+because redeeming them is a research program, not a proof task.
+\end{itemize}
+
+The registry carries 448 entries over 116 non-batch files, with 391
+unique names and \pnum{57} cross-file duplicate registrations
+(canonical total; the decomposition 250/142/42/14 and the
+residual identities of Sec.~\ref{sec:reconciliation} are canonical
+per the P0 report). Version~2.0 of the registry also carries an
+erratum trail in its metadata --- e.g.\ an early note asserting
+``no \texttt{.agda} files exist'' was corrected by the P0
+reconciliation, which measured the Agda track directly (7 files,
+131 postulates) --- because the registry is itself subject to the
+audit discipline it enforces.
+
+\subsection{What the registry buys}
+\label{sec:registry-value}
+Three things, each exploited in later sections:
+
+\begin{enumerate}
+\item \textbf{A census that cannot lie by aggregation.} The four
+classes are disjoint, machine-tallied, and reproducible from the
+registry JSON; ``how much does the library owe?'' acquires a
+defensible answer (448 at baseline: 250 primitive, 142
+definitional, 42 placeholder, 14 schema) instead of the previous
+unbounded ``350+'' (an early headline later shown to be a
+caliber artifact, conflict C1, Sec.~\ref{sec:conflicts}).
+\item \textbf{A work queue with honest exit criteria.} Placeholder
+axioms can be discharged by trivial proofs \emph{without changing
+any semantics}; definitional axioms can be discharged by
+refolding them as \texttt{def}s; primitives cannot be ``swept'' at
+all and must either be proved, conditioned, or left standing with
+their debt visible. This grading is what made the sweep program
+(Sec.~\ref{sec:sweeps}) something other than number farming.
+\item \textbf{An anchor for reconciliation.} Registry, live
+declarations, and process logs are three independent records of the
+same corpus; closing them against each other
+(Sec.~\ref{sec:reconciliation}) is only possible because the
+registry pins one of the three to a machine-readable ground truth.
+\end{enumerate}
+
+The registry does \emph{not} judge mathematics. It records
+obligations. The distinction between a deep primitive and a
+vacuous placeholder is a statement about \emph{bookkeeping}, not
+about importance; the physics-facing primitives that remain
+unredeemed (239 at the time of writing, plus 14 schema --- the
+canonical residual 253 of Sec.~\ref{sec:reconciliation}) are the
+library's honest, visible debt.
