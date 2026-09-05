@@ -159,6 +159,8 @@ TOE-SYLVA/
 
 - **论文为探索性综述**，非同行评议出版物；并非所有目录都经过同等严格程度的审计。
 - **Lean 形式化仍在发展中**：定理数量庞大主要源于批量生成的 Proven 模块，证明深度以平凡/表层为主；许多物理推导仍以 `axiom`（公设）形式存在（2026-08-21 工作区实测：`sylva_formalization/` 目录 `axiom` 声明 253 条，全部登记于公理登记表 v2.0，其中 primitive 239 + schema 14；历史上的 "478 条" 为 v7.9x 时点旧口径，见 `framework/p0_reconciliation_report.md` 口径对照表），**尚未被形式化证明**。
+
+补充口径（2026-09-05 终轮实测）：本工作区 `git grep` 全树口径（含 archive/ 与机器生成模块）HEAD 基线 477 → 当前 467（sweep8 批次 −10：anom1 万能公理 `postulate` 拆除 −1、BerryCurvature Clairaut 两条 mathlib 委托清偿 −2、T4 数据型 7 条 def/theorem 化 −7；Instanton.lean 的 ModuliSpace 条目因远程已先行条件化，归并入其版本）。该口径与上述 253 口径 glob 范围不同，禁止混用；详见 framework/proof_status.md §7 与 framework/axiom_registry.json writeback_2026_09_05。
 - **自评质量星级**（如有）为写作初期的自我评估，应视为愿景而非独立验证结论。
 - 远程已建立 proof governance 登记（`framework/proof_status.md`），对每条主张按 THEOREM / THEOREM\* / CLAIM / CONJECTURE 分级管理——本地同步后适用同一标准。
 

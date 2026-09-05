@@ -85,15 +85,24 @@ deriving Repr
 /-- 从多项式时间机器提取编码参数。
 
   给定 `TM1PolyTime M`，存在多项式 `p` 使得 `M` 在 `p(|input|)` 步内停机。
-  取 `T = p(|input|)`, `S = T` 即可。 -/
-axiom params_of_polytime
+  取 `T = p(|input|)`, `S = T` 即可。
+
+  sweep8 T4 清偿：由 axiom 转为 `noncomputable def`。
+  实现：用 `Classical.choose` 从 `hM` 取出运行时间多项式 `p`，
+  令 `T = S = p(|input|)`；`T_poly` 的见证取常值多项式 `fun _ => T`
+  （`IsPolynomial.of_constant`，等式由 `rfl` 成立，同时规避结构体字段
+  前向引用导致的 `input_length` 未代入问题），`S_le_T` 是自反性。
+  下游（cook_levin_phase2 等）只使用 `params.T / params.S / params.input_length`。 -/
+noncomputable def params_of_polytime
     (M : TM1Multitape.Machine Γ Λ σ n_tapes)
     (input : List Γ)
     (hM : TM1PolyTime M) :
-  EncodingParams
-  -- 证明思路：由 `TM1PolyTime` 的定义，存在多项式 `p` 使得对所有输入
-  -- `accepts_in M (p input.length) input`。取 `T = p input.length`，
-  -- `S = T`，`T_poly` 直接由 `hM` 得到，`S_le_T` 是等式。
+  EncodingParams :=
+  { T := Classical.choose hM input.length
+    S := Classical.choose hM input.length
+    T_poly := ⟨fun _ => Classical.choose hM input.length, IsPolynomial.of_constant _, rfl⟩
+    S_le_T := Nat.le_refl _
+    input_length := input.length }
 
 end EncodingParameters
 
@@ -158,13 +167,22 @@ def toNat [Fintype Λ] [Fintype Γ]
 
 /-- `toNat` 是单射（在各自参数范围内）。
 
-  开放引理：需证明不同 `(t, q)` / `(t, i, j)` / `(t, i, j, a)`
-  组合不会映射到同一个自然数。证明利用混合进制编码的单射性。 -/
-axiom toNat_injective
+  sweep8 T4 清偿：由 axiom 转为带证明的 theorem。
+  证明：在固定时间 `t` 下，state 变量的编码是 `1 + t * cardΛ + q.index`，
+  等式两边消去相同前缀得 `q₁.index = q₂.index`，
+  再由 `Fintype.truncEquivFin` 等价映射的单射性得 `q₁ = q₂`。
+  注：statement 中用具名实参 `(Γ := Γ) (Λ := Λ) (n_tapes := n_tapes)`
+  固定 `TMVar` 的隐式参数，避免 `Γ` / `n_tapes` 成为未决元变量。 -/
+theorem toNat_injective
     {t : ℕ} {q₁ q₂ : Λ} :
-    (state t q₁).toNat = (state t q₂).toNat → q₁ = q₂
-  -- 证明思路：在固定时间 `t` 下，state 变量的编码是 `t * cardΛ + q.index`。
-  -- 若两编码相等，则 `q₁.index = q₂.index`，由 `Fintype` 等价于 `Fin` 的单射性得 `q₁ = q₂`。
+    (state (Γ := Γ) (Λ := Λ) (n_tapes := n_tapes) t q₁).toNat
+      = (state (Γ := Γ) (Λ := Λ) (n_tapes := n_tapes) t q₂).toNat → q₁ = q₂ := by
+  intro h
+  simp only [toNat] at h
+  have hval : ((Fintype.truncEquivFin Λ).out.toFun q₁).val
+            = ((Fintype.truncEquivFin Λ).out.toFun q₂).val := by
+    omega
+  exact (Fintype.truncEquivFin Λ).out.injective (Fin.ext hval)
 
 /-- 将 `TMVar` 转换为 CNF 的 `Literal`（正文字）。 -/
 def toLiteral (v : TMVar Γ Λ n_tapes) : Literal :=

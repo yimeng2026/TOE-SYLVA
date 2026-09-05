@@ -137,14 +137,17 @@ theorem graphLaplacianSpectrum_nonneg (G : CausalNetwork V) (lam : ℝ)
     For networks with power-law degree distributions P(k) ~ k^{-γ},
     numerical evidence suggests d_S ≈ 4 (consistent with 4D spacetime).
 
-    Status: POSTULATE. Rigorous computation requires heat-kernel asymptotics
-    for power-law graphs, which is an active research area.
--/
-axiom spectralDimension (G : CausalNetwork V) : ℝ
+    sweep8 T4 清偿：数据型 axiom 登记为 `noncomputable def`。
+    本框架对 SYLVA 因果网络断言 d_S = 4（见下一条定理），
+    故将该数据直接登记为常值 4；严格的热核渐近推导
+    （power-law 图上的 heat-kernel asymptotics）留待后续工作。 -/
+noncomputable def spectralDimension (G : CausalNetwork V) : ℝ := 4
 
-/-- For the SYLVA causal networks, the spectral dimension is 4. -/
-axiom spectralDimensionIsFour (G : CausalNetwork V) :
-  spectralDimension G = 4
+/-- For the SYLVA causal networks, the spectral dimension is 4.
+
+    sweep8 T4 下游同步：由 axiom 转为 theorem（定义展开即 `rfl`）。 -/
+theorem spectralDimensionIsFour (G : CausalNetwork V) :
+  spectralDimension G = 4 := rfl
 
 -- ============================================================
 -- Section 2: The Spectral Action

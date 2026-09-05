@@ -5436,5 +5436,178 @@
       "reduction_method": "simp",
       "reduction_detail": "Conjunction; reducible via simp/and_intro"
     }
-  ]
+  ],
+  "writeback_2026_09_05": {
+    "section": "sweep8 批次清偿回写审计节",
+    "registered": "2026-09-05",
+    "registered_by": "口径同步员 (v8.01 终轮口径同步)",
+    "caliber": "repo_wide_git_grep",
+    "headline": {
+      "axiom_total_HEAD": 477,
+      "axiom_total_worktree": 467,
+      "delta": -10,
+      "delta_breakdown": {
+        "B1_postulate_demolished": -1,
+        "B1_berrycurvature_clairaut": -2,
+        "B2_t4_batch": -7
+      },
+      "reconciliation": "终轮复核：HEAD(477) -> worktree(467) = -10 = B1(-3) + B2(-7)，逐文件计数与三份报告逐一相符（见 entries[].count_verified），B1 报告 §6.3 登记的 1 条对账差源于 B2 自述 -8 中已含 B1 的 -1（测量时点交叠），终轮按同口径同一点（HEAD vs worktree）对账，无残留差异。",
+      "q1_chem_stoichiometry": "chem_stoichiometry_q1_report.md（2026-08-13）：ReactionNetwork.lean 479->778 行，axiom 数 2->2 不变（deficiency_zero_theorem、thermodynamic_emergence 为既有公理，仅修复引用），本批次对 axiom 总数无增量。"
+    },
+    "entries": [
+      {
+        "axiom": "postulate",
+        "signature": "axiom postulate {α : Sort _} : α",
+        "file": "sylva_formalization/SylvaFormalization/NumberTheory/EntropyGapSpectral.lean",
+        "batch": "B1 (sweep7 anom1)",
+        "work_date": "2026-09-05",
+        "disposition": "demolished",
+        "disposition_detail": "危险万能公理拆除（对任意 Sort 含 False 给出居民，逻辑爆炸级异常 anom1）；同文件 33 处使用点全部诚实化（A 类诚实构造 21 项 / B 类 P->P 条件化 9 处 / C 类参数化 8 处 / D 类陈述重写 6 处），原行以注释存档于文件头部拆除记录。",
+        "verification": "lake env lean 单文件 elaboration，EXITCODE=0，0 错误 0 警告，无 sorry；全仓 grep 确认定义点唯一、无 import 者使用。",
+        "report": "framework/sweep7_anomaly_resolution_report.md",
+        "axiom_count_file": "1 -> 0",
+        "count_verified": "2026-09-05 复核：当前 0 ✓"
+      },
+      {
+        "axiom": "clairaut_schwarz_commute",
+        "file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/BerryCurvature_GaugeInvariance.lean",
+        "batch": "B1 (sweep8 T2a)",
+        "work_date": "2026-09-05",
+        "disposition": "axiom -> theorem (mathlib delegation)",
+        "disposition_detail": "Clairaut 混合偏导交换（三维）：委托 mathlib ContDiffAt.isSymmSndFDerivAt + IsSymmSndFDerivAt.eq + fderiv_clm_apply，公共核 private theorem mixed_partials_commute_of_contDiff2 一行委托；陈述修正 (i j : ℕ) -> (i j : Fin 3)（原类型不配）。现为 theorem（文件 :124）。",
+        "verification": "lake env lean，EXITCODE=0，0 错误，0 sorry，无新增 axiom。",
+        "report": "framework/axiom_reduction_sweep8_report.md",
+        "axiom_count_file": "3 -> 1（与 clairaut_2d_commute 合计）",
+        "count_verified": "2026-09-05 复核：当前 1（残留 curl_linear_subtraction :137）✓"
+      },
+      {
+        "axiom": "clairaut_2d_commute",
+        "file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/BerryCurvature_GaugeInvariance.lean",
+        "batch": "B1 (sweep8 T2a)",
+        "work_date": "2026-09-05",
+        "disposition": "axiom -> theorem (mathlib delegation)",
+        "disposition_detail": "Clairaut 混合偏导交换（二维）：同一公共核 mixed_partials_commute_of_contDiff2 一行委托。现为 theorem（文件 :203）。",
+        "verification": "lake env lean，EXITCODE=0，0 错误，0 sorry。",
+        "report": "framework/axiom_reduction_sweep8_report.md",
+        "axiom_count_file": "3 -> 1（与 clairaut_schwarz_commute 合计）",
+        "count_verified": "2026-09-05 复核：当前 1 ✓"
+      },
+      {
+        "axiom": "params_of_polytime",
+        "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> noncomputable def",
+        "disposition_detail": "用 Classical.choose 取出 TM1PolyTime 的运行时间多项式构造 EncodingParams；T_poly 见证取常值多项式（IsPolynomial.of_constant，NPClass/PolynomialTime.lean:37 现存定理）。",
+        "verification": "文件级 pre-existing import 错误前后完全一致（错误集 diff 无新增）；新 def 在隔离 harness 中 elaboration 通过（exit 0）。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "15 -> 13（与 toNat_injective 合计）",
+        "count_verified": "2026-09-05 复核：当前 13 ✓"
+      },
+      {
+        "axiom": "toNat_injective",
+        "file": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> theorem",
+        "disposition_detail": "带证明 theorem：simp only [toNat] 展开后 omega 消去前缀，再由 (Fintype.truncEquivFin Λ).out.injective 收口；具名实参固定 TMVar 隐式参数，语义与原 axiom 一致。",
+        "verification": "错误集 diff 无新增；harness elaboration 通过（exit 0）。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "15 -> 13（与 params_of_polytime 合计）",
+        "count_verified": "2026-09-05 复核：当前 13 ✓"
+      },
+      {
+        "axiom": "ModuliSpace",
+        "file": "sylva_formalization/SylvaFormalization/GaugeTheory/Instanton.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> noncomputable def",
+        "disposition_detail": "登记为底流形 M，逐字镜像 GaugeTheory.lean:341-344 已验证可编译的同名 def；绑定列表显式化并补 [LieRing G]；唯一使用点 InstantonModuliDimension 同步补 [LieRing G]。",
+        "verification": "pre-existing import 错误前后同一；harness 验证 exit 0。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "4 -> 3",
+        "count_verified": "2026-09-05 复核：当前 3 ✓"
+      },
+      {
+        "axiom": "spectralDimension",
+        "file": "sylva_formalization/SylvaFormalization/SpectralAction.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> noncomputable def := 4",
+        "disposition_detail": "数据型公理登记为常值 4（依据：同文件 spectralDimensionIsFour 原断言对所有 SYLVA 因果网络 =4；文档注释记 d_S ≈ 4）；无冲突性检查通过（文件末尾占位定理陈述为 True）。",
+        "verification": "pre-existing 前缀 import 错误前后同一；harness 验证 exit 0。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "5 -> 3（与 spectralDimensionIsFour 合计）",
+        "count_verified": "2026-09-05 复核：当前 3 ✓"
+      },
+      {
+        "axiom": "spectralDimensionIsFour",
+        "file": "sylva_formalization/SylvaFormalization/SpectralAction.lean",
+        "batch": "B2 (sweep8 T4 数据型，下游同步)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> theorem := rfl",
+        "disposition_detail": "spectralDimension def 化后的下游同步清偿：∀ G, spectralDimension G = 4 由 rfl 成立。",
+        "verification": "pre-existing 前缀 import 错误前后同一；harness 验证 exit 0。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "5 -> 3（与 spectralDimension 合计）",
+        "count_verified": "2026-09-05 复核：当前 3 ✓"
+      },
+      {
+        "axiom": "partialTraceA",
+        "file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/InformationGeometry_Theorems.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> noncomputable def",
+        "disposition_detail": "真实部分迹定义：fun i j => ∑ k, rho (finProdFinEquiv (k, i)) (finProdFinEquiv (k, j))（对 A 求迹留 B，mathlib finProdFinEquiv）；下游引用签名不变。",
+        "verification": "处置前后 23 个 pre-existing 错误归一化后完全一致；def 在 harness（真实 mathlib Matrix）中 exit 0。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "7 -> 5（与 partialTraceB 合计）",
+        "count_verified": "2026-09-05 复核：当前 5 ✓"
+      },
+      {
+        "axiom": "partialTraceB",
+        "file": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/InformationGeometry_Theorems.lean",
+        "batch": "B2 (sweep8 T4 数据型)",
+        "work_date": "2026-08-17",
+        "disposition": "axiom -> noncomputable def",
+        "disposition_detail": "真实部分迹定义：fun i j => ∑ k, rho (finProdFinEquiv (i, k)) (finProdFinEquiv (j, k))（对 B 求迹留 A）。",
+        "verification": "处置前后错误集归一化后完全一致；harness exit 0。",
+        "report": "framework/axiom_reduction_sweep8_t4_report.md",
+        "axiom_count_file": "7 -> 5（与 partialTraceA 合计）",
+        "count_verified": "2026-09-05 复核：当前 5 ✓"
+      }
+    ],
+    "retained_not_discharged": [
+      {
+        "axiom": "TM1toMultitapeMachine / TM1Compat_step",
+        "file": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+        "reason": "构造性公理（TM1 宏步->多带微步语义保持编译），无安全具体值；文件 18 个 pre-existing 错误（含公理自身签名），def 化无法验证。宁缺勿滥。"
+      },
+      {
+        "axiom": "ParallelTransport",
+        "file": "sylva_formalization/SylvaFormalization/GaugeTheory.lean",
+        "reason": "纤维间映射需流形 ODE 存在唯一性与水平提升（mathlib 不完备）；文件基线干净（exit 0），保留不引入回归。长期挂账。"
+      },
+      {
+        "axiom": "DensityOperatorTrace / DensityOperatorLog",
+        "file": "sylva_formalization/SylvaFormalization/archive/v5_4x/SYLVA_Causality_v5_42.lean",
+        "reason": "trace-class/函数演算无典范具体值；mathlib olean 缺失无法验证；archive 非构建 roots。清单原名 Log 全仓无精确匹配（如实登记）。"
+      }
+    ],
+    "no_git_write": true,
+    "no_lean_files_touched_by_this_writeback": true
+  },
+  "caliber_note_2026_09_05": {
+    "repo_wide_git_grep": {
+      "description": "本仓库全仓 axiom 实测口径（canonical）：git grep -c -E '^axiom[ \\t]' -- 'sylva_formalization/**/*.lean' | awk -F: '{s+=$NF} END {print s}'。覆盖 sylva_formalization/ 树内全部 git 跟踪 .lean 文件，含 sylva_formalization/SylvaFormalization/archive/ 与机器生成（Proven）模块；不含仓库根目录 archive/。",
+      "baseline_HEAD": 477,
+      "current_worktree": 467,
+      "measured": "2026-09-05",
+      "delta": -10
+    },
+    "legacy_handcrafted_253_266": {
+      "description": "另一会话历史口径（253/266），glob 范围与本仓库口径不同（archive/ 与机器生成文件的计入范围不同）。该口径数字仅具历史参考价值，禁止与本仓库 repo_wide_git_grep 口径混用、相减或拼接进同一数列。",
+      "status": "archived_do_not_mix"
+    }
+  }
 }

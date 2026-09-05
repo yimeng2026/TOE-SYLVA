@@ -200,14 +200,18 @@ theorem shannon_entropy_maximum {n : ℕ} (p : Fin n → ℝ)
   =========================================
 -/
 
-/- 偏迹操作: 需要张量积索引的形式化基础设施
-   预计工作量: ~50h (需要张量积的形式化)
-   当前形式化: 使用诚实公理化声明此已知定义 -/
-axiom partialTraceB {n m : ℕ} (rho : Matrix (Fin (n*m)) (Fin (n*m)) ℂ) :
-    Matrix (Fin n) (Fin n) ℂ
+/- 偏迹操作: sweep8 T4 清偿 —— 由 axiom 转为 `noncomputable def`。
+   利用 mathlib 的 `finProdFinEquiv : Fin n × Fin m ≃ Fin (n * m)`
+   将张量积索引 (i,k) 映射到复合索引，对另一个子系统求和：
+   - partialTraceB：对 B 子系统（第二因子，维数 m）求迹，保留 A（维数 n）
+   - partialTraceA：对 A 子系统（第一因子，维数 n）求迹，保留 B（维数 m） -/
+noncomputable def partialTraceB {n m : ℕ} (rho : Matrix (Fin (n*m)) (Fin (n*m)) ℂ) :
+    Matrix (Fin n) (Fin n) ℂ :=
+  fun i j => ∑ k, rho (finProdFinEquiv (i, k)) (finProdFinEquiv (j, k))
 
-axiom partialTraceA {n m : ℕ} (rho : Matrix (Fin (n*m)) (Fin (n*m)) ℂ) :
-    Matrix (Fin m) (Fin m) ℂ
+noncomputable def partialTraceA {n m : ℕ} (rho : Matrix (Fin (n*m)) (Fin (n*m)) ℂ) :
+    Matrix (Fin m) (Fin m) ℂ :=
+  fun i j => ∑ k, rho (finProdFinEquiv (k, i)) (finProdFinEquiv (k, j))
 
 /- 辅助公理: 偏迹后密度矩阵保持正半定性和迹为1 -/
 axiom partialTraceB_PosSemidef {n m : ℕ} (rho : Matrix (Fin (n*m)) (Fin (n*m)) ℂ)

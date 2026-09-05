@@ -109,4 +109,38 @@
 
 ---
 
+## 七、sweep8 批次记录（2026-09-05 终轮口径同步）
+
+### 7.1 批次报告索引
+
+| 批次 | 报告 | 内容 | axiom 增减（本仓库口径） |
+|------|------|------|------|
+| B1 / sweep7 anom1 | [sweep7_anomaly_resolution_report.md](sweep7_anomaly_resolution_report.md)（316 行） | 危险万能公理 `axiom postulate {α : Sort _} : α` 拆除 + 同文件 33 处使用点诚实化 + RazborovSmolensky.lean 全文件修复（33 错 → 0） | −1 |
+| B1 / sweep8 T2a | [axiom_reduction_sweep8_report.md](axiom_reduction_sweep8_report.md)（208 行） | BerryCurvature 2 条 Clairaut 公理（`clairaut_schwarz_commute`、`clairaut_2d_commute`）以 mathlib 现存定理真实委托清偿 | −2 |
+| B2 / sweep8 T4 | [axiom_reduction_sweep8_t4_report.md](axiom_reduction_sweep8_t4_report.md)（206 行） | 数据型公理 7 条清偿为 `noncomputable def` / theorem（`params_of_polytime`、`toNat_injective`、`ModuliSpace`、`spectralDimension`、`spectralDimensionIsFour`（下游同步）、`partialTraceA`、`partialTraceB`） | −7 |
+| Q1（方向 C 试点） | [chem_stoichiometry_q1_report.md](chem_stoichiometry_q1_report.md)（272 行） | ReactionNetwork.lean 479→778 行：`networkRank'` 委托真实 `Matrix.rank`、守恒律 ↔ 左零空间（rank-nullity）、deficiency 去硬编码（`MM_rank_eq_two`/`MM_deficiency_zero_computed`） | 0（文件内 2 条既有 axiom 未动） |
+
+清偿条目逐条回写登记于 [axiom_registry.json](axiom_registry.json) `writeback_2026_09_05` 审计节（10 条 entries + 3 组保留条目及理由）。
+
+### 7.2 对账数字（口径：`git grep -c -E '^axiom[ \t]' -- 'sylva_formalization/**/*.lean'`，覆盖 sylva_formalization/ 树内全部跟踪文件，含其 archive/ 与机器生成模块）
+
+| 时点 | 总数 | 说明 |
+|------|------|------|
+| HEAD（基线） | **477** | 2026-09-05 同命令对 HEAD 复核 |
+| 当前工作区 | **467** | 2026-09-05 终轮实测 |
+| Δ | **−10** | = B1 −3 + B2 −7；逐文件计数（EntropyGapSpectral 1→0、BerryCurvature 3→1、CNFEncoding 15→13、Instanton 4→3、SpectralAction 5→3、IGT 7→5）与三份报告逐一相符 |
+
+> ⚠️ **口径并存警告**：另一会话历史口径（253/266）glob 范围与本口径不同（archive/ 与机器生成文件计入范围不同），**禁止混用**。B1 报告 §6.3 曾登记 1 条对账差，终轮复核确认其源于 B2 自述 −8 中含 B1 的 −1（测量时点交叠），按 HEAD→工作区同一口径对账**无残留差异**。
+
+### 7.3 THEOREM 级候选评估（终轮判断）
+
+| 候选 | 评估 | 结论 |
+|------|------|------|
+| `clairaut_schwarz_commute` / `clairaut_2d_commute`（BerryCurvature_GaugeInvariance.lean:124/:203） | 委托链全部落在本仓库 pin 的 mathlib `8a17838` 现存定理（`ContDiffAt.isSymmSndFDerivAt`、`IsSymmSndFDerivAt.eq`、`fderiv_clm_apply`），无 sorry、无新增 axiom；`lake env lean` EXITCODE=0。二维定理所补可微性假设为数学必需，已如实登记 | **够格，登记为 THEOREM（mathlib 委托链）**——属本框架标准的 mathlib 委托验证路径，与 §3 表内"Mathlib 提供"条目的 THEOREM\* 不同：证明项在本仓库文件内闭合完成 |
+| `MM_rank_eq_two` / `MM_deficiency_zero_computed`（ReactionNetwork.lean:710/:728） | 从真实 `Matrix.rank` 出发的显式计算证明（列张成 + 线性无关 + `finrank_span_eq_card`）；`#print axioms` 审计仅依赖 `[propext, Classical.choice, Quot.sound]`（Lean 标准三公理），无 sorryAx、无新公理；`lake env lean` EXIT=0 | **够格，登记为 THEOREM**——仓库内首个以完全计算方式复现 Feinberg deficiency δ=0（MM 网络 3−2−1）的论证 |
+
+> 治理注记：以上四条均为 sweep8/Q1 批次内**新增**的机器验证定理，不改变 §3 既有登记的任何条目状态；`deficiency_zero_theorem`、`thermodynamic_emergence`（ReactionNetwork）与 `curl_linear_subtraction`（BerryCurvature）等仍为 axiom，保持 CLAIM 级处置不变。
+
+---
+
 > ⚠️ **透明度金律**: 本文档是本框架首次在单一位置登记所有核心声明的数学状态。如果发现新声明或状态变更，请更新此处而非另建分散文件。

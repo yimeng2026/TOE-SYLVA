@@ -11,9 +11,29 @@
   这是因为梯度的旋度为零: curl(grad φ) = 0
 
   这是 Berry 曲率作为物理可观测量（如霍尔电导）的基本性质。
+
+  ============================================================
+  sweep8 T2a 清偿记录（2026-09-05, sweep8执行员B1）
+  ============================================================
+  1. 修复潜在解析损坏：原文件全文使用未定义的 `ℝ³`/`ℝ²` 记号
+     （mathlib 无此记号，文件从未通过 elaboration），现补 notation。
+  2. 两条 Clairaut 型公理（二阶混合偏导交换）已用 mathlib 委托清偿：
+       clairaut_schwarz_commute（三维）、clairaut_2d_commute（二维）
+     委托链：ContDiffAt.isSymmSndFDerivAt（C² ⟹ 二阶导数对称，
+     Mathlib/Analysis/Calculus/FDeriv/Symmetric.lean）
+     + fderiv_clm_apply（CLM 求值的链式法则，FDeriv/CompCLM.lean）桥接。
+     原公理陈述中 `(i j : ℕ)` 与 `Pi.single j 1` 类型不配
+     （索引应为 Fin 3），已修正为 `(i j : Fin 3)`。
+  3. 保留 curl_linear_subtraction（旋度线性性）为 axiom —— 属 T2a 之外的
+     独立公理，见 framework/axiom_reduction_sweep8_report.md 剩余清单。
+  原两条公理行存档于该报告。
 -/
 
 import Mathlib
+
+/-- sweep8：ℝ³/ℝ² 原文件未定义，按标准函数空间展开（与 EuclideanSpace 同构） -/
+notation "ℝ³" => Fin 3 → ℝ
+notation "ℝ²" => Fin 2 → ℝ
 
 section
 
@@ -27,6 +47,21 @@ variable (A : ℝ³ → ℝ³)
 variable (φ : ℝ³ → ℝ)
 
 /-
+  三维旋度的定义
+  curl A = (∂₂A₃ - ∂₃A₂, ∂₃A₁ - ∂₁A₃, ∂₁A₂ - ∂₂A₁)
+  sweep8 修复：∂₁/∂₂/∂₃ 中 `∂` 是 mathlib 偏导记号的保留符号，不能作标识符，
+  重命名为 D1/D2/D3；另将 curl 前移至 BerryCurvature 之前（修复前向引用）。
+-/
+noncomputable def curl (A : ℝ³ → ℝ³) (k : ℝ³) : ℝ³ :=
+  let A₁ := fun k => A k 0
+  let A₂ := fun k => A k 1
+  let A₃ := fun k => A k 2
+  let D1 := fun f => fderiv ℝ f k (Pi.single 0 1)
+  let D2 := fun f => fderiv ℝ f k (Pi.single 1 1)
+  let D3 := fun f => fderiv ℝ f k (Pi.single 2 1)
+  ![D2 A₃ - D3 A₂, D3 A₁ - D1 A₃, D1 A₂ - D2 A₁]
+
+/-
   Berry 曲率: F = ∇ × A (旋度)
   在二维情况下: F_{xy} = ∂_x A_y - ∂_y A_x
 -/
@@ -34,50 +69,70 @@ noncomputable def BerryCurvature (A : ℝ³ → ℝ³) (k : ℝ³) : ℝ³ :=
   curl A k
 
 /-
-  三维旋度的定义
-  curl A = (∂₂A₃ - ∂₃A₂, ∂₃A₁ - ∂₁A₃, ∂₁A₂ - ∂₂A₁)
--/
-noncomputable def curl (A : ℝ³ → ℝ³) (k : ℝ³) : ℝ³ :=
-  let A₁ := fun k => A k 0
-  let A₂ := fun k => A k 1
-  let A₃ := fun k => A k 2
-  let ∂₁ := fun f => fderiv ℝ f k (Pi.single 0 1)
-  let ∂₂ := fun f => fderiv ℝ f k (Pi.single 1 1)
-  let ∂₃ := fun f => fderiv ℝ f k (Pi.single 2 1)
-  ![∂₂ A₃ - ∂₃ A₂, ∂₃ A₁ - ∂₁ A₃, ∂₁ A₂ - ∂₂ A₁]
-
-/-
   梯度的定义
   ∇φ = (∂₁φ, ∂₂φ, ∂₃φ)
 -/
 noncomputable def gradient3D (φ : ℝ³ → ℝ) (k : ℝ³) : ℝ³ :=
-  let ∂₁ := fderiv ℝ φ k (Pi.single 0 1)
-  let ∂₂ := fderiv ℝ φ k (Pi.single 1 1)
-  let ∂₃ := fderiv ℝ φ k (Pi.single 2 1)
-  ![∂₁, ∂₂, ∂₃]
+  let D1 := fderiv ℝ φ k (Pi.single 0 1)
+  let D2 := fderiv ℝ φ k (Pi.single 1 1)
+  let D3 := fderiv ℝ φ k (Pi.single 2 1)
+  ![D1, D2, D3]
 
 /-
   规范变换: A' = A - ∇φ
+  sweep8 修复：补 noncomputable（依赖 noncomputable 的 gradient3D）
 -/
-def gaugeTransform3D (A : ℝ³ → ℝ³) (φ : ℝ³ → ℝ) : ℝ³ → ℝ³ :=
+noncomputable def gaugeTransform3D (A : ℝ³ → ℝ³) (φ : ℝ³ → ℝ) : ℝ³ → ℝ³ :=
   fun k => A k - gradient3D φ k
 
 /-
-  辅助公理 1: C² 函数混合偏导数可交换 (Clairaut/Schwarz 定理)
-  Mathlib 当前缺失此基础设施，但这是一个经典分析定理
-  预计形式化工作量: ~20h (需要 fderiv 的交换性引理)
-  一旦 Mathlib 有此定理，此 axiom 可替换为 theorem
+  sweep8 新增（两条 Clairaut 公理的公共委托核）：
+  C² 函数的混合偏导数可交换 (Clairaut/Schwarz 定理)。
+  委托链：
+  - ContDiffAt.isSymmSndFDerivAt: C² ⟹ IsSymmSndFDerivAt（二阶导数对称）
+  - fderiv_clm_apply: fderiv (fun y => c y (u y)) 的链式展开，
+    取 u ≡ 常值方向 v，得 fderiv (fun y => fderiv φ y v) = (fderiv (fderiv φ)).flip v
 -/
-axiom clairaut_schwarz_commute {φ : ℝ³ → ℝ} (hφ : ContDiff ℝ 2 φ) (k : ℝ³)
-    (i j : ℕ) (hi : i < 3) (hj : j < 3) :
+private theorem mixed_partials_commute_of_contDiff2 {E : Type*} [NormedAddCommGroup E]
+    [NormedSpace ℝ E] {φ : E → ℝ} (hφ : ContDiff ℝ 2 φ) (k : E) (v w : E) :
+    fderiv ℝ (fun k' => fderiv ℝ φ k' v) k w
+    = fderiv ℝ (fun k' => fderiv ℝ φ k' w) k v := by
+  have hsymm : IsSymmSndFDerivAt ℝ φ k :=
+    ContDiffAt.isSymmSndFDerivAt hφ.contDiffAt
+      (le_of_eq minSmoothness_of_isRCLikeNormedField)
+  have hd : DifferentiableAt ℝ (fderiv ℝ φ) k :=
+    ((hφ.fderiv_right (m := 1) le_rfl).contDiffAt (x := k)).differentiableAt one_ne_zero
+  have h1 : fderiv ℝ (fun k' => fderiv ℝ φ k' v) k
+      = (fderiv ℝ (fderiv ℝ φ) k).flip v := by
+    have h := fderiv_clm_apply (c := fderiv ℝ φ) (u := fun _ : E => v) hd
+      (differentiableAt_const v)
+    simpa using h
+  have h2 : fderiv ℝ (fun k' => fderiv ℝ φ k' w) k
+      = (fderiv ℝ (fderiv ℝ φ) k).flip w := by
+    have h := fderiv_clm_apply (c := fderiv ℝ φ) (u := fun _ : E => w) hd
+      (differentiableAt_const w)
+    simpa using h
+  rw [h1, h2, ContinuousLinearMap.flip_apply, ContinuousLinearMap.flip_apply]
+  exact hsymm.eq w v
+
+/-
+  辅助定理 1（原公理 clairaut_schwarz_commute，sweep8 清偿）:
+  C² 函数混合偏导数可交换 (Clairaut/Schwarz 定理)
+  原公理陈述的 `(i j : ℕ) (hi : i < 3) (hj : j < 3)` 与 `Pi.single j 1`
+  类型不配（Pi.single 的索引应为 Fin 3），已修正为 `(i j : Fin 3)`。
+-/
+theorem clairaut_schwarz_commute {φ : ℝ³ → ℝ} (hφ : ContDiff ℝ 2 φ) (k : ℝ³)
+    (i j : Fin 3) :
     fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single j 1)) k (Pi.single i 1)
-    = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single i 1)) k (Pi.single j 1)
+    = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single i 1)) k (Pi.single j 1) :=
+  mixed_partials_commute_of_contDiff2 hφ k (Pi.single j 1) (Pi.single i 1)
 
 /-
   辅助公理 2: 旋度算子的线性性
   curl(A - B) = curl(A) - curl(B)
   这是旋度算子的基本性质，Mathlib 当前缺失向量值函数的线性微分算子框架
   预计形式化工作量: ~10h
+  sweep8 注：此公理不在 T2a 清偿范围（非 Clairaut 型），保留待后续 sweep。
 -/
 theorem curl_linear_subtraction (A B : ℝ³ → ℝ³) (k : ℝ³)
     (h : curl (fun k' => A k' - B k') k = curl A k - curl B k) :
@@ -104,21 +159,21 @@ theorem curl_of_gradient_zero
   simp [curl, gradient3D]
   constructor
   · -- 第一分量: ∂₂(∂₃φ) - ∂₃(∂₂φ) = 0
-    /- 使用 Clairaut/Schwarz 公理 -/
+    /- 使用 Clairaut/Schwarz 定理（原公理，sweep8 已清偿） -/
     have h_comm : fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 2 1)) k (Pi.single 1 1)
         = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 2 1) :=
-      clairaut_schwarz_commute hφ k 1 2 (by norm_num) (by norm_num)
+      clairaut_schwarz_commute hφ k 1 2
     linarith
   · constructor
     · -- 第二分量: ∂₃(∂₁φ) - ∂₁(∂₃φ) = 0
       have h_comm : fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 2 1)
           = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 2 1)) k (Pi.single 0 1) :=
-        clairaut_schwarz_commute hφ k 2 0 (by norm_num) (by norm_num)
+        clairaut_schwarz_commute hφ k 2 0
       linarith
     · -- 第三分量: ∂₁(∂₂φ) - ∂₂(∂₁φ) = 0
       have h_comm : fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1)
           = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1) :=
-        clairaut_schwarz_commute hφ k 0 1 (by norm_num) (by norm_num)
+        clairaut_schwarz_commute hφ k 0 1
       linarith
 
 /-
@@ -143,20 +198,24 @@ theorem BerryCurvature_gauge_invariance
   simp
 
 /-
-  辅助公理 3: 二维 Clairaut 定理
+  辅助定理 3（原公理 clairaut_2d_commute，sweep8 清偿）: 二维 Clairaut 定理
   ∂_x ∂_y φ = ∂_y ∂_x φ
 -/
-axiom clairaut_2d_commute {φ : ℝ² → ℝ} (hφ : ContDiff ℝ 2 φ) (k : ℝ²) :
+theorem clairaut_2d_commute {φ : ℝ² → ℝ} (hφ : ContDiff ℝ 2 φ) (k : ℝ²) :
     fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1)
-    = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1)
+    = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1) :=
+  mixed_partials_commute_of_contDiff2 hφ k (Pi.single 1 1) (Pi.single 0 1)
 
 /-
   推论: 二维情况下的 Berry 曲率规范不变性
   F_{xy} = ∂_x A_y - ∂_y A_x
+  sweep8 修复：原陈述缺少 A₁、A₂ 的可微性假设（fderiv 减法拆分不成立），
+  数学上不可证；补 hA₁/hA₂ 后诚实证明。
 -/
 theorem BerryCurvature2D_gauge_invariance
     (A₁ A₂ : ℝ² → ℝ) (φ : ℝ² → ℝ)
-    (hφ : ContDiff ℝ 2 φ) (k : ℝ²) :
+    (hφ : ContDiff ℝ 2 φ) (k : ℝ²)
+    (hA₁ : DifferentiableAt ℝ A₁ k) (hA₂ : DifferentiableAt ℝ A₂ k) :
     let F_xy := fun k' => fderiv ℝ A₂ k' (Pi.single 0 1) - fderiv ℝ A₁ k' (Pi.single 1 1)
     let A₁' := fun k' => A₁ k' - fderiv ℝ φ k' (Pi.single 0 1)
     let A₂' := fun k' => A₂ k' - fderiv ℝ φ k' (Pi.single 1 1)
@@ -167,11 +226,34 @@ theorem BerryCurvature2D_gauge_invariance
            = ∂_x A_y - ∂_x ∂_y φ - ∂_y A_x + ∂_y ∂_x φ
            = ∂_x A_y - ∂_y A_x  (因为 ∂_x ∂_y φ = ∂_y ∂_x φ)
            = F_xy -/
-  simp
-  /- 使用 Clairaut 定理 -/
+  have hdφ : DifferentiableAt ℝ (fderiv ℝ φ) k :=
+    ((hφ.fderiv_right (m := 1) le_rfl).contDiffAt (x := k)).differentiableAt one_ne_zero
+  have hφd₁ : DifferentiableAt ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k :=
+    hdφ.clm_apply (differentiableAt_const _)
+  have hφd₀ : DifferentiableAt ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k :=
+    hdφ.clm_apply (differentiableAt_const _)
+  /- 使用 Clairaut 定理（原公理，sweep8 已清偿） -/
   have h_comm : fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1)
       = fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1) :=
     clairaut_2d_commute hφ k
-  linarith
+  have e1 : fderiv ℝ (fun k' => A₂ k' - fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1)
+      = fderiv ℝ A₂ k (Pi.single 0 1)
+        - fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1) := by
+    rw [show (fun k' => A₂ k' - fderiv ℝ φ k' (Pi.single 1 1))
+        = A₂ - fun k' => fderiv ℝ φ k' (Pi.single 1 1) from rfl]
+    rw [fderiv_sub hA₂ hφd₁]
+    rfl
+  have e2 : fderiv ℝ (fun k' => A₁ k' - fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1)
+      = fderiv ℝ A₁ k (Pi.single 1 1)
+        - fderiv ℝ (fun k' => fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1) := by
+    rw [show (fun k' => A₁ k' - fderiv ℝ φ k' (Pi.single 0 1))
+        = A₁ - fun k' => fderiv ℝ φ k' (Pi.single 0 1) from rfl]
+    rw [fderiv_sub hA₁ hφd₀]
+    rfl
+  show fderiv ℝ (fun k' => A₂ k' - fderiv ℝ φ k' (Pi.single 1 1)) k (Pi.single 0 1)
+      - fderiv ℝ (fun k' => A₁ k' - fderiv ℝ φ k' (Pi.single 0 1)) k (Pi.single 1 1)
+      = fderiv ℝ A₂ k (Pi.single 0 1) - fderiv ℝ A₁ k (Pi.single 1 1)
+  rw [e1, e2, h_comm]
+  ring
 
 end

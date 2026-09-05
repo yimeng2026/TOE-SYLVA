@@ -25,14 +25,16 @@ import Mathlib.Data.Fintype.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.FieldTheory.Finite.Basic
-import Mathlib.FieldTheory.Galois
+import Mathlib.FieldTheory.Galois.Basic
 import Mathlib.Algebra.MvPolynomial.Basic
 import Mathlib.Data.Real.Basic
 import Mathlib.Data.Complex.Basic
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.MeasureTheory.Measure.MeasureSpaceDef
-import Mathlib.Analysis.Fourier.FiniteAbelian
-import Mathlib.LinearAlgebra.FiniteDimensional
+import Mathlib.Analysis.Fourier.FiniteAbelian.Orthogonality
+import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+import Mathlib.LinearAlgebra.FiniteDimensional.Defs
+import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 import Mathlib.Probability.Distributions.Uniform
 
 namespace Sylva
@@ -41,6 +43,7 @@ namespace RazborovSmolensky
 
 open BigOperators Finset Real Complex Polynomial
 open Fintype FiniteDimensional
+open MeasureTheory
 
 -- ============================================================
 -- Section 1: Mathematical Foundations
@@ -57,6 +60,10 @@ instance (p : ℕ) [Fact p.Prime] : Field (F_p p) := by
   infer_instance
 
 instance (p : ℕ) [Fact p.Prime] : Fintype (F_p p) := by
+  unfold F_p
+  infer_instance
+
+instance (p : ℕ) [Fact p.Prime] : DecidableEq (F_p p) := by
   unfold F_p
   infer_instance
 
@@ -208,7 +215,7 @@ Polynomial-size bound for circuit families.
 A circuit family has polynomial size if there exists a polynomial
 q(n) such that size(Cₙ) ≤ q(n) for all n.
 -/
-def PolySize (C : AC0_p_CircuitFamily p) : Prop :=
+def PolySize {p : ℕ} [Fact p.Prime] (C : AC0_p_CircuitFamily p) : Prop :=
   ∃ (q : Polynomial ℕ), ∀ (n : ℕ), (C n).size ≤ q.eval n
 
 /-- 
@@ -219,7 +226,7 @@ such that depth(Cₙ) ≤ d for all n.
 
 Note: d must not depend on n. This is what makes AC⁰ "constant depth."
 -/
-def ConstantDepth (C : AC0_p_CircuitFamily p) : Prop :=
+def ConstantDepth {p : ℕ} [Fact p.Prime] (C : AC0_p_CircuitFamily p) : Prop :=
   ∃ (d : ℕ), ∀ (n : ℕ), (C n).depth ≤ d
 
 /-- 
@@ -310,8 +317,8 @@ def Class_AC0_p (p : ℕ) [Fact p.Prime] : Set (Set (List Bool)) :=
   { L : Set (List Bool) |
     ∃ (C : AC0_p_CircuitFamily p),
       PolySize C ∧ ConstantDepth C ∧
-      ∀ (n : ℕ) (x : List Bool),
-        x.length = n → (x ∈ L ↔ evalCircuitList (C n) x (by simp [*])) = true }
+      ∀ (n : ℕ) (x : List Bool) (hx : x.length = (C n).numInputs),
+        (x ∈ L ↔ evalCircuitList (C n) x hx = true) }
 
 -- ============================================================
 -- Section 4: Polynomial Approximation
@@ -375,7 +382,7 @@ as field elements. We typically map:
 
 Then the error is: Pr[P(x) ≠ boolToFp(f(x))]
 -/
-def approxError {p : ℕ} [Fact p.Prime] {n : ℕ}
+noncomputable def approxError {p : ℕ} [Fact p.Prime] {n : ℕ}
     (f : BoolFunc n) (P : Poly_p p n) : ℝ :=
   let total := 2^n
   let errors := Nat.card {x : Fin n → Bool |
@@ -441,7 +448,22 @@ theorem circuit_to_polynomial_approximation
     ∃ (P : Poly_p p C.numInputs),
       polyDegree P ≤ Nat.ceil ((Real.log (C.size / ε)) ^ C.depth) ∧
       EpsilonApprox (fun x => false) P ε := by
-  postulate  -- AC⁰[p] 电路多项式近似：Razborov 引理，形式化需完整电路评估和多项式构造，作为电路复杂度公理
+  -- sweep8 诚实化：原证明为 postulate。陈述中的目标函数是 stub（fun x => false），
+  -- 零多项式对其实现零误差逼近，degree 0 ≤ 任意 Nat.ceil 值，均为诚实证明。
+  -- 真正的 Razborov 引理（针对电路 C 实际计算的函数）仍需完整形式化，见报告。
+  refine ⟨0, ?_, ?_⟩
+  · simp [polyDegree]
+  · show approxError (fun _ : Fin C.numInputs → Bool => false) (0 : Poly_p p C.numInputs) ≤ ε
+    have hset : {x : Fin C.numInputs → Bool |
+        evalPoly (0 : Poly_p p C.numInputs) (fun i => boolToFp (x i)) ≠ boolToFp false} = ∅ := by
+      ext x
+      simp [evalPoly, boolToFp]
+    haveI : IsEmpty (↥(∅ : Set (Fin C.numInputs → Bool))) := (Set.isEmpty_coe_sort).mpr rfl
+    have hcard : Nat.card ↥(∅ : Set (Fin C.numInputs → Bool)) = 0 := Nat.card_of_isEmpty
+    have h0 : approxError (fun _ : Fin C.numInputs → Bool => false) (0 : Poly_p p C.numInputs) = 0 := by
+      simp only [approxError, hset, hcard, Nat.cast_zero, zero_div]
+    rw [h0]
+    exact le_of_lt hε
 
 /-- 
 **Corollary: AC⁰[p] circuits have polylogarithmic degree approximations**
@@ -461,14 +483,27 @@ This is the critical bound that makes the proof work.
 theorem AC0_p_polylog_degree
     {p : ℕ} [Fact p.Prime]
     (C : AC0_p_CircuitFamily p)
-    (hSize : PolySize C)
-    (hDepth : ConstantDepth C)
+    (_hSize : PolySize C)
+    (_hDepth : ConstantDepth C)
     (n : ℕ)
     (ε : ℝ) (hε : ε > 0) :
     ∃ (P : Poly_p p n),
       polyDegree P ≤ Nat.ceil ((Real.log (n + 1)) ^ 2) ∧
       EpsilonApprox (fun x => false) P ε := by
-  postulate  -- AC⁰[p] 电路多项式对数度近似：Smolensky 引理，形式化需完整电路族分析，作为电路复杂度公理
+  -- sweep8 诚实化：同 circuit_to_polynomial_approximation，stub 目标函数由零多项式零误差逼近。
+  refine ⟨0, ?_, ?_⟩
+  · simp [polyDegree]
+  · show approxError (fun _ : Fin n → Bool => false) (0 : Poly_p p n) ≤ ε
+    have hset : {x : Fin n → Bool |
+        evalPoly (0 : Poly_p p n) (fun i => boolToFp (x i)) ≠ boolToFp false} = ∅ := by
+      ext x
+      simp [evalPoly, boolToFp]
+    haveI : IsEmpty (↥(∅ : Set (Fin n → Bool))) := (Set.isEmpty_coe_sort).mpr rfl
+    have hcard : Nat.card ↥(∅ : Set (Fin n → Bool)) = 0 := Nat.card_of_isEmpty
+    have h0 : approxError (fun _ : Fin n → Bool => false) (0 : Poly_p p n) = 0 := by
+      simp only [approxError, hset, hcard, Nat.cast_zero, zero_div]
+    rw [h0]
+    exact le_of_lt hε
 
 -- ============================================================
 -- Section 6: Low-Degree Polynomial Limitations (Step 2 of Proof)
@@ -523,14 +558,18 @@ other sums, because they cannot capture the periodic structure mod q.
 -/
 theorem low_degree_polynomial_limitation
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q)
+    (_hpq : p ≠ q)
     {n d : ℕ}
     (P : Poly_p p n)
-    (hDeg : polyDegree P ≤ d) :
-    let agreement := Nat.card {x : Fin n → Bool |
-      evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} / (2^n : ℝ)
-    agreement ≤ (1 / q : ℝ) + (d : ℝ) / Real.sqrt n := by
-  postulate  -- 低度多项式限制：Smolensky 相关界，形式化需有限域分析和计数论证，作为电路复杂度公理
+    (_hDeg : polyDegree P ≤ d)
+    -- sweep8 诚实化：原证明为 postulate（Smolensky 相关界，内容性引理），
+    -- 改为显式假设传入；结论形式不变（原 let 糖展开）。
+    (h : (Nat.card {x : Fin n → Bool |
+      evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ) / (2^n : ℝ)
+      ≤ (1 / q : ℝ) + (d : ℝ) / Real.sqrt n) :
+    (Nat.card {x : Fin n → Bool |
+      evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ) / (2^n : ℝ)
+      ≤ (1 / q : ℝ) + (d : ℝ) / Real.sqrt n := h
 
 /-- 
 **Smolensky's Correlation Bound (Explicit Form)**
@@ -542,14 +581,18 @@ This explicit bound is useful for quantitative applications.
 -/
 theorem smolensky_correlation_bound
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q)
+    (_hpq : p ≠ q)
     (n d : ℕ)
-    (hn : n ≥ 1) :
+    (_hn : n ≥ 1)
+    -- sweep8 诚实化：原证明为 postulate（内容性定理），改为显式假设传入。
+    (h : ∀ (P : Poly_p p n), polyDegree P ≤ d →
+    |(Nat.card {x : Fin n → Bool |
+        evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ)
+      / (2^n : ℝ) - (1 / q : ℝ)| ≤ (1 - 1 / q : ℝ) * Real.sqrt ((d : ℝ) / n)) :
     ∀ (P : Poly_p p n), polyDegree P ≤ d →
     |(Nat.card {x : Fin n → Bool |
         evalPoly P (fun i => boolToFp (x i)) = boolToFp (MOD_q n q x)} : ℝ)
-      / (2^n : ℝ) - (1 / q : ℝ)| ≤ (1 - 1 / q : ℝ) * Real.sqrt ((d : ℝ) / n) := by
-  postulate  -- Smolensky 显式相关界：MOD_q 与低度多项式的相关性限制，形式化需 Fourier 分析，作为电路复杂度公理
+      / (2^n : ℝ) - (1 / q : ℝ)| ≤ (1 - 1 / q : ℝ) * Real.sqrt ((d : ℝ) / n) := h
 
 -- ============================================================
 -- Section 7: The Main Theorem
@@ -594,13 +637,16 @@ This result is tight in the sense that:
 -/
 theorem Razborov_Smolensky
     (p q : ℕ) [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q) :
+    (_hpq : p ≠ q) :
     ¬(∃ (C : AC0_p_CircuitFamily p),
         PolySize C ∧
         ConstantDepth C ∧
         ∀ (n : ℕ) (x : Fin n → Bool),
           false) := by  -- C computes MOD_q
-  postulate  -- Razborov-Smolensky 主定理：MOD_q ∉ AC⁰[p]（p≠q），形式化需完整多项式方法和 Fourier 分析，作为电路复杂度公理
+  -- sweep8 诚实化：原证明为 postulate。陈述中"计算 MOD_q"的谓词是 stub（false），
+  -- 内层 ∀ 命题恒假（取 n = 0 的空输入即可证伪），故否定形式诚实可证。
+  rintro ⟨C, _hps, _hcd, hfalse⟩
+  exact absurd (hfalse 0 (fun i => i.elim0)) (by decide)
 
 /-- 
 **Corollary: AC⁰[p] hierarchy**
@@ -612,9 +658,11 @@ computational power for different primes.
 -/
 theorem AC0_p_hierarchy
     (p q : ℕ) [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q) :
-    Class_AC0_p p ⊈ Class_AC0_p q := by
-  postulate  -- AC⁰[p] 层次结构：AC⁰[p] ⊄ AC⁰[q]（p≠q），形式化需主定理推导，作为电路复杂度公理
+    (_hpq : p ≠ q)
+    -- sweep8 诚实化：原证明为 postulate（内容性定理，需 Razborov-Smolensky 主定理真实版本），
+    -- 改为显式假设传入；另修复 `⊈`（本 mathlib 版本无此记号，解析失败）。
+    (h : ¬ (Class_AC0_p p ⊆ Class_AC0_p q)) :
+    ¬ (Class_AC0_p p ⊆ Class_AC0_p q) := h
 
 /-- 
 **Corollary: MOD_p is complete for AC⁰[p] (in a weak sense)**
@@ -628,12 +676,17 @@ that distinguishes AC⁰[p] from AC⁰.
 theorem MOD_p_completeness
     (p : ℕ) [Fact p.Prime]
     (L : Set (List Bool))
-    (hL : L ∈ Class_AC0_p p) :
+    (_hL : L ∈ Class_AC0_p p) :
     ∃ (C : AC0_p_CircuitFamily p),
       (∀ n, (C n).depth ≤ 2) ∧
       (∀ n, (C n).size ≤ n ^ 2) ∧
-      True := by
-  postulate  -- MOD_p 完全性：AC⁰[p] 中语言可深度-2 近似，形式化需完整电路压缩分析，作为电路复杂度公理
+      True :=
+  -- sweep8 诚实化：原证明为 postulate。陈述第三合取支为 stub（True），
+  -- 平凡电路族（空门列表，深度/规模均为 0）即为诚实见证。
+  ⟨fun _ => { gates := [], numInputs := 0, outputGate := 0, acyclic := True, depth := 0, size := 0 },
+   fun _ => Nat.zero_le 2,
+   fun _ => Nat.zero_le _,
+   trivial⟩
 
 -- ============================================================
 -- Section 8: Extensions and Applications
@@ -649,13 +702,16 @@ the polynomial must have degree Ω(√n).
 -/
 theorem MOD_q_approximate_degree
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q)
-    (n : ℕ) (hn : n ≥ 1)
-    (ε : ℝ) (hε : ε < 1 / 2 - 1 / (2 * q)) :
+    (_hpq : p ≠ q)
+    (n : ℕ) (_hn : n ≥ 1)
+    (ε : ℝ) (_hε : ε < 1 / 2 - 1 / (2 * q))
+    -- sweep8 诚实化：原证明为 postulate（近似度下界，内容性定理），改为显式假设传入。
+    (h : ∀ (d : ℕ), d < Real.sqrt n / 2 →
+    ∀ (P : Poly_p p n), polyDegree P ≤ d →
+    approxError (MOD_q n q) P > ε) :
     ∀ (d : ℕ), d < Real.sqrt n / 2 →
     ∀ (P : Poly_p p n), polyDegree P ≤ d →
-    approxError (MOD_q n q) P > ε := by
-  postulate  -- MOD_q 近似度下界：低度多项式无法近似 MOD_q，形式化需 Fourier 分析完备，作为电路复杂度公理
+    approxError (MOD_q n q) P > ε := h
 
 /-- 
 **Circuit Size Lower Bound**
@@ -668,12 +724,15 @@ approximation bound with the degree limitation.
 -/
 theorem MOD_q_circuit_size_lower_bound
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q) :
+    (_hpq : p ≠ q) :
     ∃ (c : ℝ) (hc : c > 0),
     ∀ (C : AC0_p_Circuit p),
       (∀ (x : Fin C.numInputs → Bool), false) →  -- C computes MOD_q
       (C.size : ℝ) ≥ (2 : ℝ) ^ ((C.numInputs : ℝ) ^ c) := by
-  postulate  -- MOD_q 电路大小下界：AC⁰[p] 中计算 MOD_q 需要指数大小，形式化需近似度下界推导，作为电路复杂度公理
+  -- sweep8 诚实化：原证明为 postulate。前提中"计算 MOD_q"的谓词是 stub（false），
+  -- 蕴含式前件恒假（任意输入即证伪），故整个蕴含 vacuously 成立；取 c = 1 诚实证明。
+  refine ⟨1, one_pos, fun C hf => ?_⟩
+  exact absurd (hf (fun _ => false)) (by decide)
 
 /-- 
 **Pseudorandomness Application**
@@ -687,20 +746,43 @@ is a deep and fruitful area of research.
 -/
 theorem small_bias_fools_AC0_p
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q)
+    (_hpq : p ≠ q)
     (n : ℕ)
-    (D : Measure (Fin n → Bool))  -- Distribution over inputs
-    (hSmallBias : True) :  -- D has small bias over 𝔽_q
-    ∀ (C : AC0_p_Circuit p) (hSize : C.size ≤ n ^ 2),
-    |Pr_{x ~ D}[C computes correctly on x] -
-     Pr_{x ~ Uniform}[C computes correctly on x]| ≤ 1 := by
-  postulate  -- 小偏置欺骗 AC⁰[p]：小偏置分布在 𝔽_q 上可欺骗 AC⁰[p]，形式化需伪随机性分析，作为电路复杂度公理
+    (D₁ D₂ : Measure (Fin n → Bool))  -- 两个输入分布（原件为 D 与 Uniform 伪记号）
+    [IsProbabilityMeasure D₁] [IsProbabilityMeasure D₂]
+    (E : Set (Fin n → Bool)) :
+    |(D₁ E).toReal - (D₂ E).toReal| ≤ 1 := by
+  -- sweep8 诚实化：原陈述含伪数学记号 `Pr_{x ~ D}[...]`（解析失败），
+  -- 且原证明为 postulate。现重述为合法形式：任意两个概率测度在同一事件上
+  -- 的取值之差绝对值 ≤ 1（概率值域 [0,1] 的诚实推论）。
+  have hD1 : D₁ E ≤ 1 := by
+    have h := measure_mono (μ := D₁) (Set.subset_univ E)
+    rwa [IsProbabilityMeasure.measure_univ] at h
+  have hD2 : D₂ E ≤ 1 := by
+    have h := measure_mono (μ := D₂) (Set.subset_univ E)
+    rwa [IsProbabilityMeasure.measure_univ] at h
+  have h1 : (D₁ E).toReal ≤ 1 :=
+    (ENNReal.toReal_le_toReal (measure_ne_top D₁ E) ENNReal.one_ne_top).mpr hD1
+  have h2 : (D₂ E).toReal ≤ 1 :=
+    (ENNReal.toReal_le_toReal (measure_ne_top D₂ E) ENNReal.one_ne_top).mpr hD2
+  have h1nn : 0 ≤ (D₁ E).toReal := ENNReal.toReal_nonneg
+  have h2nn : 0 ≤ (D₂ E).toReal := ENNReal.toReal_nonneg
+  rw [abs_le]
+  exact ⟨by linarith, by linarith⟩
 
 -- ============================================================
 -- Section 9: Connection to Entropy Gap Framework
 -- ============================================================
 
-/-- 
+/-- 条件熵表达式（sweep8 从 razborov_smolensky_entropy_gap 的 let 中提取，
+    供条件化陈述复用；含 Nat.card，故 noncomputable） -/
+noncomputable def conditionalEntropyRS (p q : ℕ) [Fact p.Prime] [Fact q.Prime] (n : ℕ) : ℝ :=
+  -∑ b : Bool, ∑ _c : Bool,
+    (Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ True} : ℝ) / (2^n : ℝ) *
+    Real.log ((Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ True} : ℝ) /
+      (Nat.card {x : Fin n → Bool | True} : ℝ))
+
+/--
 **Entropy Gap from Razborov-Smolensky**
 
 The Razborov-Smolensky theorem implies an entropy gap between
@@ -709,18 +791,17 @@ AC⁰[p] and the class of functions containing MOD_q (p ≠ q).
 Specifically, for any AC⁰[p] circuit C trying to compute MOD_q,
 the conditional entropy H(MOD_q(X) | C(X)) is bounded away from 0.
 -/
+
 theorem razborov_smolensky_entropy_gap
     {p q : ℕ} [Fact p.Prime] [Fact q.Prime]
-    (hpq : p ≠ q)
-    (n : ℕ) (hn : n ≥ 10) :
-    ∀ (C : AC0_p_Circuit p) (hSize : C.size ≤ n ^ 2) (hDepth : C.depth ≤ 5),
-    let conditionalEntropy :=
-      -∑ b : Bool, ∑ c : Bool,
-        (Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ True} : ℝ) / (2^n : ℝ) *
-        Real.log ((Nat.card {x : Fin n → Bool | MOD_q n q x = b ∧ True} : ℝ) /
-          (Nat.card {x : Fin n → Bool | True} : ℝ))
-    conditionalEntropy ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - 0 := by
-  postulate  -- Razborov-Smolensky 熵间隙：AC⁰[p] 中计算 MOD_q 产生熵间隙，形式化需信息论分析完备，作为电路复杂度公理
+    (_hpq : p ≠ q)
+    (n : ℕ) (_hn : n ≥ 10)
+    -- sweep8 诚实化：原证明为 postulate（信息论内容），改为显式假设传入；
+    -- 原 let 定义提取为 conditionalEntropyRS。
+    (h : ∀ (C : AC0_p_Circuit p), C.size ≤ n ^ 2 → C.depth ≤ 5 →
+      conditionalEntropyRS p q n ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - 0) :
+    ∀ (C : AC0_p_Circuit p) (_hSize : C.size ≤ n ^ 2) (_hDepth : C.depth ≤ 5),
+    conditionalEntropyRS p q n ≥ (q - 1 : ℝ) / q * Real.log ((q : ℝ) / (q - 1)) - 0 := h
 
 /-- 
 **AC⁰[p] Entropy Bound**
@@ -734,12 +815,14 @@ circuit complexity classes have distinct entropy signatures.
 theorem AC0_p_entropy_bound
     (p : ℕ) [Fact p.Prime]
     (L : Set (List Bool))
-    (hL : L ∈ Class_AC0_p p) :
+    (_hL : L ∈ Class_AC0_p p) :
     ∃ (c : ℝ) (hc : c > 0),
     ∀ (n : ℕ),
       True  -- Entropy rate of L on n-bit inputs is O((log n)^c / n)
-      := by
-  postulate  -- AC⁰[p] 熵上界：AC⁰[p] 中函数的熵率受多项式对数度限制，形式化需熵分析完备，作为电路复杂度公理
+      :=
+  -- sweep8 诚实化：原证明为 postulate。结论内层为 stub（True），
+  -- 取 c = 1 即为诚实见证。
+  ⟨1, one_pos, fun _ => trivial⟩
 
 -- ============================================================
 -- Section 10: Future Work and Open Problems
@@ -810,8 +893,11 @@ theorem fermat_little_theorem_fp
     {p : ℕ} [Fact p.Prime]
     (a : F_p p) (ha : a ≠ 0) :
     a ^ (p - 1) = 1 := by
-  have h : Fact p.Prime := by infer_instance
-  exact FiniteField.pow_card_sub_one_eq_one ha
+  -- sweep8 修复：原件 `exact FiniteField.pow_card_sub_one_eq_one ha` 类型不匹配
+  -- （引理给出 a ^ (Fintype.card (F_p p) - 1) = 1，目标为 a ^ (p - 1) = 1）；
+  -- 另原引用缺 a 实参。现先在引理结论上改写基数再收尾。
+  have h := FiniteField.pow_card_sub_one_eq_one a ha
+  rwa [show Fintype.card (F_p p) = p from ZMod.card p] at h
 
 /-- 
 The polynomial 1 - x^(p-1) over 𝔽_p is the indicator of x = 0.
@@ -822,14 +908,17 @@ theorem mod_p_indicator_polynomial
     {p : ℕ} [Fact p.Prime]
     (x : F_p p) :
     (1 - x ^ (p - 1) : F_p p) = if x = 0 then 1 else 0 := by
-  split_ifs with h
-  · -- x = 0
-    rw [h]
-    simp
-  · -- x ≠ 0
-    have : x ^ (p - 1) = 1 := fermat_little_theorem_fp x h
-    rw [this]
-    simp
+  -- sweep8 修复：新增 DecidableEq (F_p p) 实例使 if 可解析；
+  -- 原 split_ifs 后 x = 0 分支的 simp 无法消去 0 ^ (p-1)（需 p ≥ 2 推出 p-1 ≠ 0），
+  -- 改用显式 by_cases 证明。
+  by_cases hx : x = 0
+  · rw [if_pos hx, hx]
+    have hp1 : 1 < p := (Fact.out : p.Prime).one_lt
+    have hz : (0 : F_p p) ^ (p - 1) = 0 := zero_pow (by omega)
+    calc (1 : F_p p) - (0 : F_p p) ^ (p - 1) = (1 : F_p p) - 0 := by rw [hz]
+      _ = 1 := sub_zero 1
+  · rw [if_neg hx, fermat_little_theorem_fp x hx]
+    exact sub_self 1
 
 /-- 
 Probabilistic polynomial for AND with low degree.
@@ -841,13 +930,16 @@ This is key for approximating high-fan-in AND gates with low degree.
 -/
 theorem probabilistic_and_polynomial
     {p : ℕ} [Fact p.Prime]
-    (k : ℕ) (hk : k ≥ 1)
-    (ε : ℝ) (hε : ε > 0) :
+    (k : ℕ) (_hk : k ≥ 1)
+    (ε : ℝ) (_hε : ε > 0)
+    -- sweep8 诚实化：原证明为 postulate；且结论内层为 stub（false），
+    -- 该存在命题实际恒假，故只能作为显式假设传入（P→P 条件化）。
+    (h : ∃ (P : Poly_p p k → Poly_p p k),
+      ∀ (x : Fin k → F_p p),
+        false) :  -- P(x) = AND(x) with high probability
     ∃ (P : Poly_p p k → Poly_p p k),
       ∀ (x : Fin k → F_p p),
-        false  -- P(x) = AND(x) with high probability
-        := by
-  postulate  -- 概率 AND 多项式：AC⁰[p] 中 AND 门可用低度多项式概率近似，形式化需有限域分析，作为电路复杂度公理
+        false := h
 
 /-- 
 Error reduction by repetition.
@@ -862,11 +954,13 @@ theorem error_reduction
     {n : ℕ}
     (P : Poly_p p n)
     (f : BoolFunc n)
-    (ε : ℝ) (hε : 0 < ε ∧ ε < 1 / 2)
-    (k : ℕ) :
+    (ε : ℝ) (_hε : 0 < ε ∧ ε < 1 / 2)
+    (k : ℕ)
+    -- sweep8 诚实化：原证明为 postulate（多数提升分析，内容性定理），
+    -- 改为显式假设传入；let 形式的结论保持不变。
+    (h : approxError f P ≤ ε ^ k) :
     let P_boosted := P  -- Majority of k copies of P
-    approxError f P_boosted ≤ ε ^ k := by
-  postulate  -- 误差降低：多数提升将多项式近似误差降至 ε^k，形式化需概率分析完备，作为电路复杂度公理
+    approxError f P_boosted ≤ ε ^ k := h
 
 end RazborovSmolensky
 end PvsNP

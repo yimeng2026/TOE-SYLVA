@@ -357,6 +357,7 @@ xychart-beta
 ### Formal Verification Status
 - **Lean 4 proofs are predominantly trivial/superficial**: Most "proven" theorems are definition rewrites (`rfl`, `norm_num`, `field_simp` + `ring`). Core physical derivations (Chern-Simons level, spectral action, Einstein-Cartan equations) remain as unproven axioms/postulates. See `Paper_Final.md` for the detailed formalization status table.
 - **"Zero sorry" ≠ fully proven**: The project achieved zero `sorry` keywords by rewriting incomplete proofs as `axiom` declarations. This is a syntactic achievement, not a proof of physical correctness.
+- **axiom 存量口径（2026-09-05 终轮实测）**：`git grep -c -E '^axiom[ \t]' -- 'sylva_formalization/**/*.lean'`（含 sylva_formalization 树内 archive/ 与机器生成模块）= **467 条**（HEAD 基线 477，sweep8 批次 −10；README 早期统计 478 为 2026-08 时点旧值）。另一会话历史口径（253/266）范围不同，禁止混用。逐条回写见 `framework/axiom_registry.json` `writeback_2026_09_05`，治理登记见 `framework/proof_status.md` §7。
 - **Estimated 160-200 additional hours** of work needed to achieve rigorous formalization of TKNN formula, Berry curvature, and Kubo formula (per consultant audit in `Paper_Final.md`).
 
 ### Content Quality
@@ -382,6 +383,13 @@ xychart-beta
 - **证明治理 (v7.22)** `proof_status.md` 建立四级声明分层、真实证明率定义
 - DASHBOARD.md、STATISTICS.md、QUALITY_SUMMARY.md 已于 2026-08-11 添加冻结说明，本处为 v7.30 同步补丁
 - v7.30: GAPS 全填, 93 编号文档
+
+### Sweep 进度补丁（2026-09-05 终轮口径同步）
+- **sweep7 anom1**：危险万能公理 `axiom postulate {α : Sort _} : α` 拆除，EntropyGapSpectral.lean 33 处使用点全部诚实化，RazborovSmolensky.lean 修复至 0 错（`framework/sweep7_anomaly_resolution_report.md`）
+- **sweep8 B1/T2a**：BerryCurvature 2 条 Clairaut 公理 mathlib 委托清偿（`framework/axiom_reduction_sweep8_report.md`）
+- **sweep8 B2/T4**：数据型 7 条公理清偿为 noncomputable def/theorem（`framework/axiom_reduction_sweep8_t4_report.md`）
+- **Q1 化学计量试点**：ReactionNetwork.lean 479→778 行，真实 `Matrix.rank` 委托 + rank-nullity 守恒律维数定理 + deficiency 去硬编码（`MM_rank_eq_two`、`MM_deficiency_zero_computed` 已达 THEOREM 级，`framework/chem_stoichiometry_q1_report.md`）
+- **axiom 总数（本仓库口径）**：477（HEAD）→ **467**（2026-09-05 实测，−10）；逐条回写 `framework/axiom_registry.json`
 
 ---
 
