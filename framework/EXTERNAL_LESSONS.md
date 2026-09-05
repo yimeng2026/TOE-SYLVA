@@ -113,3 +113,25 @@
 2. 条目状态迁移（待吸收 → 已吸收）时保留原行、追加落点列与日期注记，禁止删除历史行；
 3. 每条落点必须为本仓库真实路径或显式标注的仓外路径；引用外部数值一律标注来源文档与"是否经我方独立重算"；
 4. 本文档自身变更遵守 `framework\ERRATA_AND_NEGATIVE_RESULTS.md` 的留痕纪律。
+
+---
+
+## 六、2026-09-05 增补（MUFPF 时代）
+
+> **本轮来源基线**：UFPF 已更名 MUFPF（2026-08-24）；镜像 `C:\Users\一梦\Documents\kimi\workspace\UFPF` HEAD `41b3bb4`（2026-08-31T22:59:13+08:00）。全部条目经 2026-09-05 开文核验，详细评审见 `papers\光子行为_CNF解释\07_MUFPF更名与v0.40追踪评价.md`。
+> **登记说明**：以下 10 条为本轮候选经验（M 前缀，MUFPF 时代首轮）；状态列按 §一规则三级标注；§四汇总暂不重排，待条目迁移时按规则 1 同步。
+
+| # | 经验 | 来源位置（镜像路径） | 建议落点 | 状态 |
+|---|---|---|---|---|
+| M1 | **撞名即改名的品牌敏感度**：发现与 IEEE Universal Feature Perception Framework 英文检索撞名后两周内完成"讨论→计划→三阶段执行→通告"全链更名（164 文件 1581 处替换，预言数值零变更） | `universal_fixed_point_framework\paper\RENAME_NOTICE.md`（2026-08-24）；`docs\关于UFPF命名冲突的讨论.md`；RAP v0.47（`RAP_勘误与立场声明.md`:261） | `framework\SYLVA_IPStrategy.md`（TOE-SYLVA 检索撞名自查 + 更名预案四步法） | **待吸收（中）** |
+| M2 | **外部 AI 评审制度化闭环**：谷歌 AI 评审（三条建议）→ RAP 登记 → 执行两条（黑子定量排除、类比去负载）→ 缓办一条如实登记原因（Agda 移植"未纳入本次发布"）——评审-登记-执行-销号全管道留痕 | `docs\2026-0-8-31-1447_关于Paper44、Paper47和Paper48的评价.md` §五；`docs\2026-0-8-31-1658_关于Paper 47 v0.3 和Paper 48 v0.4的评价.md`；RAP v0.49 ⑥（:263） | `framework\VERIFICATION_PROTOCOL.md` 增补"外部评审登记-执行-销号"条款；联动 `papers\光子行为_CNF解释\_panel_records\` | **待吸收（高）** |
+| M3 | **盲登记+版本哈希+零声明变更纪律**：RAP v0.49 版本哈希 `96cbae0`（:4），v0.40–v0.49 每个版本均以"纯增量，预言数值不变，零声明变更"收尾 | `universal_fixed_point_framework\paper\RAP_勘误与立场声明.md` v0.49（:252–263） | 已吸收主体（U1/U2）；**增量**：`framework\BLIND_PREDICTIONS.md` 与 `framework\ERRATA_AND_NEGATIVE_RESULTS.md` 补"版本哈希 + 零声明变更"收尾句式模板 | **部分吸收** |
+| M4 | **诚实负结果登记（新案例）**：①荧光产额排除线——B 类静默抑制预言 vs 标准 K 荧光产额方向完全相反、低 2 个量级 ⟹ 盲登记排除线 + 适用域限定候选（RAP v0.41 ⑤）；②paper43 v3.0 保留 ρ=+0.214 不显著项与芦草沟组 p=0.152 不显著如实披露 | `RAP_勘误与立场声明.md`:255⑤；`paper43_shale_accumulation.md` v3.0 §4 第 3 项（:120–124） | `framework\ERRATA_AND_NEGATIVE_RESULTS.md`（排除线体例参考）；页岩 `02_数据验证报告.md` 对照 | **待吸收（中）** |
+| M5 | **观测验证自我证伪迭代**：paper48 v5→v11 六轮迭代全程留痕（弱场样本 17→99→400，p 值 0.037→0.014→0.00786 单调如实呈现）+ 四类显性证伪检验排除选择效应（缺口补全/KW p=0.00125/多元回归/匹配对照），残余"场依赖选择"登记 7.5 节局限 | `universal_fixed_point_framework\paper\paper48_topological_forbidden_frequency.md` v0.5（:571–609、826–851、990） | `papers\光子行为_CNF解释\05_数据验证报告.md` 增补"选择效应显性证伪"预登记节候选；`framework\VERIFICATION_PROTOCOL.md` 证伪边界条款联动（U-新2 合并） | **待吸收（高）** |
+| M6 | **Lean 零 sorry 工程硬门槛**：`lake build` 2454 jobs 零警告零 sorry 口径贯穿各论文；2026-09-05 我方全目录 grep 实测：108 个 .lean 文件字符串 sorry 命中 10 文件全为注释、证明位真 sorry 零命中——声称口径与实测一致 | `paper44_photon_topology.md`:177/199/331/762；镜像 `formal_proof\UFPFormalization\UFPFormalization\`（108 文件） | `sylva_formalization\` sorry 治理 + `framework\proof_status.md`（"字符串级 + 证明位级"双 grep 核查范式入档） | **部分吸收** |
+| M7 | **类比语言去负载化声明模板**：法拉第笼声明升级为"纯结构同构——范畴层面态射映射一致性，法拉第笼/内向屏蔽仅为纯代数结构占位符"（paper44 v0.40）；仿形术语声明"结构同构而非力学相似，接触/摩擦/惯性无对应物"（paper47 §1.1）——负载范围/对应层级/不承载内容三要素齐备 | `paper44_photon_topology.md`:74、805；`paper47_mimetic_induction_theory.md`:14、72 | `papers\光子行为_CNF解释\04_重构优化理论_v2.0.md` 与 `01_CNF光子理论.md` 类比使用处统一补三要素声明（修订候选） | **待吸收（中）** |
+| M8 | **三层归属合规发布**：稳定岛知乎稿三层署名（数据/代码署李广好 + 知乎意象署于见隐 + UFPF 署名并列）+ 三条禁用措辞 grep 零命中扫描（"证明了 UFPF"/"真正原因"/"本质上就是"）+ 三层许可约束（Apache-2.0 + 知乎署名 + CC-BY-4.0/MIT 并行） | `docs\discuss\2026-08-26-1453_文件内容比较.md`（:1569、2611–2679、3060） | `framework\SYLVA_EthicsFramework.md`；对外稿件模板（知乎发布前禁用措辞扫描流程） | **待吸收（中）** |
+| M9 | **治理接口分层双轨**：公共层只裁决当前、不裁决未来；公共模板 + 各自副本 + 对外自报三件套；我方"锚点可证伪/proof_status 宁低勿高/路径×层次矩阵"提议被全文采纳并登记对接规格 v0.2 | `docs\UFPF检测矩阵治理声明.md`（2026-08-14）§一–§四；`universal_fixed_point_framework\paper\MUFPF_检测矩阵对接对齐说明.md` v0.2 | `framework\VERIFICATION_PROTOCOL.md` §8 治理接口节；`papers\光子行为_CNF解释\00_立项书.md` 协作条款 | **部分吸收**（我方原创提议，对方制度化执行形态为新增借鉴点） |
+| M10 | **定位降级护体策略**：paper45 主动降级为"翻译/可表达性案例"（地位声明"不主张已被外部验证……压力测试而非两已验证理论合并"），超范畴扩展声明"仅作翻译接口不承担本体命题"——防御性写作体例典范（其 §1.2 强表述回潮为对照教训，见 07 号 §4.1） | `universal_fixed_point_framework\paper\paper45_spectral_EFT_dissipative_fluids.md` v1.3 §1.1（:1–25）；RAP:145 | `papers\` 各理论论文稿态块/地位声明模板；`framework\PARAMETER_DISCIPLINE.md` 声称分级联动 | **待吸收（中）** |
+
+**本轮附注**：①追踪评价新文档 `papers\光子行为_CNF解释\07_MUFPF更名与v0.40追踪评价.md` 已建（v1.0，2026-09-05）；②本轮核验发现定理 2.4（Z₀=4π/α·ℏ/e²）α 倒置错误（偏差 α⁻²≈1.88×10⁴，✓ 标注不成立，无注册脚本覆盖）——**反向案例**：带 ✓ 数值行必须有 check() 脚本背书，建议并入 M2/M6 落点时一并制度化；③trivial（Proof-Trivial）自 2026-08-12 无新内容（阴性结果，检索索引局限已声明），§三条目维持。
