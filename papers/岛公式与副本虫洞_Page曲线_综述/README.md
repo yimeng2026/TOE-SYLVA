@@ -1,4 +1,4 @@
-﻿# 岛公式与副本虫洞 / Page曲线 — 综述
+# 岛公式与副本虫洞 / Page曲线 — 综述
 > ⚠️ AI 辅助生成
 > **组**: 量子引力 / 黑洞信息 / 全息对偶
 
@@ -6,7 +6,7 @@
 
 **黑洞信息悖论（Black Hole Information Paradox）** 是自 1976 年 Hawking 发现黑洞热辐射以来，量子引力领域最深刻的理论危机。核心矛盾在于：如果黑洞通过 Hawking 辐射最终完全蒸发，入射物质的纯态信息将永久丢失——这违反了量子力学的幺正性。Page（1993）率先指出，如果幺正性成立，辐射熵必须遵循"Page 曲线"——先线性增长到黑洞半蒸发点（Page 时间），然后降为零——而非 Hawking 计算预言的单调增长。
 
-经过近半个世纪的求索，2019 年 Penington、Almheiri-Engelhardt-Marolf-Maxfield（AEMM）等通过引力路径积分中的**副本虫洞（Replica Wormhole）** 与 **岛公式（Island Formula）** 给出了突破性方案。岛公式将辐射熵的 fine-grained 计算修正为广义熵：$S = \min_X\{\operatorname{ext}_X[\mathrm{Area}(\partial X)/4G_N + S_{\text{bulk}}(\Sigma_X)]\}$，其中"岛" $X$ 是黑洞内部的一个区域，其边界贡��了关键的面积项——它恰好补偿了 Hawking 辐射的熵增长，使总熵在 Page 时间后下降。
+经过近半个世纪的求索，2019 年 Penington、Almheiri-Engelhardt-Marolf-Maxfield（AEMM）等通过引力路径积分中的**副本虫洞（Replica Wormhole）** 与 **岛公式（Island Formula）** 给出了突破性方案。岛公式将辐射熵的 fine-grained 计算修正为广义熵：$S = \min_X\{\operatorname{ext}_X[\mathrm{Area}(\partial X)/4G_N + S_{\text{bulk}}(\Sigma_X)]\}$，其中"岛" $X$ 是黑洞内部的一个区域，其边界贡献了关键的面积项——它恰好补偿了 Hawking 辐射的熵增长，使总熵在 Page 时间后下降。
 
 ## 当前内容清单
 

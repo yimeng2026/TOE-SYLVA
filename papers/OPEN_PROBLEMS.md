@@ -11,12 +11,12 @@
 
 | 编号 | 问题 | 当前最佳理解 | 阻塞原因 | 优先级 |
 |:--:|:--|:--|:--|:--:|
-| O1 | $\alpha^{-1}$ 的独立推导 | $n_{\text{CS}} = 137$ 为 Chern-Simons 耦合常数的整数值；$\alpha^{-1}_{\text{exp}} = 137.035999084$ 与之"数值接近"，但无推导链 | ✅ 已解决 (v7.54) | 参见 [[doc:101]] — framework/101_alpha_inverse_tri_chain.md，Chern-Simons/弦紧化/CNF 层间耦合三链交叉验证闭合 | ⭐⭐⭐ → ✅ |
-| O2 | 非 BPS 黑洞的 $S_{\text{BH}} = \log Z_{\text{DT}}$ 推广 | CLAIM 2 仅在 BPS 极限下得到 Strominger-Vafa (1996) 支撑 | ✅ 已解决 (v7.55) | 参见 [[doc:103]] — framework/103_non_bps_black_hole_dt.md，非 BPS 膜构型 DT 不变量推广完成 | ⭐⭐⭐ → ✅ |
-| O3 | 暗能量全局谱 | GAPS.md 已标记"暗能量"主题（部分覆盖于 04_dark_matter_dark_energy.md），但尚无类似 UFPF 的全局谱预言（如能标、标度指数、演化方程） | ✅ 已解决 (v7.55) | 参见 [[doc:102]] — framework/102_dark_energy_global_spectrum.md，能标/标度指数/演化方程完整推导 | ⭐⭐⭐ → ✅ |
+| O1 | $\alpha^{-1}$ 的独立推导 | $n_{\text{CS}} = 137$ 为 Chern-Simons 耦合常数的整数值；$\alpha^{-1}_{\text{exp}} = 137.035999084$ 与之"数值接近"，但无推导链 | ✅ 已解决 (v7.54) | 参见 [[doc:101]]（该编号未在 INDEX.md 登记，2026-09-05 标注） — framework/101_fine_structure_constant_derivation.md（原误写为 101_alpha_inverse_tri_chain.md，2026-09-05 更正），Chern-Simons/弦紧化/CNF 层间耦合三链交叉验证闭合 | ⭐⭐⭐ → ✅ |
+| O2 | 非 BPS 黑洞的 $S_{\text{BH}} = \log Z_{\text{DT}}$ 推广 | CLAIM 2 仅在 BPS 极限下得到 Strominger-Vafa (1996) 支撑 | ✅ 已解决 (v7.55) | 参见 [[doc:103]]（该编号未在 INDEX.md 登记，2026-09-05 标注） — framework/103_non_bps_black_hole_generalization.md（原误写为 103_non_bps_black_hole_dt.md，2026-09-05 更正），非 BPS 膜构型 DT 不变量推广完成 | ⭐⭐⭐ → ✅ |
+| O3 | 暗能量全局谱 | GAPS.md 已标记"暗能量"主题（部分覆盖于 04_dark_matter_dark_energy.md），但尚无类似 UFPF 的全局谱预言（如能标、标度指数、演化方程） | ✅ 已解决 (v7.55) | 参见 [[doc:102]]（该编号未在 INDEX.md 登记，2026-09-05 标注） — framework/102_dark_energy_toe_bridge.md（原误写为 102_dark_energy_global_spectrum.md，2026-09-05 更正），能标/标度指数/演化方程完整推导 | ⭐⭐⭐ → ✅ |
 | O4 | 先验导出层级 | ✅ 已解决 (v7.52) | 新建 framework/99_postulate_dependency_dag.md，系统化逆向追溯每个 Postulate 到不可再归约初设，公理依赖 DAG 完成 | ⭐⭐ → ✅ |
 | O5 | 非交换几何 (doc:27/39) 的谱三元组与 TOE 主方程的显式映射 | ✅ 已解决 (v7.51) | 新建 framework/97_ncg_bridge_toe.md，谱三元组 (A, H, D) → S_BH = log Z_DT 完整推导链闭合 | ⭐⭐ → ✅ |
-| O6 | p-adic 物理的 Adelic 统一 | doc:81 和 papers/p-adic物理与Adelic统一_综述 给出了 p-adic 弦论与 Adelic 形式的初探，但未给出完整 Adelization 方案——即将所有 p-进分量与实分量的乘积收敛到有限物理量 | ✅ 已解决 (v7.53) | 参见 [[doc:100]] — framework/100_adelic_bridge.md，Tate/Fontaine/棱镜上同调与 TOE 主方程集成完成 | ⭐⭐ → ✅ |
+| O6 | p-adic 物理的 Adelic 统一 | doc:81 和 papers/p-adic物理与Adelic统一_综述 给出了 p-adic 弦论与 Adelic 形式的初探，但未给出完整 Adelization 方案——即将所有 p-进分量与实分量的乘积收敛到有限物理量 | ✅ 已解决 (v7.53) | 参见 [[doc:100]]（该编号未在 INDEX.md 登记，2026-09-05 标注） — framework/100_padic_adelic_to_toe_bridge.md（原误写为 100_adelic_bridge.md，2026-09-05 更正），Tate/Fontaine/棱镜上同调与 TOE 主方程集成完成 | ⭐⭐ → ✅ |
 | O7 | Hilbert 空间在 Agda 侧的完备性 | Agda `Sylva.Real.Complete` 中的完备性仍为 postulate 骨架（~20 postulate）；Hilbert 空间定义在 `Sylva.Category.Quantum` 中以 $\mathbb{Q}^3$ 有限域构造 | 真实 $\mathbb{R}$ 上完备 Hilbert 空间的形式化需替换约 149 个 postulate，当前受限于 Windows OOM / 物理机 ≥ 16GB RAM | ⭐⭐ |
 | O8 | lean `lake build` CI 编译验证 | CI 配置 `.github/workflows/ci.yml` 已写但从未在 CI 环境中真正执行过 `lake build` | 36 万文件仓库在 CI 上 OOM；需瘦身或选择核心模块子集编译 | ⭐ |
 | O9 | 辛几何 (doc:79) 与 TOE 主方程的数学对应 | ✅ 已解决 (v7.50) | 新建 framework/96_symplectic_bridge_toe.md，GW 不变量辛结构与 CNF 层间耦合对应关系已建立 | ⭐ → ✅ |
