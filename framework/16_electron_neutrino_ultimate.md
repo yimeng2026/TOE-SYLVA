@@ -513,7 +513,7 @@ $$\vec{\mu}_D = -g \frac{e}{2m} \vec{S} = -g \frac{e\hbar}{4m} \vec{\sigma}$$
 
 这给出**玻尔磁子**作为电子磁矩的单位：
 
-$$\mu_B = \frac{e\hbar}{2m_e} \approx 5.788 \times 10^{-5}$ eV/T
+$$\mu_B = \frac{e\hbar}{2m_e} \approx 5.788 \times 10^{-5}\ \text{eV/T}$$
 
 **实验发现**：实际电子的 $g$ 因子略大于2：
 

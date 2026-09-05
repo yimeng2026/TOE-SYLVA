@@ -88,7 +88,7 @@ $$H^i(X, \mathcal{F}) = 0$$
 | 除子 (divisor) | 规范场配置 |
 | 曲线 (curve) | 瞬子贡献 |
 
-**参考文献关联**: 参见 [TOE框架第52章: 弦理论基础](../52_string_theory_foundations.md)
+**参考文献关联**: 参见 TOE框架第52章《弦理论基础》（原链接 `../52_string_theory_foundations.md` 已失效：目标文件不存在，2026-09-05 标注）
 
 ---
 
@@ -619,24 +619,24 @@ Gromov-Witten不变量 $n_{g, \beta}$ 的物理意义：
 
 本章节与TOE框架其他文档形成如下关联网络：
 
-**向上关联** (基础支撑):
-- [第50章: 微分几何基础](../50_differential_geometry.md) — Kähler流形、Ricci曲率
-- [第51章: 代数拓扑](../51_algebraic_topology.md) — 上同调理论、示性类
-- [第52章: 弦理论基础](../52_string_theory_foundations.md) — 世界面理论、D-brane
+**向上关联** (基础支撑):（本节所引"第NN章"与"附录"链接的目标文件均不存在，2026-09-05 标注为失效；原目标路径以行内代码保留备查）
+- 第50章: 微分几何基础（原链接 `../50_differential_geometry.md` 已失效） — Kähler流形、Ricci曲率
+- 第51章: 代数拓扑（原链接 `../51_algebraic_topology.md` 已失效） — 上同调理论、示性类
+- 第52章: 弦理论基础（原链接 `../52_string_theory_foundations.md` 已失效） — 世界面理论、D-brane
 
 **向下关联** (物理应用):
-- [第53章: 超引力与紧化](../53_supergravity_compactification.md) — $N=1, N=2$ 超引力
-- [第54章: 规范场论](../54_gauge_field_theory.md) — 规范对称性破缺
-- [第55章: 黑洞热力学](../55_black_hole_thermodynamics.md) — 熵的计算
+- 第53章: 超引力与紧化（原链接 `../53_supergravity_compactification.md` 已失效） — $N=1, N=2$ 超引力
+- 第54章: 规范场论（原链接 `../54_gauge_field_theory.md` 已失效） — 规范对称性破缺
+- 第55章: 黑洞热力学（原链接 `../55_black_hole_thermodynamics.md` 已失效） — 熵的计算
 
 **平行关联** (数学工具):
-- [第56章: 表示论与群论](../56_representation_group_theory.md) — 规范群结构
-- [第58章: 同调代数](../58_homological_algebra.md) — 导出范畴的深层理论
-- [第59章: 非交换几何](../59_noncommutative_geometry.md) — D-brane代数结构
+- 第56章: 表示论与群论（原链接 `../56_representation_group_theory.md` 已失效） — 规范群结构
+- 第58章: 同调代数（原链接 `../58_homological_algebra.md` 已失效） — 导出范畴的深层理论
+- 第59章: 非交换几何（原链接 `../59_noncommutative_geometry.md` 已失效） — D-brane代数结构
 
 **外部引用**:
-- [附录B: Calabi-Yau分类数据库](../appendix_B_cy_classification.md)
-- [附录C: Gromov-Witten不变量表](../appendix_C_gw_tables.md)
+- 附录B: Calabi-Yau分类数据库（原链接 `../appendix_B_cy_classification.md` 已失效）
+- 附录C: Gromov-Witten不变量表（原链接 `../appendix_C_gw_tables.md` 已失效）
 
 ---
 

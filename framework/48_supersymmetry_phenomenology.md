@@ -530,7 +530,7 @@ $$v_u = v \sin\beta, \quad v_d = v \cos\beta$$
 将超势中的Yukawa项展开到标量分量：
 $$W \supset y^u \hat{U}^c \hat{Q} \hat{H}_u \rightarrow y^u u_R^c (u_L H_u^0 - d_L H_u^+)$$
 
-取 $H_u^0$ 的VEV，得上夸克Dirac质量项：$y^u v_u \bar{u}_R u_L + \text{h.c.}$$\square$
+取 $H_u^0$ 的VEV，得上夸克Dirac质量项：$y^u v_u \bar{u}_R u_L + \text{h.c.}$ $\square$
 
 **定理 4.3.4 (MSSM中的Higgs质量树级上限)**
 
@@ -1103,11 +1103,11 @@ pMSSM（Phenomenological MSSM）用19个参数参数化：
 - **文档版本**: 1.0
 - **专题编号**: 48
 - **所属系列**: TOE理论框架 (Theory of Everything Framework)
-- **交叉引用**: 
-  - [TOE框架总览](./00_toe_framework_overview.md)
-  - [标准模型与超出](./47_standard_model_beyond.md)
-  - [超弦理论基础](./49_superstring_theory.md)
-  - [超引力量子化](./50_supergravity_quantization.md)
+- **交叉引用**:（下列 4 个链接的目标文件均不存在，2026-09-05 标注为失效；原目标路径以行内代码保留备查）
+  - TOE框架总览（原链接 `./00_toe_framework_overview.md` 已失效：目标文件不存在；相近主题现存 `PROJECT_OVERVIEW.md`，推断对应）
+  - 标准模型与超出（原链接 `./47_standard_model_beyond.md` 已失效：目标文件不存在；相近主题现存 `44_particle_physics_standard_model.md`，推断对应）
+  - 超弦理论基础（原链接 `./49_superstring_theory.md` 已失效：目标文件不存在；相近主题现存 `25_string_theory_duality.md`，推断对应）
+  - 超引力量子化（原链接 `./50_supergravity_quantization.md` 已失效：目标文件不存在；相近主题现存 `11_quantum_gravity.md`，推断对应）
 
 ---
 

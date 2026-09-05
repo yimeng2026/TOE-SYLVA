@@ -3,7 +3,7 @@
 **文档编号**: TOE-45  
 **版本**: 1.0  
 **最后更新**: 2026-04-19  
-**关联文档**: [TOE-10 信息本体论](10_information_ontology.md), [TOE-20 SYLVA架构](20_sylva_architecture.md), [TOE-30 层化网络理论](30_layered_networks.md), [TOE-40 量子引力与信息](40_quantum_gravity_information.md)
+**关联文档**: TOE-10 信息本体论（原链接 `10_information_ontology.md` 已失效：目标文件不存在，2026-09-05 标注）, TOE-20 SYLVA架构（原链接 `20_sylva_architecture.md` 已失效：目标文件不存在，2026-09-05 标注）, TOE-30 层化网络理论（原链接 `30_layered_networks.md` 已失效：目标文件不存在，2026-09-05 标注）, TOE-40 量子引力与信息（原链接 `40_quantum_gravity_information.md` 已失效：目标文件不存在，2026-09-05 标注）
 
 ---
 

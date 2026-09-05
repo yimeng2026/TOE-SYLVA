@@ -958,7 +958,8 @@ $$-\frac{m}{4\pi\hbar^2 a_s} = \int\frac{d^3k}{(2\pi)^3}\left(\frac{1}{2\varepsi
 $$\mu = \xi\varepsilon_F, \quad \xi \approx 0.37$$
 
 $$
-$$E_0 = \xi E_{\text{FG}}$$
+E_0 = \xi E_{\text{FG}}
+$$
 
 其中 $E_{\text{FG}}$ 为非相互作用费米气体能量。
 

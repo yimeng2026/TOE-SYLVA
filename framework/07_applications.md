@@ -2,7 +2,7 @@
 
 > **文档版本**: 1.0  
 > **更新日期**: 2026-04-18  
-> **关联文档**: [TOE框架核心理论](./01_framework_overview.md) | [数学结构](./02_mathematical_structure.md)
+> **关联文档**: TOE框架核心理论（原链接 `./01_framework_overview.md` 已失效：目标文件不存在，2026-09-05 标注） | 数学结构（原链接 `./02_mathematical_structure.md` 已失效：目标文件不存在，2026-09-05 标注）
 
 ---
 
@@ -640,12 +640,14 @@ flowchart TD
 
 ### B. 相关文档索引
 
-- [核心理论](./01_framework_overview.md)
-- [数学结构](./02_mathematical_structure.md)
-- [实验验证](./03_experimental_tests.md)
-- [哲学意涵](./04_philosophical_implications.md)
-- [技术路线图](./05_roadmap.md)
-- [风险评估](./06_risk_assessment.md)
+（下列 6 个链接的目标文件均不存在，2026-09-05 标注为失效；原目标路径以行内代码保留备查）
+
+- 核心理论（原链接 `./01_framework_overview.md` 已失效：目标文件不存在）
+- 数学结构（原链接 `./02_mathematical_structure.md` 已失效：目标文件不存在）
+- 实验验证（原链接 `./03_experimental_tests.md` 已失效：目标文件不存在；相近主题现存 `01_experimental_verification.md`，推断对应）
+- 哲学意涵（原链接 `./04_philosophical_implications.md` 已失效：目标文件不存在）
+- 技术路线图（原链接 `./05_roadmap.md` 已失效：目标文件不存在；相近主题现存 `SYLVA_DeepRoadmap.md`，推断对应）
+- 风险评估（原链接 `./06_risk_assessment.md` 已失效：目标文件不存在）
 
 ### C. 参考文献（建议阅读）
 
