@@ -49,7 +49,7 @@
 |------|------|
 | `SYLVA_v6_普适对称性与万物理论.md` | DRAFT — v6 普适对称性 |
 | `SYLVA_v6_意识桥假说.md` | DRAFT — ⚠️ 高度推测性假说 |
-| `SYLVA_v6_暗扇区与阴阳对偶.md` | DRAFT — v6 暗扇区 |
+| `SYLVA_v6_暗扇区与阴阳对偶.md` | ⛔ 已移入隔离区 releases/quarantine/（原因见 ERRATA.md E15），不作为依据 |
 | `SYLVA_comprehensive_survey/` | DRAFT — v6 综合综述子目录 |
 
 ## 四、审计与质量控制文档

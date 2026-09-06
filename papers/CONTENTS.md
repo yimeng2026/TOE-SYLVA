@@ -1,4 +1,4 @@
-﻿# papers/ 目录完整索引 — COMPREHENSIVE CONTENTS
+# papers/ 目录完整索引 — COMPREHENSIVE CONTENTS
 
 > **维护者**: TOE-SYLVA Working Group
 > **创建日期**: 2026-08-01
@@ -60,7 +60,7 @@ TOE-SYLVA_Master_Academic.md ← 权威基准
 | 文件名 | 标题/主题 | 语言 | 大小 | 状态 |
 |--------|----------|------|------|------|
 | `SYLVA_v6_普适对称性与万物理论.md` | SYLVA v6 普适对称性与万物理论 | CN | 12.0 KB | **DRAFT** |
-| `SYLVA_v6_暗扇区与阴阳对偶.md` | SYLVA v6 暗扇区与阴阳对偶 — 暗物质/暗能量统一 | CN | 15.2 KB | **DRAFT** |
+| `SYLVA_v6_暗扇区与阴阳对偶.md` | SYLVA v6 暗扇区与阴阳对偶 — 暗物质/暗能量统一 | CN | 15.2 KB | ⛔ 已移入隔离区 `releases/quarantine/`（原因见 ERRATA.md E15），不作为依据 |
 | `SYLVA_v6_意识桥假说.md` | SYLVA v6 意识桥假说 — ⚠️ 高度推测性哲学假说 | CN | 12.5 KB | **DRAFT** |
 
 > ⚠️ `SYLVA_v6_意识桥假说.md` 为高度推测性内容，未经实验验证。其英文对应主题见 `TOE-SYLVA_Master_Academic.md` 相关章节。
@@ -69,7 +69,7 @@ TOE-SYLVA_Master_Academic.md ← 权威基准
 
 ```
 SYLVA_v6_普适对称性与万物理论.md ← SYLVA框架核心
-├── SYLVA_v6_暗扇区与阴阳对偶.md ← 暗物质/暗能量应用
+├── SYLVA_v6_暗扇区与阴阳对偶.md ← 已移入隔离区 releases/quarantine/（原因见 ERRATA.md E15），从活跃交叉引用中移除
 ├── SYLVA_v6_意识桥假说.md ← 意识假说（独立但相关）
 └── TOE-SYLVA_Master_Academic.md ← 英文权威版
 ```
@@ -204,7 +204,7 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 | `OTOC与量子信息置乱_综述/` | OTOC 与量子混沌 | SYK-cMERA |
 | `Schubert演算与旗流形计数_综述/` | Schubert 演算 | 计数几何 |
 | `Tomita-Takesaki模算子与代数量子场论_综述/` | 模算子与 AQFT | 量子场论 |
-| `暗物质与暗能量探测_综述/` | 暗物质/暗能量 | SYLVA_v6_暗扇区 |
+| `暗物质与暗能量探测_综述/` | 暗物质/暗能量 | SYLVA_v6_暗扇区（已移入隔离区，见 ERRATA.md E15） |
 | `表面科学与界面物理_综述/` | 表面科学 | REFERENCE |
 | `材料科学与纳米物理_综述/` | 材料物理 | REFERENCE |
 | `超导物理与低温物理_综述/` | 超导物理 | REFERENCE |
@@ -360,7 +360,7 @@ COUNTING_GEOMETRY_SURVEY.md ← v6基础综述
 | **Khovanov-GW** | `TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md` |
 | **SYK-cMERA** | `TOE-SYLVA_Theory_SYK_cMERA_Global.md` |
 | **p-adic SYK** | `TOE-SYLVA_Theory_padic_SYK_Spectrum.md` |
-| **暗物质/暗能量** | `SYLVA_v6_暗扇区与阴阳对偶.md` |
+| **暗物质/暗能量** | `SYLVA_v6_暗扇区与阴阳对偶.md`（已移入隔离区 releases/quarantine/，原因见 ERRATA.md E15，不作为依据） |
 | **对称性/万物理论** | `SYLVA_v6_普适对称性与万物理论.md` |
 | **意识假说** | `SYLVA_v6_意识桥假说.md` ⚠️ |
 | **AI质量控制** | `AI_HALLUCINATION_REPORT_FINAL.md` → `AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md` |

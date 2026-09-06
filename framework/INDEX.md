@@ -1,4 +1,4 @@
-﻿# TOE框架文档索引 (INDEX.md)
+# TOE框架文档索引 (INDEX.md)
 
 > **文档版本**: v3.8  
 > **创建日期**: 2026-04-18  
@@ -535,7 +535,7 @@ four_forces_unification_*.md
 | `TOE-SYLVA_Theory_Khovanov_GW_FullyFaithful.md` | Khovanov-GW Fully Faithful | EN | DRAFT | Khovanov同调与GW不变量全忠实函子 |
 | `TOE-SYLVA_Theory_padic_SYK_Spectrum.md` | p-adic SYK Spectrum | EN | DRAFT | p-adic Hodge理论与SYK模型谱 |
 | `TOE-SYLVA_Theory_SYK_cMERA_Global.md` | SYK-cMERA Global | EN | DRAFT | SYK模型与cMERA全息对偶全局版 |
-| `SYLVA_v6_暗扇区与阴阳对偶.md` | 暗扇区与阴阳对偶 | CN | DRAFT | SYLVA暗物质/暗能量统一解释 |
+| `releases/quarantine/SYLVA_v6_暗扇区与阴阳对偶.md` | 暗扇区与阴阳对偶 | CN | ⛔ QUARANTINE | 已移入隔离区（ERRATA.md E15：阴阳哲学冒充暗扇区物理本体），不作为依据 |
 | `SYLVA_v6_普适对称性与万物理论.md` | 普适对称性与万物理论 | CN | DRAFT | SYLVA框架的普适对称性理论 |
 | `SYLVA_v6_意识桥假说.md` | 意识桥假说 | CN | DRAFT | 高度推测性：量子测量与意识统一假说 |
 | `AI_FAILURE_TO_VERIFIABLE_PROTOCOL.md` | AI Failure to Verifiable Protocol | EN | REFERENCE | AI失败转可验证协议的内部文档 |

@@ -37,7 +37,7 @@
 | `TOE-SYLVA_Theory_padic_SYK_Spectrum.md` | 8 节 | 4 条 | 14 条 | ✅ |
 | `SYLVA_v6_意识桥假说.md` | 3 章 | 0 | 0 | ✅ DRAFT |
 | `SYLVA_v6_普适对称性与万物理论.md` | 3 章 | 0 | 0 | ✅ DRAFT |
-| `SYLVA_v6_暗扇区与阴阳对偶.md` | 3 章 | 0 | 0 | ✅ DRAFT |
+| `releases/quarantine/SYLVA_v6_暗扇区与阴阳对偶.md` | — | — | — | ⛔ 已隔离（ERRATA E15），移出活跃交叉引用统计 |
 | `对两则评论的回应.md` | — | — | — | ✅ |
 | `关于Majorana2的回复.md` | — | — | — | ✅ |
 | `UFPF仓库评价.md` | — | — | — | ✅ |

@@ -62,4 +62,4 @@ SYLVA仓库中的"量子材料与量子器件制备综述"是一篇**综述性�
 - papers/TOE-SYLVA_Master_Academic.md — TOE-SYLVA 主统一理论（英文）
 - papers/TOE-SYLVA_Master_Academic_CN.md — 主统一理论中文版
 - papers/SYLVA_v6_普适对称性与万物理论.md — SYLVA v6 普适对称性
-- papers/SYLVA_v6_暗扇区与阴阳对偶.md — SYLVA v6 暗扇区假说
+- papers/SYLVA_v6_暗扇区与阴阳对偶.md — SYLVA v6 暗扇区假说（已移入隔离区 releases/quarantine/，原因见 ERRATA.md E15，不作为依据）

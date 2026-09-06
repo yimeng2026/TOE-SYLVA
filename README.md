@@ -247,7 +247,7 @@ SYLVA 项目由 yimeng2026 / TOE-SYLVA Working Group 发起，继承的思想传
 | Master Unified Theory | `papers/TOE-SYLVA_Master_Unified_Theory.md` | ✅ Active | Extended unified framework |
 | Breakthroughs | `papers/TOE-SYLVA_Breakthroughs.md` | ✅ Active | Key breakthroughs summary |
 | Breakthroughs v2 | `papers/TOE-SYLVA_Breakthroughs_v2.md` | ✅ Active | Updated breakthroughs |
-| 暗扇区与阴阳对偶 | `papers/SYLVA_v6_暗扇区与阴阳对偶.md` | ✅ Active | Dark sector & yin-yang duality |
+| 暗扇区与阴阳对偶 | `releases/quarantine/SYLVA_v6_暗扇区与阴阳对偶.md` | ⛔ Quarantined | Moved to quarantine; see ERRATA.md E15 — not to be cited as basis |
 | 普适对称性与万物理论 | `papers/SYLVA_v6_普适对称性与万物理论.md` | ✅ Active | Universal symmetries & TOE |
 | 意识桥假说 | `papers/SYLVA_v6_意识桥假说.md` | ⚠️ Speculative | Consciousness bridge hypothesis |
 
