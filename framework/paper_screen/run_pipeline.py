@@ -196,6 +196,15 @@ def extract_json_array(text):
         arr = json.loads(t)
         if isinstance(arr, list):
             return [v for v in arr if isinstance(v, dict)], None
+    except json.JSONDecodeError:
+        pass
+    # 容错：用 raw_decode 解析首个数组，忽略尾部杂物（如 " []]"）
+    try:
+        i = t.find("[")
+        if i != -1:
+            arr, _ = json.JSONDecoder().raw_decode(t[i:])
+            if isinstance(arr, list):
+                return [v for v in arr if isinstance(v, dict)], None
     except json.JSONDecodeError as e:
         return None, f"JSON 解析失败: {e}"
     return None, "回复中未找到 JSON 数组"
@@ -416,31 +425,34 @@ def screen_one(path, api_key, port):
         log(f"  段 {key} 返回 {len(verdicts)} 条 verdict（{dt:.0f}s）")
         return [dict(v, _chunk=ci, _secs=round(dt, 1)) for v in verdicts], platform, None
 
+    def run_with_split(key, la, lb, ci, depth=0):
+        """送审一段；超时则打标记并递归二分（最深 3 级 = 最小 1/8 段）。返回 (verdicts, platform, error)。"""
+        if cache.get(key, {}).get("timeout"):
+            log(f"  段 {key} 历史超时标记，直接二分（行 {la}-{lb}）")
+            vs, platform, error = None, "", "TimeoutError: marked"
+        else:
+            body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(la, lb + 1))
+            vs, platform, error = run_segment(key, body, la, lb, ci, len(chunks))
+        if error and "TimeoutError" in error and depth < 3 and lb - la >= 3:
+            if not cache.get(key, {}).get("timeout"):
+                mark_chunk_timeout(path, mtime, key)
+            mid = (la + lb) // 2
+            log(f"  ⚠️ 段 {key} 超时，第 {depth + 1} 级二分（行 {la}-{mid} / {mid+1}-{lb}）")
+            out = []
+            for suffix, (a, b) in (("a", (la, mid)), ("b", (mid + 1, lb))):
+                vs2, platform2, error2 = run_with_split(key + suffix, a, b, ci, depth + 1)
+                if platform2:
+                    platform = platform2
+                if error2:
+                    return None, platform, f"段 {key}{suffix} 失败: {error2}"
+                out.extend(vs2)
+            return out, platform, None
+        return vs, platform, error
+
     for ci, (body, la, lb) in enumerate(chunks, 1):
-        whole_timed_out = bool(cache.get(str(ci), {}).get("timeout"))
-        if whole_timed_out:
-            log(f"  段 {ci} 历史超时标记，直接二分（行 {la}-{lb}）")
-        vs, platform, error = (None, "", "TimeoutError: marked") if whole_timed_out else run_segment(str(ci), body, la, lb, ci, len(chunks))
+        vs, platform, error = run_with_split(str(ci), la, lb, ci)
         if platform:
             platform_used = platform
-        if error and "TimeoutError" in error:
-            if not whole_timed_out:
-                mark_chunk_timeout(path, mtime, str(ci))
-            # 超时自适应二分：把该段按原行号切成两半分别送审
-            mid = (la + lb) // 2
-            log(f"  ⚠️ 段 {ci} 超时，二分重试（行 {la}-{mid} / {mid+1}-{lb}）")
-            all_verdicts = [v for v in all_verdicts]  # no-op，保持清晰
-            ok = True
-            for suffix, (a, b) in (("a", (la, mid)), ("b", (mid + 1, lb))):
-                half_body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(a, b + 1))
-                vs2, platform2, error2 = run_segment(f"{ci}{suffix}", half_body, a, b, ci, len(chunks))
-                if platform2:
-                    platform_used = platform2
-                if error2:
-                    return {"file": rel, "chunks": len(chunks), "error": f"二分后段 {ci}{suffix} 仍失败: {error2}",
-                            "timestamp": datetime.now().isoformat(timespec="seconds")}
-                all_verdicts.extend(vs2)
-            continue
         if error:
             return {"file": rel, "chunks": len(chunks), "error": error,
                     "timestamp": datetime.now().isoformat(timespec="seconds")}
