@@ -37,10 +37,10 @@ READY_TIMEOUT = 180
 LLM_TIMEOUT = 290  # socket 读超时；关思考后单段 ~60-150s，3 路并发下约 2.4x 通胀
 CHUNK = 2000  # 单段最大字符数；超过则分 2 段（实测真实内容 ~2.3k 字符 84s 完成，≥2.8k 停滞）
 
-# 重要度顺序：外部项目批判重建 5 → 辐射压力 3 → 回应与评论 27 → 光子行为 9 → 页岩 7 → 数学基础强化 10 → 模块强化 31
+# 重要度顺序：外部项目批判重建 5 → 辐射压力 → 回应与评论 27 → 光子行为 9 → 页岩 7 → 数学基础强化 → 模块强化 31 → 方法学
 PRIORITY_DIRS = [
     "外部项目批判重建", "辐射压力_公理化研究", "回应与评论", "光子行为_CNF解释",
-    "页岩油气_CNF成藏理论", "数学基础强化_系列", "模块强化_系列",
+    "页岩油气_CNF成藏理论", "数学基础强化_系列", "模块强化_系列", "方法学_系列",
 ]
 
 SYS_PROMPT = (
@@ -64,6 +64,10 @@ E. 诚实性问题（把猜想写成定理、隐瞒假设、夸大验证状态�
 输出一个 JSON 数组 verdicts，每个元素：
 {{"category":"A|B|C|D|E","severity":"P0|P1|P2|P3","line":行号整数,"quote":"从上面原文逐字摘录的片段（≤80字符）","issue":"为何错误（具体、可核验）","fix_suggestion":"修改建议"}}
 severity 定义：P0=证伪级（动摇全文根基）、P1=实质错误（必须修正）、P2=需修订、P3=瑕疵。
+
+【原创研究论文加审】
+6. 若本段含定理/证明：核验陈述与证明的内部一致性——前提是否足以支撑结论、结论是否超出前提、证明是否跳步；proof_status 标注（如 proven/verified/conjecture）与证明实际完整度是否相符；
+7. 若本段含数值公式与计算结果：核验数值与所给公式是否自洽（取代表点代入估算：量纲、数量级、符号、极限行为），来源不明的数字按 C 类报告。
 
 铁律：
 1. quote 必须是上面带行号原文中逐字存在的片段，line 必须是该片段实际所在行号；
@@ -143,38 +147,21 @@ def done_files():
 
 
 def numbered_chunks(path):
-    """返回 [(chunk_text_with_line_numbers, la, lb), ...]，行号为原文件行号。最多 2 段。"""
+    """全量分段：把原文件按行边界切成 ≤CHUNK 字符的段，返回 [(body, la, lb), ...]，行号为原文件行号。"""
     lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    total = len(lines)
-    full = "\n".join(lines)
-    if len(full) <= CHUNK:
-        segs = [(1, total)]
-    else:
-        half = total // 2
-        # 若两段仍超长，取首段与末段各 CHUNK 字符覆盖范围
-        seg1_end = half
-        seg2_start = half + 1
-        s1 = "\n".join(lines[:seg1_end])
-        if len(s1) > CHUNK:
-            cut = 0
+    segs = []
+    acc = 0
+    start = 1
+    for i, ln in enumerate(lines, 1):
+        if acc + len(ln) + 1 > CHUNK and i > start:
+            segs.append((start, i - 1))
+            start = i
             acc = 0
-            for i, ln in enumerate(lines):
-                acc += len(ln) + 1
-                if acc > CHUNK:
-                    cut = i
-                    break
-            seg1_end = cut or seg1_end
-        s2_lines = lines[seg2_start - 1:]
-        if len("\n".join(s2_lines)) > CHUNK:
-            acc = 0
-            keep = len(s2_lines)
-            for i in range(len(s2_lines) - 1, -1, -1):
-                acc += len(s2_lines[i]) + 1
-                if acc > CHUNK:
-                    keep = len(s2_lines) - 1 - i
-                    break
-            seg2_start = total - keep + 1
-        segs = [(1, seg1_end), (seg2_start, total)]
+        acc += len(ln) + 1
+    if start <= len(lines):
+        segs.append((start, len(lines)))
+    if not segs:
+        segs = [(1, 1)]
     out = []
     for a, b in segs:
         body = "\n".join(f"L{i:04d}: {lines[i-1]}" for i in range(a, b + 1))
@@ -377,7 +364,7 @@ def save_chunk_result(path, mtime, ci, la, lb, verdicts):
         cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
-def mark_chunk_timeout(path, mtime, key):
+def mark_chunk_timeout(path, mtime, key, la=None, lb=None):
     with FILE_LOCK:
         CHUNK_CACHE.mkdir(parents=True, exist_ok=True)
         cp = chunk_cache_path(path)
@@ -389,8 +376,14 @@ def mark_chunk_timeout(path, mtime, key):
                     data = old
             except Exception:
                 pass
-        data["chunks"][key] = {"timeout": True, "at": datetime.now().isoformat(timespec="seconds")}
+        data["chunks"][key] = {"timeout": True, "la": la, "lb": lb,
+                               "at": datetime.now().isoformat(timespec="seconds")}
         cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+
+def _seg_timed_out(cache, key, la, lb):
+    ent = cache.get(key)
+    return bool(ent and ent.get("timeout") and ent.get("la") == la and ent.get("lb") == lb)
 
 
 def screen_one(path, api_key, port):
@@ -407,9 +400,12 @@ def screen_one(path, api_key, port):
     def run_segment(key, body, la, lb, ci, cn):
         """单段送审：命中缓存则复用，否则调用并落盘。返回 (verdicts, platform, error)。"""
         if key in cache:
-            cv = cache[key]["verdicts"]
-            log(f"  段 {key}（行 {la}-{lb}）命中段级缓存（{len(cv)} 条）")
-            return [dict(v, _chunk=ci) for v in cv], "", None
+            ent = cache[key]
+            if "verdicts" in ent and ent.get("la") == la and ent.get("lb") == lb:
+                cv = ent["verdicts"]
+                log(f"  段 {key}（行 {la}-{lb}）命中段级缓存（{len(cv)} 条）")
+                return [dict(v, _chunk=ci) for v in cv], "", None
+            # 行范围不匹配（分段方案已变更）：视为未命中，重新送审
         ctx = ""
         if ci > 1:
             ctx = f"【上下文提示】以下为本文档开头 500 字，仅供你理解语境，审查对象仍是上面给出的本段原文：\n{doc_head}\n"
@@ -427,15 +423,15 @@ def screen_one(path, api_key, port):
 
     def run_with_split(key, la, lb, ci, depth=0):
         """送审一段；超时则打标记并递归二分（最深 3 级 = 最小 1/8 段）。返回 (verdicts, platform, error)。"""
-        if cache.get(key, {}).get("timeout"):
+        if _seg_timed_out(cache, key, la, lb):
             log(f"  段 {key} 历史超时标记，直接二分（行 {la}-{lb}）")
             vs, platform, error = None, "", "TimeoutError: marked"
         else:
             body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(la, lb + 1))
             vs, platform, error = run_segment(key, body, la, lb, ci, len(chunks))
         if error and "TimeoutError" in error and depth < 3 and lb - la >= 3:
-            if not cache.get(key, {}).get("timeout"):
-                mark_chunk_timeout(path, mtime, key)
+            if not _seg_timed_out(cache, key, la, lb):
+                mark_chunk_timeout(path, mtime, key, la, lb)
             mid = (la + lb) // 2
             log(f"  ⚠️ 段 {key} 超时，第 {depth + 1} 级二分（行 {la}-{mid} / {mid+1}-{lb}）")
             out = []
