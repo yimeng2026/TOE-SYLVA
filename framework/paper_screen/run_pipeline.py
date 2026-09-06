@@ -423,15 +423,19 @@ def screen_one(path, api_key, port):
         return [dict(v, _chunk=ci, _secs=round(dt, 1)) for v in verdicts], platform, None
 
     def run_with_split(key, la, lb, ci, depth=0):
-        """送审一段；超时则打标记并递归二分（最深 3 级 = 最小 1/8 段）。返回 (verdicts, platform, error)。"""
-        if _seg_timed_out(cache, key, la, lb):
+        """送审一段；超时则打标记并递归二分（最深 3 级）。触底段允许无视标记重试（时延高方差）。"""
+        marked = _seg_timed_out(cache, key, la, lb)
+        can_split = depth < 6 and lb - la >= 1  # 加深至 6 级，允许切到单行
+        if marked and can_split:
             log(f"  段 {key} 历史超时标记，直接二分（行 {la}-{lb}）")
             vs, platform, error = None, "", "TimeoutError: marked"
         else:
+            if marked:
+                log(f"  段 {key} 触底（depth={depth}），无视标记重试（行 {la}-{lb}）")
             body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(la, lb + 1))
             vs, platform, error = run_segment(key, body, la, lb, ci, len(chunks))
-        if error and "TimeoutError" in error and depth < 3 and lb - la >= 3:
-            if not _seg_timed_out(cache, key, la, lb):
+        if error and "TimeoutError" in error and can_split:
+            if not marked:
                 mark_chunk_timeout(path, mtime, key, la, lb)
             mid = (la + lb) // 2
             log(f"  ⚠️ 段 {key} 超时，第 {depth + 1} 级二分（行 {la}-{mid} / {mid+1}-{lb}）")

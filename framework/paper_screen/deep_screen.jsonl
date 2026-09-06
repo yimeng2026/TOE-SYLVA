@@ -17,3 +17,5 @@
 {"file": "辐射压力_公理化研究\\01_辐射压力本体论_公理化与范畴视角.md", "chunks": 2, "error": "段 2a 失败: 段 2ab 失败: JSON 解析失败: Extra data: line 1 column 3 (char 2)（原始回复前200字: ' []]'）", "timestamp": "2026-09-06T14:24:58"}
 {"file": "辐射压力_公理化研究\\README.md", "chunks": 2, "error": "段 1b 失败: 段 1bb 失败: 端点错误事件: fetch failed", "timestamp": "2026-09-06T14:32:01"}
 {"file": "辐射压力_公理化研究\\01_辐射压力本体论_公理化与范畴视角.md", "chunks": 2, "verdicts": [], "spotcheck": "pass", "spotcheck_detail": null, "rescreened": false, "platform": "openclaw/OpenClaw", "timestamp": "2026-09-06T14:34:33"}
+{"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T19:26:09"}
+{"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T19:31:43"}
