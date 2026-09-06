@@ -94,7 +94,7 @@ $$\langle d\mu(\xi), X \rangle = \omega(\xi_M, X), \quad \forall \xi \in \mathfr
 
 ### 3.1 Darboux 定理与因果网络局部平坦性
 
-SYLVA 公理 M1 主张"因果网络在短距离上局部平坦"。Darboux 定理是此公理在相空间中的精确对应：任意辛流形在局部等价于 $\mathbb{R}^{2n}$ 上的标准辛形式——没有任何局部曲率。因果网络上的信息传递路径在节点邻域内同样"平坦"：相邻节点间的因果连接权重由局部 Lorentz 度规决定，无全局曲率信息的贡献。
+SYLVA 公理 M1 主张"因果网络在短距离上局部平坦"。Darboux 定理可与此公理作类比性对照（analogy，启发式对应，非严格实现）：任意辛流形在局部等价于 $\mathbb{R}^{2n}$ 上的标准辛形式——没有任何局部曲率。因果网络上的信息传递路径在节点邻域内同样"平坦"：相邻节点间的因果连接权重由局部 Lorentz 度规决定，无全局曲率信息的贡献。
 
 ### 3.2 Gromov 非挤压与信息容量下界
 
@@ -102,7 +102,7 @@ Gromov 非挤压定理的物理表达式可写为：
 
 $$\Delta q \cdot \Delta p \ge \frac{1}{2} w_G^2 \ge \frac{1}{2}\hbar$$
 
-其中 $w_G$ 是 Gromov 宽度。在 SYLVA 因果网络框架中，这表明网络节点的**最小信息容量**（最小相空间体积）由辛拓扑刚性给出。Sylva 临界值 $\Phi_c = 137\phi^3 \approx 3647$ 在此对应因果网络在"非挤压"约束下的最大可分辨状态数——类似量子系统中的 Hilbert 空间维度界。
+其中 $w_G$ 是 Gromov 宽度。在 SYLVA 因果网络框架中，这表明网络节点的**最小信息容量**（最小相空间体积）由辛拓扑刚性给出。（原此处以"Sylva 临界值 $\Phi_c = 137\phi^3$"对应因果网络最大可分辨状态数，该常数无物理推导，已移除，见 ERRATA E16。）
 
 ### 3.3 动量映射与因果网络全局对称性
 
@@ -110,7 +110,7 @@ $$\Delta q \cdot \Delta p \ge \frac{1}{2} w_G^2 \ge \frac{1}{2}\hbar$$
 
 ### 3.4 辛结构与 Lagrange 子流形的阴阳对偶
 
-SYLVA 阴阳对偶公理在辛几何中有优雅的实现：
+SYLVA"阴阳对偶"可与辛几何的共轭变量结构作类比（analogy，启发式对应，非严格实现）：
 
 - **阳（刚性、约束）**：辛形式 $\omega$——非退化、闭，对应因果网络的"硬"传播规则。
 - **阴（柔性、自由）**：Lagrange 子流形 $\Lambda$（$\dim \Lambda = n$, $\omega|_\Lambda = 0$）——对应因果网络的"软"信息承载面。物理粒子的状态恰好位于 Lagrange 子流形上，其生成函数 $S(q)$ 满足 Hamilton-Jacobi 方程。
@@ -121,15 +121,15 @@ SYLVA 阴阳对偶公理在辛几何中有优雅的实现：
 
 ### 4.1 预言 1：谐振子相空间面积守恒
 
-对单位质量、单位频率的谐振子（$H = \frac{1}{2}(p^2 + q^2)$），Liouville 定理要求等能椭圆 $\frac{p^2}{2} + \frac{q^2}{2} = E$ 所围面积为恒定值 $2\pi E$。SYLVA 框架预测存在 $\sim \Phi_c^{-1}$ 量级的微小修正：
+对单位质量、单位频率的谐振子（$H = \frac{1}{2}(p^2 + q^2)$），Liouville 定理要求等能椭圆 $\frac{p^2}{2} + \frac{q^2}{2} = E$ 所围面积为恒定值 $2\pi E$。（原此处 SYLVA 框架"$\sim\Phi_c^{-1}$ 量级微小修正"的预言依赖无物理推导常数 Φ_c，已撤回，见 ERRATA E16：）
 
-$$A(E) = 2\pi E\left[1 + \eta_{\text{net}} \cdot \Phi_c^{-1}\right], \quad \eta_{\text{net}} \sim O(1)$$
+$$A(E) = 2\pi E\left[1 + \eta_{\text{net}} \cdot \Phi_c^{-1}\right], \quad \eta_{\text{net}} \sim O(1) \quad \text{（已撤回：Φ_c 无物理推导，见 ERRATA E16）}$$
 
 在宏观尺度上该修正 $\sim 10^{-4}$ 不可观测，但为未来精密量子-经典交界实验提供理论靶点。
 
 ### 4.2 预言 2：KAM 环面残存率的解析界
 
-对标准映射（Chirikov-Taylor）的 KAM 环面，SYLVA 框架预计在扰动参数 $K = K_c \approx 0.9716$ 处发生最后 KAM 环面断裂（经典 Greene 判据），但因果网络修正使精确断裂值偏移 $\Delta K_c \sim \Phi_c^{-1} K_c \approx 2.7\times 10^{-4}$。
+对标准映射（Chirikov-Taylor）的 KAM 环面，在扰动参数 $K = K_c \approx 0.9716$ 处发生最后 KAM 环面断裂（经典 Greene 判据）。（原此处"因果网络修正使断裂值偏移 $\Delta K_c \sim \Phi_c^{-1} K_c$"的预言依赖无物理推导常数 Φ_c，已撤回，见 ERRATA E16。）
 
 ### 4.3 数值验证
 

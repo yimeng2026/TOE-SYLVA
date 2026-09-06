@@ -76,7 +76,7 @@ $$\nabla^2_{\text{network}} \phi_{\text{info}} = 4\pi G_{\text{eff}} \, \Sigma_{
 
 ### 3.2 阴阳对偶：强透镜与弱透镜的互补
 
-强透镜（阳，离散局部）与弱透镜（阴，连续统计）在 SYLVA 阴阳对偶公理下构成互补探针：
+强透镜（离散局部）与弱透镜（连续统计）构成互补探针（可与"阴阳对偶"作启发式类比，非公理推论）：
 - **强透镜**：对应因果网络的"最大权重路径"——光子在多个鞍点间选择最短因果路径，多重像对应网络的简并因果路径。
 - **弱透镜**：对应因果网络的"大量小权重扰动"——弱透镜剪切是因果网络上大量小节点自能修正的统计平均。
 
@@ -86,7 +86,7 @@ $$\nabla^2_{\text{network}} \phi_{\text{info}} = 4\pi G_{\text{eff}} \, \Sigma_{
 
 $$\Delta t = \frac{1+z_L}{c} \frac{D_L D_S}{D_{LS}} \left[\frac{1}{2}(\boldsymbol{\theta}_1-\boldsymbol{\beta})^2 - \frac{1}{2}(\boldsymbol{\theta}_2-\boldsymbol{\beta})^2 - \psi(\boldsymbol{\theta}_1) + \psi(\boldsymbol{\theta}_2)\right]$$
 
-在 SYLVA 框架下，时间延迟直接对应因果网络上两条不等长信息路径的程差。H0LiCOW 合作组 (2019) 从 6 个强透镜系统获得 $H_0 = 73.3^{+1.7}_{-1.8}\,\text{km/s/Mpc}$，这与 CMB 给出的 $H_0 = 67.4\pm 0.5$ 存在 $\sim 3.1\sigma$ 张力。SYLVA 框架预测：若因果网络在 $\sim 100$ Mpc 尺度上有非平凡拓扑修正，则两类 $H_0$ 测量之差可由网络曲率修正项 $\Delta H_0^{\text{net}} \propto \Phi_c^{-1} H_0$ 解释，其中 $\Phi_c = 137\phi^3 \approx 3647$。
+在 SYLVA 框架下，时间延迟直接对应因果网络上两条不等长信息路径的程差。H0LiCOW 合作组 (2019) 从 6 个强透镜系统获得 $H_0 = 73.3^{+1.7}_{-1.8}\,\text{km/s/Mpc}$，这与 CMB 给出的 $H_0 = 67.4\pm 0.5$ 存在 $\sim 3.1\sigma$ 张力。（原此处 SYLVA 框架的定量预测 $\Delta H_0^{\text{net}} \propto \Phi_c^{-1} H_0$ 依赖"临界值 $\Phi_c = 137\phi^3$"，该常数无物理推导，已移除，见 ERRATA E16；相关定量预言相应撤回。）
 
 ---
 
@@ -98,11 +98,11 @@ $$\Delta t = \frac{1+z_L}{c} \frac{D_L D_S}{D_{LS}} \left[\frac{1}{2}(\boldsymbo
 
 $$\theta_E^{\text{SYLVA}} = \theta_E^{\text{GR}} \left[1 + \eta_{\text{net}} \left(\frac{r_s}{D_L}\right)^2\right]$$
 
-其中 $\eta_{\text{net}} \sim \Phi_c^{-1} \sim 2.7\times 10^{-4}$。对 Abell 1689（$D_L \approx 660$ Mpc, $r_s \approx 310$ kpc），修正量级为 $\Delta\theta_E/\theta_E \sim 10^{-13}$，远低于当前观测精度（$\sim 10^{-3}$），但未来天基干涉仪可能探测。
+其中原估计 $\eta_{\text{net}} \sim \Phi_c^{-1} \sim 2.7\times 10^{-4}$ 依赖已移除的常数 Φ_c（见 ERRATA E16），该定量估计不再成立。对 Abell 1689（$D_L \approx 660$ Mpc, $r_s \approx 310$ kpc），修正量级为 $\Delta\theta_E/\theta_E \sim 10^{-13}$，远低于当前观测精度（$\sim 10^{-3}$），但未来天基干涉仪可能探测。
 
 ### 4.2 预言 2：弱透镜剪切功率谱的修正
 
-SYLVA 框架预测物质功率谱在 $k \sim 2\pi/\ell_{\text{net}}$ 处有 $\sim \Phi_c^{-1}$ 量级的特征截断，其中 $\ell_{\text{net}} \approx 137\,\ell_{\text{Planck}}$。在可观测尺度上，这表现为剪切角功率谱 $C_\ell^{\gamma\gamma}$ 在 $\ell \gtrsim 5000$ 处相对于 $\Lambda$CDM 预期有 $\sim 0.03\%$ 的抑制——Euclid 空间望远镜有望在 $\sim 2030$ 年前探测到此效应。
+（原此处 SYLVA 框架关于物质功率谱 $\sim\Phi_c^{-1}$ 量级特征截断及对 Euclid 的定量预言，依赖无物理推导的常数 $\Phi_c=137\phi^3$，已移除，见 ERRATA E16；该预言相应撤回。）
 
 ### 4.3 数值模拟验证
 

@@ -129,7 +129,7 @@ SYLVA 框架公理 M1：因果网络在短距离上的不确定原理（$\Delta 
 
 ### 3.4 阴阳对偶：$\mathcal{M} \leftrightarrow \mathcal{M}'$
 
-Tomita-Takesaki 模共轭 $J_\varphi \mathcal{M} J_\varphi = \mathcal{M}'$ 完美体现了 SYLVA 阴阳对偶公理：
+Tomita-Takesaki 模共轭 $J_\varphi \mathcal{M} J_\varphi = \mathcal{M}'$ 可与 SYLVA"阴阳对偶"作类比（analogy，并非"完美体现"某公理）：
 - **$\mathcal{M}$（阳）**：局部可观测量——可被测量和操作的"显式"结构
 - **$\mathcal{M}'$（阴）**：交换子代数——由 $\mathcal{M}$ 的局域性约束确定的"隐含"结构，即所有与 $\mathcal{M}$ 对易的算子
 
@@ -155,9 +155,9 @@ $$\text{Tr}[\rho_\beta A \sigma_{i\beta}(B)] = \text{Tr}[\rho_\beta BA]$$
 
 SYLVA 框架预言：在因果网络节点 $\nu$ 上，type III 局部代数的"有效信息维度"（Araki 相对熵定义的量子自由度上限）满足：
 
-$$S_{\text{eff}}(\nu) \le \frac{\log\Phi_c}{2} \approx 4.1 \text{ 纳特}$$
+$$S_{\text{eff}}(\nu) \le \frac{\log\Phi_c}{2} \approx 4.1 \text{ 纳特} \quad \text{（已撤回：Φ_c 无物理推导，见 ERRATA E16）}$$
 
-其中 $\Phi_c = 137\phi^3 \approx 3647$ 是 Sylva 临界值。这个上界预测网络中单个节点的最大可编码量子信息量。
+（原此处"Sylva 临界值 $\Phi_c = 137\phi^3$"为无物理推导常数，已移除，见 ERRATA E16；上述上界预言相应撤回。）
 
 ---
 

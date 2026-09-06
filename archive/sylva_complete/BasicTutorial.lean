@@ -210,8 +210,11 @@ namespace Phi
 -- SECTION 3: Sylva 临界值
 -- ============================================================================
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：Φ_c = 137 × φ³ 为无数理推导的数论游戏常数，定义已注释保留（勿恢复使用）：
+/- 历史保留：
 /-- Sylva 临界值 Φ_c = 137 × φ³ -/
 noncomputable def Phi_c : ℝ := 137 * φ ^ 3
+-/
 
 /-- 债务临界值 D_c = φ⁴ -/
 noncomputable def D_c : ℝ := φ ^ 4
@@ -256,6 +259,8 @@ noncomputable def D_c : ℝ := φ ^ 4
 -- EXERCISE 3: 临界值计算
 -- ============================================================================
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：练习 3.1 依赖数论游戏常数 Φ_c，整段注释保留（勿恢复使用）：
+/- 历史保留：
 -- 练习 3.1：证明 Phi_c = 137 × (2φ + 1)（难度：⭐⭐）
 /-
 🎯 目标：将 Phi_c 用 φ 的线性表达式表示
@@ -264,6 +269,7 @@ noncomputable def D_c : ℝ := φ ^ 4
   rw [show Phi_c = 137 * φ ^ 3 by rfl]
   rw [exercise_2_3]
   ring
+-/
 
 -- 练习 3.2：证明 D_c > 0（难度：⭐⭐）
 /-
@@ -384,6 +390,8 @@ end MetaAxiom
 -- CHALLENGE: 综合挑战
 -- ============================================================================
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：挑战题依赖数论游戏常数 Φ_c，整段注释保留（勿恢复使用）：
+/- 历史保留：
 /-
 🎯 挑战目标：证明一个关于 φ 和层级的综合定理
 
@@ -399,6 +407,7 @@ end MetaAxiom
   have h1 : φ > 0 := exercise_2_2
   rw [show Phi.Phi_c = 137 * φ ^ 3 by rfl]
   positivity
+-/
 
 
 -- ============================================================================
@@ -443,11 +452,14 @@ theorem solution_2_3 : φ ^ 3 = 2 * φ + 1 := by
     _ = (φ + 1) + φ := by rw [h1]
     _ = 2 * φ + 1 := by ring
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：解答依赖数论游戏常数 Φ_c，整段注释保留（勿恢复使用）：
+/- 历史保留：
 -- 练习 3.1 解答
 theorem solution_3_1 : Phi_c = 137 * (2 * φ + 1) := by
   rw [show Phi_c = 137 * φ ^ 3 by rfl]
   rw [solution_2_3]
   ring
+-/
 
 -- 练习 3.2 解答
 theorem solution_3_2 : Phi.D_c > 0 := by
@@ -474,11 +486,14 @@ theorem solution_5_2 (a : MetaAxiom) : MetaAxiom.description a ≠ "" := by
   intro h
   cases a <;> simp [MetaAxiom.description] at h
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：解答依赖数论游戏常数 Φ_c，整段注释保留（勿恢复使用）：
+/- 历史保留：
 -- 挑战题解答
 theorem solution_challenge : Phi.Phi_c > 0 := by
   have h1 : φ > 0 := solution_2_2
   rw [show Phi.Phi_c = 137 * φ ^ 3 by rfl]
   positivity
+-/
 
 end Solutions
 

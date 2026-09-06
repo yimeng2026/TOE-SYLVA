@@ -6908,7 +6908,7 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 - **涌现的本体论地位**：弱涌现论者（如 Crick）认为涌现只是知识不完备时的表象，强涌现论者（如 Kauffman、Clayton）认为涌现是真实存在且具向下因果力的新实体。这一分歧直接影响“跨学科统一理论”是否需要一个超越物理层次的本体论框架 [^18][^19][^20]。
 - **科学统一的形式**：帝国式统一（所有科学还原为物理学）vs 联邦式统一（Auyang）vs 多元主义（无统一）。Kellert 等的经验多元主义认为统一假设过于严格，而 Bhaskar 则认为完全放弃统一假设会使科学失去方向 [^8][^9]。
 - **物理主义 vs 生物自主性**：物理主义者认为生物学最终可还原为物理学；迈尔、阿亚拉等生物哲学家则认为生物阶层系统的不同层次有全新突生属性，高层次过程不依赖低层次过程，生物学应是独立学科 [^12][^13]。
-- **中国系统思维 vs 西方还原论**：中医整体论与西医还原论被视为中西方哲学的代表性差异。但也有学者（如知乎讨论）认为现代系统论只是“发展不完善的中国哲学”，中国系统思维（阴阳、五行）才是更完善的整体论 [^16][^17]。
+- **中国系统思维 vs 西方还原论**：中医整体论与西医还原论被视为中西方哲学的代表性差异。但也有学者（如知乎讨论（二手来源，待替换一手文献））认为现代系统论只是“发展不完善的中国哲学”，中国系统思维（阴阳、五行）才是更完善的整体论 [^16][^17]。
 - **操作主义的可行性**：布里奇曼的操作主义因忽视主观能动性而受到批评，被认为具有强烈的还原主义色彩；但当代学者认为其在操作/实践层面为科学哲学提供了不可替代的分析单位 [^21][^22]。
 
 ### Recommended Deep-Dive Areas
@@ -6922,9 +6922,9 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 ---
 
 [^1]: Philosophy of Social Science: A Contemporary Introduction. Reductionism chapter. https://philpapers.org/archive/RISPOS.pdf
-[^2]: 物理与哲学的关系探析——整体论和层展论. 2025-08-26. http://mp.weixin.qq.com/s?__biz=MzU4MTkxODcyNA==&mid=2247489525&idx=1&sn=c6cb2a059a5248227c80a21524c37547
+[^2]: 物理与哲学的关系探析——整体论和层展论. 2025-08-26. http://mp.weixin.qq.com/s?__biz=MzU4MTkxODcyNA==&mid=2247489525&idx=1&sn=c6cb2a059a5248227c80a21524c37547 （二手来源，待替换一手文献）
 [^3]: 还原论还是整体论？中国学者最新研究成果呼唤研究范式转移. CCTV News. 2024-07-07. https://news.cctv.cn/2024/07/07/ARTIif1PaNc8em2yqR60zdpX240707.shtml
-[^4]: 系统论专辑 | 贝塔朗菲：一般系统论的进展. 2025-08-12. http://mp.weixin.qq.com/s?__biz=MzI2MTYxOTE5MQ==&mid=2247504171&idx=1&sn=5d343e1ed502459ce7e9c560b1fea6da
+[^4]: 系统论专辑 | 贝塔朗菲：一般系统论的进展. 2025-08-12. http://mp.weixin.qq.com/s?__biz=MzI2MTYxOTE5MQ==&mid=2247504171&idx=1&sn=5d343e1ed502459ce7e9c560b1fea6da （二手来源，待替换一手文献）
 [^5]: Systems Theories: Their Origins, Foundations, and Development. Alexander Laszlo and Stanley Krippner. https://www.oikodomos.org/workspaces/app/webroot/files/references/text/amartin_25_SystemsTheory-Alexander_Laszlo_and_Stanley_Krippner.pdf
 [^6]: Sunny Auyang, Foundations of Complex-system Theories. 1998. https://fernandonogueiracosta.files.wordpress.com/2015/08/sunny_y-_auyang_foundations_of_complex-system_theories-in-economics.pdf
 [^7]: Auyang (ed.), Foundations of Complex-system Theories. PhilPapers. 2016-02-16. https://philpapers.org/rec/AUYFOC
@@ -6938,8 +6938,8 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 [^15]: 哲学探索：怀特海过程哲学的建设性后现代主义意蕴. https://phi.sicnu.edu.cn/files/637205544859532193/news/638404955451337143_d.pdf
 [^16]: 跨界融合的双子星与文明对话的新范式. 界面新闻. 2025-09-22. https://www.jiemian.com/article/13383411.html
 [^17]: 付强：构建“系统观念+ 天人合一”的整体主义生态观. 中国社会科学网. 2024-02-05. https://www.cssn.cn/skqns/skqns_qnzs/202402/t20240205_5732475.shtml
-[^18]: 从科学视角，如何理解和研究涌现？集智俱乐部. 2025-07-30. http://mp.weixin.qq.com/s?__biz=MzIwOTA1MDAyNA==&mid=2650037687&idx=2&sn=df7d63ffe7881f6bf62e8ff5f5ff3a43
-[^19]: 从科学视角，如何理解和研究涌现？郑志刚、张江对话. 2025-07-30. http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247630367&idx=1&sn=ae8a1e2af1ec4b80693b8265a6df1c3f
+[^18]: 从科学视角，如何理解和研究涌现？集智俱乐部. 2025-07-30. http://mp.weixin.qq.com/s?__biz=MzIwOTA1MDAyNA==&mid=2650037687&idx=2&sn=df7d63ffe7881f6bf62e8ff5f5ff3a43 （二手来源，待替换一手文献）
+[^19]: 从科学视角，如何理解和研究涌现？郑志刚、张江对话. 2025-07-30. http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247630367&idx=1&sn=ae8a1e2af1ec4b80693b8265a6df1c3f （二手来源，待替换一手文献）
 [^20]: 突现论的类型及其理论诉求. 范冬萍. https://www.sinoss.net/uploadfile/2010/1130/7384.pdf
 [^21]: 孟强：张夏硕的实用主义科学哲学述评. 中国社科院哲学所. 2024-12-05. http://philosophy.cssn.cn/kygz/xszm/kxjszx/202412/t20241205_5816722.html
 [^22]: 孟强 | 张夏硕的实用主义科学哲学述评. 2024-12-06. https://www.aisixiang.com/data/157289.html
@@ -7398,7 +7398,7 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^3]: 从伊辛模型到社会物理学. 2017-12-22. https://max.book118.com/html/2017/1218/144730913.shtm
 
-[^4]: 追忆巨匠：伊辛模型的“昨天”与不朽贡献. 2025. https://mp.weixin.qq.com/s?__biz=Mzg4MjYyNzYzOQ==
+[^4]: 追忆巨匠：伊辛模型的“昨天”与不朽贡献. 2025. https://mp.weixin.qq.com/s?__biz=Mzg4MjYyNzYzOQ== （二手来源，待替换一手文献）
 
 [^5]: 临界现象的标度假设. Bohrium. https://waf-www-bohrium-com-hngfcxduded0fmhr.a03.azurefd.net/sciencepedia/feynman/estimation_scaling_and_asymptotics_in_physics_undergraduate-scaling_hypothesis_for_critical_phenomena
 
@@ -7414,29 +7414,29 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^11]: 短期天气的不可预测性——蝴蝶效应与混沌学_爱德华·洛伦兹. 2021-07-24. https://www.sohu.com/a/479175055_121055221
 
-[^12]: 熵的谱系：从热力学起源到跨域思想演进的哲学审视. 2025-09-04. https://mp.weixin.qq.com/s?__biz=MzkyMzgyODI1OA==
+[^12]: 熵的谱系：从热力学起源到跨域思想演进的哲学审视. 2025-09-04. https://mp.weixin.qq.com/s?__biz=MzkyMzgyODI1OA== （二手来源，待替换一手文献）
 
 [^13]: From Thermodynamic Entropy to Knowledge Entropy. 2020. https://sciendo.com/pdf/10.2478/picbe-2020-0055
 
-[^14]: 随机游走：从布朗运动到PageRank算法的数学之旅. 2025-10-12. https://blog.csdn.net/daqianai/article/details/153120387
+[^14]: 随机游走：从布朗运动到PageRank算法的数学之旅. 2025-10-12. https://blog.csdn.net/daqianai/article/details/153120387 （二手来源，待替换一手文献）
 
-[^15]: 使用cypher和gremlin进行图随机游走. 2019-08-01. https://zhuanlan.zhihu.com/p/76253645
+[^15]: 使用cypher和gremlin进行图随机游走. 2019-08-01. https://zhuanlan.zhihu.com/p/76253645 （二手来源，待替换一手文献）
 
 [^16]: 不同网络中的爆炸渗流与普通渗流. 复旦大学. https://jwc.fudan.edu.cn/_upload/article/files/66/4d/401942b14125aacb245df411e7bd/8bdb787f-41fc-43a4-ac76-5ae836c9d6dd.pdf
 
-[^17]: Phys. Rep. 重磅综述：网络反应-扩散系统解析传染病传播的复杂动力学. 2025-06-22. https://mp.weixin.qq.com/s?__biz=MzIzMjQyNzQ5MA==&mid=2247715038
+[^17]: Phys. Rep. 重磅综述：网络反应-扩散系统解析传染病传播的复杂动力学. 2025-06-22. https://mp.weixin.qq.com/s?__biz=MzIzMjQyNzQ5MA==&mid=2247715038 （二手来源，待替换一手文献）
 
 [^18]: 自旋玻璃和复杂系统. 1992. https://www.wuli.ac.cn/cn/article/pdf/preview/28975.pdf
 
-[^19]: 自旋玻璃（spin glass）、自旋冰和量子自旋液体. 2022-09-26. https://blog.csdn.net/qq_32515081/article/details/127060902
+[^19]: 自旋玻璃（spin glass）、自旋冰和量子自旋液体. 2022-09-26. https://blog.csdn.net/qq_32515081/article/details/127060902 （二手来源，待替换一手文献）
 
 [^20]: 企业的规模、生长与奇点. 2022-09-11. https://swarma.org/?p=37239
 
 [^21]: 从《规模法则》视角看世界：从经济系统到城市、企业. 2024-04-02. https://hub.baai.ac.cn/view/36204
 
-[^22]: 城市也有“物理相变”：在涨落中发现普适的城市“坍缩”规律. https://mp.weixin.qq.com/s?__biz=Mzg4NzczMzkwNA==&mid=2247486430
+[^22]: 城市也有“物理相变”：在涨落中发现普适的城市“坍缩”规律. https://mp.weixin.qq.com/s?__biz=Mzg4NzczMzkwNA==&mid=2247486430 （二手来源，待替换一手文献）
 
-[^23]: 重整化群遇见机器学习：多尺度视角探索复杂系统内在的统一性. 2025-07-23. https://mp.weixin.qq.com/s?__biz=MzIzMjQyNzQ5MA==&mid=2247717568
+[^23]: 重整化群遇见机器学习：多尺度视角探索复杂系统内在的统一性. 2025-07-23. https://mp.weixin.qq.com/s?__biz=MzIzMjQyNzQ5MA==&mid=2247717568 （二手来源，待替换一手文献）
 
 [^24]: 重整化群与非线性物理，寻找复杂系统跨尺度的分析方法. 2025-07-11. https://swarma.org/?p=61856
 
@@ -7975,11 +7975,11 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^4]: Perceptual Control Theory: An Overview of the Third Grand Theory in Psychology. Living Control Systems. 2016. https://www.livingcontrolsystems.com/download/pct_readings_ebook_2016.pdf
 
-[^5]: 主动推理与认知控制. CreateAMind. 2025. http://mp.weixin.qq.com/s?__biz=MzA5MDMwMTIyNQ==&mid=2649417504&idx=1&sn=f69ce26436ea787ed41577ab88596968
+[^5]: 主动推理与认知控制. CreateAMind. 2025. http://mp.weixin.qq.com/s?__biz=MzA5MDMwMTIyNQ==&mid=2649417504&idx=1&sn=f69ce26436ea787ed41577ab88596968 （二手来源，待替换一手文献）
 
 [^6]: 系统动力学. 百度百科. 2025. https://baike.baidu.com/item/系统动力学/2056525
 
-[^7]: 内稳态的跨学科演化路径：从生理维持到意识构造. 微信公众号. 2025. https://mp.weixin.qq.com/s/N8mW_YKeDuz4VpEMd00suA
+[^7]: 内稳态的跨学科演化路径：从生理维持到意识构造. 微信公众号. 2025. https://mp.weixin.qq.com/s/N8mW_YKeDuz4VpEMd00suA （二手来源，待替换一手文献）
 
 [^8]: 汉密尔顿-雅可比-贝尔曼方程：最优控制的通用指南. Bohrium. https://www.bohrium.com/sciencepedia/feynman/keyword/hjb_equation
 
@@ -8113,7 +8113,7 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^2]: Emergence in marketing: an institutional and ecosystem framework. Springer. URL: https://link.springer.com/content/pdf/10.1007/s11747-022-00849-8.pdf
 
-[^3]: 从科学视角，如何理解和研究涌现？集智俱乐部. 2025-07-30. URL: http://mp.weixin.qq.com/s?__biz=MzIwOTA1MDAyNA==&mid=2650037687&idx=2&sn=df7d63ffe7881f6bf62e8ff5f5ff3a43
+[^3]: 从科学视角，如何理解和研究涌现？集智俱乐部. 2025-07-30. URL: http://mp.weixin.qq.com/s?__biz=MzIwOTA1MDAyNA==&mid=2650037687&idx=2&sn=df7d63ffe7881f6bf62e8ff5f5ff3a43 （二手来源，待替换一手文献）
 
 [^4]: 斑图动力学：模式形成的科学. 高剑主页. URL: https://gaojianhomepage.github.io/Research_Areas/pattern/
 
@@ -8141,9 +8141,9 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^16]: 无人机集群智能的生成样式研究. 现代防御技术. URL: https://www.xdfyjs.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=206
 
-[^17]: 粒子群优化算法（PSO）. CSDN. 2025-08-15. URL: https://blog.csdn.net/zhxup606/article/details/150388287
+[^17]: 粒子群优化算法（PSO）. CSDN. 2025-08-15. URL: https://blog.csdn.net/zhxup606/article/details/150388287 （二手来源，待替换一手文献）
 
-[^18]: 无人机方阵 vs. 飞鸟群，群体智能是什么？追问nextquestion. 2025-09-03. URL: http://mp.weixin.qq.com/s?__biz=MzI3MjQ4MDMyOQ==&mid=2247533317&idx=1&sn=f286713b9f4c5199ef0248f6cf5c4c81
+[^18]: 无人机方阵 vs. 飞鸟群，群体智能是什么？追问nextquestion. 2025-09-03. URL: http://mp.weixin.qq.com/s?__biz=MzI3MjQ4MDMyOQ==&mid=2247533317&idx=1&sn=f286713b9f4c5199ef0248f6cf5c4c81 （二手来源，待替换一手文献）
 
 [^19]: 什么是分形. 集智百科. 2020-12-28. URL: https://swarma.org/?p=23015
 
@@ -8153,9 +8153,9 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^22]: Introduction to Cellular automata - Self-Reproduction. Rennard. URL: https://www.rennard.org/alife/english/acgb.pdf
 
-[^23]: 大模型的涌现能力介绍. Datawhale. 2023-05-31. URL: https://blog.csdn.net/datawhale/article/details/130959791
+[^23]: 大模型的涌现能力介绍. Datawhale. 2023-05-31. URL: https://blog.csdn.net/datawhale/article/details/130959791 （二手来源，待替换一手文献）
 
-[^24]: 智能源于混沌神经网络的集体意识涌现. CSDN. 2026-01-01. URL: https://blog.csdn.net/u013627568/article/details/156479390
+[^24]: 智能源于混沌神经网络的集体意识涌现. CSDN. 2026-01-01. URL: https://blog.csdn.net/u013627568/article/details/156479390 （二手来源，待替换一手文献）
 
 [^25]: 因果涌现：用因果量化复杂系统中的涌现. 集智百科. 2024-12-09. URL: https://www.163.com/dy/article/JJ0EPCL00511D05M.html
 
@@ -8165,11 +8165,11 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^28]: 当对立要素的相互作用达到某个临界阈值时. 雪球. 2025-02-11. URL: https://xueqiu.com/6916781846/322917890
 
-[^29]: 从生命起源到流行病：复杂系统中的多尺度涌现现象. CSDN. 2022-08-14. URL: https://blog.csdn.net/cf2SudS8x8F0v/article/details/126326367
+[^29]: 从生命起源到流行病：复杂系统中的多尺度涌现现象. CSDN. 2022-08-14. URL: https://blog.csdn.net/cf2SudS8x8F0v/article/details/126326367 （二手来源，待替换一手文献）
 
 [^30]: 研究揭示多模态大模型涌现类人物体概念表征. 中国科学院. 2025-06-09. URL: http://www.ia.cas.cn/xwzx/ttxw/202506/t20250609_7800743.html
 
-[^31]: 从科学视角，如何理解和研究涌现？（张江对话）. 集智俱乐部. 2025-07-30. URL: http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247630367&idx=1&sn=ae8a1e2af1ec4b80693b8265a6df1c3f
+[^31]: 从科学视角，如何理解和研究涌现？（张江对话）. 集智俱乐部. 2025-07-30. URL: http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247630367&idx=1&sn=ae8a1e2af1ec4b80693b8265a6df1c3f （二手来源，待替换一手文献）
 
 ---
 
@@ -8284,7 +8284,7 @@ PR(D) ↔ ∃ b ∈ B: D 在 b 的参照系中完美表意
 
 [^20]: REVISTA ECONOMICA Supplement No.1/2012: The entropic paradigm. ulbsibiu.ro. http://oldeconomice.ulbsibiu.ro/revista.economica/archive/suplimente/Volume1-2012.pdf
 
-[^21]: Nature新子刊"npj complexity"开篇评论：通往复杂性之路. 2024. http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247608583&idx=2&sn=8de6e8c085dfd948642faf1c126a79ee
+[^21]: Nature新子刊"npj complexity"开篇评论：通往复杂性之路. 2024. http://mp.weixin.qq.com/s?__biz=Mzg2MTUyODU2NA==&mid=2247608583&idx=2&sn=8de6e8c085dfd948642faf1c126a79ee （二手来源，待替换一手文献）
 
 [^22]: Disunity in the philosophy of science: for and against. resources.illc.uva.nl. https://resources.illc.uva.nl/CRAIPS/uploaded_files/inlineitem/cr.aips.1.buzzoni.pdf
 

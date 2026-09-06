@@ -30,7 +30,7 @@
 
 - **连接律层面**：拓扑递归（Topological Recursion）是 SYLVA 连接律在代数几何中的精确实现——高亏格不变量从低亏格不变量通过递归关系（loop equations, Virasoro constraints）涌现。这正是"连接生成新层级"的数学原型。
 - **分层涌现**：GW/DT/PT 三种计数理论描述了同一物理在不同数学框架下的表现，三者之间的等价性（Maulik-Nekrasov-Okounkov-Pandharipande）体现了 SYLVA 分层涌现的核心命题——不同层的规定可以是对同一底层实体的不同"投影"。
-- **镜像对称**：枚举几何中的镜像对称映射是 SYLVA 阴阳对偶原则的精确数学实现——A 模型（Gromov-Witten 不变量）与 B 模型（周期积分）的对偶。
+- **镜像对称**：枚举几何中的镜像对称映射可与 SYLVA"阴阳对偶"原则作启发式类比（analogy，启发式对应，非严格实现）——A 模型（Gromov-Witten 不变量）与 B 模型（周期积分）的对偶。
 
 ## 相关目录交叉引用
 

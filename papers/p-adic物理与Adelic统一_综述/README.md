@@ -6,7 +6,7 @@
 
 ## 摘要
 
-p-adic 数——实数 $\mathbb{R}$ 的"孪生姐妹"——对每个素数 $p$ 定义了一种替代性的"距离"概念：两个整数越"接近"意味着它们的差有越高次幂的 $p$ 因子。这种**超度量（ultrametric）**结构产生了与 Archimedes 几何截然不同的拓扑，并已成功应用于弦理论（Freund-Witten 1987, Vladimirov 1988）、自旋玻璃体系、及 p-adic AdS/CFT 对偶（Gubser et al. 2017）。本文从 TOE-SYLVA 框架出发，系统综述 p-adic 物理的核心结构：p-adic 弦振幅、Adele 环的统一角色、p-adic AdS/CFT 的全息对偶、超度量在复杂系统中的应用，以及 Sylva 临界值 $\Phi_c$ 作为 p-adic 截断的自然标度。附带独立 Python 验证脚本。
+p-adic 数——实数 $\mathbb{R}$ 的"孪生姐妹"——对每个素数 $p$ 定义了一种替代性的"距离"概念：两个整数越"接近"意味着它们的差有越高次幂的 $p$ 因子。这种**超度量（ultrametric）**结构产生了与 Archimedes 几何截然不同的拓扑，并已成功应用于弦理论（Freund-Witten 1987, Vladimirov 1988）、自旋玻璃体系、及 p-adic AdS/CFT 对偶（Gubser et al. 2017）。本文从 TOE-SYLVA 框架出发，系统综述 p-adic 物理的核心结构：p-adic 弦振幅、Adele 环的统一角色、p-adic AdS/CFT 的全息对偶、超度量在复杂系统中的应用。附带独立 Python 验证脚本。（注：原摘要提及的"Sylva 临界值 $\Phi_c$ 作为 p-adic 截断的自然标度"依赖无物理推导的常数，已移除，见 ERRATA E16。）
 
 **关键词**：p-adic 数；超度量性；p-adic 弦论；Adelic 物理；p-adic AdS/CFT；Bruhat-Tits 树；全息对偶
 
@@ -118,7 +118,7 @@ p-adic AdS/CFT 在 Bruhat-Tits 树上的实现与 SYLVA 因果网络具有惊人
 
 ### 3.4 Sylva 临界值作为素数截断
 
-SYLVA 临界值 $\Phi_c = 137\phi^3 \approx 3647$ 暗示一个**素数截断** $p_{\max} \sim 137$：因果网络中的"素数位置"仅有有限多个（$p \le 137$）能够独立承载物理信息，超过此值的 p-adic 位置在物理上不可分辨。这与以下物理事实一致：
+（原此处以"SYLVA 临界值 $\Phi_c = 137\phi^3$"暗示素数截断 $p_{\max}\sim 137$ 的论述，依赖无物理推导的数论游戏常数，已移除，见 ERRATA E16。）以下物理事实本身仍然成立：
 - $\alpha^{-1} \approx 137$（精细结构常数的倒数）
 - 有限覆盖下的 adelic 乘积可在有限素数处截断（同余子群 $K_f$）
 
@@ -145,7 +145,7 @@ p-adic 振幅（$p=2,3,5$）：
 - $A_2(-0.5, -1.2) = \frac{(1-2^{-0.75})(1-2^{-0.4})}{(1-2^{-0.75})(1-2^{-0.4})} \cdot \frac{(1-2^{-0.85})}{(1-2^{-0.85})}$ … 实际值 $\approx 1.2341$
 - 乘积 $A_\infty \cdot A_2 \cdot A_3 \cdot A_5 \to 1$ 当素数截断增大时
 
-伴随脚本 M1 模块验证：对 $p \le 137$ 截断，adelic 乘积偏离 1 的剩余 $\sim \Phi_c^{-1} \sim 2.7\times 10^{-4}$。
+伴随脚本 M1 模块曾验证：对 $p \le 137$ 截断，adelic 乘积偏离 1 有小剩余。（注：原定量估计 $\sim\Phi_c^{-1}\sim 2.7\times10^{-4}$ 依赖已移除常数 Φ_c，见 ERRATA E16，不再成立。）
 
 ### 4.2 预言 2：Bruhat-Tits 树上的标量传播子
 

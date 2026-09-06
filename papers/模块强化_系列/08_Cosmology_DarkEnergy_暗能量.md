@@ -103,8 +103,8 @@ mode=parallel，两轮执行共 4 次真实 LLM 调用
 - `papers/cosmology_astrophysics/`：宇宙学与天体物理目录，
   收录本模块所在的 Cosmology 系列（FLRW/Inflation/Perturbations 同目录文件）
   的整体强化参照。
-- `papers/SYLVA_v6_暗扇区与阴阳对偶.md`：SYLVA v6 暗扇区论文（仓库根目录级），
-  其暗能量叙事应与本模块的公理化现状对照阅读。
+- `SYLVA_v6_暗扇区与阴阳对偶.md`（SYLVA v6 暗扇区论文）：
+  该文档已移入隔离区 releases/quarantine/，原因见 ERRATA.md E15。
 
 ## 7. 参考文献（均为真实文献）
 

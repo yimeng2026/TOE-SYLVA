@@ -2,7 +2,7 @@
 
 ## 摘要
 
-黑洞信息悖论自一九七六年霍金（Stephen Hawking）提出以来，长期被视为通往量子引力的"罗塞塔石碑"。二〇一九年至二〇二〇年间，以阿尔姆海里（Ahmed Almheiri）、恩格尔哈特（Netta Engelhardt）、马洛夫（Donald Marolf）、马克斯菲尔德（Henry Maxfield）、彭宁顿（Geoffrey Penington）及马尔达西那（Juan Maldacena）等为代表的理论物理学家取得了一系列突破性进展：在半经典引力框架下，引入**量子极端曲面（Quantum Extremal Surface, QES）**与**岛公式（Island Formula）**，并通过**副本虫洞（Replica Wormhole）**的 Euclidean 路径积分严格推导，首次在不依赖全息对偶"存在性证明"的前提下，直接复现了 Page 曲线"先增后减"的幺正行为。本文系统综述这条研究脉络，覆盖 RT/HRT 全息纠缠熵、Engelhardt-Wall 量子极端曲面、Lewkowycz-Maldacena 复本技巧、岛公式在二维 JT 引力与高维渐近 AdS 黑洞中的实现、副本虫洞鞍点机制，以及对 AMPS 防火墙悖论的回应。在 TOE-SYLVA 本体论框架下，本文进一步阐明：岛公式是**连接律**（纠缠—几何同构）的最严格物理实例，是**阴阳对偶**（体—边界对偶）在量子引力极区的显化，亦是**层级涌现**（半经典—量子—全息三层一致描述）的典范。本文给出两个可数值验证结论：**(C1)** 二维 JT 单侧蒸发黑洞模型中岛公式给出的辐射熵峰值精确等于初始 BH 熵之半 $S_{\mathrm{BH}}(0)/2$，且 Page 时间恰为蒸发时间的 $1/2$；**(C2)** 副本虫洞连通鞍点与无虫洞断开鞍点的自由能在 Page 时间处严格相等，标志鞍点交换。
+黑洞信息悖论自一九七六年霍金（Stephen Hawking）提出以来，长期被视为通往量子引力的"罗塞塔石碑"。二〇一九年至二〇二〇年间，以阿尔姆海里（Ahmed Almheiri）、恩格尔哈特（Netta Engelhardt）、马洛夫（Donald Marolf）、马克斯菲尔德（Henry Maxfield）、彭宁顿（Geoffrey Penington）及马尔达西那（Juan Maldacena）等为代表的理论物理学家取得了一系列突破性进展：在半经典引力框架下，引入**量子极端曲面（Quantum Extremal Surface, QES）**与**岛公式（Island Formula）**，并通过**副本虫洞（Replica Wormhole）**的 Euclidean 路径积分严格推导，首次在不依赖全息对偶"存在性证明"的前提下，直接复现了 Page 曲线"先增后减"的幺正行为。本文系统综述这条研究脉络，覆盖 RT/HRT 全息纠缠熵、Engelhardt-Wall 量子极端曲面、Lewkowycz-Maldacena 复本技巧、岛公式在二维 JT 引力与高维渐近 AdS 黑洞中的实现、副本虫洞鞍点机制，以及对 AMPS 防火墙悖论的回应。在 TOE-SYLVA 本体论框架下，本文进一步给出类比性对照：岛公式可与**连接律**（纠缠—几何同构）、**阴阳对偶**（体—边界对偶）、**层级涌现**（半经典—量子—全息三层一致描述）作启发式类比（analogy，启发式对应，非严格实现）（审计降级 2026-09-05：原"最严格物理实例""显化""典范"措辞。）本文给出两个可数值验证结论：**(C1)** 二维 JT 单侧蒸发黑洞模型中岛公式给出的辐射熵峰值精确等于初始 BH 熵之半 $S_{\mathrm{BH}}(0)/2$，且 Page 时间恰为蒸发时间的 $1/2$；**(C2)** 副本虫洞连通鞍点与无虫洞断开鞍点的自由能在 Page 时间处严格相等，标志鞍点交换。
 
 **关键词**：黑洞信息悖论；Page 曲线；岛公式；量子极端曲面；副本虫洞；JT 引力；全息纠缠熵；SYLVA 框架
 
@@ -175,7 +175,7 @@ $$S_{\mathrm{rad}}(t) \;=\; -\lim_{n\to 1}\partial_n \log Z_n(t) \;=\; \max\!\Bi
 
 ## 7. TOE-SYLVA 框架下的交叉联系
 
-TOE-SYLVA（Theory of Everything — Synthesized Yield of Layered Vector Architecture）框架以**连接律**、**阴阳对偶**、**层级涌现**为三大本体论公理。岛公式与副本虫洞对这三公理均提供了第一性原理级别的物理实现，构成 SYLVA-QG 模块的核心支柱之一。
+TOE-SYLVA（Theory of Everything — Synthesized Yield of Layered Vector Architecture）框架以**连接律**、**阴阳对偶**、**层级涌现**为三大本体论公理。岛公式与副本虫洞可与这三条原则作类比性对照（analogy，并非"第一性原理级别的物理实现"）。（审计降级 2026-09-05。）
 
 ### 7.1 连接律：纠缠-几何同构的最严格物理实例
 
@@ -188,7 +188,7 @@ TOE-SYLVA（Theory of Everything — Synthesized Yield of Layered Vector Archite
 - **阳极（主动、动力学）**：辐射子系统 $R$ 的量子纠缠熵 $S_{\mathrm{bulk}}(R)$，随时间增长，对应主动信息外流。
 - **阴极（被动、几何）**：黑洞视界面积项 $\mathrm{Area}(\partial I)/(4G_N) \to 2S_{\mathrm{BH}}(t)$，随时间减小，对应被动几何收缩。
 
-岛公式的极小操作把两极耦合于同一泛函中，并在 Page 时间处实现阴阳主导的转换：$t < t_{\mathrm{Page}}$ 时阳极主导（信息外流），$t > t_{\mathrm{Page}}$ 时阴极主导（几何收缩）。这一转换**不是奇性相变，而是 $\mathbb{Z}_n$ 对称破缺的复本鞍点交换**，是 SYLVA 阴阳对偶的连续相变实现。
+岛公式的极小操作把两极耦合于同一泛函中，并在 Page 时间处实现阴阳主导的转换：$t < t_{\mathrm{Page}}$ 时阳极主导（信息外流），$t > t_{\mathrm{Page}}$ 时阴极主导（几何收缩）。这一转换**不是奇性相变，而是 $\mathbb{Z}_n$ 对称破缺的复本鞍点交换**；它可与"阴阳对偶"作类比（analogy，启发式对应，非严格实现），并非其"连续相变实现"。（审计降级 2026-09-05。）
 
 ### 7.3 层级涌现：半经典—量子—全息三层一致描述
 

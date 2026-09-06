@@ -32,9 +32,12 @@ theorem example_phi_cubed : Sylva.φ ^ 3 = 2 * Sylva.φ + 1 := by
     _ = (Sylva.φ + 1) + Sylva.φ := by rw [h1]
     _ = 2 * Sylva.φ + 1 := by ring
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：Phi_c = 137 × φ³ 为无数理推导的数论游戏常数，示例已注释保留（勿恢复使用）：
+/- 历史保留：
 /-- Example: Using Phi_c = 137 × φ³ (Sylva's critical value) -/
 theorem example_phi_c_value : Sylva.Phi.Phi_c = 137 * Sylva.φ ^ 3 := by
   exact rfl
+-/
 
 -- ============================================================
 -- Example 2: Using Sylva.RH.RiemannXi in Theorem Statements
@@ -80,6 +83,8 @@ theorem example_entropy_equivalence_statement :
 -- Example 4: Combined Theorem Using Multiple Sylva Components
 -- ============================================================
 
+-- ⚠️ 已移除（2026-09-05，见 ERRATA E16）：该组合示例含数论游戏常数 Φ_c，整段注释保留（勿恢复使用）：
+/- 历史保留：
 /-- Example: A theorem that combines φ, Phi_c, and Xi
     Shows the golden ratio appears in Sylva's critical value,
     which connects to the Riemann Hypothesis framework -/
@@ -96,6 +101,7 @@ theorem example_combined_sylva_framework :
   · -- Show XiSquaredMag is always non-negative
     intro s
     exact XiSquaredMag_nonneg s
+-/
 
 -- ============================================================
 -- Example 5: GF(3) from Sylva.Basic

@@ -57,6 +57,14 @@ TOE-SYLVA 与 UFPF（gitee.com/dpsnet/universal_fixed_point_framework）存在�
 | E6 | Ngô 引用出处错误 | 正确出处: Publications Mathématiques de l'IHÉS 111 (2010), pp.1-169 (非 Annals 2010) | v7.1 | 多个文件 |
 | E7 | GW L 函数 / Hecke-stack / Global Langlands 声称 | 不存在的定理 | v7.1 | AI_HALLUCINATION_REPORT_FINAL.md |
 
+### 2.3 隔离与数论游戏常数清除（2026-09-05 审计处置）
+
+| 编号 | 问题 | 处置 | 日期 | 影响文件 |
+|:--|:--|:--|:--|:--|
+| E15 | `SYLVA_v6_暗扇区与阴阳对偶.md` 把"阴阳对偶"哲学概念作为暗扇区物理本体贯穿全文，含伪造物理实体（"阴项"）、错误归因（Duffy-Sikivie 尖壳）、回溯拟合（z≈0.7 记为自身功劳）等不可修复问题 | 全文移入隔离区 `releases/quarantine/` 并加隔离牌示；其两条可检验预测（直接探测零信号、w=-1）可在其他诚实文档中以中性语言保留；`神经流形几何与表示动力学_综述/综述.md`、`模块强化_系列/08_Cosmology_DarkEnergy_暗能量.md` 中的索引引用已改为隔离注记 | 2026-09-05 | 见 `framework/paper_screen/quarantine_fix_log.md` |
+| E16 | "SYLVA 临界值" Φ_c = 137×φ³ 为无物理推导的数论游戏常数（137 与 φ 的数值巧合包装），却被当作临界值/精确类比/经验阈值散布全库 | 全库清除：活跃文档（papers/ 11 篇综述/README、framework/78、framework/81）32 处改写或加注撤回；`archive/sylva_complete/BasicTutorial.lean`、`consumer/Main.lean` 共 7 处注释保留并加移除理由；历史报告/备份文档登记台账未逐一改写 | 2026-09-05 | 逐处清单见 `framework/paper_screen/quarantine_fix_log.md` |
+| E17 | `academic/archive/RiemannHypothesis_2026_04_variational_bootstrap.lean` 依赖 Φ_c=137×φ³ 数论游戏常数的所谓黎曼猜想"证明"，与 E 类幻觉同类 | 移入隔离区 `releases/quarantine/` 并加块注释隔离牌示 | 2026-09-05 | releases/quarantine/RiemannHypothesis_2026_04_variational_bootstrap.lean |
+
 ### 2.2 结构性问题修正
 
 | 编号 | 问题 | 修正 | 版本 |
@@ -99,6 +107,7 @@ TOE-SYLVA 与 UFPF（gitee.com/dpsnet/universal_fixed_point_framework）存在�
 | 版本 | 日期 | 变更 |
 |:--|:--|:--|
 | v1.0 | 2026-08-08 | 初始创建。登记 E1-E14 已修正错误。S1-S8 冻结预言同步自 BLIND_REGISTRY v1.0。O1-O10 同步自 OPEN_PROBLEMS v1.0。立场声明 §1.1-1.3。|
+| v1.1 | 2026-09-05 | 追加 §2.3：E15（暗扇区阴阳对偶论文隔离）、E16（Φ_c=137×φ³ 数论游戏常数全库清除）、E17（黎曼猜想变分自举 lean 文件隔离）。处置台账见 `framework/paper_screen/quarantine_fix_log.md`。|
 
 ---
 

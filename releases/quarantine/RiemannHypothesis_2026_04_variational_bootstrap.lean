@@ -1,3 +1,11 @@
+/-
+⚠️ 已隔离（2026-09-05）/ QUARANTINED (2026-09-05)
+
+理由：本文档为依赖 Φ_c=137×φ³ 数论游戏常数的所谓黎曼猜想"证明"，
+与 ERRATA E 类幻觉同类（数论巧合包装成数学证明，无严格推导），不构成有效证明，
+移入隔离区 releases/quarantine/。详见 papers/ERRATA.md E17。
+-/
+
 ﻿/-
 Sylva Formalization Project
 Riemann Hypothesis Variational Bootstrap Framework
