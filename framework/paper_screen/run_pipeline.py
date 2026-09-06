@@ -14,9 +14,11 @@ import random
 import re
 import subprocess
 import sys
+import threading
 import time
 import urllib.request
 import urllib.error
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
@@ -32,7 +34,7 @@ PORT_FILE = OUT_DIR / "_screen_server.port"
 
 PORTS = [3001, 3002]
 READY_TIMEOUT = 180
-LLM_TIMEOUT = 275  # socket 读超时；思考型通道首 token 常需 150-260s
+LLM_TIMEOUT = 290  # socket 读超时；关思考后单段 ~60-150s，3 路并发下约 2.4x 通胀
 CHUNK = 2000  # 单段最大字符数；超过则分 2 段（实测真实内容 ~2.3k 字符 84s 完成，≥2.8k 停滞）
 
 # 重要度顺序：外部项目批判重建 5 → 辐射压力 3 → 回应与评论 27 → 光子行为 9 → 页岩 7 → 数学基础强化 10 → 模块强化 31
@@ -73,6 +75,10 @@ severity 定义：P0=证伪级（动摇全文根基）、P1=实质错误（必�
 
 def log(msg):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+FILE_LOCK = threading.Lock()  # jsonl 追加与段级缓存读写改共用锁
+WORKERS = 3  # 网关并发 3 路实测 3/3 成功
 
 
 def load_env_key(name):
@@ -286,8 +292,41 @@ def spotcheck(path, verdicts):
 
 
 def append_record(rec):
-    with JSONL.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    with FILE_LOCK:
+        with JSONL.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+
+VERIFY_SYS = "你是复核裁判。只回答 YES 或 NO，再加一句话理由。不要输出其他内容。"
+
+
+def verify_verdict(path, v, api_key, port):
+    """P0/P1 判断复核：把引用原文段+判定理由送回 LLM 问是否成立。返回 (is_suspect, note)。"""
+    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    try:
+        ln = int(v.get("line", 0))
+    except (TypeError, ValueError):
+        ln = 0
+    ctx_lines = lines[max(0, ln - 4):ln + 4] if 1 <= ln <= len(lines) else []
+    ctx = "\n".join(f"L{i+1+max(0, ln - 4):04d}: {ctx_lines[i]}" for i in range(len(ctx_lines)))
+    user = (
+        f"【待复核的审稿判定】\n类别 {v.get('category')}，严重度 {v.get('severity')}\n"
+        f"引用原文：{v.get('quote','')}\n判定理由：{v.get('issue','')}\n\n"
+        f"【原文上下文（带行号）】\n{ctx}\n\n"
+        "请核验：该判定是否成立（引文是否真实支持该结论、结论本身是否正确）？只答 YES 或 NO，再加一句话理由。"
+    )
+    try:
+        text, platform, error = sse_chat(VERIFY_SYS, user, api_key, port)
+    except Exception as e:
+        return None, f"复核调用失败: {type(e).__name__}: {e}"
+    if error:
+        return None, f"复核端点错误: {error}"
+    head = text.strip()[:10].upper()
+    if head.startswith("NO"):
+        return True, text.strip()[:200]
+    if head.startswith("YES"):
+        return False, text.strip()[:200]
+    return None, f"复核回答无法解析: {text.strip()[:120]}"
 
 
 CHUNK_CACHE = OUT_DIR / "_chunks"
@@ -313,34 +352,36 @@ def load_chunk_cache(path):
 
 
 def save_chunk_result(path, mtime, ci, la, lb, verdicts):
-    CHUNK_CACHE.mkdir(parents=True, exist_ok=True)
-    cp = chunk_cache_path(path)
-    data = {"mtime": mtime, "chunks": {}}
-    if cp.exists():
-        try:
-            old = json.loads(cp.read_text(encoding="utf-8"))
-            if old.get("mtime") == mtime:
-                data = old
-        except Exception:
-            pass
-    data["chunks"][str(ci)] = {"la": la, "lb": lb, "verdicts": verdicts,
-                               "at": datetime.now().isoformat(timespec="seconds")}
-    cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with FILE_LOCK:
+        CHUNK_CACHE.mkdir(parents=True, exist_ok=True)
+        cp = chunk_cache_path(path)
+        data = {"mtime": mtime, "chunks": {}}
+        if cp.exists():
+            try:
+                old = json.loads(cp.read_text(encoding="utf-8"))
+                if old.get("mtime") == mtime:
+                    data = old
+            except Exception:
+                pass
+        data["chunks"][str(ci)] = {"la": la, "lb": lb, "verdicts": verdicts,
+                                   "at": datetime.now().isoformat(timespec="seconds")}
+        cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
 def mark_chunk_timeout(path, mtime, key):
-    CHUNK_CACHE.mkdir(parents=True, exist_ok=True)
-    cp = chunk_cache_path(path)
-    data = {"mtime": mtime, "chunks": {}}
-    if cp.exists():
-        try:
-            old = json.loads(cp.read_text(encoding="utf-8"))
-            if old.get("mtime") == mtime:
-                data = old
-        except Exception:
-            pass
-    data["chunks"][key] = {"timeout": True, "at": datetime.now().isoformat(timespec="seconds")}
-    cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    with FILE_LOCK:
+        CHUNK_CACHE.mkdir(parents=True, exist_ok=True)
+        cp = chunk_cache_path(path)
+        data = {"mtime": mtime, "chunks": {}}
+        if cp.exists():
+            try:
+                old = json.loads(cp.read_text(encoding="utf-8"))
+                if old.get("mtime") == mtime:
+                    data = old
+            except Exception:
+                pass
+        data["chunks"][key] = {"timeout": True, "at": datetime.now().isoformat(timespec="seconds")}
+        cp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
 
 def screen_one(path, api_key, port):
@@ -365,12 +406,15 @@ def screen_one(path, api_key, port):
             ctx = f"【上下文提示】以下为本文档开头 500 字，仅供你理解语境，审查对象仍是上面给出的本段原文：\n{doc_head}\n"
         user = TASK_TMPL.format(relpath=rel, ci=ci, cn=cn, la=la, lb=lb, ctx=ctx, body=body)
         log(f"  段 {key}（行 {la}-{lb}，{len(body)} 字符）送审...")
+        t0 = time.time()
         verdicts, raw, platform, error = llm_screen(user, api_key, port)
+        dt = time.time() - t0
         if error:
+            log(f"  段 {key} 失败（{dt:.0f}s）: {error[:120]}")
             return None, platform, error
         save_chunk_result(path, mtime, key, la, lb, verdicts)  # 段级落盘，进程被杀不丢
-        log(f"  段 {key} 返回 {len(verdicts)} 条 verdict")
-        return [dict(v, _chunk=ci) for v in verdicts], platform, None
+        log(f"  段 {key} 返回 {len(verdicts)} 条 verdict（{dt:.0f}s）")
+        return [dict(v, _chunk=ci, _secs=round(dt, 1)) for v in verdicts], platform, None
 
     for ci, (body, la, lb) in enumerate(chunks, 1):
         whole_timed_out = bool(cache.get(str(ci), {}).get("timeout"))
@@ -423,13 +467,23 @@ def screen_one(path, api_key, port):
                 v["_chunk"] = ci
             all_verdicts.extend(verdicts)
             log(f"  重筛段 {ci} 返回 {len(verdicts)} 条 verdict")
-        sc2, detail2 = spotcheck(path, all_verdicts)
-        rec = {"file": rel, "chunks": len(chunks), "verdicts": all_verdicts,
-               "spotcheck": sc2, "rescreened": True,
-               "first_spotcheck_fail": detail, "second_spotcheck_detail": detail2,
-               "platform": platform_used,
-               "timestamp": datetime.now().isoformat(timespec="seconds")}
-        return rec
+        sc, detail = spotcheck(path, all_verdicts)
+        rescreened = True
+    # ===== P0/P1 判断复核：NO 则标 suspect，不进 summary 的 P0/P1 清单 =====
+    if sc == "pass":
+        for v in all_verdicts:
+            if v.get("severity") in ("P0", "P1") and not v.get("suspect"):
+                log(f"  复核 {v.get('severity')} 第 {v.get('line')} 行判定...")
+                suspect, note = verify_verdict(path, v, api_key, port)
+                v["verify_note"] = note
+                if suspect is True:
+                    v["suspect"] = True
+                    log(f"  ⚠️ 复核 NO，标 suspect: {note[:100]}")
+                elif suspect is False:
+                    v["suspect"] = False
+                    log(f"  ✔ 复核 YES: {note[:100]}")
+                else:
+                    log(f"  ? 复核未果: {note[:100]}")
     return {"file": rel, "chunks": len(chunks), "verdicts": all_verdicts,
             "spotcheck": sc, "spotcheck_detail": detail, "rescreened": rescreened,
             "platform": platform_used,
@@ -445,6 +499,7 @@ def cmd_start_server():
             return
     port = PORTS[0]
     child_env = os.environ.copy()
+    child_env["KIMI_REASONING_EFFORT"] = "none"  # 深筛提速：关思考（platform-adapter 读此 env 注入 reasoning_effort）
     kb = child_env.get("KIMI_BASE_URL", "").rstrip("/")
     if kb.endswith("/v1"):
         child_env["KIMI_BASE_URL"] = kb[:-3]
@@ -481,31 +536,51 @@ def cmd_screen(n, budget_min, only=None):
         files = [f for f in files if any(s in str(f) for s in subs)]
     done = done_files()
     todo = [f for f in files if str(f.relative_to(PAPERS)) not in done]
-    log(f"总文件 {len(files)}，已完成 {len(done)}，待筛 {len(todo)}，本批上限 {min(n, len(todo))}")
+    log(f"总文件 {len(files)}，已完成 {len(done)}，待筛 {len(todo)}，本批上限 {min(n, len(todo))}，并发 {WORKERS} 路")
     deadline = time.time() + budget_min * 60
     count = 0
-    for f in todo:
-        if count >= n:
-            break
-        if time.time() > deadline - 30:
-            log("时间预算耗尽，停止领取新文件")
-            break
+
+    def worker(f):
         rel = str(f.relative_to(PAPERS))
-        log(f"筛查 [{count + 1}] {rel}")
+        log(f"筛查 {rel}")
         try:
             rec = screen_one(f, api_key, port)
         except Exception as e:
             rec = {"file": rel, "chunks": 0, "error": f"{type(e).__name__}: {e}",
                    "timestamp": datetime.now().isoformat(timespec="seconds")}
-        append_record(rec)  # 每文件完成即落盘
-        count += 1
+        append_record(rec)  # 每文件完成即落盘（加锁）
         if "error" in rec:
-            log(f"  ❌ 错误: {rec['error'][:200]}")
+            log(f"  ❌ {rel} 错误: {rec['error'][:200]}")
         else:
             sev = {}
             for v in rec["verdicts"]:
                 sev[v.get("severity", "?")] = sev.get(v.get("severity", "?"), 0) + 1
-            log(f"  ✅ {len(rec['verdicts'])} 条 verdict {sev} 抽查={rec['spotcheck']}")
+            n_suspect = sum(1 for v in rec["verdicts"] if v.get("suspect"))
+            log(f"  ✅ {rel} {len(rec['verdicts'])} 条 verdict {sev} 抽查={rec['spotcheck']} suspect={n_suspect}")
+        return rec
+
+    batch = todo[:n]
+    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        futures = {}
+        idx = 0
+        # 初始投放 WORKERS 个，之后每完成一个补投一个（考虑预算）
+        while idx < len(batch) and len(futures) < WORKERS and time.time() < deadline - 30:
+            futures[ex.submit(worker, batch[idx])] = batch[idx]
+            idx += 1
+        while futures:
+            if time.time() > deadline:
+                log("时间预算耗尽，等待在途任务自然收尾（不补投新文件）")
+            for fut in as_completed(list(futures), timeout=None):
+                try:
+                    fut.result()
+                    count += 1
+                except Exception as e:
+                    log(f"  ❌ worker 异常: {type(e).__name__}: {e}")
+                del futures[fut]
+                if idx < len(batch) and time.time() < deadline - 30:
+                    futures[ex.submit(worker, batch[idx])] = batch[idx]
+                    idx += 1
+                break  # 回到 for 重新扫描其余 futures
     log(f"本批完成 {count} 个文件")
     write_summary()
 
@@ -530,14 +605,21 @@ def write_summary():
     sev_count = {"P0": 0, "P1": 0, "P2": 0, "P3": 0, "?": 0}
     cat_count = {}
     p01 = []
+    suspects = []
     for r in ok:
+        clean = r.get("spotcheck") == "pass"  # 抽查失败的记录整体不进 P0/P1 清单
         for v in r.get("verdicts", []):
             s = v.get("severity", "?")
             sev_count[s] = sev_count.get(s, 0) + 1
             c = v.get("category", "?")
             cat_count[c] = cat_count.get(c, 0) + 1
-            if s in ("P0", "P1"):
-                p01.append((r["file"], v))
+            if v.get("suspect"):
+                suspects.append((r["file"], v))
+            elif s in ("P0", "P1") and clean:
+                if v.get("suspect") is False:
+                    p01.append((r["file"], v))
+                else:
+                    suspects.append((r["file"], {**v, "verify_note": v.get("verify_note") or "未完成判断复核（历史记录）"}))
     lines = ["# 千界花园论文深筛汇总", "",
              f"> 生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}；数据源：`deep_screen.jsonl`", "",
              "## 进度", "",
@@ -556,16 +638,25 @@ def write_summary():
              f"| {cat_count.get('A',0)} | {cat_count.get('B',0)} | {cat_count.get('C',0)} | {cat_count.get('D',0)} | {cat_count.get('E',0)} |",
              ""]
     if p01:
-        lines += ["## P0/P1 全量清单", ""]
+        lines += ["## P0/P1 全量清单（已通过行号抽查且判断复核未被否）", ""]
         for f, v in p01:
             lines.append(f"### [{v.get('severity')}] `{f}` 第 {v.get('line')} 行（{v.get('category')} 类）")
             lines.append("")
             lines.append(f"- **原文**：{v.get('quote','')}")
             lines.append(f"- **问题**：{v.get('issue','')}")
             lines.append(f"- **建议**：{v.get('fix_suggestion','')}")
+            if v.get("verify_note"):
+                lines.append(f"- **复核**：{v.get('verify_note')}")
             lines.append("")
     else:
         lines += ["## P0/P1 全量清单", "", "（暂无）", ""]
+    lines += ["## Suspect 清单（复核被判 NO 或所在文件抽查失败的 verdict，不计入 P0/P1）", ""]
+    if suspects:
+        for f, v in suspects:
+            lines.append(f"- `[{v.get('severity')}] {f}` 第 {v.get('line')} 行：{v.get('issue','')} — 复核：{v.get('verify_note','未复核')}")
+    else:
+        lines.append("（暂无）")
+    lines.append("")
     if bad:
         lines += ["## 出错文件", ""]
         for r in bad:
