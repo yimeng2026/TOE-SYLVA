@@ -1,11 +1,11 @@
 # 千界花园论文深筛汇总
 
-> 生成时间：2026-09-06 19:42:33；数据源：`deep_screen.jsonl`
+> 生成时间：2026-09-06 23:03:08；数据源：`deep_screen.jsonl`
 
 ## 进度
 
 - 已筛文件（成功）：**8** / 92（Tier 1 总量）
-- 出错文件：13
+- 出错文件：17
 - verdict 总数：6
 
 ## severity 计数
@@ -57,6 +57,10 @@
 - `辐射压力_公理化研究\README.md`：段 1b 失败: 段 1bb 失败: 端点错误事件: fetch failed
 - `数学基础强化_系列\09_相变的信息几何判据_曲率奇异性与标度律的统一.md`：段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out
 - `数学基础强化_系列\09_相变的信息几何判据_曲率奇异性与标度律的统一.md`：段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out
+- `数学基础强化_系列\09_相变的信息几何判据_曲率奇异性与标度律的统一.md`：段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: TimeoutError: timed out
+- `数学基础强化_系列\09_相变的信息几何判据_曲率奇异性与标度律的统一.md`：段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: TimeoutError: timed out
+- `辐射压力_公理化研究\03_辐射压力层化理论_介质裁决的可判定结构.md`：段 3b 失败: 段 3ba 失败: 段 3baa 失败: 段 3baab 失败: TimeoutError: timed out
+- `数学基础强化_系列\09_相变的信息几何判据_曲率奇异性与标度律的统一.md`：段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: 段 1abbbx 失败: TimeoutError: timed out
 
 ## 逐文件概览
 

@@ -397,6 +397,7 @@ def screen_one(path, api_key, port):
     doc_head = "\n".join(raw_lines)[:500]
     all_verdicts = []
     platform_used = ""
+    coverage_gaps = []  # 诚实记录：经行内截断仍超时的不可送审段
 
     def run_segment(key, body, la, lb, ci, cn):
         """单段送审：命中缓存则复用，否则调用并落盘。返回 (verdicts, platform, error)。"""
@@ -430,13 +431,40 @@ def screen_one(path, api_key, port):
             log(f"  段 {key} 历史超时标记，直接二分（行 {la}-{lb}）")
             vs, platform, error = None, "", "TimeoutError: marked"
         else:
+            if marked and lb == la and len(raw_lines[la - 1]) > 400:
+                # 病理单行：行内按字符截断为两段送审（伪行号 Lxxxxa/b）；半行仍超时则记覆盖缺口，不再拖死全文件
+                line_text = raw_lines[la - 1]
+                half = len(line_text) // 2
+                log(f"  段 {key} 单行 {len(line_text)} 字符触底，行内截断送审（L{la:04d}a/b）")
+                out = []
+                platform = ""
+                for suffix, piece, tag in (("x", line_text[:half], f"L{la:04d}a"), ("y", line_text[half:], f"L{la:04d}b")):
+                    pkey = key + suffix
+                    if _seg_timed_out(cache, pkey, la, lb):
+                        log(f"  段 {pkey} 行内半段历史超时，记覆盖缺口")
+                        coverage_gaps.append(f"行 {la} 伪段 {tag}（{len(piece)} 字符）两轮超时未能送审")
+                        continue
+                    body = f"{tag}: {piece}"
+                    vs2, platform2, error2 = run_segment(pkey, body, la, lb, ci, len(chunks))
+                    if platform2:
+                        platform = platform2
+                    if error2 and "TimeoutError" in error2:
+                        mark_chunk_timeout(path, mtime, pkey, la, lb)
+                        log(f"  段 {pkey} 行内半段超时，记覆盖缺口")
+                        coverage_gaps.append(f"行 {la} 伪段 {tag}（{len(piece)} 字符）超时未能送审")
+                        continue
+                    if error2:
+                        return None, platform, f"段 {pkey} 失败: {error2}"
+                    out.extend(vs2)
+                return out, platform, None
             if marked:
                 log(f"  段 {key} 触底（depth={depth}），无视标记重试（行 {la}-{lb}）")
             body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(la, lb + 1))
             vs, platform, error = run_segment(key, body, la, lb, ci, len(chunks))
-        if error and "TimeoutError" in error and can_split:
+        if error and "TimeoutError" in error:
             if not marked:
-                mark_chunk_timeout(path, mtime, key, la, lb)
+                mark_chunk_timeout(path, mtime, key, la, lb)  # 一律打标记：触底单行下次触发行内截断
+        if error and "TimeoutError" in error and can_split:
             mid = (la + lb) // 2
             log(f"  ⚠️ 段 {key} 超时，第 {depth + 1} 级二分（行 {la}-{mid} / {mid+1}-{lb}）")
             out = []
@@ -497,10 +525,14 @@ def screen_one(path, api_key, port):
                     log(f"  ✔ 复核 YES: {note[:100]}")
                 else:
                     log(f"  ? 复核未果: {note[:100]}")
-    return {"file": rel, "chunks": len(chunks), "verdicts": all_verdicts,
-            "spotcheck": sc, "spotcheck_detail": detail, "rescreened": rescreened,
-            "platform": platform_used,
-            "timestamp": datetime.now().isoformat(timespec="seconds")}
+    rec = {"file": rel, "chunks": len(chunks), "verdicts": all_verdicts,
+           "spotcheck": sc, "spotcheck_detail": detail, "rescreened": rescreened,
+           "platform": platform_used,
+           "timestamp": datetime.now().isoformat(timespec="seconds")}
+    if coverage_gaps:
+        rec["coverage_gaps"] = coverage_gaps
+        log(f"  ⚠️ {len(coverage_gaps)} 处覆盖缺口（已诚实记录）")
+    return rec
 
 
 def cmd_start_server():

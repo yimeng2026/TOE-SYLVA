@@ -19,3 +19,7 @@
 {"file": "辐射压力_公理化研究\\01_辐射压力本体论_公理化与范畴视角.md", "chunks": 2, "verdicts": [], "spotcheck": "pass", "spotcheck_detail": null, "rescreened": false, "platform": "openclaw/OpenClaw", "timestamp": "2026-09-06T14:34:33"}
 {"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T19:26:09"}
 {"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T19:31:43"}
+{"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T22:40:20"}
+{"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: TimeoutError: timed out", "timestamp": "2026-09-06T22:45:56"}
+{"file": "辐射压力_公理化研究\\03_辐射压力层化理论_介质裁决的可判定结构.md", "chunks": 19, "error": "段 3b 失败: 段 3ba 失败: 段 3baa 失败: 段 3baab 失败: TimeoutError: timed out", "timestamp": "2026-09-06T22:45:56"}
+{"file": "数学基础强化_系列\\09_相变的信息几何判据_曲率奇异性与标度律的统一.md", "chunks": 20, "error": "段 1a 失败: 段 1ab 失败: 段 1abb 失败: 段 1abbb 失败: 段 1abbbx 失败: TimeoutError: timed out", "timestamp": "2026-09-06T22:51:09"}

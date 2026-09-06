@@ -412,7 +412,9 @@ $$\sum_{n=1}^\infty \frac{\Lambda(n)}{\sqrt{n}}\hat{\phi}(\ln n) = \int_{-\infty
 
 在适当条件下，$\zeta$函数零点的对关联函数为：
 
-$$R_2(\alpha) = 1 + \left(\frac{\sin(\pi\alpha)}{\pi\alpha}\right)^2 + \delta(\alpha)$$
+$$R_2(\alpha) = 1 - \left(\frac{\sin(\pi\alpha)}{\pi\alpha}\right)^2 + \delta(\alpha)$$
+
+> 【回溯勘误 2026-09-06】本公式初版误写为 1 + (sin πα/πα)²。正确形式为减号：α→0 时 R₂→0 体现能级排斥（负号版本与 GUE 一致）；Montgomery 1973 原文与所有标准文献均为减号。本勘误由本系列 10 号论文写作期间的文献核对发现（详见 10 号附录）。
 
 这恰好等于GUE的两点关联函数！
 
