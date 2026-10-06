@@ -482,7 +482,7 @@ def screen_one(path, api_key, port):
                 log(f"  段 {key} 触底（depth={depth}），无视标记重试（行 {la}-{lb}）")
             body = "\n".join(f"L{i:04d}: {raw_lines[i-1]}" for i in range(la, lb + 1))
             vs, platform, error = run_segment(key, body, la, lb, ci, len(chunks))
-        if error and "TimeoutError" in error:
+        if error and ("TimeoutError" in error or "JSON 解析失败" in error or "未找到 JSON 数组" in error):
             if not marked:
                 mark_chunk_timeout(path, mtime, key, la, lb)  # 一律打标记：触底单行下次触发行内截断
         if error and "TimeoutError" in error and can_split:
