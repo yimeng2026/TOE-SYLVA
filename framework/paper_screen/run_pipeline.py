@@ -24,6 +24,17 @@ from pathlib import Path
 
 WORKSPACE = Path(r"C:\Users\一梦\Documents\kimi\workspace")
 NODE = r"C:\Users\一梦\AppData\Local\Programs\kimi-desktop\resources\resources\runtime\node.exe"
+
+
+def resolve_node():
+    """返回 (node_path, via_electron)。kimi-desktop 更新后独立 node.exe 取消，
+    KIMI_DESKTOP_RUNTIME_NODE 指向 Kimi.exe（Electron，需 ELECTRON_RUN_AS_NODE=1）。"""
+    if Path(NODE).exists():
+        return NODE, False
+    env_node = os.environ.get("KIMI_DESKTOP_RUNTIME_NODE", "")
+    if env_node and Path(env_node).exists():
+        return env_node, True
+    raise RuntimeError("未找到可用 node 运行时（旧 node.exe 与 KIMI_DESKTOP_RUNTIME_NODE 均缺失）")
 PAPERS = Path(r"D:\TOE-SYLVA-pull\papers")
 OUT_DIR = Path(r"D:\TOE-SYLVA-pull\framework\paper_screen")
 JSONL = OUT_DIR / "deep_screen.jsonl"
@@ -98,12 +109,12 @@ def load_env_key(name):
 
 
 def port_ready(port):
+    """TCP 连通即视为就绪（Next dev 编译期可能返回 500，但端口绑定即可用）。"""
+    import socket
     try:
-        with urllib.request.urlopen(f"http://localhost:{port}/", timeout=3) as r:
-            return r.status < 500
-    except urllib.error.HTTPError as e:
-        return e.code < 500
-    except Exception:
+        with socket.create_connection(("127.0.0.1", port), timeout=3):
+            return True
+    except OSError:
         return False
 
 
@@ -296,6 +307,12 @@ def append_record(rec):
 
 VERIFY_SYS = "你是复核裁判。只回答 YES 或 NO，再加一句话理由。不要输出其他内容。"
 
+# 复核裁判领域上下文：{(文件名子串, 行号): 附加提示}，行号 ±2 内命中即注入
+VERIFY_HINTS = {
+    ("03_辐射压力层化理论", 61): "领域上下文：该量纲问题已被主笔修复并加勘误注记；若当前原文已含勘误/修正表述，判 NO 并注明【已修复】。",
+    ("03_辐射压力层化理论", 63): "领域上下文：J.P. Gordon 1973, Phys. Rev. A 8, 14 是介质辐射力标准文献（非 Walter Gordon）。若你仍判 YES（即认为引用有误），必须在一句话理由中给出反驳该文献适用性的具体依据，否则判 NO。",
+}
+
 
 def verify_verdict(path, v, api_key, port):
     """P0/P1 判断复核：把引用原文段+判定理由送回 LLM 问是否成立。返回 (is_suspect, note)。"""
@@ -306,11 +323,15 @@ def verify_verdict(path, v, api_key, port):
         ln = 0
     ctx_lines = lines[max(0, ln - 4):ln + 4] if 1 <= ln <= len(lines) else []
     ctx = "\n".join(f"L{i+1+max(0, ln - 4):04d}: {ctx_lines[i]}" for i in range(len(ctx_lines)))
+    hints = [h for (fs, hl), h in VERIFY_HINTS.items()
+             if fs in str(path) and ln and abs(ln - hl) <= 2]
+    hint_text = ("\n\n【裁判附加上下文】\n" + "\n".join(hints)) if hints else ""
     user = (
         f"【待复核的审稿判定】\n类别 {v.get('category')}，严重度 {v.get('severity')}\n"
         f"引用原文：{v.get('quote','')}\n判定理由：{v.get('issue','')}\n\n"
         f"【原文上下文（带行号）】\n{ctx}\n\n"
         "请核验：该判定是否成立（引文是否真实支持该结论、结论本身是否正确）？只答 YES 或 NO，再加一句话理由。"
+        + hint_text
     )
     try:
         text, platform, error = sse_chat(VERIFY_SYS, user, api_key, port)
@@ -543,14 +564,18 @@ def cmd_start_server():
             PORT_FILE.write_text(str(p), encoding="utf-8")
             return
     port = PORTS[0]
+    node_bin, via_electron = resolve_node()
     child_env = os.environ.copy()
+    if via_electron:
+        child_env["ELECTRON_RUN_AS_NODE"] = "1"
+        log(f"独立 node.exe 缺失，改用 Electron 兼容模式（ELECTRON_RUN_AS_NODE=1）: {node_bin}")
     child_env["KIMI_REASONING_EFFORT"] = "none"  # 深筛提速：关思考（platform-adapter 读此 env 注入 reasoning_effort）
     kb = child_env.get("KIMI_BASE_URL", "").rstrip("/")
     if kb.endswith("/v1"):
         child_env["KIMI_BASE_URL"] = kb[:-3]
         log("已规范化子进程 KIMI_BASE_URL（去除尾部 /v1）")
     proc = subprocess.Popen(
-        [NODE, "node_modules/next/dist/bin/next", "dev", "-p", str(port)],
+        [node_bin, "node_modules/next/dist/bin/next", "dev", "-p", str(port)],
         cwd=str(WORKSPACE),
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
         env=child_env,
@@ -724,8 +749,11 @@ def kill_server():
         except ValueError:
             pid = None
     if pid:
-        subprocess.run(["taskkill", "/T", "/F", "/PID", str(pid)], capture_output=True, timeout=30)
-        log(f"dev server 进程树已终止 (pid={pid})")
+        r = subprocess.run(["taskkill", "/T", "/F", "/PID", str(pid)], capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            log(f"⚠️ taskkill pid={pid} 返回码 {r.returncode}: {(r.stdout or '')[:100]} {(r.stderr or '')[:100]}")
+        else:
+            log(f"dev server 进程树已终止 (pid={pid})")
         PID_FILE.unlink(missing_ok=True)
         killed = True
     # 兜底：按端口清理
