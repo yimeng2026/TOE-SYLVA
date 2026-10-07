@@ -154,3 +154,27 @@
 | N7 | **专栏系列化+更新节奏兜底**：琪露诺以"教室系列"建长期信誉但开学断更两个月——教程化包装可借鉴，需自动化发布兜底防断更 | 琪露诺时间线（08-03 后静默） | 我方知乎专栏教程化+ Automation 定时发布机制候选 | **待吸收（低）** |
 
 **本轮附注**：①涌现说（虚时相对论 Tao，Physica B 正式发表）是同生态位正规化程度最高的独立研究者，且与王斌在超流 Tc 标度律上直接对拍——列入持续追踪名单；②王超（量子潮水理论）产出频率极高且方法论与 MUFPF 平行（Zenodo 存档、证据层级、预言三层分级），列入持续追踪；③杨升山（反相对论圈活跃样本）仅作舆情观察，不进入吸收清单。
+
+---
+
+## 八、2026-10-07 增补（形式化治理与生态对标 · 第四轮调研）
+
+> **本轮来源**：两轮调研汇总结论——Physlib（leanprover-community/physlib，Lean 4 物理界 mathlib）治理三件套、leanblueprint/PFR 蓝图系统与 LeanArchitect、MUFPF RAP 深化、Deposon（arXiv:2609.09001）判死协议、李广好 U/D/A/H 场域监控与 #1466 跨框架盲验证、中文 TOE 圈四圈生态、PFE 旧资产复盘、齐天反面教材（调研报告全文见千界花园交接文档；arXiv 编号等细节未经我方独立复核，标"待核"者以调研口径登记）。
+> **登记说明**：12 条候选经验（G 前缀，Governance/治理主线）；状态三级同前。本轮已有 4 条在登记当日完成首轮落地（见各条状态列与附注②）。
+
+| # | 经验 | 来源 | 建议落点 | 状态 |
+|---|---|---|---|---|
+| G1 | **三层晋升结构 + 各层 linter 硬边界**：Alpha 实验区→主库→ForMathlib 上游区单向晋升，层间以 linter（零 sorry、模块文档、文献核实、深筛裁决）做机器闸口 | Physlib 三层结构调研 | `framework/THREE_TIER_PROMOTION.md`（本仓新建：草稿区 `framework/drafts/`+quarantine → 正式区 `papers/` → 上游区 ForMathlib 候选，判据 D1–D8/U1–U4） | **已吸收（首轮落地）** |
+| G2 | **AGENTS.md + AI-POLICY.md 双文件制**：代理行为硬规则（禁 axiom/sorry/假大空、>50 行拆解、模块文档、残留 sorry 打标签）与人机责任契约（每行全责、对外沟通专营、文献核实不委托）分文件治理，互不替代 | Physlib `AGENTS.md` / `AI-POLICY.md` | 仓库根 `AGENTS.md`（新建 v1.0）+ `framework/AI_POLICY.md`（新建 v1.0），全部条款挂接我方既有先例（Clairaut 委托链、MM_deficiency_zero_computed、15 条虚构声明删除记录） | **已吸收（首轮落地）** |
+| G3 | **review_claim CI 认领机制**：评审开始前落认领记录防并行撞车，完成销记 | Physlib review_claim CI | `framework/THREE_TIER_PROMOTION.md` §4.1 第 5 步（纯文本约定先行，CI 化列入千界花园 roadmap，待核） | **部分吸收** |
+| G4 | **leanblueprint + checkdecls CI**：`\lean`/`\leanok`/`\uses` 声明与 Lean 代码联动，绿=全依赖已形式化、蓝=可认领，checkdecls 保证蓝图声明与代码同步 | leanblueprint / PFR（IMO 金奖问题形式化项目） | 长期项：为 `papers/数学基础强化_系列` 的 Lean 落地链（如 T-待1 信息几何 FIM 救治）建蓝图页；短期先以 `framework/DEPENDENCY_GRAPH.md` 承载依赖可视化 | **待吸收（低）** |
+| G5 | **LeanArchitect 式状态推导**：从 Lean 代码反向推导依赖关系与 sorry 状态生成蓝图——状态从代码推导而非手工登记，杜绝"登记与代码两张皮" | LeanArchitect 调研（实现细节待核） | 列入 roadmap：`framework/proof_status.md` 的 Lean 登记表改由脚本从 `#print axioms`+grep 自动生成（对照我方 P-待4 qianjie-sync 快照机制，可合并实施） | **待吸收（中）** |
+| G6 | **MUFPF RAP 盲登记深化**：盲登记 + 勘误 1:1 同步版本号——每版勘误与登记版本哈希一一对应，"纯增量、零声明变更"收尾句式 | MUFPF RAP v0.40–v0.49 版本链（见 §六 M3） | `framework/BLIND_PREDICTIONS.md` 与 `framework/ERRATA_AND_NEGATIVE_RESULTS.md` 补"版本哈希+零声明变更"收尾句式模板（M3 增量项，本轮并入 G 系列推进） | **部分吸收**（同 M3） |
+| G7 | **双实现证明协议**：同一核心定理 Lean4 + Agda 独立重实现互验，双绿才算机器层闭合 | MUFPF 双证明助理协议（U-新8 深化） | `AGDA_FORMALIZATION_COMPLETE.md` 现状盘点后定优先级：核心定理（如 MM_deficiency_zero_computed）排 Agda 侧重实现队列；长期项 | **待吸收（低，长期）** |
+| G8 | **Deposon 判死协议**：预登记 kill protocols——证伪后如实降级、收窄主张、负面结果公开，禁止整体消失 | Deposon（arXiv:2609.09001，编号待核） | 并入 `framework/BLIND_PREDICTIONS.md`：每条 BP 增列"判死后收窄预案"字段；联动 `framework/ERRATA_AND_NEGATIVE_RESULTS.md` 与 `THREE_TIER_PROMOTION.md` §4.2 降级流程 | **待吸收（高）** |
+| G9 | **U/D/A/H 场域健康监控**：H=λᵤU+λᴅD−λₐA+温度动力学——用可计算指标监控理论生态位健康度，替代"感觉式"进展评估 | 李广好场域论调研（公式细节待核） | 接入千界花园看板：以 U（用户数）/D（文档数）/A（争议度）代理变量试点，H 值入 `framework/DASHBOARD.md` 周期快照；指标定义需先本地化（待核） | **待吸收（中）** |
+| G10 | **跨框架盲验证协议**：#1466 协议——同一主张在 ≥3 个独立框架内各自推导，收敛阈值 0.3（细节待核）方判框架无关 | 李广好 #1466 跨框架盲验证调研 | 候选试点：CNF 熵收敛（S2）在 CNF/全息 RG/张量网络三框架独立重推；登记入 `framework/BLIND_PREDICTIONS.md` 增补条款 | **待吸收（中）** |
+| G11 | **四圈隔离与交汇节点策略**：中文 TOE 圈分四圈（形式化物理圈/LLM 推理约束圈/传统独立理论圈/民科流量圈），互引稀少；唯一横跨圈 1+圈 2 者应做交汇节点而非流量竞争者 | 生态地图调研（详见 `framework/ECOSYSTEM_MAP_2026-10.md`） | `framework/ECOSYSTEM_MAP_2026-10.md`（本仓新建）；策略：对圈 1 输出 Lean 资产、对圈 2 输出约束协议、对圈 3 输出盲登记范式、圈 4 不接触 | **已吸收（首轮落地）** |
+| G12 | **齐天反面教材**：无机器检查锚点的宏大宣称 = AI 生成物默认判死；推广靠可复现产物，不靠名仓曝光/issue-spam（李广好 issue-spam 教训并录） | 齐天实数论文被 debunk 事件（见 §七 N5）；李广好 issue-spam 观察 | 防御性条款已入 `AGENTS.md` §三（禁假大空）与 §九（实证交付）；发布纪律：任何对外宣称必须挂"一键复现脚本或机器检查锚点" | **已吸收（首轮落地）** |
+
+**本轮附注**：①本轮 12 条中 G1/G2/G11/G12 四条已于登记当日完成首轮落地（对应交付物：根 `AGENTS.md`、`framework/AI_POLICY.md`、`framework/THREE_TIER_PROMOTION.md`、`framework/ECOSYSTEM_MAP_2026-10.md`），其余 8 条按状态列推进；②Deposon 的 arXiv 编号 2609.09001、李广好 H 公式系数与 #1466 的 0.3 阈值均为调研口径，未经我方独立复核，正式引用前须按 `framework/AI_POLICY.md` §四二次核验；③G4/G5 与既有 P-待4（qianjie-sync 快照）、T-待1（信息几何 Lean 落地）存在合并实施空间，汇总时不再单列；④§四汇总表暂不重排，待本轮条目状态迁移时按 §五规则 1 同步。
