@@ -1,0 +1,57 @@
+{
+  "scope": "数学反例与边界演示；不是 CNF 的物理验证。",
+  "bare_graph_automorphisms": [
+    {
+      "directed_edges": 1,
+      "automorphism_count": 1
+    },
+    {
+      "directed_edges": 2,
+      "automorphism_count": 2
+    },
+    {
+      "directed_edges": 3,
+      "automorphism_count": 6
+    }
+  ],
+  "fisher_example": {
+    "q": 0.25,
+    "input": 0.1623376623376624,
+    "output": 0.010009008107296569
+  },
+  "checks": [
+    {
+      "id": "G1",
+      "passed": true,
+      "observation": "1 条有向分支的裸图只有 1 个自同构；不是连续规范群。"
+    },
+    {
+      "id": "G2",
+      "passed": true,
+      "observation": "2 条有向分支的裸图只有 2 个自同构；不是连续规范群。"
+    },
+    {
+      "id": "G3",
+      "passed": true,
+      "observation": "3 条有向分支的裸图只有 6 个自同构；不是连续规范群。"
+    },
+    {
+      "id": "M1",
+      "passed": true,
+      "observation": "零测度点的不可数并可具有正测度；Cantor 集为零测度但维数非零。"
+    },
+    {
+      "id": "I1",
+      "passed": true,
+      "observation": "参数无关通道没有增加 Fisher 信息；正确形式是通道单调性，不是任意层级度量的三角不等式。"
+    },
+    {
+      "id": "C1",
+      "passed": true,
+      "observation": "粗粒化可以丢失全部区分信息；不能默认存在精细化逆映射或伴随函子。"
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "ok": true
+}

@@ -6,6 +6,16 @@
 
 ---
 
+## 2026-10-26 证据审计链接组
+
+- `MATH_PHYSICS_WORLDVIEW_2026.md` ↔ `TOE_RESEARCH_ATLAS_2026.md`：数学层级与研究路线互相约束。
+- `MATH_PHYSICS_WORLDVIEW_2026.md` ↔ `CNF_RESTRUCTURING_2026.md`：数学映射边界指导 CNF 整改。
+- `TOE_RESEARCH_ATLAS_2026.md` ↔ `CNF_RESTRUCTURING_2026.md`：国际/社区比较与接口联邦互相链接。
+- `62_mathematical_hierarchy_emergence.md` ↔ `104_cnf_empirical_validation_protocol.md` ↔ `105_cnf_standard_model_unification.md`：层级定义、证据门槛和规范群恢复条件依次衔接。
+- `cnf_countermodels.py` ↔ `cnf_countermodels_results.json`：可执行数学反例及结果，不能标为物理验证。
+
+---
+
 ## 🔄 强烈建议的双向链接
 
 ### 1. 精细结构常数系列

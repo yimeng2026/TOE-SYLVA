@@ -1,10 +1,24 @@
 # TOE框架文档索引 (INDEX.md)
 
-> **文档版本**: v3.8  
-> **创建日期**: 2026-04-18  
-> **最后更新**: 2026-08-16  
+> **文档版本**: v3.9
+> **创建日期**: 2026-04-18
+> **最后更新**: 2026-10-26
 > **文档总数**: 35+92=127 (core docs 01-30 + extended 31-126) | framework/ 目录共 200+ 个 .md 文件
 > **索引类型**: 分层索引系统 [[doc:编号]], [[topic:主题]], [[concept:概念]]
+
+---
+
+## 2026-10-26 证据审计入口（优先于旧表格状态）
+
+- `MATH_PHYSICS_WORLDVIEW_2026.md`：数学—物理观、数学层级、AI 证明成本与直觉制度化。
+- `TOE_RESEARCH_ATLAS_2026.md`：20 个研究族、60 个 TOE 课题及社区路线核查。
+- `CNF_RESTRUCTURING_2026.md`：CNF 定位、最小核心、接口联邦和整改顺序。
+- `62_mathematical_hierarchy_emergence.md`：v2.0 条件化重写。
+- `104_cnf_empirical_validation_protocol.md`：v2.0 独立证据协议与 S1–S20 清算。
+- `105_cnf_standard_model_unification.md`：v2.0 原规范群推导否决与恢复条件。
+- `cnf_countermodels.py`、`cnf_countermodels_results.json`：6 项数学反例与边界检查，非物理实验。
+
+> 旧表格中的 ✅ 仅沿用“文档存在/历史版本已登记”含义，不表示其中所有定理、物理主张或实验预言已获当前审计认可。与上述审计文档冲突时，以审计文档为准。
 
 ---
 
