@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   # ── 诚实性检查 ──
@@ -40,32 +41,34 @@ jobs:
   validation-scripts:
     name: Validation Scripts
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12'
       - name: Install dependencies
-        run: pip install numpy matplotlib scipy
-      - name: Run paper-level validation scripts
         run: |
-          cd papers
-          FAIL=0
-          for f in $(find . -name "verify_*.py" -not -name "*_fixed.py" 2>/dev/null | sort); do
-            echo "--- $f ---"
-            if PYTHONIOENCODING=utf-8 python3 "$f" 2>&1; then
-              echo "  PASS"
-            else
-              echo "  FAIL ($f)"
-              FAIL=$((FAIL + 1))
-            fi
-          done
-          echo "---"
-          if [ "$FAIL" -gt 0 ]; then
-            echo "$FAIL script(s) failed"
-            exit 1
-          fi
-          echo "PASS: All validation scripts ($(find . -name 'verify_*.py' -not -name '*_fixed.py' | wc -l) checked)"
+          python -m pip install --upgrade pip
+          pip install numpy matplotlib scipy sympy pandas duckdb openpyxl networkx scikit-learn pillow statsmodels mpmath
+      - name: Run all registered validation scripts
+        run: python framework/verify_run_all.py
+
+  # ── 已核定 Lean 核心的真实构建（不是全库通过声明） ──
+  lean-core-build:
+    name: Lean Core Build (four audited targets)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build only the four locally audited targets
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: sylva_formalization/SylvaFormalization
+          auto-config: false
+          build: true
+          use-mathlib-cache: true
+          build-args: "SYLVA_CHSHCore SYLVA_CrossModuleTheorems PhysicalChemistry.ReactionNetwork SYLVA_Causality"
 
   # ── 连接律数据库 ──
   connection-laws:
@@ -100,8 +103,8 @@ jobs:
           echo "Checking $GAPS_FILE for unresolved gaps..."
           MISSING=$(grep -c '完全缺失' "$GAPS_FILE" 2>/dev/null || echo "0")
           echo "Unresolved gaps: $MISSING"
-          # This is informational — we don't fail on known gaps
-          echo "PASS: Gap report current"
+          # Informational only; do not disguise the report as a passing proof gate.
+          echo "INFO: Gap report generated; known gaps remain non-blocking"
 
   proof-rate-dashboard:
     name: Proof Rate Dashboard
@@ -130,5 +133,5 @@ jobs:
           python-version: '3.11'
       - name: Check paper-module lineage
         run: |
-          python scripts/lineage_checker.py || true
-          echo "Lineage check completed (orphan report generated)"
+          python scripts/lineage_checker.py
+          echo "INFO: Orphan report generated; execution errors fail this job"

@@ -14,9 +14,9 @@ verify_计数几何GW不变量.py
   T7: 参考文献完整性
 
 运行: python3 verify_计数几何GW不变量.py
-退出码: 0
+退出码: 全部通过为 0；任何检查失败为 1
 """
-import sys, os, math
+import sys, os, math, re
 import numpy as np
 from itertools import product as iter_product
 from scipy.special import comb as binom_coef
@@ -200,9 +200,8 @@ report("PF 递推: a₂ 自洽", abs(a_coeffs[2] - a2_expected) < 1e-6,
 # ===================================================================
 # T5: CP² 有理曲线计数 — 关键点数检查
 # ===================================================================
-print("\n=== T5: CP² 有理曲线计数 — 关键论断检查 ===")
-print("  综述 §6.2 声称: 'CP² 中通过 5 个一般点的三次有理曲线数 = 12'")
-print("  标准枚举问题: 度 d 有理曲线通过 3d-1 个一般点")
+print("\n=== T5: CP² 有理曲线计数 — 关键点数检查 ===")
+print("  直接读取综述 §6.2 的当前文本；标准枚举问题为 3d-1 个一般点")
 
 # 标准结果 (Kontsevich 1992):
 # N_d = 度 d 的有理曲线通过 3d-1 个一般点的数量
@@ -216,17 +215,22 @@ print("\n  标准枚举结果 (Kontsevich):")
 for d, (n_pts, N_d) in standard_N.items():
     print(f"    d={d}: {3*d - 1} 个点 → N_{d} = {N_d}")
 
-# 综述 §6.2 声称: "5 个一般点 → N₃ = 12"
-# 但标准结果是: 8 个点 → N₃ = 12 (通过 5 个点会有无穷多条)
-# 这意味着综述中 §6.2 的点数有误!
-markdown_points_for_N3 = 5  # 综述声称
+# 不把历史错误硬编码成永久失败，也不把修正后的文本硬编码成无需读取的 PASS。
+t5_path = os.path.join(os.path.dirname(__file__), "计数几何与Gromov-Witten不变量_综述.md")
+try:
+    with open(t5_path, encoding="utf-8") as f:
+        t5_text = f.read()
+    point_match = re.search(r"通过\s*(\d+)\s*个一般点[^\n]*三次有理曲线数", t5_text)
+    markdown_points_for_N3 = int(point_match.group(1)) if point_match else None
+except OSError as exc:
+    markdown_points_for_N3 = None
+    point_match = None
+    print(f"  [FAIL] 无法读取综述: {exc}")
+
 correct_points_for_N3 = 3 * 3 - 1  # = 8
-report("§6.2 '5 个一般点→12 条三次曲线' 点数检查",
+report("§6.2 当前文本的三次有理曲线点数检查",
        markdown_points_for_N3 == correct_points_for_N3,
-       f"综述声称 5 点, 标准=8 点 (3d-1=8) — "
-       + ("一致" if markdown_points_for_N3 == correct_points_for_N3
-          else "不一致: 5 个点下三次有理曲线数非有限整数 12, "
-               "标准枚举需 8 个一般点"))
+       f"当前文本点数={markdown_points_for_N3 or '未识别'}, 标准={correct_points_for_N3} (3d-1)")
 
 # 验证标准 N_3 = 12
 report("N₃(CP²) = 12 (标准枚举, 通过 8 个一般点)", True,
@@ -308,9 +312,7 @@ print("\n" + "="*60)
 print(f"验证汇总: PASS={PASS}, FAIL={FAIL}, WARN={WARN}")
 print("="*60)
 if FAIL > 0:
-    print("⚠ 存在 FAIL 项 — 详见上方标注")
-    print("  关键发现: §6.2 '5 个一般点→12 条三次曲线' 点数有误;")
-    print("  标准枚举问题需要 3d-1 = 8 个一般点 (d=3), 而非 5 个.")
+    print("⚠ 存在 FAIL 项 — 详见上方标注；退出码必须为 1")
 else:
     print("✓ 全部检查通过")
-sys.exit(0)
+sys.exit(1 if FAIL > 0 else 0)
