@@ -433,3 +433,19 @@
 - 新增公理 0；核心两文件及 QuantumBiologyBridge 的行首 `sorry/admit/postulate/axiom` 扫描均为 0。
 - `Superconductivity_Material_Derivation`、`ComplexityPhysicalSystems` 以及两个千行单体文件均有独立遗留错误，未在本波虚构清零。
 - 下一批：按 `SYLVA_Geometry`/`SYLVA_Symmetry` → 定理 3 优先；若继续走依赖裁剪路线，必须先证明被裁剪接口确实不被使用，禁止以删导入掩盖真实依赖。
+
+---
+
+## 复扫第十四波（v8.22，CMT 定理 3 正式恢复，累计 2/4）
+
+### 核心接口与证明
+- **SYLVA_GeometryCore.lean（新）**：保留简化 Hodge 模型的 `eulerCharacteristic`，但不再使用“定义展开即恒等式”的 `euler_characteristic_calabi_yau`；新增 `euler_characteristic_even`，直接证明 `(eulerCharacteristic Unit h11 h21) % 2 = 0`。
+- **SYLVA_SymmetryCore.lean（新）**：`superchargeDimension n = 2^(n/2)`；先证 `n ≥ 2 ⇒ n/2 ≥ 1`，再把幂分解为 `2 * 2^(n/2-1)`，以 `Nat.mul_mod` 完成偶数性证明，避开原文件的减一方向与目标错配。
+- 两核心联合构建：**exit 0（8249 jobs）**；行首 `sorry/admit/postulate/axiom` 扫描均为 0，未新增公理。
+- **SYLVA_CrossModuleTheorems.lean**：定理 3 改接 GeometryCore/SymmetryCore，证明直接由 `euler_characteristic_even` 与 `supercharge_dimension_even` 组成，不再依赖旧单体文件。
+- `lake env lean SYLVA_CrossModuleTheorems.lean` **exit 0**；`lake build SYLVA_CrossModuleTheorems` **exit 0（8252 jobs）**。
+
+### 诚实边界
+- **CMT 累计恢复：2/4**。定理 2/4 继续封存，未宣称 Dynamics/Evolution/Causality 已修复。
+- Geometry/Symmetry 千行单体文件仍有独立遗留错误，本波只验证核心接口，不声称单体清零。
+- 下一批：优先评估 Dynamics/Evolution 的 replicator 接口；Causality 的 Tsirelson 既有公理不得复制成新公理，需选择真实证明、保留封存或显式条件化，不能为追求 4/4 而降级纪律。

@@ -58,6 +58,8 @@ import Mathlib
 --   PolynomialTime/Connection/根SAT/CrystalStructure（本波清零：前向引用级联 + lam 非法语法）。
 import SYLVA_InformationCore
 import SYLVA_EmergenceCore
+import SYLVA_GeometryCore
+import SYLVA_SymmetryCore
 -- import SYLVA_Dynamics
 -- import SYLVA_Evolution
 -- import SYLVA_Geometry
@@ -166,58 +168,22 @@ theorem replicator_dynamics_is_gradient_flow
 
 -- [StreamA恢复→本波回退] 定理 3 曾解包装+换真前缀+let-χ 修补（全部保留于下方注释体内，已就绪），
 --   因上游传递闭包阻断整段重新注释。下批：删下行 /- 与定理末尾 -/ 即恢复。
-/- [StreamA修复] 定理 3 整段注释保留（原包装恢复；let-χ 已修补，引用已换真前缀 Sylva.SYLVASGeometry./Sylva.SYLVASymmetry.）。
+-- [StreamA恢复·2026-10-26] 使用 GeometryCore/SymmetryCore，正式恢复定理 3。
 /-- **Cross-Module Theorem 3: Geometry–Symmetry Connection**
 
-    **Statement**: The Euler characteristic of a Calabi-Yau 3-fold determines
-    the number of fermion generations in the resulting low-energy 4-D theory,
-    and this number is always an integer because the Euler characteristic is even.
-
-    **Proof idea**: We combine:
-    1. `euler_characteristic_calabi_yau` (SYLVA_Geometry): For a Calabi-Yau
-       threefold, χ = 2(h^{1,1} − h^{2,1}).
-    2. `supercharge_dimension_even` (SYLVA_Symmetry): The supercharge dimension
-       is 2^{n/2}, which is always even for n ≥ 2.
-
-    From (1) the Euler characteristic is manifestly even (twice an integer), so
-    the fermion generation count |χ|/2 is an integer.  From (2) the supersymmetry
-    algebra has an even number of supercharges, which is the algebraic reason why
-    the topological invariant χ is constrained to be even.  The evenness of χ is
-    therefore a consistency requirement between the geometry of the compactification
-    manifold and the symmetry (supersymmetry) of the 4-D effective theory.
-
-    **Physical meaning**: Topology dictates particle physics.  In string-theory
-    compactifications the Hodge numbers of the extra-dimensional manifold fix the
-    spectrum of massless fermions, and the number of Standard-Model generations is
-    |χ|/2.  For the prototypical quintic Calabi-Yau χ = −200, yielding 100 generations;
-    realistic models require more elaborate constructions (e.g. orbifolds) that
-    reduce the number to three.
--/
+    The simplified Euler characteristic and supercharge dimension are both even.
+    The proof directly consumes the two arithmetic parity theorems, rather than
+    relying on a definitional `χ = χ` statement. -/
 theorem euler_characteristic_determines_fermion_count
     (h11 h21 : ℕ) (n_spacetime : ℕ) (h_n : n_spacetime ≥ 2) :
-    let χ : ℤ := Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21
+    let χ : ℤ := Sylva.SYLVASGeometryCore.eulerCharacteristic Unit h11 h21
     let fermion_generations : ℕ := χ.natAbs / 2
-    -- χ is even, so the fermion count is an integer.
     χ % 2 = 0
-    -- The supercharge dimension is even, ensuring algebraic consistency.
-    ∧ (Sylva.SYLVASymmetry.superchargeDimension n_spacetime) % 2 = 0 := by
-  -- [StreamA修复] let-χ 修补：χ 与 fermion_generations 为 statement let-绑定，不进入证明上下文
-  --   （原 `simp [χ]` 必报 unknown identifier）→ 首行 show 按 zeta 展开换目标后按原结构 constructor。
-  --   原首行存档：直接 constructor（无 show）；
-  --   原 h_χ 存档：have h_χ : χ = 2 * (h11 - h21) := by simp [χ]; exact <calabi_yau 定理>。
-  show (Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21) % 2 = 0
-    ∧ (Sylva.SYLVASymmetry.superchargeDimension n_spacetime) % 2 = 0
-  constructor
-  · -- Step 1: χ = 2(h^{1,1} − h^{2,1}) from the Calabi-Yau theorem.
-    have h_χ : Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21 = 2 * (h11 - h21) :=
-      Sylva.SYLVASGeometry.euler_characteristic_calabi_yau h11 h21
-    -- Step 2: Any integer multiplied by 2 is even.
-    rw [h_χ]
-    omega
-  · -- Step 3: The supercharge dimension is 2^{n/2}, which is even for n ≥ 2.
-    apply Sylva.SYLVASymmetry.supercharge_dimension_even
-    exact h_n
--/
+    ∧ (Sylva.SYLVASymmetryCore.superchargeDimension n_spacetime) % 2 = 0 := by
+  show (Sylva.SYLVASGeometryCore.eulerCharacteristic Unit h11 h21) % 2 = 0
+    ∧ (Sylva.SYLVASymmetryCore.superchargeDimension n_spacetime) % 2 = 0
+  exact ⟨Sylva.SYLVASGeometryCore.euler_characteristic_even h11 h21,
+    Sylva.SYLVASymmetryCore.supercharge_dimension_even n_spacetime h_n⟩
 
 -- ============================================================================
 -- Section 4: Causality ↔ Information
