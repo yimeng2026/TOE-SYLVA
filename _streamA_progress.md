@@ -414,3 +414,22 @@
 - 七上游构建进一步暴露既有后续层：`StandardModel.Lagrangian`、`SYLVA_Geometry`、`Superconductivity.Superconductivity_Material_Derivation`、`Cosmology`、`SYLVA_Dynamics`、`ComplexityPhysicalSystems`、`SYLVA_Causality`、`SYLVA_Evolution`、`SYLVA_Symmetry`。这些不是五模块修复引入的回归，而是被前层遮蔽的后续工作。
 - **CMT 四定理恢复仍未达成（0/4）**；不得把定点 10 模块归零等同于七上游全绿。
 - 下一批建议：先清 `CosmologicalThermodynamics` 与 `QuantumBiologyBridge` 及其传递依赖，再恢复定理 1；随后按 `SYLVA_Geometry`/`SYLVA_Symmetry` → 定理 3、`SYLVA_Dynamics`/`SYLVA_Evolution` → 定理 2、`SYLVA_Causality` → 定理 4 推进。
+
+---
+
+## 复扫第十三波（v8.21，CMT 定理 1 正式恢复，1/4）
+
+### 本波处置
+- **StandardModel/Lagrangian.lean**：2 个表层错误清零；同时拆除未定义求和函数、Unicode 分数与 `L_SM = L_SM` 空陈述，改为 `StandardModelLagrangianTerms` 四项显式数据接口；`Φ.lam` 对接现行 `lambdaParam`。`lake build StandardModel.Lagrangian` **exit 0（8250 jobs）**。
+- **QuantumBiologyBridge.lean**：辅助定义由文件尾前移至命名空间前部，补 `noncomputable section`；FMO 统一为 `FMO_n_sites` 维度并对接 `FMO_Hamiltonian`/`FMO_dephasing_operators 300`；矩形矩阵非法 `IsHermitian` 前提移除；过强的生物量子宣称降级为“简化模型检查”。重新加入 lakefile roots。`lake build QuantumBiologyBridge` **exit 0（8256 jobs）**。
+- **SYLVA_InformationCore.lean（新）**：仅含 CMT 实际使用的 `shannonEntropy` 定义，**零公理**，不引入未清偿的最大熵公理。`lake build SYLVA_InformationCore` exit 0。
+- **SYLVA_EmergenceCore.lean（新）**：`orderParameter` 改用 `(n_spins : ℝ)`；`goldstone_theorem` 直接有限求和；`order_parameter_broken_nonzero` 新增 `h_n : n_spins > 0`，修复原 `N = 0` 时全称命题为假的漏洞。`lake build SYLVA_EmergenceCore` exit 0。
+- 两个核心模块联合构建：**exit 0（8249 jobs）**。
+- `SYLVA_Information`/`SYLVA_Emergence` 的 `CosmologicalThermodynamics`/`ComplexityPhysicalSystems` 导入经全文检索均为无符号引用的冗余依赖，已注释；**这不等于两个千行单体模块已修完**，其自身遗留错误仍登记待后续清理。
+- **SYLVA_CrossModuleTheorems.lean**：第 1 条定理改接核心接口，删除对未清偿 `shannon_entropy_maximum` 的证明依赖；`order_parameter_broken_nonzero` 调用补 `h_n`。`lake env lean SYLVA_CrossModuleTheorems.lean` **exit 0**；`lake build SYLVA_CrossModuleTheorems` **exit 0（8250 jobs）**。
+
+### 诚实边界
+- **CMT 恢复进度：1/4**。定理 2/3/4 继续封存，未声称七上游全绿。
+- 新增公理 0；核心两文件及 QuantumBiologyBridge 的行首 `sorry/admit/postulate/axiom` 扫描均为 0。
+- `Superconductivity_Material_Derivation`、`ComplexityPhysicalSystems` 以及两个千行单体文件均有独立遗留错误，未在本波虚构清零。
+- 下一批：按 `SYLVA_Geometry`/`SYLVA_Symmetry` → 定理 3 优先；若继续走依赖裁剪路线，必须先证明被裁剪接口确实不被使用，禁止以删导入掩盖真实依赖。

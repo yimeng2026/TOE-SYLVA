@@ -57,16 +57,35 @@ Version: v5.38 — Deepened: axiom→theorem + 4 boundary theorems
 -/
 
 import Mathlib
-import SylvaFormalization.QuantumChemistry.QuantumPhotosynthesis
-import SylvaFormalization.QuantumChemistry.QuantumMasterEquation
-import SylvaFormalization.InformationGeometry.StatMech
-import SylvaFormalization.TopologicalInsulator.Basic
-import SylvaFormalization.BerryConnection
-import SylvaFormalization.BerryCurvature
+import QuantumChemistry.QuantumPhotosynthesis
+import QuantumChemistry.QuantumMasterEquation
+import InformationGeometry.StatMech
+import TopologicalInsulator.Basic
+import BerryConnection
+import BerryCurvature
 
 namespace Sylva.QuantumBiologyBridge
 
 open QuantumPhotosynthesis QuantumMasterEquation
+
+noncomputable section
+
+-- 简化演示模型的辅助接口。以下常数只用于检查命题的 Lean 类型与逻辑结构，
+-- 不是实验数据，也不构成对一般生物量子系统的数值证明。
+def energyTransferEfficiency (n : ℕ) (t : ℝ) (psi0 : Fin n → ℂ) : ℝ := 0.99
+
+def quantumChannelCapacity (n : ℕ) (H : Matrix (Fin n) (Fin n) ℂ)
+    (L : List (Matrix (Fin n) (Fin n) ℂ)) (t : ℝ) : ℝ := 1.0
+
+/-- 简化模型的熵；纯态演示取零，不能当作一般密度矩阵的熵公式。 -/
+def vonNeumannEntropy (rho : Matrix (Fin n) (Fin n) ℂ) : ℝ := 0
+
+/-- 简化模型的纠缠熵；当前只用于零模型一致性检查。 -/
+def entanglementEntropy (psi : Matrix (Fin n) (Fin m) ℂ) : ℝ := 0
+
+/-- 零模型密度矩阵；完整 |ψ⟩⟨ψ| 与张量积形式化仍属后续工作。 -/
+def densityMatrix (psi : Matrix (Fin n) (Fin m) ℂ) : Matrix (Fin (n*m)) (Fin (n*m)) ℂ :=
+  0
 
 -- ============================================================================
 -- Section 1: FMO Complex ↔ Quantum Error Correction
@@ -93,7 +112,8 @@ open QuantumPhotosynthesis QuantumMasterEquation
     "decoherence-free subspace" mechanism in quantum codes. -/
 
 def FMOHamiltonianMatrix : Matrix (Fin FMO_n_sites) (Fin FMO_n_sites) ℂ :=
-  FMO_hamiltonian
+  -- 原引用不存在的 `FMO_hamiltonian`；现行复值接口由实矩阵逐项转换。
+  fun i j => Complex.ofReal (FMO_Hamiltonian i j)
 
 /-- The **decoherence-free subspace (DFS)** of the FMO complex is the subspace
     spanned by eigenstates of the Lindbladian jump operators. In the FMO
@@ -114,27 +134,17 @@ def decoherenceFreeSubspace (H : Matrix (Fin n) (Fin n) ℂ)
   -- DFS = { |ψ⟩ : L_k |ψ⟩ = λ_k |ψ⟩ for all k, with λ_k = λ_l for all k,l }
   { psi : Fin n → ℂ | ∀ k : Fin L.length, (L.get k).mulVec psi = 0 }
 
-/-- **Theorem**: The energy transfer efficiency in the FMO complex is bounded
-    by the quantum channel capacity of the associated Lindbladian.
-
-    The quantum channel capacity C = max_ρ [S(ρ) - S(Φ(ρ))] where Φ is the
-    channel (Lindbladian evolution) and S is the von Neumann entropy. The FMO
-    efficiency η = P_{transfer} / P_{absorption} is bounded by the capacity of
-    the channel from the antenna to the reaction center.
-
-    This is the **biological quantum information bound**: no biological quantum
-    transport can exceed the quantum channel capacity of the underlying dynamics. -/
-theorem FMO_efficiency_quantum_channel_bound (n : ℕ) (H : Matrix (Fin n) (Fin n) ℂ)
-    (L : List (Matrix (Fin n) (Fin n) ℂ)) (t : ℝ) (psi0 : Fin n → ℂ)
-    (h_H : H = FMOHamiltonianMatrix) (h_L : L = FMO_dephasing_operators) :
-    let efficiency := energyTransferEfficiency n t psi0
-    let capacity := quantumChannelCapacity n H L t
+/-- **Simplified-model check**: in the normalized demonstration model,
+    the transfer efficiency 0.99 does not exceed capacity 1.0. This is not a
+    proof of a general biological channel-capacity theorem. -/
+theorem FMO_efficiency_quantum_channel_bound (H : Matrix (Fin FMO_n_sites) (Fin FMO_n_sites) ℂ)
+    (L : List (Matrix (Fin FMO_n_sites) (Fin FMO_n_sites) ℂ)) (t : ℝ)
+    (psi0 : Fin FMO_n_sites → ℂ)
+    (h_H : H = FMOHamiltonianMatrix)
+    (h_L : L = FMO_dephasing_operators 300 (by norm_num)) :
+    let efficiency := energyTransferEfficiency FMO_n_sites t psi0
+    let capacity := quantumChannelCapacity FMO_n_sites H L t
     efficiency ≤ capacity := by
-  -- The energy transfer efficiency is the population of the reaction center
-  -- after time t, divided by the total initial population
-  -- The quantum channel capacity is the maximum mutual information between
-  -- input and output of the Lindbladian channel
-  -- By the data processing inequality, the efficiency cannot exceed the capacity
   simp only [energyTransferEfficiency, quantumChannelCapacity]
   norm_num
 
@@ -173,28 +183,18 @@ def microtubuleCoherenceTime (n_tubulins : ℕ) (temperature : ℝ) : ℝ :=
   -- The coherence time is inversely proportional to temperature and system size
   if temperature > 0 then 1.0 / (temperature * (n_tubulins : ℝ)) else 0.0
 
-/-- **Theorem**: The coherence time of a quantum system in a thermal environment
-    is bounded by the inverse temperature (Margolus-Levitin theorem for thermal
-    states): τ_c ≤ ℏ / (k_B T).
-
-    For biological systems at T = 300K, this bound gives τ_c ≤ ~10^-14 s,
-    which is much shorter than neural timescales (~1 ms). Therefore, any
-    room-temperature quantum coherence in biology must involve a non-thermal
-    mechanism (e.g., dark states, topological protection, or error correction).
-
-    This is the **biological quantum coherence bound**: no biological quantum
-    process at temperature T can maintain coherence longer than ℏ / (k_B T). -/
+/-- **Simplified-model check**: for the phenomenological definition above,
+    `1 / (T * 1000000) ≤ 1 / T` when `T > 0`. This is not a universal
+    Margolus–Levitin or biological coherence-time theorem. -/
 theorem biological_coherence_thermal_bound (T : ℝ) (h_T : T > 0) :
     let tau_c := microtubuleCoherenceTime 1000000 T
     tau_c ≤ 1.0 / T := by
-  -- The coherence time is inversely proportional to temperature
-  -- At any temperature, the thermal dephasing rate is proportional to T
-  simp only [microtubuleCoherenceTime]
+  simp only [microtubuleCoherenceTime, show (1.0 : ℝ) = 1 by norm_num]
   rw [if_pos h_T]
-  -- We need to show: 1 / (T * 1000000) ≤ 1 / T for T > 0
-  -- Since T * 1000000 ≥ T > 0, the reciprocals satisfy the reverse inequality
-  apply (div_le_div_iff (by positivity) (by positivity)).mpr
-  nlinarith [show (1000000 : ℝ) ≥ 1 by norm_num]
+  -- 原 `div_le_div_iff` 已更名；1.0 已归一，使用倒数单调性。
+  apply one_div_le_one_div_of_le h_T
+  simpa using mul_le_mul_of_nonneg_left
+    (show (1000000 : ℝ) ≥ 1 by norm_num) (le_of_lt h_T)
 
 -- ============================================================================
 -- Section 3: Quantum Darwinism ↔ Neural Darwinism
@@ -308,29 +308,16 @@ def integratedInformation (n : ℕ) (system : Matrix (Fin n) (Fin n) ℂ) : ℝ 
   -- For small n, this can be computed exactly; for large n, it is NP-hard
   S_total  -- **RESEARCH**: Requires exact Φ computation for general systems
 
-/-- **Theorem**: For a pure bipartite quantum state |ψ⟩, the integrated
-    information Φ equals twice the entanglement entropy E:
-    Φ(|ψ⟩) = 2E(|ψ⟩) = 2S(ρ_A) = 2S(ρ_B)
-
-    This is the **quantum-IIT correspondence**: the integrated information of
-    a quantum system is the quantum entanglement of its subsystems. A quantum
-    system is "conscious" (Φ > 0) if and only if its subsystems are entangled
-    (E > 0). The "consciousness" of a quantum system is its entanglement.
-
-    Proof: For a pure state |ψ⟩, the mutual information I(A:B) = S(ρ_A) + S(ρ_B)
-    - S(ρ_AB) = 2S(ρ_A) (since S(ρ_AB) = 0 for a pure state). The integrated
-    information Φ = min_{partitions} I(A:B) = 2S(ρ_A) = 2E(|ψ⟩). ∎ -/
+/-- **Zero-model consistency check**: the simplified placeholders above give
+    `0 = 2 * 0`. This is not a proof of the IIT–entanglement correspondence,
+    and the rectangular-matrix `IsHermitian` assumption has been removed. -/
 theorem IIT_phi_equals_twice_entanglement (n m : ℕ)
-    (psi : Matrix (Fin n) (Fin m) ℂ) (h_pure : psi.IsHermitian) :
+    (psi : Matrix (Fin n) (Fin m) ℂ) :
     let Phi := integratedInformation (n * m) (densityMatrix psi)
     let E := entanglementEntropy psi
     Phi = 2 * E := by
-  -- For a pure bipartite state, the density matrix is ρ = |ψ⟩⟨ψ|
-  -- The von Neumann entropy of the reduced density matrix is S(ρ_A) = E
-  -- The total system entropy is S(ρ) = 0 (pure state)
-  -- The mutual information is I(A:B) = S(ρ_A) + S(ρ_B) - S(ρ) = 2E
   simp only [integratedInformation, entanglementEntropy, densityMatrix, vonNeumannEntropy]
-  all_goals norm_num
+  norm_num
 
 -- ============================================================================
 -- Section 5: Berry Phase in Biological Systems
@@ -387,11 +374,8 @@ theorem berry_phase_enhances_photosynthetic_efficiency (n : ℕ)
     let efficiency_with_berry := energyTransferEfficiency n 1.0e-12 (fun i => 0.0)
     let efficiency_without_berry := energyTransferEfficiency n 1.0e-12 (fun i => 0.0)
     efficiency_with_berry ≥ efficiency_without_berry := by
-  -- The Berry phase does not change the efficiency in the simple model
-  -- (both are computed with the same Hamiltonian and initial state)
-  -- In a full model, the Berry phase would enhance efficiency by constructive interference
-  simp only [efficiency_with_berry, efficiency_without_berry]
-  norm_num
+  -- 两侧在简化模型中按定义相等；本定理不构成 Berry 相位增效的证明。
+  rfl
 
 -- ============================================================================
 -- Section 6: Boundary Theorems (跨学科边界问题)
@@ -415,15 +399,14 @@ theorem FMO_coherence_thermal_boundary :
 -- Boundary Theorem 2: Topology ↔ Biology (Berry Phase Optimality)
 -- ----------------------------------------------------------------------------
 
-/-- **边界定理 2 (拓扑-生物学边界)**: Berry相位在光合作用效率中的最优性条件。
-    当Berry相位等于π（锥形交叉点）时，能量转移效率达到理论上限。
-    这体现了拓扑不变量如何优化生物量子过程。 -/
+/-- **简化模型边界检查**：归一化效率常数 0.99 不低于 0.95；
+    这不是 Berry 相位使光合作用达到理论上限的证明。 -/
 theorem berry_phase_optimality_boundary (n : ℕ)
     (H : Fin n → ℝ → Matrix (Fin n) (Fin n) ℂ) (path : ℝ → Fin n → ℝ)
     (h_pi : photosyntheticBerryPhase n H path = Real.pi) :
     let efficiency := energyTransferEfficiency n 1.0e-12 (fun i => 0.0)
     efficiency ≥ 0.95 := by
-  simp only [energyTransferEfficiency, h_pi]
+  simp only [energyTransferEfficiency]
   norm_num
 
 -- ----------------------------------------------------------------------------
@@ -468,7 +451,9 @@ theorem IIT_macro_exceeds_micro_boundary (n : ℕ) (h_n : n ≥ 2) :
   have hn1 : n > 0 := by linarith
   rw [if_pos hn1, if_pos (show n * n > 0 by nlinarith)]
   have hn2 : (n : ℝ) ≥ 2 := by exact_mod_cast h_n
-  nlinarith [show (n : ℝ) ≥ 2 by exact_mod_cast h_n]
+  -- 原 nlinarith 无法自动展开 ↑(n * n)；先做自然数到实数的乘法归一。
+  push_cast
+  nlinarith [hn2]
 
 -- ============================================================================
 -- Section 7: Future Research Directions
@@ -515,16 +500,5 @@ to frontiers of quantum biology and consciousness studies:
    phase of the brain? Can we formalize the "topological consciousness hypothesis"?
 -/
 
+end -- noncomputable section
 end Sylva.QuantumBiologyBridge
-
--- Helper definitions (stubs for research-level concepts)
-def energyTransferEfficiency (n : ℕ) (t : ℝ) (psi0 : Fin n → ℝ) : ℝ := 0.99
-def quantumChannelCapacity (n : ℕ) (H : Matrix (Fin n) (Fin n) ℂ)
-    (L : List (Matrix (Fin n) (Fin n) ℂ)) (t : ℝ) : ℝ := 1.0
-def vonNeumannEntropy (rho : Matrix (Fin n) (Fin n) ℂ) : ℝ := 0
-def entanglementEntropy (psi : Matrix (Fin n) (Fin m) ℂ) : ℝ := 0
-def densityMatrix (psi : Matrix (Fin n) (Fin m) ℂ) : Matrix (Fin (n*m)) (Fin (n*m)) ℂ :=
-  0  -- **RESEARCH**: Requires tensor product formalization for general psi.
-    -- The density matrix is ρ = |ψ⟩⟨ψ| = ψ ⊗ ψ† for a pure state.
-    -- For mixed states, ρ = Σ_i p_i |ψ_i⟩⟨ψ_i|.
-    -- Formalization requires the tensor product of Hilbert spaces.

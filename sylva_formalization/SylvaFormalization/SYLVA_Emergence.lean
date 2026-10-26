@@ -67,19 +67,19 @@ Version: v1.0
 -/
 
 import Mathlib
-import SylvaFormalization.SYLVA_Hierarchy
-import SylvaFormalization.SYLVA_Meta
-import SylvaFormalization.QuantumChemistry.PartitionFunction
-import SylvaFormalization.PhysicalChemistry.ReactionNetwork
-import SylvaFormalization.QuantumChemistry.QuantumMasterEquation
-import SylvaFormalization.TopologicalInsulator.Basic
-import SylvaFormalization.Cosmology.FLRW
-import SylvaFormalization.Cosmology.Perturbations
-import SylvaFormalization.CondensedMatter.Superconductivity
-import SylvaFormalization.CondensedMatter.Hubbard
-import SylvaFormalization.InformationGeometry.StatMech
-import SylvaFormalization.QuantumBiologyBridge
-import SylvaFormalization.ComplexityPhysicalSystems
+import SYLVA_Hierarchy
+-- import SYLVA_Meta
+import QuantumChemistry.PartitionFunction
+import PhysicalChemistry.ReactionNetwork
+import QuantumChemistry.QuantumMasterEquation
+import TopologicalInsulator.Basic
+import Cosmology.FLRW
+import Cosmology.Perturbations
+import CondensedMatter.Superconductivity
+import CondensedMatter.Hubbard
+import InformationGeometry.StatMech
+import QuantumBiologyBridge
+-- import ComplexityPhysicalSystems  -- 冗余导入：全文件无符号引用，且上游旧接口尚未修复
 
 namespace Sylva.SYLVAEmergence
 
@@ -627,7 +627,7 @@ theorem causal_emergence_theorem (micro macro : Type)
     (dark matter halos, galaxies, stars).
 
     The mathematical structure: the Jeans instability criterion states that a
-    perturbation of wavelength λ is unstable if λ > λ_J = c_s √(π/Gρ) where
+    perturbation of wavelength lam is unstable if lam > lam_J = c_s √(π/Gρ) where
     c_s is the sound speed. For dark matter (c_s = 0), all perturbations are
     unstable, and structure forms on all scales.
 

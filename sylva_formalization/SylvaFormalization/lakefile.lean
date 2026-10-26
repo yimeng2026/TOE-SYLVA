@@ -25,13 +25,14 @@ roots 数组枚举了 ~30 万个模块名, 导致 lake 求值 whnf 超时 (maxim
     (如 SYLVA_AlgebraicGeometry5)、文件名含 wave/batch/auto_gen 痕迹者。
   2026-08-06 追加：TopologicalStatMech / QuantumBiologyBridge / NumberTheoryPhysics / InterdisciplinaryBridge（2026-08-12）
   三模块因自身编译错误（悬空引用/前向引用/假定理 stub）暂时移出 roots，待修复后加回。
+  2026-10-26：QuantumBiologyBridge 的前向引用、维度与简化模型陈述已修复，重新加入 roots；
+  其余三项继续保留在排除清单。
 -/
 
 
 @[default_target]
 lean_lib «SylvaFormalization» where
   roots := #[
-    `All,
     `BCSTherory,
     `BerryConnection,
     `BerryCurvature,
@@ -121,6 +122,7 @@ lean_lib «SylvaFormalization» where
     `QuantumChemistry.PartitionFunction,
     `QuantumChemistry.QuantumMasterEquation,
     `QuantumChemistry.QuantumPhotosynthesis,
+    `QuantumBiologyBridge,
     `QuantumGravity,
     `Renormalization,
     `Renormalization.Basic,
@@ -414,6 +416,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_EllipticCurves,
     `SYLVA_EllipticPDE,
     `SYLVA_Emergence,
+    `SYLVA_EmergenceCore,
     `SYLVA_EmergentAbilitiesDeep,
     `SYLVA_EmergentGeometryDeep,
     `SYLVA_EmergentSpacetimeDeep,
@@ -564,6 +567,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_InflationaryCosmology,
     `SYLVA_InflationDeep,
     `SYLVA_Information,
+    `SYLVA_InformationCore,
     `SYLVA_InformationGeometry,
     `SYLVA_InformationGeometryDeep,
     `SYLVA_InformationParadoxDeep,

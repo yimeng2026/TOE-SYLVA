@@ -56,8 +56,8 @@ import Mathlib
 --   （定理 1/3 注释体内引用已换真前缀且定理 3 let-χ 已修补，下批清零 13 模块后直接沿用解包装）。
 --   依赖链阻断历波清零记录：QuantumMasterEquation/NavierStokes/TM1Extended/PartitionFunction/
 --   PolynomialTime/Connection/根SAT/CrystalStructure（本波清零：前向引用级联 + lam 非法语法）。
--- import SYLVA_Information
--- import SYLVA_Emergence
+import SYLVA_InformationCore
+import SYLVA_EmergenceCore
 -- import SYLVA_Dynamics
 -- import SYLVA_Evolution
 -- import SYLVA_Geometry
@@ -79,60 +79,31 @@ open Real
 -- [StreamA恢复→本波回退] 定理 1 曾解包装并换真前缀（保留于下方注释体内，已就绪），
 --   因上游传递闭包 13 模块遗留错误致 import 不可激活，整段重新注释。
 --   下批清零阻断后：删下行 /- 与定理末尾 -/ 即完成恢复。
-/- [StreamA修复] 定理 1 整段注释保留；2026-10-26 复测仍被 CosmologicalThermodynamics/QuantumBiologyBridge 阻断。
+-- [StreamA恢复·2026-10-26] 使用已验证的 InformationCore/EmergenceCore，正式恢复定理 1。
 /-- **Cross-Module Theorem 1: Information–Emergence Connection**
 
-    **Statement**: A uniform probability distribution (the maximum-entropy state)
-    corresponds to the unbroken symmetric phase (order parameter zero).
-
-    **Proof idea**: We combine two module-level results:
-    1. `shannon_entropy_maximum` (SYLVA_Information): The Shannon entropy of any
-       probability distribution on n outcomes is bounded above by log n.
-    2. The *contrapositive* of `order_parameter_broken_nonzero` (SYLVA_Emergence):
-       If the order parameter is zero, the system is *not* globally aligned,
-       i.e. it does not satisfy the broken-phase premise.
-
-    In the maximum-entropy (uniform) configuration the microscopic spin variables
-    are maximally disordered, hence their average — the order parameter — vanishes.
-    This is the hallmark of the *symmetric* (high-entropy) phase.  Conversely, the
-    broken (low-entropy) phase carries a non-zero order parameter, which by the
-    contrapositive cannot be the uniform distribution.
-
-    **Physical meaning**: The symmetric phase is the state of maximum entropy
-    (complete disorder); the broken phase is an ordered, low-entropy state.
-    This is the conceptual backbone of the Landau theory of phase transitions.
--/
+    A maximum-entropy input accompanies an explicitly symmetric spin
+    configuration and yields zero order parameter. The executable proof uses
+    the finite-sum interface; it does not invoke the unfinished maximum-entropy axiom. -/
 theorem entropy_maximization_implies_symmetric_phase
     {n : ℕ} (p : Fin n → ℝ) (spins : Fin n → ℝ)
     (h_prob : ∀ i, p i ≥ 0) (h_sum : ∑ i, p i = 1) (h_n : n > 0)
-    (h_max_entropy : Sylva.SYLVASInformation.shannonEntropy p = log (n : ℝ))
+    (h_max_entropy : Sylva.SYLVASInformationCore.shannonEntropy p = log (n : ℝ))
     (h_spins_symmetric : ∀ i, spins i = 0) :
-    Sylva.SYLVAEmergence.orderParameter n spins = 0 := by
-  -- Step 1: Invoke the maximum-entropy bound from Information theory.
-  -- `shannon_entropy_maximum` states H(p) ≤ log n for any valid distribution.
-  have h_le_max : Sylva.SYLVASInformation.shannonEntropy p ≤ log (n : ℝ) := by
-    apply Sylva.SYLVASInformation.shannon_entropy_maximum p h_prob h_sum h_n
-  -- Step 2: The hypothesis `h_max_entropy` saturates this bound, so the system
-  -- is in the maximum-entropy (uniform) configuration.
-  have _h_saturation : Sylva.SYLVASInformation.shannonEntropy p = log (n : ℝ) := h_max_entropy
-  -- Step 3: The contrapositive of `order_parameter_broken_nonzero` reads:
-  --   orderParameter = 0  ⇒  ¬(∃ s ≠ 0, ∀ i, spins i = s)
-  -- i.e. a zero order parameter implies the system is *not* globally aligned.
+    Sylva.SYLVAEmergenceCore.orderParameter n spins = 0 := by
+  have _h_saturation : Sylva.SYLVASInformationCore.shannonEntropy p = log (n : ℝ) := h_max_entropy
   have _h_contrapositive :
     ¬(∃ s, s ≠ 0 ∧ ∀ i, spins i = s) := by
     intro h
     rcases h with ⟨s, hs, h_aligned⟩
-    have h_order : Sylva.SYLVAEmergence.orderParameter n spins ≠ 0 := by
-      apply Sylva.SYLVAEmergence.order_parameter_broken_nonzero n spins ⟨s, hs, h_aligned⟩
-    have h_zero : Sylva.SYLVAEmergence.orderParameter n spins = 0 := by
-      apply Sylva.SYLVAEmergence.goldstone_theorem n spins
+    have h_order : Sylva.SYLVAEmergenceCore.orderParameter n spins ≠ 0 := by
+      apply Sylva.SYLVAEmergenceCore.order_parameter_broken_nonzero n spins h_n ⟨s, hs, h_aligned⟩
+    have h_zero : Sylva.SYLVAEmergenceCore.orderParameter n spins = 0 := by
+      apply Sylva.SYLVAEmergenceCore.goldstone_theorem n spins
       exact h_spins_symmetric
     contradiction
-  -- Step 4: In the symmetric (maximum-entropy) phase all spins are zero,
-  -- so the Goldstone theorem gives a vanishing order parameter.
-  apply Sylva.SYLVAEmergence.goldstone_theorem n spins
+  apply Sylva.SYLVAEmergenceCore.goldstone_theorem n spins
   exact h_spins_symmetric
--/
 
 -- ============================================================================
 -- Section 2: Dynamics ↔ Evolution
