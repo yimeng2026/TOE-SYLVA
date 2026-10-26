@@ -22,24 +22,64 @@ Structure of the file:
 -/
 
 import Mathlib
-import SylvaFormalization.SYLVA_Information
-import SylvaFormalization.SYLVA_Emergence
-import SylvaFormalization.SYLVA_Dynamics
-import SylvaFormalization.SYLVA_Evolution
-import SylvaFormalization.SYLVA_Geometry
-import SylvaFormalization.SYLVA_Symmetry
-import SylvaFormalization.SYLVA_Causality
+-- [StreamA恢复·本波→回退] 七上游 import 曾部分激活（4/7）后回退全注释：
+--   **关键发现（lake 输出陷阱）**：`lake build` 失败尾单 "Some required targets logged failures"
+--   只列"实际运行且失败"的 job；因依赖失败而被跳过的目标不在清单 → 前批曾误判 4/7 已通。
+--   本波逐一实测 exit code：SYLVA_Information/SYLVA_Emergence/SYLVA_Geometry/SYLVA_Symmetry 全部 exit 1
+--   （传递闭包含 13 个遗留失败模块：CondensedMatter.BandTheory/RiemannHypothesis/StandardModel.Interactions/
+--   BCSTherory/CookLevin.Encoding/GaugeTheory.YangMills/Superconductivity.Superconductivity_Pairing_Framework/
+--   TopologicalInsulator.Basic/CookLevin.Reduction/NPClass.PSubNP/Computability.CNFEncoding/SYLVA_Scale/
+--   Cosmology.Perturbations，均在 56 文件复扫遗留清单）；SYLVA_Dynamics/SYLVA_Evolution/SYLVA_Causality
+--   另有自身遗留错误（Dynamics 实测 20+：docstring 孤儿/typeclass synth/Function expected）。
+-- [StreamA· abbrev族攻坚波·台账] 本波按族清除 13 模块第一层（abbrev 透明度漂移族）战况：
+--   ✅ CookLevin.Reduction 清零（lake build exit 0，8249 jobs）：lam→fun×4、postulate→诚实公理×2
+--     （sat_is_np_complete.{0,0}/np_to_sat_reduction，Cook-Levin 公认真理+恢复路径存档）、
+--     补 import CookLevin.SAT、IsNPComplete 外包 Nonempty（InNP 为 structure 非 Prop）、
+--     IsNPHard/IsNPComplete 显式双宇宙（∀{β:Type*} 泛化致使用点宇宙亚变量）。
+--   ⚠ NPClass.PSubNP 3→4 错但表层全清（宇宙失配桥 universe 三参+letI 实例注入+length_eq_zero_iff 更名+
+--     append_nil 直归约）；剩余为定义级语义缺口：InP 见证 accept:ListBlank Γ→Bool 可为不可计算函数，
+--     而 InNP 验收条件 Tape.1=default 需真实机器构造 ⇒ 命题按现有 def 未必为真，
+--     **不可 axiom 化**（假命题禁令），需上游 InP/InNP 验收条件对齐或机器构造基础设施。
+--   ⚠ CookLevin.Encoding 12→9：lam×10+List.bind→flatMap+List.enum→zipIdx+实例 binder×8+noncomputable×4 已清；
+--     剩余：3×postulate 定理（soundness 陈述缺"TM 接受"前提，按现状或为假命题→不可 axiom 化，需陈述层修复；
+--     completeness 结论为 True 可直接 intro/trivial 证明；size_polynomial 需先审计 CNF.size 方可判定真假）。
+--   ⚠ Computability.CNFEncoding 12→53（TMVar 显式参数化揭穿被 variable 包含失效掩盖的真实前沿）：
+--     根因=section Variables 的 variable 未并入 inductive（TMVar elaborated 为无参 Type (max ?u ?u)）；
+--     已修：inductive 显式 (Γ lam : Type*) (n_tapes : ℕ)、finRange×3、noncomputable×4；
+--     剩余主族：toNat/axiom 的 [Fintype] 显式 binder 与 section variable 互动 stuck、
+--     allVariables 隐参合成失败（219）、⟨0, by omega⟩:Fin n_tapes 0<n_tapes 不可证（需 NeZero 或陈述修复）。
+--   环境铁律补录：①GIT_CONFIG 三件套=GIT_CONFIG_COUNT=1/KEY_0=safe.directory/VALUE_0=*
+--     （/dev/null 与 NUL 对 lake 派生的原生 git 均无效）；②docstring 后只能跟声明，
+--     universe 必须置于 docstring 之前（否则 unexpected token 'universe'）。
+--   真 namespace 备查：Sylva.SYLVASInformation / Sylva.SYLVAEmergence / Sylva.SYLVASGeometry /
+--   Sylva.SYLVASymmetry / Sylva.SYLVASDynamics / Sylva.SYLVASEvolution / Sylva.SYLVASCausality
+--   （定理 1/3 注释体内引用已换真前缀且定理 3 let-χ 已修补，下批清零 13 模块后直接沿用解包装）。
+--   依赖链阻断历波清零记录：QuantumMasterEquation/NavierStokes/TM1Extended/PartitionFunction/
+--   PolynomialTime/Connection/根SAT/CrystalStructure（本波清零：前向引用级联 + lam 非法语法）。
+-- import SYLVA_Information
+-- import SYLVA_Emergence
+-- import SYLVA_Dynamics
+-- import SYLVA_Evolution
+-- import SYLVA_Geometry
+-- import SYLVA_Symmetry
+-- import SYLVA_Causality
 
 namespace Sylva.SYLVACrossModule
 
-open Real SYLVA_Information SYLVA_Emergence SYLVA_Dynamics SYLVA_Evolution
-open SYLVA_Geometry SYLVA_Symmetry SYLVA_Causality
+-- [StreamA修复] open 的七个 namespace 上游从未存在（unknown namespace 级联根源）→ 注释下线
+-- open Real SYLVA_Information SYLVA_Emergence SYLVA_Dynamics SYLVA_Evolution
+-- open SYLVA_Geometry SYLVA_Symmetry SYLVA_Causality
+open Real
 
 -- ============================================================================
 -- Section 1: Information ↔ Emergence
 -- Theorem: entropy_maximization_implies_symmetric_phase
 -- ============================================================================
 
+-- [StreamA恢复→本波回退] 定理 1 曾解包装并换真前缀（保留于下方注释体内，已就绪），
+--   因上游传递闭包 13 模块遗留错误致 import 不可激活，整段重新注释。
+--   下批清零阻断后：删下行 /- 与定理末尾 -/ 即完成恢复。
+/- [StreamA修复] 定理 1 整段注释保留；2026-10-26 复测仍被 CosmologicalThermodynamics/QuantumBiologyBridge 阻断。
 /-- **Cross-Module Theorem 1: Information–Emergence Connection**
 
     **Statement**: A uniform probability distribution (the maximum-entropy state)
@@ -65,16 +105,16 @@ open SYLVA_Geometry SYLVA_Symmetry SYLVA_Causality
 theorem entropy_maximization_implies_symmetric_phase
     {n : ℕ} (p : Fin n → ℝ) (spins : Fin n → ℝ)
     (h_prob : ∀ i, p i ≥ 0) (h_sum : ∑ i, p i = 1) (h_n : n > 0)
-    (h_max_entropy : SYLVA_Information.shannonEntropy p = log (n : ℝ))
+    (h_max_entropy : Sylva.SYLVASInformation.shannonEntropy p = log (n : ℝ))
     (h_spins_symmetric : ∀ i, spins i = 0) :
-    SYLVA_Emergence.orderParameter n spins = 0 := by
+    Sylva.SYLVAEmergence.orderParameter n spins = 0 := by
   -- Step 1: Invoke the maximum-entropy bound from Information theory.
   -- `shannon_entropy_maximum` states H(p) ≤ log n for any valid distribution.
-  have h_le_max : SYLVA_Information.shannonEntropy p ≤ log (n : ℝ) := by
-    apply SYLVA_Information.shannon_entropy_maximum p h_prob h_sum h_n
+  have h_le_max : Sylva.SYLVASInformation.shannonEntropy p ≤ log (n : ℝ) := by
+    apply Sylva.SYLVASInformation.shannon_entropy_maximum p h_prob h_sum h_n
   -- Step 2: The hypothesis `h_max_entropy` saturates this bound, so the system
   -- is in the maximum-entropy (uniform) configuration.
-  have _h_saturation : SYLVA_Information.shannonEntropy p = log (n : ℝ) := h_max_entropy
+  have _h_saturation : Sylva.SYLVASInformation.shannonEntropy p = log (n : ℝ) := h_max_entropy
   -- Step 3: The contrapositive of `order_parameter_broken_nonzero` reads:
   --   orderParameter = 0  ⇒  ¬(∃ s ≠ 0, ∀ i, spins i = s)
   -- i.e. a zero order parameter implies the system is *not* globally aligned.
@@ -82,22 +122,25 @@ theorem entropy_maximization_implies_symmetric_phase
     ¬(∃ s, s ≠ 0 ∧ ∀ i, spins i = s) := by
     intro h
     rcases h with ⟨s, hs, h_aligned⟩
-    have h_order : SYLVA_Emergence.orderParameter n spins ≠ 0 := by
-      apply SYLVA_Emergence.order_parameter_broken_nonzero n spins ⟨s, hs, h_aligned⟩
-    have h_zero : SYLVA_Emergence.orderParameter n spins = 0 := by
-      apply SYLVA_Emergence.goldstone_theorem n spins
+    have h_order : Sylva.SYLVAEmergence.orderParameter n spins ≠ 0 := by
+      apply Sylva.SYLVAEmergence.order_parameter_broken_nonzero n spins ⟨s, hs, h_aligned⟩
+    have h_zero : Sylva.SYLVAEmergence.orderParameter n spins = 0 := by
+      apply Sylva.SYLVAEmergence.goldstone_theorem n spins
       exact h_spins_symmetric
     contradiction
   -- Step 4: In the symmetric (maximum-entropy) phase all spins are zero,
   -- so the Goldstone theorem gives a vanishing order parameter.
-  apply SYLVA_Emergence.goldstone_theorem n spins
+  apply Sylva.SYLVAEmergence.goldstone_theorem n spins
   exact h_spins_symmetric
+-/
 
 -- ============================================================================
 -- Section 2: Dynamics ↔ Evolution
 -- Theorem: replicator_dynamics_is_gradient_flow
 -- ============================================================================
 
+/- [StreamA修复] 定理 2 整段注释保留：依赖 SYLVA_Evolution/SYLVA_Dynamics——本波核查两模块自身遗留错误未清零
+   （56 文件遗留清单成员），import 仍阻断。恢复时引用须用真 namespace 前缀（非裸名/非伪前缀，见文件头更正注记）。
 /-- **Cross-Module Theorem 2: Dynamics–Evolution Connection**
 
     **Statement**: The replicator dynamics of evolutionary game theory can be
@@ -143,12 +186,16 @@ theorem replicator_dynamics_is_gradient_flow
   · -- Phase-space volume conservation (Liouville theorem).
     apply SYLVA_Dynamics.liouville_theorem H q p t
     exact h_hamiltonian
+-/
 
 -- ============================================================================
 -- Section 3: Geometry ↔ Symmetry
 -- Theorem: euler_characteristic_determines_fermion_count
 -- ============================================================================
 
+-- [StreamA恢复→本波回退] 定理 3 曾解包装+换真前缀+let-χ 修补（全部保留于下方注释体内，已就绪），
+--   因上游传递闭包阻断整段重新注释。下批：删下行 /- 与定理末尾 -/ 即恢复。
+/- [StreamA修复] 定理 3 整段注释保留（原包装恢复；let-χ 已修补，引用已换真前缀 Sylva.SYLVASGeometry./Sylva.SYLVASymmetry.）。
 /-- **Cross-Module Theorem 3: Geometry–Symmetry Connection**
 
     **Statement**: The Euler characteristic of a Calabi-Yau 3-fold determines
@@ -177,29 +224,37 @@ theorem replicator_dynamics_is_gradient_flow
 -/
 theorem euler_characteristic_determines_fermion_count
     (h11 h21 : ℕ) (n_spacetime : ℕ) (h_n : n_spacetime ≥ 2) :
-    let χ : ℤ := SYLVA_Geometry.eulerCharacteristic Unit h11 h21
+    let χ : ℤ := Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21
     let fermion_generations : ℕ := χ.natAbs / 2
     -- χ is even, so the fermion count is an integer.
     χ % 2 = 0
     -- The supercharge dimension is even, ensuring algebraic consistency.
-    ∧ (SYLVA_Symmetry.superchargeDimension n_spacetime) % 2 = 0 := by
+    ∧ (Sylva.SYLVASymmetry.superchargeDimension n_spacetime) % 2 = 0 := by
+  -- [StreamA修复] let-χ 修补：χ 与 fermion_generations 为 statement let-绑定，不进入证明上下文
+  --   （原 `simp [χ]` 必报 unknown identifier）→ 首行 show 按 zeta 展开换目标后按原结构 constructor。
+  --   原首行存档：直接 constructor（无 show）；
+  --   原 h_χ 存档：have h_χ : χ = 2 * (h11 - h21) := by simp [χ]; exact <calabi_yau 定理>。
+  show (Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21) % 2 = 0
+    ∧ (Sylva.SYLVASymmetry.superchargeDimension n_spacetime) % 2 = 0
   constructor
   · -- Step 1: χ = 2(h^{1,1} − h^{2,1}) from the Calabi-Yau theorem.
-    have h_χ : χ = 2 * (h11 - h21) := by
-      simp [χ]
-      exact SYLVA_Geometry.euler_characteristic_calabi_yau h11 h21
+    have h_χ : Sylva.SYLVASGeometry.eulerCharacteristic Unit h11 h21 = 2 * (h11 - h21) :=
+      Sylva.SYLVASGeometry.euler_characteristic_calabi_yau h11 h21
     -- Step 2: Any integer multiplied by 2 is even.
     rw [h_χ]
     omega
   · -- Step 3: The supercharge dimension is 2^{n/2}, which is even for n ≥ 2.
-    apply SYLVA_Symmetry.supercharge_dimension_even
+    apply Sylva.SYLVASymmetry.supercharge_dimension_even
     exact h_n
+-/
 
 -- ============================================================================
 -- Section 4: Causality ↔ Information
 -- Theorem: tsirelson_bound_from_information_causality
 -- ============================================================================
 
+/- [StreamA修复] 定理 4 整段注释保留：依赖 SYLVA_Causality——本波核查该模块自身遗留错误未清零
+   （56 文件遗留清单成员），import 仍阻断。恢复时引用须用真 namespace 前缀（非裸名/非伪前缀，见文件头更正注记）。
 /-- **Cross-Module Theorem 4: Causality–Information Connection**
 
     **Statement**: The information-causality principle (Pawlowski et al., 2009)
@@ -243,5 +298,6 @@ theorem tsirelson_bound_from_information_causality
     apply SYLVA_Causality.quantum_information_causality I n hn h_nonneg h_per_bit
   · -- Step 2: The Tsirelson bound |S| ≤ 2√2 is a fundamental axiom of quantum mechanics.
     apply SYLVA_Causality.tsirelson_bound_axiom E S h_chsh
+-/
 
 end Sylva.SYLVACrossModule

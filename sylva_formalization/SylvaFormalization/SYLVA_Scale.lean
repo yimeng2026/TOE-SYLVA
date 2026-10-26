@@ -15,7 +15,7 @@ is a central problem in physics, chemistry, biology, and cosmology.
 
 2. **Quantum Scale (10^-15 m to 10^-10 m)**: Quantum mechanics, QFT, Standard Model.
    At this scale, particles are point-like (or string-like), and the interactions
-   are described by gauge theories. The Compton wavelength λ_C = ℏ/mc sets the
+   are described by gauge theories. The Compton wavelength lam_C = ℏ/mc sets the
    scale where quantum effects become important for a particle of mass m.
 
 3. **Atomic Scale (10^-10 m to 10^-7 m)**: Quantum chemistry, molecular physics,
@@ -59,19 +59,22 @@ Version: v1.0
 -/
 
 import Mathlib
-import SylvaFormalization.SYLVA_Hierarchy
-import SylvaFormalization.Renormalization.RGEquations
-import SylvaFormalization.Renormalization.EFT
-import SylvaFormalization.Cosmology.FLRW
-import SylvaFormalization.CondensedMatter.Hubbard
-import SylvaFormalization.QuantumChemistry.HuckelModel
-import SylvaFormalization.FifteenConstants
-import SylvaFormalization.QuantumGravity
-import SylvaFormalization.StringTheory.Basic
+import SYLVA_Hierarchy
+import Renormalization.RGEquations
+import Renormalization.EFT
+import Cosmology.FLRW
+import CondensedMatter.Hubbard
+import QuantumChemistry.HuckelModel
+import FifteenConstants
+import QuantumGravity
+import StringTheory.Basic
 
 namespace Sylva.SYLVAScale
 
 open Real
+
+-- v8.20：本命名空间中的实数定义依赖非可计算除法与条件分支。
+noncomputable section
 
 -- ============================================================================
 -- Section 1: Scale Hierarchy — From Planck to Cosmic
@@ -86,7 +89,7 @@ open Real
     The **Planck time** t_P = l_P/c ≈ 5.39 × 10^-44 s is the time it takes
     light to travel the Planck length. The Planck mass m_P = √(ℏc/G) ≈ 2.18 × 10^-8 kg
     is the mass of a particle whose Compton wavelength equals the Schwarzschild
-    radius: λ_C = R_S. The Planck energy E_P = m_P c² ≈ 1.96 × 10^9 J ≈ 1.22 × 10^19 GeV
+    radius: lam_C = R_S. The Planck energy E_P = m_P c² ≈ 1.96 × 10^9 J ≈ 1.22 × 10^19 GeV
     is the energy scale where quantum gravity becomes important. -/
 
 def planckLength : ℝ := 1.616255e-35  -- meters (CODATA 2018)
@@ -94,14 +97,14 @@ def planckTime : ℝ := 5.391245e-44     -- seconds
 def planckMass : ℝ := 2.176434e-8      -- kg
 def planckEnergy : ℝ := 1.956e9        -- Joules ≈ 1.22 × 10^19 GeV
 
-/-- The **Compton wavelength** of a particle with mass m is λ_C = ℏ/(mc).
+/-- The **Compton wavelength** of a particle with mass m is lam_C = ℏ/(mc).
     This is the scale where quantum effects become important for the particle:
     a particle cannot be localized to a region smaller than its Compton wavelength.
     The Compton wavelength is the quantum "size" of a particle.
 
-    For an electron: λ_C = ℏ/(m_e c) ≈ 2.43 × 10^-12 m.
-    For a proton: λ_C = ℏ/(m_p c) ≈ 1.32 × 10^-15 m.
-    For the Higgs boson: λ_C = ℏ/(m_H c) ≈ 1.65 × 10^-18 m. -/
+    For an electron: lam_C = ℏ/(m_e c) ≈ 2.43 × 10^-12 m.
+    For a proton: lam_C = ℏ/(m_p c) ≈ 1.32 × 10^-15 m.
+    For the Higgs boson: lam_C = ℏ/(m_H c) ≈ 1.65 × 10^-18 m. -/
 
 def comptonWavelength (mass : ℝ) : ℝ :=
   if mass > 0 then 1.054571817e-34 / (mass * 299792458) else 0
@@ -126,7 +129,7 @@ def schwarzschildRadius (mass : ℝ) : ℝ :=
 
     The **fine structure constant** α = e²/(4π ε_0 ℏ c) ≈ 1/137 is the
     dimensionless coupling constant of electromagnetism. It is the ratio of
-    the Bohr radius to the Compton wavelength: a_0 = λ_C / α. -/
+    the Bohr radius to the Compton wavelength: a_0 = lam_C / α. -/
 
 def bohrRadius : ℝ := 5.29177210903e-11  -- meters ≈ 0.529 Å
 def fineStructureConstant : ℝ := 1.0 / 137.035999084
@@ -161,7 +164,7 @@ def betaFunction (coupling : ℝ) (theory : String) : ℝ :=
   -- QCD (SU(3)): β(g) = - (7/16π²) g³ + ... (asymptotic freedom)
   -- QED (U(1)): β(g) = (1/12π²) g³ + ... ( Landau pole)
   -- Gravity: β(G) = - a G² + ... (asymptotic safety conjecture)
-  -- φ⁴ theory: β(λ) = (3/16π²) λ² + ... (triviality)
+  -- φ⁴ theory: β(lam) = (3/16π²) lam² + ... (triviality)
   match theory with
   | "QCD" => - (7.0 / (16 * Real.pi^2)) * coupling^3
   | "QED" => (1.0 / (12 * Real.pi^2)) * coupling^3
@@ -183,7 +186,7 @@ def betaFunction (coupling : ℝ) (theory : String) : ℝ :=
     coupling is small, and quarks and gluons are weakly interacting (asymptotic
     freedom). At long distances (low energy), the QCD coupling is large, and the
     quarks and gluons are confined in hadrons (infrared slavery). The confinement
-    scale Λ_QCD ≈ 200 MeV is the scale where the coupling becomes strong and
+    scale lam_QCD ≈ 200 MeV is the scale where the coupling becomes strong and
     perturbation theory breaks down. -/
 theorem qcd_asymptotic_freedom (g : ℝ) (h_g : g > 0) :
     let beta := betaFunction g "QCD"
@@ -200,7 +203,7 @@ theorem qcd_asymptotic_freedom (g : ℝ) (h_g : g > 0) :
 -- ============================================================================
 
 /-- **Scale invariance** is the property that a theory is invariant under a
-    rescaling of all lengths and times: x → λ x, t → λ t. A scale-invariant
+    rescaling of all lengths and times: x → lam x, t → lam t. A scale-invariant
     theory has no intrinsic length scale: the physics looks the same at all scales.
 
     **Conformal field theory (CFT)** is a scale-invariant theory that is also
@@ -233,39 +236,22 @@ def centralCharge (dimension : ℕ) (theory : String) : ℝ :=
   match theory with
   | "scalar" => 1.0
   | "fermion" => 0.5
-  | "gauge" => (dimension - 2).toFloat
-  | "gravity" => (dimension - 2).toFloat * (dimension - 1).toFloat / 2.0
+  -- 原：`(dimension - 2).toFloat`；Float 不能作为 ℝ，改为实数自然数转换。
+  | "gauge" => ((dimension - 2 : ℕ) : ℝ)
+  | "gravity" => ((dimension - 2 : ℕ) : ℝ) * ((dimension - 1 : ℕ) : ℝ) / 2.0
   | _ => 0
 
-/-- **Theorem**: The central charge of a free CFT is positive and proportional
-    to the number of degrees of freedom. The central charge satisfies the
-    **c-theorem**: in a unitary CFT in d = 2 dimensions, the central charge
-    decreases along the RG flow from the UV to the IR: c_UV > c_IR.
+/-- **Theorem interface**: Zamolodchikov's c-theorem supplies strict monotonicity
+    along the RG flow. The formal statement below takes that physical conclusion
+    explicitly as `h_flow`; positivity alone does not imply `c_UV > c_IR`.
 
-    The c-theorem is a deep result that relates the number of degrees of freedom
-    to the irreversibility of the RG flow. It is the 2D analogue of the
-    entanglement entropy monotonicity (the strong subadditivity of the
-    entanglement entropy). The c-theorem implies that the RG flow is irreversible:
-    the number of degrees of freedom decreases as the scale decreases, which is
-    the 2D analogue of the second law of thermodynamics.
-
-    The **proof**: The c-theorem is proved by constructing a function c(g) that
-    is monotonic along the RG flow: dc/d ln μ = - (3/2) β(g)² G_{ij} ≥ 0 where
-    G_{ij} is the Zamolodchikov metric (the metric on the space of couplings).
-    The function c(g) is the central charge at the fixed point, and it decreases
-    along the RG flow because the beta function is non-zero away from the fixed point. -/
+    原声明只有 `c_UV > 0`、`c_IR > 0` 两个前提，却断言 `c_UV > c_IR`，
+    在数学上为假。现补齐单调性前提，避免把缺失的 CFT 机器证明伪装成算术推论。 -/
 theorem c_theorem_2d (c_UV c_IR : ℝ)
-    (h_UV : c_UV > 0) (h_IR : c_IR > 0) :
+    (h_UV : c_UV > 0) (h_IR : c_IR > 0) (h_flow : c_UV > c_IR) :
     c_UV > c_IR := by
-  -- The c-theorem states that the central charge decreases along the RG flow.
-  -- This is a theorem for unitary CFTs in 2D, proved by Zamolodchikov (1986).
-  -- The proof uses the conservation of the stress tensor and the positivity of
-  -- the Zamolodchikov metric.
-  -- For the purpose of this formalization, we state it as a theorem and note
-  -- that the proof requires the full machinery of 2D CFT.
-  linarith
-  -- **RESEARCH**: The full proof requires the Zamolodchikov metric and the
-  -- positivity of the 2-point function of the stress tensor
+  -- 原证明：`linarith`；现直接消费显式的 c-theorem 物理输入。
+  exact h_flow
 
 -- ============================================================================
 -- Section 4: Effective Field Theory — Scale Decoupling
@@ -273,14 +259,14 @@ theorem c_theorem_2d (c_UV c_IR : ℝ)
 
 /-- **Effective field theory (EFT)** is the framework for describing physics at
     a given scale without knowing the details of the physics at higher scales.
-    The EFT is an expansion in the ratio of scales: E/Λ where E is the energy
-    of the process and Λ is the cutoff scale (the scale of the unknown physics).
+    The EFT is an expansion in the ratio of scales: E/lam where E is the energy
+    of the process and lam is the cutoff scale (the scale of the unknown physics).
 
     The **decoupling theorem** (Appelquist & Carazzone, 1975): Heavy particles
     with mass M >> E decouple from the low-energy physics. Their effects are
     suppressed by powers of E/M and appear as non-renormalizable operators in
     the EFT. The EFT is a systematic expansion: L_EFT = L_renormalizable + Σ_n
-    c_n O_n / Λ^{d_n - 4} where O_n are higher-dimensional operators and c_n
+    c_n O_n / lam^{d_n - 4} where O_n are higher-dimensional operators and c_n
     are Wilson coefficients.
 
     The **examples**:
@@ -288,7 +274,7 @@ theorem c_theorem_2d (c_UV c_IR : ℝ)
       by a four-fermion interaction: G_F / √2 (ψ̄ γ^μ (1-γ^5) ψ)² where G_F ≈ 10^-5 GeV^-2.
     - Chiral perturbation theory: the strong interaction at low energies (E << m_π)
       is described by an EFT of pions and nucleons with chiral symmetry.
-    - Heavy quark effective theory: the physics of heavy quarks (m_Q >> Λ_QCD) is
+    - Heavy quark effective theory: the physics of heavy quarks (m_Q >> lam_QCD) is
       described by an EFT where the heavy quark mass is a parameter.
     - General relativity as an EFT: gravity at low energies (E << M_Pl) is described
       by an EFT with higher-curvature corrections (R², R_μν R^μν, etc.).
@@ -339,9 +325,11 @@ theorem decoupling_theorem (E M : ℝ) (h_E : E > 0) (h_M : M > 0)
     apply (div_lt_iff₀ (by positivity)).mpr
     linarith
   have h_sq : (E / M)^2 < 1 := by
-    nlinarith [h_ratio]
-  simp
-  linarith
+    -- 原 `nlinarith [h_ratio]` 缺少正分母与平方展开；改为显式除法判据。
+    rw [div_pow]
+    apply (div_lt_iff₀ (sq_pos_of_pos h_M)).mpr
+    nlinarith [h_low_energy]
+  simpa using h_sq
   -- **RESEARCH**: The full decoupling theorem requires the path integral formalization
   -- and the effective action expansion, which is a major project in QFT formalization
 
@@ -351,8 +339,8 @@ theorem decoupling_theorem (E M : ℝ) (h_E : E > 0) (h_M : M > 0)
 
 /-- **Boundary Problem 1**: The beta function diverges logarithmically at the
     critical dimension d = 4 for φ⁴ theory. In d = 4, the one-loop beta function
-    β(λ) = (3/16π²) λ² leads to a Landau pole: the coupling diverges at a finite
-    energy scale Λ_L = Λ₀ exp(16π²/3λ₀). This is the "triviality" problem:
+    β(lam) = (3/16π²) lam² leads to a Landau pole: the coupling diverges at a finite
+    energy scale lam_L = lam₀ exp(16π²/3lam₀). This is the "triviality" problem:
     the φ⁴ theory in d = 4 is not a well-defined continuum theory.
 
     The **physical interpretation**: The divergence indicates that the theory
@@ -362,7 +350,7 @@ theorem decoupling_theorem (E M : ℝ) (h_E : E > 0) (h_M : M > 0)
 theorem phi4_triviality_landau_pole (lambda : ℝ) (h_lambda : lambda > 0) :
     let beta := betaFunction lambda "phi4"
     beta > 0 := by
-  -- The φ⁴ beta function is positive for positive coupling: β(λ) = a λ² > 0
+  -- The φ⁴ beta function is positive for positive coupling: β(lam) = a lam² > 0
   -- where a = 3/(16π²) > 0. This implies asymptotic freedom in the IR
   -- (coupling decreases at low energy) and a Landau pole in the UV.
   simp [betaFunction]
@@ -371,7 +359,7 @@ theorem phi4_triviality_landau_pole (lambda : ℝ) (h_lambda : lambda > 0) :
 /-- **Boundary Problem 2**: Scale invariance is explicitly broken by the
     introduction of a cutoff (UV or IR). In a CFT, the beta function vanishes
     and the theory is scale-invariant. However, any physical measurement has
-    a finite resolution (UV cutoff Λ_UV) and a finite size (IR cutoff Λ_IR),
+    a finite resolution (UV cutoff lam_UV) and a finite size (IR cutoff lam_IR),
     which breaks scale invariance.
 
     The **theorem**: For any theory with a cutoff, the beta function is
@@ -387,44 +375,27 @@ theorem scale_invariance_broken_by_cutoff (coupling : ℝ) (theory : String)
   -- definition of the cutoff theory, not a deep physical result.
   simp [betaFunction, h_cutoff]
 
-/-- **Boundary Problem 3**: At the Planck scale, the classical notion of
-    dimension breaks down. The Planck length l_P = √(ℏG/c³) is the scale
-    where the Compton wavelength of a particle equals its Schwarzschild radius:
-    λ_C = R_S. This is the scale where quantum gravity effects become important
-    and the continuum spacetime breaks down.
+/-- **Boundary Problem 3**: exact Compton–Schwarzschild threshold.
 
-    The **theorem**: The Planck length is the unique scale where the Compton
-    wavelength equals the Schwarzschild radius for a particle of mass m_P.
-    This is the "quantum gravity threshold" where both quantum mechanics and
-    general relativity are equally important. -/
+    由 `ℏ/(mc) = 2Gm/c²` 与 `m > 0` 可得精确判据
+    `m² = ℏc/(2G)`。原声明把该条件直接等同于文件中的近似 `planckMass`，
+    既漏掉因子 √2，又把近似数值当成精确等式，因此按原式为假。
+    现改为平方质量判据；在 `m > 0` 下它唯一确定阈值质量。 -/
 theorem planck_scale_quantum_gravity_threshold (m : ℝ) (h_m : m > 0) :
     let compton := comptonWavelength m
     let schwarzschild := schwarzschildRadius m
-    compton = schwarzschild ↔ m = planckMass := by
-  -- The equality λ_C = R_S holds only at the Planck mass:
-  -- ℏ/(m c) = 2 G m / c²  →  m² = ℏ c / (2 G)  →  m = m_P / √2
-  -- The exact equality requires the numerical prefactors, but the scale
-  -- is uniquely the Planck scale. This is a formal statement about the
-  -- definition of the Planck mass as the scale where quantum and gravity meet.
-  simp [comptonWavelength, schwarzschildRadius, planckMass]
-  -- The numerical equality is not exact due to the factors of 2 and π
-  -- in the definitions. The exact Planck mass is defined with specific
-  -- numerical factors, and the equality is an order-of-magnitude statement.
-  -- Formal proof of the exact equality would require a more precise definition
-  -- of the Planck mass with the exact numerical factors.
+    compton = schwarzschild ↔
+      m ^ 2 = 1.054571817e-34 * 299792458 / (2 * 6.67430e-11) := by
+  dsimp
+  unfold comptonWavelength schwarzschildRadius
+  rw [if_pos h_m]
   constructor
   · intro h_eq
-    -- The equation is transcendental in m; numerical solution gives m ≈ m_P
-    -- For the formal proof, we use the definition of planckMass as the
-    -- characteristic scale where quantum and gravity meet.
-    nlinarith
+    field_simp [ne_of_gt h_m] at h_eq ⊢
+    nlinarith [h_eq]
   · intro h_eq
-    -- Substituting m = planckMass into the equality gives an approximate equality
-    -- that holds to within the numerical prefactors in the definitions.
-    rw [h_eq]
-    -- The numerical equality is verified by substituting the constants
-    -- and checking that the ratio is of order unity.
-    nlinarith
+    field_simp [ne_of_gt h_m] at h_eq ⊢
+    nlinarith [h_eq]
 
 -- ============================================================================
 -- Section 6: Future Research Directions
@@ -446,7 +417,7 @@ of theoretical physics and cosmology:
 2. **The Hierarchy Problem**: The Higgs mass is ~125 GeV, but the Planck mass is
    ~10^19 GeV. The ratio is 10^17, which is a huge hierarchy. In the Standard Model,
    the Higgs mass receives quadratically divergent corrections from virtual particles:
-   δm_H² ~ (1/16π²) Λ² where Λ is the cutoff scale. If Λ = M_Pl, then δm_H² ~ 10^34
+   δm_H² ~ (1/16π²) lam² where lam is the cutoff scale. If lam = M_Pl, then δm_H² ~ 10^34
    GeV², which is 34 orders of magnitude larger than the physical m_H². The hierarchy
    problem is: why is the Higgs mass so small compared to the Planck mass? The solutions
    (supersymmetry, extra dimensions, technicolor, composite Higgs) all involve new
@@ -454,8 +425,8 @@ of theoretical physics and cosmology:
    hierarchy problem as a fine-tuning condition in the EFT?
 
 3. **The Cosmological Constant Problem**: The observed vacuum energy density is
-   ρ_Λ ≈ 10^-26 kg/m³, but the theoretical prediction from quantum field theory is
-   ρ_Λ ~ M_Pl⁴ ≈ 10^96 kg/m³. The discrepancy is 122 orders of magnitude, which is
+   ρ_lam ≈ 10^-26 kg/m³, but the theoretical prediction from quantum field theory is
+   ρ_lam ~ M_Pl⁴ ≈ 10^96 kg/m³. The discrepancy is 122 orders of magnitude, which is
    the worst fine-tuning problem in physics. The cosmological constant problem is
    the question of why the vacuum energy is so small. The solutions (anthropic principle,
    relaxation, quintessence, vacuum sequestration) all involve dynamical mechanisms
@@ -481,4 +452,5 @@ of theoretical physics and cosmology:
    Can we formalize the arrow of time as a scale-dependent symmetry breaking?
 -/
 
+end -- noncomputable section
 end Sylva.SYLVAScale

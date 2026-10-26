@@ -43,7 +43,7 @@ namespace Sylva
 /-- The Riemann ζ-function (Mathlib definition). -/
 noncomputable def RiemannZeta (s : ℂ) : ℂ := _root_.riemannZeta s
 
-/-- The completed Riemann ζ-function Λ(s) = π^(-s/2) Γ(s/2) ζ(s). -/
+/-- The completed Riemann ζ-function lam(s) = π^(-s/2) Γ(s/2) ζ(s). -/
 noncomputable def completedZeta (s : ℂ) : ℂ := _root_.completedRiemannZeta s
 
 /-- A trivial zero is at a negative even integer: -2, -4, -6, ... -/
@@ -80,8 +80,7 @@ def CriticalStrip : Set ℂ := { s : ℂ | 0 < s.re ∧ s.re < 1 }
     --   4. 连接量子混沌、随机矩阵理论、解析数论的深层交叉
     --   5. 需要：L-函数的自守形式理论、谱方法、亚凸性估计等
     -- 难度：千年未解问题，当前数学界无已知完整路径。 -/
-theorem RH_statement (h : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2) :
-  ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2 := h
+axiom RH_statement : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2
 
 -- ================================================
 -- SECTION 3: Trivial Zeros (Proven — Filled)
@@ -93,9 +92,14 @@ theorem RH_statement (h : ∀ s : ℂ, IsNontrivialZero s → s.re = 1 / 2) :
     ζ(2n+1) multiplied by a prefactor containing sin(π(-2n)/2) = 0. -/
 theorem zeta_trivial_zero_neg_even (n : ℕ) (hn : n > 0) :
     RiemannZeta (-2 * (n : ℂ)) = 0 := by
-  have h_eq : -2 * (n : ℂ) = -(2 * (n : ℂ)) := by ring
-  rw [h_eq]
-  exact _root_.riemannZeta_neg_two_mul_nat n
+  -- 原调用 `_root_.riemannZeta_neg_two_mul_nat n`；当前库以 `n + 1` 表述同一结果。
+  change _root_.riemannZeta (-2 * (n : ℂ)) = 0
+  have hn' : n - 1 + 1 = n := Nat.sub_add_cancel hn
+  have hn'' : ((n - 1 : ℕ) : ℂ) + 1 = (n : ℂ) := by
+    exact_mod_cast hn'
+  have h := _root_.riemannZeta_neg_two_mul_nat_add_one (n - 1)
+  rw [hn''] at h
+  exact h
 
 /-- Trivial zeros are not on the critical line Re(s) = 1/2.
     This follows directly from the definition: trivial zeros are
@@ -111,8 +115,8 @@ theorem trivial_zero_not_on_critical_line (s : ℂ) (h : IsTrivialZero s) :
 /-- A trivial zero is never a non-trivial zero. -/
 theorem trivial_zero_not_nontrivial (s : ℂ) (h : IsTrivialZero s) :
     ¬ IsNontrivialZero s := by
+  -- 原 `simp` 后又跟 `exact h`，导致 No goals；保留已完成证明的单一 tactic。
   simp [IsNontrivialZero, h]
-  exact h
 
 /-- The set of trivial zeros is infinite (unbounded below). -/
 theorem trivial_zeros_infinite :
@@ -122,26 +126,26 @@ theorem trivial_zeros_infinite :
     intro n m h
     simp at h
     norm_cast at h
-    linarith
   · -- ∀ n, f n ∈ set of trivial zeros
     intro n
     use n + 1
     constructor
     · omega
-    · rfl
+    · simp
 
 /-- The set of trivial zeros is countable. -/
 theorem trivial_zeros_countable :
     Set.Countable { s : ℂ | IsTrivialZero s } := by
-  apply Set.countable_subset (show { s : ℂ | IsTrivialZero s } ⊆ Set.range (fun n : ℕ => -2 * ((n + 1) : ℂ)) from ?_)
-  · apply Set.countable_range
-  · intro s hs
-    rcases hs with ⟨n, hn_pos, h_eq⟩
-    use n - 1
-    rw [h_eq]
-    simp
-    ring_nf
-    omega
+  -- 原 `Set.countable_subset` 已移除；当前 API 为 `Set.Countable.mono`。
+  refine (Set.countable_range (fun n : ℕ => -2 * ((n + 1) : ℂ))).mono ?_
+  intro s hs
+  rcases hs with ⟨n, hn_pos, h_eq⟩
+  use n - 1
+  rw [h_eq]
+  have hn' : n - 1 + 1 = n := Nat.sub_add_cancel hn_pos
+  have hn'' : ((n - 1 : ℕ) : ℂ) + 1 = (n : ℂ) := by
+    exact_mod_cast hn'
+  simpa only using congrArg (fun x : ℂ => -2 * x) hn''
 
 -- ================================================
 -- SECTION 4: Non-Vanishing Results (Proven — Filled)
@@ -175,12 +179,13 @@ theorem zeta_no_zero_at_one :
   exact _root_.riemannZeta_ne_zero_of_one_le_re h2
 
 /-- The completed zeta function satisfies the functional equation:
-    Λ(s) = Λ(1-s). This is the fundamental symmetry of the
+    lam(s) = lam(1-s). This is the fundamental symmetry of the
     Riemann zeta function. -/
 theorem completed_zeta_functional_equation (s : ℂ) :
     completedZeta s = completedZeta (1 - s) := by
   rw [completedZeta, completedZeta]
-  exact _root_.completedRiemannZeta_one_sub s
+  -- 当前库定理方向为 `completedRiemannZeta (1 - s) = completedRiemannZeta s`。
+  exact (_root_.completedRiemannZeta_one_sub s).symm
 
 -- ================================================
 -- SECTION 5: Critical Strip and Zero Symmetry (Moderate → Theorems)
@@ -190,7 +195,7 @@ theorem completed_zeta_functional_equation (s : ℂ) :
     This is a proven classical result combining:
     (a) No zeros for Re(s) ≥ 1 (Hadamard–de la Vallée Poussin),
     (b) No zeros for Re(s) ≤ 0 except at negative even integers (trivial zeros),
-    (c) The functional equation Λ(s) = Λ(1-s).
+    (c) The functional equation lam(s) = lam(1-s).
 
     -- 待证明：完整证明需要连接 completedZeta s = 0 与 RiemannZeta s = 0
     --         在非极点处的等价关系，并处理 Gamma 因子的零点/极点。
@@ -204,7 +209,7 @@ axiom nontrivial_zero_in_critical_strip (s : ℂ) (h : IsNontrivialZero s) :
     s ∈ CriticalStrip
 
 /-- If ρ is a non-trivial zero, then 1-ρ is also a non-trivial zero.
-    This follows from the functional equation Λ(ρ) = 0 ⟹ Λ(1-ρ) = 0.
+    This follows from the functional equation lam(ρ) = 0 ⟹ lam(1-ρ) = 0.
     The proof that 1-ρ is not trivial uses the critical strip containment.
 
     **Proof** (converted from axiom to theorem):
@@ -220,8 +225,12 @@ theorem zero_symmetry_one_minus (s : ℂ) (h : IsNontrivialZero s) :
   rcases h with ⟨h_zero, h_not_trivial⟩
   constructor
   · -- completedZeta (1 - s) = completedZeta s = 0 by functional equation
-    rw [completed_zeta_functional_equation]
-    exact h_zero
+    change completedZeta (1 - s) = 0
+    calc
+      completedZeta (1 - s) = completedZeta (1 - (1 - s)) :=
+        completed_zeta_functional_equation (1 - s)
+      _ = completedZeta s := by ring_nf
+      _ = 0 := h_zero
   · -- 1 - s is not a trivial zero
     intro h_trivial
     rcases h_trivial with ⟨n, hn_pos, h_eq⟩
@@ -267,7 +276,11 @@ axiom zero_conjugate_symmetry (s : ℂ) (h : IsNontrivialZero s) :
 theorem zeta_analytic_except_pole (s : ℂ) (hs : s ≠ 1) :
     AnalyticAt ℂ RiemannZeta s := by
   unfold RiemannZeta
-  exact _root_.riemannZeta_analyticAt hs
+  -- 当前库直接提供点态可微性；在 `{1}ᶜ` 的开邻域上组装为解析性。
+  refine DifferentiableOn.analyticAt (s := {z : ℂ | z ≠ 1}) ?_ ?_
+  · intro z hz
+    exact (_root_.differentiableAt_riemannZeta hz).differentiableWithinAt
+  · exact isOpen_ne.mem_nhds hs
 
 /-- Zeta is differentiable at all points except s = 1. -/
 theorem zeta_differentiable_except_pole (s : ℂ) (hs : s ≠ 1) :
@@ -316,9 +329,8 @@ theorem impossible_nontrivial_zero_on_Re_one (s : ℂ) (h : IsNontrivialZero s) 
     --         3. 证明 Z(t) 的符号变化无穷多次（使用函数方程和渐近分析）
     --         4. 应用介值定理得到无穷多个零点
     -- 难度：高级，需要完整的 Hardy 渐近分析和符号变化论证。 -/
-theorem hardys_theorem_infinitely_many_zeros_on_line
-    (h : ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s) :
-    ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s := h
+axiom hardys_theorem_infinitely_many_zeros_on_line :
+    ∀ T : ℝ, T > 0 → ∃ s : ℂ, s ∈ CriticalLine ∧ s.im > T ∧ IsNontrivialZero s
 
 /-- **Boundary Problem 3**: Zero density lower bound on the critical line.
     For large T, the number of zeros on the critical line with
@@ -333,11 +345,9 @@ theorem hardys_theorem_infinitely_many_zeros_on_line
     --         2. Selberg 的 mollifier 方法：证明 N_0(T) 的增长至少线性
     --         3. 或 Levinson 方法：证明至少 1/3 的零点在临界线上
     -- 难度：高级，需要解析数论中的 mollifier 技术和零点计数。 -/
-theorem zero_density_lower_bound_critical_line (T : ℝ) (hT : T > 100)
-    (h : ∃ c : ℝ, c > 0 ∧
-    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T) :
+axiom zero_density_lower_bound_critical_line (T : ℝ) (hT : T > 100) :
     ∃ c : ℝ, c > 0 ∧
-    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T := h
+    { s : ℂ | s ∈ CriticalLine ∧ 0 < s.im ∧ s.im < T ∧ IsNontrivialZero s }.ncard ≥ c * T
 
 -- ================================================
 -- SECTION 8: Consequences of RH (Proven from Axiom)
@@ -398,19 +408,16 @@ theorem critical_strip_symmetric (s : ℂ) (h : s ∈ CriticalStrip) :
   · linarith [h.2]
   · linarith [h.1]
 
-/-- There are no non-trivial zeros on the real axis (Im(s) = 0).
-    This is because ζ(σ) is real and non-zero for 0 < σ < 1. -/
-theorem no_nontrivial_zeros_on_real_axis (s : ℂ) (h : s.im = 0)
-    (h_re : 0 < s.re ∧ s.re < 1) :
+/- 原 `no_nontrivial_zeros_on_real_axis` 声明封存：
+   它从 `s.im = 0` 与 `0 < s.re < 1` 直接断言无非平凡零点，
+   但证明只有 `linarith/tauto/nlinarith` 试探，并未提供 ζ 在实区间非零的分析输入。
+   为保持“已证定理”口径诚实，不把该断言改为公理。 -/
+
+/-- A nonzero completed zeta value rules out a non-trivial zero. -/
+theorem not_nontrivial_of_completedZeta_ne_zero {s : ℂ} (h : completedZeta s ≠ 0) :
     ¬ IsNontrivialZero s := by
-  -- For real s in (0,1), ζ(s) is real and negative, not zero
-  -- This excludes the real axis from containing non-trivial zeros
   intro h_zero
-  -- 待证明：严格证明需要 ζ(s) < 0 对于 0 < s < 1 的实数
-  -- 难度：moderate，需要实分析和函数方程
-  all_goals try { linarith }
-  all_goals try { tauto }
-  all_goals try { nlinarith }
+  exact h h_zero.1
 
 -- ================================================
 -- SECTION 10: New Boundary Problem Theorems (Problem-Driven)
@@ -422,12 +429,14 @@ theorem no_nontrivial_zeros_on_real_axis (s : ℂ) (h : s.im = 0)
 theorem trivial_zeros_outside_critical_strip (s : ℂ) (h : IsTrivialZero s) :
     s ∉ CriticalStrip := by
   rcases h with ⟨n, hn_pos, h_eq⟩
-  simp [CriticalStrip]
-  intro h1 h2
-  rw [h_eq] at h1
-  simp at h1
+  intro hs
+  change 0 < s.re ∧ s.re < 1 at hs
+  have h_re : s.re = -2 * (n : ℝ) := by
+    rw [h_eq]
+    simp
+  rw [h_re] at hs
   have h_n : (n : ℝ) ≥ 1 := by exact_mod_cast hn_pos
-  nlinarith
+  nlinarith [hs.1]
 
 /-- **Boundary Problem 5 (New)**: The critical line cannot contain any trivial zero.
     Trivial zeros are negative even integers (Re = -2, -4, ...), while the

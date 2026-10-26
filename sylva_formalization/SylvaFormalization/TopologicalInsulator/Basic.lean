@@ -23,11 +23,15 @@ open Real Complex
     Momentum k ∈ BZ is defined modulo reciprocal lattice vectors. -/
 structure CrystalLattice (d : ℕ) where
   /-- Direct lattice vectors (real space). -/
-  latticeVectors : Fin d → ℝ^d
+  -- 原：latticeVectors : Fin d → ℝ^d（`Type ^ ℕ` 在当前版本不可类型化）
+  latticeVectors : Fin d → Fin d → ℝ
   /-- Reciprocal lattice vectors. -/
-  reciprocalVectors : Fin d → ℝ^d
+  -- 原：reciprocalVectors : Fin d → ℝ^d
+  reciprocalVectors : Fin d → Fin d → ℝ
   /-- Reciprocal relation: a_i · b_j = 2π δ_{ij}. -/
-  reciprocalRelation : ∀ (i j : Fin d), inner (latticeVectors i) (reciprocalVectors j) = 2 * Real.pi * if i = j then 1 else 0
+  -- 原：`inner (latticeVectors i) (reciprocalVectors j)`；当前打开命名空间下解析冲突，显式展开。
+  reciprocalRelation : ∀ (i j : Fin d),
+    (∑ k, latticeVectors i k * reciprocalVectors j k) = 2 * Real.pi * if i = j then 1 else 0
 
 /-- Brillouin zone: first Brillouin zone is the Wigner-Seitz cell of reciprocal lattice. -/
 def BrillouinZone (d : ℕ) : Type := Fin d → ℝ
@@ -46,7 +50,8 @@ structure BlochHamiltonian (d : ℕ) where
   /-- Hamiltonian matrix H(k) for each k ∈ BZ. -/
   H : BrillouinZone d → Matrix (Fin dimHilbert) (Fin dimHilbert) ℂ
   /-- Hermiticity: H(k)† = H(k). -/
-  hermitian : ∀ (k : BrillouinZone d), H k = (H k)ᴴ
+  -- 原：hermitian : ∀ k, H k = (H k)ᴴ；改为无作用域依赖的显式函数名。
+  hermitian : ∀ (k : BrillouinZone d), H k = Matrix.conjTranspose (H k)
   /-- Periodicity: H(k + G) = H(k) for G ∈ reciprocal lattice. -/
   periodic : ∀ (k : BrillouinZone d) (G : Fin d → ℤ), H k = H (fun i => k i + G i)
 
@@ -58,13 +63,16 @@ structure BandStructure (d : ℕ) (H : BlochHamiltonian d) where
   /-- Band energies E_n(k). -/
   energy : Fin H.dimHilbert → BrillouinZone d → ℝ
   /-- Band eigenvectors |u_{n,k}⟩. -/
-  eigenvector : Fin H.dimHilbert → BrillouinZone d → ℂ^H.dimHilbert
+  -- 原：eigenvector : Fin H.dimHilbert → BrillouinZone d → ℂ^H.dimHilbert
+  eigenvector : Fin H.dimHilbert → BrillouinZone d → Fin H.dimHilbert → ℂ
   /-- Schrödinger equation: H(k)|u_{n,k}⟩ = E_n(k)|u_{n,k}⟩. -/
+  -- 原：H.H k *ᵥ (eigenvector n k)；改为显式 `Matrix.mulVec`。
   schrodinger : ∀ (n : Fin H.dimHilbert) (k : BrillouinZone d),
-    H.H k *ᵥ (eigenvector n k) = energy n k • (eigenvector n k)
+    Matrix.mulVec (H.H k) (eigenvector n k) = energy n k • (eigenvector n k)
   /-- Orthonormality: ⟨u_{m,k}|u_{n,k}⟩ = δ_{mn}. -/
+  -- 原：`inner (eigenvector m k) (eigenvector n k)`；显式写复向量内积，避免命名解析冲突。
   orthonormal : ∀ (m n : Fin H.dimHilbert) (k : BrillouinZone d),
-    inner (eigenvector m k) (eigenvector n k) = if m = n then 1 else 0
+    (∑ j, star (eigenvector m k j) * eigenvector n k j) = if m = n then 1 else 0
 
 /-- Insulator condition: there exists a band gap.
 
@@ -79,10 +87,13 @@ structure Insulator (d : ℕ) (H : BlochHamiltonian d) (bands : BandStructure d 
   gap : ℝ
   /-- Positive gap. -/
   gapPositive : gap > 0
+  /-- The occupied-band count cannot exceed the Hilbert-space dimension. -/
+  occupied_le : numOccupied ≤ H.dimHilbert
   /-- Gap condition: all occupied bands below E_F - gap/2, all unoccupied above E_F + gap/2. -/
+  -- 原 occupied 分支直接把 `Fin numOccupied` 传给 `Fin H.dimHilbert`；现显式嵌入。
   gapCondition : ∀ (k : BrillouinZone d),
-    (∀ (n : Fin numOccupied), bands.energy n k < fermiLevel - gap/2) ∧
-    (∀ (n : Fin (H.dimHilbert - numOccupied)), bands.energy (⟨numOccupied + n, _⟩) k > fermiLevel + gap/2)
+    (∀ (n : Fin numOccupied), bands.energy (Fin.castLE occupied_le n) k < fermiLevel - gap/2) ∧
+    (∀ (n : Fin (H.dimHilbert - numOccupied)), bands.energy (⟨numOccupied + n, by omega⟩) k > fermiLevel + gap/2)
 
 end TopologicalInsulator
 end Sylva
