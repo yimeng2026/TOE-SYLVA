@@ -16,7 +16,7 @@ Structure of the file:
   1. Information ↔ Emergence: entropy maximization ⇔ symmetric phase
   2. Dynamics ↔ Evolution: replicator probability conservation
   3. Geometry ↔ Symmetry: Euler characteristic ⇔ fermion generation count
-  4. Causality ↔ Information: information causality ⇔ Tsirelson bound
+  4. Causality ↔ Information: CHSH bound in a real inner-product model
 
 ================================================================================
 -/
@@ -61,6 +61,7 @@ import SYLVA_EmergenceCore
 import SYLVA_GeometryCore
 import SYLVA_SymmetryCore
 import SYLVA_ReplicatorCore
+import SYLVA_CHSHCore
 -- import SYLVA_Dynamics
 -- import SYLVA_Evolution
 -- import SYLVA_Geometry
@@ -156,54 +157,24 @@ theorem euler_characteristic_determines_fermion_count
 
 -- ============================================================================
 -- Section 4: Causality ↔ Information
--- Theorem: tsirelson_bound_from_information_causality
+-- Theorem: chsh_bound_in_real_inner_product_model
 -- ============================================================================
 
-/- [StreamA修复] 定理 4 整段注释保留：依赖 SYLVA_Causality——本波核查该模块自身遗留错误未清零
-   （56 文件遗留清单成员），import 仍阻断。恢复时引用须用真 namespace 前缀（非裸名/非伪前缀，见文件头更正注记）。
-/-- **Cross-Module Theorem 4: Causality–Information Connection**
+/-- **Cross-Module Theorem 4: a real inner-product CHSH bound**
 
-    **Statement**: The information-causality principle (Pawlowski et al., 2009)
-    entails the Tsirelson bound: the quantum CHSH parameter is bounded by
-    |S| ≤ 2√2.  In other words, the strength of quantum non-locality is limited
-    by the amount of information that can be transmitted.
+    For four unit vectors in an arbitrary real inner-product space, the absolute
+    value of the alternating inner-product expression is bounded by `2 * sqrt 2`.
+    The proof is completed in the independently built CHSH core.
 
-    **Proof idea**: We bring together:
-    1. `quantum_information_causality` (SYLVA_Causality): The total information
-       gain in an n-bit random-access-coding protocol is bounded by the channel
-       capacity, Σ_j I_j ≤ 1.
-    2. `tsirelson_bound_axiom` (SYLVA_Causality): For quantum mechanics the
-       CHSH parameter satisfies |S| ≤ 2√2.
-
-    The theorem is stated as a logical conjunction: in quantum mechanics both
-    information causality *and* the Tsirelson bound hold simultaneously.  The
-    deeper physical implication — proved in the literature by contradiction with
-    the PR box — is that any post-quantum theory violating information causality
-    would also violate the Tsirelson bound.  Our formalization captures the
-    consistency condition: quantum mechanics is the "most non-local" theory
-    that still respects information causality.
-
-    **Physical meaning**: Quantum non-locality is not arbitrary; it is capped by
-    an information-theoretic limit.  If quantum correlations were any stronger,
-    they could be exploited to transmit more information than the communication
-    channel allows, violating the information-causality principle.
--/
-theorem tsirelson_bound_from_information_causality
-    (I : ℕ → ℝ) (n : ℕ)
-    (hn : n > 0)
-    (h_nonneg : ∀ j, I j ≥ 0)
-    (h_per_bit : ∀ j ∈ Finset.range n, I j ≤ 1 / n)
-    (E : ℕ → ℕ → ℝ) (S : ℝ)
-    (h_chsh : S = SYLVA_Causality.CHSHParameter E) :
-    -- Information causality holds in quantum mechanics.
-    SYLVA_Causality.informationCausality I n
-    -- Consequently, the CHSH parameter is bounded by the Tsirelson bound.
-    ∧ |S| ≤ SYLVA_Causality.quantumMechanicsBound := by
-  constructor
-  · -- Step 1: Verify information causality using the per-bit quantum bound.
-    apply SYLVA_Causality.quantum_information_causality I n hn h_nonneg h_per_bit
-  · -- Step 2: The Tsirelson bound |S| ≤ 2√2 is a fundamental axiom of quantum mechanics.
-    apply SYLVA_Causality.tsirelson_bound_axiom E S h_chsh
--/
+    This is not the old information-causality/Tsirelson restoration claim. It does
+    not derive quantum Tsirelson's theorem or information causality, and it does
+    not reuse `tsirelson_bound_axiom` for arbitrary real-valued functions. -/
+theorem chsh_bound_in_real_inner_product_model
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    (a0 a1 b0 b1 : E)
+    (ha0 : ‖a0‖ = 1) (ha1 : ‖a1‖ = 1)
+    (hb0 : ‖b0‖ = 1) (hb1 : ‖b1‖ = 1) :
+    |Sylva.SYLVACHSHCore.chshForm a0 a1 b0 b1| ≤ 2 * Real.sqrt 2 := by
+  exact Sylva.SYLVACHSHCore.chsh_abs_le_two_sqrt_two a0 a1 b0 b1 ha0 ha1 hb0 hb1
 
 end Sylva.SYLVACrossModule

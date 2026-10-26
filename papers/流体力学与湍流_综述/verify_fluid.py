@@ -59,11 +59,11 @@ def module1_kolmogorov_spectrum():
 
     # 验证总耗散: ε = 2ν ∫ k² E(k) dk
     dk = np.gradient(k)
-    eps_numerical = 2 * nu * np.trapz(k**2 * E, k)
+    eps_numerical = 2 * nu * np.trapezoid(k**2 * E, k)
     eps_err = abs(eps_numerical - eps) / eps
 
     # 验证总能量: E_total = ∫ E(k) dk
-    E_total = np.trapz(E, k)
+    E_total = np.trapezoid(E, k)
 
     print(f"  参数: ν={nu}, ε={eps}, C_K={C_K}")
     print(f"  Kolmogorov 尺度 η = {eta:.6f}")

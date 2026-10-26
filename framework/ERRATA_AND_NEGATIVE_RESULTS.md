@@ -1,6 +1,6 @@
 # TOE-SYLVA 勘误与负结果登记簿 / Errata & Negative Results Registry
 
-> **文档版本**: v1.0
+> **文档版本**: v1.5（2026-10-26 全仓库一致性审查增补）
 > **创建日期**: 2026-08-10
 > **方法论来源**: 借鉴 UFPF RAP 勘误（主动撤回/降级过度宣称）与"诚实负结果登记"（IQHE deviation_pct=-57% 直白入库；paper43 二十项检验 19/20 + 1 项主动登记负结果）——调研报告 §四、§六.A4/A6
 > **配套文件**: `papers/ERRATA.md`（E1–E14 已修正错误与立场声明，2026-08-08）、`papers/OPEN_PROBLEMS.md`（开放问题）、`framework/proof_status.md`（治理分级）
@@ -101,12 +101,90 @@
 
 ---
 
+### FE-7: 裸图规范群与全域数学层级推导失效
+
+- **日期**: 2026-10-26（审计重写后登记）
+- **来源**: `framework/62_mathematical_hierarchy_emergence.md`、`framework/105_cnf_standard_model_unification.md`、`framework/cnf_countermodels.py` 与结果文件。
+- **问题**: 旧文把 1/2/3 条分支的图自同构直接对应为 `U(1)/SU(2)/SU(3)`，并把全局格、普遍 Galois 闭包、普遍伴随和常数跨层不变写成定理。实际裸图自同构数分别为 1、2、6，缺少连续群、表示、联络和动力学；其他全称层级命题也缺必要条件或存在反例。
+- **处置**: 62 号改为类型化、条件化定义；105 号否决旧对应并改为 N0–N3 恢复条件；保留 6 项数学反例和边界检查，明确其不是物理实验。
+- **教训**: 图同构、规范对称、物理表示和动力学必须分别证明；数字相同不是推导。凡“自然必然如此”的全称命题，先寻找有限反例再登记。
+
+### FE-8: FLT、Langlands 与 CHSH 的成果归属和验证层级混用
+
+- **日期**: 2026-10-26
+- **来源**: `framework/proof_status.md`；Anthropic 2026-09 的 FLT 正式发布与复核材料；Ngô 基本引理的数学文献。
+- **问题**: 旧表把 FLT 写成已在 Mathlib 内以约 12,000 行完成，把 Langlands 基本引理写成已有指定 Lean 形式化而未给出可核来源，并把 `verify_chsh.py` PASS 写成“实验层面已验证”。这些表述分别混淆外部项目/上游库、数学定理/Lean 声明、数值检查/物理实验。
+- **处置**: FLT 改为外部形式化成果并注明非本仓库、非直接上游成果及本波未独立重建；Langlands Lean 条目标为 UNVERIFIED；CHSH 改按实内积数学模型登记，不再表示量子实验或完整 Tsirelson。新增 replicator、CHSH 和 reaction network 的实际构建记录。
+- **教训**: 归属、版本、构建、语义和证据类型必须分栏；外部成功既不能直接变成内部成果，也不能因内部未复现就否认外部成果。
+
+### FE-9: CMT 原“梯度流”名实不符及零质量反例
+
+- **日期**: 2026-10-26
+- **来源**: `sylva_formalization/SylvaFormalization/SYLVA_CrossModuleTheorems.lean`、`SYLVA_ReplicatorCore.lean`、`SYLVA_CHSHCore.lean`。
+- **问题**: 原 CMT 定理 2 名称为 gradient flow，正文却只有“概率守恒 ∧ True”，且 replicator 旧守恒命题未排除零总质量但非零加权适应度的情况。原定理 4 依赖任意实值函数 `E` 的 Tsirelson 公理，缺量子态与测量约束。
+- **处置**: 定理 2 改为真实的概率守恒，并加入 `frequencies=[1,-1]`、`fitnesses=[1,0]` 的可编译反例；定理 4 不复制旧公理，新增实内积 CHSH 上界并明示其不是量子 Tsirelson 或信息因果证明。
+- **教训**: 恢复旧定理前必须先审查命题和反例，不能以解注释、复制公理或 `True` 占位作为恢复。语义变更是修复，不得包装成原任务全部完成。
+
+### FE-10: 仓库入口、历史指标和“当前状态”失去同步
+
+- **日期**: 2026-10-26
+- **来源**: `README.md`、`SYLVA_WORK_RECORD.md`、`framework/DASHBOARD.md`、`framework/REPO_CONSENSUS_COHERENCE_2026.md`。
+- **问题**: 多个入口并存不同目录、文件数、证明率和验证状态；旧“全部通过”“零 sorry”“世界级”等表述容易越过当前证据。README 还包含不存在的 `sagemath_verification/` 链接。
+- **处置**: README 改为当前权威入口；工作记录标为历史并追加当前续记；新建共识矩阵和权威来源表；历史仪表板只作带日期的快照，当前以实际构建与审计为准。
+- **教训**: 状态必须有唯一当前入口和明确时点。历史报告可以保留，但不得与当前结论并列而不标优先级。
+
+---
+
+### FE-11: 任意 `E` 的假 Tsirelson 公理与 Causality 接口/模型错误
+
+- **日期**: 2026-10-26
+- **来源**: `sylva_formalization/SylvaFormalization/SYLVA_Causality.lean`、独立构建日志与全文依赖检索。
+- **问题**: 旧公理对所有实值函数 `E` 给出 `|S| ≤ 2√2`，取三个关联项为 1、最后一项为 -1 即得 S=4，直接反驳原命题。文件还存在重复嵌套导入、未使用的大型依赖、光锥坐标与求和语法错误、多个证明错误；经典 CHSH 证明仅给各项限幅，缺少共享因子结构，无法推出所声称的界。
+- **处置**: 撤销 `tsirelson_bound_axiom`；删除经全文检索确认未使用的 12 个上游导入及多余 open；修复定义、求和、证明和 `noncomputable`；将经典 CHSH 改为确定性共享因子模型并穷举全部 81 种 ±1/0 组合。`SYLVA_Causality` 独立构建通过（8248 jobs），另外两条历史公理仍保留。
+- **教训**: 撤销假公理不等于完成理论重建。依赖裁剪必须证明无符号使用；经典相关结构必须写出因子分解，不能只给每个关联项限幅；验证应区分“文件构建通过”与“全文件无公理”。
+
+---
+
+### FE-12: 无向 Minkowski 间隔关系被误设为传递因果序
+
+- **日期**: 2026-10-26
+- **来源**: `sylva_formalization/SylvaFormalization/SYLVA_Causality.lean` 的 `causalPrecedence`、`causal_precedence_transitive_axiom` 与新增 `undirected_interval_relation_not_transitive`。
+- **问题**: 旧 `causalPrecedence x y` 只有 `lightConeInterval x y ≤ 0`，缺少时间方向，关系实际对称；却用公理声明其传递。取 `x=(0,0,0,0)`、`y=(1,0,0,0)`、`z=(0,c,0,0)`，前两步均满足间隔条件，但 `x,z` 为类空间隔，直接反驳旧公理。参考文献不能修复定义本身缺少的必要条件。
+- **处置**: `causalPrecedence` 增加 `x.1 ≤ y.1`，`chronologicallyRelated` 同时改为有向类时关系；新增可编译反例定理。修改后独立构建 8248 jobs 通过，反例公理输出仅 Lean 标准三项。有向传递性仍保留为待证公理，过去假设到时间之箭的公理也未清偿。
+- **教训**: 必须区分无向“因果相关”和有向“因果先后”；传递性、反身性、反对称性分别检查。公理入库前先用最小坐标反例展开定义，不能用权威文献替代命题忠实性。
+
+---
+
+### FE-13: 全量数值回归中的接口、数据路径与汇总措辞错误
+
+- **日期**: 2026-10-26
+- **来源**: `framework/verify_report.json`、`framework/verify_run_all.py` 及本轮修改的验证脚本。
+- **问题**: 305 个在册脚本首轮仅 294 个通过：8 个失败来自 NumPy 2 移除 `np.trapz` 或嵌套 `getattr` 默认值的提前求值，2 个独立数据核验使用错误相对路径，1 个计数几何脚本缺少 SymPy。汇总器在存在失败时仍输出“全部检查通过”，会混淆真实通过数。`verify_dm_de.py` 另有 3 处未在当前执行路径触发但同属旧接口的调用。
+- **处置**: 8 个 NumPy 失败脚本改用 `np.trapezoid` 或惰性兼容回退，2 个数据脚本改为相对 `__file__` 定位原始文件；`verify_dm_de.py` 同步更新，未改数值断言。原失败项全部复测并合并为 **304/305 通过、1 失败、0 超时、0 运行错误**；汇总措辞改为实际通过数。唯一当前失败保留为 SymPy 依赖问题，未静默安装、跳过或用更弱检查替代；该脚本仍有历史点数断言和始终 `exit 0` 的语义复查债务。
+- **教训**: 回归必须保存每个脚本的退出码、stderr 和生成物清理记录；前台中断不能写成全量完成。兼容修复不能改判定阈值，依赖缺失不能包装成理论失败或全绿，脚本报 PASS 也不能替代对其内部断言和退出码的审查。
+
+---
+
+### FE-14: 清单分类总数被误作 Lean 内容扫描分母
+
+- **日期**: 2026-10-26
+- **来源**: `scripts/repo_inventory_audit.py`、`audit/inventory.json` 与提交前文档自校。
+- **问题**: 工作记录一度把 `generated_family_counts["curated/unsorted"]` 的 25,708 个文件称为 Lean 内容扫描数；该分类计数包含 Markdown、JSON、Python 等其他后缀，真正的扫描数应读 `lean.scanned_files`。
+- **处置**: 最终按纳入本轮新增文件后的清单更正为 **146,066 个跟踪文件、2,351 份 Markdown、142,316 个 Lean 文件、22,228 个实际内容扫描的 Lean 文件**；README、共识矩阵和工作记录同步修正。
+- **教训**: 任何规模数字必须标明 JSON 字段和分母，不能只看打印汇总中的同名分类；提交前必须重读机读文件的结构，而不是沿用工作摘要中的数字。
+
+---
+
 ## 三、登记修订历史
 
 | 版本 | 日期 | 变更 |
 |:--|:--|:--|
 | v1.0 | 2026-08-10 | 初始登记。格式规范 §一；首批条目 FE-1（AI 幻觉 15 处删除）、FE-2/FE-3/FE-4（ChernSimons/GaugeTheory/FifteenConstants 三例假公理拆除）、FN-1（25 个失败脚本巡检清单）、FE-5（QCD 31 处系统性引用置换），全部提取自仓库既有提交记录与审计文档，无新造内容。 |
 | v1.1 | 2026-08-11 | 落地验证第二期治理整改（M4/M6）：§1.1 新增 FW（框架级警告）类别；登记 **FW-1**（`emergentFermiConstant` docstring 声称值 vs 实算值偏差 70.6×，弱电一致性警告，自 FE 候选升格，含影响范围评估与公式映射待审事项）与 **FE-6**（判定措辞未锚定置信水平，格式改进）。联动：`FourForcesUnification.lean:410–413` docstring 更正（定义不动）、`PARAMETER_DISCIPLINE.md` v1.1、`BLIND_PREDICTIONS.md` v1.1、`VERIFICATION_PROTOCOL.md` 附录 A。依据：`papers/落地验证_系列/第二期/04_总报告.md` §四.2、§六.4/§六.R7。 |
+| v1.2 | 2026-10-26 | 全仓库一致性审查：登记 FE-7（裸图规范群与全域层级推导失效）、FE-8（FLT/Langlands/CHSH 成果归属和验证层级混用）、FE-9（CMT 名实不符与零质量反例）、FE-10（仓库入口与历史状态失步）；新增权威来源表、共识矩阵和当前 README。 |
+| v1.3 | 2026-10-26 | 登记 FE-11（任意 `E` 的假 Tsirelson 公理与 Causality 接口/模型错误）；撤销假公理，去除未使用依赖，确定性 CHSH 改为共享因子模型并独立构建通过；QEC 与 Erdos 活跃文档断链修复。 |
+| v1.4 | 2026-10-26 | 登记 FE-12（无向 Minkowski 间隔关系的假传递性）与 FE-13（全量回归接口、路径和汇总措辞）；新增因果反例及时间方向，数值回归修复后 304/305，剩余 SymPy 依赖与计数几何语义债务保留。 |
+| v1.5 | 2026-10-26 | 登记 FE-14（清单分类总数误作 Lean 扫描分母）；最终改用 `lean.scanned_files=22,228`，同步修正 README、共识矩阵和工作记录。 |
 
 ---
 

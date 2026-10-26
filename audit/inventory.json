@@ -1,0 +1,3644 @@
+{
+  "scope": "All tracked paths; all .md and curated/unsorted .lean content; generated/archive/release .lean paths counted but content excluded",
+  "root": "C:\\Users\\一梦\\Documents\\kimi\\workspace\\TOE-SYLVA-full-audit",
+  "total_tracked": 146066,
+  "suffix_counts": {
+    ".lean": 142316,
+    ".md": 2351,
+    ".png": 595,
+    ".py": 417,
+    ".json": 202,
+    ".txt": 44,
+    ".tex": 43,
+    ".bib": 18,
+    ".sh": 12,
+    ".pdf": 11,
+    "<none>": 8,
+    ".docx": 8,
+    ".agda": 7,
+    ".log": 6,
+    ".csv": 5,
+    ".toml": 4,
+    ".backup": 2,
+    ".js": 2,
+    ".yml": 1,
+    ".dot": 1,
+    ".css": 1,
+    ".port": 1,
+    ".jsonl": 1,
+    ".md5": 1,
+    ".agdai": 1,
+    ".agda-lib": 1,
+    ".saip": 1,
+    ".aux": 1,
+    ".bbl": 1,
+    ".blg": 1,
+    ".out": 1,
+    ".toc": 1,
+    ".yaml": 1
+  },
+  "bytes_by_suffix": {
+    ".lean": 123689790,
+    ".md": 36519721
+  },
+  "directory_counts": {
+    "sylva_formalization/SylvaFormalization": 142327,
+    "papers": 1966,
+    "sylva_papers": 799,
+    "framework": 403,
+    "archive": 294,
+    "academic": 105,
+    "releases": 45,
+    "agents": 37,
+    "sylva_formalization/tutorials": 12,
+    "scripts": 10,
+    "consumer": 7,
+    "docs": 6,
+    "verification": 5,
+    ".github": 2,
+    ".gitignore": 1,
+    "AGDA_FORMALIZATION_COMPLETE.md": 1,
+    "AGENTS.md": 1,
+    "CONTRIBUTING.md": 1,
+    "DEVELOPMENT_DIRECTIONS.md": 1,
+    "HOW_TO_PUSH.md": 1,
+    "HOW_TO_PUSH_SECURELY.md": 1,
+    "LICENSE": 1,
+    "README.md": 1,
+    "REORGANIZATION.md": 1,
+    "ROADMAP_V6.md": 1,
+    "SESSION_REPORT_2026-07-25.md": 1,
+    "SESSION_REPORT_2026-07-26.md": 1,
+    "SESSION_REPORT_2026-08-02.md": 1,
+    "SYLVA_WORK_RECORD.md": 1,
+    "_api_test": 1,
+    "_streamA_progress.md": 1,
+    "_task_framework_quality_20260807.md": 1,
+    "audit": 1,
+    "audit_fixes_M2-M7-L1-L2_2026-08-02.md": 1,
+    "data": 1,
+    "gaps_fill_completion_2026-08-03.md": 1,
+    "papers_near_empty_fill_2026-08-02.md": 1,
+    "papers_readme_batch_2026-08-06.md": 1,
+    "readme_batch2_completion_2026-08-06.md": 1,
+    "roadmap_session_forcepush_update_2026-08-07.md": 1,
+    "sagemath_verification": 1,
+    "sylva_formalization/SYLVA_ENTRY_ANALYSIS.md": 1,
+    "sylva_formalization/SylvaFormalization.lean": 1,
+    "sylva_formalization/SylvaTest.lean": 1,
+    "sylva_formalization/SylvaTestSuite.lean": 1,
+    "sylva_formalization/SylvaTestSuiteComplete.lean": 1,
+    "sylva_formalization/SylvaTestSuiteComplete_filled.lean": 1,
+    "sylva_formalization/TEST_REPORT.md": 1,
+    "sylva_formalization/Test.lean": 1,
+    "sylva_formalization/Test_amputated.lean": 1,
+    "sylva_formalization/VerificationTests.lean": 1,
+    "sylva_formalization/_report.md": 1,
+    "sylva_formalization/sylva_test.lean": 1,
+    "sylva_formalization/test_lakefile.toml": 1,
+    "sylva_formalization/verification_readiness_report.md": 1,
+    "sylva_formalization/verify_olean.sh": 1,
+    "sylva_formalization/日志分析报告.md": 1,
+    "sylva_formalization/编译修复报告_2026-04-18.md": 1,
+    "sylva_formalization/编译监控报告_20260417_132200.md": 1,
+    "sylva_formalization/编译监控报告_20260417_140731.md": 1,
+    "sylva_formalization/辐射压力分析报告.md": 1,
+    "verification_fix_report_2026-08-02.md": 1
+  },
+  "generated_family_counts": {
+    "proven": 119858,
+    "curated/unsorted": 25713,
+    "archive": 432,
+    "release": 38,
+    "lake": 11,
+    "proven,release": 8,
+    "archive,lake": 2,
+    "mathlib": 2,
+    "archive,release": 1,
+    "lake,release": 1
+  },
+  "declarations": {
+    "axiom": 187,
+    "theorem": 546018,
+    "lemma": 122,
+    "admit": 79,
+    "sorry": 72,
+    "postulate": 82
+  },
+  "markdown": {
+    "files": 2351,
+    "bytes": 36519721,
+    "lines": 677539,
+    "exact_duplicate_groups": [
+      [
+        "academic/ACADEMIC_RESOURCES.md",
+        "sylva_formalization/SylvaFormalization/academic/ACADEMIC_RESOURCES.md"
+      ],
+      [
+        "academic/AUDIT_COMPREHENSIVE_2026-06-10.md",
+        "sylva_formalization/SylvaFormalization/academic/AUDIT_COMPREHENSIVE_2026-06-10.md"
+      ],
+      [
+        "academic/BERRY_KEATING_RH_DEEP.md",
+        "sylva_formalization/SylvaFormalization/academic/BERRY_KEATING_RH_DEEP.md"
+      ],
+      [
+        "academic/BSD_RH_latest.md",
+        "sylva_formalization/SylvaFormalization/academic/BSD_RH_latest.md"
+      ],
+      [
+        "academic/COMPREHENSIVE_ACADEMIC_PUSH_PLAN.md",
+        "sylva_formalization/SylvaFormalization/academic/COMPREHENSIVE_ACADEMIC_PUSH_PLAN.md"
+      ],
+      [
+        "academic/CROSS_THEORY_COLLISION_MEMO.md",
+        "sylva_formalization/SylvaFormalization/academic/CROSS_THEORY_COLLISION_MEMO.md"
+      ],
+      [
+        "academic/MUON_G2_LATEST.md",
+        "sylva_formalization/SylvaFormalization/academic/MUON_G2_LATEST.md"
+      ],
+      [
+        "academic/P005_CORRECTION_DERIVATION.md",
+        "sylva_formalization/SylvaFormalization/academic/P005_CORRECTION_DERIVATION.md"
+      ],
+      [
+        "academic/audit_report_CondensedMatter_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_CondensedMatter_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_FineStructure_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_FineStructure_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_PvsNP_Complexity.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_PvsNP_Complexity.md"
+      ],
+      [
+        "academic/audit_report_Radiation_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_Radiation_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_Renorm_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_Renorm_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_RiemannHypothesis.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_RiemannHypothesis.md"
+      ],
+      [
+        "academic/audit_report_StatMech_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_StatMech_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_Superconductivity_2026-06-12.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_Superconductivity_2026-06-12.md"
+      ],
+      [
+        "academic/audit_report_TOE_part1.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_TOE_part1.md"
+      ],
+      [
+        "academic/audit_report_TOE_part2.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_TOE_part2.md"
+      ],
+      [
+        "academic/audit_report_TOE_part3.md",
+        "sylva_formalization/SylvaFormalization/academic/audit_report_TOE_part3.md"
+      ],
+      [
+        "academic/extracted/19e920c4-5fa2-8e38-8000-00009b3b27c0_collection_toe_theory_foundation.md",
+        "academic/extracted/19e920cb-01d2-8736-8000-00004d8a0818_consultant_collection.md"
+      ],
+      [
+        "archive/SYLVA_PFE_UNIFIED_INDEX.md",
+        "docs/SYLVA_PFE_UNIFIED_INDEX.md"
+      ],
+      [
+        "archive/sylva_complete/14_sylva_15_constants_integration.md",
+        "sylva_papers/backup/2026-04-22/14_sylva_15_constants_integration.md",
+        "sylva_papers/backup/latest/14_sylva_15_constants_integration.md"
+      ],
+      [
+        "archive/sylva_complete/ARCHITECTURE_V2.md",
+        "sylva_papers/backup/2026-04-22/ARCHITECTURE_V2.md",
+        "sylva_papers/backup/latest/ARCHITECTURE_V2.md"
+      ],
+      [
+        "archive/sylva_complete/CookLevin_proof_strategy.md",
+        "sylva_formalization/SylvaFormalization/CookLevin_proof_strategy.md"
+      ],
+      [
+        "archive/sylva_complete/DEPENDENCIES.md",
+        "sylva_papers/backup/2026-04-22/DEPENDENCIES.md",
+        "sylva_papers/backup/latest/DEPENDENCIES.md"
+      ],
+      [
+        "archive/sylva_complete/INFINITE_EXPANSION_PLAN.md",
+        "docs/INFINITE_EXPANSION_PLAN.md"
+      ],
+      [
+        "archive/sylva_complete/INTEGRATION_REPORT.md",
+        "sylva_papers/backup/2026-04-22/INTEGRATION_REPORT.md",
+        "sylva_papers/backup/latest/INTEGRATION_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/INTEGRATION_REPORT_V2.md",
+        "sylva_papers/backup/2026-04-22/INTEGRATION_REPORT_V2.md",
+        "sylva_papers/backup/latest/INTEGRATION_REPORT_V2.md"
+      ],
+      [
+        "archive/sylva_complete/PROOF_STRATEGIES_DEEP.md",
+        "sylva_papers/backup/2026-04-22/PROOF_STRATEGIES_DEEP.md",
+        "sylva_papers/backup/latest/PROOF_STRATEGIES_DEEP.md"
+      ],
+      [
+        "archive/sylva_complete/README.md",
+        "releases/README.md"
+      ],
+      [
+        "archive/sylva_complete/SAIP-1_Sylva_AI_Interface_Protocol.md",
+        "sylva_papers/backup/2026-04-22/SAIP-1_Sylva_AI_Interface_Protocol.md",
+        "sylva_papers/backup/latest/SAIP-1_Sylva_AI_Interface_Protocol.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_7LAYER_SYNTHESIS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_7LAYER_SYNTHESIS.md",
+        "sylva_papers/backup/latest/SYLVA_7LAYER_SYNTHESIS.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_AGENT_CLUSTER_FINAL.md",
+        "releases/doc/SYLVA_AGENT_CLUSTER_FINAL.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_AGENT_CLUSTER_FINAL.md",
+        "sylva_papers/backup/latest/SYLVA_AGENT_CLUSTER_FINAL.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_BADGES.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_BADGES.md",
+        "sylva_papers/backup/latest/SYLVA_BADGES.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_COMPLETE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_COMPLETE.md",
+        "sylva_papers/backup/latest/SYLVA_COMPLETE.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_COMPLETE_DOCUMENTATION.md",
+        "releases/doc/SYLVA_COMPLETE_DOCUMENTATION.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_CONTINUOUS_SCHEDULER.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_CONTINUOUS_SCHEDULER.md",
+        "sylva_papers/backup/latest/SYLVA_CONTINUOUS_SCHEDULER.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_COORDINATION_IMPLEMENTATION_SUMMARY.md",
+        "releases/doc/SYLVA_COORDINATION_IMPLEMENTATION_SUMMARY.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_COORDINATION_IMPLEMENTATION_SUMMARY.md",
+        "sylva_papers/backup/latest/SYLVA_COORDINATION_IMPLEMENTATION_SUMMARY.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_COORDINATION_README.md",
+        "releases/doc/SYLVA_COORDINATION_README.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_COORDINATION_README.md",
+        "sylva_papers/backup/latest/SYLVA_COORDINATION_README.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "sylva_papers/backup/latest/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_DEPENDENCY_GRAPH (1).md",
+        "sylva_papers/backup/2026-04-22/SYLVA_DEPENDENCY_GRAPH.md",
+        "sylva_papers/backup/latest/SYLVA_DEPENDENCY_GRAPH.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_DISCIPLINE_HIERARCHY.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_DISCIPLINE_HIERARCHY.md",
+        "sylva_papers/backup/latest/SYLVA_DISCIPLINE_HIERARCHY.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_DOCTRINE_STRATEGY.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_DOCTRINE_STRATEGY.md",
+        "sylva_papers/backup/latest/SYLVA_DOCTRINE_STRATEGY.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_FINAL_COMPLETE.md",
+        "releases/doc/SYLVA_FINAL_COMPLETE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_FINAL_COMPLETE.md",
+        "sylva_papers/backup/latest/SYLVA_FINAL_COMPLETE.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_FINAL_SUMMARY.md",
+        "releases/doc/SYLVA_FINAL_SUMMARY.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_HERMENEUTICS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_HERMENEUTICS.md",
+        "sylva_papers/backup/latest/SYLVA_HERMENEUTICS.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_HODGE_CLUSTER.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_HODGE_CLUSTER.md",
+        "sylva_papers/backup/latest/SYLVA_HODGE_CLUSTER.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_INDEX_GUIDE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_INDEX_GUIDE.md",
+        "sylva_papers/backup/latest/SYLVA_INDEX_GUIDE.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_L2_Analysis_QuantumGravity.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_L2_Analysis_QuantumGravity.md",
+        "sylva_papers/backup/latest/SYLVA_L2_Analysis_QuantumGravity.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_L4_Quantum_Gravity_Analysis.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_L4_Quantum_Gravity_Analysis.md",
+        "sylva_papers/backup/latest/SYLVA_L4_Quantum_Gravity_Analysis.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MANIFESTO.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MANIFESTO.md",
+        "sylva_papers/backup/latest/SYLVA_MANIFESTO.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATHEMATICAL_CONTENT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATHEMATICAL_CONTENT.md",
+        "sylva_papers/backup/latest/SYLVA_MATHEMATICAL_CONTENT.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATHEMATICIAN_FEEDBACK_INSIGHTS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATHEMATICIAN_FEEDBACK_INSIGHTS.md",
+        "sylva_papers/backup/latest/SYLVA_MATHEMATICIAN_FEEDBACK_INSIGHTS.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATH_PROBLEMS_Complexity.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATH_PROBLEMS_Complexity.md",
+        "sylva_papers/backup/latest/SYLVA_MATH_PROBLEMS_Complexity.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATH_PROBLEMS_Hodge.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATH_PROBLEMS_Hodge.md",
+        "sylva_papers/backup/latest/SYLVA_MATH_PROBLEMS_Hodge.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATH_PROBLEMS_NavierStokes.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATH_PROBLEMS_NavierStokes.md",
+        "sylva_papers/backup/latest/SYLVA_MATH_PROBLEMS_NavierStokes.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MATH_PROBLEMS_RiemannHypothesis.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MATH_PROBLEMS_RiemannHypothesis.md",
+        "sylva_papers/backup/latest/SYLVA_MATH_PROBLEMS_RiemannHypothesis.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_MEMORY_ARCH.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_MEMORY_ARCH.md",
+        "sylva_papers/backup/latest/SYLVA_MEMORY_ARCH.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_PAPER_SERIES.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PAPER_SERIES.md",
+        "sylva_papers/backup/latest/SYLVA_PAPER_SERIES.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_PROJECT_COMPLETE.md",
+        "releases/doc/SYLVA_PROJECT_COMPLETE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROJECT_COMPLETE.md",
+        "sylva_papers/backup/latest/SYLVA_PROJECT_COMPLETE.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_PROOFS_COMPLETE.md",
+        "releases/doc/SYLVA_PROOFS_COMPLETE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROOFS_COMPLETE.md",
+        "sylva_papers/backup/latest/SYLVA_PROOFS_COMPLETE.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_PROOFS_FINAL.md",
+        "releases/doc/SYLVA_PROOFS_FINAL.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_QUICKREF.md",
+        "releases/doc/SYLVA_QUICKREF.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_RADIATION_GRAPH.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_RADIATION_GRAPH.md",
+        "sylva_papers/backup/latest/SYLVA_RADIATION_GRAPH.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_RELEASE_NOTES.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_RELEASE_NOTES.md",
+        "sylva_papers/backup/latest/SYLVA_RELEASE_NOTES.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_TECHNICAL_OBSTACLES.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_TECHNICAL_OBSTACLES.md",
+        "sylva_papers/backup/latest/SYLVA_TECHNICAL_OBSTACLES.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_TODAY_SUMMARY.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_TODAY_SUMMARY.md",
+        "sylva_papers/backup/latest/SYLVA_TODAY_SUMMARY.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA_TUTORIAL.md",
+        "releases/doc/SYLVA_TUTORIAL.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_TUTORIAL.md",
+        "sylva_papers/backup/latest/SYLVA_TUTORIAL.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVAdiscipline_analysis.md",
+        "sylva_papers/backup/2026-04-22/SYLVAdiscipline_analysis.md",
+        "sylva_papers/backup/latest/SYLVAdiscipline_analysis.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA分析_2^202712-6素因数分解.md",
+        "sylva_papers/backup/2026-04-22/SYLVA分析_2^202712-6素因数分解.md",
+        "sylva_papers/backup/latest/SYLVA分析_2^202712-6素因数分解.md"
+      ],
+      [
+        "archive/sylva_complete/SYLVA重建指南.md",
+        "sylva_papers/backup/2026-04-22/SYLVA重建指南.md",
+        "sylva_papers/backup/latest/SYLVA重建指南.md"
+      ],
+      [
+        "archive/sylva_complete/Sylva_Archive_技术问题报告.md",
+        "sylva_papers/backup/2026-04-22/Sylva_Archive_技术问题报告.md",
+        "sylva_papers/backup/latest/Sylva_Archive_技术问题报告.md"
+      ],
+      [
+        "archive/sylva_complete/Sylva_Archive_问题汇总.md",
+        "sylva_papers/backup/2026-04-22/Sylva_Archive_问题汇总.md",
+        "sylva_papers/backup/latest/Sylva_Archive_问题汇总.md"
+      ],
+      [
+        "archive/sylva_complete/TUTORIAL_FRAMEWORK_SUMMARY.md",
+        "sylva_formalization/tutorials/TUTORIAL_FRAMEWORK_SUMMARY.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/BSD_PROGRESS.md",
+        "sylva_papers/backup/2026-04-22/BSD_PROGRESS.md",
+        "sylva_papers/backup/latest/BSD_PROGRESS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/BSD_report.md",
+        "sylva_formalization/SylvaFormalization/BSD_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/COMPILATION_STATUS.md",
+        "sylva_papers/backup/2026-04-22/COMPILATION_STATUS.md",
+        "sylva_papers/backup/latest/COMPILATION_STATUS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/CookLevin_report.md",
+        "sylva_formalization/SylvaFormalization/CookLevin_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Hodge_report.md",
+        "sylva_formalization/SylvaFormalization/Hodge_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/LEARNING_PROGRESS.md",
+        "sylva_formalization/tutorials/LEARNING_PROGRESS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/LocalGlobal_comparison_report.md",
+        "sylva_papers/backup/2026-04-22/LocalGlobal_comparison_report.md",
+        "sylva_papers/backup/latest/LocalGlobal_comparison_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/LocalGlobal_verification_report.md",
+        "sylva_papers/backup/2026-04-22/LocalGlobal_verification_report.md",
+        "sylva_papers/backup/latest/LocalGlobal_verification_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/NavierStokes_report.md",
+        "sylva_formalization/SylvaFormalization/NavierStokes_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/NumericalZeros_VERIFICATION_REPORT.md",
+        "sylva_papers/backup/2026-04-22/NumericalZeros_VERIFICATION_REPORT.md",
+        "sylva_papers/backup/latest/NumericalZeros_VERIFICATION_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/NumericalZeros_comparison_report.md",
+        "sylva_papers/backup/2026-04-22/NumericalZeros_comparison_report.md",
+        "sylva_papers/backup/latest/NumericalZeros_comparison_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Renormalization_Group_Formalization_report.md",
+        "sylva_papers/backup/2026-04-22/Renormalization_Group_Formalization_report.md",
+        "sylva_papers/backup/latest/Renormalization_Group_Formalization_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/RiemannHypothesis_fill_report.md",
+        "sylva_formalization/SylvaFormalization/RiemannHypothesis_fill_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/RiemannHypothesis_report.md",
+        "sylva_formalization/SylvaFormalization/RiemannHypothesis_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_AGENT_STATUS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_AGENT_STATUS.md",
+        "sylva_papers/backup/latest/SYLVA_AGENT_STATUS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_BUILD_STATUS_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_BUILD_STATUS_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_BUILD_STATUS_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_BUILD_SUCCESS_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_BUILD_SUCCESS_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_BUILD_SUCCESS_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_CURRENT_STATUS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_CURRENT_STATUS.md",
+        "sylva_papers/backup/latest/SYLVA_CURRENT_STATUS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_ENHANCEMENT_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_ENHANCEMENT_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_ENHANCEMENT_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_FINAL_BUILD_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_FINAL_BUILD_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_FINAL_BUILD_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_FINAL_REPORT (1).md",
+        "sylva_papers/backup/2026-04-22/SYLVA_FINAL_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_FINAL_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_FINAL_REPORT_2026-04-14.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_FINAL_REPORT_2026-04-14.md",
+        "sylva_papers/backup/latest/SYLVA_FINAL_REPORT_2026-04-14.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_FINAL_STATUS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_FINAL_STATUS.md",
+        "sylva_papers/backup/latest/SYLVA_FINAL_STATUS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_LEAN_FINAL_REPORT.md",
+        "releases/doc/SYLVA_LEAN_FINAL_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_LEAN_FINAL_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_LEAN_FINAL_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_PROGRESS_TRACKER.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROGRESS_TRACKER.md",
+        "sylva_papers/backup/latest/SYLVA_PROGRESS_TRACKER.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_PROJECT_FINAL_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROJECT_FINAL_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_PROJECT_FINAL_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_PROJECT_STATUS.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROJECT_STATUS.md",
+        "sylva_papers/backup/latest/SYLVA_PROJECT_STATUS.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_PROOF_FILLING_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_PROOF_FILLING_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_PROOF_FILLING_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_SORRY_AUDIT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_SORRY_AUDIT.md",
+        "sylva_papers/backup/latest/SYLVA_SORRY_AUDIT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_SORRY_COMPLETE_AUDIT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_SORRY_COMPLETE_AUDIT.md",
+        "sylva_papers/backup/latest/SYLVA_SORRY_COMPLETE_AUDIT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_SORRY_PLAN.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_SORRY_PLAN.md",
+        "sylva_papers/backup/latest/SYLVA_SORRY_PLAN.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_STATUS_LIVE.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_STATUS_LIVE.md",
+        "sylva_papers/backup/latest/SYLVA_STATUS_LIVE.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_STATUS_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_STATUS_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_STATUS_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_TECHNICAL_DEBT_RESOLUTION_REPORT.md",
+        "releases/doc/SYLVA_TECHNICAL_DEBT_RESOLUTION_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_TECHNICAL_DEBT_RESOLUTION_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_TECHNICAL_DEBT_RESOLUTION_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_TOE_Unification_Report.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_TOE_Unification_Report.md",
+        "sylva_papers/backup/latest/SYLVA_TOE_Unification_Report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_VERIFICATION_REPORT.md",
+        "releases/doc/SYLVA_VERIFICATION_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/SYLVA_VISUAL_REPORT.md",
+        "sylva_papers/backup/2026-04-22/SYLVA_VISUAL_REPORT.md",
+        "sylva_papers/backup/latest/SYLVA_VISUAL_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Superconductivity_Material_Derivation_report.md",
+        "sylva_papers/backup/2026-04-22/Superconductivity_Material_Derivation_report.md",
+        "sylva_papers/backup/latest/Superconductivity_Material_Derivation_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Superconductivity_Meta_Theorem_report.md",
+        "sylva_papers/backup/2026-04-22/Superconductivity_Meta_Theorem_report.md",
+        "sylva_papers/backup/latest/Superconductivity_Meta_Theorem_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Superconductivity_Pairing_Framework_REPORT.md",
+        "sylva_papers/backup/2026-04-22/Superconductivity_Pairing_Framework_REPORT.md",
+        "sylva_papers/backup/latest/Superconductivity_Pairing_Framework_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/Superconductivity_Symmetry_Classification_REPORT.md",
+        "sylva_papers/backup/2026-04-22/Superconductivity_Symmetry_Classification_REPORT.md",
+        "sylva_papers/backup/latest/Superconductivity_Symmetry_Classification_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/TEST_REPORT.md",
+        "sylva_formalization/TEST_REPORT.md",
+        "sylva_papers/backup/2026-04-22/TEST_REPORT.md",
+        "sylva_papers/backup/latest/TEST_REPORT.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/amputation_report.md",
+        "sylva_papers/backup/2026-04-22/amputation_report.md",
+        "sylva_papers/backup/latest/amputation_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/compilation_monitor_report.md",
+        "sylva_papers/backup/2026-04-22/compilation_monitor_report.md",
+        "sylva_papers/backup/latest/compilation_monitor_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/quality_verification_framework.md",
+        "sylva_papers/backup/2026-04-22/quality_verification_framework.md",
+        "sylva_papers/backup/latest/quality_verification_framework.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/riemann_hypothesis_fixed_report.md",
+        "sylva_papers/backup/2026-04-22/riemann_hypothesis_fixed_report.md",
+        "sylva_papers/backup/latest/riemann_hypothesis_fixed_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sorry回填最终报告_20260418.md",
+        "sylva_papers/backup/2026-04-22/sorry回填最终报告_20260418.md",
+        "sylva_papers/backup/latest/sorry回填最终报告_20260418.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_basic_filling_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_basic_filling_report.md",
+        "sylva_papers/backup/latest/sylva_basic_filling_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_blockers_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_blockers_report.md",
+        "sylva_papers/backup/latest/sylva_blockers_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_bsd_fill_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_bsd_fill_report.md",
+        "sylva_papers/backup/latest/sylva_bsd_fill_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_complexity_filled_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_complexity_filled_report.md",
+        "sylva_papers/backup/latest/sylva_complexity_filled_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_comprehensive_status.md",
+        "sylva_papers/backup/2026-04-22/sylva_comprehensive_status.md",
+        "sylva_papers/backup/latest/sylva_comprehensive_status.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_hodge_filled_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_hodge_filled_report.md",
+        "sylva_papers/backup/latest/sylva_hodge_filled_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_path2_bc_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_path2_bc_report.md",
+        "sylva_papers/backup/latest/sylva_path2_bc_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_path3_bd_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_path3_bd_report.md",
+        "sylva_papers/backup/latest/sylva_path3_bd_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_path4_ac_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_path4_ac_report.md",
+        "sylva_papers/backup/latest/sylva_path4_ac_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_project_final_status.md",
+        "sylva_papers/backup/2026-04-22/sylva_project_final_status.md",
+        "sylva_papers/backup/latest/sylva_project_final_status.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_rh_filling_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_rh_filling_report.md",
+        "sylva_papers/backup/latest/sylva_rh_filling_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_vsl_validation_report.md",
+        "sylva_papers/backup/2026-04-22/sylva_vsl_validation_report.md",
+        "sylva_papers/backup/latest/sylva_vsl_validation_report.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/sylva_zetaverifier_progress.md",
+        "sylva_papers/backup/2026-04-22/sylva_zetaverifier_progress.md",
+        "sylva_papers/backup/latest/sylva_zetaverifier_progress.md"
+      ],
+      [
+        "archive/sylva_complete/archive/reports/verification_readiness_report.md",
+        "sylva_formalization/verification_readiness_report.md",
+        "sylva_papers/backup/2026-04-22/verification_readiness_report.md",
+        "sylva_papers/backup/latest/verification_readiness_report.md"
+      ],
+      [
+        "archive/sylva_complete/module_dependency_graph.md",
+        "sylva_papers/backup/2026-04-22/module_dependency_graph.md",
+        "sylva_papers/backup/latest/module_dependency_graph.md"
+      ],
+      [
+        "archive/sylva_complete/repair_plan.md",
+        "sylva_papers/backup/2026-04-22/repair_plan.md",
+        "sylva_papers/backup/latest/repair_plan.md"
+      ],
+      [
+        "archive/sylva_complete/saip_tst_coverage.md",
+        "sylva_papers/backup/2026-04-22/saip_tst_coverage.md",
+        "sylva_papers/backup/latest/saip_tst_coverage.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_api_reference_v2.md",
+        "sylva_papers/backup/2026-04-22/sylva_api_reference_v2.md",
+        "sylva_papers/backup/latest/sylva_api_reference_v2.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_basic_extended_summary.md",
+        "sylva_papers/backup/2026-04-22/sylva_basic_extended_summary.md",
+        "sylva_papers/backup/latest/sylva_basic_extended_summary.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_dependency_complete.md",
+        "sylva_papers/backup/2026-04-22/sylva_dependency_complete.md",
+        "sylva_papers/backup/latest/sylva_dependency_complete.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_experimental_protocol_v2.md",
+        "sylva_papers/backup/2026-04-22/sylva_experimental_protocol_v2.md",
+        "sylva_papers/backup/latest/sylva_experimental_protocol_v2.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_technical_targets.md",
+        "sylva_papers/backup/2026-04-22/sylva_technical_targets.md",
+        "sylva_papers/backup/latest/sylva_technical_targets.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_test_validation_summary.md",
+        "sylva_papers/backup/2026-04-22/sylva_test_validation_summary.md",
+        "sylva_papers/backup/latest/sylva_test_validation_summary.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_theory.md",
+        "sylva_papers/backup/2026-04-22/sylva_theory.md",
+        "sylva_papers/backup/latest/sylva_theory.md"
+      ],
+      [
+        "archive/sylva_complete/sylva_unified_literature_review.md",
+        "sylva_papers/backup/2026-04-22/sylva_unified_literature_review.md",
+        "sylva_papers/backup/latest/sylva_unified_literature_review.md"
+      ],
+      [
+        "archive/sylva_complete/执行记录_OCR与Sylva诊断.md",
+        "sylva_papers/backup/2026-04-22/执行记录_OCR与Sylva诊断.md",
+        "sylva_papers/backup/latest/执行记录_OCR与Sylva诊断.md"
+      ],
+      [
+        "archive/sylva_complete/日志分析报告.md",
+        "sylva_formalization/日志分析报告.md",
+        "sylva_papers/backup/2026-04-22/日志分析报告.md",
+        "sylva_papers/backup/latest/日志分析报告.md"
+      ],
+      [
+        "archive/sylva_complete/电子内禀参数计算_现状与SYLVA分析.md",
+        "sylva_papers/backup/2026-04-22/电子内禀参数计算_现状与SYLVA分析.md",
+        "sylva_papers/backup/latest/电子内禀参数计算_现状与SYLVA分析.md"
+      ],
+      [
+        "archive/sylva_complete/电磁孤子_SYLVA形式化重构.md",
+        "sylva_papers/backup/2026-04-22/电磁孤子_SYLVA形式化重构.md",
+        "sylva_papers/backup/latest/电磁孤子_SYLVA形式化重构.md"
+      ],
+      [
+        "archive/sylva_complete/编译修复报告_2026-04-18.md",
+        "sylva_formalization/编译修复报告_2026-04-18.md",
+        "sylva_papers/backup/2026-04-22/编译修复报告_2026-04-18.md",
+        "sylva_papers/backup/latest/编译修复报告_2026-04-18.md"
+      ],
+      [
+        "archive/sylva_complete/编译监控报告_20260417_132200.md",
+        "sylva_formalization/编译监控报告_20260417_132200.md",
+        "sylva_papers/backup/2026-04-22/编译监控报告_20260417_132200.md",
+        "sylva_papers/backup/latest/编译监控报告_20260417_132200.md"
+      ],
+      [
+        "archive/sylva_complete/编译监控报告_20260417_140731.md",
+        "sylva_formalization/编译监控报告_20260417_140731.md",
+        "sylva_papers/backup/2026-04-22/编译监控报告_20260417_140731.md",
+        "sylva_papers/backup/latest/编译监控报告_20260417_140731.md"
+      ],
+      [
+        "archive/sylva_complete/辐射压力分析报告.md",
+        "sylva_formalization/辐射压力分析报告.md",
+        "sylva_papers/backup/2026-04-22/辐射压力分析报告.md",
+        "sylva_papers/backup/latest/辐射压力分析报告.md"
+      ],
+      [
+        "framework/00_final_report.md",
+        "sylva_papers/backup/2026-04-22/00_final_report.md",
+        "sylva_papers/backup/latest/00_final_report.md"
+      ],
+      [
+        "framework/02_emergence_theory_review.md",
+        "sylva_papers/backup/2026-04-22/02_emergence_theory_review.md",
+        "sylva_papers/backup/latest/02_emergence_theory_review.md"
+      ],
+      [
+        "framework/03_mathematical_framework.md",
+        "sylva_papers/backup/2026-04-22/03_mathematical_framework.md",
+        "sylva_papers/backup/latest/03_mathematical_framework.md"
+      ],
+      [
+        "framework/04_audit_report.md",
+        "sylva_papers/backup/2026-04-22/04_audit_report.md",
+        "sylva_papers/backup/latest/04_audit_report.md"
+      ],
+      [
+        "framework/06_stratified_geometry.md",
+        "sylva_papers/backup/2026-04-22/06_stratified_geometry.md",
+        "sylva_papers/backup/latest/06_stratified_geometry.md"
+      ],
+      [
+        "framework/07_fractional_charge_resolution.md",
+        "sylva_papers/backup/2026-04-22/07_fractional_charge_resolution.md",
+        "sylva_papers/backup/latest/07_fractional_charge_resolution.md"
+      ],
+      [
+        "framework/08_curvature_torsion_derivation.md",
+        "sylva_papers/backup/2026-04-22/08_curvature_torsion_derivation.md",
+        "sylva_papers/backup/latest/08_curvature_torsion_derivation.md"
+      ],
+      [
+        "framework/09_other_constants_derivation.md",
+        "sylva_papers/backup/2026-04-22/09_other_constants_derivation.md",
+        "sylva_papers/backup/latest/09_other_constants_derivation.md"
+      ],
+      [
+        "framework/10_parameter_optimization.md",
+        "sylva_papers/backup/2026-04-22/10_parameter_optimization.md",
+        "sylva_papers/backup/latest/10_parameter_optimization.md"
+      ],
+      [
+        "framework/11_chern_simons_137.md",
+        "sylva_papers/backup/2026-04-22/11_chern_simons_137.md",
+        "sylva_papers/backup/latest/11_chern_simons_137.md"
+      ],
+      [
+        "framework/12_gravity_em_unification.md",
+        "sylva_papers/backup/2026-04-22/12_gravity_em_unification.md",
+        "sylva_papers/backup/latest/12_gravity_em_unification.md"
+      ],
+      [
+        "framework/13_testable_predictions.md",
+        "sylva_papers/backup/2026-04-22/13_testable_predictions.md",
+        "sylva_papers/backup/latest/13_testable_predictions.md"
+      ],
+      [
+        "framework/15_strong_force_completion.md",
+        "sylva_papers/backup/2026-04-22/15_strong_force_completion.md",
+        "sylva_papers/backup/latest/15_strong_force_completion.md"
+      ],
+      [
+        "framework/EXECUTIVE_SUMMARY.md",
+        "sylva_papers/backup/2026-04-22/EXECUTIVE_SUMMARY.md",
+        "sylva_papers/backup/latest/EXECUTIVE_SUMMARY.md"
+      ],
+      [
+        "framework/FINAL_COMPREHENSIVE_REPORT.md",
+        "sylva_papers/backup/2026-04-22/FINAL_COMPREHENSIVE_REPORT.md",
+        "sylva_papers/backup/latest/FINAL_COMPREHENSIVE_REPORT.md"
+      ],
+      [
+        "framework/PROJECT_OVERVIEW.md",
+        "sylva_papers/backup/2026-04-22/PROJECT_OVERVIEW.md",
+        "sylva_papers/backup/latest/PROJECT_OVERVIEW.md"
+      ],
+      [
+        "papers/WIMP探测辩护.md",
+        "papers/回应与评论/WIMP探测辩护.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/24H_PLAN.md",
+        "sylva_papers/backup/latest/24H_PLAN.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/2^202712-6素因数分解深度分析.md",
+        "sylva_papers/backup/latest/2^202712-6素因数分解深度分析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/AGENTS.md",
+        "sylva_papers/backup/latest/AGENTS.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/API_REFERENCE.md",
+        "sylva_papers/backup/latest/API_REFERENCE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/API与示例.md",
+        "sylva_papers/backup/latest/API与示例.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/AUDIT_REPORT_k2.6.md",
+        "sylva_papers/backup/latest/AUDIT_REPORT_k2.6.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/AUDIT_REPORT_k2p5.md",
+        "sylva_papers/backup/latest/AUDIT_REPORT_k2p5.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/AUDIT_REPORT_k2p6.md",
+        "sylva_papers/backup/latest/AUDIT_REPORT_k2p6.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/BOOTSTRAP.md",
+        "sylva_papers/backup/latest/BOOTSTRAP.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/BSD_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/BSD_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/BSD_Phi_Connection_Report.md",
+        "sylva_papers/backup/latest/BSD_Phi_Connection_Report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Basic_current_fix_report.md",
+        "sylva_papers/backup/latest/Basic_current_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/COOKLEVIN_PROGRESS.md",
+        "sylva_papers/backup/latest/COOKLEVIN_PROGRESS.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/COOKLEVIN_ROUND2_FINAL_REPORT.md",
+        "sylva_papers/backup/latest/COOKLEVIN_ROUND2_FINAL_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CP004_B2_fill_report.md",
+        "sylva_papers/backup/latest/CP004_B2_fill_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CP004_B2_sorry_filled.md",
+        "sylva_papers/backup/latest/CP004_B2_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CP004_fix_report.md",
+        "sylva_papers/backup/latest/CP004_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CP004_sorry_report.md",
+        "sylva_papers/backup/latest/CP004_sorry_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/C_number_analysis.md",
+        "sylva_papers/backup/latest/C_number_analysis.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Complexity_sorry_report.md",
+        "sylva_papers/backup/latest/Complexity_sorry_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CookLevin_amputation_v2_report.md",
+        "sylva_papers/backup/latest/CookLevin_amputation_v2_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CookLevin_fix_report.md",
+        "sylva_papers/backup/latest/CookLevin_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/CookLevin_integration_report.md",
+        "sylva_papers/backup/latest/CookLevin_integration_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/DAILY_REPORT_2026-04-21.md",
+        "sylva_papers/backup/latest/DAILY_REPORT_2026-04-21.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/DEEP_ATTACK_SUMMARY.md",
+        "sylva_papers/backup/latest/DEEP_ATTACK_SUMMARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/EXPANSION_MODE.md",
+        "sylva_papers/backup/latest/EXPANSION_MODE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/FINAL_DELIVERY_REPORT.md",
+        "sylva_papers/backup/latest/FINAL_DELIVERY_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/FINAL_EXECUTION_REPORT.md",
+        "sylva_papers/backup/latest/FINAL_EXECUTION_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/FINAL_REPORT_2026-04-21.md",
+        "sylva_papers/backup/latest/FINAL_REPORT_2026-04-21.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/FINAL_SORRY_AUDIT.md",
+        "sylva_papers/backup/latest/FINAL_SORRY_AUDIT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/FINAL_SUMMARY_2026-04-21.md",
+        "sylva_papers/backup/latest/FINAL_SUMMARY_2026-04-21.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/F_emergence_symbol_note.md",
+        "sylva_papers/backup/latest/F_emergence_symbol_note.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/GRAND_UNIFICATION_COMPLETE.md",
+        "sylva_papers/backup/latest/GRAND_UNIFICATION_COMPLETE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/HEARTBEAT.md",
+        "sylva_papers/backup/latest/HEARTBEAT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/HODGE_EI_FORMULA.md",
+        "sylva_papers/backup/latest/HODGE_EI_FORMULA.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/HODGE_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/HODGE_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/HODGE_QUANTUM_BRIDGE.md",
+        "sylva_papers/backup/latest/HODGE_QUANTUM_BRIDGE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Hermes5_永久激活架构.md",
+        "sylva_papers/backup/latest/Hermes5_永久激活架构.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Hodge_fix_v2_report.md",
+        "sylva_papers/backup/latest/Hodge_fix_v2_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/IDENTITY.md",
+        "sylva_papers/backup/latest/IDENTITY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/INTERDISCIPLINARY_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/INTERDISCIPLINARY_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/LocalGlobal_fill_report.md",
+        "sylva_papers/backup/latest/LocalGlobal_fill_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/LocalGlobal_final_report.md",
+        "sylva_papers/backup/latest/LocalGlobal_final_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/LocalGlobal_fix_report.md",
+        "sylva_papers/backup/latest/LocalGlobal_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/LocalGlobal_sorry_analysis.md",
+        "sylva_papers/backup/latest/LocalGlobal_sorry_analysis.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/LocalGlobal_sorry_filled.md",
+        "sylva_papers/backup/latest/LocalGlobal_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/MARKDOWN_STYLE_GUIDE.md",
+        "sylva_papers/backup/latest/MARKDOWN_STYLE_GUIDE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/MEMORY.md",
+        "sylva_papers/backup/latest/MEMORY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/MEMORY_SYSTEM.md",
+        "sylva_papers/backup/latest/MEMORY_SYSTEM.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NAVIERSTOKES_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/NAVIERSTOKES_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NIGHT_SHIFT_LOG.md",
+        "sylva_papers/backup/latest/NIGHT_SHIFT_LOG.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NS_DEEP_PROOF.md",
+        "sylva_papers/backup/latest/NS_DEEP_PROOF.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NS_TECHNICAL_DEBT_DEEP.md",
+        "sylva_papers/backup/latest/NS_TECHNICAL_DEBT_DEEP.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NumericalZeros_deep_amputation_report.md",
+        "sylva_papers/backup/latest/NumericalZeros_deep_amputation_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/NumericalZeros_fix_report.md",
+        "sylva_papers/backup/latest/NumericalZeros_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-001_alpha_derivation.md",
+        "sylva_papers/backup/latest/P-001_alpha_derivation.md",
+        "sylva_papers/mathematics/P-001_alpha_derivation.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-002_gravity_em_unification.md",
+        "sylva_papers/backup/latest/P-002_gravity_em_unification.md",
+        "sylva_papers/physics/P-002_gravity_em_unification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-003_four_forces_unification.md",
+        "sylva_papers/backup/latest/P-003_four_forces_unification.md",
+        "sylva_papers/physics/P-003_four_forces_unification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-004_stratified_geometry.md",
+        "sylva_papers/backup/latest/P-004_stratified_geometry.md",
+        "sylva_papers/mathematics/P-004_stratified_geometry.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-005_15_constants_unification.md",
+        "sylva_papers/backup/latest/P-005_15_constants_unification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-006_compilation_verification.md",
+        "sylva_papers/backup/latest/P-006_compilation_verification.md",
+        "sylva_papers/computation/P-006_compilation_verification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-007_lean_formalization.md",
+        "sylva_papers/backup/latest/P-007_lean_formalization.md",
+        "sylva_papers/computation/P-007_lean_formalization.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-008_agent_writing_system.md",
+        "sylva_papers/backup/latest/P-008_agent_writing_system.md",
+        "sylva_papers/computation/P-008_agent_writing_system.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-009_development_roadmap.md",
+        "sylva_papers/backup/latest/P-009_development_roadmap.md",
+        "sylva_papers/methodology/P-009_development_roadmap.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-010_scientific_management.md",
+        "sylva_papers/backup/latest/P-010_scientific_management.md",
+        "sylva_papers/methodology/P-010_scientific_management.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P-011_emergence_theory_review.md",
+        "sylva_papers/backup/latest/P-011_emergence_theory_review.md",
+        "sylva_papers/reviews/P-011_emergence_theory_review.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PAPER_DELIVERY_PLAN.md",
+        "sylva_papers/backup/latest/PAPER_DELIVERY_PLAN.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PAPER_RENUMBERING_V2.md",
+        "sylva_papers/backup/latest/PAPER_RENUMBERING_V2.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PROJECT_COMPLETION_SUMMARY.md",
+        "sylva_papers/backup/latest/PROJECT_COMPLETION_SUMMARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PVSNP_BREAKTHROUGH_EMERGENCE_PROOF.md",
+        "sylva_papers/backup/latest/PVSNP_BREAKTHROUGH_EMERGENCE_PROOF.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PVSNP_EXECUTIVE_SUMMARY.md",
+        "sylva_papers/backup/latest/PVSNP_EXECUTIVE_SUMMARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PVSNP_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/PVSNP_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PVSNP_TECHNICAL_SUPPLEMENT.md",
+        "sylva_papers/backup/latest/PVSNP_TECHNICAL_SUPPLEMENT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_突破_DeltaH渐进分析.md",
+        "sylva_papers/backup/latest/PvsNP_突破_DeltaH渐进分析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_突破_SGH弱化证明.md",
+        "sylva_papers/backup/latest/PvsNP_突破_SGH弱化证明.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_突破_电路复杂度深化.md",
+        "sylva_papers/backup/latest/PvsNP_突破_电路复杂度深化.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_突破_相变理论形式化.md",
+        "sylva_papers/backup/latest/PvsNP_突破_相变理论形式化.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_路径A_电路复杂度_报告.md",
+        "sylva_papers/backup/latest/PvsNP_路径A_电路复杂度_报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/PvsNP_路径B_代数几何_报告.md",
+        "sylva_papers/backup/latest/PvsNP_路径B_代数几何_报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/P≠NP突破性进展_下一步工作计划.md",
+        "sylva_papers/backup/latest/P≠NP突破性进展_下一步工作计划.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/R55_ESTIMATE.md",
+        "sylva_papers/backup/latest/R55_ESTIMATE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/RAMSEY_SPIN_GLASS.md",
+        "sylva_papers/backup/latest/RAMSEY_SPIN_GLASS.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/README.md",
+        "sylva_papers/backup/latest/README.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/RENUMBERING_EXECUTION_REPORT.md",
+        "sylva_papers/backup/latest/RENUMBERING_EXECUTION_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/RIEMANN_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/RIEMANN_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/RiemannHypothesis_sorry_filled.md",
+        "sylva_papers/backup/latest/RiemannHypothesis_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SAIPFillTest_sorry_filled.md",
+        "sylva_papers/backup/latest/SAIPFillTest_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SAIPTest_sorry_filled.md",
+        "sylva_papers/backup/latest/SAIPTest_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SORRY_FILLING_REPORT.md",
+        "sylva_papers/backup/latest/SORRY_FILLING_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SOUL.md",
+        "sylva_papers/backup/latest/SOUL.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYLVAINdex.md",
+        "sylva_papers/backup/latest/SYLVAINdex.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYLVA_PROBLEM_LIBRARY.md",
+        "sylva_papers/backup/latest/SYLVA_PROBLEM_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYLVA_PVSNP_CLUSTER.md",
+        "sylva_papers/backup/latest/SYLVA_PVSNP_CLUSTER.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYLVA_TOE_Unification_Report_v2.md",
+        "sylva_papers/backup/latest/SYLVA_TOE_Unification_Report_v2.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYLV使用说明书.md",
+        "sylva_papers/backup/latest/SYLV使用说明书.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYMBOL_CONVENTIONS.md",
+        "sylva_papers/backup/latest/SYMBOL_CONVENTIONS.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/SYMBOL_GLOSSARY.md",
+        "sylva_papers/backup/latest/SYMBOL_GLOSSARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-01_Entropy-Gap-PvsNP.md",
+        "sylva_papers/backup/latest/Sylva-Paper-01_Entropy-Gap-PvsNP.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-02_Kolmogorov-Unification.md",
+        "sylva_papers/backup/latest/Sylva-Paper-02_Kolmogorov-Unification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-03_NP-Complete-Spectrum.md",
+        "sylva_papers/backup/latest/Sylva-Paper-03_NP-Complete-Spectrum.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-04_Time-Space-Tradeoff.md",
+        "sylva_papers/backup/latest/Sylva-Paper-04_Time-Space-Tradeoff.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-05_Randomness-Extraction.md",
+        "sylva_papers/backup/latest/Sylva-Paper-05_Randomness-Extraction.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-06_Entropy-Collapse.md",
+        "sylva_papers/backup/latest/Sylva-Paper-06_Entropy-Collapse.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-06a_Spectral-Degeneracy.md",
+        "sylva_papers/backup/latest/Sylva-Paper-06a_Spectral-Degeneracy.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-06b_SGH-Proof-Framework.md",
+        "sylva_papers/backup/latest/Sylva-Paper-06b_SGH-Proof-Framework.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-07_Complexity-Class-Pairs.md",
+        "sylva_papers/backup/latest/Sylva-Paper-07_Complexity-Class-Pairs.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-07a_Spectral-Dynamics.md",
+        "sylva_papers/backup/latest/Sylva-Paper-07a_Spectral-Dynamics.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-08_Spectral-Theorem.md",
+        "sylva_papers/backup/2026-04-22/论文_熵间隙谱定理_主论文.md",
+        "sylva_papers/backup/latest/Sylva-Paper-08_Spectral-Theorem.md",
+        "sylva_papers/backup/latest/论文_熵间隙谱定理_主论文.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-09_SGH-Inductive-Proof.md",
+        "sylva_papers/backup/2026-04-22/论文_谱间隙假设与归纳证明.md",
+        "sylva_papers/backup/latest/Sylva-Paper-09_SGH-Inductive-Proof.md",
+        "sylva_papers/backup/latest/论文_谱间隙假设与归纳证明.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-10_SGH-Detailed.md",
+        "sylva_papers/backup/2026-04-22/论文_谱间隙假设与归纳证明_详细版.md",
+        "sylva_papers/backup/latest/Sylva-Paper-10_SGH-Detailed.md",
+        "sylva_papers/backup/latest/论文_谱间隙假设与归纳证明_详细版.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-11_Numerical-Estimation.md",
+        "sylva_papers/backup/2026-04-22/论文_熵间隙谱的数值估计.md",
+        "sylva_papers/backup/latest/Sylva-Paper-11_Numerical-Estimation.md",
+        "sylva_papers/backup/latest/论文_熵间隙谱的数值估计.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-12_Quantum-Information.md",
+        "sylva_papers/backup/2026-04-22/论文_05_计算熵谱与量子信息论的统一框架.md",
+        "sylva_papers/backup/latest/Sylva-Paper-12_Quantum-Information.md",
+        "sylva_papers/backup/latest/论文_05_计算熵谱与量子信息论的统一框架.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/Sylva-Paper-13_Algebraic-Geometry.md",
+        "sylva_papers/backup/2026-04-22/论文C_扩展版.md",
+        "sylva_papers/backup/latest/Sylva-Paper-13_Algebraic-Geometry.md",
+        "sylva_papers/backup/latest/论文C_扩展版.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TD001_Technical_Debt_v1.md",
+        "sylva_papers/backup/latest/TD001_Technical_Debt_v1.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TD001_clarification.md",
+        "sylva_papers/backup/latest/TD001_clarification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TD001_progress_report.md",
+        "sylva_papers/backup/latest/TD001_progress_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TD002_breakthrough.md",
+        "sylva_papers/backup/latest/TD002_breakthrough.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TD002_progress_report.md",
+        "sylva_papers/backup/latest/TD002_progress_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TOE_FRAMEWORK_COMPLETE.md",
+        "sylva_papers/backup/latest/TOE_FRAMEWORK_COMPLETE.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TOE_FRAMEWORK_revised.md",
+        "sylva_papers/backup/latest/TOE_FRAMEWORK_revised.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TOOLS.md",
+        "sylva_papers/backup/latest/TOOLS.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TOOLS_INSTALL_REPORT.md",
+        "sylva_papers/backup/latest/TOOLS_INSTALL_REPORT.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/TOOLS_INVENTORY.md",
+        "sylva_papers/backup/latest/TOOLS_INVENTORY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/The_Principle_of_the_Most_Elementary_Particles_Review.md",
+        "sylva_papers/backup/latest/The_Principle_of_the_Most_Elementary_Particles_Review.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/The_Principle_of_the_Most_Elementary_Particles_Technical_Analysis.md",
+        "sylva_papers/backup/latest/The_Principle_of_the_Most_Elementary_Particles_Technical_Analysis.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/USER.md",
+        "sylva_papers/backup/latest/USER.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/VERIFICATION_CHECKLIST.md",
+        "sylva_papers/backup/latest/VERIFICATION_CHECKLIST.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/YANGMILLS_PAPER_LIBRARY.md",
+        "sylva_papers/backup/latest/YANGMILLS_PAPER_LIBRARY.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/ZetaVerifier_fix_log.md",
+        "sylva_papers/backup/latest/ZetaVerifier_fix_log.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/ZetaVerifier_sorry_filled.md",
+        "sylva_papers/backup/latest/ZetaVerifier_sorry_filled.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/alpha_omnibus_search_report.md",
+        "sylva_papers/backup/latest/alpha_omnibus_search_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/analysis_xin_ao_fusion_scientific_reports.md",
+        "sylva_papers/backup/latest/analysis_xin_ao_fusion_scientific_reports.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/basic_phi_convergence_resolution.md",
+        "sylva_papers/backup/latest/basic_phi_convergence_resolution.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/bsd_literature_summary.md",
+        "sylva_papers/backup/latest/bsd_literature_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/codon_meta_probability_unified.md",
+        "sylva_papers/backup/latest/codon_meta_probability_unified.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cooklevin_collaboration_plan.md",
+        "sylva_papers/backup/latest/cooklevin_collaboration_plan.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cooklevin_review.md",
+        "sylva_papers/backup/latest/cooklevin_review.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cp004_b2_review.md",
+        "sylva_papers/backup/latest/cp004_b2_review.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cp004_progress_report.md",
+        "sylva_papers/backup/latest/cp004_progress_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cp004_review.md",
+        "sylva_papers/backup/latest/cp004_review.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/cpp_tools_install_log.md",
+        "sylva_papers/backup/latest/cpp_tools_install_log.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/emergent_math_fix_report.md",
+        "sylva_papers/backup/latest/emergent_math_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/emergent_mathematics_framework.md",
+        "sylva_papers/backup/latest/emergent_mathematics_framework.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/final_build_summary.md",
+        "sylva_papers/backup/latest/final_build_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/grand_unification_document.md",
+        "sylva_papers/backup/latest/grand_unification_document.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/grand_unification_document_revised.md",
+        "sylva_papers/backup/latest/grand_unification_document_revised.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/graviton_dichotomy_analysis.md",
+        "sylva_papers/backup/latest/graviton_dichotomy_analysis.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/hodge_literature_summary.md",
+        "sylva_papers/backup/latest/hodge_literature_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/hodge_mirror_symmetry_connection.md",
+        "sylva_papers/backup/latest/hodge_mirror_symmetry_connection.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/information_seal_theory.md",
+        "sylva_papers/backup/latest/information_seal_theory.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/install_remaining_report.md",
+        "sylva_papers/backup/latest/install_remaining_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/install_remaining_tools_report.md",
+        "sylva_papers/backup/latest/install_remaining_tools_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/local_global_template_design.md",
+        "sylva_papers/backup/latest/local_global_template_design.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/memory_importance_system.md",
+        "sylva_papers/backup/latest/memory_importance_system.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/memory_optimization_report.md",
+        "sylva_papers/backup/latest/memory_optimization_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/meta_probability_advanced.md",
+        "sylva_papers/backup/latest/meta_probability_advanced.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/meta_probability_framework.md",
+        "sylva_papers/backup/latest/meta_probability_framework.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/meta_probability_math.md",
+        "sylva_papers/backup/latest/meta_probability_math.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/navier_stokes_literature_summary.md",
+        "sylva_papers/backup/latest/navier_stokes_literature_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/ns_bridge_to_turbulence.md",
+        "sylva_papers/backup/latest/ns_bridge_to_turbulence.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/numericalzeros_progress_report.md",
+        "sylva_papers/backup/latest/numericalzeros_progress_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/ocr_verification.md",
+        "sylva_papers/backup/latest/ocr_verification.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/p_vs_np_literature_summary.md",
+        "sylva_papers/backup/latest/p_vs_np_literature_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/pheno_to_formal_transition_guide.md",
+        "sylva_papers/backup/latest/pheno_to_formal_transition_guide.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/problem_01_phi_cantor_dimension.md",
+        "sylva_papers/backup/latest/problem_01_phi_cantor_dimension.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/qutip_install_log.md",
+        "sylva_papers/backup/latest/qutip_install_log.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/radiation_tracker_fix_report.md",
+        "sylva_papers/backup/latest/radiation_tracker_fix_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/radiation_tracking_system.md",
+        "sylva_papers/backup/latest/radiation_tracking_system.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/reference_update_report.md",
+        "sylva_papers/backup/latest/reference_update_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/rh_filled_summary.md",
+        "sylva_papers/backup/latest/rh_filled_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/riemann_literature_summary.md",
+        "sylva_papers/backup/latest/riemann_literature_summary.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/sagemath_implementation_report.md",
+        "sylva_papers/backup/latest/sagemath_implementation_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/saip_amp_evaluation_report.md",
+        "sylva_papers/backup/latest/saip_amp_evaluation_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/saip_amp_test_log.md",
+        "sylva_papers/backup/latest/saip_amp_test_log.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/saip_fill_failures.md",
+        "sylva_papers/backup/latest/saip_fill_failures.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/saip_fill_successes.md",
+        "sylva_papers/backup/latest/saip_fill_successes.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/saip_int_evaluation.md",
+        "sylva_papers/backup/latest/saip_int_evaluation.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/shgs_architecture_upgrade.md",
+        "sylva_papers/backup/latest/shgs_architecture_upgrade.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/sorry_filling_progress.md",
+        "sylva_papers/backup/latest/sorry_filling_progress.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/tang_proof_analysis.md",
+        "sylva_papers/backup/latest/tang_proof_analysis.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/technical_debt.md",
+        "sylva_papers/backup/latest/technical_debt.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/wellfounded_recursion_report.md",
+        "sylva_papers/backup/latest/wellfounded_recursion_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/zip2_cleanup_report.md",
+        "sylva_papers/backup/latest/zip2_cleanup_report.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/中微子是什么.md",
+        "sylva_papers/backup/latest/中微子是什么.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/主论文技术分析报告.md",
+        "sylva_papers/backup/latest/主论文技术分析报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/交付报告.md",
+        "sylva_papers/backup/latest/交付报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/从熵间隙谱理论到P≠NP_研究路线图.md",
+        "sylva_papers/backup/latest/从熵间隙谱理论到P≠NP_研究路线图.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/代码框架_工作流引擎.md",
+        "sylva_papers/backup/latest/代码框架_工作流引擎.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/代码框架_数据结构.md",
+        "sylva_papers/backup/latest/代码框架_数据结构.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/代码框架_核心类.md",
+        "sylva_papers/backup/latest/代码框架_核心类.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/元概率学_学科创立白皮书.md",
+        "sylva_papers/backup/latest/元概率学_学科创立白皮书.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/光速可变性与时间流速的物理分析.md",
+        "sylva_papers/backup/latest/光速可变性与时间流速的物理分析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/协作机制README.md",
+        "sylva_papers/backup/latest/协作机制README.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/协作机制设计.md",
+        "sylva_papers/backup/latest/协作机制设计.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/反驳_网络游戏反例_被锁定的数学.md",
+        "sylva_papers/backup/latest/反驳_网络游戏反例_被锁定的数学.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/发展思路_详细解题步骤版.md",
+        "sylva_papers/backup/latest/发展思路_详细解题步骤版.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/回应_理论物理的价值_从数学游戏到实验验证.md",
+        "sylva_papers/backup/latest/回应_理论物理的价值_从数学游戏到实验验证.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/基本粒子间相互作用力分析.md",
+        "sylva_papers/backup/latest/基本粒子间相互作用力分析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/宇宙粒子乘积_vs_葛立恒数分析.md",
+        "sylva_papers/backup/latest/宇宙粒子乘积_vs_葛立恒数分析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/完整对话历史回溯报告.md",
+        "sylva_papers/backup/latest/完整对话历史回溯报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/完整成果展示.md",
+        "sylva_papers/backup/latest/完整成果展示.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/审核报告_理论物理方法论.md",
+        "sylva_papers/backup/latest/审核报告_理论物理方法论.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/对终极黑洞CY流形理论的评析.md",
+        "sylva_papers/backup/latest/对终极黑洞CY流形理论的评析.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/战略规划与执行方案_2026-04-15.md",
+        "sylva_papers/backup/latest/战略规划与执行方案_2026-04-15.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/扩展计划总览.md",
+        "sylva_papers/backup/latest/扩展计划总览.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/技术分析_cook_levin.md",
+        "sylva_papers/backup/latest/技术分析_cook_levin.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/最终交付报告.md",
+        "sylva_papers/backup/latest/最终交付报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/架构设计.md",
+        "sylva_papers/backup/latest/架构设计.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/核心定理与公式速查手册.md",
+        "sylva_papers/backup/latest/核心定理与公式速查手册.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/正反粒子引力场相同_几何解释.md",
+        "sylva_papers/backup/latest/正反粒子引力场相同_几何解释.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/熵间隙谱理论_发展脉络.md",
+        "sylva_papers/backup/latest/熵间隙谱理论_发展脉络.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/熵间隙谱理论系列_总览.md",
+        "sylva_papers/backup/latest/熵间隙谱理论系列_总览.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/熵间隙谱理论系列_打包清单.md",
+        "sylva_papers/backup/latest/熵间隙谱理论系列_打包清单.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/电磁孤子与球状闪电_中国科学家突破.md",
+        "sylva_papers/backup/latest/电磁孤子与球状闪电_中国科学家突破.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/电磁波干涉与能量守恒.md",
+        "sylva_papers/backup/latest/电磁波干涉与能量守恒.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/电磁波干涉与能量守恒_修正版.md",
+        "sylva_papers/backup/latest/电磁波干涉与能量守恒_修正版.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/范式转换提案_算术物理对偶.md",
+        "sylva_papers/backup/latest/范式转换提案_算术物理对偶.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/规则优先级与注意力权重管理系统.md",
+        "sylva_papers/backup/latest/规则优先级与注意力权重管理系统.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文01_03_04定位报告.md",
+        "sylva_papers/backup/latest/论文01_03_04定位报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文01定位报告.md",
+        "sylva_papers/backup/latest/论文01定位报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文01定位报告_最终.md",
+        "sylva_papers/backup/latest/论文01定位报告_最终.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文交叉验证报告.md",
+        "sylva_papers/backup/latest/论文交叉验证报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文分析_基本粒子原理.md",
+        "sylva_papers/backup/latest/论文分析_基本粒子原理.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/论文章节技术分析报告.md",
+        "sylva_papers/backup/latest/论文章节技术分析报告.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/通信协议与状态机.md",
+        "sylva_papers/backup/latest/通信协议与状态机.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/通信协议与状态机_v2.md",
+        "sylva_papers/backup/latest/通信协议与状态机_v2.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/配置与部署.md",
+        "sylva_papers/backup/latest/配置与部署.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/问题库科学管理框架.md",
+        "sylva_papers/backup/latest/问题库科学管理框架.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/问题库科学管理框架_v2.md",
+        "sylva_papers/backup/latest/问题库科学管理框架_v2.md"
+      ],
+      [
+        "sylva_papers/backup/2026-04-22/阶段性成果报告_进行中.md",
+        "sylva_papers/backup/latest/阶段性成果报告_进行中.md"
+      ]
+    ],
+    "missing_relative_links": [
+      {
+        "source": "archive/sylva_complete/CONTRIBUTING.md",
+        "target": "docs/theory/overview.md"
+      },
+      {
+        "source": "archive/sylva_complete/CONTRIBUTING.md",
+        "target": "tutorials/getting_started.ipynb"
+      },
+      {
+        "source": "archive/sylva_complete/CONTRIBUTING.md",
+        "target": "docs/faq.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_COMPLETE_DOCUMENTATION.md",
+        "target": "σ"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "1-s"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_HODGE_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_MATHEMATICAL_CONTENT.md",
+        "target": "σ"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_MEMORY_ARCH.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_PAPER_SERIES.md",
+        "target": "论文章节技术分析报告.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_PAPER_SERIES.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_RH_CLUSTER.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_QUICKREF.md",
+        "target": "./sylva_examples.lean"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "σ"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_TUTORIAL.md",
+        "target": "sylva_paper.pdf"
+      },
+      {
+        "source": "archive/sylva_complete/SYLVA_TUTORIAL.md",
+        "target": "sylva_examples.lean"
+      },
+      {
+        "source": "archive/sylva_complete/archive/reports/SYLVA_AGENT_STATUS.md",
+        "target": "SYLVA_PVSNP_CLUSTER.md"
+      },
+      {
+        "source": "archive/sylva_complete/archive/reports/SYLVA_AGENT_STATUS.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "getting-started/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/overview.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "getting-started/quickstart.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "community/contributing.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/overview.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/hert-rh/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/tsa/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "tutorials/hert-tutorial.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/hert-rh/bootstrap-conjecture.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/tsa/filippov-algebras.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/tsa/a568-clifford.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/proof-strategies.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "getting-started/installation.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "getting-started/quickstart.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "api/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "community/contributing.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/ntq/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "theory/ntq/time-emergence.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "faq/philosophy.md"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "papers/paper1_HERT_RH.pdf"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "papers/paper2_TSA.pdf"
+      },
+      {
+        "source": "archive/sylva_complete/index.md",
+        "target": "papers/paper3_Narrative_Time.pdf"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "fellowship_application.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "calendar_link"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "mailing_lists.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "mailing_lists.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "partnership_types.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "mou_template.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "../docs/getting-started/index.md"
+      },
+      {
+        "source": "archive/sylva_complete/network.md",
+        "target": "jobs.md"
+      },
+      {
+        "source": "archive/sylva_complete/strategy.md",
+        "target": "partnership_template.md"
+      },
+      {
+        "source": "archive/sylva_complete/strategy.md",
+        "target": "fellowship_info.md"
+      },
+      {
+        "source": "archive/sylva_complete/sylva_experimental_protocol_v2.md",
+        "target": "input_bits"
+      },
+      {
+        "source": "archive/sylva_complete/sylva_experimental_protocol_v2.md",
+        "target": "enc_x[1:]"
+      },
+      {
+        "source": "framework/20_black_hole_physics_complete.md",
+        "target": "a"
+      },
+      {
+        "source": "framework/20_black_hole_physics_complete.md",
+        "target": "0"
+      },
+      {
+        "source": "framework/51_gauge_theory_fiber_bundles.md",
+        "target": "X,"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "t"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "t"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "z"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "zt"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "t"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "z"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "t"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "t"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "z"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "z"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "g"
+      },
+      {
+        "source": "framework/67_asymptotic_analysis.md",
+        "target": "z"
+      },
+      {
+        "source": "framework/CROSS_REFERENCES.md",
+        "target": "链接"
+      },
+      {
+        "source": "framework/CROSS_REFERENCES.md",
+        "target": "链接"
+      },
+      {
+        "source": "framework/CROSS_REFERENCES.md",
+        "target": "链接"
+      },
+      {
+        "source": "framework/CROSS_REFERENCES.md",
+        "target": "链接"
+      },
+      {
+        "source": "framework/CROSS_REFERENCES.md",
+        "target": "链接"
+      },
+      {
+        "source": "framework/paper_screen/triage_summary_before_f1.md",
+        "target": "./00_toe_framework_overview.md"
+      },
+      {
+        "source": "framework/paper_screen/triage_summary_before_f1.md",
+        "target": "./47_standard_model_beyond.md"
+      },
+      {
+        "source": "framework/paper_screen/triage_summary_before_f1.md",
+        "target": "./49_superstring_theory.md"
+      },
+      {
+        "source": "framework/paper_screen/triage_summary_before_f1.md",
+        "target": "./50_supergravity_quantization.md"
+      },
+      {
+        "source": "papers/控制理论与最优控制_综述/控制理论与最优控制_综述.md",
+        "target": "x"
+      },
+      {
+        "source": "papers/数学基础强化_系列/11_最优传输与耗散几何_梯度流的统一变分结构.md",
+        "target": "x"
+      },
+      {
+        "source": "papers/物理信息神经网络与神经算子_综述/README.md",
+        "target": "x"
+      },
+      {
+        "source": "papers/物理信息神经网络与神经算子_综述/README.md",
+        "target": "x"
+      },
+      {
+        "source": "releases/doc/SYLVA_COMPLETE_DOCUMENTATION.md",
+        "target": "σ"
+      },
+      {
+        "source": "releases/doc/SYLVA_QUICKREF.md",
+        "target": "./sylva_examples.lean"
+      },
+      {
+        "source": "releases/doc/SYLVA_TUTORIAL.md",
+        "target": "sylva_paper.pdf"
+      },
+      {
+        "source": "releases/doc/SYLVA_TUTORIAL.md",
+        "target": "sylva_examples.lean"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/MARKDOWN_STYLE_GUIDE.md",
+        "target": "链接"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/MARKDOWN_STYLE_GUIDE.md",
+        "target": "链接"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_AGENT_STATUS.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "1-s"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_HODGE_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_MATHEMATICAL_CONTENT.md",
+        "target": "σ"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_MEMORY_ARCH.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_PAPER_SERIES.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_RH_CLUSTER.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "σ"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_TUTORIAL.md",
+        "target": "sylva_paper.pdf"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/SYLVA_TUTORIAL.md",
+        "target": "sylva_examples.lean"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/sylva_experimental_protocol_v2.md",
+        "target": "input_bits"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/sylva_experimental_protocol_v2.md",
+        "target": "enc_x[1:]"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/通信协议与状态机.md",
+        "target": "state"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/通信协议与状态机.md",
+        "target": "state"
+      },
+      {
+        "source": "sylva_papers/backup/2026-04-22/配置与部署.md",
+        "target": "system_stats"
+      },
+      {
+        "source": "sylva_papers/backup/latest/MARKDOWN_STYLE_GUIDE.md",
+        "target": "链接"
+      },
+      {
+        "source": "sylva_papers/backup/latest/MARKDOWN_STYLE_GUIDE.md",
+        "target": "链接"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_AGENT_STATUS.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_CORE_MATHEMATICAL_OBSTACLES.md",
+        "target": "1-s"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_HODGE_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_MATHEMATICAL_CONTENT.md",
+        "target": "σ"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_MEMORY_ARCH.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_PAPER_SERIES.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_RH_CLUSTER.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_PVSNP_CLUSTER.md",
+        "target": "SYLVA_KNOWLEDGE_GRAPH_INDEX.md"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "σ"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_TECHNICAL_OBSTACLES.md",
+        "target": "s"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_TUTORIAL.md",
+        "target": "sylva_paper.pdf"
+      },
+      {
+        "source": "sylva_papers/backup/latest/SYLVA_TUTORIAL.md",
+        "target": "sylva_examples.lean"
+      },
+      {
+        "source": "sylva_papers/backup/latest/sylva_experimental_protocol_v2.md",
+        "target": "input_bits"
+      },
+      {
+        "source": "sylva_papers/backup/latest/sylva_experimental_protocol_v2.md",
+        "target": "enc_x[1:]"
+      },
+      {
+        "source": "sylva_papers/backup/latest/通信协议与状态机.md",
+        "target": "state"
+      },
+      {
+        "source": "sylva_papers/backup/latest/通信协议与状态机.md",
+        "target": "state"
+      },
+      {
+        "source": "sylva_papers/backup/latest/配置与部署.md",
+        "target": "system_stats"
+      }
+    ]
+  },
+  "lean": {
+    "tracked_files": 142316,
+    "scanned_files": 22228,
+    "files": 22228,
+    "with_axiom": 63,
+    "with_postulate": 12,
+    "with_sorry": 29,
+    "with_admit": 18,
+    "with_axiom_postulate": 0,
+    "top_axiom_files": [
+      {
+        "path": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+        "bytes": 33054,
+        "axiom": 11,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Computability/PolynomialTime.lean",
+        "bytes": 15280,
+        "axiom": 11,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "academic/desktop_zip_extracted/04_NavierStokes_Formalization_Fixed.lean",
+        "bytes": 27084,
+        "axiom": 8,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 1,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/MillenniumProblems/NavierStokes.lean",
+        "bytes": 24174,
+        "axiom": 8,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/NavierStokes.lean",
+        "bytes": 41268,
+        "axiom": 7,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 15,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/NavierStokes_DEEP_COMPLETED.lean",
+        "bytes": 27340,
+        "axiom": 7,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/NavierStokes_REVISED.lean",
+        "bytes": 27330,
+        "axiom": 7,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Creativity.lean",
+        "bytes": 36359,
+        "axiom": 7,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 19,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Resilience.lean",
+        "bytes": 60379,
+        "axiom": 7,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 18,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "academic/desktop_zip_extracted/05_FourForcesUnification_Formalization_Fixed.lean",
+        "bytes": 34166,
+        "axiom": 6,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 9,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SAT.lean",
+        "bytes": 122174,
+        "axiom": 6,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 21,
+        "lemma": 12,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BerryConnection.lean",
+        "bytes": 27583,
+        "axiom": 5,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/RiemannHypothesis.lean",
+        "bytes": 22471,
+        "axiom": 5,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 26,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Computability/CookLevin.lean",
+        "bytes": 8361,
+        "axiom": 4,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/QuantumGravity.lean",
+        "bytes": 21147,
+        "axiom": 4,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 10,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Dynamics.lean",
+        "bytes": 67940,
+        "axiom": 4,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 19,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/InformationGeometry_Theorems.lean",
+        "bytes": 10579,
+        "axiom": 4,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Computability/TM1Extended.lean",
+        "bytes": 13524,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/FourForcesUnification_REVISED.lean",
+        "bytes": 35157,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 9,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/GaugeTheory/YangMills.lean",
+        "bytes": 4307,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_OptimalControl.lean",
+        "bytes": 44140,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_QuantumInformationUnity.lean",
+        "bytes": 13316,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 8,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Symmetry.lean",
+        "bytes": 58438,
+        "axiom": 3,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 18,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/StratifiedTopologicalInsulator.lean",
+        "bytes": 22107,
+        "axiom": 3,
+        "postulate": 2,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 1,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BerryCurvature.lean",
+        "bytes": 29983,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 9,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BlochTheorem.lean",
+        "bytes": 17401,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/ContinuumLimit.lean",
+        "bytes": 28250,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 12,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/FourForcesUnification.lean",
+        "bytes": 39864,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 10,
+        "lemma": 9,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/FourForcesUnification_FINAL.lean",
+        "bytes": 43671,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 9,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/GaugeTheory.lean",
+        "bytes": 32296,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 15,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/GaugeTheory/Instanton.lean",
+        "bytes": 4939,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/NumericalVerification.lean",
+        "bytes": 14810,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 12,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/PhysicalChemistry/ReactionNetwork.lean",
+        "bytes": 38807,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 22,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/QuantumChemistry/QuantumPhotosynthesis.lean",
+        "bytes": 6464,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean",
+        "bytes": 45343,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 14,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_CollectiveIntelligence.lean",
+        "bytes": 100476,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 30,
+        "lemma": 2,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Evolution.lean",
+        "bytes": 113488,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 29,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Information.lean",
+        "bytes": 62836,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 22,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Network.lean",
+        "bytes": 46301,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 14,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/TopologicalInsulator/ChernNumber.lean",
+        "bytes": 3657,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/topo_quantum_internet/topo_quantum_internet_Formalization.lean",
+        "bytes": 10546,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/ChernSimons.lean",
+        "bytes": 30723,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 16,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/InformationGeometry/Divergence.lean",
+        "bytes": 1389,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/NPClass/PolynomialTime.lean",
+        "bytes": 3315,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 5,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/QuantumChemistry/PartitionFunction.lean",
+        "bytes": 22199,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_CategoryTheory.lean",
+        "bytes": 25434,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 17,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_ConnectionLaws.lean",
+        "bytes": 135983,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 5,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_ConsciousnessBridge.lean",
+        "bytes": 14184,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 5,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Duality.lean",
+        "bytes": 41350,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/SYLVA_Ethics.lean",
+        "bytes": 9323,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      }
+    ],
+    "top_sorry_files": [
+      {
+        "path": "papers/qec_ftqc/QEC_FTQC_Formalization.lean",
+        "bytes": 22254,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 6,
+        "admit": 0,
+        "theorem": 15,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/AI辅助证明_系列/verify_scripts/erdos124/fc_124.lean",
+        "bytes": 4869,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 4,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 5,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/SYLVA_comprehensive_survey/SYLVA_comprehensive_survey_Formalization.lean",
+        "bytes": 10883,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/algebraic_topology/algebraic_topology_Formalization.lean",
+        "bytes": 6433,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/computational_complexity/computational_complexity_Formalization.lean",
+        "bytes": 7441,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/dynamical_systems_chaos/dynamical_systems_chaos_Formalization.lean",
+        "bytes": 7624,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/enumerative_geometry/enumerative_geometry_Formalization.lean",
+        "bytes": 8338,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/information_theory/information_theory_Formalization.lean",
+        "bytes": 7870,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/langlands_program/langlands_program_Formalization.lean",
+        "bytes": 8058,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/noncommutative_geometry/noncommutative_geometry_Formalization.lean",
+        "bytes": 8507,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/p_adic_hodge_theory/p_adic_hodge_theory_Formalization.lean",
+        "bytes": 8219,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/positive_characteristic_resolution/positive_characteristic_resolution_Formalization.lean",
+        "bytes": 9546,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/quantum_gravity/quantum_gravity_Formalization.lean",
+        "bytes": 9993,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/random_matrix_theory/random_matrix_theory_Formalization.lean",
+        "bytes": 9280,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/room_temp_sc/room_temp_sc_Formalization.lean",
+        "bytes": 8015,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/statistical_learning/statistical_learning_Formalization.lean",
+        "bytes": 7962,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/topo_quantum_internet/topo_quantum_internet_Formalization.lean",
+        "bytes": 10546,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 3,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/category_theory_tqft/category_theory_tqft_Formalization.lean",
+        "bytes": 6150,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 2,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/condensed_matter/condensed_matter_Formalization.lean",
+        "bytes": 7212,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 2,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/four_forces_unification/four_forces_unification_Formalization.lean",
+        "bytes": 8186,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 2,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/quantum_field_theory/quantum_field_theory_Formalization.lean",
+        "bytes": 8181,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 2,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Tutorial/SylvaExamples.lean",
+        "bytes": 13368,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 2,
+        "admit": 0,
+        "theorem": 1,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/differential_geometry_gr/differential_geometry_gr_Formalization.lean",
+        "bytes": 6853,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/millennium_papers/millennium_papers_Formalization.lean",
+        "bytes": 6824,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/particle_physics_standard_model/particle_physics_standard_model_Formalization.lean",
+        "bytes": 8511,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Project/TOESylva/Solutions/SYLVACore.lean",
+        "bytes": 2189,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/BerryConnection_GaugeTransformationLaw.lean",
+        "bytes": 2681,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 2,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/TOE_SYLVA_Solutions/TopologicalInsulator_Theorems.lean",
+        "bytes": 6318,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/Test_amputated.lean",
+        "bytes": 5971,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 1,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "academic/desktop_zip_extracted/04_NavierStokes_Formalization_Fixed.lean",
+        "bytes": 27084,
+        "axiom": 8,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 1,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "academic/desktop_zip_extracted/05_FourForcesUnification_Formalization_Fixed.lean",
+        "bytes": 34166,
+        "axiom": 6,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 9,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "academic/desktop_zip_extracted/Basic.lean",
+        "bytes": 1882,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "consumer/Main.lean",
+        "bytes": 7044,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 14,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "consumer/SylvaConsumer.lean",
+        "bytes": 164,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "consumer/SylvaConsumer/Basic.lean",
+        "bytes": 22,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "framework/66_beyond_standard_model.lean",
+        "bytes": 35437,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 14,
+        "theorem": 24,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "framework/nl2lean/NL2LeanPilot.lean",
+        "bytes": 10722,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 33,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/AI辅助证明_系列/verify_scripts/erdos124/Erdos124b.lean",
+        "bytes": 25564,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 4,
+        "lemma": 11,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "papers/数学基础强化_系列/_panel_records/ig_probe_20260812.lean",
+        "bytes": 4269,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization.lean",
+        "bytes": 1332,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/All.lean",
+        "bytes": 5481493,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BCSTherory.lean",
+        "bytes": 29743,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 19,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BerryConnection.lean",
+        "bytes": 27583,
+        "axiom": 5,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BerryCurvature.lean",
+        "bytes": 29983,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 9,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/BlochTheorem.lean",
+        "bytes": 17401,
+        "axiom": 2,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 7,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/ChernNumber.lean",
+        "bytes": 18588,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 9,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/ChernSimons.lean",
+        "bytes": 30723,
+        "axiom": 1,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 16,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Complexity/CookLevin_theorem.lean",
+        "bytes": 25726,
+        "axiom": 0,
+        "postulate": 1,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 0,
+        "lemma": 11,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/ComplexityPhysicalSystems.lean",
+        "bytes": 26133,
+        "axiom": 0,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 6,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      },
+      {
+        "path": "sylva_formalization/SylvaFormalization/Computability/CNFEncoding.lean",
+        "bytes": 33054,
+        "axiom": 11,
+        "postulate": 0,
+        "sorry": 0,
+        "admit": 0,
+        "theorem": 3,
+        "lemma": 0,
+        "axiom_postulate": 0,
+        "generated": "curated/unsorted"
+      }
+    ],
+    "universal_axiom_postulate": []
+  },
+  "skipped_large": []
+}

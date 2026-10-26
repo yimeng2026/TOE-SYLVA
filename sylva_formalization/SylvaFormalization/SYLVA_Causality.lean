@@ -70,113 +70,81 @@ Version: v2.0 — Zero-sorry, axiom-to-theorem conversion, boundary theorems add
 -/
 
 import Mathlib
-import SylvaFormalization.SYLVA_Hierarchy
-import SylvaFormalization.SYLVA_Scale
-import SylvaFormalization.SYLVA_Symmetry
-import SylvaFormalization.SYLVA_Emergence
-import SylvaFormalization.SYLVA_Information
-import SylvaFormalization.SYLVA_Dynamics
-import SylvaFormalization.Cosmology.FLRW
-import SylvaFormalization.QuantumChemistry.QuantumMasterEquation
-import SylvaFormalization.CondensedMatter.Hubbard
-import SylvaFormalization.NavierStokes
-import SylvaFormalization.FifteenConstants
-import SylvaFormalization.SAT
-import SylvaFormalization.NPClass
 
+-- 2026-10-26 dependency audit: no definition from the twelve former monolithic
+-- imports is used in this file. They were removed rather than hiding failures in
+-- unrelated upstream modules. The only `open SYLVA_Hierarchy` was also unused.
 namespace Sylva.SYLVASCausality
 
-open Real SYLVA_Hierarchy
+open Real
 
 -- ============================================================================
 -- Section 1: Relativistic Causality — Light Cone, Causal Structure
 -- ============================================================================
 
-/-- **The light cone**: In special relativity, the causal structure is defined by
-    the light cone: the set of events that are lightlike separated from a given event.
-    The light cone divides spacetime into three regions: the past (timelike separated,
-    t < 0), the future (timelike separated, t > 0), and the elsewhere (spacelike
-    separated, |x| > c|t|). The light cone is invariant under Lorentz transformations:
-    the interval ds² = -c²dt² + dx² + dy² + dz² is invariant, and the light cone
-    is defined by ds² = 0.
+/-- **The light cone**: In special relativity, the interval
+    ds² = -c²dt² + dx² + dy² + dz² separates timelike, lightlike, and spacelike
+    displacements. Undirected causal relatedness is symmetric; it is not a partial
+    order and, as the counterexample below shows, is not transitive. Directed causal
+    precedence additionally requires a compatible time orientation.
 
-    The **causal relation**: Two events x and y are causally related if x ≤ y (x
-    causally precedes y) or y ≤ x (y causally precedes x). The causal relation is
-    a partial order: it is reflexive (x ≤ x), transitive (x ≤ y and y ≤ z implies
-    x ≤ z), and antisymmetric (x ≤ y and y ≤ x implies x = y). The causal relation
-    defines the causal structure of spacetime: the past and future of each event.
+    In Minkowski spacetime the directed relation is Lorentz invariant under
+    orthochronous Lorentz transformations. General spacetimes require their own
+    causal and time-orientability hypotheses; this file only defines the flat
+    four-dimensional coordinate model, not a general Lorentzian-manifold theory.
 
-    The **causal structure**: The causal structure of spacetime is the set of all
-    causal relations between events. The causal structure is a fundamental property
-    of spacetime: it determines the topology and the geometry of spacetime (Malament,
-    1977; Hawking, 1978). The causal structure is Lorentz invariant: the causal
-    relations are preserved by Lorentz transformations. The causal structure is
-    the basis of the causal set theory (Bombelli et al., 1987): spacetime is a
-    discrete set of events with a causal order, and the geometry emerges from the
-    causal order.
-
-    The **chronological relation**: Two events x and y are chronologically related
-    if x << y (x chronologically precedes y) if there is a timelike curve from x
-    to y. The chronological relation is a strict partial order: it is irreflexive
-    (not x << x) and transitive (x << y and y << z implies x << z). The chronological
-    relation is a subset of the causal relation: x << y implies x ≤ y. The chronological
-    relation defines the time order of events: the events in the past of x are those
-    that chronologically precede x, and the events in the future of x are those that
-    x chronologically precedes. -/
+    The **chronological relation** below is the directed timelike analogue. Its
+    transitivity is a geometric theorem requiring the same reverse Minkowski
+    inequality as directed causal transitivity; it is not inferred merely from
+    the sign of the undirected interval. -/
 
 def lightConeInterval (x y : ℝ × ℝ × ℝ × ℝ) : ℝ :=
-  let (t₁, x₁, y₁, z₁) := x
-  let (t₂, x₂, y₂, z₂) := y
-  - (299792458)^2 * (t₂ - t₁)^2 + (x₂ - x₁)^2 + (y₂ - y₁)^2 + (z₂ - z₁)^2
+  -(299792458 : ℝ) ^ 2 * (y.1 - x.1) ^ 2 +
+    (y.2.1 - x.2.1) ^ 2 + (y.2.2.1 - x.2.2.1) ^ 2 + (y.2.2.2 - x.2.2.2) ^ 2
 
+/-- Symmetric, irreflexive causal relatedness; no time direction is implied. -/
 def causallyRelated (x y : ℝ × ℝ × ℝ × ℝ) : Prop :=
-  let ds² := lightConeInterval x y
-  ds² ≤ 0 ∧ (x ≠ y)
+  lightConeInterval x y ≤ 0 ∧ x ≠ y
 
+/-- Directed timelike precedence in the fixed Minkowski coordinate model. -/
 def chronologicallyRelated (x y : ℝ × ℝ × ℝ × ℝ) : Prop :=
-  let ds² := lightConeInterval x y
-  ds² < 0 ∧ (x ≠ y)
+  lightConeInterval x y < 0 ∧ x.1 < y.1
 
-/-- **Causal precedence** (reflexive version): x causally precedes y if the
-    Minkowski interval ds²(x,y) ≤ 0. This includes the case x = y (ds² = 0), so it
-    is reflexive. In a causal spacetime (no closed causal curves), this relation is
-    a preorder (reflexive and transitive). The antisymmetry (partial order) requires
-    the additional assumption of no closed causal curves. -/
+/-- **Directed causal precedence**: x causally precedes y when their separation is
+    timelike or lightlike and x is not later than y. The time-orientation conjunct is
+    essential: the undirected interval condition alone is symmetric and not transitive. -/
 def causalPrecedence (x y : ℝ × ℝ × ℝ × ℝ) : Prop :=
-  let ds² := lightConeInterval x y
-  ds² ≤ 0
+  lightConeInterval x y ≤ 0 ∧ x.1 ≤ y.1
 
-/-- **Theorem**: The causal precedence relation is reflexive: ds²(x,x) = 0 for all x.
-    This is a direct consequence of the Minkowski interval definition: all coordinate
-    differences are zero when x = y, so the interval is identically zero.
+/-- The former undirected interval relation is not transitive. Take x=(0,0,0,0),
+    y=(1,0,0,0), and z=(0,c,0,0): both two-step separations are causal, but x and z
+    are spacelike separated. This counterexample retracts the old unoriented axiom. -/
+theorem undirected_interval_relation_not_transitive :
+    ¬ Transitive (fun x y : ℝ × ℝ × ℝ × ℝ => lightConeInterval x y ≤ 0) := by
+  intro h
+  have hxy : lightConeInterval (0, 0, 0, 0) (1, 0, 0, 0) ≤ 0 := by
+    norm_num [lightConeInterval]
+  have hyz : lightConeInterval (1, 0, 0, 0) (0, 299792458, 0, 0) ≤ 0 := by
+    norm_num [lightConeInterval]
+  have hxz := h hxy hyz
+  norm_num [lightConeInterval] at hxz
 
-    The **physical interpretation**: Every event is causally related to itself (the
-    trivial causal relation). This is the foundation of the causal structure: the
-    past and future of an event include the event itself. -/
+/-- **Theorem**: Directed causal precedence is reflexive. Both the interval and the
+    time-order condition reduce to reflexive inequalities when x = y. -/
 theorem causal_precedence_reflexive : Reflexive causalPrecedence := by
   intro x
   rcases x with ⟨t, x, y, z⟩
   simp only [causalPrecedence, lightConeInterval]
   all_goals norm_num
 
-/-- **Axiom**: The causal precedence relation is transitive. If x causally precedes y
-    (ds²(x,y) ≤ 0) and y causally precedes z (ds²(y,z) ≤ 0), then x causally precedes z
-    (ds²(x,z) ≤ 0). This requires the Lorentzian geometry causal structure (the convexity
-    of the light cone and the triangle inequality for timelike intervals). The axiom is
-    justified by the extensive literature on relativity (Hawking & Ellis, 1973; Wald, 1984;
-    Penrose, 1972; Malament, 1977).
+/-- **Axiom**: Transitivity of future-directed Minkowski causal precedence. This is a
+    standard geometric consequence of the reverse triangle inequality on a future cone,
+    not a consequence of the undirected interval condition alone.
 
-    **Note**: The antisymmetry (if x ≤ y and y ≤ x then x = y) holds only in causal
-    spacetimes (no closed causal curves). In a spacetime with closed timelike curves,
-    antisymmetry fails. The SYLVA formalization assumes a causal spacetime.
-
-    -- 待证明：需要洛伦兹几何的因果结构（光锥凸性和类时间隔三角不等式）。
-    -- 当前 Mathlib 缺少洛伦兹流形上因果关系的完整形式化（如因果未来/过去集合的拓扑、
-    -- 因果金刚石结构、全局双曲性），保留为 axiom。证明需要：
-    -- 1. Minkowski 空间中光锥的凸性证明（ds² ≤ 0 的集合是凸的）
-    -- 2. 类时间隔的三角不等式（倒向 Cauchy-Schwarz）
-    -- 3. 全局双曲时空中的因果偏序结构（Hawking & Ellis 定理 4.5.1）
-    -/
+    The statement remains an explicit proof obligation rather than a claimed completed
+    derivation. A proof requires a formal reverse Minkowski inequality and compatibility
+    with the time orientation. The old unoriented version was false; the counterexample
+    `undirected_interval_relation_not_transitive` is retained above. -/
 axiom causal_precedence_transitive_axiom : Transitive causalPrecedence
 
 -- ============================================================================
@@ -216,33 +184,21 @@ def CHSHParameter (E : ℕ → ℕ → ℝ) : ℝ :=
 
 def localHiddenVariableBound : ℝ := 2
 
-def quantumMechanicsBound : ℝ := 2 * Real.sqrt 2
+noncomputable def quantumMechanicsBound : ℝ := 2 * Real.sqrt 2
 
 def noSignalingCondition (P : ℕ → ℕ → ℕ → ℝ) : Prop :=
   ∀ a A B, P a A B = P a A 0
 
-/-- **Axiom**: The CHSH parameter satisfies the Tsirelson bound for quantum mechanics:
-    |S| ≤ 2√2. The Tsirelson bound is the maximum value of the CHSH parameter for
-    quantum mechanics. The proof requires the formalization of the CHSH operator and
-    the operator norm: ||C|| = 2√2 where C = A₁B₁ + A₁B₂ + A₂B₁ - A₂B₂. The operators
-    A₁, A₂, B₁, B₂ are Hermitian with eigenvalues ±1, and the CHSH operator satisfies
-    C² = 4I + [A₁, A₂][B₁, B₂], which gives ||C|| ≤ 2√2. The axiom is justified by
-    the extensive literature on quantum information theory (Cirel'son, 1980; Tsirelson, 1993;
-    Popescu & Rohrlich, 1994; Braunstein et al., 1992).
+/- **RETRACTED (2026-10-26)**: the former `tsirelson_bound_axiom` was removed.
 
-    **Note**: This axiom is retained because the full proof requires the formalization
-    of Hermitian operators, commutators, and operator norms in a quantum mechanical
-    Hilbert space — infrastructure that is not yet fully available in the current
-    SYLVA formalization.
+    Its old signature quantified over every real-valued function `E : ℕ → ℕ → ℝ`.
+    Taking `E 0 0 = E 0 1 = E 1 0 = 1` and `E 1 1 = -1` gives `S = 4`,
+    contradicting `|S| ≤ 2√2`. Thus the declaration was not merely unproven: it
+    was false as stated. There were no downstream uses in the current file.
 
-    -- 待证明：需要量子力学希尔伯特空间中厄米算符、对易子和算子范数的形式化。
-    -- 证明路径：C² = 4I + [A₁, A₂][B₁, B₂] → ||C|| ≤ √(4 + 4) = 2√2（利用 [A₁, A₂] ≤ 2i，
-    -- [B₁, B₂] ≤ 2i）。当前 Mathlib 缺少无限维希尔伯特空间上自伴算符谱理论的形式化
-    --（如谱定理、Stone-von Neumann 定理、算子范数的极分解），保留为 axiom。
-    -/
-axiom tsirelson_bound_axiom (E : ℕ → ℕ → ℝ) (S : ℝ)
-    (h_chsh : S = CHSHParameter E) :
-    |S| ≤ quantumMechanicsBound
+    A future quantum CHSH theorem must explicitly supply the state, operator
+    domains and measurement semantics. The separate `SYLVA_CHSHCore` currently
+    proves only the real inner-product bound and does not restore the old claim. -/
 
 -- ============================================================================
 -- Section 3: Thermodynamic Causality — Arrow of Time, Past Hypothesis
@@ -355,7 +311,7 @@ axiom arrow_of_time_from_past_hypothesis_axiom (S : ℝ → ℝ)
     and quantum artificial intelligence. -/
 
 def informationCausality (I : ℕ → ℝ) (n : ℕ) : Prop :=
-  ∑ j in Finset.range n, I j ≤ 1
+  ∑ j ∈ Finset.range n, I j ≤ 1
 
 def causalInequality (P : ℕ → ℕ → ℝ) : Prop :=
   ∀ i j, P i j ≤ 1 / 2
@@ -378,11 +334,11 @@ theorem quantum_information_causality
     (h_per_bit : ∀ j ∈ Finset.range n, I j ≤ 1 / n) :
     informationCausality I n := by
   simp [informationCausality]
-  have h_sum : ∑ j in Finset.range n, I j ≤ ∑ j in Finset.range n, (1 / n : ℝ) := by
+  have h_sum : ∑ j ∈ Finset.range n, I j ≤ ∑ j ∈ Finset.range n, (1 / n : ℝ) := by
     apply Finset.sum_le_sum
     intro j hj
     exact h_per_bit j hj
-  have h_total : ∑ j in Finset.range n, (1 / n : ℝ) = 1 := by
+  have h_total : ∑ j ∈ Finset.range n, (1 / n : ℝ) = 1 := by
     rw [Finset.sum_const, Finset.card_range]
     simp
     have h_n_pos : (n : ℝ) > 0 := by exact_mod_cast hn
@@ -457,10 +413,10 @@ theorem back_door_sufficient
     (X Y Z : ℕ) (support : Finset ℕ) (E : Set (ℕ × ℕ))
     (h_backdoor : backDoorCriterion X Y Z E)
     (h_nonneg : ∀ z ∈ support, P_Z z ≥ 0)
-    (h_normalization : ∑ z in support, P_Z z = 1)
+    (h_normalization : ∑ z ∈ support, P_Z z = 1)
     (h_identification : ∀ z ∈ support, P_cond Y X z = P Y) :
-    doCalculus P X Y = ∑ z in support, P_cond Y X z * P_Z z := by
-  have h_eq : ∑ z in support, P_cond Y X z * P_Z z = ∑ z in support, P Y * P_Z z := by
+    doCalculus P X Y = ∑ z ∈ support, P_cond Y X z * P_Z z := by
+  have h_eq : ∑ z ∈ support, P_cond Y X z * P_Z z = ∑ z ∈ support, P Y * P_Z z := by
     apply Finset.sum_congr rfl
     intro z hz
     rw [h_identification z hz]
@@ -521,9 +477,7 @@ theorem arrow_of_time_under_decoherence
     (ht : t > 0)
     (h_entropy_growth : S t ≥ S 0 + γ * t) :
     S t > S 0 := by
-  have h_pos : γ * t > 0 := by
-    rcases h_decoherence with h
-    exact mul_pos h ht
+  have h_pos : γ * t > 0 := mul_pos h_decoherence ht
   linarith
 
 /-- **Boundary Theorem 3**: Forward causal models fail in cyclic causal structures.
@@ -551,11 +505,9 @@ theorem cyclic_causal_model_failure
     (V : Finset ℕ) (E : Set (ℕ × ℕ))
     (h_cyclic : cyclicCausalGraph V E) :
     ¬ causalGraph V E := by
-  simp [cyclicCausalGraph, causalGraph] at h_cyclic ⊢
   rcases h_cyclic with ⟨v, hv, w, he1, he2⟩
-  intro h
-  specialize h v hv
-  exact h ⟨w, he1, he2⟩
+  intro h_dag
+  exact h_dag v hv ⟨w, he1, he2⟩
 
 /-- **Boundary Theorem 4: Information causality saturation in single-bit communication**.
     When the communication channel capacity is 1 bit (n=1), the information causality bound
@@ -575,8 +527,7 @@ theorem cyclic_causal_model_failure
 theorem information_causality_saturation
     (I : ℕ → ℝ) (h_I : I 0 ≤ 1) (h_nonneg : I 0 ≥ 0) :
     informationCausality I 1 := by
-  simp [informationCausality, Finset.sum_range_succ]
-  linarith
+  simpa [informationCausality] using h_I
 
 /-- **Boundary Theorem 5: Irreversibility of the arrow of time under quantum decoherence**.
     In an open quantum system with decoherence rate γ > 0, the entropy strictly increases
@@ -626,8 +577,7 @@ theorem causal_discovery_faithfulness
     (X Y : ℕ) (h_edge : X ≠ Y) :
     ∃ (P : ℕ → ℝ), P X ≠ P Y := by
   use fun n => if n = X then (1 : ℝ) else (0 : ℝ)
-  simp
-  norm_num
+  simpa using Ne.symm h_edge
 
 -- ============================================================================
 -- Section 7: Future Research Directions
@@ -705,39 +655,22 @@ of quantum gravity, quantum information, and machine learning:
     variable λ with outcomes ±1. The CHSH parameter becomes S = Σ_λ P(λ)[A₁(λ)B₁(λ) + ...].
     Since each factor is ±1, the absolute value is bounded by 2 (triangle inequality).
     This theorem formalizes the simple algebraic bound for classical deterministic correlations. -/
+def deterministicCHSHParameter (a0 a1 b0 b1 : ℝ) : ℝ :=
+  a0 * (b0 + b1) + a1 * (b0 - b1)
+
+/-- **Classical CHSH bound for deterministic shared-factor correlations**. -/
 theorem bell_inequality_classical_holds
-    (E : ℕ → ℕ → ℝ)
-    (h_local : ∀ i j, E i j = 0 ∨ E i j = 1 ∨ E i j = -1) :
-    let S := CHSHParameter E
-    |S| ≤ (2 : ℝ) := by
-  simp [CHSHParameter]
-  have h_bound : ∀ i j, |E i j| ≤ 1 := by
-    intro i j
-    rcases h_local i j with (h | h | h)
-    all_goals
-      rw [h]
-      norm_num
-  -- Use the fact that sum of four terms each bounded by 1 gives total bounded by 4,
-  -- then the particular combination (with one minus sign) gives bound 2
-  -- For the classical deterministic case, we use direct computation
-  simp [abs_le]
-  constructor
-  · -- Upper bound: S ≤ 2
-    have h1 : E 0 0 + E 0 1 + E 1 0 - E 1 1 ≤ 2 := by
-      have h00 : E 0 0 ≤ 1 := by linarith [abs_le.mp (h_bound 0 0)]
-      have h01 : E 0 1 ≤ 1 := by linarith [abs_le.mp (h_bound 0 1)]
-      have h10 : E 1 0 ≤ 1 := by linarith [abs_le.mp (h_bound 1 0)]
-      have h11 : -1 ≤ E 1 1 := by linarith [abs_le.mp (h_bound 1 1)]
-      linarith
-    linarith
-  · -- Lower bound: -2 ≤ S
-    have h2 : -2 ≤ E 0 0 + E 0 1 + E 1 0 - E 1 1 := by
-      have h00 : -1 ≤ E 0 0 := by linarith [abs_le.mp (h_bound 0 0)]
-      have h01 : -1 ≤ E 0 1 := by linarith [abs_le.mp (h_bound 0 1)]
-      have h10 : -1 ≤ E 1 0 := by linarith [abs_le.mp (h_bound 1 0)]
-      have h11 : E 1 1 ≤ 1 := by linarith [abs_le.mp (h_bound 1 1)]
-      linarith
-    linarith
+    (a0 a1 b0 b1 : ℝ)
+    (ha0 : a0 = 0 ∨ a0 = 1 ∨ a0 = -1)
+    (ha1 : a1 = 0 ∨ a1 = 1 ∨ a1 = -1)
+    (hb0 : b0 = 0 ∨ b0 = 1 ∨ b0 = -1)
+    (hb1 : b1 = 0 ∨ b1 = 1 ∨ b1 = -1) :
+    |deterministicCHSHParameter a0 a1 b0 b1| ≤ (2 : ℝ) := by
+  rcases ha0 with rfl | rfl | rfl <;>
+    rcases ha1 with rfl | rfl | rfl <;>
+    rcases hb0 with rfl | rfl | rfl <;>
+    rcases hb1 with rfl | rfl | rfl <;>
+    norm_num [deterministicCHSHParameter]
 
 /-- **Boundary Theorem 8: Information causality is satisfied by local hidden variable theories**.
     In a local hidden variable theory, the information gain about a distant system cannot
@@ -759,9 +692,7 @@ theorem information_causality_lhv_satisfied
     (hn : n > 0)
     (h_local : ∀ j, I j = 0) :
     informationCausality I n := by
-  simp [informationCausality]
-  simp [h_local]
-  norm_num
+  simp [informationCausality, h_local]
 
 /-- **Boundary Theorem 9: Time-reversal symmetry in closed quantum systems**.
     In a closed quantum system (no decoherence, γ = 0), the Schrödinger equation is

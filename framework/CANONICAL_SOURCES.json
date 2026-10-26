@@ -1,0 +1,35 @@
+{
+  "version": "2026-10-26",
+  "purpose": "Define the only current editing entry points and prevent mirrors from being treated as independent evidence.",
+  "canonical": {
+    "math_physics_worldview": "framework/MATH_PHYSICS_WORLDVIEW_2026.md",
+    "toe_research_atlas": "framework/TOE_RESEARCH_ATLAS_2026.md",
+    "cnf_restructuring": "framework/CNF_RESTRUCTURING_2026.md",
+    "repo_coherence_matrix": "framework/REPO_CONSENSUS_COHERENCE_2026.md",
+    "evidence_protocol": "framework/104_cnf_empirical_validation_protocol.md",
+    "mathematical_hierarchy": "framework/62_mathematical_hierarchy_emergence.md",
+    "standard_model_conditions": "framework/105_cnf_standard_model_unification.md",
+    "proof_governance": "framework/proof_status.md",
+    "errata": "framework/ERRATA_AND_NEGATIVE_RESULTS.md",
+    "cross_module": "sylva_formalization/SylvaFormalization/SYLVA_CrossModuleTheorems.lean",
+    "replicator_core": "sylva_formalization/SylvaFormalization/SYLVA_ReplicatorCore.lean",
+    "chsh_core": "sylva_formalization/SylvaFormalization/SYLVA_CHSHCore.lean",
+    "causality_module": "sylva_formalization/SylvaFormalization/SYLVA_Causality.lean",
+    "reaction_network": "sylva_formalization/SylvaFormalization/PhysicalChemistry/ReactionNetwork.lean",
+    "inventory_audit": "scripts/repo_inventory_audit.py",
+    "inventory_report": "audit/inventory.json",
+    "wimp_response": "papers/回应与评论/WIMP探测辩护.md"
+  },
+  "read_only_mirror_prefixes": [
+    "archive/",
+    "releases/",
+    "sylva_papers/backup/",
+    "sylva_formalization/SylvaFormalization/archive/"
+  ],
+  "generated_corpus_rules": {
+    "path_markers": ["Proven", "R00000", "R-series"],
+    "role": "generation stress tests, deduplication and dependency-analysis fixtures",
+    "not_role": "independent theorem discovery, physical evidence or current theory-size metric"
+  },
+  "evidence_rule": "Identical or repeated text is not independent corroboration. Current claims must point to the canonical source and its actual build/data evidence."
+}

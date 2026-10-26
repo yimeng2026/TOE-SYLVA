@@ -54,15 +54,20 @@
 
 | 定理 | 声明 | 实际 Lean 形式化 | 状态 |
 |------|------|------------------|------|
-| 费马大定理 | 已形式化 | 在 Mathlib 中完成（Wiles+Taylor 证明，约 12,000 行，含 27 万条前置定理） | THEOREM\*（Mathlib 提供，不在本仓库） |
-| Langlands 基本引理 | 已形式化 | Ngô (2010) 已在 Mathlib 中部分形式化（`fundamental_lemma`） | THEOREM\*（数学界已证，Lean 部分形式化） |
-| CHSH 不等式违例 | 已验证 | `verify_chsh.py` PASS（S=2√2 ≈ 2.828） | THEOREM（实验层面已验证；量子信息论框架内为定理） |
+| 费马大定理 | 外部形式化已发布 | Anthropic 于 2026-09 发布端到端 Lean 证明及复核材料；不是本仓库成果，也不应写成已上游合入 Mathlib 的 12,000 行证明。本波未独立重建该外部项目 | THEOREM\*（外部形式化成果，归属与复核另列） |
+| Langlands 基本引理 | 数学定理已证 | Ngô (2010) 的数学证明有原始文献支撑；本轮未找到足以支持“Mathlib 已有 `fundamental_lemma` 部分形式化”这一具体归属的证据 | UNVERIFIED（Lean 条目与归属待核；不再直接登记为 THEOREM\*） |
+| CHSH 型上界 | 实内积模型已形式化 | `verify_chsh.py` 只作数值检查；新增 `SYLVA_CHSHCore.lean` 证明实内积空间四单位向量的 `|S| ≤ 2√2`，8248 jobs 构建通过，公理审计仅标准三项 | THEOREM（实内积数学模型；不表示量子实验、完整 Tsirelson 或信息因果证明） |
+| 无向 Minkowski 间隔关系的传递性 | 旧断言为假 | `undirected_interval_relation_not_transitive` 用三个显式事件证明无向关系不传递；`causalPrecedence` 已加入时间方向。有向版本的传递性仍是公理债务，不在本定理中宣称证明 | THEOREM（仅限非传递性反例；有向传递性仍为 CLAIM/待证） |
+| Replicator 概率守恒 | 已形式化 | `SYLVA_ReplicatorCore.lean` 给出概率向量和等长列表下的总频率守恒及零质量反例 | THEOREM（有限列表概率守恒；不是完整梯度流理论） |
+| Michaelis–Menten deficiency | 已形式化 | `PhysicalChemistry/ReactionNetwork.lean` 从真实 `Matrix.rank` 和两个线性无关列的张成显式计算 deficiency，3288 jobs 构建通过 | THEOREM（显式数学模型；不是化学实验验证） |
 | 理想唯一分解（Dedekind 整环） | 已形式化 | `CourseChain/Dedekind.lean` `ideal_uniqueFactorizationMonoid`（via `inferInstance` → mathlib `Ideal.uniqueFactorizationMonoid`，零 sorry / 零 axiom / 零 trivial） | THEOREM |
 | 分层陈数整性（Chern-Simons 不变量链·整数权整性） | 已形式化 | `StratifiedChernNumber.lean` `stratifiedChernNumber_int_weights`（T3）+ `stratifiedChernNumber_int_exists`（T3′，∃-整性形式）（via `Int.cast_sum`/`Int.cast_mul` → mathlib `Mathlib.Data.Int.Cast.Lemmas`；2026-08-10 本机真实编译零错误零 sorry，`#print axioms` 仅 [propext, Classical.choice, Quot.sound]） | THEOREM |
 | 标准模型 SU(3)×SU(2)×U(1) | 已形式化 | 群论结构为定义，Yang-Mills 存在性与质量间隙（Clay 问题）未解 | CLAIM（群结构为定义；动力学性质 open） |
 | Chern-Simons 能级（主结论 α⁻¹ = n_CS = 137 及 Chern-Weil 整性） | "已形式化" | 链中最深可证环节已升级为 THEOREM（见上行"分层陈数整性"；另 `ChernSimons.lean` U(1)=ℝ/2πℤ 结构定理簇 2026-08-18 P0 修复后编译通过）；但 `chernSimonsLevel` 仍为占位定义 ≡ 137，`chernSimonsLevelInteger` 在占位下退化平凡，Chern-Weil 理论 mathlib 缺失，谱桥公理 `causalNetworkChernSimonsLevel` 未清偿 | CLAIM（主结论暂不可达；剩余缺口与论证链详见 `framework/chern_simons_theorem_report.md`） |
 | Einstein-Cartan 作用量 | "已形式化" | Lean 侧为 `axiom` | CLAIM |
 | 谱作用量（Spectral Action） | "已形式化" | Lean 侧为 `axiom` | CLAIM |
+
+> **2026-10-26 归属复核**：FLT 外部发布与复核说明见 [Anthropic 的正式材料](https://www.anthropic.com/research/formalizing-fermats-last-theorem)；其中明确说明该成果尚不是可直接上游合入 Mathlib 的形式。Langlands 基本引理的数学证明背景见 [Hitchin 综述](https://arxiv.org/html/1103.4066v1)，该来源不等同于 Lean 形式化证据。CHSH、replicator 和 reaction network 的本波登记只基于上述实际构建，不改变其他历史条目的状态。
 
 > **THEOREM 登记理由 — 理想唯一分解（Dedekind 整环）**: 该定理是 Dedekind 整环的核心结构定理，将算术基本定理从元素推广到理想。`CourseChain/Dedekind.lean` 中声明 `ideal_uniqueFactorizationMonoid` 通过 `inferInstance` 直接委托 mathlib4 已注册实例 `Ideal.uniqueFactorizationMonoid`（来源 `Mathlib.RingTheory.DedekindDomain.Ideal.Basic` L432–447）。该 mathlib 实例经完整证明链推导（理想可逆性 → WfDvdMonoid → UniqueFactorizationMonoid），非 sorry/admit。源文件零 sorry / 零 axiom / 零 trivial，mathlib 引理为标准已证结果，故定级 THEOREM 而非 THEOREM*。
 

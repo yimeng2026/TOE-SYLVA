@@ -121,7 +121,7 @@ def compute_wigner_real_psi(psi_func, x_grid, p_grid):
     integrand = A * cos_term  # (Nx, Np, Ny) 广播
 
     # 梯形积分 over y (axis=2)
-    W = np.trapz(integrand, y, axis=2) / np.pi  # (Nx, Np)
+    W = np.trapezoid(integrand, y, axis=2) / np.pi  # (Nx, Np)
     return W
 
 

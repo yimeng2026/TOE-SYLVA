@@ -77,7 +77,7 @@ def module1_marchenko_pastur():
     # 验证 MP 分布归一化 (积分=1)
     lam_test = np.linspace(lambda_min + 1e-6, lambda_max - 1e-6, 10000)
     rho_test = mp_density(lam_test, Q)
-    integral = np.trapz(rho_test, lam_test)
+    integral = np.trapezoid(rho_test, lam_test)
     print(f"  MP 分布积分 = {integral:.6f}  (理论=1)")
 
     # 画图

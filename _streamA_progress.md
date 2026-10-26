@@ -473,3 +473,27 @@
 - **CMT 累计恢复：3/4**。定理 4 的 Tsirelson 部分继续封存，未复制既有 `tsirelson_bound_axiom` 来凑齐 4/4。
 - Dynamics/Evolution 千行单体文件仍有独立遗留问题，本波只验证小型核心，不声称单体修完；Shahshahani 梯度流、Fisher 信息度量与完整连续时间理论也未形式化。
 - 下一批：审查 Causality 的 CHSH/信息因果定义，选择可证明的有限量子模型、保留封存或显式条件化；禁止以复制公理、删命题或 `True` 占位完成表面恢复。
+
+---
+
+## 复扫第十六波（v8.24，CHSH 新接口与 Causality 语义修复）
+
+### 核心接口与证明
+
+- **SYLVA_CHSHCore.lean（新）**：在任意实内积空间对四个单位向量证明 CHSH 型表达式 `|S| ≤ 2√2`；`lake build SYLVA_CHSHCore` **exit 0（8248 jobs）**。
+- **CMT 新接口**：`chsh_bound_in_real_inner_product_model` 接入该核心，`lake build SYLVA_CrossModuleTheorems` **exit 0（8254 jobs）**。当前为**原任务 3/4＋新增实内积接口**；旧信息因果/量子 Tsirelson 第四条未恢复，严禁写成原任务 4/4。
+- **SYLVA_Causality.lean**：撤销对任意实值 `E` 成立的假 Tsirelson 公理，独立构建 **exit 0（8248 jobs）**；经典 CHSH 改为确定性共享因子模型，穷举 81 种 `0/±1` 组合。
+- 新增 `undirected_interval_relation_not_transitive`：以 `(0,0,0,0)`、`(1,0,0,0)`、`(0,c,0,0)` 证明无向间隔关系不传递。`causalPrecedence` 增加时间方向，旧无向传递性公理由此被否决；有向版本的传递性仍作为明确证明债务保留。
+
+### 公理与回归
+
+- CHSH 两条、CMT 接口、确定性 CHSH、有限信息求和、因果自反及无向非传递反例的 `#print axioms` 均为 `[propext, Classical.choice, Quot.sound]`，无 `sorryAx`。
+- Causality 仍有 `causal_precedence_transitive_axiom` 和 `arrow_of_time_from_past_hypothesis_axiom`；独立构建成功不等于全文件无公理。
+- `PhysicalChemistry.ReactionNetwork` **exit 0（3288 jobs）**，保留真实 `Matrix.rank`、线性无关、张成和 MM deficiency 计算。
+- 全库 `lake build` 仍失败于旧 `SylvaFormalization.*` 前缀与顶层模块名混用的依赖计算；SAT 兼容实验还暴露 SAT 源文件自身大量错误，未将该实验外壳纳入最终修改。
+- Python 在册 305 脚本首轮 **294/305**，定点修复并复测原失败项后 **304/305**；唯一当前失败为计数几何脚本缺少 SymPy。完整结果写入 `framework/verify_report.json`，不把脚本通过数解释为物理真实性。
+
+### 接续边界
+
+- 下一批若要恢复 CMT 原第四条，必须建立有限维复 Hilbert 空间、算符域、测量与 Born 规则模型；不得把实内积恒等式或有限求和不等式改名为量子信息因果。
+- 有向 Minkowski 因果传递性需要反向 Minkowski 不等式；时间之箭公理、旧单体、SAT/旧前缀依赖和 Agda postulate 均继续单列。

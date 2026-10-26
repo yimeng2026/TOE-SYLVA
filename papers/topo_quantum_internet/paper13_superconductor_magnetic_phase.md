@@ -53,7 +53,7 @@ PdNi 合金（Ni 含量 ~11%）因其本征垂直磁各向异性（PMA）和较�
 
 图 1 展示了基于上述参数模拟的 0–π 转变相图。温度升高时，超导相干长度 ξ_S(T) = ξ_S(0)√(T_c/T - 1) 缩短，导致振荡幅度衰减。在 T = 9.2 K（Nb 的 T_c）时，近邻效应完全消失，所有相均退化为正常金属。图 1 中黑色虚线标记了三个 0–π 转变厚度：d_π ≈ 8.2 nm、2d_π ≈ 16.4 nm、3d_π ≈ 24.6 nm。
 
-![Fig.1](paper13_fig1_sf_phase.png)
+![Fig.1](figures/paper13_fig1_sf_phase.png)
 *Fig.1: S/F 异质结 0–π 转变相图（Nb/PdNi）。*
 
 ### 2.3 FFLO 态：强交换场极限
@@ -89,7 +89,7 @@ $$
 - **NbSe₂（应变工程）**：η ~ 6.8%（零场），应变诱导的镜像对称性破缺。
 - **交错磁体（理论）**：η → 100%，由动量依赖的自旋劈裂天然提供 P 破缺，无需净磁化或外场。
 
-![Fig.2](paper13_fig2_diode_efficiency.png)
+![Fig.2](figures/paper13_fig2_diode_efficiency.png)
 *Fig.2: 超导二极管效率跨平台对比。*
 
 ### 3.2 交错磁体：通向完美二极管
@@ -110,7 +110,7 @@ $$
 
 红色虚线标记能隙关闭线 J_a = λ_s/(2√(1-T²/T_c²))，红色阴影区为“死亡谷”（实验必须避开的参数窗口）。随着温度升高，√(1-T²/T_c²) 减小，相边界向左下方移动，拓扑区收缩。
 
-![Fig.3](paper13_fig3_am_sc_phase.png)
+![Fig.3](figures/paper13_fig3_am_sc_phase.png)
 *Fig.3: AM-SC 拓扑相图（T = 0.5 T_c）。*
 
 ### 4.2 实验平台
@@ -130,7 +130,7 @@ $$
 - **Reciprocal 区**（浅蓝色）：T > 5 K 或 B > 40 mT，二极管效应消失，I_c⁺ = I_c⁻，标准 Fraunhofer 图样。
 - **SDE 活性区**（浅红色）：T < 5 K 且 B < 40 mT，非互易 Fraunhofer 图样，I_c⁺ ≠ I_c⁻。图样中红色（I_c⁺）与蓝色（I_c⁻）曲线的不对称度随 T 降低而增大，在 T = 1 K 时达到最大效率 η ~ 18%。
 
-![Fig.5](paper13_fig5_vdw_josephson.png)
+![Fig.5](figures/paper13_fig5_vdw_josephson.png)
 *Fig.5: NbSe₂/CrGeTe₃ vdW Josephson 结相图。*
 
 ### 5.2 MnBi₂Te₄：拓扑磁体的 Josephson 二极管
@@ -160,7 +160,7 @@ YBCO（T_c = 93 K）与 LSMO（半金属铁磁体，Curie 温度 ~360 K）的异
 
 图 4 展示了 I_c 随温度的指数衰减，与 SNS 结理论拟合（I_c ~ (1 - T/T_c)² exp(-d_F/ξ_F1)）高度吻合。对比实验数据（圆点）与 0.75 µm LSMO 数据（方块），确认穿透深度与势垒厚度的反比关系。
 
-![Fig.4](paper13_fig4_ybco_lsmo.png)
+![Fig.4](figures/paper13_fig4_ybco_lsmo.png)
 *Fig.4: YBCO/LSMO 长程近邻效应：I_c vs T。*
 
 ### 6.2 极性反转与多铁性效应
@@ -188,7 +188,7 @@ Soulier 等人（2025）在 YBCO/NCSMO 结构中观测到**自发电压（SpV）
 6. **长程三重态**（浅蓝色）：h < 0.4Δ，T_int > 0.4，弱铁磁/强 SOC 条件下奇频率三重态占主导，穿透深度 ~1 µm。
 7. **FFLO**（橙色）：h > 1.0Δ，T_int ∈ [0.3, 0.7]，强交换场与有限动量配对竞争，空间调制超导态。
 
-![Fig.7](paper13_fig7_comprehensive_phase.png)
+![Fig.7](figures/paper13_fig7_comprehensive_phase.png)
 *Fig.7: 超导-磁性异质结全景相图。*
 
 ### 7.2 材料坐标定位
@@ -216,7 +216,7 @@ Soulier 等人（2025）在 YBCO/NCSMO 结构中观测到**自发电压（SpV）
 
 实验数据点：Ni（单重态，h=0.5, ξ~1.4 nm）、CuNi（三重态，h=0.05, ξ~2 µm）、Co（单重态，h=0.8, ξ~1.1 nm）均落在理论曲线上。
 
-![Fig.6](paper13_fig6_penetration.png)
+![Fig.6](figures/paper13_fig6_penetration.png)
 *Fig.6: Cooper 对穿透深度 vs 交换场强度。*
 
 ---
@@ -351,10 +351,10 @@ Z2 = am_sc_phase(lambda_s, J_a, T_ratio=0.5)
 
 ---
 
-[paper13_fig1_sf_phase.png](C:/Users/一梦/Desktop/paper13_fig1_sf_phase.png)
-[paper13_fig2_diode_efficiency.png](C:/Users/一梦/Desktop/paper13_fig2_diode_efficiency.png)
-[paper13_fig3_am_sc_phase.png](C:/Users/一梦/Desktop/paper13_fig3_am_sc_phase.png)
-[paper13_fig4_ybco_lsmo.png](C:/Users/一梦/Desktop/paper13_fig4_ybco_lsmo.png)
-[paper13_fig5_vdw_josephson.png](C:/Users/一梦/Desktop/paper13_fig5_vdw_josephson.png)
-[paper13_fig6_penetration.png](C:/Users/一梦/Desktop/paper13_fig6_penetration.png)
-[paper13_fig7_comprehensive_phase.png](C:/Users/一梦/Desktop/paper13_fig7_comprehensive_phase.png)
+[paper13_fig1_sf_phase.png](figures/paper13_fig1_sf_phase.png)
+[paper13_fig2_diode_efficiency.png](figures/paper13_fig2_diode_efficiency.png)
+[paper13_fig3_am_sc_phase.png](figures/paper13_fig3_am_sc_phase.png)
+[paper13_fig4_ybco_lsmo.png](figures/paper13_fig4_ybco_lsmo.png)
+[paper13_fig5_vdw_josephson.png](figures/paper13_fig5_vdw_josephson.png)
+[paper13_fig6_penetration.png](figures/paper13_fig6_penetration.png)
+[paper13_fig7_comprehensive_phase.png](figures/paper13_fig7_comprehensive_phase.png)

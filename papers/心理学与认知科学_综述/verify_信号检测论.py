@@ -119,7 +119,7 @@ def roc_auc(d_prime, sigma=1.0, n_points=200):
     fas_sorted = fas[idx]
     hits_sorted = hits[idx]
     # 梯形积分
-    auc = np.trapz(hits_sorted, fas_sorted)
+    auc = np.trapezoid(hits_sorted, fas_sorted)
     return auc
 
 # 解析公式: AUC = Φ(d'/√2)

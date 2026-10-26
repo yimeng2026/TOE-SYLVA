@@ -36,14 +36,14 @@
 4. **自洽 BdG 方程**：在 TB 模型上引入超导配对项（s-波近邻诱导 Δ_ind 或 d-波内禀 Δ_d），通过 Hubbard-Stratonovich 变换求解平均场自洽方程，得到准粒子能谱与配对振幅的空间分布。
 5. **拓扑不变量计算**：在 BdG 能谱上计算 Fu–Kane 宇称乘积 Z₂、Chern 数 C、Wilson loop 缠绕数 w₂ 或高阶拓扑不变量，判定系统的拓扑类。
 
-![Fig.1](paper12_fig1_multiscale.png)
+![Fig.1](figures/paper12_fig1_multiscale.png)
 *Fig.1: 多尺度计算框架：从 DFT 第一性原理到拓扑量子计算。*
 
 ### 2.2 瓦尼尔插值精度与 k 点密度
 
 瓦尼尔函数的质量直接决定低能模型的可靠性。图 6 展示了 RuO₂（t₂g Wannier）与 Bi₂Se₃（tight-binding）的插值均方根误差（RMS）随 k 点网格密度的变化。对于 RuO₂，采用 8×8×12 的 k 点网格（PBE+U）可将 RMS 误差降至 22 meV，而 12×12×16 的精细网格进一步压缩到 7 meV 以下；对于 Bi₂Se₃ 类拓扑绝缘体，6×6×6 的 SOC 网格已能达到 15 meV 精度。当目标精度为 1 meV（满足拓扑能隙分辨需求）时，RuO₂ 需要约 20×20×24 的网格，而 Bi₂Se₃ 仅需 12×12×12。这一差异源于 Ru 4d 轨道的强局域性与关联效应导致的能带曲率较大。在实际高通量计算中，我们建议采用 8×8×12 的粗网格进行初筛，仅对通过拓扑倾向性分数阈值的候选材料进行精细网格计算。
 
-![Fig.6](paper12_fig6_wannier_error.png)
+![Fig.6](figures/paper12_fig6_wannier_error.png)
 *Fig.6: 瓦尼尔函数插值精度 vs k 点密度。*
 
 ---
@@ -61,14 +61,14 @@ RuO₂ 的金红石结构（空间群 P4₂/mnm）是首个实验验证的 d-波
 - k 点网格：8×8×12（平衡精度与计算量）
 - 自旋劈裂：沿 Γ-M 方向最大 ~1.0 eV，沿滑移面方向严格为零
 
-![Fig.2](paper12_fig2_ruo2_bands.png)
+![Fig.2](figures/paper12_fig2_ruo2_bands.png)
 *Fig.2: 模拟 RuO₂ (d-波交错磁体) 第一性原理能带结构。*
 
 ### 3.2 CrSb：g-波交错磁体与记录级自旋劈裂
 
 CrSb 的六角结构（类似 NiAs 型）展现出目前所有已确认交错磁材料中最大的近费米面自旋劈裂。Ding 等人（2024）利用高分辨率 ARPES 直接测得 Δ_splitting = 0.93 eV（k_z = 0.25 Å⁻¹ 处），并指出该劈裂源于第三近邻 Cr-Cr 跃迁通过 Sb 5p 轨道的介导机制。图 3 基于 4 带模型（Cr d + Sb p，最近邻 Cr-Cr 跃迁 t_CrCr = 0.4 eV，Cr-Sb 杂化 t_CrSb = 0.7 eV，g-波劈裂 Δ = 0.93 eV）模拟了 Γ→K→M→Γ 路径的能带。在 K 点，受六角旋转对称性保护，能带保持简并；在 M 点，g-波对称性（cos 3θ）导致最大劈裂。该模型成功复现了 ARPES 观测的 0.93 eV 劈裂与 Néel 温度 T_N ≈ 700 K（通过平均场估计 J/k_B ≈ 350 K，考虑到三维磁涨落后 T_N 提升至实验值）。
 
-![Fig.3](paper12_fig3_crsb_bands.png)
+![Fig.3](figures/paper12_fig3_crsb_bands.png)
 *Fig.3: 模拟 CrSb (g-波交错磁体) 能带结构——0.93 eV 自旋劈裂。*
 
 ---
@@ -95,7 +95,7 @@ $$
 
 其中 λ_SO 为自旋-轨道耦合强度（通过投影到重原子 p 或 d 轨道估算）。图 4 展示了模拟筛选的 Top 20 候选材料，其拓扑分数均高于相变阈值（0.5 arb. units）。CrSb、RuO₂、Mn₅Si₃ 与 V₂Se₂O 等已验证材料均出现在高分区域。
 
-![Fig.4](paper12_fig4_screening.png)
+![Fig.4](figures/paper12_fig4_screening.png)
 *Fig.4: 高通量筛选拓扑倾向性分数——Top 20 候选材料。*
 
 ### 4.2 AI 加速发现
@@ -124,7 +124,7 @@ $$
 
 红色虚线 J_a = λ_s/2 标记能隙关闭线，是实验上必须避开的参数窗口。红色斜线阴影区表示能隙崩溃的“死亡谷”。
 
-![Fig.5](paper12_fig5_phase_diagram.png)
+![Fig.5](figures/paper12_fig5_phase_diagram.png)
 *Fig.5: AM-SC 异质结拓扑相图（Rashba SOC A=0.2）。*
 
 ### 5.2 实验实现路径
@@ -150,7 +150,7 @@ $$
 
 其中 ξ_{2n}(k_i) 为第 2n 条占据带在 TRIM 点 k_i 的宇称本征值。ν = 1 对应非平庸拓扑绝缘体/拓扑超导。图 7 展示了 100 个模拟候选材料在 (Δ_AM, λ_SO) 参数空间的拓扑相分布。Z₂ = 1 的候选（绿色）集中在 Δ_AM > 0.2 eV 且 λ_SO > 0.05 eV 的右上方区域，而 RuO₂、CrSb、Mn₅Si₃ 等已知材料均落入该区域。这一相图可作为实验材料选择的“导航图”。
 
-![Fig.7](paper12_fig7_topo_phase.png)
+![Fig.7](figures/paper12_fig7_topo_phase.png)
 *Fig.7: 候选材料拓扑相图（Fu–Kane Z₂ 宇称乘积）。*
 
 ### 6.2 Wilson Loop 与高阶拓扑
@@ -283,10 +283,10 @@ Z2 = np.array([[am_sc_phase(l, j) for l in L] for j in J])
 
 ---
 
-[paper12_fig1_multiscale.png](C:/Users/一梦/Desktop/paper12_fig1_multiscale.png)
-[paper12_fig2_ruo2_bands.png](C:/Users/一梦/Desktop/paper12_fig2_ruo2_bands.png)
-[paper12_fig3_crsb_bands.png](C:/Users/一梦/Desktop/paper12_fig3_crsb_bands.png)
-[paper12_fig4_screening.png](C:/Users/一梦/Desktop/paper12_fig4_screening.png)
-[paper12_fig5_phase_diagram.png](C:/Users/一梦/Desktop/paper12_fig5_phase_diagram.png)
-[paper12_fig6_wannier_error.png](C:/Users/一梦/Desktop/paper12_fig6_wannier_error.png)
-[paper12_fig7_topo_phase.png](C:/Users/一梦/Desktop/paper12_fig7_topo_phase.png)
+[paper12_fig1_multiscale.png](figures/paper12_fig1_multiscale.png)
+[paper12_fig2_ruo2_bands.png](figures/paper12_fig2_ruo2_bands.png)
+[paper12_fig3_crsb_bands.png](figures/paper12_fig3_crsb_bands.png)
+[paper12_fig4_screening.png](figures/paper12_fig4_screening.png)
+[paper12_fig5_phase_diagram.png](figures/paper12_fig5_phase_diagram.png)
+[paper12_fig6_wannier_error.png](figures/paper12_fig6_wannier_error.png)
+[paper12_fig7_topo_phase.png](figures/paper12_fig7_topo_phase.png)

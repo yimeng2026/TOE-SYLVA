@@ -14,6 +14,7 @@
   - 另做官方式浮点精确相等检查 + 随机复矩阵功能测试 (48 次标量乘法的双线性算法).
 """
 import sys
+from pathlib import Path
 import numpy as np
 
 FAIL = False
@@ -27,7 +28,7 @@ def check(name, ok, detail=""):
 
 # ---------------------------------------------------------------- 数据载入
 ns = {"np": np}
-with open("verify_alphaevolve/data_444.py", encoding="utf-8") as f:
+with open(Path(__file__).resolve().with_name("data_444.py"), encoding="utf-8") as f:
     src = f.read()
 exec(compile(src, "data_444.py", "exec"), ns)
 U, V, W = ns["decomposition_444"]   # 注意官方元组顺序: (factor1, factor2, factor3)

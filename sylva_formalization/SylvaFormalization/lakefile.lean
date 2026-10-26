@@ -259,6 +259,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_CausalFermionSystems,
     `SYLVA_CausalInference,
     `SYLVA_Causality,
+    `SYLVA_CHSHCore,
     `SYLVA_CausalNetworkDeep,
     `SYLVA_CausalNetworkDeepTheory,
     `SYLVA_CausalSetDeep,

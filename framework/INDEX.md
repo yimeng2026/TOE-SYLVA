@@ -10,6 +10,8 @@
 
 ## 2026-10-26 证据审计入口（优先于旧表格状态）
 
+- `REPO_CONSENSUS_COHERENCE_2026.md`：全仓库共识分层、内部矛盾矩阵和发散发展路线。
+- `CANONICAL_SOURCES.json`：唯一当前编辑入口及归档/生成语料的使用规则。
 - `MATH_PHYSICS_WORLDVIEW_2026.md`：数学—物理观、数学层级、AI 证明成本与直觉制度化。
 - `TOE_RESEARCH_ATLAS_2026.md`：20 个研究族、60 个 TOE 课题及社区路线核查。
 - `CNF_RESTRUCTURING_2026.md`：CNF 定位、最小核心、接口联邦和整改顺序。
@@ -17,6 +19,7 @@
 - `104_cnf_empirical_validation_protocol.md`：v2.0 独立证据协议与 S1–S20 清算。
 - `105_cnf_standard_model_unification.md`：v2.0 原规范群推导否决与恢复条件。
 - `cnf_countermodels.py`、`cnf_countermodels_results.json`：6 项数学反例与边界检查，非物理实验。
+- `SYLVA_CHSHCore.lean`（位于 `sylva_formalization/SylvaFormalization/`）：实内积 CHSH 上界；不是量子 Tsirelson 或信息因果证明。
 
 > 旧表格中的 ✅ 仅沿用“文档存在/历史版本已登记”含义，不表示其中所有定理、物理主张或实验预言已获当前审计认可。与上述审计文档冲突时，以审计文档为准。
 

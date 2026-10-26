@@ -37,8 +37,8 @@ def verify_wigner_surmise():
 
     # GOE: P(s) = (π/2) s exp(-π s²/4)
     P_GOE = (np.pi / 2) * s * np.exp(-np.pi * s**2 / 4)
-    norm_GOE = np.trapz(P_GOE, dx=ds)
-    mean_GOE = np.trapz(s * P_GOE, dx=ds)
+    norm_GOE = np.trapezoid(P_GOE, dx=ds)
+    mean_GOE = np.trapezoid(s * P_GOE, dx=ds)
     pass_GOE_norm = abs(norm_GOE - 1.0) < 1e-3
     pass_GOE_mean = abs(mean_GOE - 1.0) < 1e-3
     record("Wigner surmise GOE 归一化 ∫P(s)ds=1",
@@ -48,8 +48,8 @@ def verify_wigner_surmise():
 
     # GUE: P(s) = (32/π²) s² exp(-4 s²/π)
     P_GUE = (32 / np.pi**2) * s**2 * np.exp(-4 * s**2 / np.pi)
-    norm_GUE = np.trapz(P_GUE, dx=ds)
-    mean_GUE = np.trapz(s * P_GUE, dx=ds)
+    norm_GUE = np.trapezoid(P_GUE, dx=ds)
+    mean_GUE = np.trapezoid(s * P_GUE, dx=ds)
     pass_GUE_norm = abs(norm_GUE - 1.0) < 1e-3
     pass_GUE_mean = abs(mean_GUE - 1.0) < 1e-3
     record("Wigner surmise GUE 归一化 ∫P(s)ds=1",
@@ -66,8 +66,8 @@ def verify_poisson():
     s = np.linspace(0, 20, 100000)
     ds = s[1] - s[0]
     P_poisson = np.exp(-s)
-    norm = np.trapz(P_poisson, dx=ds)
-    mean = np.trapz(s * P_poisson, dx=ds)
+    norm = np.trapezoid(P_poisson, dx=ds)
+    mean = np.trapezoid(s * P_poisson, dx=ds)
     pass_norm = abs(norm - 1.0) < 1e-3
     pass_mean = abs(mean - 1.0) < 1e-3
     record("泊松分布 P(s)=e^(-s) 归一化", pass_norm, f"norm={norm:.6f}", "1", 0.1)

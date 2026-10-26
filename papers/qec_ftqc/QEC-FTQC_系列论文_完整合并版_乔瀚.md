@@ -171,8 +171,8 @@ $$
 当 $p < p_{th}$ 时，$p_L$ 随 $d$ 指数衰减。阈值 $p_{th}$ 的值取决于：(a) 纠错码类型（表面码约0.57%–1.0%，色码约0.1%，级联码约1%）；(b) 错误模型（去极化、退相位、关联错误、泄漏）；(c) 解码算法效率；(d) 物理架构约束（连通性、测量速度）。
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1a_timeline.png -->
-![量子纠错发展时间线](00_综述_量子纠错与容错量子计算研究综述/fig1a_timeline.png)
+<!-- 图片位置: 00_综述/fig1a_timeline.png -->
+![量子纠错发展时间线](00_综述/fig1a_timeline.png)
 <!-- 图片结束 -->
 
 
@@ -196,8 +196,8 @@ $$
 | 提升积码 | $[[n, \Theta(n), \Theta(n^\alpha)]]$ | $d \sim n^\alpha$ | 研究中 | 高码率 |
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1b_code_comparison.png -->
-![纠错码参数对比](00_综述_量子纠错与容错量子计算研究综述/fig1b_code_comparison.png)
+<!-- 图片位置: 00_综述/fig1b_code_comparison.png -->
+![纠错码参数对比](00_综述/fig1b_code_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -208,8 +208,8 @@ $$
 纠错阈值 $p_{th}$ 的精确数值对实验系统的容错可行性评估至关重要。下图展示了不同码距下逻辑错误率 $p_L$ 随物理错误率 $p$ 的变化：
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1c_threshold_schematic.png -->
-![纠错阈值示意图](00_综述_量子纠错与容错量子计算研究综述/fig1c_threshold_schematic.png)
+<!-- 图片位置: 00_综述/fig1c_threshold_schematic.png -->
+![纠错阈值示意图](00_综述/fig1c_threshold_schematic.png)
 <!-- 图片结束 -->
 
 
@@ -224,8 +224,8 @@ $$
 FTQC系统从物理层到应用层可分为五个层级，各层之间的接口定义了系统的模块性和可扩展性：
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1d_hierarchy.png -->
-![量子计算层级架构](00_综述_量子纠错与容错量子计算研究综述/fig1d_hierarchy.png)
+<!-- 图片位置: 00_综述/fig1d_hierarchy.png -->
+![量子计算层级架构](00_综述/fig1d_hierarchy.png)
 <!-- 图片结束 -->
 
 
@@ -242,8 +242,8 @@ FTQC系统从物理层到应用层可分为五个层级，各层之间的接口�
 - **中性原子**（Rydberg原子）：QuEra、Pasqal等公司采用。优势：可编程几何排列、长相干时间、可扩展至数百原子。劣势：门保真度相对较低、读出速度受限。
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1e_platform_comparison.png -->
-![物理平台对比](00_综述_量子纠错与容错量子计算研究综述/fig1e_platform_comparison.png)
+<!-- 图片位置: 00_综述/fig1e_platform_comparison.png -->
+![物理平台对比](00_综述/fig1e_platform_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -260,8 +260,8 @@ FTQC系统从物理层到应用层可分为五个层级，各层之间的接口�
 表面码的二维晶格结构是实现容错存储和逻辑操作的基础。下图展示了距离 $d=5$ 的表面码晶格：
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1f_surface_code_lattice.png -->
-![表面码晶格](00_综述_量子纠错与容错量子计算研究综述/fig1f_surface_code_lattice.png)
+<!-- 图片位置: 00_综述/fig1f_surface_code_lattice.png -->
+![表面码晶格](00_综述/fig1f_surface_code_lattice.png)
 <!-- 图片结束 -->
 
 
@@ -276,8 +276,8 @@ FTQC系统从物理层到应用层可分为五个层级，各层之间的接口�
 实现具有实际应用价值的FTQC系统需要解决资源估算问题：给定目标算法、目标精度、物理错误率和物理平台参数，计算所需物理量子比特数、纠错周期数、解码吞吐量和总运行时间。
 
 
-<!-- 图片位置: 00_综述_量子纠错与容错量子计算研究综述/fig1g_roadmap.png -->
-![FTQC路线图](00_综述_量子纠错与容错量子计算研究综述/fig1g_roadmap.png)
+<!-- 图片位置: 00_综述/fig1g_roadmap.png -->
+![FTQC路线图](00_综述/fig1g_roadmap.png)
 <!-- 图片结束 -->
 
 
@@ -610,8 +610,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(a)展示了量子比特激发态布居数 $P_1(t) = \rho_{11}(t)$ 在不同 $T_1$ 值下的指数衰减曲线。计算参数：时间范围 $t \in [0, 200]\,\mu$s，$T_1$ 分别取50、100、200 μs。理论公式为 $P_1(t) = e^{-t/T_1}$。从图中可见，$T_1 = 50\,\mu$s时，100 μs后布居数已衰减至约13.5%；而$T_1 = 200\,\mu$s时，同一时刻仍保留约60.7%。这直接决定了单量子门（通常耗时10~50 ns）与双量子门（通常耗时20~200 ns）可承受的电路深度。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01a_T1_relaxation.png -->
-![图1(a) T1能量弛豫过程](01_论文一_量子比特退相干与噪声谱分析/fig01a_T1_relaxation.png)
+<!-- 图片位置: 01_论文一/fig01a_T1_relaxation.png -->
+![图1(a) T1能量弛豫过程](01_论文一/fig01a_T1_relaxation.png)
 <!-- 图片结束 -->
 
 
@@ -620,8 +620,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(b)展示了初始态为 $|+\rangle = (|0\rangle + |1\rangle)/\sqrt{2}$ 时，相干项 $|\rho_{01}(t)|$ 的衰减行为。计算参数：$T_1 = 100\,\mu$s 固定，$T_2$ 分别取50、80、100 μs。由公式 $1/T_{\phi} = 1/T_2 - 1/(2T_1)$ 计算得纯退相位时间 $T_{\phi} = 66.7, 133.3, \infty\,\mu$s。当 $T_2 = 100\,\mu$s = $T_1$ 时，$T_{\phi} = 2T_1$，此时退相干完全由 $T_1$ 主导，相干项衰减率为 $1/(2T_1)$（黑色虚线）。当 $T_2 = 50\,\mu$s 时，纯退相位贡献了约50%的衰减，这反映了磁通噪声或电荷噪声导致的额外相位损失。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01b_T2_dephasing.png -->
-![图1(b) T2退相干过程](01_论文一_量子比特退相干与噪声谱分析/fig01b_T2_dephasing.png)
+<!-- 图片位置: 01_论文一/fig01b_T2_dephasing.png -->
+![图1(b) T2退相干过程](01_论文一/fig01b_T2_dephasing.png)
 <!-- 图片结束 -->
 
 
@@ -630,8 +630,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(c)展示了Ramsey干涉条纹。左面板：$T_2^* = 50\,\mu$s 固定，失谐频率 $\Delta$ 分别取0.1、0.3、0.5 MHz时的振荡信号。条纹频率由 $\Delta$ 决定，包络衰减由 $T_2^*$ 决定。右面板：固定 $\Delta = 0.3$ MHz，展示Ramsey信号（蓝色实线）与指数包络 $\pm e^{-\tau/T_2^*}$（红色虚线）的对比。从包络提取的 $T_2^* = 50\,\mu$s 与预设参数一致，验证了数值方法的正确性。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01c_Ramsey_fringes.png -->
-![图1(c) Ramsey干涉条纹](01_论文一_量子比特退相干与噪声谱分析/fig01c_Ramsey_fringes.png)
+<!-- 图片位置: 01_论文一/fig01c_Ramsey_fringes.png -->
+![图1(c) Ramsey干涉条纹](01_论文一/fig01c_Ramsey_fringes.png)
 <!-- 图片结束 -->
 
 
@@ -640,8 +640,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(d)展示了三种典型噪声机制的功率谱密度及其叠加。左面板：$1/f$ 噪声 $S_{1/f}(f) = A/f$（低频发散）、欧姆噪声 $S_{\text{Ohm}}(f) = Af$（高频占优，带指数截断）、电报噪声 $S_{\text{tel}}(f) = A\gamma/(\gamma^2 + (2\pi f)^2)$（Lorentzian型，特征频率 $\gamma = 10$ Hz）以及三者叠加后的总谱。$1/f$ 噪声在 $f < 10$ Hz 区域占主导，是超导量子比特纯退相位的主要来源；欧姆噪声在高频区域贡献能量弛豫；电报噪声则表现为准离散的频谱峰。右面板展示了不同温度下归一化的热噪声谱，温度从10 mK（超导量子比特工作温度）到300 mK，验证了热噪声随温度升高的趋势。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01d_noise_spectrum.png -->
-![图1(d) 噪声功率谱密度](01_论文一_量子比特退相干与噪声谱分析/fig01d_noise_spectrum.png)
+<!-- 图片位置: 01_论文一/fig01d_noise_spectrum.png -->
+![图1(d) 噪声功率谱密度](01_论文一/fig01d_noise_spectrum.png)
 <!-- 图片结束 -->
 
 
@@ -650,14 +650,14 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(e)展示了量子比特初始态为 $|+\rangle$ 时，密度矩阵 $\rho(t)$ 在不同时刻的热力图。计算参数：$T_1 = 80\,\mu$s，$T_2 = 40\,\mu$s，由此得 $T_{\phi} = 80\,\mu$s。在 $t = 0$ 时，$\rho_{00} = \rho_{11} = 0.500$，$|\rho_{01}| = 0.500$；在 $t = 80\,\mu$s 时，$\rho_{00} \approx 0.716$，$\rho_{11} \approx 0.284$（由$T_1$弛豫导致的不对称），$|\rho_{01}| \approx 0.062$（相干几乎完全丧失）。图1(e')进一步以曲线形式展示了三个独立矩阵元的连续演化，直观呈现了 $T_1$ 导致的布居数再分布与 $T_2$ 导致的相干项衰减。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01e_density_matrix_evolution.png -->
-![图1(e) 密度矩阵演化热力图](01_论文一_量子比特退相干与噪声谱分析/fig01e_density_matrix_evolution.png)
+<!-- 图片位置: 01_论文一/fig01e_density_matrix_evolution.png -->
+![图1(e) 密度矩阵演化热力图](01_论文一/fig01e_density_matrix_evolution.png)
 <!-- 图片结束 -->
 
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01e2_density_matrix_elements.png -->
-![图1(e') 密度矩阵元随时间演化曲线](01_论文一_量子比特退相干与噪声谱分析/fig01e2_density_matrix_elements.png)
+<!-- 图片位置: 01_论文一/fig01e2_density_matrix_elements.png -->
+![图1(e') 密度矩阵元随时间演化曲线](01_论文一/fig01e2_density_matrix_elements.png)
 <!-- 图片结束 -->
 
 
@@ -666,8 +666,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(f)对比了六种主流量子计算平台的 $T_1$、$T_2$ 与 $T_2^*$ 时间。左面板（对数坐标）：离子阱平台以 $T_1 \approx 10$ s 遥遥领先，但实验控制难度限制了其扩展性；超导transmon的 $T_1 \approx 100\,\mu$s 处于中等水平；半导体自旋量子比特的 $T_1 \approx 1$ ms 表现良好。右面板：$T_2/T_1$ 比值方面，transmon约为0.5，说明纯退相位与能量弛豫的贡献相当；fluxonium通过减小对电荷噪声的敏感性将 $T_2/T_1$ 提升至约0.4但仍受限；NV色心与离子阱的 $T_2/T_1$ 可达0.2~0.5，表明其退相干主要由 $T_1$ 过程主导。$T_2^*/T_2$ 比值则反映了准静态噪声的相对强度——transmon的 $T_2^*/T_2 \approx 0.6$ 意味着低频 $1/f$ 噪声显著，可通过自旋回波部分抑制。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01f_T1T2_comparison.png -->
-![图1(f) 跨平台T1/T2对比](01_论文一_量子比特退相干与噪声谱分析/fig01f_T1T2_comparison.png)
+<!-- 图片位置: 01_论文一/fig01f_T1T2_comparison.png -->
+![图1(f) 跨平台T1/T2对比](01_论文一/fig01f_T1T2_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -676,8 +676,8 @@ $$\langle \sigma_x \rangle = e^{-\tau/T_2^*}\cos(2\pi\Delta\tau)$$
 图1(g)在三维Bloch球上可视化了初始态为 $|+y\rangle$（对应Bloch矢量 $(0, 1, 0)$）在 $T_1 = 100\,\mu$s、$T_2 = 40\,\mu$s 共同作用下的演化轨迹。颜色从绿色（$t = 0$）渐变到红色（$t = 120\,\mu$s），表示时间的流逝。轨迹从+y轴出发，同时向原点收缩（$T_2$导致的 $x, y$ 衰减）和向z=0平面靠近（$T_1$导致的 $z$ 分量衰减）。最终态趋近于 $(0, 0, 0)$，即完全混合态 $\rho = I/2$，对应Bloch球心。该可视化清晰展示了 $T_1$ 与 $T_2$ 在几何上的不同作用：$T_1$ 使态向z轴方向坍缩（热化），$T_2$ 使态在赤道面内收缩（退相位）。
 
 
-<!-- 图片位置: 01_论文一_量子比特退相干与噪声谱分析/fig01g_bloch_sphere.png -->
-![图1(g) Bloch球退相干轨迹](01_论文一_量子比特退相干与噪声谱分析/fig01g_bloch_sphere.png)
+<!-- 图片位置: 01_论文一/fig01g_bloch_sphere.png -->
+![图1(g) Bloch球退相干轨迹](01_论文一/fig01g_bloch_sphere.png)
 <!-- 图片结束 -->
 
 
@@ -1269,8 +1269,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图1展示了Transmon的电路示意图和势能曲线。当 $E_J/E_C$ 从5增加到50时，余弦势阱逐渐变浅，势阱内的量子化能级越来越接近谐振子能谱，但非线性修正项仍保留了关键的非谐性。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2a_transmon_circuit.png -->
-![Transmon电路与势能](02_论文二_超导Transmon能谱与相干时间优化/fig2a_transmon_circuit.png)
+<!-- 图片位置: 02_论文二/fig2a_transmon_circuit.png -->
+![Transmon电路与势能](02_论文二/fig2a_transmon_circuit.png)
 <!-- 图片结束 -->
 
 
@@ -1279,8 +1279,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图2展示了利用第2.3节微扰公式计算的Transmon能级随 $E_J/E_C$ 的变化。可以看到，随着 $E_J/E_C$ 增大，各能级能量呈 $\sqrt{E_J/E_C}$ 趋势上升，而相邻能级间距之差（非谐性）趋于一个与 $E_J$ 无关的常数 $-E_C$。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2b_energy_spectrum.png -->
-![能谱](02_论文二_超导Transmon能谱与相干时间优化/fig2b_energy_spectrum.png)
+<!-- 图片位置: 02_论文二/fig2b_energy_spectrum.png -->
+![能谱](02_论文二/fig2b_energy_spectrum.png)
 <!-- 图片结束 -->
 
 
@@ -1291,8 +1291,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图3展示了非谐性参数 $\alpha/E_C$ 随 $E_J/E_C$ 的变化。数值计算结果（蓝实线）与解析近似 $\alpha \approx -E_C$（红虚线）的对比表明，在 $E_J/E_C > 20$ 的Transmon工作区，非谐性已非常接近 $-E_C$，且高阶修正项的贡献小于 $5\%$。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2c_anharmonicity.png -->
-![非谐性](02_论文二_超导Transmon能谱与相干时间优化/fig2c_anharmonicity.png)
+<!-- 图片位置: 02_论文二/fig2c_anharmonicity.png -->
+![非谐性](02_论文二/fig2c_anharmonicity.png)
 <!-- 图片结束 -->
 
 
@@ -1305,8 +1305,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图4展示了在不同环境温度下，$T_1$ 随量子比特频率的变化。计算采用了2.6.1节的介电损耗-准粒子隧穿并联模型，假设电容品质因数 $Q_{\text{cap}} = 10^6$ 和准粒子品质因数 $Q_{\text{qp}} = 5\times 10^5$。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2d_coherence_T1.png -->
-![T1](02_论文二_超导Transmon能谱与相干时间优化/fig2d_coherence_T1.png)
+<!-- 图片位置: 02_论文二/fig2d_coherence_T1.png -->
+![T1](02_论文二/fig2d_coherence_T1.png)
 <!-- 图片结束 -->
 
 
@@ -1322,8 +1322,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图5展示了 $T_2$ 及其分量 $T_1$ 和 $T_\varphi$ 随频率的变化。计算假设工作温度为20 mK，磁通噪声幅度 $A_\Phi = 10^{-6}\ \Phi_0$，电荷噪声 $n_{g,\text{noise}} = 10^{-3}$。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2e_coherence_T2.png -->
-![T2](02_论文二_超导Transmon能谱与相干时间优化/fig2e_coherence_T2.png)
+<!-- 图片位置: 02_论文二/fig2e_coherence_T2.png -->
+![T2](02_论文二/fig2e_coherence_T2.png)
 <!-- 图片结束 -->
 
 
@@ -1336,8 +1336,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图6展示了 $T_1 \times T_2$ 品质因数在 $E_J/E_C$—频率参数空间中的二维分布，红色星号标记了最优设计点。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2f_optimization_landscape.png -->
-![优化](02_论文二_超导Transmon能谱与相干时间优化/fig2f_optimization_landscape.png)
+<!-- 图片位置: 02_论文二/fig2f_optimization_landscape.png -->
+![优化](02_论文二/fig2f_optimization_landscape.png)
 <!-- 图片结束 -->
 
 
@@ -1350,8 +1350,8 @@ $$\frac{1}{T_\varphi} = \sqrt{2\pi}\sum_\lambda \left(\frac{\partial\omega_{01}}
 图7展示了电荷分散 $\epsilon$ 随 $E_J/E_C$ 的变化，对比了CPB近似、Transmon解析近似和数值对角化结果。
 
 
-<!-- 图片位置: 02_论文二_超导Transmon能谱与相干时间优化/fig2g_charge_dispersion.png -->
-![电荷分散](02_论文二_超导Transmon能谱与相干时间优化/fig2g_charge_dispersion.png)
+<!-- 图片位置: 02_论文二/fig2g_charge_dispersion.png -->
+![电荷分散](02_论文二/fig2g_charge_dispersion.png)
 <!-- 图片结束 -->
 
 
@@ -1799,8 +1799,8 @@ $$
 ### 4.1 码距 Scaling 曲线
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3a_scaling_logical_vs_physical.png -->
-![图 1：表面码码距 Scaling 曲线——逻辑错误率随物理错误率的变化](03_论文三_表面码纠错阈值数值模拟/fig3a_scaling_logical_vs_physical.png)
+<!-- 图片位置: 03_论文三/fig3a_scaling_logical_vs_physical.png -->
+![图 1：表面码码距 Scaling 曲线——逻辑错误率随物理错误率的变化](03_论文三/fig3a_scaling_logical_vs_physical.png)
 <!-- 图片结束 -->
 
 
@@ -1811,8 +1811,8 @@ $$
 ### 4.2 阈值确定：交叉点分析
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3b_threshold_crossover.png -->
-![图 2：阈值交叉点分析——相邻码距对的曲线交叉](03_论文三_表面码纠错阈值数值模拟/fig3b_threshold_crossover.png)
+<!-- 图片位置: 03_论文三/fig3b_threshold_crossover.png -->
+![图 2：阈值交叉点分析——相邻码距对的曲线交叉](03_论文三/fig3b_threshold_crossover.png)
 <!-- 图片结束 -->
 
 
@@ -1829,8 +1829,8 @@ $$
 ### 4.3 有限尺寸标度拟合
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3c_fss_collapse.png -->
-![图 3：有限尺寸标度拟合——标度坍缩与临界指数优化](03_论文三_表面码纠错阈值数值模拟/fig3c_fss_collapse.png)
+<!-- 图片位置: 03_论文三/fig3c_fss_collapse.png -->
+![图 3：有限尺寸标度拟合——标度坍缩与临界指数优化](03_论文三/fig3c_fss_collapse.png)
 <!-- 图片结束 -->
 
 
@@ -1855,8 +1855,8 @@ $$
 ### 4.4 蒙特卡洛统计收敛性
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3d_monte_carlo_stats.png -->
-![图 4：蒙特卡洛统计收敛性——样本数与统计误差的关系](03_论文三_表面码纠错阈值数值模拟/fig3d_monte_carlo_stats.png)
+<!-- 图片位置: 03_论文三/fig3d_monte_carlo_stats.png -->
+![图 4：蒙特卡洛统计收敛性——样本数与统计误差的关系](03_论文三/fig3d_monte_carlo_stats.png)
 <!-- 图片结束 -->
 
 
@@ -1869,8 +1869,8 @@ $$
 ### 4.5 解码器性能比较
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3e_decoder_comparison.png -->
-![图 5：解码器性能比较——不同解码算法的逻辑错误率曲线](03_论文三_表面码纠错阈值数值模拟/fig3e_decoder_comparison.png)
+<!-- 图片位置: 03_论文三/fig3e_decoder_comparison.png -->
+![图 5：解码器性能比较——不同解码算法的逻辑错误率曲线](03_论文三/fig3e_decoder_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -1890,8 +1890,8 @@ $$
 ### 4.6 物理比特资源开销
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3f_resource_overhead.png -->
-![图 6：物理比特资源分析——码距与编码效率的关系](03_论文三_表面码纠错阈值数值模拟/fig3f_resource_overhead.png)
+<!-- 图片位置: 03_论文三/fig3f_resource_overhead.png -->
+![图 6：物理比特资源分析——码距与编码效率的关系](03_论文三/fig3f_resource_overhead.png)
 <!-- 图片结束 -->
 
 
@@ -1919,8 +1919,8 @@ $$
 ### 4.7 三维阈值相图
 
 
-<!-- 图片位置: 03_论文三_表面码纠错阈值数值模拟/fig3g_3d_phase_diagram.png -->
-![图 7：三维阈值相图——码距、物理错误率与逻辑错误率的关系](03_论文三_表面码纠错阈值数值模拟/fig3g_3d_phase_diagram.png)
+<!-- 图片位置: 03_论文三/fig3g_3d_phase_diagram.png -->
+![图 7：三维阈值相图——码距、物理错误率与逻辑错误率的关系](03_论文三/fig3g_3d_phase_diagram.png)
 <!-- 图片结束 -->
 
 
@@ -2379,8 +2379,8 @@ $$
 ### 4.1 格子结构对比：三角格 vs 方格
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4a_lattice_comparison.png -->
-![图 1：表面码（方格）与颜色码（六角格）的晶格结构对比](04_论文四_颜色码与表面码性能对比/fig4a_lattice_comparison.png)
+<!-- 图片位置: 04_论文四/fig4a_lattice_comparison.png -->
+![图 1：表面码（方格）与颜色码（六角格）的晶格结构对比](04_论文四/fig4a_lattice_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -2395,8 +2395,8 @@ $$
 ### 4.2 颜色码码距 Scaling 曲线
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4b_color_code_scaling.png -->
-![图 2：颜色码逻辑错误率随物理错误率的变化曲线](04_论文四_颜色码与表面码性能对比/fig4b_color_code_scaling.png)
+<!-- 图片位置: 04_论文四/fig4b_color_code_scaling.png -->
+![图 2：颜色码逻辑错误率随物理错误率的变化曲线](04_论文四/fig4b_color_code_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -2407,8 +2407,8 @@ $$
 ### 4.3 阈值对比分析
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4c_threshold_crossover_comparison.png -->
-![图 3：表面码与颜色码的阈值交叉点对比](04_论文四_颜色码与表面码性能对比/fig4c_threshold_crossover_comparison.png)
+<!-- 图片位置: 04_论文四/fig4c_threshold_crossover_comparison.png -->
+![图 3：表面码与颜色码的阈值交叉点对比](04_论文四/fig4c_threshold_crossover_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -2427,8 +2427,8 @@ $$
 ### 4.4 编码效率对比
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4d_encoding_efficiency.png -->
-![图 4：表面码与颜色码的编码效率 $k/n$ 对比](04_论文四_颜色码与表面码性能对比/fig4d_encoding_efficiency.png)
+<!-- 图片位置: 04_论文四/fig4d_encoding_efficiency.png -->
+![图 4：表面码与颜色码的编码效率 $k/n$ 对比](04_论文四/fig4d_encoding_efficiency.png)
 <!-- 图片结束 -->
 
 
@@ -2450,8 +2450,8 @@ $$
 ### 4.5 逻辑错误率 vs 码距
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4e_logical_error_vs_distance.png -->
-![图 5：固定物理错误率下逻辑错误率随码距的变化](04_论文四_颜色码与表面码性能对比/fig4e_logical_error_vs_distance.png)
+<!-- 图片位置: 04_论文四/fig4e_logical_error_vs_distance.png -->
+![图 5：固定物理错误率下逻辑错误率随码距的变化](04_论文四/fig4e_logical_error_vs_distance.png)
 <!-- 图片结束 -->
 
 
@@ -2468,8 +2468,8 @@ $$
 ### 4.6 解码器性能比较
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4f_decoder_comparison.png -->
-![图 6：$d = 11$ 时不同解码器对表面码与颜色码的性能影响](04_论文四_颜色码与表面码性能对比/fig4f_decoder_comparison.png)
+<!-- 图片位置: 04_论文四/fig4f_decoder_comparison.png -->
+![图 6：$d = 11$ 时不同解码器对表面码与颜色码的性能影响](04_论文四/fig4f_decoder_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -2492,8 +2492,8 @@ $$
 ### 4.7 物理资源开销对比
 
 
-<!-- 图片位置: 04_论文四_颜色码与表面码性能对比/fig4g_resource_overhead.png -->
-![图 7：实现目标逻辑错误率所需的物理量子比特数及颜色码相对开销](04_论文四_颜色码与表面码性能对比/fig4g_resource_overhead.png)
+<!-- 图片位置: 04_论文四/fig4g_resource_overhead.png -->
+![图 7：实现目标逻辑错误率所需的物理量子比特数及颜色码相对开销](04_论文四/fig4g_resource_overhead.png)
 <!-- 图片结束 -->
 
 
@@ -2924,8 +2924,8 @@ $$
 图5(c)展示了三类量子码的稳定子生成矩阵稀疏性结构对比。左侧为表面码的校验矩阵，其具有规则的周期性结构，每行/每列权重为常数（通常为4），稀疏度达 $1 - 4/n$。中间为随机经典LDPC码的稀疏矩阵，其非零元分布不规则但列权重与行权重被限制在预设范围内（如 $[3,6]$），稀疏度约为 $0.90\text{--}0.95$。右侧为CSS型量子LDPC码的分块对角结构，其中 $H_X$ 占据左半部分列，$H_Z$ 占据右半部分列，整体稀疏度与经典LDPC码相当。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5c_stabilizer_matrix_sparsity.png -->
-![稳定子生成矩阵稀疏性](05_论文五_量子LDPC码构造与性能/fig5c_stabilizer_matrix_sparsity.png)
+<!-- 图片位置: 05_论文五/fig5c_stabilizer_matrix_sparsity.png -->
+![稳定子生成矩阵稀疏性](05_论文五/fig5c_stabilizer_matrix_sparsity.png)
 <!-- 图片结束 -->
 
 
@@ -2944,8 +2944,8 @@ $$
 对应图中最上方的一条直线。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5b_rate_distance_tradeoff.png -->
-![码率-码距权衡](05_论文五_量子LDPC码构造与性能/fig5b_rate_distance_tradeoff.png)
+<!-- 图片位置: 05_论文五/fig5b_rate_distance_tradeoff.png -->
+![码率-码距权衡](05_论文五/fig5b_rate_distance_tradeoff.png)
 <!-- 图片结束 -->
 
 
@@ -2963,8 +2963,8 @@ $$
 图5(d)展示了在独立退极化噪声模型下，表面码与超图积码的逻辑错误率 $p_L$ 随物理错误率 $p$ 的变化曲线。每组曲线对应不同码距 $d$，阈值 $p_{\text{th}}$ 由曲线的交叉点确定。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5d_logical_error_threshold.png -->
-![逻辑错误率与阈值](05_论文五_量子LDPC码构造与性能/fig5d_logical_error_threshold.png)
+<!-- 图片位置: 05_论文五/fig5d_logical_error_threshold.png -->
+![逻辑错误率与阈值](05_论文五/fig5d_logical_error_threshold.png)
 <!-- 图片结束 -->
 
 
@@ -2981,8 +2981,8 @@ $$
 图5(e)展示了不同量子LDPC码族的码距 $d$ 随物理比特数 $n$ 的标度行为（双对数坐标）。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5e_distance_scaling.png -->
-![码距标度行为](05_论文五_量子LDPC码构造与性能/fig5e_distance_scaling.png)
+<!-- 图片位置: 05_论文五/fig5e_distance_scaling.png -->
+![码距标度行为](05_论文五/fig5e_distance_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -3003,8 +3003,8 @@ $$
 图5(a)以示意方式展示了量子LDPC码Tanner图的稀疏连接特征。变量节点（红色圆点，对应物理量子比特）与校验节点（蓝色方块，对应稳定子测量）之间的边数远少于完全二分图的情况。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5a_tanner_graph.png -->
-![Tanner图](05_论文五_量子LDPC码构造与性能/fig5a_tanner_graph.png)
+<!-- 图片位置: 05_论文五/fig5a_tanner_graph.png -->
+![Tanner图](05_论文五/fig5a_tanner_graph.png)
 <!-- 图片结束 -->
 
 
@@ -3017,8 +3017,8 @@ Tanner图的围长（girth，即最短环长度）对BP解码性能具有重要�
 图5(f)展示了超图积码的构造原理。左侧为经典LDPC码 $C$ 的Tanner图，具有校验矩阵 $H_C \in \mathbb{F}_2^{m \times n}$。右侧为通过超图积运算得到的量子码的二维网格结构，其中X型稳定子（蓝色圆点）与Z型稳定子（红色方块）交错排列。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5f_hypergraph_product.png -->
-![超图积码构造](05_论文五_量子LDPC码构造与性能/fig5f_hypergraph_product.png)
+<!-- 图片位置: 05_论文五/fig5f_hypergraph_product.png -->
+![超图积码构造](05_论文五/fig5f_hypergraph_product.png)
 <!-- 图片结束 -->
 
 
@@ -3029,8 +3029,8 @@ Tanner图的围长（girth，即最短环长度）对BP解码性能具有重要�
 图5(g)以表格形式综合比较了六类量子LDPC码的关键参数。
 
 
-<!-- 图片位置: 05_论文五_量子LDPC码构造与性能/fig5g_code_comparison_table.png -->
-![码族比较表](05_论文五_量子LDPC码构造与性能/fig5g_code_comparison_table.png)
+<!-- 图片位置: 05_论文五/fig5g_code_comparison_table.png -->
+![码族比较表](05_论文五/fig5g_code_comparison_table.png)
 <!-- 图片结束 -->
 
 
@@ -3753,8 +3753,8 @@ $$
 ### 3.1 表面码四种解码器逻辑错误率曲线对比
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6a_surface_code_decoder_comparison.png -->
-![图 1：表面码四种解码器逻辑错误率曲线对比](06_论文六_量子纠错解码器算法对比/fig6a_surface_code_decoder_comparison.png)
+<!-- 图片位置: 06_论文六/fig6a_surface_code_decoder_comparison.png -->
+![图 1：表面码四种解码器逻辑错误率曲线对比](06_论文六/fig6a_surface_code_decoder_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -3772,8 +3772,8 @@ $$
 ### 3.2 解码延迟随系统尺寸的标度行为
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6b_decoder_latency_scaling.png -->
-![图 2：解码延迟随码距与物理比特数的标度行为](06_论文六_量子纠错解码器算法对比/fig6b_decoder_latency_scaling.png)
+<!-- 图片位置: 06_论文六/fig6b_decoder_latency_scaling.png -->
+![图 2：解码延迟随码距与物理比特数的标度行为](06_论文六/fig6b_decoder_latency_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -3793,8 +3793,8 @@ MWPM 在 $d \geq 15$ 时已超出 $1\,\mu\text{s}$ 的实时窗口，而 Union-F
 ### 3.3 LDPC 码上 BP/BP+OSD/MWPM 的性能比较
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6c_bp_osd_ldpc_comparison.png -->
-![图 3：LDPC 码上 BP/BP+OSD/MWPM 的性能比较](06_论文六_量子纠错解码器算法对比/fig6c_bp_osd_ldpc_comparison.png)
+<!-- 图片位置: 06_论文六/fig6c_bp_osd_ldpc_comparison.png -->
+![图 3：LDPC 码上 BP/BP+OSD/MWPM 的性能比较](06_论文六/fig6c_bp_osd_ldpc_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -3811,8 +3811,8 @@ MWPM 在 $d \geq 15$ 时已超出 $1\,\mu\text{s}$ 的实时窗口，而 Union-F
 ### 3.4 神经网络解码器的训练动态与泛化能力
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6d_neural_decoder_training.png -->
-![图 4：神经网络解码器训练曲线与泛化能力分析](06_论文六_量子纠错解码器算法对比/fig6d_neural_decoder_training.png)
+<!-- 图片位置: 06_论文六/fig6d_neural_decoder_training.png -->
+![图 4：神经网络解码器训练曲线与泛化能力分析](06_论文六/fig6d_neural_decoder_training.png)
 <!-- 图片结束 -->
 
 
@@ -3825,8 +3825,8 @@ MWPM 在 $d \geq 15$ 时已超出 $1\,\mu\text{s}$ 的实时窗口，而 Union-F
 ### 3.5 各解码器有效阈值对比
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6e_threshold_comparison_all.png -->
-![图 5：各解码器有效阈值对比](06_论文六_量子纠错解码器算法对比/fig6e_threshold_comparison_all.png)
+<!-- 图片位置: 06_论文六/fig6e_threshold_comparison_all.png -->
+![图 5：各解码器有效阈值对比](06_论文六/fig6e_threshold_comparison_all.png)
 <!-- 图片结束 -->
 
 
@@ -3845,8 +3845,8 @@ LDPC 码上的阈值排序则呈现不同格局：BP+OSD（Good qLDPC）可达 $
 ### 3.6 内存开销与计算复杂度分析
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6f_memory_overhead.png -->
-![图 6：各解码器的内存开销与计算复杂度](06_论文六_量子纠错解码器算法对比/fig6f_memory_overhead.png)
+<!-- 图片位置: 06_论文六/fig6f_memory_overhead.png -->
+![图 6：各解码器的内存开销与计算复杂度](06_论文六/fig6f_memory_overhead.png)
 <!-- 图片结束 -->
 
 
@@ -3864,8 +3864,8 @@ LDPC 码上的阈值排序则呈现不同格局：BP+OSD（Good qLDPC）可达 $
 ### 3.7 综合性能雷达图与 Pareto 分析
 
 
-<!-- 图片位置: 06_论文六_量子纠错解码器算法对比/fig6g_comprehensive_radar.png -->
-![图 7：综合性能雷达图与延迟-精度 Pareto 分析](06_论文六_量子纠错解码器算法对比/fig6g_comprehensive_radar.png)
+<!-- 图片位置: 06_论文六/fig6g_comprehensive_radar.png -->
+![图 7：综合性能雷达图与延迟-精度 Pareto 分析](06_论文六/fig6g_comprehensive_radar.png)
 <!-- 图片结束 -->
 
 
@@ -4139,8 +4139,8 @@ $$
 其中 $T = \text{diag}(1, e^{i\pi/4})$ 为T门算符。该态在Bloch球上位于赤道上方 $\pi/4$ 方位角处，如图1所示。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7a_Tgate_bloch.png -->
-![T门魔术态在Bloch球上的表示](07_论文七_魔术态蒸馏与T门容错/fig7a_Tgate_bloch.png)
+<!-- 图片位置: 07_论文七/fig7a_Tgate_bloch.png -->
+![T门魔术态在Bloch球上的表示](07_论文七/fig7a_Tgate_bloch.png)
 <!-- 图片结束 -->
 
 **图1**: T门对应的魔术态 $|A_\theta\rangle$ 在Bloch球上的位置。该态位于 $xy$ 平面（赤道）上方，方位角 $\phi = \pi/4$，对应于将 $|+\rangle$ 态经T门旋转后的结果。
@@ -4188,8 +4188,8 @@ Reed-Muller码是最先被用于魔术态蒸馏的经典纠错码族。其核心
 **蒸馏电路**: 如图2所示，15个输入魔术态 $|A_\theta\rangle^{\otimes 15}$ 通过编码电路制备成Reed-Muller码的逻辑态。随后，在14个辅助比特上执行横向CNOT门（以第1个比特为控制位），并对辅助比特进行 $X$ 基测量。若所有测量结果（syndrome）的奇偶校验通过，则接受输出态作为纯净的魔术态。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7b_ReedMuller_circuit.png -->
-![Reed-Muller码蒸馏电路](07_论文七_魔术态蒸馏与T门容错/fig7b_ReedMuller_circuit.png)
+<!-- 图片位置: 07_论文七/fig7b_ReedMuller_circuit.png -->
+![Reed-Muller码蒸馏电路](07_论文七/fig7b_ReedMuller_circuit.png)
 <!-- 图片结束 -->
 
 **图2**: Reed-Muller $[15,1,3]$ 码的魔术态蒸馏电路示意图。15个噪声魔术态经编码后，通过横向CNOT门和 $X$ 基测量提取syndrome信息。若校验通过（$\prod_{i=1}^{14} s_i = 1$），则输出1个高保真度魔术态。
@@ -4217,8 +4217,8 @@ Bravyi和Haah于2012年提出了基于三正交量子码的新型蒸馏方案，
 **$[[14,3,3]]$ 码**: Bravyi-Haah码 $[[14,3,3]]$ 编码14个物理比特为3个逻辑比特，码距仍为3。如图3所示，该码的蒸馏电路与Reed-Muller码类似，但输出为3个逻辑魔术态而非1个。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7c_BH_circuit.png -->
-![Bravyi-Haah蒸馏电路](07_论文七_魔术态蒸馏与T门容错/fig7c_BH_circuit.png)
+<!-- 图片位置: 07_论文七/fig7c_BH_circuit.png -->
+![Bravyi-Haah蒸馏电路](07_论文七/fig7c_BH_circuit.png)
 <!-- 图片结束 -->
 
 **图3**: Bravyi-Haah $[[14,3,3]]$ 码的魔术态蒸馏电路。14个噪声魔术态经三正交编码器编码后，通过syndrome校验提取3个高保真度输出魔术态。产率 $Y = 3/14 \approx 0.214$。
@@ -4286,8 +4286,8 @@ $$
 我们通过数值模拟计算了Reed-Muller $[15,1,3]$ 码在不同输入错误率下的输出错误率。图4展示了单轮和两轮蒸馏的输入-输出错误率关系。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7d_distillation_error.png -->
-![蒸馏错误率曲线](07_论文七_魔术态蒸馏与T门容错/fig7d_distillation_error.png)
+<!-- 图片位置: 07_论文七/fig7d_distillation_error.png -->
+![蒸馏错误率曲线](07_论文七/fig7d_distillation_error.png)
 <!-- 图片结束 -->
 
 **图4**: 魔术态蒸馏的输入-输出错误率关系。实线表示单轮蒸馏，虚线表示两轮级联蒸馏。黑色对角线为无蒸馏参考线。灰色竖线标记有效阈值 $p_{\text{th}} \approx 10^{-2}$。
@@ -4318,8 +4318,8 @@ Bravyi-Haah码的数值结果已一并展示于图4和表中。其核心优势�
 图5展示了两种方案的产率特性。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7e_yield_rate.png -->
-![产率对比](07_论文七_魔术态蒸馏与T门容错/fig7e_yield_rate.png)
+<!-- 图片位置: 07_论文七/fig7e_yield_rate.png -->
+![产率对比](07_论文七/fig7e_yield_rate.png)
 <!-- 图片结束 -->
 
 **图5**: (左) 产率 $Y = k/n$ 随码距 $d$ 的变化趋势；(右) 多级蒸馏的累积产率随蒸馏轮数 $r$ 的指数衰减。
@@ -4333,8 +4333,8 @@ Bravyi-Haah码的数值结果已一并展示于图4和表中。其核心优势�
 图6展示了在固定物理错误率 $p_{\text{phys}} = 10^{-3}$ 下，两种方案的总开销随目标逻辑错误率 $p_L$ 的变化。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7f_overhead_comparison.png -->
-![资源开销对比](07_论文七_魔术态蒸馏与T门容错/fig7f_overhead_comparison.png)
+<!-- 图片位置: 07_论文七/fig7f_overhead_comparison.png -->
+![资源开销对比](07_论文七/fig7f_overhead_comparison.png)
 <!-- 图片结束 -->
 
 **图6**: 实现容错T门所需的魔术态蒸馏总开销随目标逻辑错误率的变化。物理错误率固定为 $p_{\text{phys}} = 10^{-3}$。绿色虚线为表面码（仅逻辑存储）的物理比特开销参考。
@@ -4347,8 +4347,8 @@ Bravyi-Haah码的数值结果已一并展示于图4和表中。其核心优势�
 图7进一步分析了总物理比特需求和不同物理错误率下的开销分布。
 
 
-<!-- 图片位置: 07_论文七_魔术态蒸馏与T门容错/fig7g_resource_scaling.png -->
-![资源缩放](07_论文七_魔术态蒸馏与T门容错/fig7g_resource_scaling.png)
+<!-- 图片位置: 07_论文七/fig7g_resource_scaling.png -->
+![资源缩放](07_论文七/fig7g_resource_scaling.png)
 <!-- 图片结束 -->
 
 **图7**: (左) 总物理量子比特数随目标逻辑错误率的变化；(右) 在 $p_L = 10^{-12}$ 时不同物理错误率下的开销对比。
@@ -4763,8 +4763,8 @@ $$
 ### 3.1 逻辑初始化保真度
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8a_logical_init_fidelity.png -->
-![图 1：逻辑初始化保真度](08_论文八_逻辑量子比特初始化读取与门操作/fig8a_logical_init_fidelity.png)
+<!-- 图片位置: 08_论文八/fig8a_logical_init_fidelity.png -->
+![图 1：逻辑初始化保真度](08_论文八/fig8a_logical_init_fidelity.png)
 <!-- 图片结束 -->
 
 
@@ -4786,8 +4786,8 @@ $$
 ### 3.2 Syndrome 测量误差分析
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8b_syndrome_measurement_error.png -->
-![图 2：Syndrome 测量误差](08_论文八_逻辑量子比特初始化读取与门操作/fig8b_syndrome_measurement_error.png)
+<!-- 图片位置: 08_论文八/fig8b_syndrome_measurement_error.png -->
+![图 2：Syndrome 测量误差](08_论文八/fig8b_syndrome_measurement_error.png)
 <!-- 图片结束 -->
 
 
@@ -4808,8 +4808,8 @@ $$
 ### 3.3 逻辑读出保真度
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8c_logical_readout_fidelity.png -->
-![图 3：逻辑读出性能](08_论文八_逻辑量子比特初始化读取与门操作/fig8c_logical_readout_fidelity.png)
+<!-- 图片位置: 08_论文八/fig8c_logical_readout_fidelity.png -->
+![图 3：逻辑读出性能](08_论文八/fig8c_logical_readout_fidelity.png)
 <!-- 图片结束 -->
 
 
@@ -4825,8 +4825,8 @@ $X$ 基读出略低于 $Z$ 基，原因在于 $X$ 基测量需要对原始比特
 ### 3.4 Clifford 逻辑门错误率
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8d_clifford_gate_error.png -->
-![图 4：Clifford 门性能](08_论文八_逻辑量子比特初始化读取与门操作/fig8d_clifford_gate_error.png)
+<!-- 图片位置: 08_论文八/fig8d_clifford_gate_error.png -->
+![图 4：Clifford 门性能](08_论文八/fig8d_clifford_gate_error.png)
 <!-- 图片结束 -->
 
 
@@ -4848,16 +4848,16 @@ CNOT 门的错误率最高（$2.5\times$ 存储错误率），这反映了 latti
 ### 3.5 T 门实现总开销
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8e_lattice_surgery_circuit.png -->
-![图 5：Lattice Surgery 示意图](08_论文八_逻辑量子比特初始化读取与门操作/fig8e_lattice_surgery_circuit.png)
+<!-- 图片位置: 08_论文八/fig8e_lattice_surgery_circuit.png -->
+![图 5：Lattice Surgery 示意图](08_论文八/fig8e_lattice_surgery_circuit.png)
 <!-- 图片结束 -->
 
 
 **图 5**：Lattice surgery 实现逻辑 CNOT 门的示意图。两个表面码 patch（控制比特 $|\psi\rangle_L$ 和目标比特 $|\phi\rangle_L$）通过合并区域（merge region）进行联合稳定子测量，实现等价的 CNOT 操作。
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8f_t_gate_overhead.png -->
-![图 6：T 门资源开销](08_论文八_逻辑量子比特初始化读取与门操作/fig8f_t_gate_overhead.png)
+<!-- 图片位置: 08_论文八/fig8f_t_gate_overhead.png -->
+![图 6：T 门资源开销](08_论文八/fig8f_t_gate_overhead.png)
 <!-- 图片结束 -->
 
 
@@ -4882,8 +4882,8 @@ T 门是容错量子计算中资源开销最大的操作。结合论文七的 Br
 ### 3.6 逻辑量子比特寿命提升
 
 
-<!-- 图片位置: 08_论文八_逻辑量子比特初始化读取与门操作/fig8g_logical_lifetime.png -->
-![图 7：逻辑相干时间增强](08_论文八_逻辑量子比特初始化读取与门操作/fig8g_logical_lifetime.png)
+<!-- 图片位置: 08_论文八/fig8g_logical_lifetime.png -->
+![图 7：逻辑相干时间增强](08_论文八/fig8g_logical_lifetime.png)
 <!-- 图片结束 -->
 
 
@@ -5418,8 +5418,8 @@ $$
 ### 4.1 级联码结构示意图
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9a_cascaded_code_structure.png -->
-![图 1：级联码结构示意图——Steane [[7,1,3]] 外层码与表面码内层码的层次化编码结构](09_论文九_级联码与代码转换/fig9a_cascaded_code_structure.png)
+<!-- 图片位置: 09_论文九/fig9a_cascaded_code_structure.png -->
+![图 1：级联码结构示意图——Steane [[7,1,3]] 外层码与表面码内层码的层次化编码结构](09_论文九/fig9a_cascaded_code_structure.png)
 <!-- 图片结束 -->
 
 
@@ -5430,8 +5430,8 @@ $$
 ### 4.2 级联码有效码距 Scaling
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9b_effective_distance_scaling.png -->
-![图 2：级联码有效码距 scaling 与编码效率对比](09_论文九_级联码与代码转换/fig9b_effective_distance_scaling.png)
+<!-- 图片位置: 09_论文九/fig9b_effective_distance_scaling.png -->
+![图 2：级联码有效码距 scaling 与编码效率对比](09_论文九/fig9b_effective_distance_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -5454,8 +5454,8 @@ $$
 ### 4.3 代码转换电路示意
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9c_code_switching_circuit.png -->
-![图 3：表面码与颜色码之间的代码转换协议示意](09_论文九_级联码与代码转换/fig9c_code_switching_circuit.png)
+<!-- 图片位置: 09_论文九/fig9c_code_switching_circuit.png -->
+![图 3：表面码与颜色码之间的代码转换协议示意](09_论文九/fig9c_code_switching_circuit.png)
 <!-- 图片结束 -->
 
 
@@ -5466,8 +5466,8 @@ $$
 ### 4.4 代码转换保真度分析
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9d_switching_fidelity.png -->
-![图 4：代码转换保真度随转换周期和物理错误率的变化](09_论文九_级联码与代码转换/fig9d_switching_fidelity.png)
+<!-- 图片位置: 09_论文九/fig9d_switching_fidelity.png -->
+![图 4：代码转换保真度随转换周期和物理错误率的变化](09_论文九/fig9d_switching_fidelity.png)
 <!-- 图片结束 -->
 
 
@@ -5488,8 +5488,8 @@ $$
 ### 4.5 异构系统布局设计
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9e_heterogeneous_layout.png -->
-![图 5：异构量子计算架构布局——表面码存储区、颜色码计算区与代码转换接口](09_论文九_级联码与代码转换/fig9e_heterogeneous_layout.png)
+<!-- 图片位置: 09_论文九/fig9e_heterogeneous_layout.png -->
+![图 5：异构量子计算架构布局——表面码存储区、颜色码计算区与代码转换接口](09_论文九/fig9e_heterogeneous_layout.png)
 <!-- 图片结束 -->
 
 
@@ -5503,8 +5503,8 @@ $$
 ### 4.6 错误传播网络分析
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9f_error_propagation.png -->
-![图 6：代码转换过程中的错误传播概率与网络示意](09_论文九_级联码与代码转换/fig9f_error_propagation.png)
+<!-- 图片位置: 09_论文九/fig9f_error_propagation.png -->
+![图 6：代码转换过程中的错误传播概率与网络示意](09_论文九/fig9f_error_propagation.png)
 <!-- 图片结束 -->
 
 
@@ -5521,8 +5521,8 @@ $$
 ### 4.7 异构系统整体性能对比
 
 
-<!-- 图片位置: 09_论文九_级联码与代码转换/fig9g_performance_comparison.png -->
-![图 7：异构系统性能对比——不同架构的逻辑错误率与资源-性能权衡](09_论文九_级联码与代码转换/fig9g_performance_comparison.png)
+<!-- 图片位置: 09_论文九/fig9g_performance_comparison.png -->
+![图 7：异构系统性能对比——不同架构的逻辑错误率与资源-性能权衡](09_论文九/fig9g_performance_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -6052,8 +6052,8 @@ Syndrome 产生率按公式 $\mathcal{R}_{\text{syn}} = 2(d-1)^2 p / T_{\text{cy
 ### 4.1 解码器延迟 Scaling 曲线
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10a_decoder_latency_scaling.png -->
-![图 1：不同解码器的延迟随码距变化曲线](10_论文十_实时解码器经典计算架构/fig10a_decoder_latency_scaling.png)
+<!-- 图片位置: 10_论文十/fig10a_decoder_latency_scaling.png -->
+![图 1：不同解码器的延迟随码距变化曲线](10_论文十/fig10a_decoder_latency_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -6081,8 +6081,8 @@ Syndrome 产生率按公式 $\mathcal{R}_{\text{syn}} = 2(d-1)^2 p / T_{\text{cy
 ### 4.2 并行解码加速比
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10b_parallel_speedup.png -->
-![图 2：并行解码的 Amdahl 加速与实际延迟](10_论文十_实时解码器经典计算架构/fig10b_parallel_speedup.png)
+<!-- 图片位置: 10_论文十/fig10b_parallel_speedup.png -->
+![图 2：并行解码的 Amdahl 加速与实际延迟](10_论文十/fig10b_parallel_speedup.png)
 <!-- 图片结束 -->
 
 
@@ -6093,8 +6093,8 @@ Amdahl 定律的硬极限意味着单纯依靠增加核心数无法解决 MWPM �
 ### 4.3 解码器吞吐率与供需匹配
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10c_throughput_analysis.png -->
-![图 3：解码器吞吐率与 syndrome 产生率的供需分析](10_论文十_实时解码器经典计算架构/fig10c_throughput_analysis.png)
+<!-- 图片位置: 10_论文十/fig10c_throughput_analysis.png -->
+![图 3：解码器吞吐率与 syndrome 产生率的供需分析](10_论文十/fig10c_throughput_analysis.png)
 <!-- 图片结束 -->
 
 
@@ -6105,8 +6105,8 @@ Amdahl 定律的硬极限意味着单纯依靠增加核心数无法解决 MWPM �
 ### 4.4 端到端延迟预算
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10d_latency_budget.png -->
-![图 4：端到端延迟预算瀑布图](10_论文十_实时解码器经典计算架构/fig10d_latency_budget.png)
+<!-- 图片位置: 10_论文十/fig10d_latency_budget.png -->
+![图 4：端到端延迟预算瀑布图](10_论文十/fig10d_latency_budget.png)
 <!-- 图片结束 -->
 
 
@@ -6117,8 +6117,8 @@ Amdahl 定律的硬极限意味着单纯依靠增加核心数无法解决 MWPM �
 ### 4.5 硬件平台性能对比
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10e_hardware_comparison.png -->
-![图 5：硬件平台延迟-功耗-成本对比](10_论文十_实时解码器经典计算架构/fig10e_hardware_comparison.png)
+<!-- 图片位置: 10_论文十/fig10e_hardware_comparison.png -->
+![图 5：硬件平台延迟-功耗-成本对比](10_论文十/fig10e_hardware_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -6139,8 +6139,8 @@ Amdahl 定律的硬极限意味着单纯依靠增加核心数无法解决 MWPM �
 ### 4.6 实时解码可行性边界
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10f_feasibility_map.png -->
-![图 6：实时解码可行性热力图](10_论文十_实时解码器经典计算架构/fig10f_feasibility_map.png)
+<!-- 图片位置: 10_论文十/fig10f_feasibility_map.png -->
+![图 6：实时解码可行性热力图](10_论文十/fig10f_feasibility_map.png)
 <!-- 图片结束 -->
 
 
@@ -6156,8 +6156,8 @@ Amdahl 定律的硬极限意味着单纯依靠增加核心数无法解决 MWPM �
 ### 4.7 未来扩展性预测
 
 
-<!-- 图片位置: 10_论文十_实时解码器经典计算架构/fig10g_scalability_projection.png -->
-![图 7：量子比特规模扩展与解码延迟趋势预测](10_论文十_实时解码器经典计算架构/fig10g_scalability_projection.png)
+<!-- 图片位置: 10_论文十/fig10g_scalability_projection.png -->
+![图 7：量子比特规模扩展与解码延迟趋势预测](10_论文十/fig10g_scalability_projection.png)
 <!-- 图片结束 -->
 
 
@@ -6490,8 +6490,8 @@ $$
 ### 3.1 全栈误差金字塔与错误预算分解
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11a_error_budget_pyramid.png -->
-![图 1：全栈误差金字塔与物理层错误预算分解](11_论文十一_量子处理器错误预算与系统优化/fig11a_error_budget_pyramid.png)
+<!-- 图片位置: 11_论文十一/fig11a_error_budget_pyramid.png -->
+![图 1：全栈误差金字塔与物理层错误预算分解](11_论文十一/fig11a_error_budget_pyramid.png)
 <!-- 图片结束 -->
 
 
@@ -6502,8 +6502,8 @@ $$
 ### 3.2 错误组件的时间演化分析
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11b_error_components.png -->
-![图 2：错误组件占比与表面码纠错周期时序](11_论文十一_量子处理器错误预算与系统优化/fig11b_error_components.png)
+<!-- 图片位置: 11_论文十一/fig11b_error_components.png -->
+![图 2：错误组件占比与表面码纠错周期时序](11_论文十一/fig11b_error_components.png)
 <!-- 图片结束 -->
 
 
@@ -6514,8 +6514,8 @@ $$
 ### 3.3 逻辑错误率的分层分解
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11c_logical_vs_physical_layers.png -->
-![图 3：逻辑错误率随物理错误率变化及分层分解](11_论文十一_量子处理器错误预算与系统优化/fig11c_logical_vs_physical_layers.png)
+<!-- 图片位置: 11_论文十一/fig11c_logical_vs_physical_layers.png -->
+![图 3：逻辑错误率随物理错误率变化及分层分解](11_论文十一/fig11c_logical_vs_physical_layers.png)
 <!-- 图片结束 -->
 
 
@@ -6533,8 +6533,8 @@ $$
 ### 3.4 码距与资源开销权衡
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11d_distance_overhead.png -->
-![图 4：目标逻辑错误率所需码距与物理资源开销](11_论文十一_量子处理器错误预算与系统优化/fig11d_distance_overhead.png)
+<!-- 图片位置: 11_论文十一/fig11d_distance_overhead.png -->
+![图 4：目标逻辑错误率所需码距与物理资源开销](11_论文十一/fig11d_distance_overhead.png)
 <!-- 图片结束 -->
 
 
@@ -6558,8 +6558,8 @@ $$
 ### 3.5 优化策略与边际效益分析
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11e_optimized_budget.png -->
-![图 5：错误预算优化前后对比与边际效益分析](11_论文十一_量子处理器错误预算与系统优化/fig11e_optimized_budget.png)
+<!-- 图片位置: 11_论文十一/fig11e_optimized_budget.png -->
+![图 5：错误预算优化前后对比与边际效益分析](11_论文十一/fig11e_optimized_budget.png)
 <!-- 图片结束 -->
 
 
@@ -6581,8 +6581,8 @@ $$
 ### 3.6 退相干时间对电路深度的限制
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11f_coherence_limited_depth.png -->
-![图 6：退相干时间约束下的最大电路深度](11_论文十一_量子处理器错误预算与系统优化/fig11f_coherence_limited_depth.png)
+<!-- 图片位置: 11_论文十一/fig11f_coherence_limited_depth.png -->
+![图 6：退相干时间约束下的最大电路深度](11_论文十一/fig11f_coherence_limited_depth.png)
 <!-- 图片结束 -->
 
 
@@ -6595,8 +6595,8 @@ $$
 ### 3.7 三维参数空间的最优工作点
 
 
-<!-- 图片位置: 11_论文十一_量子处理器错误预算与系统优化/fig11g_optimal_operating_point.png -->
-![图 7：参数空间三维视图与最优工作点等高线图](11_论文十一_量子处理器错误预算与系统优化/fig11g_optimal_operating_point.png)
+<!-- 图片位置: 11_论文十一/fig11g_optimal_operating_point.png -->
+![图 7：参数空间三维视图与最优工作点等高线图](11_论文十一/fig11g_optimal_operating_point.png)
 <!-- 图片结束 -->
 
 
@@ -7053,8 +7053,8 @@ $$
 我们首先模拟MS门的完整激光脉冲序列。图12a展示了典型的双离子MS门中红失谐、蓝失谐激光脉冲与声子布居的时序演化。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12a_ms_gate_pulse.png -->
-![图12a](12_论文十二_离子阱量子纠错方案/fig12a_ms_gate_pulse.png)
+<!-- 图片位置: 12_论文十二/fig12a_ms_gate_pulse.png -->
+![图12a](12_论文十二/fig12a_ms_gate_pulse.png)
 <!-- 图片结束 -->
 
 
@@ -7067,8 +7067,8 @@ $$
 图12b展示了17离子链中的长程连接拓扑结构。红色连线表示通过MS门实现的长程两比特门，蓝色离子为数据比特，红色离子为辅助测量比特。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12b_ion_chain_connectivity.png -->
-![图12b](12_论文十二_离子阱量子纠错方案/fig12b_ion_chain_connectivity.png)
+<!-- 图片位置: 12_论文十二/fig12b_ion_chain_connectivity.png -->
+![图12b](12_论文十二/fig12b_ion_chain_connectivity.png)
 <!-- 图片结束 -->
 
 
@@ -7081,8 +7081,8 @@ $$
 图12c比较了三种编码方案在物理错误率$p = 10^{-3}$下逻辑错误率随码距的指数抑制行为。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12c_logical_error_vs_distance.png -->
-![图12c](12_论文十二_离子阱量子纠错方案/fig12c_logical_error_vs_distance.png)
+<!-- 图片位置: 12_论文十二/fig12c_logical_error_vs_distance.png -->
+![图12c](12_论文十二/fig12c_logical_error_vs_distance.png)
 <!-- 图片结束 -->
 
 
@@ -7101,8 +7101,8 @@ $$
 图12d展示了不同码距下离子阱量子纠错的阈值标度曲线。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12d_threshold_scaling.png -->
-![图12d](12_论文十二_离子阱量子纠错方案/fig12d_threshold_scaling.png)
+<!-- 图片位置: 12_论文十二/fig12d_threshold_scaling.png -->
+![图12d](12_论文十二/fig12d_threshold_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -7121,8 +7121,8 @@ $$
 图12e分析了离子阱链中的串扰效应及其对逻辑错误率的影响。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12e_crosstalk_effects.png -->
-![图12e](12_论文十二_离子阱量子纠错方案/fig12e_crosstalk_effects.png)
+<!-- 图片位置: 12_论文十二/fig12e_crosstalk_effects.png -->
+![图12e](12_论文十二/fig12e_crosstalk_effects.png)
 <!-- 图片结束 -->
 
 
@@ -7141,8 +7141,8 @@ $$
 图12f展示了三维表面码的晶格结构示意。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12f_high_dimensional_surface.png -->
-![图12f](12_论文十二_离子阱量子纠错方案/fig12f_high_dimensional_surface.png)
+<!-- 图片位置: 12_论文十二/fig12f_high_dimensional_surface.png -->
+![图12f](12_论文十二/fig12f_high_dimensional_surface.png)
 <!-- 图片结束 -->
 
 
@@ -7159,8 +7159,8 @@ $$
 图12g综合比较了不同离子阱门方案的保真度和纠错效率。
 
 
-<!-- 图片位置: 12_论文十二_离子阱量子纠错方案/fig12g_gate_fidelity_comparison.png -->
-![图12g](12_论文十二_离子阱量子纠错方案/fig12g_gate_fidelity_comparison.png)
+<!-- 图片位置: 12_论文十二/fig12g_gate_fidelity_comparison.png -->
+![图12g](12_论文十二/fig12g_gate_fidelity_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -7687,8 +7687,8 @@ $$
 图1(b)进一步可视化了两原子系统的阻塞效应。当原子间距 $r < R_b$ 时，仅允许单激发态 $|gr\rangle$ 和 $|rg\rangle$ 存在，双激发态 $|rr\rangle$ 被禁止。这一条件性动力学是中性原子实现高保真双量子比特门的物理基础。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13a_rydberg_blockade.png -->
-![图1：里德堡阻塞机制与能级图](13_论文十三_中性原子阵列里德堡纠错/fig13a_rydberg_blockade.png)
+<!-- 图片位置: 13_论文十三/fig13a_rydberg_blockade.png -->
+![图1：里德堡阻塞机制与能级图](13_论文十三/fig13a_rydberg_blockade.png)
 <!-- 图片结束 -->
 
 
@@ -7701,8 +7701,8 @@ $$
 图2(b)演示了原子重排过程：从左侧的缺陷阵列（缺失2个原子）出发，通过移动光学镊将原子拖拽至右侧的目标位置，最终形成完整无缺陷的阵列。重排过程引入了额外的保真度开销，需要在速度和精度之间取得平衡。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13b_atom_array.png -->
-![图2：中性原子阵列与光学镊结构](13_论文十三_中性原子阵列里德堡纠错/fig13b_atom_array.png)
+<!-- 图片位置: 13_论文十三/fig13b_atom_array.png -->
+![图2：中性原子阵列与光学镊结构](13_论文十三/fig13b_atom_array.png)
 <!-- 图片结束 -->
 
 
@@ -7715,8 +7715,8 @@ $$
 移动表面码的关键特征在于：量子比特的位置不固定，而是根据纠错需求和当前阵列缺陷状态动态调整。通过原子重排，可在纠错周期之间将缺陷"修复"，维持表面码的拓扑完整性。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13c_surface_code_layout.png -->
-![图3：移动表面码布局](13_论文十三_中性原子阵列里德堡纠错/fig13c_surface_code_layout.png)
+<!-- 图片位置: 13_论文十三/fig13c_surface_code_layout.png -->
+![图3：移动表面码布局](13_论文十三/fig13c_surface_code_layout.png)
 <!-- 图片结束 -->
 
 
@@ -7737,8 +7737,8 @@ $$
 图4(b)展示了固定物理错误率 $p = 0.5\%$ 下，逻辑错误率的错误预算分解。门错误贡献约 $60\%$，测量错误贡献约 $25\%$，闲置/相干错误贡献约 $15\%$。这一分解为错误抑制策略的优先级排序提供了依据。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13d_logical_error_rate.png -->
-![图4：逻辑错误率分析](13_论文十三_中性原子阵列里德堡纠错/fig13d_logical_error_rate.png)
+<!-- 图片位置: 13_论文十三/fig13d_logical_error_rate.png -->
+![图4：逻辑错误率分析](13_论文十三/fig13d_logical_error_rate.png)
 <!-- 图片结束 -->
 
 
@@ -7751,8 +7751,8 @@ $$
 图5(b)展示了固定物理错误率下逻辑错误率随码距的指数标度。当 $p = 0.003$（低于阈值）时，逻辑错误率随 $d$ 增加呈指数下降；当 $p = 0.015$（高于阈值）时，逻辑错误率随 $d$ 增加而上升。要达到 $p_L = 10^{-10}$ 的目标（支持 $10^{10}$ 个逻辑门操作），在 $p = 0.003$ 时需要 $d \approx 11$-$13$。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13e_threshold_scaling.png -->
-![图5：纠错阈值标度](13_论文十三_中性原子阵列里德堡纠错/fig13e_threshold_scaling.png)
+<!-- 图片位置: 13_论文十三/fig13e_threshold_scaling.png -->
+![图5：纠错阈值标度](13_论文十三/fig13e_threshold_scaling.png)
 <!-- 图片结束 -->
 
 
@@ -7765,8 +7765,8 @@ $$
 图6(b)展示了重排后阵列填充率随阵列规模 $N$ 的变化。初始填充率固定为 $60\%$（蓝色虚线），重排后填充率（红色实线）随规模缓慢下降，但在 $N = 900$（$30 \times 30$ 阵列）时仍可维持在 $95\%$ 以上。这表明原子重排技术在大规模阵列中仍然有效，但需要对边缘效应和碰撞损失进行精细优化。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13f_rearrangement_fidelity.png -->
-![图6：原子重排保真度](13_论文十三_中性原子阵列里德堡纠错/fig13f_rearrangement_fidelity.png)
+<!-- 图片位置: 13_论文十三/fig13f_rearrangement_fidelity.png -->
+![图6：原子重排保真度](13_论文十三/fig13f_rearrangement_fidelity.png)
 <!-- 图片结束 -->
 
 
@@ -7779,8 +7779,8 @@ $$
 图7(b)展示了各平台逻辑量子比特数量的发展路线。中性原子平台虽然起步较晚，但凭借其可扩展性优势，预计在2028年可赶上或超过超导平台。虚线部分表示基于当前发展趋势的预测。
 
 
-<!-- 图片位置: 13_论文十三_中性原子阵列里德堡纠错/fig13g_comparison.png -->
-![图7：多平台性能对比](13_论文十三_中性原子阵列里德堡纠错/fig13g_comparison.png)
+<!-- 图片位置: 13_论文十三/fig13g_comparison.png -->
+![图7：多平台性能对比](13_论文十三/fig13g_comparison.png)
 <!-- 图片结束 -->
 
 
@@ -8362,8 +8362,8 @@ $$
 ### 3.1 2024 年各平台 Benchmark 综合对比
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14a_qec_benchmark_radar.png -->
-![QEC Benchmark 雷达图](14_论文十四_容错量子计算标准化路线图/fig14a_qec_benchmark_radar.png)
+<!-- 图片位置: 14_论文十四/fig14a_qec_benchmark_radar.png -->
+![QEC Benchmark 雷达图](14_论文十四/fig14a_qec_benchmark_radar.png)
 <!-- 图片结束 -->
 
 
@@ -8383,8 +8383,8 @@ $$
 ### 3.2 FTQC 发展里程碑时间线
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14b_milestone_timeline.png -->
-![FTQC 里程碑时间线](14_论文十四_容错量子计算标准化路线图/fig14b_milestone_timeline.png)
+<!-- 图片位置: 14_论文十四/fig14b_milestone_timeline.png -->
+![FTQC 里程碑时间线](14_论文十四/fig14b_milestone_timeline.png)
 <!-- 图片结束 -->
 
 
@@ -8399,8 +8399,8 @@ $$
 ### 3.3 FTQC 标准化 KPI 仪表盘
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14c_kpi_dashboard.png -->
-![KPI 仪表盘](14_论文十四_容错量子计算标准化路线图/fig14c_kpi_dashboard.png)
+<!-- 图片位置: 14_论文十四/fig14c_kpi_dashboard.png -->
+![KPI 仪表盘](14_论文十四/fig14c_kpi_dashboard.png)
 <!-- 图片结束 -->
 
 
@@ -8425,8 +8425,8 @@ $$
 ### 3.4 主流物理平台详细 Benchmark 对比
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14d_platform_benchmark.png -->
-![平台 Benchmark 对比](14_论文十四_容错量子计算标准化路线图/fig14d_platform_benchmark.png)
+<!-- 图片位置: 14_论文十四/fig14d_platform_benchmark.png -->
+![平台 Benchmark 对比](14_论文十四/fig14d_platform_benchmark.png)
 <!-- 图片结束 -->
 
 
@@ -8451,8 +8451,8 @@ $$
 ### 3.5 QEC 阈值与码距 Scaling 路线图
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14e_threshold_roadmap.png -->
-![阈值与码距路线图](14_论文十四_容错量子计算标准化路线图/fig14e_threshold_roadmap.png)
+<!-- 图片位置: 14_论文十四/fig14e_threshold_roadmap.png -->
+![阈值与码距路线图](14_论文十四/fig14e_threshold_roadmap.png)
 <!-- 图片结束 -->
 
 
@@ -8480,8 +8480,8 @@ $$
 ### 3.6 物理资源开销预测
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14f_resource_projection.png -->
-![资源开销预测](14_论文十四_容错量子计算标准化路线图/fig14f_resource_projection.png)
+<!-- 图片位置: 14_论文十四/fig14f_resource_projection.png -->
+![资源开销预测](14_论文十四/fig14f_resource_projection.png)
 <!-- 图片结束 -->
 
 
@@ -8507,8 +8507,8 @@ $$
 ### 3.7 FTQC 标准化五层架构详图
 
 
-<!-- 图片位置: 14_论文十四_容错量子计算标准化路线图/fig14g_standardization_layers.png -->
-![标准化层次架构](14_论文十四_容错量子计算标准化路线图/fig14g_standardization_layers.png)
+<!-- 原图像链接已失效，不以其他图片代替。 -->
+> **图像缺失说明（2026-10-26）**：原链接 `14_论文十四/fig14g_standardization_layers.png` 指向不存在文件，现以文字保留五层架构说明；未用其他图像冒充，待真实图表生成后恢复。
 <!-- 图片结束 -->
 
 

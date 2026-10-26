@@ -45,7 +45,7 @@
 
 TQIPS 的物理层不仅包含量子比特的物理实现，还包含拓扑保护的“原生编码”——如 Majorana 零能模的 non-local 存储、parafermion 的 Z₃ 统计、或光子频率-bin 编码的拓扑态。这意味着物理层输出的不是单个量子比特，而是已受拓扑保护的 anyonic 激发对，链路层直接对这些 anyonic 对进行 heralded 纠缠生成（HEG）操作。
 
-![Fig.1](paper14_fig1_stack.png)
+![Fig.1](figures/paper14_fig1_stack.png)
 *Fig.1: 协议栈架构对比：经典 TCP/IP vs 拓扑量子互联网协议栈 (TQIPS)。*
 
 ### 2.2 跨层全局纠缠模块（GEM）
@@ -74,7 +74,7 @@ GEM 的引入使 TQIPS 在功能上类似于经典网络中的 SDN（软件定�
 - **传输层（~3.96 ms）**：NVQLink GPU-QPU 往返延迟。NVIDIA 2025 年发布的 NVQLink 通过 RoCE over 400 Gb/s 以太网实现 GPU 与量子处理器的实时控制，往返 ≤ 3.96 µs……（此处应为 3.96 ms 量级，但文献中报告的是 3.96 µs，让我修正）——实际上 NVQLink 的 3.96 µs 是往返延迟，这在传输层中属于控制面延迟，而非量子数据传输延迟。量子数据传输（纠缠分发）本身受光速限制：1000 km 光纤往返 ~10 ms。
 - **应用层（~10 ms）**：端到端请求-响应，包括经典通信协商与量子态准备。
 
-![Fig.2](paper14_fig2_latency_throughput.png)
+![Fig.2](figures/paper14_fig2_latency_throughput.png)
 *Fig.2: 跨层延迟与吞吐量对比。*
 
 ### 3.2 吞吐量：拓扑保护的优势
@@ -101,7 +101,7 @@ GEM 的引入使 TQIPS 在功能上类似于经典网络中的 SDN（软件定�
 - **Tree（二叉树）**：跳数 ~ 2 log₂ N，F_end = F_link^(2 log₂ N)。N = 100 时 F ≈ 0.74，优于 Ring 但弱于 Star。
 - **Topological（拓扑保护）**：通过 anyonic 编织或拓扑码实现端到端保护，错误积累从指数降低为线性：F_topo ≈ F_link × (1 - ε·N)，其中 ε 为拓扑码错误率。当 ε = 0.001（距离-7 表面码在阈值下）时，N = 100 的 F_topo ≈ 0.855，远超 Tree 和 Ring。
 
-![Fig.3](paper14_fig3_topology_fidelity.png)
+![Fig.3](figures/paper14_fig3_topology_fidelity.png)
 *Fig.3: 端到端保真度 vs 网络拓扑（单链路 F = 0.95）。*
 
 ### 4.2 拓扑路由算法：SurfNet 与编织交换
@@ -131,7 +131,7 @@ Hu 等人（2024）提出的 SurfNet 将表面码分为 Core（核心逻辑量�
 
 对于表面码实时纠错，关键约束是**解码-反应时间必须小于量子比特的相干时间窗口**。以超导平台为例，单轮测量 ~1 µs，解码 < 1 µs，反馈控制 ~1 µs，总周期 ~3 µs。Deltaflow 2 的 16.32 µs 目前适用于 d ≤ 11 的表面码，更高码距需要进一步降低延迟或采用并行解码架构。
 
-![Fig.4](paper14_fig4_control_latency.png)
+![Fig.4](figures/paper14_fig4_control_latency.png)
 *Fig.4: 实时控制延迟平台对比。*
 
 ### 5.2 QECi 与 QRMI：开放标准接口
@@ -155,7 +155,7 @@ NVIDIA 同期推出的 QRMI（Quantum Resource Management Interface）则面向�
 - **第二代（前向纠错 + 多路复用）**：采用量子奇偶校验码（QPC）或 RGS（repeat-until-success）方案，减少经典通信开销。吞吐量提升至 ~0.1 pairs/s， fidelity ~0.85。Mantri 等人（2025）的 MTP 协议在所有参数范围内优于标准 2G-NC。
 - **第三代（量子纠错 + 单向传输）**：将拓扑量子纠错码（如表面码或 color code）嵌入中继器节点，实现单向量子纠错传输。吞吐量 ~10 pairs/s， fidelity ~0.99。这是拓扑量子互联网的目标架构：每个中继器节点本身是一个拓扑量子处理器，通过 anyonic 编织与相邻节点交换逻辑量子比特。
 
-![Fig.5](paper14_fig5_repeater_generations.png)
+![Fig.5](figures/paper14_fig5_repeater_generations.png)
 *Fig.5: 量子中继器三代演进（吞吐量、距离、保真度）。*
 
 ### 6.2 拓扑中继器：编织代替交换
@@ -190,7 +190,7 @@ $$
 
 在 N = 100 节点时，标准网络的控制开销占总带宽的 ~35%，有效吞吐量仅剩 65%；拓扑网络的控制开销 ~15%，有效吞吐量 85%。拓扑保护带来的 **~20–30% 有效吞吐量提升**在大规模网络中具有决定性优势。
 
-![Fig.6](paper14_fig6_overhead.png)
+![Fig.6](figures/paper14_fig6_overhead.png)
 *Fig.6: 协议开销对比：标准量子网络 vs 拓扑量子网络。*
 
 ---
@@ -205,7 +205,7 @@ $$
 - **发展区（TRL 5–7, SRL 4–6）**：ETSI GS QKD 016（安全保护轮廓）、QECi（Riverlane 2026）、NVQLink（NVIDIA 2025）。这些技术已验证原型，但标准文档仍在修订中，互操作性测试有限。
 - **研究区（TRL 2–4, SRL 1–3）**：IEEE P1913（SDQC）、IEEE P3120（量子计算架构）、IEEE P7131（基准测试）、NetQASM/Qoala（Delft 应用层编译）、TQIPS（本文）。这些标准处于草案或概念阶段，缺乏实际硬件验证与多供应商互操作测试。
 
-![Fig.7](paper14_fig7_maturity_matrix.png)
+![Fig.7](figures/paper14_fig7_maturity_matrix.png)
 *Fig.7: 协议标准成熟度矩阵（TRL vs SRL）。*
 
 ### 8.2 标准路线图
@@ -346,10 +346,10 @@ gen3 = {'throughput': 10, 'distance': 10000, 'fidelity': 0.99}
 
 ---
 
-[paper14_fig1_stack.png](C:/Users/一梦/Desktop/paper14_fig1_stack.png)
-[paper14_fig2_latency_throughput.png](C:/Users/一梦/Desktop/paper14_fig2_latency_throughput.png)
-[paper14_fig3_topology_fidelity.png](C:/Users/一梦/Desktop/paper14_fig3_topology_fidelity.png)
-[paper14_fig4_control_latency.png](C:/Users/一梦/Desktop/paper14_fig4_control_latency.png)
-[paper14_fig5_repeater_generations.png](C:/Users/一梦/Desktop/paper14_fig5_repeater_generations.png)
-[paper14_fig6_overhead.png](C:/Users/一梦/Desktop/paper14_fig6_overhead.png)
-[paper14_fig7_maturity_matrix.png](C:/Users/一梦/Desktop/paper14_fig7_maturity_matrix.png)
+[paper14_fig1_stack.png](figures/paper14_fig1_stack.png)
+[paper14_fig2_latency_throughput.png](figures/paper14_fig2_latency_throughput.png)
+[paper14_fig3_topology_fidelity.png](figures/paper14_fig3_topology_fidelity.png)
+[paper14_fig4_control_latency.png](figures/paper14_fig4_control_latency.png)
+[paper14_fig5_repeater_generations.png](figures/paper14_fig5_repeater_generations.png)
+[paper14_fig6_overhead.png](figures/paper14_fig6_overhead.png)
+[paper14_fig7_maturity_matrix.png](figures/paper14_fig7_maturity_matrix.png)

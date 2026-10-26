@@ -44,7 +44,7 @@ def wigner_vacuum(q, p):
 
 def verify_vacuum_wigner():
     print("[模块1] 真空态 Wigner 函数归一化与纯度")
-    # 在 [-L, L]² 网格上使用梯形积分 (np.trapz); 对高斯函数指数收敛
+    # 在 [-L, L]² 网格上使用梯形积分 (np.trapezoid); 对高斯函数指数收敛
     L = 8.0
     N = 800
     dq = 2 * L / (N - 1)
@@ -53,10 +53,10 @@ def verify_vacuum_wigner():
     Q, P = np.meshgrid(q, p)
     W = wigner_vacuum(Q, P)
     # 二维梯形积分: 沿 p 积分, 再沿 q
-    norm = np.trapz(np.trapz(W, p, axis=0), q)
+    norm = np.trapezoid(np.trapezoid(W, p, axis=0), q)
     # 纯度: Tr(ρ²) = 2π ∫∫ W² dq dp (ℏ=2 下常数因子为 2π)
     # 真空态为纯态, 故 Tr(ρ²) = 1
-    purity = 2 * np.pi * np.trapz(np.trapz(W ** 2, p, axis=0), q)
+    purity = 2 * np.pi * np.trapezoid(np.trapezoid(W ** 2, p, axis=0), q)
     print(f"  ∫∫ W_0 dq dp = {norm:.6f} (应=1, 梯形积分 N={N}, L={L})")
     print(f"  Tr(ρ²) = 2π ∫∫ W² = {purity:.6f} (应=1, 纯态)")
     # 严格阈值 1e-5; 梯形法对高斯收敛指数快, N=800 足够
@@ -90,9 +90,9 @@ def verify_squeezed_wigner():
         Q, P = np.meshgrid(q, p)
         W = wigner_squeezed(Q, P, r)
         # 数值方差: <q²> = ∫∫ q² W dq dp / ∫∫ W dq dp
-        norm = np.trapz(np.trapz(W, p, axis=0), q)
-        var_q = np.trapz(np.trapz((Q ** 2) * W, p, axis=0), q) / norm
-        var_p = np.trapz(np.trapz((P ** 2) * W, p, axis=0), q) / norm
+        norm = np.trapezoid(np.trapezoid(W, p, axis=0), q)
+        var_q = np.trapezoid(np.trapezoid((Q ** 2) * W, p, axis=0), q) / norm
+        var_p = np.trapezoid(np.trapezoid((P ** 2) * W, p, axis=0), q) / norm
         # 解析值: var_q = (1/2) e^{-2r}, var_p = (1/2) e^{2r}
         var_q_an = 0.5 * np.exp(-2 * r)
         var_p_an = 0.5 * np.exp(2 * r)

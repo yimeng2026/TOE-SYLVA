@@ -1,5 +1,7 @@
 # TOE框架进度仪表板
 
+> **历史快照说明（2026-10-26）**：本页仅保留 2026-04 至 2026-08 的历史状态，不是当前验收入口。当前以 `REPO_CONSENSUS_COHERENCE_2026.md`、`CANONICAL_SOURCES.json`、`proof_status.md` 和实际构建记录为准；本页旧百分比、任务状态与“当前/全部通过”字样不得继续外推。
+
 > ⚠️ **This dashboard was last fully updated on 2026-04-19.** Some statistics may not reflect the v7.x paper revisions and expanded papers/ directory. See `papers/CONTENTS.md` and `papers/README.md` for the latest paper inventory.
 
 > **生成日期**: 2026-04-19 · **审计更新**: 2026-08-11

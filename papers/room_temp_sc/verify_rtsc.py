@@ -41,7 +41,7 @@ def bcs_gap_integral(delta, T, omega_D=1.0, n_points=500):
     else:
         integrand = np.tanh(E / (2.0 * T)) / E
     # Use trapezoid (numpy >= 2.0) or trapz (older numpy)
-    trapz_func = getattr(np, 'trapezoid', getattr(np, 'trapz'))
+    trapz_func = getattr(np, 'trapezoid', None) or np.trapz
     return trapz_func(integrand, xi)
 
 

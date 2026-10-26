@@ -126,7 +126,7 @@ def module3_bcs_gap():
     N_terms = 10000
     xi = np.linspace(0, omega_D / (hbar), N_terms) * hbar  # 能量网格
     integrand = 1.0 / np.sqrt(xi**2 + Delta_0**2)
-    integral = np.trapz(integrand, xi)
+    integral = np.trapezoid(integrand, xi)
     gap_eq_lhs = 1.0
     gap_eq_rhs = V_N0 * integral
     gap_eq_err = abs(gap_eq_lhs - gap_eq_rhs) / gap_eq_lhs

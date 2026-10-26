@@ -14,6 +14,7 @@
   - 全部整数精确运算, 无浮点.
 """
 import sys, time
+from pathlib import Path
 import numpy as np
 
 FAIL = False
@@ -24,7 +25,7 @@ def check(name, ok, detail=""):
     print(f"[{tag}] {name}" + (f"  | {detail}" if detail else ""))
 
 # ---------------------------------------------------------------- 解析
-raw = open("verify_alphaevolve/ramsey/R_3_13_61.txt", encoding="utf-8").read()
+raw = Path(__file__).resolve().with_name("R_3_13_61.txt").read_text(encoding="utf-8")
 clean = raw.replace("[", " ").replace("]", " ")
 A = np.fromstring(clean, sep=" ", dtype=np.int64).reshape(60, 60)
 

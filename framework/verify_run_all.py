@@ -243,7 +243,7 @@ def main():
                 "MPLBACKEND": "Agg"},
         "summary": {"total": total, "passed": passed, "failed": failed,
                     "timeout": timedout, "error": errored,
-                    "pass_line": f"{passed}/{total} 脚本全部检查通过 (exit 0)"},
+                    "pass_line": f"{passed}/{total} 脚本通过 (exit 0)"},
         "cleanup": cleanup_log,
         "results": results,
     }
@@ -252,7 +252,7 @@ def main():
 
     print()
     print("=" * 60)
-    print(f"回归完成: {passed}/{total} 脚本全部检查通过 (exit 0)")
+    print(f"回归完成: {passed}/{total} 脚本通过 (exit 0)")
     print(f"  失败: {failed}  超时: {timedout}  运行错误: {errored}")
     print(f"报告: {os.path.relpath(REPORT_PATH, REPO_ROOT)}")
     if failed or timedout or errored:

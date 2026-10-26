@@ -5,6 +5,7 @@
 > **状态**：持续更新中，所有论文均包含 SYLVA 专项研究成果  
 > **版本**：v1.1 综合版（交叉引用深化版）  
 > **最后更新**：2026-07-01  
+> **2026-10-26 口径注记**：下方文件数、代码行数和“零 sorry”是历史目录快照，不代表当前全仓库状态；当前结论以[全仓库共识与自洽性矩阵](../../framework/REPO_CONSENSUS_COHERENCE_2026.md)为准。
 
 ---
 
@@ -233,12 +234,12 @@ SYLVA 项目对希尔伯特 23 问题与千禧年 7 难题进行了系统性学�
 
 ## 相关文档
 
-- [SYLVA-PFE 统一索引](../../SYLVA_PFE_UNIFIED_INDEX.md) — 跨仓库完整导航
+- [SYLVA-PFE 统一索引](../../docs/SYLVA_PFE_UNIFIED_INDEX.md) — 跨仓库完整导航
 - [交叉引用索引](./CROSS_REFERENCE_INDEX.md) — 30 篇论文的交叉引用矩阵、关键定理跨论文引用、阅读路径推荐
 - [sylva_formalization/SylvaFormalization](../../sylva_formalization/SylvaFormalization/) — Lean 4 形式化代码
-- [sylva_academic](../../sylva_academic/) — 学术审计报告与深度研究
-- [alpha_derivation](../../alpha_derivation/) — 15 个基本常数的统一推导
-- [toe_framework](../../toe_framework/) — 统一理论框架
+- [academic](../../academic/) — 学术审计报告与深度研究
+- [P-001 alpha_derivation](./P-001_alpha_derivation.md) — 基本常数研究文稿，不代表已完成的统一推导
+- [framework](../../framework/) — 统一理论研究框架与当前证据治理入口
 
 ---
 

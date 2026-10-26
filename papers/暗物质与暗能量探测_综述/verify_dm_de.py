@@ -207,7 +207,7 @@ def verify_bao_distances():
         H_0_si = H_0 * km_s / Mpc_to_m  # s^-1
         d_H = c / H_0_si  # Hubble distance in meters
         d_H_Mpc = d_H / Mpc_to_m  # convert to Mpc
-        return d_H_Mpc * np.trapz(integrand, z_arr)
+        return d_H_Mpc * np.trapezoid(integrand, z_arr)
 
     # Compute D_A for various redshifts
     z_test = [0.1, 0.3, 0.5, 0.57, 1.0, 2.0, 3.0]
@@ -366,7 +366,7 @@ def verify_direct_detection():
         v_arr = np.linspace(v_min_km_s, v_esc, n_pts)
         dv = v_arr[1] - v_arr[0]
         integrand = np.array([f_v(v) / v for v in v_arr])
-        integral = np.trapz(integrand, v_arr)
+        integral = np.trapezoid(integrand, v_arr)
 
         # Form factor squared
         F2 = form_factor(E_nr)**2
@@ -395,7 +395,7 @@ def verify_direct_detection():
         dR_dE[i] = rate_per_s * N_N_per_kg * sec_per_day
 
     # Total rate (integrate over E_nr)
-    total_rate = np.trapz(dR_dE, E_nr_arr)  # events/kg/day
+    total_rate = np.trapezoid(dR_dE, E_nr_arr)  # events/kg/day
 
     # For XENONnT: exposure = 3.1 tonne-year, expected events
     exposure_tonne_year = 3.1
