@@ -14,7 +14,7 @@ SYLVA module hierarchy, with zero bare `sorry`.
 
 Structure of the file:
   1. Information ↔ Emergence: entropy maximization ⇔ symmetric phase
-  2. Dynamics ↔ Evolution: replicator dynamics ⇔ gradient flow on simplex
+  2. Dynamics ↔ Evolution: replicator probability conservation
   3. Geometry ↔ Symmetry: Euler characteristic ⇔ fermion generation count
   4. Causality ↔ Information: information causality ⇔ Tsirelson bound
 
@@ -60,6 +60,7 @@ import SYLVA_InformationCore
 import SYLVA_EmergenceCore
 import SYLVA_GeometryCore
 import SYLVA_SymmetryCore
+import SYLVA_ReplicatorCore
 -- import SYLVA_Dynamics
 -- import SYLVA_Evolution
 -- import SYLVA_Geometry
@@ -109,57 +110,25 @@ theorem entropy_maximization_implies_symmetric_phase
 
 -- ============================================================================
 -- Section 2: Dynamics ↔ Evolution
--- Theorem: replicator_dynamics_is_gradient_flow
+-- Theorem: replicator_dynamics_conserves_probability
 -- ============================================================================
 
-/- [StreamA修复] 定理 2 整段注释保留：依赖 SYLVA_Evolution/SYLVA_Dynamics——本波核查两模块自身遗留错误未清零
-   （56 文件遗留清单成员），import 仍阻断。恢复时引用须用真 namespace 前缀（非裸名/非伪前缀，见文件头更正注记）。
-/-- **Cross-Module Theorem 2: Dynamics–Evolution Connection**
+/-- **Cross-Module Theorem 2: Dynamics–Evolution probability conservation**
 
-    **Statement**: The replicator dynamics of evolutionary game theory can be
-    viewed as a gradient flow on the probability simplex, analogous to the
-    Hamiltonian (Liouville) flow that preserves phase-space volume in classical
-    dynamics.
+    The discrete replicator increments sum to zero for a probability vector and
+    equal-length frequency/fitness lists. The proof uses the independently built
+    replicator core and does not import the unfinished Dynamics/Evolution monoliths.
 
-    **Proof idea**: We bring together:
-    1. `replicator_sum_zero` (SYLVA_Evolution): The total change of strategy
-       frequencies under the replicator equation is zero — the frequencies
-       remain on the simplex (probability conservation).
-    2. `liouville_theorem` (SYLVA_Dynamics): The Hamiltonian flow preserves
-       phase-space volume — a conservation law in the space of (q, p).
-
-    Both theorems express *conservation* in their respective state spaces:
-    the replicator equation conserves the total probability mass on the simplex,
-    while the Hamiltonian flow conserves the phase-space volume.  The analogy
-    identifies evolution as a "Hamiltonian dynamics" on the space of probabilities.
-
-    **Physical meaning**: Evolution is a gradient flow on the probability
-    simplex; the selection pressure acts like a potential, and the population
-    climbs the fitness landscape just as a physical system evolves along a
-    Hamiltonian trajectory.  This is the conceptual foundation of the
-    Fisher fundamental theorem and the Price equation.
--/
-theorem replicator_dynamics_is_gradient_flow
-    (frequencies : List ℝ) (fitnesses : List ℝ)
-    (h_freq : frequencies.length > 0) (h_fit : fitnesses.length > 0)
-    (h_length : frequencies.length = fitnesses.length)
-    (H : ℝ → ℝ → ℝ) (q p : ℝ → ℝ) (t : ℝ)
-    (h_hamiltonian : SYLVA_Dynamics.hamiltonianEquations H q p) :
-    -- The replicator equation preserves total frequency (probability conservation).
-    let replicator := SYLVA_Evolution.ReplicatorEquation frequencies fitnesses
-    List.sum replicator = 0
-    -- The Hamiltonian flow preserves phase-space volume (Liouville theorem).
-    ∧ True := by
-  constructor
-  · -- Frequency conservation on the probability simplex.
-    apply SYLVA_Evolution.replicator_sum_zero frequencies fitnesses
-    exact h_freq
-    exact h_fit
-    exact h_length
-  · -- Phase-space volume conservation (Liouville theorem).
-    apply SYLVA_Dynamics.liouville_theorem H q p t
-    exact h_hamiltonian
--/
+    The earlier title claimed a gradient flow, but its body contained only this
+    conservation statement and a trivial Hamiltonian placeholder. This restored
+    theorem therefore makes no Shahshahani/Fisher–Rao gradient-flow claim. -/
+theorem replicator_dynamics_conserves_probability
+    (frequencies fitnesses : List ℝ)
+    (h_probability : Sylva.SYLVAReplicatorCore.IsProbabilityVector frequencies)
+    (h_length : frequencies.length = fitnesses.length) :
+    (Sylva.SYLVAReplicatorCore.ReplicatorEquation frequencies fitnesses).sum = 0 := by
+  exact Sylva.SYLVAReplicatorCore.replicator_sum_zero frequencies fitnesses
+    h_probability h_length
 
 -- ============================================================================
 -- Section 3: Geometry ↔ Symmetry

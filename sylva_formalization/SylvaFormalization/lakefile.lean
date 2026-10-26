@@ -437,6 +437,7 @@ lean_lib «SylvaFormalization» where
     `SYLVA_Ethics,
     `SYLVA_EuclideanQuantumGravityDeep,
     `SYLVA_Evolution,
+    `SYLVA_ReplicatorCore,
     `SYLVA_EvolutionaryDynamics,
     `SYLVA_ExperimentalPredictions,
     `SYLVA_ExperimentalVerification,

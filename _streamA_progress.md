@@ -449,3 +449,27 @@
 - **CMT 累计恢复：2/4**。定理 2/4 继续封存，未宣称 Dynamics/Evolution/Causality 已修复。
 - Geometry/Symmetry 千行单体文件仍有独立遗留错误，本波只验证核心接口，不声称单体清零。
 - 下一批：优先评估 Dynamics/Evolution 的 replicator 接口；Causality 的 Tsirelson 既有公理不得复制成新公理，需选择真实证明、保留封存或显式条件化，不能为追求 4/4 而降级纪律。
+
+---
+
+## 复扫第十五波（v8.23，CMT 定理 2 以概率守恒形式恢复，累计 3/4）
+
+### 核心接口与证明
+
+- **SYLVA_ReplicatorCore.lean（新）**：不导入 Dynamics/Evolution 单体，使用有限列表定义概率向量、加权适应度、平均适应度与 replicator 增量；`sum_replicatorWithMean` 逐列表归纳证明代数和，`replicator_sum_zero` 以概率归一化消去分母，完成真实的总频率守恒证明。
+- **旧命题漏洞修复**：旧正文只有“概率守恒 ∧ True”，却命名为 gradient flow；本波更名为 `replicator_dynamics_conserves_probability`，不声称 Shahshahani/Fisher–Rao 梯度流，不保留无关 Hamiltonian 占位。
+- **零质量反例正式加入**：`replicator_zero_mass_counterexample` 证明旧定义在 `frequencies=[1,-1]`、`fitnesses=[1,0]` 时增量和为 `1` 而非 `0`，说明仅要求列表非空不足以防除零/反例；概率向量与等长条件是必要的语义强化，不是为编译而弱化。
+- **CMT 正式接入**：新增 `import SYLVA_ReplicatorCore`，lakefile roots 同步登记；定理 2 直接调用已构建核心。文件顶部说明同步改为 probability conservation。
+
+### 实际验证
+
+- `lake build SYLVA_ReplicatorCore` **exit 0（8248 jobs）**。
+- `lake env lean SYLVA_CrossModuleTheorems.lean` **exit 0**；`lake build SYLVA_CrossModuleTheorems` **exit 0（8253 jobs）**。
+- `#print axioms`：`replicator_sum_zero`、`replicator_dynamics_conserves_probability`、`replicator_zero_mass_counterexample` 均仅显示 `[propext, Classical.choice, Quot.sound]`，无 `sorryAx`。
+- 新核心行首 `sorry/admit/postulate/axiom` 扫描为 0；未新增公理。既有 CMT 其他警告不冒充本波清零项。
+
+### 诚实边界
+
+- **CMT 累计恢复：3/4**。定理 4 的 Tsirelson 部分继续封存，未复制既有 `tsirelson_bound_axiom` 来凑齐 4/4。
+- Dynamics/Evolution 千行单体文件仍有独立遗留问题，本波只验证小型核心，不声称单体修完；Shahshahani 梯度流、Fisher 信息度量与完整连续时间理论也未形式化。
+- 下一批：审查 Causality 的 CHSH/信息因果定义，选择可证明的有限量子模型、保留封存或显式条件化；禁止以复制公理、删命题或 `True` 占位完成表面恢复。
