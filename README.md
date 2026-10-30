@@ -150,4 +150,4 @@ python scripts/verify_honest_repo.py
 
 ## 9. 许可
 
-本仓库采用 [MIT License](LICENSE)。论文和综述属于探索性研究材料，不因放入仓库而自动获得同行评议地位。
+本仓库采用 [Creative Commons Attribution 4.0 International（CC BY 4.0）](LICENSE)。论文和综述属于探索性研究材料，不因放入仓库而自动获得同行评议地位。
