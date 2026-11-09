@@ -29,7 +29,7 @@
 - Produces: `chern_number_pip_raw(t, Delta, mu, nk=80) -> float`。
 - Preserves: `chern_number_pip(t, Delta, mu, nk=80) -> int`，等价于 `int(round(chern_number_pip_raw(...)))`。
 
-- [ ] **Step 1: 写固定物理预期的失败测试**
+- [x] **Step 1: 写固定物理预期的失败测试**
 
 新建测试，导入失败转为明确 FAIL 而非修改预期：
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     raise SystemExit(0 if run_all_tests() else 1)
 ```
 
-- [ ] **Step 2: 确认新测试因缺少浮点入口而失败**
+- [x] **Step 2: 确认新测试因缺少浮点入口而失败**
 
 Run:
 
@@ -86,7 +86,7 @@ python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_analyti
 
 Expected: 退出码 1，两项测试均因 `chern_number_pip_raw` 不存在而 FAIL；不得根据旧中心差分输出修改固定相区。
 
-- [ ] **Step 3: 用解析导数实现浮点入口并保留整数包装**
+- [x] **Step 3: 用解析导数实现浮点入口并保留整数包装**
 
 将现有能隙检查、网格和 E 向量移入 `chern_number_pip_raw`，用以下解析导数替换 `np.roll` 中心差分：
 
@@ -114,7 +114,7 @@ def chern_number_pip(t, Delta, mu, nk=80):
 
 注意：现有 docstring 测试要求 `E = (Re Delta_k, -Im Delta_k, eps_k)` 的精确空格形式，实现时保留该字符串。
 
-- [ ] **Step 4: 运行新旧测试**
+- [x] **Step 4: 运行新旧测试**
 
 Run:
 
@@ -124,7 +124,7 @@ python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_*.py" -
 
 Expected: 退出码 0；原 5 项符号／拒算测试与新增 2 项测试合计 7 项全部通过。
 
-- [ ] **Step 5: 提交解析导数实现**
+- [x] **Step 5: 提交解析导数实现**
 
 ```bash
 git add papers/topo_quantum_internet/verify_topo_qinternet.py papers/topo_quantum_internet/test_pip_analytic_derivative.py
@@ -144,7 +144,7 @@ git commit -m "Use analytic derivatives for legacy p+ip Chern number"
 - Consumes: Task 1 的 `chern_number_pip_raw` 和命令行提供的 provider `pip_chern_convention.py` 路径。
 - Produces: 12 个 μ／网格组合的 legacy 浮点值、provider 直接积分、provider FHS 及最大绝对差。
 
-- [ ] **Step 1: 编写不绑定绝对路径的交叉验证脚本**
+- [x] **Step 1: 编写不绑定绝对路径的交叉验证脚本**
 
 脚本接受 `--reference /absolute/path/pip_chern_convention.py`，用 `importlib.util.spec_from_file_location` 导入参考实现，包含 `run_all_tests(reference: Path) -> bool`。对 `mu=(-5,-1,1,5)`、`grid=(41,81,161)` 计算：
 
@@ -158,7 +158,7 @@ method_difference = abs(reference_degree - reference_fhs)
 
 两项差值均须 `<0.03`；任一失败打印实际值并以退出码 1 结束。输出 JSON 保存全部原始浮点值、`maximum_legacy_reference_difference`、`maximum_reference_method_difference` 和 `status`。
 
-- [ ] **Step 2: 运行真实交叉验证和完整 Module 3**
+- [x] **Step 2: 运行真实交叉验证和完整 Module 3**
 
 从 `papers/topo_quantum_internet` 执行：
 
@@ -170,7 +170,7 @@ python -c "from pathlib import Path; import verify_topo_qinternet as m; out=Path
 
 Expected: 两命令退出码均为 0；交叉 JSON 为 `status: pass`，Module 3 输出精确符号与 `Module 3: PASS`。检查 `verification-output-analytic/fig_topo_qinternet_pip.png`，三个相变点仍留空。
 
-- [ ] **Step 3: 登记 FE-20 与最终复验**
+- [x] **Step 3: 登记 FE-20 与最终复验**
 
 在勘误中新增 FE-20，记录旧中心差分的精度限制、解析导数公式、公开 API 不变、最大交叉差及“不是新外部定理”的边界。然后运行：
 
