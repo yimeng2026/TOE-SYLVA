@@ -211,6 +211,7 @@
 - **来源**: `papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md` §9.2、§9.4；mathlib `GroupTheory/MonoidLocalization/GrothendieckGroup.lean`；`k0_probe_20261110.lean` 与真实编译日志。
 - **问题**: 旧 K1 设计稿使用未核实的 `AddLocalization.addMonoidOf`，并把 `K_0` 缺失表述得容易覆盖交换幺半群的 Grothendieck 群完备化。实际缓存已有 `Algebra.GrothendieckAddGroup.of` 与 `lift`；`lift` 已是同态类型之间的等价。旧稿中的 `def` 别名还会阻碍类型类展开，须使用 `abbrev`。将这一既有库定理写成项目的新数学结果会越过归属边界。
 - **处置**: K1a 改为直接复用加法接口，真实编译 `universal_property` 的 ∃! 形式；退出码 0，10/10 检查通过，公理输出仅 Lean 标准三项。登记为库接口验证，不是外部新定理。§9.4 收窄“缺失”为投射模、环、拓扑等后续 K 理论缺口。消去性充要条件、K2–K4 继续保持未编译设计与开放状态，未把 K1a 扩展成整个 K1 或 K 理论完成。
+- **K1b 后续（2026-11-10）**: `AddSubmonoid.LocalizationMap.top_injective_iff` 已连接标准映射单射性与 `IsCancelAdd`；左右正则形式以交换律转换。`inclusion_injective_iff` 真实编译退出码 0，11/11 检查通过，实际公理仅 `[propext, Quot.sound]`，未为凑齐三项额外引入 `Classical.choice`。K1a＋K1b 接口闭合，K2–K4 继续开放。
 - **教训**: 形式化前先查询实际生成的 `to_additive` 名称和类型，不猜测接口；`def` 与 `abbrev` 的透明度差异会直接影响类型类推断。复用已有定理必须同时记录上游源码、编译命令、退出码和公理审计。
 
 ---
@@ -228,6 +229,7 @@
 | v1.6 | 2026-10-27 | 登记 FE-15（计数几何验证硬编码旧错误且无条件成功退出）与 FE-16（血缘映射缺失静默变为空映射）；加入真实负例、四目标 Lean CI 构建和 CI 执行失败传播，保留全量 Lean 与可信血缘映射债务。 |
 | v1.7 | 2026-11-10 | 登记 FE-17（“8/10 核心开放问题已解决”缺乏证据并含事实性错误）；`OPEN_PROBLEMS.md` 升级为 v2.0，逐项恢复开放、概念进展或工程未决状态，新增逐行证据审计与外部基线修正。 |
 | v1.8 | 2026-11-10 | 登记 FE-18（K1 群完备化接口与“缺失”口径不准确）；K1a 改用 `Algebra.GrothendieckAddGroup` 并真实编译，保留 K1b–K4 开放。 |
+| v1.9 | 2026-11-10 | FE-18 后续：K1b 以 `AddSubmonoid.LocalizationMap.top_injective_iff` 完成单射性↔全消去律的真实编译，K1a＋K1b 接口闭合，K2–K4 继续开放。 |
 
 ---
 

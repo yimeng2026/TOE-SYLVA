@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "scope": "K1b：标准 Grothendieck 映射单射性当且仅当全消去律；复用 mathlib top_injective_iff。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\k0_cancellation_probe_20261110.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorem": "SylvaK0CancellationProbe.inclusion_injective_iff",
+  "axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "cancellation_iff_completed": true,
+  "general_k0_completed": false,
+  "k2_to_k4_completed": false,
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "inclusion_injective_iff 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "使用 top_injective_iff",
+      "pass": true
+    },
+    {
+      "label": "左右消去均覆盖",
+      "pass": true
+    },
+    {
+      "label": "范围限定明确",
+      "pass": true
+    },
+    {
+      "label": "证明体不超过 50 行",
+      "pass": true
+    }
+  ],
+  "log": "k0_cancellation_compile_log_20261110.txt"
+}
