@@ -1,0 +1,217 @@
+{
+  "file": "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\K2_ZERO_EXTENSION.docx",
+  "engine": "doc-k https://www.kimi.com/pages/dock/embed (final view)",
+  "browser": "C:\\Users\\一梦\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1223\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+  "pages": 4,
+  "rendered": 4,
+  "ms": 1883,
+  "nearBlankPages": [],
+  "fidelity": {
+    "verdict": "lossy",
+    "byCategory": {
+      "content-loss": 9,
+      "degraded": 238,
+      "interactivity-loss": 2,
+      "metadata-loss": 329,
+      "unknown": 1
+    },
+    "suppressed": [],
+    "findings": [
+      {
+        "category": "degraded",
+        "severity": "medium",
+        "part": "word/theme/theme1.xml",
+        "element": "a:fillStyleLst",
+        "count": 1,
+        "note": "主题填充样式表（a:fillStyleLst）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "medium",
+        "part": "word/theme/theme1.xml",
+        "element": "a:effectStyleLst",
+        "count": 1,
+        "note": "主题效果样式表（a:effectStyleLst）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "medium",
+        "part": "word/theme/theme1.xml",
+        "element": "a:bgFillStyleLst",
+        "count": 1,
+        "note": "主题背景填充样式表（a:bgFillStyleLst）不建模"
+      },
+      {
+        "category": "interactivity-loss",
+        "severity": "medium",
+        "part": "word/document.xml",
+        "element": "w:sdtPr",
+        "count": 1,
+        "note": "内容控件属性（占位提示/下拉/复选框/日期选择器/数据绑定）不建模（sdt 拆壳保内容）"
+      },
+      {
+        "category": "degraded",
+        "severity": "medium",
+        "part": "word/document.xml",
+        "element": "w:pgMar",
+        "count": 1,
+        "note": "gutter 装订线不建模（非零时版心宽/位置偏移）"
+      },
+      {
+        "category": "interactivity-loss",
+        "severity": "medium",
+        "part": "word/settings.xml",
+        "element": "w:embedSystemFonts",
+        "count": 1,
+        "note": "嵌入字体开关与字体数据不随包保留"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:rFonts",
+        "count": 102,
+        "note": "rFonts/@hint（东亚字体提示）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:lvlJc",
+        "count": 27,
+        "note": "编号标签对齐（w:lvlJc）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:color",
+        "count": 17,
+        "note": "主题色引用不建模（仅字面 hex 烧值）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:color",
+        "count": 9,
+        "note": "主题色明暗调整不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:rFonts",
+        "count": 9,
+        "note": "rFonts/@cs（复杂脚本字体）不建模（docDefaults/numbering lvl 等上下文；run/样式级已建模）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:rFonts",
+        "count": 9,
+        "note": "rFonts/@hint（东亚字体提示）不建模"
+      },
+      {
+        "category": "content-loss",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:lvlOverride",
+        "count": 9,
+        "note": "编号级别覆盖（w:lvlOverride/w:startOverride）不建模（语料命中均行为中性，首例非中性出现再建模）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:color",
+        "count": 7,
+        "note": "主题色明暗调整不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:bCs",
+        "count": 7,
+        "note": "复杂脚本粗体（w:bCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:iCs",
+        "count": 6,
+        "note": "复杂脚本斜体（w:iCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/theme/theme1.xml",
+        "element": "a:ln",
+        "count": 3,
+        "note": "线端样式（theme a:ln/@cap）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/theme/theme1.xml",
+        "element": "a:ln",
+        "count": 3,
+        "note": "复合线型（theme a:ln/@cmpd）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/theme/theme1.xml",
+        "element": "a:ln",
+        "count": 3,
+        "note": "线对齐（theme a:ln/@algn）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/theme/theme1.xml",
+        "element": "a:solidFill",
+        "count": 3,
+        "note": "主题线型颜色不建模（仅线宽槽建模）"
+      }
+    ]
+  },
+  "contactSheet": "contact-sheet.png",
+  "pageFiles": [
+    {
+      "page": 1,
+      "file": "page-01.png",
+      "textChars": 454,
+      "media": 2,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 2,
+      "file": "page-02.png",
+      "textChars": 753,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 3,
+      "file": "page-03.png",
+      "textChars": 567,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 4,
+      "file": "page-04.png",
+      "textChars": 481,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    }
+  ]
+}
