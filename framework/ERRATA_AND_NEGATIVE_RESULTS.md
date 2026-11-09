@@ -195,6 +195,16 @@
 
 ---
 
+### FE-17: “8/10 核心开放问题已解决”缺乏证据并包含事实性错误
+
+- **日期**: 2026-11-10
+- **来源**: `papers/OPEN_PROBLEMS.md`、`framework/101_fine_structure_constant_derivation.md`、`103_non_bps_black_hole_generalization.md`、`102_dark_energy_toe_bridge.md`、`96_symplectic_geometry_to_toe_bridge.md`、`97_noncommutative_geometry_to_toe_bridge.md`、`99_postulate_dependency_dag.md`、`100_padic_adelic_to_toe_bridge.md`、`98_fermion_mass_spectrum.md`、`framework/proof_status.md`、`.github/workflows/ci.yml`；NIST CODATA 2022、Pardon 原文、DESI DR2 与五次簇标准拓扑资料。
+- **问题**: 旧表把 O1–O6、O9、O10 标为已解决并汇总为 8/10，但对应文档仍是 DRAFT 或明确承认未完成。O1 自己声明“不自称数学证明”，却以三链等价和“巧合概率压到不可能”作结；还使用旧 CODATA 和不符合五次簇标准值的 χ=-100 对应。O2 把 MNOP 曲线枚举对应扩大为对任意 BPS 黑洞熵的证明，并用未计算的 1/4、3/4 熵分解替代非 BPS 微观计数。O3 的真空极限式在 Z→1 时不能给出正 Λ，L_max 未确定，且“目前无演化迹象”落后于 DESI DR2。O4 的最小 5 公理没有最小性证明，O5 的无限维 eta-DT 对应未证，O6 的 p-adic 虚拟基本类未构造，O9 的 DT→黑洞熵最后一步未证，O10 没有任何新质量数值。O7 仍有 131 个 Agda postulate 名字声明，O8 的 CI 只构建四个目标。
+- **处置**: `OPEN_PROBLEMS.md` 升级为 v2.0，撤回“8/10 已解决”，改登记为 6 项理论开放、2 项文档或概念进展、2 项工程未决；逐项给出下一步可执行工作。新增 `papers/CORE_OPEN_PROBLEMS_AUDIT_2026-11-10.md` 和 `core-open-problems-review.json`，逐行检查证据锚点并登记外部基线修正。原桥接文档保留作历史，不把本轮纠偏包装成任何理论或工程问题已经解决。
+- **教训**: 新增文档、权威定理名称、数值接近和类比都不是新命题的完成证明。理论必须给出最小可复核算例，工程必须给出实际构建范围与退出码；发现事实错误时应先降级和登记，再讨论新理论方向。
+
+---
+
 ## 三、登记修订历史
 
 | 版本 | 日期 | 变更 |
@@ -206,6 +216,7 @@
 | v1.4 | 2026-10-26 | 登记 FE-12（无向 Minkowski 间隔关系的假传递性）与 FE-13（全量回归接口、路径和汇总措辞）；新增因果反例及时间方向，数值回归修复后 304/305，剩余 SymPy 依赖与计数几何语义债务保留。 |
 | v1.5 | 2026-10-26 | 登记 FE-14（清单分类总数误作 Lean 扫描分母）；最终改用 `lean.scanned_files=22,228`，同步修正 README、共识矩阵和工作记录。 |
 | v1.6 | 2026-10-27 | 登记 FE-15（计数几何验证硬编码旧错误且无条件成功退出）与 FE-16（血缘映射缺失静默变为空映射）；加入真实负例、四目标 Lean CI 构建和 CI 执行失败传播，保留全量 Lean 与可信血缘映射债务。 |
+| v1.7 | 2026-11-10 | 登记 FE-17（“8/10 核心开放问题已解决”缺乏证据并含事实性错误）；`OPEN_PROBLEMS.md` 升级为 v2.0，逐项恢复开放、概念进展或工程未决状态，新增逐行证据审计与外部基线修正。 |
 
 ---
 
