@@ -1,0 +1,72 @@
+{
+  "status": "pass",
+  "scope": "K2 稳定相似基础核：标准定义、自反性与对称性；传递性和 K₀(R) 未完成。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\k2_stable_similarity_core_probe_20261110.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorems_audited": [
+    "stableSimilar_refl",
+    "stableSimilar_symm"
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "stable_similarity_core_completed": true,
+  "stable_similarity_equivalence_completed": false,
+  "stable_similarity_completed": false,
+  "general_k0_completed": false,
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "stableSimilar_refl 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "stableSimilar_symm 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "使用标准稳定相似定义",
+      "pass": true
+    },
+    {
+      "label": "范围限定明确",
+      "pass": true
+    },
+    {
+      "label": "未提前声明传递性",
+      "pass": true
+    }
+  ],
+  "log": "k2_stable_similarity_core_compile_log_20261110.txt"
+}

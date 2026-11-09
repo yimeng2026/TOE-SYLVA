@@ -1,0 +1,41 @@
+test_fresh_compile_and_axioms (__main__.K2StableSimilarityCoreTests.test_fresh_compile_and_axioms) ... FAIL
+test_native_word_formula_and_table (__main__.K2StableSimilarityCoreTests.test_native_word_formula_and_table) ... FAIL
+test_report_preserves_transitivity_boundary (__main__.K2StableSimilarityCoreTests.test_report_preserves_transitivity_boundary) ... FAIL
+test_source_has_stable_similarity_core_only (__main__.K2StableSimilarityCoreTests.test_source_has_stable_similarity_core_only) ... FAIL
+
+======================================================================
+FAIL: test_fresh_compile_and_axioms (__main__.K2StableSimilarityCoreTests.test_fresh_compile_and_axioms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_core.py", line 30, in test_fresh_compile_and_axioms
+    self.assertTrue(VERIFY.is_file(), "缺少稳定相似基础核验证脚本")
+AssertionError: False is not true : 缺少稳定相似基础核验证脚本
+
+======================================================================
+FAIL: test_native_word_formula_and_table (__main__.K2StableSimilarityCoreTests.test_native_word_formula_and_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_core.py", line 53, in test_native_word_formula_and_table
+    self.assertTrue(DOCX.is_file(), "缺少稳定相似基础核 Word")
+AssertionError: False is not true : 缺少稳定相似基础核 Word
+
+======================================================================
+FAIL: test_report_preserves_transitivity_boundary (__main__.K2StableSimilarityCoreTests.test_report_preserves_transitivity_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_core.py", line 47, in test_report_preserves_transitivity_boundary
+    self.assertTrue(REPORT.is_file(), "缺少稳定相似基础核报告")
+AssertionError: False is not true : 缺少稳定相似基础核报告
+
+======================================================================
+FAIL: test_source_has_stable_similarity_core_only (__main__.K2StableSimilarityCoreTests.test_source_has_stable_similarity_core_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_core.py", line 21, in test_source_has_stable_similarity_core_only
+    self.assertTrue(LEAN.is_file(), "缺少稳定相似基础核 Lean 证明")
+AssertionError: False is not true : 缺少稳定相似基础核 Lean 证明
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)
