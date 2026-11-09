@@ -30,7 +30,7 @@
 - Consumes: 既有 `Similar`、`zeroExtend` 的独立实现，以及 mathlib `Matrix.reindexAlgEquiv`、`Units.map`。
 - Produces: `similar_reindex_forward`、`similar_reindex`、`zeroExtendSwapEquiv`、`zeroExtend_swap`。
 
-- [ ] **Step 1: 先写失败测试**
+- [x] **Step 1: 先写失败测试**
 
 `test_k2_reindex_zero_swap.py` 必须要求源码包含：
 
@@ -49,12 +49,12 @@ for phrase in (
 
 另外三项测试分别要求：真实编译和三条公理审计；报告包含“重索引”“交换零扩展”“稳定相似尚未完成”“不是新的外部数学定理”；Word 含原生公式和表格。验证脚本含 `run_all_tests()`，且 `stable_similarity_completed=false`、`general_k0_completed=false`。
 
-- [ ] **Step 2: 确认四项测试因缺失实现而失败**
+- [x] **Step 2: 确认四项测试因缺失实现而失败**
 
 Run: `python test_k2_reindex_zero_swap.py`
 Expected: 退出码 1，源码、验证脚本、报告、Word 四项均 FAIL；保存原始输出。
 
-- [ ] **Step 3: 实现重索引相似与交换零扩展**
+- [x] **Step 3: 实现重索引相似与交换零扩展**
 
 普通相似沿用既有定义：
 
@@ -120,12 +120,12 @@ theorem zeroExtend_swap {R : Type*} [Ring R]
 
 文件头与每个 def／theorem 均写三要素 docstring。三条 `#print axioms` 只针对 `similar_reindex_forward`、`similar_reindex`、`zeroExtend_swap`。
 
-- [ ] **Step 4: 真实编译与边界检查**
+- [x] **Step 4: 真实编译与边界检查**
 
 Run: `python verify_k2_reindex_zero_swap_20261110.py`
 Expected: 编译退出码 0，12/12 检查通过，三条公理均只为标准子集；若 `sumAssoc`、`sumCongr` 或单位映射形式不匹配，读取上游签名后修正，不添加公理或占位。
 
-- [ ] **Step 5: 提交证明**
+- [x] **Step 5: 提交证明**
 
 ```bash
 git add docs/superpowers/plans/2026-11-10-k2-reindex-and-zero-swap.md papers/数学基础强化_系列/_panel_records/test_k2_reindex_zero_swap.py papers/数学基础强化_系列/_panel_records/k2_reindex_zero_swap_probe_20261110.lean papers/数学基础强化_系列/_panel_records/verify_k2_reindex_zero_swap_20261110.py papers/数学基础强化_系列/_panel_records/k2_reindex_zero_swap_compile_log_20261110.txt papers/数学基础强化_系列/_panel_records/k2_reindex_zero_swap_verification_20261110.json
@@ -140,15 +140,15 @@ git commit -m "Verify similarity reindexing and zero-block exchange"
 - Create: `papers/数学基础强化_系列/_panel_records/K2_REINDEX_ZERO_SWAP.docx`
 - Create: `papers/数学基础强化_系列/_panel_records/k2-reindex-zero-swap-word-qa/report.json`
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
 报告给出 $\operatorname{reindex}_\tau(ueu^{-1})=\tau(u)\tau(e)\tau(u)^{-1}$ 与 $(f\oplus0_p)\oplus0_q\cong(f\oplus0_q)\oplus0_p$ 的公式、三条定理、真实命令、退出码和公理输出。明确说明：**稳定相似尚未完成**，还缺稳定化定义、不同中间补零表示的对齐与等价律。Word 含中文目录域、原生公式、真正表格、页眉页码。
 
-- [ ] **Step 2: 验证结构与逐页视觉**
+- [x] **Step 2: 验证结构与逐页视觉**
 
 `docx.py validate` 必须 `PASSED`；doc-k 渲染每页并检查 contact-sheet、全部页面、近空白页和 content-loss 项，不用结构检查代替视觉检查。
 
-- [ ] **Step 3: 运行 K2 全部回归**
+- [x] **Step 3: 运行 K2 全部回归**
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
 Expected: 原 16 项加新 4 项，合计 20/20 通过，退出码 0。随后提交报告和 QA 证据。
@@ -162,11 +162,11 @@ Expected: 原 16 项加新 4 项，合计 20/20 通过，退出码 0。随后提
 - Modify: `garden-ecosystem/research/paper-direction-audit-2026-11-10/strength-review-summary.json`
 - Modify: `garden-ecosystem/research/paper-direction-audit-2026-11-10/STRENGTH_SERIES_REVIEW.md`
 
-- [ ] **Step 1: 只回写前置接口**
+- [x] **Step 1: 只回写前置接口**
 
 论文登记重索引保持相似与交换零扩展；不得写成稳定相似或 K2 已完成。总账新增 `k2_reindex_zero_swap`，保留 `stable_similarity_completed=false` 和 `general_k0_completed=false`，原四字段不变。
 
-- [ ] **Step 2: 最终验证与分支同步**
+- [x] **Step 2: 最终验证与分支同步**
 
 运行更新脚本、20 项 K2 测试和 Word 校验；分别提交并推送 `fix/k2-stable-similarity` 与 `research/paper-direction-atlas`，不合并主分支。计划步骤只有在实际完成后才勾选。
 
