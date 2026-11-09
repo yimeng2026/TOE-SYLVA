@@ -81,8 +81,8 @@ def pip_energy(kx, ky, t, Delta, mu):
 def chern_number_pip(t, Delta, mu, nk=80):
     """Compute Chern number for 2D p+ip superconductor (tight-binding).
 
-    Uses the d-vector d = (Re Delta_k, Im Delta_k, eps_k) and
-    Ch = (1/4*pi) * integral d_hat . (d_hat/dkx x d_hat/dky) dkx dky
+    Uses the E-vector E = (Re Delta_k, -Im Delta_k, eps_k) and
+    Ch = (1/4*pi) * integral E_hat . (E_hat/dkx x E_hat/dky) dkx dky
 
     Phase diagram (tight-binding):
       |mu| > 4t         : Ch = 0 (trivial)
@@ -97,7 +97,7 @@ def chern_number_pip(t, Delta, mu, nk=80):
     KX, KY = np.meshgrid(kxs, kys, indexing='ij')
     eps = -mu - 2.0 * t * (np.cos(KX) + np.cos(KY))
     d_re = Delta * np.sin(KX)
-    d_im = Delta * np.sin(KY)
+    d_im = -Delta * np.sin(KY)
 
     d = np.stack([d_re, d_im, eps], axis=2)  # (nk, nk, 3)
     d_norm = np.linalg.norm(d, axis=2, keepdims=True)
@@ -353,20 +353,18 @@ def verify_pip_chern():
     # Sign change between the two topological windows (expected from BZ topology)
     sign_pass = (ch_pos * ch_neg) < 0
 
-    # Note on sign convention: the paper claims Ch = -1 for mu > 0 (continuum
-    # convention). Our tight-binding calculation gives Ch = +1 for mu > 0.
-    # The sign difference is a convention issue (orientation of the Berry
-    # curvature integral, sign of Delta_k), not a physics error. The key
-    # physical result — |Ch| = 1 in the topological phase — is verified.
-    paper_sign_note = (ch_pos == -1)
+    # Fixed convention: E=(Re Delta, -Im Delta, epsilon).
+    # The exact signs, not only |Ch|, are part of this regression check.
+    exact_sign_pass = (ch_pos == -1) and (ch_neg == 1)
     print(f"\n  |Ch|=1 in both topological windows: "
           f"{'PASS' if topo_pass else 'FAIL'}")
     print(f"  Ch=0 in trivial phases (|mu|>4t): "
           f"{'PASS' if triv_pass else 'FAIL'}")
     print(f"  Sign change between mu>0 and mu<0 windows: "
           f"{'PASS' if sign_pass else 'FAIL'}")
-    print(f"  [INFO] Paper claims Ch=-1 for mu>0; we get Ch={ch_pos} "
-          f"(sign convention difference, not a physics error)")
+    print(f"  Exact signs under fixed E-vector: "
+          f"{'PASS' if exact_sign_pass else 'FAIL'}")
+    print(f"  Fixed-convention signs: Ch(mu=+1)={ch_pos}, Ch(mu=-1)={ch_neg}")
 
     # --- Plot ---
     fig, axes = plt.subplots(1, 2, figsize=(13, 5))
@@ -422,7 +420,7 @@ def verify_pip_chern():
     plt.close()
     print(f"  [saved] {fig_path}")
 
-    passed = topo_pass and triv_pass and sign_pass
+    passed = topo_pass and triv_pass and sign_pass and exact_sign_pass
     print(f"  Module 3: {'PASS' if passed else 'FAIL'}")
     return passed
 
