@@ -28,11 +28,11 @@
 - Consumes: 既有 Lean 4.29.0 与 mathlib 路径。
 - Produces: 对 Lean 源码、真实编译、报告边界和原生 Word 的四项测试。
 
-- [ ] **Step 1: 编写失败测试**
+- [x] **Step 1: 编写失败测试**
 
 测试固定以下目标文件：`k2_zero_extension_probe_20261110.lean`、`verify_k2_zero_extension_20261110.py`、`k2_zero_extension_verification_20261110.json`、`K2_ZERO_EXTENSION.md`、`K2_ZERO_EXTENSION.docx`。源码测试要求 `zeroExtend_idempotent`、`zeroExtend_pow_three`、`Matrix.fromBlocks` 和分块匿名接口检查存在；编译测试要求退出码 0、两条定理公理仅为标准子集、`stable_similarity_completed=false`、`general_k0_completed=false`。
 
-- [ ] **Step 2: 运行并确认因缺失实现而失败**
+- [x] **Step 2: 运行并确认因缺失实现而失败**
 
 Run: `python test_k2_zero_extension.py`
 Expected: 四项 FAIL，分别指出缺少 Lean、验证脚本、Markdown 报告和 Word；保存实际退出码 1 的输出。
@@ -48,7 +48,7 @@ Expected: 四项 FAIL，分别指出缺少 Lean、验证脚本、Markdown 报告
 - Consumes: `Matrix.fromBlocks`、`Matrix.fromBlocks_multiply`、`IsIdempotentElem.pow_succ_eq`。
 - Produces: `SylvaK2ZeroExtendProbe.zeroExtend_idempotent` 与 `SylvaK2ZeroExtendProbe.zeroExtend_pow_three`。
 
-- [ ] **Step 1: 编写最小 Lean 实现**
+- [x] **Step 1: 编写最小 Lean 实现**
 
 核心定义与证明为：
 
@@ -69,12 +69,12 @@ example : zeroExtend.toBlocks₁₂ = 0 ∧ zeroExtend.toBlocks₂₁ = 0 := ⟨
 
 补充文件头、每个定义／定理三要素 docstring、`projection_idempotent` 的有限矩阵计算及 `zeroExtend_pow_three`。两条 `#print axioms` 只审计正式定理。
 
-- [ ] **Step 2: 真实编译并按上游错误修正**
+- [x] **Step 2: 真实编译并按上游错误修正**
 
 Run: `python verify_k2_zero_extension_20261110.py`
 Expected: Lean 4.29.0 编译退出码 0；两条公理审计无 `sorryAx` 或新公理；11 项检查全部通过。若分块定理签名不匹配，读取 mathlib 实际签名后修正证明，不添加假设。
 
-- [ ] **Step 3: 回归测试源码与编译**
+- [x] **Step 3: 回归测试源码与编译**
 
 Run: `python test_k2_zero_extension.py`
 Expected: 源码与真实编译两项 PASS，报告与 Word 两项仍按预期 FAIL。
@@ -91,15 +91,15 @@ Expected: 源码与真实编译两项 PASS，报告与 Word 两项仍按预期 F
 - Consumes: Task 2 的机读验证结果。
 - Produces: 明确边界的中文报告与含目录域、原生公式、表格、页眉页码的 Word。
 
-- [ ] **Step 1: 写报告并生成分页原生 Word**
+- [x] **Step 1: 写报告并生成分页原生 Word**
 
 报告逐字保存实际命令、退出码、检查计数和公理输出；说明“稳定相似尚未完成”“不是新的外部数学定理”。使用 Pandoc 生成 DOCX 后运行既有 `fix_docx_layout.py`、`add_docx_header_footer.py`，不手工伪造公式图片。
 
-- [ ] **Step 2: 验证 OOXML 与逐页视觉**
+- [x] **Step 2: 验证 OOXML 与逐页视觉**
 
 检查 `word/document.xml` 含 `<m:oMath` 与 `<w:tbl>`，必需 OPC 部件可读，矩阵 `count`／`mcJc` 顺序有效；渲染所有页面，检查溢出、遮挡、乱码、空白页和公式可读性。
 
-- [ ] **Step 3: 运行四项交付测试**
+- [x] **Step 3: 运行四项交付测试**
 
 Run: `python test_k2_zero_extension.py`
 Expected: 4/4 tests PASS，实际进程退出码 0。
@@ -115,11 +115,11 @@ Expected: 4/4 tests PASS，实际进程退出码 0。
 - Consumes: 已通过的编译与交付验证。
 - Produces: 论文 21 的零扩展接口记录、总账记录与独立分支提交。
 
-- [ ] **Step 1: 回写结论和边界**
+- [x] **Step 1: 回写结论和边界**
 
 只登记“具体幂等矩阵的分块零扩展接口已验证”，保留“不同维数稳定相似、投射模同构类、\(K_0(R)\) 尚未完成”。若验证暴露缺陷，另登记 `framework/ERRATA_AND_NEGATIVE_RESULTS.md`。
 
-- [ ] **Step 2: 审查差异并提交**
+- [x] **Step 2: 审查差异并提交**
 
 Run: `git diff --check`、`git status --short`、四项测试和验证脚本。
 Expected: 无空白错误；仅暂存本任务文件，不纳入旧 QA 图片或中间目录。证明与证据分提交，推送 `fix/k2-zero-extension`，不合并主分支；总账在花园仓库单独提交并同步。
