@@ -1,0 +1,77 @@
+{
+  "status": "pass",
+  "scope": "K2 对齐接口：零扩展相似、结合律和重索引交换；稳定相似传递性和 K₀(R) 未完成。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\k2_zero_extension_similarity_probe_20261110.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorems_audited": [
+    "zeroExtend_similar",
+    "zeroExtend_assoc",
+    "zeroExtend_reindex"
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "zero_extension_alignment_completed": true,
+  "stable_similarity_completed": false,
+  "stable_similarity_equivalence_completed": false,
+  "general_k0_completed": false,
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "zeroExtend_similar 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "zeroExtend_assoc 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "zeroExtend_reindex 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "使用扩展单位和结合等价",
+      "pass": true
+    },
+    {
+      "label": "范围限定明确",
+      "pass": true
+    },
+    {
+      "label": "未提前声明稳定相似传递性",
+      "pass": true
+    }
+  ],
+  "log": "k2_zero_extension_similarity_compile_log_20261110.txt"
+}
