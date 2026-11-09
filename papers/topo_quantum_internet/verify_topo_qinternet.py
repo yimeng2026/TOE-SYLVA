@@ -78,8 +78,8 @@ def pip_energy(kx, ky, t, Delta, mu):
     return np.sqrt(eps_k**2 + Delta_k_sq)
 
 
-def chern_number_pip(t, Delta, mu, nk=80):
-    """Compute Chern number for 2D p+ip superconductor (tight-binding).
+def chern_number_pip_raw(t, Delta, mu, nk=80):
+    """Compute the floating-point Chern number for the tight-binding model.
 
     Uses the E-vector E = (Re Delta_k, -Im Delta_k, eps_k) and
     Ch = (1/4*pi) * integral E_hat . (E_hat/dkx x E_hat/dky) dkx dky
@@ -114,16 +114,26 @@ def chern_number_pip(t, Delta, mu, nk=80):
     sampled_gap = float(d_norm.min())
     if sampled_gap < 1e-8:
         raise ValueError(f"Gap closes or is unresolved on the sampling grid: min|E|={sampled_gap:.3e}")
-    d_hat = d / d_norm
 
-    # Derivatives via periodic finite differences
-    dx_hat = (np.roll(d_hat, -1, axis=0) - np.roll(d_hat, 1, axis=0)) / (2 * dkx)
-    dy_hat = (np.roll(d_hat, -1, axis=1) - np.roll(d_hat, 1, axis=1)) / (2 * dky)
+    # Analytic derivatives avoid the coarse-grid error of periodic finite differences.
+    dx = np.stack([Delta * np.cos(KX), np.zeros_like(KX), 2.0 * t * np.sin(KX)], axis=2)
+    dy = np.stack([np.zeros_like(KY), -Delta * np.cos(KY), 2.0 * t * np.sin(KY)], axis=2)
+    dx_hat = dx / d_norm - d * np.sum(d * dx, axis=2, keepdims=True) / d_norm**3
+    dy_hat = dy / d_norm - d * np.sum(d * dy, axis=2, keepdims=True) / d_norm**3
+    d_hat = d / d_norm
 
     # Berry curvature
     F = np.sum(d_hat * np.cross(dx_hat, dy_hat), axis=2)
-    ch = np.sum(F) * dkx * dky / (4 * np.pi)
-    return int(round(ch))
+    return float(np.sum(F) * dkx * dky / (4 * np.pi))
+
+
+def chern_number_pip(t, Delta, mu, nk=80):
+    """Return the integer Chern number for the tight-binding model.
+
+    Uses the E-vector E = (Re Delta_k, -Im Delta_k, eps_k).
+    Gapless points mu=-4t, 0, 4t raise ValueError; see chern_number_pip_raw.
+    """
+    return int(round(chern_number_pip_raw(t, Delta, mu, nk)))
 
 
 # =============================================================================
