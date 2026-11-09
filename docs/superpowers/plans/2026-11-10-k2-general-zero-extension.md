@@ -32,7 +32,7 @@
 - Produces: `SylvaK2GeneralZeroExtendProbe.zeroExtend`、`zeroExtend_idempotent`、`zeroExtend_pow_three`。
 - Consumes: 既有 Lean 4.29.0 与 mathlib `.lake` 缓存，不重新安装依赖。
 
-- [ ] **Step 1: 先写四项失败测试**
+- [x] **Step 1: 先写四项失败测试**
 
 测试文件参照 `test_k2_zero_extension.py`，但目标全部换成 general 文件，并检查：
 
@@ -49,12 +49,12 @@ for phrase in (
 
 另外三项分别要求：验证脚本重新编译退出码 0、两条定理公理仅为标准子集且 `stable_similarity_completed=false`、`general_k0_completed=false`；Markdown 同时包含“通用零扩展”“稳定相似尚未完成”“不是新的外部数学定理”；DOCX 含 `<m:oMath` 和 `<w:tbl>`。验证脚本必须含 `run_all_tests()`。
 
-- [ ] **Step 2: 运行测试并确认缺失实现**
+- [x] **Step 2: 运行测试并确认缺失实现**
 
 Run: `python test_k2_general_zero_extension.py`
 Expected: 退出码 1，四项 FAIL 分别来自缺少 Lean、验证脚本、Markdown 和 Word；保存原始失败输出，不先写实现来规避 RED。
 
-- [ ] **Step 3: 实现任意有限索引类型的零扩展**
+- [x] **Step 3: 实现任意有限索引类型的零扩展**
 
 Lean 文件包含完整模块头和每个 def／theorem 的三要素 docstring。核心定义为：
 
@@ -99,14 +99,14 @@ example {R : Type*} [Ring R] {m n : Type*} (e : Matrix m m R) :
 
 只对两条正式定理执行 `#print axioms`。模块边界写明“不包含稳定相似、投射模同构类或 K₀(R)”。
 
-- [ ] **Step 4: 真实编译并复核源码边界**
+- [x] **Step 4: 真实编译并复核源码边界**
 
 验证脚本沿用现有 mathlib 路径与包列表，实际运行 Lean 4.29.0，保存日志和 JSON。检查至少包括：编译退出码 0、无错误输出、两条公理审计、无 `sorryAx`、无新增公理／占位、使用 `Matrix.fromBlocks e 0 0 0`、范围限定和匿名分块检查。
 
 Run: `python verify_k2_general_zero_extension_20261110.py`
 Expected: 退出码 0，11/11 检查通过；若类型签名不匹配，读取实际上游签名后定点修正，不增加假设。
 
-- [ ] **Step 5: 提交证明与真实编译记录**
+- [x] **Step 5: 提交证明与真实编译记录**
 
 ```bash
 git add docs/superpowers/plans/2026-11-10-k2-general-zero-extension.md papers/数学基础强化_系列/_panel_records/test_k2_general_zero_extension.py papers/数学基础强化_系列/_panel_records/k2_general_zero_extension_probe_20261110.lean papers/数学基础强化_系列/_panel_records/verify_k2_general_zero_extension_20261110.py papers/数学基础强化_系列/_panel_records/k2_general_zero_extension_compile_log_20261110.txt papers/数学基础强化_系列/_panel_records/k2_general_zero_extension_verification_20261110.json
@@ -125,7 +125,7 @@ git commit -m "Generalize block zero extension for idempotent matrices"
 - Consumes: Task 1 的编译日志与机读验证结果。
 - Produces: 含通用公式、证明表、真实命令、退出码和明确边界的报告及原生 Word。
 
-- [ ] **Step 1: 写报告并生成 Word**
+- [x] **Step 1: 写报告并生成 Word**
 
 报告核心公式为：
 
@@ -135,16 +135,16 @@ $$
 
 逐字记录实际编译命令、退出码、11 项检查和两条公理输出，说明 **m、n 为任意有限索引类型，R 为任意环**。使用 Pandoc 和 CJK reference 生成 DOCX，应用既有 `fix_docx_layout.py` 与 `add_docx_header_footer.py`，加入中文目录域、原生公式、真正表格和 PAGE 页码。
 
-- [ ] **Step 2: 分别验证结构与视觉**
+- [x] **Step 2: 分别验证结构与视觉**
 
 运行 `docx.py validate`，要求完整输出 `PASSED`；用 doc-k 渲染所有页面，先读 contact-sheet，再检查每页、近空白页和全部 content-loss 项。不得把结构校验描述成视觉检查，也不得使用 LibreOffice 替代。
 
-- [ ] **Step 3: 运行 K2 全量回归**
+- [x] **Step 3: 运行 K2 全量回归**
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
 Expected: 原幂等实例 4 项、相似核 4 项、具体零扩展 4 项与通用零扩展 4 项，合计 16/16 通过，退出码 0。
 
-- [ ] **Step 4: 提交报告和验证证据**
+- [x] **Step 4: 提交报告和验证证据**
 
 仅暂存本任务 Markdown、DOCX 与最终 QA `report.json`，不纳入旧 QA 图片或 Word 中间目录：
 
@@ -164,11 +164,11 @@ git commit -m "Record general K2 zero extension evidence"
 - Modify: `garden-ecosystem/research/paper-direction-audit-2026-11-10/strength-review-summary.json`
 - Modify: `garden-ecosystem/research/paper-direction-audit-2026-11-10/STRENGTH_SERIES_REVIEW.md`
 
-- [ ] **Step 1: 回写通用定理而保留开放边界**
+- [x] **Step 1: 回写通用定理而保留开放边界**
 
 在论文 21 的具体零扩展后追加通用定义与两条定理，说明任意有限 `m、n` 与任意环 `R`。同时保留：稳定相似、投射模同构类、\(K_0(R)\)、K3、K4 仍未完成，不把通用零扩展写成完整 K2。
 
-- [ ] **Step 2: 更新总账并运行机读断言**
+- [x] **Step 2: 更新总账并运行机读断言**
 
 新增 `k2_general_zero_extension` 字段，记录两条定理、编译退出码 0、11/11 检查、实际公理、报告和 Word 路径；保留 `stable_similarity_completed=false`、`general_k0_completed=false`，不改变原论文 role、novelty、unfinished 和 priority。运行：
 
@@ -178,7 +178,7 @@ python scripts/update_k2_general_zero_extension_resolution.py
 
 脚本必须断言验证状态为 pass、实际编译退出码 0、两条定理和上述两个 false 边界，且原四字段未变。
 
-- [ ] **Step 3: 最终复验并分别推送**
+- [x] **Step 3: 最终复验并分别推送**
 
 在 TOE 工作区复跑 16 项 K2 测试和 Word 校验，在花园仓库运行更新脚本及 `git diff --check`。将计划步骤标为完成后，分别提交并推送 `fix/k2-general-zero-extension` 与 `research/paper-direction-atlas`，不合并主分支。
 
