@@ -23,13 +23,13 @@
 **Files:**
 - Create: `papers/数学基础强化_系列/_panel_records/test_k0_universal_property.py`
 
-- [ ] **Step 1: 写测试**
+- [x] **Step 1: 写测试**
   - 若验证脚本不存在，`self.fail`；存在时真实运行。
   - 检查证明中有 `Algebra.GrothendieckAddGroup.of`、`lift` 和 `universal_property`，无 axiom／postulate／sorry。
   - 检查编译退出码 0、定理公理仅标准三项、报告明确剩余范围。
   - 检查 Word 中存在原生公式。
 
-- [ ] **Step 2: 运行并观察失败**
+- [x] **Step 2: 运行并观察失败**
 
 Run: `python -m unittest discover -s papers/数学基础强化_系列/_panel_records -p "test_k0_*.py" -v`
 Expected: 因验证脚本、证明和报告尚不存在而 FAIL，不允许跳过。
@@ -43,7 +43,7 @@ Expected: 因验证脚本、证明和报告尚不存在而 FAIL，不允许跳�
 - Create: `papers/数学基础强化_系列/_panel_records/k0_verification_20261110.json`
 - Create: `papers/数学基础强化_系列/_panel_records/upstream-GrothendieckGroup.lean`
 
-- [ ] **Step 1: 编写最小证明**
+- [x] **Step 1: 编写最小证明**
 
 ```lean
 import Mathlib
@@ -72,13 +72,13 @@ end SylvaK0Probe
 
 `inclusion` 的缩写与 `of` 的关系必须在注释中说明；若 `e.left_inv` 的方向不匹配，按库中等价的定义修复，不添加任何公理。
 
-- [ ] **Step 2: 真实编译并审计**
+- [x] **Step 2: 真实编译并审计**
 
 验证脚本须含 `run_all_tests()`，逐一检查编译器版本、源文件无占位、编译退出码和公理输出。使用既有 mathlib 根目录与 9 个实际存在的依赖缓存，允许命令行覆盖路径。
 
 Expected: Lean 退出码 0；`SylvaK0Probe.universal_property` 仅 `[propext, Classical.choice, Quot.sound]`。
 
-- [ ] **Step 3: 保存上游来源**
+- [x] **Step 3: 保存上游来源**
 
 把只读的 `GrothendieckGroup.lean` 复制到 `_panel_records/upstream-GrothendieckGroup.lean`，保留版权和上游 rev 说明，用于第 76–85 行的等价定义证据。
 
@@ -90,19 +90,27 @@ Expected: Lean 退出码 0；`SylvaK0Probe.universal_property` 仅 `[propext, Cl
 - Create: `papers/数学基础强化_系列/_panel_records/K0_UNIVERSAL_PROPERTY_VERIFICATION.md`
 - Create: `papers/数学基础强化_系列/_panel_records/K0_UNIVERSAL_PROPERTY_VERIFICATION.docx`
 
-- [ ] **Step 1: 更新 K1a 代码与边界**
+- [x] **Step 1: 更新 K1a 代码与边界**
 
 将 §9.2 的 K1 泛性质设计替换为实际编译代码；保留消去性、K2–K4 为开放项。明确 mathlib 已提供 `lift` 等价，本任务不是外部新定理。
 
-- [ ] **Step 2: 登记 FE-18**
+- [x] **Step 2: 登记 FE-18**
 
 记录旧 `AddLocalization.addMonoidOf` 接口未核实，以及“K0 缺失”需要收窄为环／模 K 理论缺失，不能否认 mathlib 已有交换幺半群 Grothendieck 群完备化。保留历史，不删除旧勘误。
 
-- [ ] **Step 3: 形成原生 Word 报告**
+- [x] **Step 3: 形成原生 Word 报告**
 
 报告含定理、库来源、真实命令、退出码、公理审计、证明归属和剩余 K1b–K4 工作。使用原生公式、真正表格、页眉页码和目录域，完成 OOXML 验证与逐页预览。
 
-- [ ] **Step 4: 最终验证并同步**
+- [x] **Step 4: 最终验证并同步**
 
 Run: `python -m unittest discover -s papers/数学基础强化_系列/_panel_records -p "test_k0_*.py" -v`
 Expected: 全部 PASS。总账只给数学基础 21 添加 K1a 解决证据，不将整篇或 K1 全部标为完成。推送 `fix/k0-universal-property`，不合并主分支。
+
+## 执行记录
+
+- 初始交付测试 4 项均按预期失败；最终 4 项全部 PASS，退出码 0。
+- 真实 Lean 编译退出码 0，10/10 接口检查通过，公理输出仅 Lean 标准三项。
+- 原生 Word 共 3 页，17 个部件验证通过；预览无空白页、公式重叠或表格裁切。
+- 主证明提交 `15c396b` 已推送；花园总账提交 `c9023f8` 已推送。
+- K1b、K2、K3、K4 保持开放，未调用目标完成。
