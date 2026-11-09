@@ -1,0 +1,41 @@
+test_fresh_compile_and_axioms (__main__.K2ReindexZeroSwapTests.test_fresh_compile_and_axioms) ... FAIL
+test_native_word_formula_and_table (__main__.K2ReindexZeroSwapTests.test_native_word_formula_and_table) ... FAIL
+test_report_preserves_stable_similarity_boundary (__main__.K2ReindexZeroSwapTests.test_report_preserves_stable_similarity_boundary) ... FAIL
+test_source_has_reindex_and_zero_swap (__main__.K2ReindexZeroSwapTests.test_source_has_reindex_and_zero_swap) ... FAIL
+
+======================================================================
+FAIL: test_fresh_compile_and_axioms (__main__.K2ReindexZeroSwapTests.test_fresh_compile_and_axioms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_reindex_zero_swap.py", line 37, in test_fresh_compile_and_axioms
+    self.assertTrue(VERIFY.is_file(), "缺少 K2 重索引与零块交换验证脚本")
+AssertionError: False is not true : 缺少 K2 重索引与零块交换验证脚本
+
+======================================================================
+FAIL: test_native_word_formula_and_table (__main__.K2ReindexZeroSwapTests.test_native_word_formula_and_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_reindex_zero_swap.py", line 61, in test_native_word_formula_and_table
+    self.assertTrue(DOCX.is_file(), "缺少 K2 重索引与零块交换 Word")
+AssertionError: False is not true : 缺少 K2 重索引与零块交换 Word
+
+======================================================================
+FAIL: test_report_preserves_stable_similarity_boundary (__main__.K2ReindexZeroSwapTests.test_report_preserves_stable_similarity_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_reindex_zero_swap.py", line 53, in test_report_preserves_stable_similarity_boundary
+    self.assertTrue(REPORT.is_file(), "缺少 K2 重索引与零块交换报告")
+AssertionError: False is not true : 缺少 K2 重索引与零块交换报告
+
+======================================================================
+FAIL: test_source_has_reindex_and_zero_swap (__main__.K2ReindexZeroSwapTests.test_source_has_reindex_and_zero_swap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_reindex_zero_swap.py", line 21, in test_source_has_reindex_and_zero_swap
+    self.assertTrue(LEAN.is_file(), "缺少 K2 重索引与零块交换 Lean 证明")
+AssertionError: False is not true : 缺少 K2 重索引与零块交换 Lean 证明
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)
