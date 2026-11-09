@@ -29,16 +29,16 @@
 - Produces: `extendUnit`、`zeroExtend_similar`、`zeroExtendAssocEquiv`、`zeroExtend_assoc`、`zeroExtendReindexEquiv`、`zeroExtend_reindex`。
 - Excludes: 完整稳定相似等价律、投射模同构类和 K0(R)。
 
-- [ ] **Step 1: 写四项失败测试**
+- [x] **Step 1: 写四项失败测试**
 
 源码必须包含 `def extendUnit`、`zeroExtend_similar`、`zeroExtend_assoc`、`zeroExtend_reindex`。机读结果要求 `zero_extension_alignment_completed=true`、`stable_similarity_completed=false`、`general_k0_completed=false`，并审计三条定理。报告必须包含“零扩展相似”“结合律”“传递性尚未完成”“不是新的外部数学定理”；Word 含原生公式和表格。
 
-- [ ] **Step 2: 运行并确认初始失败**
+- [x] **Step 2: 运行并确认初始失败**
 
 Run: `python test_k2_zero_extension_similarity.py`
 Expected: 退出码 1，四项 FAIL 分别来自缺少 Lean、验证脚本、报告和 Word。
 
-- [ ] **Step 3: 实现扩展单位与普通相似保持**
+- [x] **Step 3: 实现扩展单位与普通相似保持**
 
 ```lean
 def extendUnit {R : Type*} [Ring R] {m n : Type*} [Fintype m] [Fintype n]
@@ -71,7 +71,7 @@ theorem zeroExtend_similar {R : Type*} [Ring R]
   simp only [Matrix.zero_mul, Matrix.mul_zero, add_zero, hu]
 ```
 
-- [ ] **Step 4: 实现结合律与重索引交换**
+- [x] **Step 4: 实现结合律与重索引交换**
 
 ```lean
 def zeroExtendAssocEquiv (n : Type*) (p q : ℕ) :
@@ -117,7 +117,7 @@ theorem zeroExtend_reindex {R : Type*} [Ring R]
 
 三条 `#print axioms` 针对 `zeroExtend_similar`、`zeroExtend_assoc`、`zeroExtend_reindex`。文件头和每个 def／theorem 均含三要素 docstring。
 
-- [ ] **Step 5: 真实编译与提交**
+- [x] **Step 5: 真实编译与提交**
 
 验证脚本要求编译退出码 0、12/12 检查通过、三条公理仅为标准子集，并保存日志和 JSON。若类型等价或单位构造不匹配，读取上游签名后定点修正，不添加假设。提交 `Verify zero-extension similarity and alignment`。
 
@@ -128,15 +128,15 @@ theorem zeroExtend_reindex {R : Type*} [Ring R]
 - Create: `papers/数学基础强化_系列/_panel_records/K2_ZERO_EXTENSION_SIMILARITY.docx`
 - Create: `papers/数学基础强化_系列/_panel_records/k2-zero-extension-similarity-word-qa/report.json`
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
 报告说明 $u\oplus1$ 而不是 $u\oplus0$ 的作用、$(f\oplus0_p)\oplus0_q\cong f\oplus0_{p+q}$、重索引与零扩展交换。明确**传递性尚未完成**，这些只是对齐工具。Word 含中文目录域、原生公式、真正表格和页眉页码。
 
-- [ ] **Step 2: 分别验证结构与视觉**
+- [x] **Step 2: 分别验证结构与视觉**
 
 `docx.py validate` 必须 PASSED；doc-k 渲染全部页面并检查 contact-sheet、每页、近空白页和 content-loss。
 
-- [ ] **Step 3: 运行 K2 全量回归并提交证据**
+- [x] **Step 3: 运行 K2 全量回归并提交证据**
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
 Expected: 原 24 项加新 4 项，合计 28/28 通过，退出码 0。仅提交报告、DOCX 和 QA report。
@@ -147,11 +147,11 @@ Expected: 原 24 项加新 4 项，合计 28/28 通过，退出码 0。仅提交
 - Modify: `papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md`
 - Create: `garden-ecosystem/research/paper-direction-audit-2026-11-10/scripts/update_k2_zero_extension_similarity_resolution.py`
 
-- [ ] **Step 1: 回写对齐工具与开放边界**
+- [x] **Step 1: 回写对齐工具与开放边界**
 
 论文登记 `extendUnit`、`zeroExtend_similar`、`zeroExtend_assoc`、`zeroExtend_reindex`。保留 `stable_similarity_completed=false`、`stable_similarity_equivalence_completed=false`、`general_k0_completed=false`，原四字段不变。
 
-- [ ] **Step 2: 最终验证与同步**
+- [x] **Step 2: 最终验证与同步**
 
 运行更新脚本、28 项 K2 测试和 Word 校验，分别提交并推送 `fix/k2-zero-extension-similarity` 与 `research/paper-direction-atlas`，不合并主分支。计划步骤只在实际完成后勾选。
 
