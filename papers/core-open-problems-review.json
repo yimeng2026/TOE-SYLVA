@@ -1,0 +1,147 @@
+{
+  "schema": "core-open-problems-review-v1",
+  "date": "2026-11-10",
+  "records": [
+    {
+      "id": "O1",
+      "topic": "精细结构常数的独立推导",
+      "status": "未解决（CLAIM）",
+      "category": "open_theory",
+      "direction": "仍是高风险理论研究方向，不是已经闭合的常数导出。",
+      "evidence": [
+        {"path": "framework/101_fine_structure_constant_derivation.md", "line": 21, "text": "本文不自称数学证明", "note": "文档自己否认数学证明，却在后文把三链等价和极强反巧合措辞写成结论。"},
+        {"path": "framework/proof_status.md", "line": 26, "text": "当前状态**: CLAIM", "note": "现行治理登记没有升级为 THEOREM。"},
+        {"path": "framework/101_fine_structure_constant_derivation.md", "line": 57, "text": "χ(X) = -100", "note": "五次簇的标准欧拉示性数并不是该文档用于挑值的 −100。"}
+      ],
+      "external": [
+        {"label": "NIST CODATA", "url": "https://physics.nist.gov/cgi-bin/cuu/Value?alphinv%7Csearch_for=alphainv", "claim": "2022 CODATA 为 137.035999177(21)，旧稿需要更新实验基线和误差预算。"},
+        {"label": "Macaulay2", "url": "https://macaulay2.com/doc/Macaulay2-1.21/share/doc/Macaulay2/Macaulay2Doc/html/_euler_lp__Projective__Variety_rp.html", "claim": "光滑五次三维簇的欧拉示性数为 −200。"}
+      ],
+      "next": "先给出不引用 α 的 n_CS 定义域和独立计算，再给出 Dirac 谱或 CY 实例、全部系数和盲登记；未完成前不得写“已解决”或“概率压到不可能”。"
+    },
+    {
+      "id": "O2",
+      "topic": "非 BPS 黑洞的熵与 DT 配分函数",
+      "status": "未解决（CLAIM）",
+      "category": "open_theory",
+      "direction": "可形成明确的非 BPS 精确算例方向，但现有三条路径都不是证明。",
+      "evidence": [
+        {"path": "framework/103_non_bps_black_hole_generalization.md", "line": 15, "text": "在 Pardon (2023) 的严格证明下对 BPS 黑洞成立", "note": "把 MNOP 曲线枚举对应写成了对任意 BPS 黑洞熵的证明，归属过宽。"},
+        {"path": "framework/103_non_bps_black_hole_generalization.md", "line": 67, "text": "定理 103.1", "note": "解析延拓明确只是推测性骨架，没有给出实际配分函数或一个非 BPS 算例。"},
+        {"path": "framework/103_non_bps_black_hole_generalization.md", "line": 91, "text": "\\frac{3A}{16G}", "note": "1/4 与 3/4 熵分解由 Postulate 直接给出，没有独立微观计数。"}
+      ],
+      "external": [
+        {"label": "Pardon 原文", "url": "https://www.math.stonybrook.edu/~jpardon/manuscripts/19_mnopcy.pdf", "claim": "MNOP 处理 GW 与 DT 曲线枚举对应，不能替代具体黑洞熵模型的证明。"}
+      ],
+      "next": "选定一个可精确计算的非 BPS 黑洞模型，分别定义并计算宏观熵与 DT 侧对象，检验修正项；在此之前撤销“推广完成”。"
+    },
+    {
+      "id": "O3",
+      "topic": "暗能量全局谱",
+      "status": "未解决（CONJECTURE）",
+      "category": "open_theory",
+      "direction": "可转为背景与扰动联合检验的宇宙学研究方向，现有文档尚未给出全局谱。",
+      "evidence": [
+        {"path": "framework/102_dark_energy_toe_bridge.md", "line": 59, "text": "S_{\\text{BH}} - \\log Z_{\\text{DT}}", "note": "首个真空极限公式含有 logZ，在 Z→1 时趋于零，不能凭该式得到正 Λ。"},
+        {"path": "framework/102_dark_energy_toe_bridge.md", "line": 81, "text": "CNF 目前没有从第一原理确定", "note": "决定 10^-120 数量级的关键层数仍自由。"},
+        {"path": "framework/102_dark_energy_toe_bridge.md", "line": 127, "text": "目前无（w 不偏离 -1）", "note": "该“无演化迹象”表述已落后于 DESI DR2 及后续联合分析。"}
+      ],
+      "external": [
+        {"label": "DESI DR2 讲解", "url": "https://indico.cern.ch/event/1515773/contributions/6399007/attachments/3062706/5416284/FontRibera_EUCAPT.pdf", "claim": "联合数据对演化暗能量有偏好，但作者同时提醒历史张力可能消失，不能把任何一边写成定论。"}
+      ],
+      "next": "先固定 L_max 或取消数量级宣称，给出 w(z)、背景膨胀和扰动可观测量的明确模型，并与 DESI、CMB、超新星在共同似然下比较。"
+    },
+    {
+      "id": "O4",
+      "topic": "公理依赖 DAG 与最小初设",
+      "status": "文档草案完成，理论未闭合",
+      "category": "concept_progress",
+      "direction": "可成为机器可读的公理治理项目，但“最小 5 公理”尚未证明。",
+      "evidence": [
+        {"path": "framework/99_postulate_dependency_dag.md", "line": 34, "text": "52 这个数字是粗略估计", "note": "输入集合尚未完整标准化，因此不能据此证明 DAG 完备。"},
+        {"path": "framework/99_postulate_dependency_dag.md", "line": 59, "text": "CNF 的最小公理集", "note": "最小性结论没有独立推导或机器验证支撑。"}
+      ],
+      "external": [],
+      "next": "建立全量机器可读节点、边、来源和证明状态，检查遗漏、循环和隐藏依赖；只有验证最小性后才能称 DAG 完成。"
+    },
+    {
+      "id": "O5",
+      "topic": "NCG 谱三元组与 TOE 主方程",
+      "status": "未解决（CONJECTURE）",
+      "category": "open_theory",
+      "direction": "可研究有限维精确对应，现有 eta-DT 等价仍缺核心定理。",
+      "evidence": [
+        {"path": "framework/97_noncommutative_geometry_to_toe_bridge.md", "line": 99, "text": "尚未以完全的严格性被证明", "note": "eta-DT 对应被作者明确标为未完全证明。"},
+        {"path": "framework/97_noncommutative_geometry_to_toe_bridge.md", "line": 272, "text": "完全严格的 infinite-dimensional 版本未证", "note": "核心桥梁仍是开放问题，不能称映射完成。"}
+      ],
+      "external": [],
+      "next": "先在一个有限维、显式谱三元组中计算 eta 与目标 DT 对象，给出定理级映射和成立条件；不能用已有 APS／Connes 定理的名称替代新映射证明。"
+    },
+    {
+      "id": "O6",
+      "topic": "p-adic Adelic 统一",
+      "status": "未解决（CONJECTURE）",
+      "category": "open_theory",
+      "direction": "可研究 p-adic 模空间与局部配分函数，完整 Adelic 乘积仍缺定义和收敛。",
+      "evidence": [
+        {"path": "framework/100_padic_adelic_to_toe_bridge.md", "line": 71, "text": "p-adic 虚拟基本类的严格数学构造尚未在文献中完整给出", "note": "被乘对象本身尚未严格构造。"},
+        {"path": "framework/100_padic_adelic_to_toe_bridge.md", "line": 207, "text": "Adelic 乘积在 p>137 处的衰减率严格证明", "note": "截断和衰减仍属未验证假设。"}
+      ],
+      "external": [],
+      "next": "先构造一个 p-adic 局部 DT 实例并证明可比性，再分析乘积收敛；在定义和收敛未完成前，不把 Adelic 形式写成 TOE 的完整定义。"
+    },
+    {
+      "id": "O7",
+      "topic": "Agda 实数与 Hilbert 空间形式化",
+      "status": "工程未解决",
+      "category": "engineering",
+      "direction": "是真实的证明工程方向，不是已经完成的理论成果。",
+      "evidence": [
+        {"path": "framework/proof_status.md", "line": 85, "text": "Sylva.Real.Cauchy", "note": "实数、完备性、量子范畴和谱模块仍有 postulate。"},
+        {"path": "framework/p0_reconciliation_report.md", "line": 44, "text": "131 个", "note": "现行实测口径为 7 文件、25 顶层块、131 个 postulate 名字声明。"}
+      ],
+      "external": [],
+      "next": "按依赖顺序替换 131 个 postulate 并保存真实编译与公理审计；不能因其他 Lean 模块成功就把 Agda 侧标为完成。"
+    },
+    {
+      "id": "O8",
+      "topic": "全库 Lake 构建与 CI",
+      "status": "工程未解决",
+      "category": "engineering",
+      "direction": "需要可扩展的核心构建矩阵和仓库瘦身，现有四目标构建是局部进展。",
+      "evidence": [
+        {"path": ".github/workflows/ci.yml", "line": 57, "text": "已核定 Lean 核心的真实构建（不是全库通过声明）", "note": "CI 明确不是全库通过。"},
+        {"path": ".github/workflows/ci.yml", "line": 71, "text": "SYLVA_CHSHCore SYLVA_CrossModuleTheorems PhysicalChemistry.ReactionNetwork SYLVA_Causality", "note": "当前只构建四个已核定目标，不能登记全库 Lake 已完成。"}
+      ],
+      "external": [],
+      "next": "保留四目标验收，增加受控核心矩阵、缓存和文件瘦身，并公开每次实际运行；只有目标范围写清后才能升级状态。"
+    },
+    {
+      "id": "O9",
+      "topic": "辛几何与 TOE 主方程",
+      "status": "结构启发，TOE 等价未证",
+      "category": "concept_progress",
+      "direction": "辛结构可作为研究 GW／DT 前置条件的方向，但还没有证明 TOE 主方程。",
+      "evidence": [
+        {"path": "framework/96_symplectic_geometry_to_toe_bridge.md", "line": 160, "text": "Z_DT = Z'_GW", "note": "流程图从 MNOP 对应直接跳到 S_BH=logZ_DT，最后一步没有独立证明。"},
+        {"path": "framework/96_symplectic_geometry_to_toe_bridge.md", "line": 202, "text": "定理 S1", "note": "CNF 离散 Darboux 及连续极限仍需独立验证，不能由命名自动成立。"}
+      ],
+      "external": [],
+      "next": "分别证明离散辛形式、闭性、非退化与连续极限，再审查从 DT 到具体黑洞熵的映射；把“前置条件成立”与“TOE 等式成立”分开。"
+    },
+    {
+      "id": "O10",
+      "topic": "费米子质量谱",
+      "status": "未解决（只有定性层级）",
+      "category": "open_theory",
+      "direction": "可转为盲登记质量比预言方向，现有文档没有参数内生的质量谱。",
+      "evidence": [
+        {"path": "framework/98_fermion_mass_spectrum.md", "line": 19, "text": "没有计算任何一个新数字", "note": "作者明确承认没有新数值。"},
+        {"path": "framework/98_fermion_mass_spectrum.md", "line": 100, "text": "后验描述，不是先验预测", "note": "实验比值是后验拟合，不构成独立质量推导。"},
+        {"path": "framework/98_fermion_mass_spectrum.md", "line": 186, "text": "没有给出任何一个具体数字", "note": "结论仍只有定性模式。"}
+      ],
+      "external": [],
+      "next": "冻结一个未参与拟合的质量比或 CKM 数值及不确定度，说明参数来源和盲裁决窗口；若给不出，应保持“定性启发”而非“质量谱完成”。"
+    }
+  ]
+}
