@@ -20,4 +20,4 @@
 - [x] **2. 编译证明**：`inclusion_injective_iff` 先 `change` 到标准局部化映射，使用 `AddSubmonoid.LocalizationMap.top_injective_iff`，再证明 `IsCancelAdd M ↔ ∀ a b c, a+c=b+c→a=b`。右消去由 `add_right_cancel` 给出，反向以 `h b c a` 和 `add_comm` 填充左右字段。
 - [x] **3. 真实验证**：`verify_k0_cancellation_20261110.py` 含 `run_all_tests()`，实际编译退出码 0，11/11 检查通过；`#print axioms inclusion_injective_iff` 实际仅 `[propext, Quot.sound]`，未强行引入 `Classical.choice`。
 - [x] **4. 回写与交付**：论文 K1b 代码替换 sorry，FE-18 增加后续，报告 `K0_CANCELLATION_VERIFICATION.md/.docx` 共 3 页，17 个部件验证通过；总账保留 K1a 证据并新增 K1b。
-- [ ] **5. 最终验收**：全部 `test_k0_*.py` 通过，推送 `fix/k0-cancellation`，不合并主分支。
+- [x] **5. 最终验收**：K1a＋K1b 共 8 项测试全部 PASS，退出码 0；`6cee082` 已推送 `fix/k0-cancellation`，总账 `648f7ef` 已同步，未合并主分支。
