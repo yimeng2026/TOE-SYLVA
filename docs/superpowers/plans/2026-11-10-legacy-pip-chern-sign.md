@@ -32,7 +32,7 @@
 - Consumes: `chern_number_pip(t, Delta, mu, nk=80) -> int`。
 - Produces: 同一函数在固定 BdG 约定下返回 `mu=+1 → -1`、`mu=-1 → +1`、`|mu|>4 → 0`；`verify_pip_chern() -> bool` 只有在精确符号也正确时才返回 `True`。
 
-- [ ] **Step 1: 写固定预期的失败测试**
+- [x] **Step 1: 写固定预期的失败测试**
 
 新建完整测试文件：
 
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     raise SystemExit(0 if run_all_tests() else 1)
 ```
 
-- [ ] **Step 2: 运行测试并确认旧实现按预期失败**
+- [x] **Step 2: 运行测试并确认旧实现按预期失败**
 
 在目标工作区根目录运行：
 
@@ -80,7 +80,7 @@ python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_chern_s
 
 Expected: 退出码 1；`test_topological_windows_have_exact_signs` 得到 `+1/-1` 而非预期的 `-1/+1`，`test_docstring_uses_the_same_e_vector_as_bdg` 因缺少 `-Im Delta_k` 而 FAIL；平庸相测试通过。不得根据旧输出反转测试预期。
 
-- [ ] **Step 3: 做最小实现修复**
+- [x] **Step 3: 做最小实现修复**
 
 在 `chern_number_pip` 中只改向量说明和虚部符号，保留现有相区表：
 
@@ -119,7 +119,7 @@ Expected: 退出码 1；`test_topological_windows_have_exact_signs` 得到 `+1/-
     passed = topo_pass and triv_pass and sign_pass and exact_sign_pass
 ```
 
-- [ ] **Step 4: 复跑测试确认精确符号通过**
+- [x] **Step 4: 复跑测试确认精确符号通过**
 
 Run:
 
@@ -129,7 +129,7 @@ python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_chern_s
 
 Expected: 退出码 0，`Ran 3 tests`，`OK`；不得放宽断言或只用 `abs(ch)` 掩盖符号错误。
 
-- [ ] **Step 5: 提交最小代码修复**
+- [x] **Step 5: 提交最小代码修复**
 
 ```bash
 git add papers/topo_quantum_internet/verify_topo_qinternet.py papers/topo_quantum_internet/test_pip_chern_sign.py
@@ -149,7 +149,7 @@ git commit -m "Fix legacy p+ip Chern sign convention"
 - Consumes: Task 1 的精确符号函数和测试。
 - Produces: 可复跑的测试日志、独立输出目录中的真实模块结果，以及旧约定缺陷的勘误记录。
 
-- [ ] **Step 1: 保存单元测试原始输出**
+- [x] **Step 1: 保存单元测试原始输出**
 
 从 `papers/topo_quantum_internet` 目录执行：
 
@@ -160,7 +160,7 @@ python -m unittest discover -s . -p "test_pip_chern_sign.py" -v 2>&1 | tee legac
 
 Expected: 退出码 0，日志含 `Ran 3 tests` 和 `OK`。
 
-- [ ] **Step 2: 运行真实 Module 3，但不覆盖旧图**
+- [x] **Step 2: 运行真实 Module 3，但不覆盖旧图**
 
 仍从 `papers/topo_quantum_internet` 执行：
 
@@ -170,7 +170,7 @@ python -c "from pathlib import Path; import verify_topo_qinternet as m; out=Path
 
 Expected: 退出码 0；输出包含 `Ch(mu=+1.0) = -1`、`Ch(mu=-1.0) = 1`、`Exact signs under fixed E-vector: PASS`、`Module 3: PASS`。新图只写入 `verification-output`，不覆盖既有 `fig_topo_qinternet_pip.png`。
 
-- [ ] **Step 3: 登记有限范围勘误**
+- [x] **Step 3: 登记有限范围勘误**
 
 在 `framework/ERRATA_AND_NEGATIVE_RESULTS.md` 追加一条，内容必须包含：
 
@@ -183,7 +183,7 @@ Expected: 退出码 0；输出包含 `Ch(mu=+1.0) = -1`、`Ch(mu=-1.0) = 1`、`E
 - 边界：本项只清偿符号与验收缺陷，不覆盖 CdGM、无序、相互作用、实验数字或其他论文。
 ```
 
-- [ ] **Step 4: 最终复核并单独提交证据**
+- [x] **Step 4: 最终复核并单独提交证据**
 
 ```bash
 python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_chern_sign.py" -v
