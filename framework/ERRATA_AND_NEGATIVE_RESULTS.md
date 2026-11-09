@@ -205,6 +205,18 @@
 
 ---
 
+### FE-18: 旧 p+ip 脚本的 E 向量反号与绝对值验收
+
+- **日期**: 2026-11-10
+- **来源**: `papers/topo_quantum_internet/verify_topo_qinternet.py` 的 `chern_number_pip` 与 `verify_pip_chern`；provider 独立双方法结果 `pip_chern_convention_results.json` 和只读记录 `legacy_pip_chern_audit.json`。
+- **问题**: 旧实现使用 `d=(ReΔ,+ImΔ,ε)`，与声明的 BdG 矩阵所需的 `E=(ReΔ,−ImΔ,ε)` 不一致，导致 `mu=+1` 实际返回 `+1`、`mu=-1` 实际返回 `-1`，与自身相区表相反。旧验收只检查 `|Ch|` 和两侧异号，因此即使实现整体反号也会通过；旧 `[INFO]` 还把这一不一致解释为单纯约定差异。
+- **处置**: 仅将虚部改为 `d_im=-Delta*sin(KY)`，同步 E 向量说明，保留原已正确的晶格相区表；新增固定预期测试，并将 `mu=+1 → -1`、`mu=-1 → +1` 纳入 `verify_pip_chern` 的精确符号返回条件。旧图不被覆盖，真实 Module 3 的新图写入 `verification-output`。
+- **验证**: `python -m unittest discover -s papers/topo_quantum_internet -p "test_pip_chern_sign.py" -v` 在修复前实测退出码 1，两个预期失败分别命中实际反号和文档向量；修复后实测退出码 0，`Ran 3 tests`、`OK`。真实 Module 3 以独立输出目录运行，实测退出码 0，输出 `Ch(mu=+1.0)=-1`、`Ch(mu=-1.0)=1`、`Exact signs under fixed E-vector: PASS` 和 `Module 3: PASS`。原始单元测试日志保存在 `papers/topo_quantum_internet/legacy_pip_sign_fix_20261110.txt`。
+- **边界与后续遗留**: 本项只清偿符号和验收缺陷，不覆盖 CdGM、无序、相互作用、实验数字或其他论文。新图显示旧扫描仍在 `mu=-4,0,4` 采样并记为 0；相变点的拒算或掩码尚未修复，不包括在本次 PASS 内，须另立测试先行任务。
+- **教训**: 拓扑数的绝对值和两侧异号不能替代固定矩阵约定下的精确符号；图、代码、docstring 与验收条件必须共同一致，已知未修边界不得被局部绿灯掩盖。
+
+---
+
 ## 三、登记修订历史
 
 | 版本 | 日期 | 变更 |
@@ -217,6 +229,7 @@
 | v1.5 | 2026-10-26 | 登记 FE-14（清单分类总数误作 Lean 扫描分母）；最终改用 `lean.scanned_files=22,228`，同步修正 README、共识矩阵和工作记录。 |
 | v1.6 | 2026-10-27 | 登记 FE-15（计数几何验证硬编码旧错误且无条件成功退出）与 FE-16（血缘映射缺失静默变为空映射）；加入真实负例、四目标 Lean CI 构建和 CI 执行失败传播，保留全量 Lean 与可信血缘映射债务。 |
 | v1.7 | 2026-11-10 | 登记 FE-17（“8/10 核心开放问题已解决”缺乏证据并含事实性错误）；`OPEN_PROBLEMS.md` 升级为 v2.0，逐项恢复开放、概念进展或工程未决状态，新增逐行证据审计与外部基线修正。 |
+| v1.8 | 2026-11-10 | 登记 FE-18（旧 p+ip 脚本 E 向量反号与绝对值验收）；以固定预期测试和真实 Module 3 清偿符号缺陷，另保留相变点采样与 CdGM、实验数字等未竟工作。 |
 
 ---
 
