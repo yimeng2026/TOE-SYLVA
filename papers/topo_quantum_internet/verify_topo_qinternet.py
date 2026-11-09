@@ -88,7 +88,17 @@ def chern_number_pip(t, Delta, mu, nk=80):
       |mu| > 4t         : Ch = 0 (trivial)
       0 < mu < 4t       : Ch = -1 (topological, weak-pairing-like)
       -4t < mu < 0      : Ch = +1 (topological, opposite orientation)
+      mu = -4t, 0, 4t   : gapless; Ch is undefined and raises ValueError
     """
+    if t == 0 or Delta == 0:
+        raise ValueError("t and Delta must be nonzero for a globally gapped p+ip model")
+    special_gap = min(
+        float(pip_energy(x, y, t, Delta, mu))
+        for x, y in ((0.0, 0.0), (np.pi, 0.0), (0.0, np.pi), (np.pi, np.pi))
+    )
+    if special_gap < 1e-8:
+        raise ValueError(f"Gap closes at a high-symmetry point: min|E|={special_gap:.3e}")
+
     kxs = np.linspace(-np.pi, np.pi, nk, endpoint=False)
     kys = np.linspace(-np.pi, np.pi, nk, endpoint=False)
     dkx = 2 * np.pi / nk
@@ -101,7 +111,10 @@ def chern_number_pip(t, Delta, mu, nk=80):
 
     d = np.stack([d_re, d_im, eps], axis=2)  # (nk, nk, 3)
     d_norm = np.linalg.norm(d, axis=2, keepdims=True)
-    d_hat = d / (d_norm + 1e-15)
+    sampled_gap = float(d_norm.min())
+    if sampled_gap < 1e-8:
+        raise ValueError(f"Gap closes or is unresolved on the sampling grid: min|E|={sampled_gap:.3e}")
+    d_hat = d / d_norm
 
     # Derivatives via periodic finite differences
     dx_hat = (np.roll(d_hat, -1, axis=0) - np.roll(d_hat, 1, axis=0)) / (2 * dkx)
@@ -401,7 +414,13 @@ def verify_pip_chern():
     # Panel 2: Chern number vs mu
     ax = axes[1]
     mu_scan = np.linspace(-6, 6, 49)
-    ch_scan = [chern_number_pip(t, Delta, mu, nk=60) for mu in mu_scan]
+    # Undefined at gapless transitions: leave NaN gaps instead of drawing Ch=0.
+    gapless_boundaries = (-4 * t, 0.0, 4 * t)
+    ch_scan = [
+        np.nan if any(np.isclose(mu, boundary) for boundary in gapless_boundaries)
+        else chern_number_pip(t, Delta, mu, nk=60)
+        for mu in mu_scan
+    ]
     ax.plot(mu_scan, ch_scan, 'b-o', ms=5, lw=2)
     ax.axhline(0, color='gray', ls='--')
     ax.axvline(0, color='gray', ls=':', alpha=0.5)

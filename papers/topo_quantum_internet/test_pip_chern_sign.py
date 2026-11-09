@@ -15,6 +15,18 @@ class LegacyPipChernSignTests(unittest.TestCase):
         self.assertEqual(chern_number_pip(1.0, 0.5, 5.0, nk=80), 0)
         self.assertEqual(chern_number_pip(1.0, 0.5, -5.0, nk=80), 0)
 
+    def test_gapless_phase_boundaries_are_rejected(self):
+        for mu in (-4.0, 0.0, 4.0):
+            with self.subTest(mu=mu):
+                with self.assertRaises(ValueError):
+                    chern_number_pip(1.0, 0.5, mu, nk=80)
+
+    def test_zero_hopping_or_pairing_is_rejected(self):
+        for t, delta in ((0.0, 0.5), (1.0, 0.0)):
+            with self.subTest(t=t, delta=delta):
+                with self.assertRaises(ValueError):
+                    chern_number_pip(t, delta, 1.0, nk=80)
+
     def test_docstring_uses_the_same_e_vector_as_bdg(self):
         documentation = chern_number_pip.__doc__ or ""
         self.assertIn("E = (Re Delta_k, -Im Delta_k, eps_k)", documentation)
