@@ -1,0 +1,16 @@
+
+======================================================================
+Module 3: 2D p+ip Superconductor — Chern Number
+======================================================================
+  Ch(mu=+1.0) = -1  (0 < mu < 4t, expect |Ch|=1)
+  Ch(mu=-1.0) = 1  (-4t < mu < 0, expect |Ch|=1)
+  Ch(mu=+5.0) = 0  (mu > 4t, expect 0)
+  Ch(mu=-5.0) = 0  (mu < -4t, expect 0)
+
+  |Ch|=1 in both topological windows: PASS
+  Ch=0 in trivial phases (|mu|>4t): PASS
+  Sign change between mu>0 and mu<0 windows: PASS
+  Exact signs under fixed E-vector: PASS
+  Fixed-convention signs: Ch(mu=+1)=-1, Ch(mu=-1)=1
+  [saved] C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-legacy-pip-sign\papers\topo_quantum_internet\verification-output-analytic\fig_topo_qinternet_pip.png
+  Module 3: PASS
