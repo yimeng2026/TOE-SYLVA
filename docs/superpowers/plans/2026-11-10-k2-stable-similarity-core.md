@@ -29,16 +29,16 @@
 - Produces: `Similar`、`similar_refl`、`similar_symm`、`similar_reindex`、`zeroExtend`、`StableSimilar`、`stableSimilar_refl`、`stableSimilar_symm`。
 - Excludes: `stableSimilar_trans`、完整稳定相似等价律、投射模同构类和 K0(R)。
 
-- [ ] **Step 1: 写四项失败测试**
+- [x] **Step 1: 写四项失败测试**
 
 源码检查必须包含 `def StableSimilar`、`stableSimilar_refl`、`stableSimilar_symm`，并禁止 `stableSimilar_trans`。机读结果要求 `stable_similarity_core_completed=true`、`stable_similarity_equivalence_completed=false`、`general_k0_completed=false`，公理审计两条正式稳定相似定理。报告必须包含“稳定相似”“自反性”“对称性”“传递性尚未完成”“不是新的外部数学定理”；Word 含原生公式和表格。
 
-- [ ] **Step 2: 确认测试按预期失败**
+- [x] **Step 2: 确认测试按预期失败**
 
 Run: `python test_k2_stable_similarity_core.py`
 Expected: 退出码 1，四项 FAIL 分别来自缺少 Lean、验证脚本、报告和 Word。
 
-- [ ] **Step 3: 实现定义及两条定理**
+- [x] **Step 3: 实现定义及两条定理**
 
 核心定义为：
 
@@ -76,7 +76,7 @@ theorem stableSimilar_symm {R : Type*} [Ring R]
 
 文件同时包含已验证的 `similar_refl`、`similar_symm` 与 `similar_reindex` 支撑实现及三要素 docstring。只对 `stableSimilar_refl`、`stableSimilar_symm` 做 `#print axioms`。
 
-- [ ] **Step 4: 真实编译与提交**
+- [x] **Step 4: 真实编译与提交**
 
 验证脚本保存日志与 JSON，要求编译退出码 0、11/11 检查通过、两条公理仅为标准子集。随后仅暂存计划、测试、Lean、验证脚本、日志与 JSON，提交 `Verify stable similarity reflexivity and symmetry`。
 
@@ -87,15 +87,15 @@ theorem stableSimilar_symm {R : Type*} [Ring R]
 - Create: `papers/数学基础强化_系列/_panel_records/K2_STABLE_SIMILARITY_CORE.docx`
 - Create: `papers/数学基础强化_系列/_panel_records/k2-stable-similarity-core-word-qa/report.json`
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
 报告解释稳定相似的存在形式、两个补零维数、重索引见证及两条定理，明确**传递性尚未完成**，不能把本结果写成完整稳定相似等价关系或 K0。Word 含中文目录域、原生公式、真正表格和页眉页码。
 
-- [ ] **Step 2: 分别验证结构与视觉**
+- [x] **Step 2: 分别验证结构与视觉**
 
 `docx.py validate` 必须 PASSED；doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页和 content-loss。
 
-- [ ] **Step 3: 运行 K2 全量回归并提交证据**
+- [x] **Step 3: 运行 K2 全量回归并提交证据**
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
 Expected: 原 20 项加新 4 项，合计 24/24 通过，退出码 0。仅提交报告、DOCX 和最终 QA report。
@@ -106,11 +106,11 @@ Expected: 原 20 项加新 4 项，合计 24/24 通过，退出码 0。仅提交
 - Modify: `papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md`
 - Create: `garden-ecosystem/research/paper-direction-audit-2026-11-10/scripts/update_k2_stable_similarity_core_resolution.py`
 
-- [ ] **Step 1: 回写基础核与未完成传递性**
+- [x] **Step 1: 回写基础核与未完成传递性**
 
 论文 21 和总账登记 `StableSimilar` 定义、自反性、对称性；保留 `stable_similarity_equivalence_completed=false` 和 `general_k0_completed=false`，不改变原四字段。
 
-- [ ] **Step 2: 最终验证与同步**
+- [x] **Step 2: 最终验证与同步**
 
 运行更新脚本、24 项 K2 测试和 Word 校验，分别提交并推送 `fix/k2-stable-similarity-core` 与 `research/paper-direction-atlas`，不合并主分支。计划步骤只在实际完成后勾选。
 
