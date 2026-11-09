@@ -85,7 +85,7 @@
 
 | # | 条目 | 优先级 | 计划落点 |
 |---|---|---|---|
-| T-待1 | **19 号 FIM 恒零救治收尾**：FIM 对高斯族非零实例 + Gibbs 不等式证明化 + Cramér–Rao 替换 True 占位（B3 全路线闭环） | **高** | `papers\模块强化_系列\19_InformationGeometry_信息几何.md` v2 + `sylva_formalization\SylvaFormalization\InformationGeometry*.lean`（07 号已交付概念层，Lean 落地待续） |
+| T-待1 | **19 号 FIM 恒零救治收尾**：FIM 对高斯族非零实例 + Gibbs 不等式证明化 + Cramér–Rao 替换 True 占位（B3 全路线闭环） | **高（玩具链部分闭合；真实 FIM 与一般 CR 未竟）** | `papers\模块强化_系列\19_InformationGeometry_信息几何.md` v2 + `sylva_formalization\SylvaFormalization\InformationGeometry*.lean`（07 号已交付概念层；2026-11-10 增补 `cramerRaoToy_inverse`，仅证 ψ″=1 时倒数为 1。`verify_ig_probe_20261110.py` 真实运行退出码 0，15/15 检查通过，8 条定理 `#print axioms` 均仅 Lean 标准三项；证据为 `ig_probe_compile_log_20261110.txt` 与 `ig_probe_verification_20261110.json`。不包含无偏估计、方差下界或 FIM 真实化，条目不迁移为已吸收） |
 | T-待2 | **篇首声明块四要素**（参考教材/定位/省略说明/更新承诺）+ **前置知识清单块**推广至全系列 | 中 | `papers\模块强化_系列\` 后续论文模板；各 Lean 模块论文"依赖声明块" |
 | T-待3 | 采样论文笔记簇（P12–P15：非对数凹采样、退火 LMC、LSI/庞加莱）互引登记 | 中 | `academic\COMPLEXITY_SAMPLING_LIMIT_ANALYSIS.md`（主题直接对口） |
 | T-待4 | "废话式"证明评注体（关键块命名 + 动机一句话） | 低 | `papers\数学基础强化_系列\` 实证篇代码块 |

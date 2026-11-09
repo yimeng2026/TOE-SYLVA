@@ -9,6 +9,8 @@
          "Fisher 度量 = Bregman 散度 Hessian / 对偶势" 结构的端到端小实例：
          P3 Bregman 散度显式形、P4 非负性（KL 非负的玩具对应）、
          P5 Legendre 对偶势 ψ*(η) = η²/2；另证 ψ'' ≡ 1（Fisher 非退化）。
+  P6（2026-11-10 增补）：ψ''=1 时其倒数也为 1 的玩具 Cramér–Rao 对照；
+         不是无偏估计的方差下界，不是一般 Cramér–Rao 定理。
 环境：Lean v4.29.0 + mathlib4（olean 缓存，LEAN_PATH 指向 .lake/packages/*/.lake/build/lib/lean）
 -/
 
@@ -88,6 +90,16 @@ theorem legendre_dual_toy (η : ℝ) : (⨆ μ : ℝ, μ * η - psiToy μ) = η 
     rw [← h2]
     exact le_ciSup hbound η
 
+/-! ## P6：玩具 Cramér–Rao 对照（不是一般方差下界） -/
+
+/-- 定理：玩具势满足 `ψ''=1`，故其倒数也为 1。
+证明思路：用已证的 `fisher_toy` 重写二阶导，再作实数化简。
+物理意义：只核对非退化玩具 Fisher 信息的倒数；不包含无偏估计、方差或一般 Cramér–Rao 不等式。 -/
+theorem cramerRaoToy_inverse (μ : ℝ) :
+    (1 : ℝ) = 1 / (iteratedDeriv 2 psiToy μ) := by
+  rw [fisher_toy μ]
+  norm_num
+
 #print axioms fisherPSD_zero
 #print axioms fisherMetric_zero
 #print axioms deriv_psiToy
@@ -95,5 +107,6 @@ theorem legendre_dual_toy (η : ℝ) : (⨆ μ : ℝ, μ * η - psiToy μ) = η 
 #print axioms bregmanToy_eq
 #print axioms bregmanToy_nonneg
 #print axioms legendre_dual_toy
+#print axioms cramerRaoToy_inverse
 
 end SylvaIGProbe

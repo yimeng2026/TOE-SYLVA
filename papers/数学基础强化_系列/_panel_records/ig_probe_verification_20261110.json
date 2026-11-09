@@ -1,0 +1,85 @@
+{
+  "status": "pass",
+  "scope": "ψ''=1 时其倒数为 1 的玩具恒等式；不是无偏估计方差下界，不是一般 Cramér–Rao 定理，不是 Fisher 信息矩阵真实化。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\toe-sylva-audit\\papers\\数学基础强化_系列\\_panel_records\\ig_probe_20260812.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorems_audited": [
+    "fisherPSD_zero",
+    "fisherMetric_zero",
+    "deriv_psiToy",
+    "fisher_toy",
+    "bregmanToy_eq",
+    "bregmanToy_nonneg",
+    "legendre_dual_toy",
+    "cramerRaoToy_inverse"
+  ],
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "fisherPSD_zero 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "fisherMetric_zero 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "deriv_psiToy 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "fisher_toy 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "bregmanToy_eq 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "bregmanToy_nonneg 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "legendre_dual_toy 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "cramerRaoToy_inverse 仅标准三公理",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "源文件无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "源文件无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "玩具范围显式限定",
+      "pass": true
+    }
+  ],
+  "log": "ig_probe_compile_log_20261110.txt"
+}
