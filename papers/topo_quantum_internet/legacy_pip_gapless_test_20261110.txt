@@ -1,0 +1,10 @@
+test_docstring_uses_the_same_e_vector_as_bdg (test_pip_chern_sign.LegacyPipChernSignTests.test_docstring_uses_the_same_e_vector_as_bdg) ... ok
+test_gapless_phase_boundaries_are_rejected (test_pip_chern_sign.LegacyPipChernSignTests.test_gapless_phase_boundaries_are_rejected) ... ok
+test_topological_windows_have_exact_signs (test_pip_chern_sign.LegacyPipChernSignTests.test_topological_windows_have_exact_signs) ... ok
+test_trivial_windows_remain_zero (test_pip_chern_sign.LegacyPipChernSignTests.test_trivial_windows_remain_zero) ... ok
+test_zero_hopping_or_pairing_is_rejected (test_pip_chern_sign.LegacyPipChernSignTests.test_zero_hopping_or_pairing_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+OK
