@@ -1,0 +1,86 @@
+{
+  "status": "pass",
+  "scope": "K2 起点：非平凡幂等矩阵表示例，不构造投射模同构类或 K₀(R)。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\k2_idempotent_probe_20261110.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorems_audited": [
+    "projection_idempotent",
+    "trace_projection",
+    "projection_ne_zero",
+    "projection_ne_one",
+    "projection_pow_three"
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "representation_example_completed": true,
+  "projective_isomorphism_classes_completed": false,
+  "general_k0_completed": false,
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "projection_idempotent 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "trace_projection 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "projection_ne_zero 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "projection_ne_one 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "projection_pow_three 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "使用通用 IsIdempotentElem",
+      "pass": true
+    },
+    {
+      "label": "非平凡矩阵及迹检查",
+      "pass": true
+    },
+    {
+      "label": "范围限定明确",
+      "pass": true
+    }
+  ],
+  "log": "k2_idempotent_compile_log_20261110.txt"
+}
