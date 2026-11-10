@@ -88,3 +88,50 @@ $ git status --short --branch
 ## research/critical-manifold
 ?? run.log
 EXIT=0
+
+
+## 最终 fresh 回归复核（2026-11-10，后续确认轮）
+
+回归前分支 `research/critical-manifold` 干净，本地与远端均为 `a3058506682a06d7a7c0487a4c936fa703e33162`。以下命令在 `papers/room_temp_sc/critical_manifold` 顺序执行，使用 `&&` 连接；整体退出码为 0，因此每一步均已实际成功。
+
+$ python critical_manifold.py
+roots=936 grid_points=38376 disagreements=0
+root_status_counts={'above_scan': 340, 'within_scan': 596}
+EXIT=0
+
+$ python test_critical_manifold.py -v
+Ran 13 tests in 0.139s
+OK
+EXIT=0
+
+$ python render_report.py
+wrote=C:\Users\一梦\Documents\kimi\workspace\.worktrees\critical-manifold\papers\room_temp_sc\critical_manifold\REVIEW.md roots=936
+EXIT=0
+
+$ python test_render_report.py -v
+test_native_word_parts_and_content ... ok
+test_report_uses_machine_results_and_preserves_scope ... ok
+Ran 2 tests in 0.006s
+OK
+EXIT=0
+
+$ PATH="/c/Program Files/nodejs:$PATH" python "C:/Users/一梦/AppData/Roaming/kimi-desktop/daimon-share/daimon/runtime/kimi-code/home/plugins/managed/kimi-word/skills/kimi-word/scripts/docx.py" validate "C:/Users/一梦/Documents/kimi/workspace/.worktrees/critical-manifold/papers/room_temp_sc/critical_manifold/REVIEW.docx"
+PASSED (21 parts XSD + semantic checks; gen: 6 checks clean)
+EXIT=0
+
+$ sha256sum results.json results.csv grid_points.csv critical_manifold.svg critical_manifold.png REVIEW.md REVIEW.docx
+f9438c770c1125c68b42a67778458d551f3694d1954b112bdf61d6942bac970b *results.json
+de2e8e749701b132361e75cc4ee8b60fb6a754495a622c25b27c47c2513ddef5 *results.csv
+bea81b3c43e5f85ec9ff838d24e2b1f8d031275252271cb7d654b9e37cc3afab *grid_points.csv
+ff306308ddf6f0f35d8ee1bedadc8217ce88232e9654c6127074156f75ffb684 *critical_manifold.svg
+f1faae2e2e2c38d12958fc7bb2420c43ce3d64196315ac1fc1638748a8e1e8ec *critical_manifold.png
+b0ca4d24b64ecb6dadb002fc96d7106a32d0beb37f94653f7f4be189858dc9be *REVIEW.md
+41a9e536ddcc8278b15fe7b694a09d0108fead6c821ba293a083639f7eabfeaf *REVIEW.docx
+EXIT=0
+七项哈希与回归前及既有最终验证记录逐项一致。
+
+$ git diff --check
+只有 LF→CRLF 提示，无 whitespace error。
+EXIT=0
+
+Word 最终视图复核：当前 REVIEW.docx 哈希与 `word-qa/report.json` 的最终验证哈希完全一致，故未进行第二次渲染。此次重新读取 contact-sheet.png 和 page-01.png 至 page-04.png；四页封面、目录、公式、表格、主图、图注、结论和页码均可见，无近空白或裁切。既有 `renderExitCode=0` 和四页人工复核记录仍对应该同一文件。
