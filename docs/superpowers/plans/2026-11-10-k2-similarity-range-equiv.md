@@ -125,16 +125,9 @@ Actual: 报告给出 \(\operatorname{range}(u e u^{-1})=u(\operatorname{range}e)
 
 Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 40/40，退出码 0。论文和花园总账已追加普通相似像模等价，未写成稳定相似分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_SIMILARITY_RANGE_EQUIV.md \
-  papers/数学基础强化_系列/_panel_records/K2_SIMILARITY_RANGE_EQUIV.docx
-
-git commit -m "Document similarity range equivalence"
-git push -u origin fix/k2-similarity-range-equiv
-```
+Actual: 证明 checkpoint 为 `4856ac3`、`b14facc`，报告、Word、论文和最终证据提交为 `f399924`；花园总账提交为 `69808fa`。`fix/k2-similarity-range-equiv` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `f3999246d504faafbfed036cffe10209acf2f80d`、`69808fae238736ce605c1c37d0dab9f1558791ca`，未合并主分支。
 
 ## Self-Review
 
