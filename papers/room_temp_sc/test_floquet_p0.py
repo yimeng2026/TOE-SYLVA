@@ -93,6 +93,8 @@ class FloquetP0Tests(unittest.TestCase):
 def run_all_tests():
     suite = unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__])
     result = unittest.TextTestRunner(verbosity=2).run(suite)
+    if result.testsRun == 0:
+        return 1
     return 0 if result.wasSuccessful() else 1
 
 

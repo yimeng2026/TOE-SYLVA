@@ -244,3 +244,26 @@ COMMAND: git status --short --branch
 ## fix/floquet-p0-evidence
  M ../../docs/superpowers/plans/2026-11-10-floquet-p0-revision.md
  M floquet_p0_run.log
+
+
+REGRESSION: zero-test discovery must not pass
+CONTEXT: historical method-name discovery failure was already fixed, but run_all_tests() still returned success for an empty suite.
+
+RED COMMAND:
+python -c "import unittest,test_floquet_p0 as t; exec('class EmptyLoader:\n    def loadTestsFromModule(self, module):\n        return unittest.TestSuite()'); t.unittest.defaultTestLoader=EmptyLoader(); raise SystemExit(t.run_all_tests())"
+OUTPUT:
+Ran 0 tests in 0.000s
+NO TESTS RAN
+EXIT=0 (unexpected; reproduced the false-success path)
+
+FIX: return 1 when result.testsRun == 0; the eight text contracts are unchanged.
+
+GREEN COMMAND: same EmptyLoader invocation
+OUTPUT:
+Ran 0 tests in 0.000s
+NO TESTS RAN
+EXIT=1 (expected)
+
+COMMAND: python test_floquet_p0.py -v
+OUTPUT: Ran 8 tests in 0.000s; OK
+EXIT=0
