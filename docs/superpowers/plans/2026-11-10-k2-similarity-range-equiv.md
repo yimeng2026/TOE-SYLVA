@@ -117,13 +117,13 @@ git commit -m "Prove similar matrices have equivalent ranges"
 - Consumes: Task 1 的 10/10 验证结果和 38/38 回归日志。
 - Produces: 可审查报告与论文状态，不改变稳定相似分类的未完成状态。
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
-报告给出 \(\operatorname{range}(u e u^{-1})=u(\operatorname{range}e)\) 的子模等式和 `ofSubmodules` 限制构造，明确矩阵实例使用交换环。补零、有限生成性、稳定相似分类和 \(K_0(R)\) 仍未完成。Word 使用原生公式、真正表格、目录域和页眉页码。
+Actual: 报告给出 \(\operatorname{range}(u e u^{-1})=u(\operatorname{range}e)\) 的子模等式、`ofSubmodules` 限制构造及数据层的 `Classical.choose` 边界，明确矩阵实例使用交换环。补零、有限生成性、稳定相似分类和 \(K_0(R)\) 保持未完成。Word 含原生公式、真正表格、目录域和页眉页码；专项测试为 4/4 通过。
 
-- [ ] **Step 2: 验证 Word、回归与回写论文**
+- [x] **Step 2: 验证 Word、回归与回写论文**
 
-运行 `docx.py validate`，必须 `PASSED`；doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页、裁切和 content-loss。新增报告与 Word 两项测试后，完整 K2 回归应为 40/40。论文只追加普通相似像模等价，不把本步写成稳定相似分类完成。
+Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 40/40，退出码 0。论文和花园总账已追加普通相似像模等价，未写成稳定相似分类完成。
 
 - [ ] **Step 3: 提交并推送具名分支**
 

@@ -1,0 +1,25 @@
+test_fresh_compile_and_axioms (__main__.K2SimilarityRangeEquivTests.test_fresh_compile_and_axioms) ... ok
+test_native_word_formula_and_table (__main__.K2SimilarityRangeEquivTests.test_native_word_formula_and_table) ... FAIL
+test_report_preserves_scope_and_open_boundary (__main__.K2SimilarityRangeEquivTests.test_report_preserves_scope_and_open_boundary) ... FAIL
+test_source_has_similarity_range_equiv_and_boundary (__main__.K2SimilarityRangeEquivTests.test_source_has_similarity_range_equiv_and_boundary) ... ok
+
+======================================================================
+FAIL: test_native_word_formula_and_table (__main__.K2SimilarityRangeEquivTests.test_native_word_formula_and_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_similarity_range_equiv.py", line 68, in test_native_word_formula_and_table
+    self.assertTrue(DOCX.is_file(), "缺少普通相似像模同构 Word")
+AssertionError: False is not true : 缺少普通相似像模同构 Word
+
+======================================================================
+FAIL: test_report_preserves_scope_and_open_boundary (__main__.K2SimilarityRangeEquivTests.test_report_preserves_scope_and_open_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_similarity_range_equiv.py", line 54, in test_report_preserves_scope_and_open_boundary
+    self.assertTrue(REPORT.is_file(), "缺少普通相似像模同构报告")
+AssertionError: False is not true : 缺少普通相似像模同构报告
+
+----------------------------------------------------------------------
+Ran 4 tests in 16.584s
+
+FAILED (failures=2)
