@@ -107,3 +107,140 @@ warning: in the working copy of 'papers/room_temp_sc/floquet_p0_run.log', LF wil
  papers/room_temp_sc/floquet_p0_run.log             |  24 ++++
  .../room_temp_sc/floquet_superconductivity_deep.md | 152 ++++++++++++---------
  2 files changed, 109 insertions(+), 67 deletions(-)
+
+FINAL BASELINE: unchanged verify_rtsc.py with isolated OUTPUT_DIR
+
+======================================================================
+  Floquet-Engineered Superconductivity — Verification Suite
+  TOE-SYLVA Formal Physics Institute
+======================================================================
+
+======================================================================
+Module 1: BCS Gap Equation — Universal Ratio
+======================================================================
+
+  lambda = 0.3:
+    Delta(0) = 0.071439  (BCS approx: 0.071348)
+    T_c      = 0.040450  (BCS approx: 0.040454)
+    2*Delta(0)/T_c = 3.5323  (universal: 3.5273)
+
+  lambda = 0.5:
+    Delta(0) = 0.275721  (BCS approx: 0.270671)
+    T_c      = 0.153513  (BCS approx: 0.153470)
+    2*Delta(0)/T_c = 3.5921  (universal: 3.5273)
+
+  [saved] C:\Users\一梦\Documents\kimi\workspace\.worktrees\floquet-p0\papers\room_temp_sc\p0_baseline_output\fig_rtsc_bcs_gap.png
+
+  2*Delta(0)/T_c = 3.5323 (target 3.528): PASS
+  T_c matches BCS formula (err=0.0001): PASS
+  Module 1: PASS
+
+======================================================================
+Module 2: Allen-Dynes T_c Formula
+======================================================================
+  T_c vs lambda (omega_log=100.0K, mu*=0.1):
+    lambda=0.3: T_c = 0.05 K
+    lambda=0.5: T_c = 1.22 K
+    lambda=0.8: T_c = 4.69 K
+    lambda=1.0: T_c = 6.96 K
+    lambda=1.5: T_c = 11.40 K
+    lambda=2.0: T_c = 14.38 K
+
+  T_c vs omega_log (lambda=0.5, mu*=0.1):
+    omega_log=50: T_c = 0.61 K
+    omega_log=100: T_c = 1.22 K
+    omega_log=200: T_c = 2.43 K
+    omega_log=400: T_c = 4.86 K
+    T_c(200)/T_c(100) = 2.0000 (expect 2.0)
+
+  T_c vs mu* (lambda=0.5, omega_log=100.0K):
+    mu*=0.00: T_c = 3.68 K
+    mu*=0.05: T_c = 2.30 K
+    mu*=0.10: T_c = 1.22 K
+    mu*=0.15: T_c = 0.49 K
+    mu*=0.20: T_c = 0.12 K
+
+  Critical coupling (mu*=0.1):
+    lambda_c = 0.106610
+    T_c(0.95*lambda_c) = 0.00e+00 (expect 0)
+    T_c(1.05*lambda_c) = 0.00 (expect > 0)
+
+  Allen-Dynes vs McMillan (lam=0.5, mu*=0.1):
+    T_c(AD)  = 1.2156
+    T_c(McM) = 1.4302
+    AD/McM   = 0.849930 (expect 0.849930)
+
+  [saved] C:\Users\一梦\Documents\kimi\workspace\.worktrees\floquet-p0\papers\room_temp_sc\p0_baseline_output\fig_rtsc_allen_dynes.png
+
+  T_c monotonically increases with lambda: PASS
+  T_c linear in omega_log (ratio=2.0): PASS (ratio=2.0000)
+  T_c decreases with mu*: PASS
+  Critical coupling T_c=0 below lambda_c: PASS (lambda_c=0.1066)
+  AD/McMillan ratio matches 1.04 factor: PASS (ratio=0.849930)
+  Module 2: PASS
+
+======================================================================
+Module 3: Floquet High-Frequency Expansion
+======================================================================
+  Parameters: Delta_0=0.5, A_x=0.3, A_y=0.2
+  Undriven splitting = 0.5000
+  FM prediction: |Delta_0 - 2*A_x*A_y/Omega|
+
+     Omega       Exact          FM     Rel.Err
+       2.0    0.420825    0.440000    0.043580
+       3.0    0.451913    0.460000    0.017581
+       5.0    0.473216    0.476000    0.005848
+       8.0    0.483940    0.485000    0.002185
+      12.0    0.489536    0.490000    0.000947
+      20.0    0.493835    0.494000    0.000334
+      35.0    0.496518    0.496571    0.000108
+      60.0    0.497982    0.498000    0.000036
+
+  Convergence to undriven (Omega=60.0): splitting = 0.497982 (target 0.500000, err=0.0040)
+  FM accuracy at high Omega (>12): max err = 0.0009
+  [saved] C:\Users\一梦\Documents\kimi\workspace\.worktrees\floquet-p0\papers\room_temp_sc\p0_baseline_output\fig_rtsc_floquet.png
+
+  Convergence to undriven at high Omega: PASS (err=0.0040)
+  FM matches exact at high Omega: PASS (max_err=0.0009)
+  Module 3: PASS
+
+======================================================================
+  Verification Results Summary
+======================================================================
+  [PASS]: BCS Gap Equation Universal Ratio
+  [PASS]: Allen-Dynes T_c Formula
+  [PASS]: Floquet High-Frequency Expansion
+
+  3/3 modules passed.
+  Elapsed: 1.0 s
+  Figures generated: 3
+
+EXIT=0
+
+FINAL CONTRACTS
+COMMAND: python test_floquet_p0.py -v
+test_DOS_lower_bound_present (__main__.FloquetP0Tests.test_DOS_lower_bound_present) ... ok
+test_FeSe_STO_not_supported_by_Isoyama (__main__.FloquetP0Tests.test_FeSe_STO_not_supported_by_Isoyama) ... ok
+test_Giorgianni_LSCO_mismatch_removed (__main__.FloquetP0Tests.test_Giorgianni_LSCO_mismatch_removed) ... ok
+test_Xie_preprint_and_publication_present (__main__.FloquetP0Tests.test_Xie_preprint_and_publication_present) ... ok
+test_YH10_350_400_removed (__main__.FloquetP0Tests.test_YH10_350_400_removed) ... ok
+test_document_status_not_overclaimed (__main__.FloquetP0Tests.test_document_status_not_overclaimed) ... ok
+test_evidence_boundary_section_present (__main__.FloquetP0Tests.test_evidence_boundary_section_present) ... ok
+test_lsco_conflicting_pump_values_removed (__main__.FloquetP0Tests.test_lsco_conflicting_pump_values_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK
+
+EXIT=0
+
+COMMAND: git diff --check
+warning: in the working copy of 'docs/superpowers/plans/2026-11-10-floquet-p0-revision.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'papers/room_temp_sc/floquet_p0_run.log', LF will be replaced by CRLF the next time Git touches it
+EXIT=0
+
+COMMAND: git status --short --branch
+## fix/floquet-p0-evidence
+ M ../../docs/superpowers/plans/2026-11-10-floquet-p0-revision.md
+ M floquet_p0_run.log

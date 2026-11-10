@@ -297,3 +297,12 @@ Confirm local and `ls-remote` hashes match. Preserve the worktree and do not mer
 - The tests scope Giorgianni to LSCO regions, allowing the correct MgB₂ reference to remain elsewhere.
 - The original YH₁₀ numbers are absent from the revised section, including retraction prose.
 - The unchanged numerical baseline is explicitly bounded and cannot overwrite tracked figures.
+
+## Execution Record — 2026-11-10
+
+- Specification committed in `18f4ad9`.
+- Contract suite and RED log committed in `78d55e1`. The first discovery attempt returned `NO TESTS RAN`; method names were corrected to the required `test_` prefix before recording the real eight-failure RED. This zero-test result was never counted as a pass.
+- Minimal review correction committed in `932a300`: 85 insertions and 67 deletions, confined to the planned front matter, affected sections, tables, references, timeline, and new Section 9.
+- Final review tests: `Ran 8 tests ... OK`, exit 0. `git diff --check` also exited 0 after two newly introduced trailing-space lines were corrected.
+- The unchanged numerical baseline was rerun with an isolated `OUTPUT_DIR`: `3/3 modules passed`, exit 0. Temporary figures were removed and no tracked figure was overwritten.
+- Full RED/GREEN and final baseline evidence is in `papers/room_temp_sc/floquet_p0_run.log`. The remaining references remain unaudited; this execution record is not a whole-review verification claim.
