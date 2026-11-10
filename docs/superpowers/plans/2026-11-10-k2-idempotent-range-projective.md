@@ -129,16 +129,9 @@ Actual: 报告解释了子类型包含与值域限制的分裂，单列“线性
 
 Actual: `docx.py validate K2_IDEMPOTENT_RANGE_PROJECTIVE.docx` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 目录编号兼容提示。论文已追加本项投射性结果和边界，花园总账已登记 11/11 与 36/36；未把像模投射写成稳定相似分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_IDEMPOTENT_RANGE_PROJECTIVE.md \
-  papers/数学基础强化_系列/_panel_records/K2_IDEMPOTENT_RANGE_PROJECTIVE.docx
-
-git commit -m "Document idempotent range projectivity"
-git push -u origin fix/k2-idempotent-range-projective
-```
+Actual: 证明 checkpoint 为 `8c0805c`、`2ce6879`，报告、Word、论文和最终证据提交为 `db9970c`；花园总账提交为 `0946ae6`。`fix/k2-idempotent-range-projective` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `db9970cd15b89a2e71bc79f3aa0db116490b4e07`、`0946ae61575d04c4bc88b9c1fa10f568bcb848d5`，未合并主分支。
 
 ## Self-Review
 
