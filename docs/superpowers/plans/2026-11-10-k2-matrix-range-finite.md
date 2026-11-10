@@ -65,13 +65,13 @@ end SylvaK2MatrixRangeFiniteProbe
 Run: `python verify_k2_matrix_range_finite_20261110.py`
 Actual: 退出码 0，9/9 通过；`matrix_range_finite` 公理为 `[propext, Classical.choice, Quot.sound]`，无错误或警告。
 
-- [ ] **Step 5: 运行测试与 K2 回归并提交**
+- [x] **Step 5: 运行测试与 K2 回归并提交**
 
 Run: `python test_k2_matrix_range_finite.py`
 Actual: 2/2 通过，退出码 0。
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
-Actual: 原 48 项加新 2 项，50/50 通过，退出码 0；日志为 `k2_full_regression_matrix_range_finite_20261110.txt`。以下提交尚未执行。
+Actual: 原 48 项加新 2 项，50/50 通过，退出码 0；日志为 `k2_full_regression_matrix_range_finite_20261110.txt`。证明与证据已提交为 `f52fcf2`。
 
 ```bash
 git add docs/superpowers/plans/2026-11-10-k2-matrix-range-finite.md \
