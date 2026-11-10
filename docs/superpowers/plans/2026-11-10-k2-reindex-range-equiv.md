@@ -119,16 +119,9 @@ Actual: 报告给出 `mulVecLin_reindex` 的两侧等价、`funCongrLeft` 与不
 
 Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 48/48，退出码 0。论文和花园总账已追加重索引像模等价，未写成稳定相似分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_REINDEX_RANGE_EQUIV.md \
-  papers/数学基础强化_系列/_panel_records/K2_REINDEX_RANGE_EQUIV.docx
-
-git commit -m "Document reindex range equivalence"
-git push -u origin fix/k2-reindex-range-equiv
-```
+Actual: 证明 checkpoint 为 `e18937e`、`0aab1c5`，报告、Word、论文和最终证据提交为 `144d572`；花园总账提交为 `0e57625`。`fix/k2-reindex-range-equiv` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `144d5727f56d28683d59192b69de2d84bcab6f11`、`0e576257afb62b75d8ce7d4054fc76467c0b67bb`，未合并主分支。
 
 ## Self-Review
 
