@@ -152,16 +152,9 @@ Actual: 报告给出 \((e\oplus0)(x,y)=(e x,0)\) 的输出刻画、左右两个�
 
 Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 44/44，退出码 0。论文和花园总账已追加补零像模等价，未写成稳定相似分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_ZERO_EXTENSION_RANGE_EQUIV.md \
-  papers/数学基础强化_系列/_panel_records/K2_ZERO_EXTENSION_RANGE_EQUIV.docx
-
-git commit -m "Document zero extension range equivalence"
-git push -u origin fix/k2-zero-extension-range-equiv
-```
+Actual: 证明 checkpoint 为 `1dc8b1f`、`1d9c420`，报告、Word、论文和最终证据提交为 `e22f514`；花园总账提交为 `0034799`。`fix/k2-zero-extension-range-equiv` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `e22f514735dd77ccf4ab21d2c18fec47f6f60e89`、`0034799d7fc305468c22ac945d4f46389cf1a277`，未合并主分支。
 
 ## Self-Review
 
