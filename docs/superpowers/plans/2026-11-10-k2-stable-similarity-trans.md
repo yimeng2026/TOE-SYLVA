@@ -94,13 +94,13 @@ Actual: 原 28 项加新 4 项，合计 32/32 通过，退出码 0。仅提交�
 - Modify: `papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md`
 - Create: `garden-ecosystem/research/paper-direction-audit-2026-11-10/scripts/update_k2_stable_similarity_trans_resolution.py`
 
-- [ ] **Step 1: 回写稳定相似等价律**
+- [x] **Step 1: 回写稳定相似等价律**
 
-论文 21 登记 `stableSimilar_trans`，与既有自反、对称组成等价关系。总账仅在此前全部验证通过时设置 `stable_similarity_equivalence_completed=true` 和 `stable_similarity_completed=true`；`general_k0_completed=false`，原四字段不变。
+Actual: 论文 21 已登记 `stableSimilar_trans`，与既有自反、对称组成等价关系。总账设置 `stable_similarity_equivalence_completed=true` 和 `stable_similarity_completed=true`；`general_k0_completed=false`，原 `role`、`novelty`、`unfinished`、`priority` 四字段不变。
 
-- [ ] **Step 2: 最终验证与同步**
+- [x] **Step 2: 最终验证与同步**
 
-运行更新脚本、32 项 K2 测试和 Word 校验，分别提交并推送 `fix/k2-stable-similarity-trans` 与 `research/paper-direction-atlas`，不合并主分支。计划步骤只在实际完成后勾选。
+Actual: 更新脚本执行成功，32/32 项 K2 测试与 Word 校验通过。提交 `e0e682e`、`fbb476e`、`df24ceb` 后推送 `fix/k2-stable-similarity-trans`；花园提交 `3320042` 并推送 `research/paper-direction-atlas`。推送时两仓库远端哈希分别与 `df24ceb5459e4d589bf1e3dccf6168b8f033e20f`、`3320042447af737bfde7b14837a64b5f599769c3` 一致，未合并主分支。
 
 ## Self-Review
 
