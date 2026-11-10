@@ -1012,3 +1012,14 @@ Expected: push succeeds to `research/critical-manifold`; no pull request merge a
 - Type consistency: `critical_temperature()` returns `float | None`; `critical_root()` returns the same six keys in all states; grid builders consume those keys; JSON uses `null` through `None`; report code never treats a nonpositive root as a number.
 - Scope: no unrelated audit repair is included. The existing old script is deliberately not called because of its K-based unit convention and silent nonpositive-denominator return.
 - External QA: DOCX cannot truthfully certify its own final rendered appearance from inside the file. The report points to external `run.log` and `word-qa/report.json`, which are generated after the final DOCX.
+
+## Execution Record — 2026-11-10
+
+- Task 1 completed in `0377055`: numerical kernel and six fixed-anchor tests.
+- Task 2 completed in `089e8c0`: 936 roots and 38,376 direct checks, ten tests passing.
+- Task 3 completed in `3e7df5c`: JSON/CSV/SVG/PNG and thirteen tests passing. A real SVG failure exposed colorbar rasterization; `colorbar.solids.set_rasterized(False)` fixed it without weakening the test.
+- Task 4 completed in `98880ee`: data-driven Markdown and its report test.
+- Task 5 completed in `4e8e6ac`: the implementation used the `kimi-word`-preferred docx-js Math API rather than hand-written linear OMML. The final DOCX has native fractions/subscripts, a true table, visible TOC, header/footer, page fields, and an embedded same-source PNG. Structural tests also cover `TOC1` and `keepNext` regressions.
+- Word final view was rendered after layout correction: four pages, no near-blank or clipped pages, figure and caption together on page 3, cached TOC pages 3/3/3/4/4/4. The sole `content-loss` finding is the renderer's behavior-neutral unused `w:lvlOverride`; details and per-page observations are in `word-qa/report.json`.
+- Final commands all exited 0: numerical generation, thirteen numerical tests, Markdown generation, two report tests, independent JSON/CSV checks, and `docx.py validate` (`PASSED`, 21 parts). The seven deliverable hashes were unchanged by regeneration. Full RED/GREEN lineage and final commands are in `run.log`.
+- Branch delivery is performed only after this execution record is committed; no merge to `main` is included in this project.

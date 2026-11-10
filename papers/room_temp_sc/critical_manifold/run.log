@@ -1,0 +1,90 @@
+# 临界流形最终验证日志
+
+## RED 与修复血缘（均为当次实际观察）
+
+- 数值核心：`python test_critical_manifold.py -v`，EXIT=1，`ModuleNotFoundError: No module named 'critical_manifold'`；随后实现最小核心，6/6 GREEN。
+- 完整网格：同一命令，EXIT=1，`ImportError: cannot import name 'build_results'`；随后实现网格，10/10 GREEN。
+- 机读产物：同一命令，EXIT=1，`FileNotFoundError: results.json`；随后生成真实产物。
+- SVG：生成后 13 项中 1 项失败，EXIT=1，`AssertionError: '<image' unexpectedly found`；定位为色标栅格化并关闭后，13/13 GREEN。
+- Markdown：`python test_render_report.py -v`，EXIT=1，`ModuleNotFoundError: No module named 'render_report'`；随后实现数据驱动报告。
+- DOCX：同一命令，EXIT=1，`FileNotFoundError: REVIEW.docx`；随后使用 docx-js Math API 生成。
+- 首次构建：因 Windows 创建进程找不到 `node`，EXIT=1；确认 shell shim 遮蔽后，以 `/c/Program Files/nodejs` 前缀修复，未安装软件。
+- 目录样式：验证器报告缺失 `TOC1`，新增断言先失败；补全样式后构建与测试通过。
+- 图注同页：`keepNext` 断言先失败，最终视图同时发现图注跨页和目录缓存页码不符；修正后四页重新渲染并逐页检查。
+
+## 最终 GREEN 记录
+
+以下命令均由本目录顺序执行；任一非零退出即停止。重生成前后七个交付文件 SHA-256 完全一致。
+
+$ python critical_manifold.py
+roots=936 grid_points=38376 disagreements=0
+root_status_counts={'above_scan': 340, 'within_scan': 596}
+EXIT=0
+
+$ python test_critical_manifold.py -v
+test_json_and_csv_counts (__main__.ArtifactTests.test_json_and_csv_counts) ... ok
+test_svg_is_real_and_has_threshold_labels (__main__.ArtifactTests.test_svg_is_real_and_has_threshold_labels) ... ok
+test_word_ready_png_is_real (__main__.ArtifactTests.test_word_ready_png_is_real) ... ok
+test_all_direct_and_root_classes_agree (__main__.GridTests.test_all_direct_and_root_classes_agree) ... ok
+test_every_root_back_substitutes (__main__.GridTests.test_every_root_back_substitutes) ... ok
+test_grid_shapes_endpoints_and_order (__main__.GridTests.test_grid_shapes_endpoints_and_order) ... ok
+test_result_summary_is_derived (__main__.GridTests.test_result_summary_is_derived) ... ok
+test_coulomb_threshold (__main__.KernelTests.test_coulomb_threshold) ... ok
+test_invalid_inputs_raise (__main__.KernelTests.test_invalid_inputs_raise) ... ok
+test_nonpositive_denominator_is_explicit (__main__.KernelTests.test_nonpositive_denominator_is_explicit) ... ok
+test_phonon_linearity (__main__.KernelTests.test_phonon_linearity) ... ok
+test_root_anchors_and_back_substitution (__main__.KernelTests.test_root_anchors_and_back_substitution) ... ok
+test_temperature_counterexamples (__main__.KernelTests.test_temperature_counterexamples) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.171s
+
+OK
+EXIT=0
+
+$ python render_report.py
+wrote=C:\Users\一梦\Documents\kimi\workspace\.worktrees\critical-manifold\papers\room_temp_sc\critical_manifold\REVIEW.md roots=936
+EXIT=0
+
+$ python test_render_report.py -v
+test_native_word_parts_and_content (__main__.DocxTests.test_native_word_parts_and_content) ... ok
+test_report_uses_machine_results_and_preserves_scope (__main__.MarkdownTests.test_report_uses_machine_results_and_preserves_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+OK
+EXIT=0
+
+$ python -c import csv,json,math; r=json.load(open('results.json',encoding='utf-8')); roots=list(csv.DictReader(open('results.csv',encoding='utf-8'))); grid=list(csv.DictReader(open('grid_points.csv',encoding='utf-8'))); assert len(r['roots'])==len(roots)==936; assert len(grid)==38376; assert r['summary']['grid_class_disagreements']==0; assert all(math.isfinite(v) for row in r['roots'] for v in row.values() if isinstance(v,float)); assert all(math.isfinite(float(row['tc_K'])) for row in grid); assert all(row['classes_agree']=='True' for row in grid); print('independent_counts=936,38376'); print('root_status_counts=',r['summary']['root_status_counts']); print('grid_class_counts=',r['summary']['grid_class_counts']); print('finite_and_class_checks=PASS')
+independent_counts=936,38376
+root_status_counts= {'above_scan': 340, 'within_scan': 596}
+grid_class_counts= {'at_or_above_300K': 9296, 'below_300K': 29080}
+finite_and_class_checks=PASS
+EXIT=0
+
+$ python C:/Users/一梦/AppData/Roaming/kimi-desktop/daimon-share/daimon/runtime/kimi-code/home/plugins/managed/kimi-word/skills/kimi-word/scripts/docx.py validate C:/Users/一梦/Documents/kimi/workspace/.worktrees/critical-manifold/papers/room_temp_sc/critical_manifold/REVIEW.docx
+no baseline: treating the whole file as a new artifact — all checks and repairs apply to your own output. If this is an edit of an existing document, pass --baseline (usually prep's work/baseline.docx)
+PASSED (21 parts XSD + semantic checks; gen: 6 checks clean)
+(no --baseline: legality gate only; a new document has no 'what changed' to check)
+EXIT=0
+
+$ sha256sum results.json results.csv grid_points.csv critical_manifold.svg critical_manifold.png REVIEW.md REVIEW.docx
+f9438c770c1125c68b42a67778458d551f3694d1954b112bdf61d6942bac970b *results.json
+de2e8e749701b132361e75cc4ee8b60fb6a754495a622c25b27c47c2513ddef5 *results.csv
+bea81b3c43e5f85ec9ff838d24e2b1f8d031275252271cb7d654b9e37cc3afab *grid_points.csv
+ff306308ddf6f0f35d8ee1bedadc8217ce88232e9654c6127074156f75ffb684 *critical_manifold.svg
+f1faae2e2e2c38d12958fc7bb2420c43ce3d64196315ac1fc1638748a8e1e8ec *critical_manifold.png
+b0ca4d24b64ecb6dadb002fc96d7106a32d0beb37f94653f7f4be189858dc9be *REVIEW.md
+41a9e536ddcc8278b15fe7b694a09d0108fead6c821ba293a083639f7eabfeaf *REVIEW.docx
+EXIT=0
+
+$ git diff --check
+warning: in the working copy of 'papers/room_temp_sc/critical_manifold/grid_points.csv', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'papers/room_temp_sc/critical_manifold/results.csv', LF will be replaced by CRLF the next time Git touches it
+EXIT=0
+
+$ git status --short --branch
+## research/critical-manifold
+?? run.log
+EXIT=0
