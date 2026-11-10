@@ -1,6 +1,7 @@
 import json
 import sys
 import unittest
+import zipfile
 from pathlib import Path
 
 from render_report import build_markdown
@@ -20,6 +21,39 @@ class MarkdownTests(unittest.TestCase):
         self.assertIn("不是材料级预测", text)
         self.assertIn("grid_class_disagreements", text)
         self.assertNotIn("必然实现室温超导", text)
+
+
+class DocxTests(unittest.TestCase):
+    def test_native_word_parts_and_content(self):
+        path = ROOT / "REVIEW.docx"
+        with zipfile.ZipFile(path) as package:
+            names = set(package.namelist())
+            document = package.read("word/document.xml")
+            settings = package.read("word/settings.xml")
+            styles = package.read("word/styles.xml")
+            header = b"".join(
+                package.read(name)
+                for name in names
+                if name.startswith("word/header") and name.endswith(".xml")
+            )
+            footer = b"".join(
+                package.read(name)
+                for name in names
+                if name.startswith("word/footer") and name.endswith(".xml")
+            )
+        self.assertGreaterEqual(document.count(b"<m:oMath"), 3)
+        self.assertIn(b"<m:f>", document)
+        self.assertIn(b"<m:sSub>", document)
+        self.assertGreaterEqual(document.count(b"<w:tbl>"), 1)
+        self.assertIn(b"TOC \\o", document)
+        self.assertIn(b"PAGE", footer)
+        self.assertIn(b"300 K", header)
+        self.assertIn(b"updateFields", settings)
+        self.assertIn(b'w:styleId="TOC1"', styles)
+        self.assertIn(b"<w:keepNext", document)
+        self.assertTrue(any(name.startswith("word/media/") for name in names))
+        self.assertNotIn(b"\xef\xbf\xbd", document)
+        self.assertNotIn(b"$$", document)
 
 
 def run_all_tests():

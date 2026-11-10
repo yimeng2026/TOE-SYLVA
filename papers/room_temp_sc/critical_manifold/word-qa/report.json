@@ -1,0 +1,230 @@
+{
+  "file": "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\critical-manifold\\papers\\room_temp_sc\\critical_manifold\\REVIEW.docx",
+  "engine": "doc-k https://www.kimi.com/pages/dock/embed (final view)",
+  "browser": "C:\\Users\\一梦\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1223\\chrome-headless-shell-win64\\chrome-headless-shell.exe",
+  "pages": 4,
+  "rendered": 4,
+  "finalValidation": {
+    "sha256": "41a9e536ddcc8278b15fe7b694a09d0108fead6c821ba293a083639f7eabfeaf",
+    "command": "python C:/Users/一梦/AppData/Roaming/kimi-desktop/daimon-share/daimon/runtime/kimi-code/home/plugins/managed/kimi-word/skills/kimi-word/scripts/docx.py validate C:/Users/一梦/Documents/kimi/workspace/.worktrees/critical-manifold/papers/room_temp_sc/critical_manifold/REVIEW.docx",
+    "exitCode": 0,
+    "summary": "PASSED (21 parts XSD + semantic checks; gen: 6 checks clean)",
+    "renderCommand": "PATH=\"/c/Program Files/nodejs:$PATH\" python C:/Users/一梦/AppData/Roaming/kimi-desktop/daimon-share/daimon/runtime/kimi-code/home/plugins/managed/kimi-word/skills/kimi-word/scripts/docx.py render C:/Users/一梦/Documents/kimi/workspace/.worktrees/critical-manifold/papers/room_temp_sc/critical_manifold/REVIEW.docx C:/Users/一梦/Documents/kimi/workspace/.worktrees/critical-manifold/papers/room_temp_sc/critical_manifold/word-qa",
+    "renderExitCode": 0
+  },
+  "manualReview": {
+    "contactSheetRead": true,
+    "reviewedPages": [1, 2, 3, 4],
+    "observations": [
+      "第1页封面标题、研究边界与日期清楚，无近空白或裁切。",
+      "第2页目录可见，缓存页码依次为3、3、3、4、4、4，与最终正文一致。",
+      "第3页三个原生公式、三行锚点表和主图均清楚；图与图注同页，无裁切。",
+      "第4页网格统计、结论和复现命令完整，无近空白或裁切。"
+    ],
+    "figureCaptionSamePage": true,
+    "tocCachePages": [3, 3, 3, 4, 4, 4],
+    "contentLossReview": "唯一content-loss为word/numbering.xml的w:lvlOverride，渲染器注明语料命中均行为中性；本文未使用编号级别覆盖，未见内容缺失。",
+    "degradedReview": "已逐条查看degraded、interactivity-loss与unknown fldChar项；最终视图中的正文、目录、公式、表格、图片和页码均可见。",
+    "clippedPages": [],
+    "nearBlankPages": []
+  },
+  "ms": 2024,
+  "nearBlankPages": [],
+  "fidelity": {
+    "verdict": "lossy",
+    "byCategory": {
+      "content-loss": 1,
+      "degraded": 132,
+      "interactivity-loss": 1,
+      "metadata-loss": 106,
+      "unknown": 1
+    },
+    "suppressed": [
+      {
+        "part": "word/endnotes.xml",
+        "count": 1,
+        "reason": "only separator notes (no real notes), nothing is lost"
+      }
+    ],
+    "findings": [
+      {
+        "category": "interactivity-loss",
+        "severity": "medium",
+        "part": "word/document.xml",
+        "element": "w:sdtPr",
+        "count": 1,
+        "note": "内容控件属性（占位提示/下拉/复选框/日期选择器/数据绑定）不建模（sdt 拆壳保内容）"
+      },
+      {
+        "category": "degraded",
+        "severity": "medium",
+        "part": "word/document.xml",
+        "element": "w:pgMar",
+        "count": 1,
+        "note": "gutter 装订线不建模（非零时版心宽/位置偏移）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:bCs",
+        "count": 29,
+        "note": "复杂脚本粗体（w:bCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:top",
+        "count": 20,
+        "note": "单元格边距类型（dxa/auto/pct）不建模（按 dxa 处理）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:left",
+        "count": 20,
+        "note": "单元格边距类型（同上）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:bottom",
+        "count": 20,
+        "note": "单元格边距类型（同上）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:right",
+        "count": 20,
+        "note": "单元格边距类型（同上）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:lvlJc",
+        "count": 9,
+        "note": "编号标签对齐（w:lvlJc）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:shd",
+        "count": 5,
+        "note": "底纹图案（w:shd/@val）不建模（仅 fill 烧值）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "w:iCs",
+        "count": 2,
+        "note": "复杂脚本斜体（w:iCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:iCs",
+        "count": 1,
+        "note": "复杂脚本斜体（w:iCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/styles.xml",
+        "element": "w:bCs",
+        "count": 1,
+        "note": "复杂脚本粗体（w:bCs）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "wp:inline",
+        "count": 1,
+        "note": "行内图上留白（@distT）不建模（左右留白已建模）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "wp:inline",
+        "count": 1,
+        "note": "行内图下留白（@distB）不建模（同上）"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/document.xml",
+        "element": "wp:effectExtent",
+        "count": 1,
+        "note": "浮动对象效果外沿（wp:effectExtent）不建模"
+      },
+      {
+        "category": "degraded",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:abstractNum",
+        "count": 1,
+        "note": "编号在分页/节后重启（w15:restartNumberingAfterBreak）不建模"
+      },
+      {
+        "category": "content-loss",
+        "severity": "low",
+        "part": "word/numbering.xml",
+        "element": "w:lvlOverride",
+        "count": 1,
+        "note": "编号级别覆盖（w:lvlOverride/w:startOverride）不建模（语料命中均行为中性，首例非中性出现再建模）"
+      },
+      {
+        "category": "unknown",
+        "severity": "review",
+        "part": "word/document.xml",
+        "element": "w:fldChar",
+        "count": 1
+      }
+    ]
+  },
+  "contactSheet": "contact-sheet.png",
+  "pageFiles": [
+    {
+      "page": 1,
+      "file": "page-01.png",
+      "textChars": 141,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 2,
+      "file": "page-02.png",
+      "textChars": 102,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 3,
+      "file": "page-03.png",
+      "textChars": 601,
+      "media": 1,
+      "nearBlank": false,
+      "clipped": false
+    },
+    {
+      "page": 4,
+      "file": "page-04.png",
+      "textChars": 718,
+      "media": 0,
+      "nearBlank": false,
+      "clipped": false
+    }
+  ]
+}
