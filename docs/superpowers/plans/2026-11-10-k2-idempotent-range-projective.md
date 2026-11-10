@@ -121,16 +121,13 @@ git commit -m "Prove idempotent matrix ranges projective"
 - Consumes: Task 1 的 11/11 验证 JSON、编译日志和 34/34 回归结果。
 - Produces: 可审查的数学报告与论文状态，不改变稳定相似等价律既有完成状态。
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
-报告必须解释分裂映射 \(s:\operatorname{range}f\to M\) 与 \(r:M\to\operatorname{range}f\)，给出 \(r\circ s=\mathrm{id}\) 的证明，并单独标注“线性映射：半环；矩阵：交换环”。明确有限生成性、稳定相似分类和 \(K_0(R)\) 尚未完成。Word 使用原生公式、真正表格、目录域和页眉页码。
+Actual: 报告解释了子类型包含与值域限制的分裂，单列“线性映射：半环且外围模投射；矩阵：交换环”。明确有限生成性、稳定相似分类和 \(K_0(R)\) 尚未完成。Word 含原生公式、真正表格、目录域和页眉页码；报告与 Word 验收加入后，专项测试为 4/4 通过。
 
-- [ ] **Step 2: 验证 Word 与回写论文**
+- [x] **Step 2: 验证 Word 与回写论文**
 
-Run: `python C:/Users/一梦/AppData/Roaming/kimi-desktop/daimon-share/daimon/runtime/kimi-code/home/plugins/managed/kimi-word/skills/kimi-word/scripts/docx.py validate K2_IDEMPOTENT_RANGE_PROJECTIVE.docx`
-Expected: `PASSED`。
-
-使用 doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页、裁切和 content-loss。论文只追加本项投射性结果，不把“像模投射”写成“稳定相似分类完成”。
+Actual: `docx.py validate K2_IDEMPOTENT_RANGE_PROJECTIVE.docx` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 目录编号兼容提示。论文已追加本项投射性结果和边界，花园总账已登记 11/11 与 36/36；未把像模投射写成稳定相似分类完成。
 
 - [ ] **Step 3: 提交并推送具名分支**
 
