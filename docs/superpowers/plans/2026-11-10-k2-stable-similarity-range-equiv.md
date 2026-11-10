@@ -115,16 +115,9 @@ Actual: 报告逐段解释四个映射及其方向，明确前两个逆映射、
 
 Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 56/56，退出码 0。论文和花园总账已追加稳定相似像模等价，未写成商层分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_STABLE_SIMILARITY_RANGE_EQUIV.md \
-  papers/数学基础强化_系列/_panel_records/K2_STABLE_SIMILARITY_RANGE_EQUIV.docx
-
-git commit -m "Document stable similarity range equivalence"
-git push -u origin fix/k2-stable-similarity-range-equiv
-```
+Actual: 证明 checkpoint 为 `91185a2`、`9a7f6c6`，报告、Word、论文和最终证据提交为 `dd4db8b`；花园总账提交为 `915bc05`。`fix/k2-stable-similarity-range-equiv` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `dd4db8bc86178a4024ef00cb54f782747db2d0d8`、`915bc058154a55f539d9409e183ce91865a6a290`，未合并主分支。
 
 ## Self-Review
 
