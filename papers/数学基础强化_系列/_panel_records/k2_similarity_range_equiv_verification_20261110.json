@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "scope": "共轭线性映射与交换环矩阵普通相似的像模等价；补零、稳定相似分类与 K₀(R) 尚未完成。",
+  "command": [
+    "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+    "C:\\Users\\一梦\\Documents\\kimi\\workspace\\.worktrees\\toe-k0-universal\\papers\\数学基础强化_系列\\_panel_records\\k2_similarity_range_equiv_probe_20261110.lean"
+  ],
+  "working_directory": "D:\\kimi-workspace\\TOE-SYLVA-pull\\sylva_formalization\\SylvaFormalization",
+  "compiler": "D:\\kimi-migration\\workspace\\provider-main-integration\\.tmp\\lean-4.29.0-windows\\lean-4.29.0-windows\\bin\\lean.exe",
+  "compiler_version": "Lean (version 4.29.0, x86_64-w64-windows-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "compile_exit_code": 0,
+  "theorems_audited": [
+    "conjugate_range_linearEquiv",
+    "similar_range_linearEquiv"
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "range_equiv_completed": true,
+  "stable_similarity_classification_completed": false,
+  "general_k0_completed": false,
+  "checks": [
+    {
+      "label": "Lean 4.29.0",
+      "pass": true
+    },
+    {
+      "label": "真实编译退出码为 0",
+      "pass": true
+    },
+    {
+      "label": "编译器无错误输出",
+      "pass": true
+    },
+    {
+      "label": "conjugate_range_linearEquiv 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "similar_range_linearEquiv 仅标准公理子集",
+      "pass": true
+    },
+    {
+      "label": "无 sorryAx 依赖",
+      "pass": true
+    },
+    {
+      "label": "无 axiom/postulate",
+      "pass": true
+    },
+    {
+      "label": "无证明位 sorry",
+      "pass": true
+    },
+    {
+      "label": "使用子模与像复合接口",
+      "pass": true
+    },
+    {
+      "label": "交换环与分类边界明确",
+      "pass": true
+    }
+  ],
+  "log": "k2_similarity_range_equiv_compile_log_20261110.txt"
+}
