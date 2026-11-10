@@ -112,13 +112,13 @@ end SylvaK2ZeroExtensionRangeEquivProbe
 Run: `python verify_k2_zero_extension_range_equiv_20261110.py`
 Actual: 退出码 0，11/11 通过；三个 `#print axioms` 均为 `[propext, Classical.choice, Quot.sound]`，无错误或警告。
 
-- [ ] **Step 5: 运行测试与 K2 回归并提交**
+- [x] **Step 5: 运行测试与 K2 回归并提交**
 
 Run: `python test_k2_zero_extension_range_equiv.py`
 Actual: 2/2 通过，退出码 0。
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
-Actual: 原 40 项加新 2 项，42/42 通过，退出码 0；日志为 `k2_full_regression_zero_extension_range_equiv_20261110.txt`。以下提交尚未执行。
+Actual: 原 40 项加新 2 项，42/42 通过，退出码 0；日志为 `k2_full_regression_zero_extension_range_equiv_20261110.txt`。证明与证据已提交为 `1dc8b1f`。
 
 ```bash
 git add docs/superpowers/plans/2026-11-10-k2-zero-extension-range-equiv.md \
