@@ -29,16 +29,16 @@
 - Consumes: `matrix_range_finite`、`matrix_projective_range`、`stableSimilar_range_linearEquiv`。
 - Produces: `ProjectiveRange`、`RangeIso`、`rangeIsoSetoid`、`RangeClass`、`rangeClassOfIdempotent`、`rangeClassOfIdempotent_eq_of_stableSimilar`。
 
-- [ ] **Step 1: 写两个失败测试**
+- [x] **Step 1: 写两个失败测试**
 
 测试检查商类定义、`Quotient.sound` 和 `CommRing` 边界；真实编译要求 `range_class_map_completed=true`、`stable_similarity_classification_completed=false`、`general_k0_completed=false`，相关构造仅使用标准公理子集。
 
-- [ ] **Step 2: 运行测试确认初始失败**
+- [x] **Step 2: 运行测试确认初始失败**
 
 Run: `python test_k2_projective_range_class.py`
 Expected: 退出码 1，因 Lean 文件、验证脚本和机读结果缺失而失败；保存到 `k2_projective_range_class_red_test_20261110.txt`。
 
-- [ ] **Step 3: 实现商类与良定映射**
+- [x] **Step 3: 实现商类与良定映射**
 
 新模块直接导入三个已验证模块：
 
@@ -93,14 +93,14 @@ end SylvaK2ProjectiveRangeClassProbe
 
 文件头与每个 `def`、`theorem` 补齐模块四要素和三要素 docstring，删除示例中的前导空格。若商关系的投影层级不匹配，展开 `RangeIso` 后再给出同一线性等价，不改变定义。
 
-- [ ] **Step 4: 真实依赖构建与公理审计**
+- [x] **Step 4: 真实依赖构建与公理审计**
 
 验证脚本以 `run_all_tests()` 返回布尔值，先编译三个依赖，再编译新模块，共检查 12 项：编译器版本、依赖构建、主编译、无错误、三个公理审计、无 `sorryAx`、无新公理、无证明位 `sorry`、商层良定性和范围边界。
 
 Run: `python verify_k2_projective_range_class_20261110.py`
 Expected: 退出码 0，12/12 通过；相关 `#print axioms` 均为标准公理子集。
 
-- [ ] **Step 5: 运行测试与 K2 回归并提交**
+- [x] **Step 5: 运行测试与 K2 回归并提交**
 
 Run: `python test_k2_projective_range_class.py`
 Expected: 2/2 通过。
@@ -132,15 +132,15 @@ git commit -m "Prove stable similarity is well defined on range classes"
 - Consumes: Task 1 的 12/12 验证结果和 58/58 回归日志。
 - Produces: 可审查报告与论文状态，不宣称满射性、直和或 K0。
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
 报告解释 `ProjectiveRange`、`RangeIso`、商类和幂等矩阵映射，说明良定性与满射性的区别。Word 使用原生公式、真正表格、目录域和页眉页码。
 
-- [ ] **Step 2: 验证 Word、回归与回写论文**
+- [x] **Step 2: 验证 Word、回归与回写论文**
 
 运行 `docx.py validate`，必须 `PASSED`；doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页、裁切和 content-loss。新增报告与 Word 两项测试后，完整 K2 回归应为 60/60。论文只追加商层良定映射，不写成完整分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
 ```bash
 git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
@@ -165,3 +165,7 @@ git push -u origin fix/k2-projective-range-class
 - **模块测试：** 执行 `python test_k2_projective_range_class.py`，退出码 **0**，**2/2** 通过。
 - **完整回归：** 执行 `python -m unittest discover -s . -p "test_k2_*.py" -v`，退出码 **0**，**58/58** 通过；日志保存为 `k2_full_regression_projective_range_class_20261110.txt`。
 - **仍然开放：** 满射性、逆向构造、直和、稳定相似完整分类与一般 \(K_0(R)\) 均未完成；`stable_similarity_classification_completed=false`、`general_k0_completed=false` 保持不变。
+- **Task 2 已完成（2026-11-10）：** 报告与原生 Word 已生成；新增两项交付验收先生成预期失败记录，随后专项测试 **4/4** 通过，完整 K2 回归 **60/60** 通过，退出码均为 **0**。
+- **Word 验证：** `docx.py validate` 返回 `PASSED (17 parts XSD + semantic checks; gen: 6 checks clean)`；doc-k 最终视图渲染 **7/7** 页，无近空白页、无裁切，已检查 contact-sheet 和全部页面。仅有低风险 `w:lvlOverride` 编号兼容提示。
+- **论文与总账：** 21 号论文已追加真实商层构造和边界；花园总账登记 12/12、60/60 与 7 页 Word，保留两个开放状态为 `false`。
+- **具名分支：** TOE-SYLVA 证明提交 `b1ee097`、交付提交 `1cb154e` 已推送 `fix/k2-projective-range-class`；花园提交 `8f8b827` 已推送 `research/paper-direction-atlas`。未合并主分支，工作区保留。
