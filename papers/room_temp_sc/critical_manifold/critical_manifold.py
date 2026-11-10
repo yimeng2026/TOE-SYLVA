@@ -1,7 +1,10 @@
 """Formula-level 300 K critical-manifold calculations; not material prediction."""
 
+import csv
+import json
 import math
 from collections import Counter
+from pathlib import Path
 
 K_PER_MEV = 11.6
 DENOMINATOR_TEMPERATURE = 1.20
@@ -174,3 +177,150 @@ def build_results(roots=None, grid=None):
         },
         "roots": roots,
     }
+
+
+ROOT = Path(__file__).resolve().parent
+ROOT_FIELDS = [
+    "lambda",
+    "mu_star",
+    "denominator",
+    "exponent",
+    "omega_300_meV",
+    "root_status",
+]
+GRID_FIELDS = [
+    "lambda",
+    "mu_star",
+    "omega_log_meV",
+    "denominator",
+    "tc_K",
+    "root_class",
+    "direct_class",
+    "classes_agree",
+]
+
+
+def _write_csv(path, fields, rows):
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=fields,
+            lineterminator="\n",
+            extrasaction="ignore",
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def write_outputs(results, grid, output_dir=ROOT):
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "results.json").write_text(
+        json.dumps(results, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
+    _write_csv(output_dir / "results.csv", ROOT_FIELDS, results["roots"])
+    _write_csv(output_dir / "grid_points.csv", GRID_FIELDS, grid)
+
+
+def render_svg(results, output_path=ROOT / "critical_manifold.svg"):
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.colors import LogNorm
+
+    plt.rcParams["svg.hashsalt"] = "critical-manifold-20261110"
+    lambdas = np.array(lambda_values())
+    mus = np.array(mu_star_values())
+    values = np.array([
+        np.nan if r["omega_300_meV"] is None else r["omega_300_meV"]
+        for r in results["roots"]
+    ]).reshape(len(lambdas), len(mus)).T
+    fig, ax = plt.subplots(figsize=(10.5, 6.8), constrained_layout=True)
+    mesh = ax.pcolormesh(
+        lambdas,
+        mus,
+        values,
+        shading="auto",
+        cmap="viridis",
+        norm=LogNorm(),
+    )
+    contours = ax.contour(
+        lambdas,
+        mus,
+        values,
+        levels=[150, 200, 250],
+        colors="white",
+        linewidths=1.0,
+    )
+    ax.clabel(contours, inline=True, fmt="%d meV", fontsize=9)
+    ax.contour(
+        lambdas,
+        mus,
+        values,
+        levels=[250],
+        colors=["black"],
+        linewidths=2.0,
+    )
+    for lam, mu, label in [
+        (2.0, 0.15, "A"),
+        (2.0, 0.10, "B"),
+        (2.5, 0.10, "C"),
+    ]:
+        ax.scatter(
+            [lam],
+            [mu],
+            s=48,
+            facecolor="white",
+            edgecolor="red",
+            linewidth=1.4,
+            zorder=5,
+        )
+        ax.annotate(
+            label,
+            (lam, mu),
+            xytext=(5, 5),
+            textcoords="offset points",
+            color="red",
+            weight="bold",
+        )
+    ax.set(
+        xlabel=r"$\lambda$",
+        ylabel=r"$\mu^*$",
+        title=(
+            "300 K critical phonon scale — simplified formula, $f_1=f_2=1$\n"
+            "All roots exceed 50 meV; black contour is the 250 meV upper scan boundary\n"
+            "Not a material prediction"
+        ),
+    )
+    colorbar = fig.colorbar(mesh, ax=ax)
+    colorbar.solids.set_rasterized(False)
+    colorbar.set_label(r"$\omega_{300}$ / meV (log scale; target $T_c=300$ K)")
+    fig.savefig(output_path, format="svg", metadata={"Date": None})
+    fig.savefig(
+        output_path.with_suffix(".png"),
+        format="png",
+        dpi=220,
+        metadata={"Software": "critical-manifold"},
+    )
+    plt.close(fig)
+
+
+def main():
+    roots = make_root_grid()
+    grid = make_direct_grid(roots)
+    results = build_results(roots, grid)
+    write_outputs(results, grid)
+    render_svg(results)
+    print(
+        f"roots={len(roots)} grid_points={len(grid)} "
+        f"disagreements={results['summary']['grid_class_disagreements']}"
+    )
+    print(f"root_status_counts={results['summary']['root_status_counts']}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

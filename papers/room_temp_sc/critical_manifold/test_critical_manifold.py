@@ -1,6 +1,10 @@
+import csv
+import json
 import math
 import sys
 import unittest
+import xml.etree.ElementTree as ET
+from pathlib import Path
 
 from critical_manifold import (
     build_results,
@@ -134,6 +138,41 @@ class GridTests(unittest.TestCase):
             all(a["absolute_error_meV"] < 1e-9 for a in result["root_anchors"])
         )
         self.assertEqual(result["coulomb_roles"]["manuscript_bound_lambda_2"], 0.3)
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+class ArtifactTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.results = json.loads(
+            (ROOT / "results.json").read_text(encoding="utf-8"),
+            parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value)),
+        )
+
+    def test_json_and_csv_counts(self):
+        with (ROOT / "results.csv").open(encoding="utf-8", newline="") as handle:
+            roots = list(csv.DictReader(handle))
+        with (ROOT / "grid_points.csv").open(encoding="utf-8", newline="") as handle:
+            grid = list(csv.DictReader(handle))
+        self.assertEqual(len(self.results["roots"]), 936)
+        self.assertEqual(len(roots), 936)
+        self.assertEqual(len(grid), 38376)
+        self.assertTrue(all(row["classes_agree"] == "True" for row in grid))
+
+    def test_svg_is_real_and_has_threshold_labels(self):
+        svg = (ROOT / "critical_manifold.svg").read_text(encoding="utf-8")
+        root = ET.fromstring(svg)
+        self.assertTrue(root.tag.endswith("svg"))
+        for label in ["150", "200", "250", "300 K", "All roots exceed 50 meV"]:
+            self.assertIn(label, svg)
+        self.assertNotIn("<image", svg)
+
+    def test_word_ready_png_is_real(self):
+        png = (ROOT / "critical_manifold.png").read_bytes()
+        self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertGreater(len(png), 10000)
 
 
 def run_all_tests():
