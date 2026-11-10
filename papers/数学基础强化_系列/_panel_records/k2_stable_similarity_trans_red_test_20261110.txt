@@ -1,0 +1,41 @@
+test_fresh_compile_and_axioms (__main__.K2StableSimilarityTransTests.test_fresh_compile_and_axioms) ... FAIL
+test_native_word_formula_and_table (__main__.K2StableSimilarityTransTests.test_native_word_formula_and_table) ... FAIL
+test_report_has_alignment_and_boundary (__main__.K2StableSimilarityTransTests.test_report_has_alignment_and_boundary) ... FAIL
+test_source_has_transitivity (__main__.K2StableSimilarityTransTests.test_source_has_transitivity) ... FAIL
+
+======================================================================
+FAIL: test_fresh_compile_and_axioms (__main__.K2StableSimilarityTransTests.test_fresh_compile_and_axioms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_trans.py", line 36, in test_fresh_compile_and_axioms
+    self.assertTrue(VERIFY.is_file(), "缺少稳定相似传递性验证脚本")
+AssertionError: False is not true : 缺少稳定相似传递性验证脚本
+
+======================================================================
+FAIL: test_native_word_formula_and_table (__main__.K2StableSimilarityTransTests.test_native_word_formula_and_table)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_trans.py", line 58, in test_native_word_formula_and_table
+    self.assertTrue(DOCX.is_file(), "缺少稳定相似传递性 Word")
+AssertionError: False is not true : 缺少稳定相似传递性 Word
+
+======================================================================
+FAIL: test_report_has_alignment_and_boundary (__main__.K2StableSimilarityTransTests.test_report_has_alignment_and_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_trans.py", line 52, in test_report_has_alignment_and_boundary
+    self.assertTrue(REPORT.is_file(), "缺少稳定相似传递性报告")
+AssertionError: False is not true : 缺少稳定相似传递性报告
+
+======================================================================
+FAIL: test_source_has_transitivity (__main__.K2StableSimilarityTransTests.test_source_has_transitivity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_stable_similarity_trans.py", line 21, in test_source_has_transitivity
+    self.assertTrue(LEAN.is_file(), "缺少稳定相似传递性 Lean 证明")
+AssertionError: False is not true : 缺少稳定相似传递性 Lean 证明
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)
