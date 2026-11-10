@@ -107,13 +107,13 @@ git commit -m "Prove stable similarity preserves ranges"
 - Consumes: Task 1 的 13/13 验证结果和 54/54 回归日志。
 - Produces: 可审查报告与论文状态，不把像模等价误写为完整分类。
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
-报告逐段解释四个映射及其方向，说明 `choose` 只负责提取见证，有限生成投射模分类和 \(K_0(R)\) 仍未完成。Word 使用原生公式、真正表格、目录域和页眉页码。
+Actual: 报告逐段解释四个映射及其方向，明确前两个逆映射、普通相似正向和目标补零等价正向，并说明 `choose` 只负责提取见证。商层分类和 \(K_0(R)\) 保持未完成。Word 含原生公式、真正表格、目录域和页眉页码；专项测试为 4/4 通过。
 
-- [ ] **Step 2: 验证 Word、回归与回写论文**
+- [x] **Step 2: 验证 Word、回归与回写论文**
 
-运行 `docx.py validate`，必须 `PASSED`；doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页、裁切和 content-loss。新增报告与 Word 两项测试后，完整 K2 回归应为 56/56。论文只追加稳定相似像模等价，不写成商层分类完成。
+Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 5/5 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 56/56，退出码 0。论文和花园总账已追加稳定相似像模等价，未写成商层分类完成。
 
 - [ ] **Step 3: 提交并推送具名分支**
 
