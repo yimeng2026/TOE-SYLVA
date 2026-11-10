@@ -105,16 +105,9 @@ Actual: 报告解释有限基、外围有限模和 `fg_range`，明确有限生�
 
 Actual: `docx.py validate` 为 `PASSED`（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 渲染 4/4 页，contact-sheet 与每页均已检查，无近空白页或裁切，仅低危 `w:lvlOverride` 提示。新增报告与 Word 两项测试后，完整 K2 回归实际 52/52，退出码 0。论文和花园总账已追加有限生成性，未写成稳定相似分类完成。
 
-- [ ] **Step 3: 提交并推送具名分支**
+- [x] **Step 3: 提交并推送具名分支**
 
-```bash
-git add papers/数学基础强化_系列/21_代数K理论_从向量丛到普适不变量.md \
-  papers/数学基础强化_系列/_panel_records/K2_MATRIX_RANGE_FINITE.md \
-  papers/数学基础强化_系列/_panel_records/K2_MATRIX_RANGE_FINITE.docx
-
-git commit -m "Document matrix range finiteness"
-git push -u origin fix/k2-matrix-range-finite
-```
+Actual: 证明 checkpoint 为 `f52fcf2`、`5965a42`，报告、Word、论文和最终证据提交为 `bd934f6`；花园总账提交为 `fb8571e`。`fix/k2-matrix-range-finite` 与 `research/paper-direction-atlas` 均已推送，推送时远端哈希分别为 `bd934f623c51ebe3f4ddc030ce0381a885230f53`、`fb8571ee1a08030c0cdc49d91625417d4eaa5fa6`，未合并主分支。
 
 ## Self-Review
 
