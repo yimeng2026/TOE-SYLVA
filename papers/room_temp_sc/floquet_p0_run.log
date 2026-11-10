@@ -79,3 +79,31 @@ Ran 8 tests in 0.002s
 FAILED (failures=8)
 
 EXIT=1
+
+GREEN: revised Floquet review
+COMMAND: python test_floquet_p0.py -v
+test_DOS_lower_bound_present (__main__.FloquetP0Tests.test_DOS_lower_bound_present) ... ok
+test_FeSe_STO_not_supported_by_Isoyama (__main__.FloquetP0Tests.test_FeSe_STO_not_supported_by_Isoyama) ... ok
+test_Giorgianni_LSCO_mismatch_removed (__main__.FloquetP0Tests.test_Giorgianni_LSCO_mismatch_removed) ... ok
+test_Xie_preprint_and_publication_present (__main__.FloquetP0Tests.test_Xie_preprint_and_publication_present) ... ok
+test_YH10_350_400_removed (__main__.FloquetP0Tests.test_YH10_350_400_removed) ... ok
+test_document_status_not_overclaimed (__main__.FloquetP0Tests.test_document_status_not_overclaimed) ... ok
+test_evidence_boundary_section_present (__main__.FloquetP0Tests.test_evidence_boundary_section_present) ... ok
+test_lsco_conflicting_pump_values_removed (__main__.FloquetP0Tests.test_lsco_conflicting_pump_values_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.000s
+
+OK
+
+EXIT=0
+
+COMMAND: git diff --check
+warning: in the working copy of 'papers/room_temp_sc/floquet_p0_run.log', LF will be replaced by CRLF the next time Git touches it
+EXIT=0
+
+COMMAND: git diff --stat
+warning: in the working copy of 'papers/room_temp_sc/floquet_p0_run.log', LF will be replaced by CRLF the next time Git touches it
+ papers/room_temp_sc/floquet_p0_run.log             |  24 ++++
+ .../room_temp_sc/floquet_superconductivity_deep.md | 152 ++++++++++++---------
+ 2 files changed, 109 insertions(+), 67 deletions(-)

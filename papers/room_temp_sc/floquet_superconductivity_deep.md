@@ -2,6 +2,7 @@
 
 > 收集时间：2026-06-03  
 > 覆盖范围：2023-2026年arXiv及核心期刊文献  
+> P0修订：2026-11-10；当前为证据分层草稿，未逐项终审
 > 关键词：Floquet superconductor, driven superconductivity, light-induced superconductivity, periodic drive, high-temperature superconductivity
 
 ---
@@ -16,6 +17,7 @@
 6. [理论工具箱](#6-理论工具箱)
 7. [实验参数汇总表](#7-实验参数汇总表)
 8. [关键论文引用索引](#8-关键论文引用索引)
+9. [结论与证据边界](#9-结论与证据边界)
 
 ---
 
@@ -40,10 +42,10 @@ Floquet工程（Floquet Engineering）指通过**周期性时间依赖驱动**�
 ### 1.3 2023-2026年里程碑
 
 - **2021**: K3C60中红外光诱导超导（Cavalleri组）
-- **2023**: 理论提出Floquet-DFPT方法用于氢化物超导体
+- **2023-12-20**: Xie 等 Floquet-DFPT 氢化物研究以 arXiv:2312.12706 v1 预印本公开。
 - **2024**: YBCO中THz驱动Higgs模式与超导增强
 - **2024-2025**: Floquet拓扑超导的广泛理论探索
-- **2025**: NbSe2等2D材料中超导性的可逆光调控
+- **2025**: Xie 等研究在 npj Computational Materials 正式发表，DOI `10.1038/s41524-025-01725-z`；NbSe₂等2D材料研究可逆连续波近场调控。
 
 ---
 
@@ -113,6 +115,8 @@ $$\hat{\lambda}_{\text{DS}}(E_0) = \frac{\hat{\rho}_F(E_0) \lambda}{\rho_F}$$
 
 其中 $\hat{\rho}_F(E_0)$ 是Floquet驱动后的态密度，$\rho_F$ 是平衡态DOS。
 
+在 Xie 等的低压近似中，标度结果应理解为相应估计的**下界**，**不是精确预测**。驱动条件、平衡态参数与模型近似必须同时给出；不能把 LaH₁₀ 的估计直接外推为所有氢化物，也不能把 DOS 增大单独等同于特定材料的确定升温。
+
 #### 2.4.2 Allen-Dynes公式在Floquet态下的应用
 
 $$T_c^{\text{Floquet}} = \frac{\hbar\omega_{\log}}{1.2 k_B} \exp\left[-\frac{1.04(1+\lambda)}{\lambda - \mu^*(1+0.62\lambda)}\right]$$
@@ -177,33 +181,24 @@ arXiv: [相关预印本]
 - 通过非线性耦合激发**Higgs模式**（超导序参数的振幅振荡）
 - 在欠掺杂样品中观察到**光增强超导**迹象
 
-#### 3.2.2 LSCO中的光诱导瞬态超导
+#### 3.2.2 LSCO相关叙述：待对应原文
 
-**Giorgianni et al., Nature Physics 15, 341 (2019)**
+原稿误用的 Leggett 模文献与 LSCO 样品不符；该文实际研究 MgB₂，已移至独立文献条目，不再进入 LSCO 证据链。
 
-| 参数 | 数值 |
-|------|------|
-| **材料** | La2-xSrxCuO4（LSCO） |
-| **现象** | 光泵浦后THz电导率出现超导-like响应 |
-| **寿命** | 皮秒量级 |
-
-**关键发现**：
-- 在** stripe相**（电荷有序相）中，光泵浦可**熔化stripe有序**
-- 释放被抑制的超导涨落
-- 这是**竞争序**（competing order）被光场抑制的典型例子
+LSCO 的瞬态响应、stripe 机理、泵浦波长／频率、脉宽、场强与寿命均标为**待对应原文、未核实**。在取得对应原始实验前，本综述不把这些定量参数用于任何超导增强结论。
 
 #### 3.2.3 铜氧化物光驱动参数汇总
 
-| 参数 | YBCO (Higgs) | LSCO (Stripe熔化) |
-|------|--------------|-------------------|
-| 驱动频率 | ~1 THz | ~10-100 THz (可见-近红外) |
-| 电场强度 | 10-100 kV/cm | 0.1-1 MV/cm |
-| 脉宽 | ~1 ps | ~50-100 fs |
-| 温度范围 | < $T_c$ | < $T_c$ |
-| 效应类型 | Higgs相干激发 | Stripe有序熔化 |
-| 寿命 | ~1-10 ps | ~1-10 ps |
+| 参数 | YBCO (Higgs) | LSCO（待对应原文） |
+|------|--------------|--------------------|
+| 驱动频率 | ~1 THz | 未核实 |
+| 电场强度 | 10-100 kV/cm | 未核实 |
+| 脉宽 | ~1 ps | 未核实 |
+| 温度范围 | < $T_c$ | 未核实 |
+| 效应类型 | Higgs相干激发 | 未核实 |
+| 寿命 | ~1-10 ps | 未核实 |
 
-### 3.3 2D材料：NbSe2与FeSe/STO
+### 3.3 2D材料：NbSe2与铁基薄膜
 
 #### 3.3.1 NbSe2中的近场等离子体耦合调控
 
@@ -220,24 +215,23 @@ arXiv: [相关预印本]
 **核心机制**：
 - 等离子体近场增强**局域电磁场**
 - 调制**电子-等离子体耦合**
-- 可逆调控超导序参数（无激光烧蚀损伤）
+- 可逆调制超导临界电流
 
-**关键优势**：
+**关键优势与边界**：
 - **连续波（CW）驱动**即可实现调控（非脉冲）
 - 调控幅度可达**20-30%**
 - 完全可逆
+- 是否满足本文所用 Floquet 稳态定义仍需另行论证，不能仅因周期或连续驱动就自动归类
 
-#### 3.3.2 FeSe/STO单层的光增强超导
+#### 3.3.2 FeSe₀.₅Te₀.₅薄膜的光增强超导
 
-| 参数 | 数值 |
-|------|------|
-| **材料** | FeSe单分子层/SrTiO3（$T_c \approx 60-100$ K） |
-| **驱动** | THz-近红外脉冲 |
-| **效应** | 光增强超导能隙 |
+| 参数 | 数值与证据状态 |
+|------|----------------|
+| **材料与结构** | FeSe₀.₅Te₀.₅薄膜 |
+| **来源** | Isoyama et al., Communications Physics 4, 160 (2021)，DOI `10.1038/s42005-021-00663-8` |
+| **结论边界** | 原文报道光增强超导；泵浦参数与机理解释按原文逐项记录，不与 FeSe/STO 单层界面混用 |
 
-**Isoyama et al., Communications Physics 4, 160 (2021)**：
-- 在FeSe0.5Te0.5中观察到**光增强超导**
-- 机制可能与**电子-声子耦合增强**相关
+FeSe/STO 单层界面的光增强主张需要另一条独立来源链；本轮未获得该来源，因此不共享 Isoyama 的样品、参数或实验结论。
 
 #### 3.3.3 Ti3C2T MXene的光调控THz屏蔽
 
@@ -267,8 +261,8 @@ arXiv: [相关预印本]
 
 #### 4.1.1 方法：Floquet-DFPT
 
-**Xie et al., npj Computational Materials, 2025**  
-（arXiv相关预印本：光驱动氢化物超导增强）
+**Xie et al., npj Computational Materials, 2025，DOI `10.1038/s41524-025-01725-z`**
+**预印本时间线**：arXiv:2312.12706 v1 于 **2023-12-20** 公开；**2025 年**为期刊正式发表，两个时间点分别记录，不混为同一事件。
 
 **核心方法**：
 1. **Floquet态计算**：周期光场下的电子结构
@@ -277,21 +271,23 @@ arXiv: [相关预印本]
 
 #### 4.1.2 关键结果
 
-**高压LaH10（220 GPa）**：
+**高压LaH10（220 GPa，特定模型与驱动条件，非实验证实）**：
 
-| 参数 | 平衡态 | Floquet驱动态 |
-|------|--------|---------------|
-| $T_c$ | ~240-260 K | **~300 K（室温）** |
+| 参数 | 平衡态 | Floquet驱动态（模型估计） |
+|------|--------|---------------------------|
+| $T_c$ | ~240-260 K | **~300 K（模型估计，非实验证实）** |
 | $\lambda$（EPC） | ~2.5 | 增强20-30% |
 | DOS ($N(E_F)$) | 基准 | 增加20-45% |
 | 泵浦振幅 | 0 | 80 mV/Å |
 
-**低压LaH10的DOS标度估计**：
+**低压LaH10的DOS标度下界估计（非精确预测）**：
 
-| 压力 | 平衡态 $T_c$ | 最大Floquet $T_c$ | 提升幅度 |
-|------|-------------|------------------|----------|
+| 压力 | 平衡态 $T_c$ | Floquet标度下界估计 | 估计差值 |
+|------|-------------|---------------------|----------|
 | 150 GPa | 249 K | 285 K | +36 K (+14%) |
 | 200 GPa | 240 K | **301 K** | +61 K (+25%) |
+
+这里的 285 K、301 K 仅表示相应近似下的下界估计，不是无条件最大值、精确预言或实验测量。
 
 #### 4.1.3 物理机制分析
 
@@ -317,23 +313,23 @@ arXiv: [相关预印本]
 
 $$\lambda_{\text{Floquet}} = \frac{2}{N(E_F)} \int_0^{\infty} \frac{\alpha^2 F_{\text{Floquet}}(\omega)}{\omega} d\omega$$
 
-**DOS标度近似**（快速估计）：
+**DOS标度近似**（快速估计与相应下界，非精确预测）：
 
 $$T_c^{\text{DS}}(E_0) = T_c^{\text{eq}} \times f\left(\frac{\hat{\rho}_F(E_0)}{\rho_F}, \lambda, \mu^*\right)$$
 
+函数 $f$ 不是脱离具体模型即可使用的普适拟合式；必须同时给出平衡态参数、驱动条件和近似定义。
+
 ### 4.2 其他氢化物的Floquet增强
 
-#### 4.2.1 YH10
+#### 4.2.1 YH₁₀：原高温外推撤回
 
-| 参数 | 数值 |
-|------|------|
-| 平衡态 $T_c$ | ~220-303 K（取决于压力） |
-| 预测Floquet增强 | 类似LaH10（20-30%提升） |
-| 潜在室温超导 | **可达350-400 K** |
+原稿缺少独立 Floquet-DFPT 推导、压力与泵浦条件的高温外推现予**撤回**，不提供替代数值。Xie 等明确指出并非所有氢化物都能超过室温。
+
+静态理论研究、Floquet 标度估计和实验样品状态**不得混写**。在补齐对应原始来源前，本节不给出新的 $T_c$ 预测，也不把 LaH₁₀ 的提升幅度直接套用到 YH₁₀。
 
 #### 4.2.2 CaH2, CaH3
 
-- 同样观察到Floquet驱动下DOS增加
+- 相关理论计算中也讨论 DOS 变化，具体数值与来源未逐项核实
 - 但并非所有氢化物都能达到室温超导
 - 取决于初始 $T_c$ 和DOS增加幅度
 
@@ -577,21 +573,21 @@ $$\tau_F \rightarrow \tau_F^{\text{Floquet}} = \tau_F \times f(\Omega, V_0)$$
 |------|----------|-----------|------|------|------|------|----------|
 | **K3C60** | MIR脉冲 | ~10 μm (~30 THz) | ~100 fs | mJ/cm² | 100 K | 光诱导超导 | Budden et al., Nat. Phys. 17, 611 (2021) |
 | **YBCO** | THz脉冲 | ~1 THz | ~1 ps | ~10-100 kV/cm | < 92 K | Higgs模式激发 | Chu et al., Nat. Commun. 11, 1793 (2020) |
-| **LSCO** | 近红外脉冲 | ~800 nm (~375 THz) | ~50 fs | ~0.1-1 mJ/cm² | < 38 K | Stripe熔化/瞬态超导 | Giorgianni et al., Nat. Phys. 15, 341 (2019) |
+| **LSCO** | 待对应原文 | 待对应原文 | 待对应原文 | 待对应原文 | 待对应原文 | 未核实 | 待对应原始实验 |
 | **NbSe2** | CW等离子体 | 可见-近红外 | CW | ~mW/cm² (局域增强) | 2-7 K | 超导临界电流调制 | Cheng et al., Nat. Commun. (2024) |
-| **FeSe/STO** | THz-近红外 | ~1-100 THz | ~100 fs | ~μJ/cm² | < 100 K | 能隙增强 | Isoyama et al., Commun. Phys. 4, 160 (2021) |
+| **FeSe₀.₅Te₀.₅薄膜** | 泵浦参数待逐项核对 | 泵浦参数待逐项核对 | 泵浦参数待逐项核对 | 泵浦参数待逐项核对 | 见原文 | 光增强超导（原文报道） | Isoyama et al., Commun. Phys. 4, 160 (2021)，DOI `10.1038/s42005-021-00663-8` |
 
 ### 7.2 理论预测参数（LaH10 Floquet工程）
 
 | 参数 | 数值 | 备注 |
 |------|------|------|
-| **平衡态 $T_c$** | 240-260 K (200 GPa) | 实验值 |
-| **驱动频率** | MIR (~10-30 THz, ~0.1-0.3 eV) | 非共振驱动 |
-| **泵浦振幅** | 0-80 mV/Å | 电场强度 |
-| **理论最大 $T_c$** | **~300 K** | Floquet-DFPT预测 |
-| **EPC增强** | +20-30% | 相对于平衡态 |
-| **DOS增加** | +20-45% | 费米能级处 |
-| **寿命要求** | >> 声子弛豫时间 (~ps) | 稳态Floquet条件 |
+| **平衡态 $T_c$** | 240-260 K (200 GPa) | 平衡态参考范围，待逐项回源 |
+| **驱动频率** | MIR (~10-30 THz, ~0.1-0.3 eV) | 非共振驱动，须与原文条件共同引用 |
+| **泵浦振幅** | 0-80 mV/Å | 模型驱动条件 |
+| **模型估计 $T_c$** | **~300 K** | 特定条件下 DOS 标度下界估计，非精确预测或实验证实 |
+| **EPC增强** | +20-30% | 相对于平衡态，模型估计 |
+| **DOS增加** | +20-45% | 费米能级处，模型估计 |
+| **寿命要求** | >> 声子弛豫时间 (~ps) | 稳态Floquet条件，不等于瞬态实验已实现 |
 
 ### 7.3 THz源技术参数
 
@@ -612,16 +608,16 @@ $$\tau_F \rightarrow \tau_F^{\text{Floquet}} = \tau_F \times f(\Omega, V_0)$$
 | 序号 | 论文 | 作者 | 期刊/年份 | arXiv号 | 核心贡献 |
 |------|------|------|-----------|---------|----------|
 | [1] | Evidence for metastable photo-induced superconductivity in K3C60 | M. Budden et al. | Nature Physics 17, 611 (2021) | - | K3C60中红外光诱导超导 |
-| [2] | Light-induced enhancement of superconductivity in iron-based superconductor FeSe0.5Te0.5 | K. Isoyama et al. | Communications Physics 4, 160 (2021) | - | FeSe基超导体光增强 |
+| [2] | Light-induced enhancement of superconductivity in iron-based superconductor FeSe0.5Te0.5 | K. Isoyama et al. | Communications Physics 4, 160 (2021)，DOI `10.1038/s42005-021-00663-8` | - | FeSe₀.₅Te₀.₅薄膜光增强超导；不与 FeSe/STO 混用 |
 | [3] | Phase-resolved Higgs response in superconducting cuprates | H. Chu et al. | Nature Communications 11, 1793 (2020) | - | YBCO中THz驱动Higgs模式 |
-| [4] | Leggett mode controlled by light pulses | F. Giorgianni et al. | Nature Physics 15, 341 (2019) | - | 铜氧化物光调控集体模式 |
+| [4] | Leggett mode controlled by light pulses | F. Giorgianni et al. | Nature Physics 15, 341 (2019) | - | MgB₂ 的 Leggett 模光脉冲调控；不作为 LSCO 证据 |
 | [5] | Reversible modulation of superconductivity in thin-film NbSe2 via plasmon coupling | G. Cheng et al. | Nature Communications (2024) | - | 2D超导体的等离子体调控 |
 
 ### 8.2 氢化物Floquet超导理论
 
 | 序号 | 论文 | 作者 | 期刊/年份 | arXiv号 | 核心贡献 |
 |------|------|------|-----------|---------|----------|
-| [6] | Floquet engineering of hydride superconductors (room-temperature) | C. Xie et al. | npj Computational Materials (2025) | - | Floquet-DFPT方法；LaH10的$T_c$提升至300K |
+| [6] | Floquet engineering of hydride superconductors | C. Xie et al. | npj Computational Materials (2025)，DOI `10.1038/s41524-025-01725-z` | arXiv:2312.12706（v1：2023-12-20） | 特定条件下 LaH₁₀ 的 Floquet-DFPT 与 DOS 标度下界估计，非实验证实 |
 | [7] | Data-driven Design of High Pressure Hydride Superconductors using DFT and Deep Learning | - | - | 2312.12694 | 氢化物超导体的数据驱动设计 |
 | [8] | Structures and Superconductivity of Hydrogen and Hydrides under Extreme Pressure | - | - | 2406.07238 | 氢化物超导综述 |
 | [9] | Enhancing superconducting transition temperature of lanthanum superhydride by increasing hydrogen vacancy concentration | - | - | 2409.09836 | LaH10中的空位调控 |
@@ -654,6 +650,28 @@ $$\tau_F \rightarrow \tau_F^{\text{Floquet}} = \tau_F \times f(\Omega, V_0)$$
 | [21] | FeSe/CaF2薄膜THz光谱 | - | - | 2507.14466 | FeSe薄膜的THz时域光谱 |
 | [22] | Dynamical Control over THz EMI Shielding with 2D Ti3C2T MXene | G. Li et al. | Nano Letters 20, 636 (2020) | - | MXene的光调控THz性质 |
 | [23] | Intense THz optoelectronics for semiconductors and 2D materials | S.H. Shin et al. | - | - | 强THz源技术综述 |
+
+---
+
+## 9. 结论与证据边界
+
+### 9.1 证据分层
+
+| 类别 | 当前可保留内容 | 不得推出 |
+|------|----------------|----------|
+| 稳态 Floquet 理论 | 特定模型、近似和驱动条件下的有效哈密顿量与数值结果 | 对任意材料、任意驱动的普遍升温定理 |
+| 瞬态光诱导响应 | 具体泵浦—探测实验所报告的瞬态电导、能隙或临界电流变化 | 瞬态响应自动等于稳态 Floquet 相 |
+| 连续波近场调控 | NbSe₂ 的可逆连续波等离子体耦合调制 | 未经论证即归入本文定义的 Floquet 稳态工程 |
+| 高压氢化物计算 | Floquet-DFPT 与 DOS 标度下界估计及其适用条件 | 把下界估计当作精确预言或实验证实 |
+| 未核实条目 | 待对应原文、内部不一致或只有二手来源的研究线索 | 以确定口吻引用其数值、样品或机理 |
+
+### 9.2 数值脚本边界
+
+`verify_rtsc.py` 的 **3/3 modules passed** 只覆盖 BCS 能隙、Allen–Dynes 公式和二能级高频展开，**不覆盖材料预测**、氢化物 DFPT、相互作用 BdG 或光诱导实验。
+
+### 9.3 本轮 P0 修订范围与未决项
+
+本轮同步修正 Xie 时间线、DOS 下界、Giorgianni/LSCO 错配、Isoyama 样品、YH₁₀ 外推及表格／索引／时间线传播。其余引文与实验数字**未逐项终审**；LSCO 对应实验、FeSe/STO 独立来源和其余材料参数仍需回源。未核实不等于虚假，但也不得作为确定证据引用。
 
 ---
 
@@ -700,11 +718,11 @@ $$I(\phi) = \frac{2e}{\hbar} \sum_\beta \frac{d\epsilon_\beta(\phi)}{d\phi} n(\e
 | 2011 | 理论上提出Floquet拓扑绝缘体 |
 | 2016 | K3C60光诱导超导（Cavalleri组） |
 | 2019 | 平面Josephson结中的Floquet Majorana理论 |
-| 2020 | YBCO中THz驱动Higgs模式实验；LSCO瞬态超导 |
+| 2020 | YBCO中THz驱动Higgs模式实验；LSCO相关叙述待对应原文 |
 | 2021 | K3C60光诱导超导发表于Nature Physics |
-| 2023 | Floquet-DFPT方法用于氢化物超导体 |
+| 2023-12-20 | Xie 等 Floquet-DFPT 氢化物研究以 arXiv:2312.12706 v1 预印本公开 |
 | 2024 | NbSe2等离子体调控超导；Floquet拓扑超导理论繁荣 |
-| 2025 | 非厄米Floquet拓扑超导；Altermagnet异质结Majorana |
+| 2025 | Xie 等研究在 npj Computational Materials 正式发表；非厄米Floquet拓扑超导；Altermagnet异质结Majorana |
 
 ---
 
@@ -732,4 +750,4 @@ $$I(\phi) = \frac{2e}{\hbar} \sum_\beta \frac{d\epsilon_\beta(\phi)}{d\phi} n(\e
 
 ---
 
-> **文档说明**：本综述基于2023-2026年arXiv预印本及核心期刊文献的系统搜索整理。所有引用均标注arXiv号或期刊信息。实验参数尽可能取自原始文献，理论方程来自标准Floquet/BCS/Eliahsberg理论框架。
+> **文档说明**：本综述为研究线索与证据分层草稿。2026-11-10 仅完成既定 P0 修订；其余引文、实验参数和理论适用条件未逐项终审，部分条目仍缺 DOI／arXiv 或原文定位。使用前须按第 9 节核对样品、模型、驱动条件与证据等级，不得将本稿描述为全部来源已核实。
