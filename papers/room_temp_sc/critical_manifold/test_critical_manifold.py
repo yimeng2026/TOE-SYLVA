@@ -3,10 +3,13 @@ import sys
 import unittest
 
 from critical_manifold import (
-    manuscript_coulomb_bound,
+    build_results,
     critical_root,
     critical_temperature,
     denominator,
+    make_direct_grid,
+    make_root_grid,
+    manuscript_coulomb_bound,
 )
 
 
@@ -67,6 +70,70 @@ class KernelTests(unittest.TestCase):
         low = critical_temperature(100.0, 2.0, 0.1)
         high = critical_temperature(200.0, 2.0, 0.1)
         self.assertLess(abs(high / low - 2.0) / 2.0, 1e-12)
+
+
+class GridTests(unittest.TestCase):
+    def test_grid_shapes_endpoints_and_order(self):
+        roots = make_root_grid()
+        grid = make_direct_grid(roots)
+        self.assertEqual(len(roots), 936)
+        self.assertEqual(len(grid), 38376)
+        self.assertEqual((roots[0]["lambda"], roots[0]["mu_star"]), (0.5, 0.05))
+        self.assertEqual((roots[-1]["lambda"], roots[-1]["mu_star"]), (4.0, 0.3))
+        self.assertEqual(len({(r["lambda"], r["mu_star"]) for r in roots}), 936)
+        keys = [(r["lambda"], r["mu_star"]) for r in roots]
+        self.assertEqual(keys, sorted(keys))
+        self.assertEqual(grid[0]["omega_log_meV"], 50.0)
+        self.assertEqual(grid[-1]["omega_log_meV"], 250.0)
+
+    def test_every_root_back_substitutes(self):
+        for root in make_root_grid():
+            omega = root["omega_300_meV"]
+            self.assertTrue(math.isfinite(omega) and omega > 0.0)
+            tc = critical_temperature(omega, root["lambda"], root["mu_star"])
+            self.assertLess(abs(tc - 300.0), 1e-8)
+
+    def test_all_direct_and_root_classes_agree(self):
+        grid = make_direct_grid()
+        for row in grid:
+            self.assertTrue(row["classes_agree"], row)
+            self.assertTrue(math.isfinite(row["tc_K"]))
+        self.assertEqual(
+            sum(r["tc_K"] < 300.0 for r in grid)
+            + sum(r["tc_K"] >= 300.0 for r in grid),
+            38376,
+        )
+
+    def test_result_summary_is_derived(self):
+        result = build_results()
+        self.assertEqual(result["domain"]["root_count"], 936)
+        self.assertEqual(result["domain"]["grid_point_count"], 38376)
+        self.assertEqual(sum(result["summary"]["root_status_counts"].values()), 936)
+        self.assertEqual(
+            result["summary"]["root_status_counts"],
+            {"above_scan": 340, "within_scan": 596},
+        )
+        self.assertAlmostEqual(
+            result["summary"]["minimum_root"]["omega_300_meV"],
+            120.81020151475772,
+            delta=1e-9,
+        )
+        self.assertAlmostEqual(
+            result["summary"]["maximum_root"]["omega_300_meV"],
+            66621518.616509594,
+            delta=1e-6,
+        )
+        self.assertEqual(result["summary"]["grid_class_disagreements"], 0)
+        self.assertEqual(len(result["roots"]), 936)
+        self.assertEqual(len(result["temperature_anchors"]), 3)
+        self.assertEqual(len(result["root_anchors"]), 3)
+        self.assertTrue(
+            all(a["absolute_error_K"] < 1e-9 for a in result["temperature_anchors"])
+        )
+        self.assertTrue(
+            all(a["absolute_error_meV"] < 1e-9 for a in result["root_anchors"])
+        )
+        self.assertEqual(result["coulomb_roles"]["manuscript_bound_lambda_2"], 0.3)
 
 
 def run_all_tests():
