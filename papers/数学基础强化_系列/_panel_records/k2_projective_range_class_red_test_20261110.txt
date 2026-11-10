@@ -1,0 +1,23 @@
+test_fresh_compile_and_axioms (__main__.K2ProjectiveRangeClassTests.test_fresh_compile_and_axioms) ... FAIL
+test_source_has_range_class_and_well_defined_map (__main__.K2ProjectiveRangeClassTests.test_source_has_range_class_and_well_defined_map) ... FAIL
+
+======================================================================
+FAIL: test_fresh_compile_and_axioms (__main__.K2ProjectiveRangeClassTests.test_fresh_compile_and_axioms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_projective_range_class.py", line 35, in test_fresh_compile_and_axioms
+    self.assertTrue(VERIFY.is_file(), "缺少商层像模同构类验证脚本")
+AssertionError: False is not true : 缺少商层像模同构类验证脚本
+
+======================================================================
+FAIL: test_source_has_range_class_and_well_defined_map (__main__.K2ProjectiveRangeClassTests.test_source_has_range_class_and_well_defined_map)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\一梦\Documents\kimi\workspace\.worktrees\toe-k0-universal\papers\数学基础强化_系列\_panel_records\test_k2_projective_range_class.py", line 18, in test_source_has_range_class_and_well_defined_map
+    self.assertTrue(LEAN.is_file(), "缺少商层像模同构类 Lean 构造")
+AssertionError: False is not true : 缺少商层像模同构类 Lean 构造
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)
