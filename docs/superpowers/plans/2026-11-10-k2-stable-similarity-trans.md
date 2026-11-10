@@ -75,18 +75,18 @@ Actual: 编译退出码 0、10/10 检查通过，`stableSimilar_trans` 公理仅
 - Create: `papers/数学基础强化_系列/_panel_records/K2_STABLE_SIMILARITY_TRANS.docx`
 - Create: `papers/数学基础强化_系列/_panel_records/k2-stable-similarity-trans-word-qa/report.json`
 
-- [ ] **Step 1: 写报告并制作原生 Word**
+- [x] **Step 1: 写报告并制作原生 Word**
 
-报告给出共同补零表示、逆向重索引、普通相似传递和最终结合四个阶段。明确这只完成稳定相似等价关系，不是 K0、投射模分类或外部新定理。Word 含中文目录域、原生公式、真正表格和页眉页码。
+报告给出共同补零表示、逆向重索引、普通相似传递和最终结合四个阶段。明确这只完成稳定相似等价关系，不是 K0、投射模分类或外部新定理。Word 含目录域、原生公式、真正表格和页眉页码；多行等价链已拆成三条独立原生公式，避免预览器压平。
 
-- [ ] **Step 2: 验证结构与视觉**
+- [x] **Step 2: 验证结构与视觉**
 
-`docx.py validate` 必须 PASSED；doc-k 渲染所有页面并检查 contact-sheet、每页、近空白页和 content-loss。
+Actual: `docx.py validate` 为 PASSED（17 parts XSD + semantic checks，gen 6 checks clean）。doc-k 最终渲染 6/6 页；contact-sheet 与每页均已检查，无近空白页、无裁切，表格行不跨页拆分。仅保留低危 `w:lvlOverride` 目录编号兼容提示。
 
-- [ ] **Step 3: 运行 K2 全量回归并提交证据**
+- [x] **Step 3: 运行 K2 全量回归并提交证据**
 
 Run: `python -m unittest discover -s . -p "test_k2_*.py" -v`
-Expected: 原 28 项加新 4 项，合计 32/32 通过，退出码 0。仅提交报告、DOCX 与 QA report。
+Actual: 原 28 项加新 4 项，合计 32/32 通过，退出码 0。仅提交报告、DOCX 与 QA report，不纳入中间工作目录和 QA 图片。
 
 ### Task 3: 论文与总账回写
 
